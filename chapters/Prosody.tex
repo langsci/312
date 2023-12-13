@@ -158,7 +158,7 @@ The end-based approach has been reformulated as a generalized alignment constrai
 
 In later work, \citet{Selkirk2009, Selkirk2011} introduced {\bf match theory} (which has ancestors in, e.g., \citealt{Ladd1986}). In contrast to the previous end-based approach, match theory assumes that both edges of a syntactic constituent are simultaneously matched to a prosodic constituent.  
 
-\begin{itemize}
+\begin{itemize}\sloppy
 \item {\sc match-clause}: A clause in syntactic constituent structure must be matched by a corresponding  intonational phrase ($\iota$)  in prosodic constituent structure: {\sc match (clause, $\iota$)}
 \item {\sc match-phrase}: A phrase in syntactic constituent structure must be matched by a corresponding phonological phrase ($\varphi$) in prosodic constituent structure: {\sc match (xp, $\varphi$)}
 \item {\sc match-word}: A (lexical) word in syntactic constituent
@@ -397,8 +397,10 @@ for tree={s sep=5mm, inner sep=0, l=0}
 \end{figure}
 
 \citet{buttking98} represent p-structure as an AVM structure based on the prosodic hierarchy as shown in (\ref{ex:pros_hier_1}) above. The AVM structure allows for the inclusion of more detailed information beyond the prosodic domain and the p(honological)-form, such as pitch accents or boundary tones.  Butt and King also discuss the linearity issue given with any AVM approach. In order to apply phonological and phonetic processes, it is necessary to preserve the linear order of the string. For a possible solution to this issue, Butt and King point towards projection precedence \citep{zaenen-kaplan1995}, which arranges the attributes in p-structure similarly to the string.
- 
+
+\begin{sloppypar}
 \figref{fig:idio_neut} shows the prosodic structure of the idiomatic reading in (\ref{ex:ghost}), where {\em bHut} and {\em dekHlam} are phrased into one phonological phrase ({\sc dom(ain): p-phrase}). 
+\end{sloppypar}
 
 \begin{figure}
 {\small
@@ -425,7 +427,7 @@ bnd-tone & low\\]
 }
 \end{figure}
 
-\noindent The AVM includes all the information in the tree structure and the additional information known about the tones in the language, for example, that in a neutral (non-phonological) focus construction, a 
+The AVM includes all the information in the tree structure and the additional information known about the tones in the language, for example, that in a neutral (non-phonological) focus construction, a 
 % neutral focus means that linear order and position determine the focus
 high tone is associated with the left p-word in the rightmost p-phrase and the whole clause receives a low boundary tone. %As the information on tones is dependent on information from the grammar (information on focus), it is stored within the p-structure AVM. 
 This information is stored in the AVM ({\sc tone high}), but the final association of the hight tone with the correct p-form (and the correct syllable in this p-form) is left to the phonological component itself. The reason is that the final p-phrase %(and with it the correct placement of the pitch accent in neutral focus) 
@@ -775,9 +777,10 @@ The second position in the prosodic string satisfies this prosodic constraint in
 
 There are also several problems with this approach. For one, no further prosodic information can be transmitted via the string. However, information on pitch patterns, accent types or other prosodic features can be crucial for a correct interpretation of meaning. 
 
+\begin{sloppypar}
 Another factor is the relatively coarse-grained representation of prosody. Prosodic units can be relevant down to the syllable, a granularity that becomes difficult to represent by interspersing brackets with the terminal c-structure string.
 And finally, integrating the prosodic structures into the c-structure analysis makes the representation not only difficult to process, but is also questionable in terms of modularity.
-
+\end{sloppypar}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1155,8 +1158,6 @@ A second main point of this chapter was that the majority of the proposals prese
 \section*{Acknowledgements}
 I would like to thank Tracy H. King, Miriam Butt, and two anonymous reviewers for their detailed comments, and Mary Dalrymple for her infinite patience.
 
-\newpage
-\sloppy
+
 \printbibliography[heading=subbibliography,notkeyword=this]
 \end{document}
-

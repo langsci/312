@@ -332,7 +332,8 @@
 \item[Negative existential constraint] A constraint forbidding the appearance of a feature in an attribute-value structure.  For example, the constraint $\neg(f~\TENSE)$ prevents the f-structure $f$ from having an attribute \TENSE with any value.
 
 \parpic[r]{\scalebox{.6}{\parbox{6em}{\centering Disallowed:\\\begin{forest}[{} [CP [$\vdots$ [CP [...]]]]]\end{forest}}}}\item[Nonbranching Dominance Constraint\namedlabel{gloss:NBD}{Nonbranching Dominance Constraint}] A constraint disallowing \ref{gloss:cstr} trees in which two nodes of the same category dominate the same terminal substring, as in the illustration. This constraint is sufficient to ensure \ref{gloss:decidability} of LFG parsing, but is not sufficient to ensure decidability of LFG generation.  The stronger principles of Conservation and Proper Anchoring guarantee decidability of both computational problems.  See \citetv{chapters/Computational}.
-\end{labeling}\begin{labeling}{xxxx} % needed to prevent alignment bug with parpic
+\end{labeling}
+\begin{labeling}{xxxx}\sloppy % needed to prevent alignment bug with parpic
  
 \item[Non-configurationality\namedlabel{gloss:Nonconfig}{Non-configurationality}] Refers to a language type in which grammatical functions are not associated with particular \ref{gloss:cstr} positions, but can often be identified via agreement and/or casemarking.  Also see \ref{gloss:Config}.
 
@@ -483,7 +484,8 @@
 \item[\VTYPE\namedlabel{gloss:vtype}{\VTYPE}] Feature whose value specifies verb type.  Typical values are \textsc{fin} for finite, \textsc{inf} for infinitive, and \textsc{pst.ptcp} for past participle.
 
 \parpic[r]{\scalebox{.6}{\begin{forest}[XP [{YP\\(Specifier of XP)}][X$'$ [X$^0$] [{ZP\\(Complement of XP)}]]]\end{forest}}}\item[X-bar theory\namedlabel{gloss:Xbar}{X-bar theory}] A theory of the organization of \ref{gloss:cstr}.  Many LFG analyses assume the version of X-bar theory that is depicted in the figure, ignoring linear order (that is, the specifier may precede or follow the X$'$ head, and the complement may precede or follow the X head.  See \citetv[\ref{sect:xbar}]{chapters/CoreConcepts}.
-\end{labeling}\begin{labeling}{xxxx} % needed to prevent alignment bug with parpic
+\end{labeling}
+\begin{labeling}{xxxx}\sloppy % needed to prevent alignment bug with parpic
 
 \item[\XADJ\namedlabel{gloss:xadj}{\XADJ}]The \ref{gloss:open} borne by adjunct phrases.
 
