@@ -1,0 +1,745 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10185998}
+\title{LFG and Australian languages}
+\author{Rachel Nordlinger\affiliation{University of Melbourne}}
+\abstract{Australian languages exhibit many interesting grammatical properties and have featured in LFG-related research since the earliest days of the framework. In this chapter I survey the features of Australian languages that have featured most prominently in work within LFG, and show how they argue strongly for the parallel architecture of LFG and in particular the separation of functional relations at f-structure from phrasal constituency and linearity at c-structure. These morphosyntactic features include non-configurationality and flexible word order, the role of morphology in encoding grammatical relations, case stacking, valence-changing phenomena and complex predicates. I show how the flexibility afforded by LFG's parallel architecture, which separates c-structure from f-structure with a many-to-many mapping between them, allows for a natural and explanatory account of these properties of Australian languages. In return, the empirical questions prompted by these theoretical analyses and their predictions have led to a more detailed understanding of the intricate grammatical structures of various Australian languages, and explain the appeal of the LFG formalism for fieldworkers engaged in Australian language documentation.}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[33]%%chapternumber
+}{}
+
+\begin{document}
+\maketitle
+\label{chap:Australian}
+
+\section{The languages of Australia}
+\label{sec:ozlges}
+Across the continent of Australia there are hundreds of Indigenous languages. The literature typically cites upwards of 800 named language varieties, which can be grouped into 250-300 distinct languages \citep{KochNord2014}, but it is not always straightforward to determine language differences from dialectal differences and so these numbers are approximate to a certain extent.\footnote{It is important to note that these $>$800 language varieties are considered different languages by Indigenous communities themselves, and thus the grouping of these into a smaller number of `distinct languages' is a purely linguistic enterprise.}  Prior to the English invasion of Australia, these languages were spoken across a population of perhaps 750,000 to one million people, which highlights the enormous linguistic diversity of Indigenous Australia. In many cases languages were maintained by very small populations (e.g.\ 40–50 people), and the largest populations speaking a single language variety were probably no bigger than 4000 people. Linguistic diversity is highly valued culturally for its indexical relationship to heritage, identity and group membership \citep{Evans2007} and is not an impediment to communication, since high degrees of multilingualism were (and often still are) the norm across Indigenous Australia, with individuals typically speaking up to 4–6 languages of the surrounding area, as well as understanding others, given widespread practices of receptive multilingualism \citep{Singer2018}. 
+
+Australian languages are generally considered by linguists to all be related to one another, although the detailed comparative work needed to establish this is still underway. Such research is confounded by a number of factors, the most significant of which is the extraordinary time depth (perhaps as much as 65,000 years) that Indigenous people have been living on and moving around the continent, with almost no written records of any of the languages prior to the last 200 years or so, and few detailed descriptions until substantially later. Research to date has established that the Australian languages can be grouped into around 25 different language families. One of these, the {\it Pama-Nyungan} family, covers approximately 85 percent of the continent, stretching from the south-west of Western Australia all the way to the tip of Cape York in far north Queensland. The other families, known collectively as the {\it non-Pama-Nyungan} families, are concentrated in the northern parts of Western Australia and the top half of the Northern Territory, but higher order groupings amongst these non-Pama-Nyungan families have not yet been clearly established.
+
+The sociolinguistic situation varies enormously across these hundreds of languages and their communities \citep{NILR2020}. Some languages remain strong, and are used by their communities as the daily language of communication and learned as first languages by the children. Many others are used fluently only by older members of the community, with younger generations having passive and varying degrees of partial knowledge of the language; while many other languages, particularly those from the areas most heavily populated by non-Aboriginal populations since the nineteenth century, have no first language speakers at all and are instead in the process of being relearned and revived by community members from (often scant) historical materials.
+
+Australian languages are relatively similar phonologically \citep{FletchButch2014} but exhibit greater variation in grammatical organisation. While all Australian languages are morphologically complex, we can see them as falling into two broad grammatical types which we can loosely call dependent-marking and head-marking \citep{Nichols86} (although most of the head-marking languages have some dependent-marking as well, and some of the dependent-marking languages have bound pronominal clitics cross-referencing verbal arguments). The Pama-Nyungan languages are dependent-marking languages with grammatical relations primarily encoded through case marking. These languages are generally morphologically ergative languages, and have elaborate case systems that cover a range of grammatical and semantic case functions. Examples such as the following are typical. 
+
+\ea\label{ex:Australian:1} Jiwarli\\
+\gll Ngatha tharla-laartu ngurru-martu-nha pirru-ngku.\\
+{1\SG.\ERG} {feed-\USIT}	{old.man-\textsc{group}-\ACC} {meat-\ERG}\\
+\glt `I used to feed the old men with meat.’ \citep[310]{Austin01}	
+\z
+
+\ea Jiwarli\\
+\gll Wuru ngunha tharrpa-rninyja ngarti-ngka kajalpu-la...\\
+ {stick.\ACC} {that.\ACC} {insert-\PST} {inside-\LOC} {emu-\LOC}\\
+\glt `(He) inserted the stick inside the emu…’ \citep[315]{Austin01}
+\z
+
+However, some other Pama-Nyungan languages combine a robust case-mar\-king system with bound pronominal clitics cross-referencing verbal arguments, as illustrated in the following examples:
+
+%\ea Bilinarra\\
+%\gll Baga-lu=yi bu-nga ngayi=ma.\\
+%{prickle-\ERG=1\MIN.\OBJ}	{poke-\PRS}		{1\MIN(\ACC)=\TOP}\\
+%\glt `A prickle poked me.’ \citep[120]{MeakNord14}
+%\z
+%
+\ea Bilinarra\\
+\gll Liward-ba=nggu=lu garra nyununy gajirri-lu.\\
+{wait-\EP=2\MIN.\OBJ=3\AUG.\SBJ} 	{be.\PRS} {2\MIN.\DAT} {woman-\ERG}\\
+\glt `The women are waiting for you.’ \citep[121]{MeakNord14}
+\z
+
+\ea Bilinarra\\
+\gll Jamana-lu=rni=warla=rna=rla ma-ni warlagu=ma nyila=ma, garndi-murlung-gulu.\\ 	
+ {foot-\ERG={\textsc{only}}=\FOC=1\MIN.\SBJ=3\OBL}	 {do-\PST}	 {dog(\ACC)=\TOP} {that(\ACC)=\TOP} {stick-\PRIV-\ERG}\\
+\glt `I kicked the dog of his with just my foot, not with a stick.' \citep[121]{MeakNord14}
+\z
+
+The head-marking languages largely belong to non-Pama-Nyungan families of northern Australia and encode core grammatical relations primarily through verbal morphology. Some of these are characterised as polysynthetic since verbs can be so morphologically complex that they can stand alone as a single complex clause, and may even allow noun incorporation as in (\ref{BGW}). The polysynthetic, head-marking languages of Australia have minimal grammatical case marking, although many still employ case for semantic case functions. Polysynthetic Australian languages include Bininj Gun-wok \citep{Evans2003} and Murrinhpatha \citep{Blythe2009,Nordlinger2017,Mansfield2019}, as illustrated in the following examples. 
+
+\ea \label{BGW} Bininj Gun-wok\\
+\gll Nga-ban-marne-yawoih-dulk-djobge-ng.\\
+	{1\SG.\SBJ-3\PL.\OBJ-\BEN-again-tree-cut-\PST.\PFV}\\
+\glt	`I cut the tree/wood for them again' or ‘I cut another tree for them.’ \citep[2]{EvanSass2002}
+\z
+
+\ea Murrinhpatha\\
+\gll Puddan-wunku-rlarl-deyida-ngime=pumpanka.\\ 
+ {3\DU.\SBJ.\textsc{shove}.\NFUT-3\DU.\OBJ-drop-in.turn-\PC.\F=3\DU.\SBJ.\textsc{go}.\NFUT}\\ 
+\glt	`They (dual sibling) are dropping them (paucal, female, non-sibling) off, one after the other, as they go along.’ \citep[134]{Blythe2009}
+\z
+
+Australian languages exhibit many interesting grammatical properties that have been the focus of much theoretical and typological discussion, including flexible word order, syntactic and morphological ergativity, elaborate case systems and case marking, nominal classification, complex verb structures, polysynthesis, noun incorporation, grammaticalised expression of kin relations, and many more -- see the overviews and discussions in \citet{Dixon2002}, \citet{KochNord14}, and \citet{BowernOzlges} for more details. It is not possible for me to do justice to all of this work here, so in this chapter I focus on the features of Australian languages that have featured most prominently in work within the LFG framework.
+
+\section{Overview of work on Australian languages in LFG}
+\label{sec:overview}
+Australian languages have featured in LFG-related research since the early days, beginning with Jane Simpson's PhD work on Warlpiri \citep{Simpson1983}. The non-configurational clausal structure of languages like Warlpiri, first discussed by \citet{Hale81,Hale82,Hale83}, argues strongly for the parallel architecture of LFG and in particular the separation of functional relations at f-structure from phrasal constituency and linearity at c-structure. Languages like Warlpiri provide clear support for the idea that the same f-structure information can be realised across different languages with wildly diverse c-structures. This is illustrated by comparing \figref{fig:Australian:English} and \figref{fig:Australian:nonconfig} (based on \citealt[3--4]{BresnanEtAl2016}), where we see that the same f-structure can correspond to both the highly configurational c-structure of English, and the flat non-configurational c-structure of Warlpiri. Warlpiri in addition allows multiple alternative word orders in c-structure, all of which correspond to this same f-structure.\footnote{Any order of words and categories in the c-structure given in \figref{fig:Australian:nonconfig} is grammatical and semantically equivalent, as long as {\it ka=pala} remains in second position. See (\ref{warlpiri}) below for further exemplification.}  
+
+\begin{figure}
+\begin{forest}
+  [\rnode{ec}{S} [\rnode{esubj}{NP} [the two small children, roof]]
+    [VP,baseline, [Aux [are]]
+      [VP [\rnode{ev}{V} [chasing]]
+        [\rnode{eo}{NP} [that dog, baseline, roof]]]]]
+\end{forest}\\
+\vspace*{1cm}%longdistance
+\avm[style=fstr]{
+  \rnode{ecf}{[pred & `chase\arglist{subj,obj}'\\
+    subj & \rnode{esubjf}{[pred & `child' \\def & $+$\\deixis & dist\\adj & \{[pred & small]\}]}\smallskip\\
+    obj & \rnode{eobjf}{[{\strut}pred & `dog']}]}}\smallskip\\
+%    \smallskip\hrulefill\\\smallskip
+\CONNECT{2pt}{190}{ec}{-1pt}{170}{ecf}
+\CONNECT{0pt}{0}{esubj}{-1pt}{175}{esubjf}
+\CONNECT{0pt}{0}{eo}{-1pt}{10}{eobjf}
+
+%\avm[style=fstr]{
+%  \rnode{wcf}{[pred & `chase\arglist{subj,obj}'\\
+%    subj & \rnode{wsubjf}{[pred & `child' \\ adj & \{[pred & small]\}]}\\
+%    obj & \rnode{wobjf}{[{\strut}pred & `dog']}]}}\\
+%\begin{forest}
+%  [\rnode{wc}{S} [NP,baseline, [{wita-jarra-rlu\\small-\DU-\ERG}, roof]]
+%    [Aux [{ka-pala\\\PRS-3\DU.\SUBJ}]]
+%    [\rnode{wv}{V} [{wajilipi-nyi\\chase-\NPST}]]
+%    [NP [{yalumpu\\that.\ABS}, roof]]
+%    [\rnode{wsubj}{NP} [{kurdu-jarra-rlu\\child-\DU-\ERG}, roof]]
+%    [\rnode{wo}{NP} [{maliki\\dog.\ABS}, roof]]]
+%\end{forest}\\
+%\CONNECT{0pt}{180}{wc}{0pt}{190}{wcf}
+%\CONNECT{0pt}{0}{wsubj}{0pt}{-10}{wsubjf}
+%\CONNECT{0pt}{10}{wo}{0pt}{-10}{wobjf}
+\caption{Simple c-structure/f-structure correspondences in English}
+\label{fig:Australian:English}
+\end{figure}
+
+\begin{figure}
+%\begin{forest}
+%  [\rnode{ec}{S} [\rnode{esubj}{NP} [the two small children, roof]]
+%    [VP,baseline, [Aux [are]]
+%      [VP [\rnode{ev}{V} [chasing]]
+%        [\rnode{eo}{NP} [that dog, baseline, roof]]]]]
+%\end{forest}\\
+%\avm[style=fstr]{
+%  \rnode{ecf}{[pred & `chase\arglist{subj,obj}'\\
+%    subj & \rnode{esubjf}{[pred & `child' \\ adj & \{[pred & small]\}]}\\
+%    obj & \rnode{eobjf}{[{\strut}pred & `dog']}]}}\\\smallskip\hrulefill\\\smallskip
+%\CONNECT{2pt}{190}{ec}{0pt}{170}{ecf}
+%\CONNECT{0pt}{0}{esubj}{0pt}{175}{esubjf}
+%\CONNECT{0pt}{180}{eo}{0pt}{10}{eobjf}
+\avm[style=fstr]{
+  \rnode{wcf}{[pred & `chase\arglist{subj,obj}'\\
+    subj & \rnode{wsubjf}{[pred & `child' \\ def & $+$\\deixis & dist\\adj & \{[pred & small]\}]}\smallskip\\
+    obj & \rnode{wobjf}{[{\strut}pred & `dog']}]}}\\
+\vspace*{1cm}%longdistance
+\small
+\begin{forest}
+  [\rnode{wc}{S} [\rnode{wadjs}{NP},baseline, [{wita-jarra-rlu\\small-\DU-\ERG}, roof]]
+    [Aux [{ka=pala\\\PRS-3\DU.\SBJ}]]
+    [\rnode{wv}{V} [{wajilipi-nyi\\chase-\NPST}]]
+    [\rnode{wadjo}NP [{yalumpu\\that.\ABS}, roof]]
+    [\rnode{wsubj}{NP} [{kurdu-jarra-rlu\\child-\DU-\ERG}, roof]]
+    [\rnode{wo}{NP} [{maliki\\dog.\ABS}, roof]]]
+\end{forest}\\
+\CONNECT{0pt}{180}{wc}{-1pt}{190}{wcf}
+\CONNECT{0pt}{0}{wsubj}{-1pt}{-10}{wsubjf}
+\CONNECT{0pt}{0}{wadjs}{-1pt}{-10}{wsubjf}
+\CONNECT{0pt}{10}{wo}{-1pt}{-10}{wobjf}
+\CONNECT{0pt}{180}{wadjo}{-1pt}{-10}{wobjf}
+\caption{Simple c-structure/f-structure correspondences in Warlpiri}
+\label{fig:Australian:nonconfig}
+\end{figure}
+
+While early work in LFG focussed on Warlpiri \citep{Simpson1983,SimpBres1983,Simpson1991} subsequent work has brought in empirical data from a number of other Australian languages including Jiwarli \citep{AustBres96}, Wambaya \citep{NordBres1996,nordlinger1998constructive}, Dyirbal \citep{Manning1996}, Wagiman \citep{Wilson1999}, Kayardild \citep{EvanNord2004}, Wubuy \citep{BakeNord2008,Bakeretal2010}, Anindilyakwa \citep{Egmond2008}, Arrernte \citep{Drasetal2012} and Murrinhpatha \citep{SeisNord2010,Seiss2013}. The morphosyntactic properties of Australian languages that have been discussed and analysed in this LFG literature range from clause structure and especially non-configurationality (\citealt{Simpson1991,AustBres96,NordBres2011,Snijders2015}; see also \citetv{chapters/Cstr}); the role of morphology in encoding grammatical relations \citep{NordBres2011,nordlinger1998constructive} including pronominal incorporation and verbal agreement \citep{AustBres96} and case marking \citep{Simpson1991,Andrews1996,nordlinger1998constructive,Andrews2017}; and flexible noun phrase structure and discontinuity \citep{Simpson1991,SadlNord_apposition_2006,SadlNord2010,snijders_lfg_2016} to other morphosyntactic interactions such as the marking of tense{\slash}aspect{\slash}mood on NPs \citep{NordSadlLanguage}, valency-changing phenomena \citep{Austin97,SeisNord2010} and complex predicates \citep{Wilson1999,AndrewsManning1999}.  These are discussed further in \sectref{sec:Australian:phenomena}.
+
+\largerpage[-3]
+Given the morphological complexity of Australian languages -- some head-marking and even polysynthetic, and others heavily dependent-marking -- the LFG work on Australian languages has focussed largely on the morphology-syntax interface. It is here that the data from Australian languages contributes most to the development of LFG theory, and where the flexibility afforded by LFG's parallel architecture, which separates c-structure from f-structure with a many-to-many mapping between them, allows for a natural and explanatory account of the morphosyntax of Australian languages. Crucial to this flexibility is the fact that words (and therefore morphology) can contribute information directly to the f-structure alongside, or instead of, f-structure information coming from the c-structure.  This enables the framework to capture the cross-linguistic generalisation that languages rich in morphological structure, such as the Australian languages, often make less use of phrase structure -- a generalization that \citet[7]{bresnan2001lexical} captures with the slogan ``morphology competes with syntax'' -- essentially words and phrases are different means of encoding the same grammatical relations \citep{NordBres2011}.  The unification-based architecture of LFG allows for compatible information from different structural sources to integrate into a single f-structure. The independence of grammatical functions from c-structure, along with features such as economy of expression (allowing for the optionality of c-structure heads) and an exocentric S category have contributed to the analysis of Australian languages in the framework, as discussed in more detail in \sectref{sec:Australian:phenomena}. In return, the empirical questions prompted by these theoretical analyses and their predictions have led to a more detailed understanding of the intricate grammatical structures of various Australian languages, and explain the appeal of the LFG formalism for fieldworkers engaged in Australian language documentation.
+
+
+\section{Phenomena analysed within LFG}
+\label{sec:Australian:phenomena}
+
+\subsection{Non-configurational clausal structure}
+\label{sec:nonconfig}
+
+\citet[18]{Simpson1983} observes that ``Warlpiri, a Pama-Nyungan language spoken in Central Australia, is a language in which the burden of representing the relations between predicates and arguments [...] is borne by the morphology rather than the syntax.'' Thus, many properties commonly associated with constituent structure in languages such as English are instead associated with morphological structure in Warlpiri, including the encoding of grammatical relations such as subject and object.  In a configurational language like English grammatical relations can be associated with positions in a hierarchical constituent structure, as shown in (\ref{english}). 
+
+\newpage
+\ea
+\ea
+A child chased the dog.
+\ex \label{english}
+\begin{forest}
+[S
+  [NP\\{(\UP\SUBJ)=\DOWN}
+    [Det\\{\UP=\DOWN}
+      [a]]
+    [N\\{\UP=\DOWN}
+      [child]]]
+  [VP\\{\UP=\DOWN}
+    [V\\{\UP=\DOWN}
+      [chased]]
+    [NP\\{(\UP\OBJ)=\DOWN}
+      [Det\\{\UP=\DOWN}
+      [the]]
+      [N\\{\UP=\DOWN}
+        [dog]]]]]
+\end{forest}
+\z\z
+
+In a language such as Warlpiri, on the other hand, constituent structure plays no role in identifying the grammatical relations of subject and object, as shown by the fact that the NPs in the Warlpiri sentence in (\ref{warlpiri}) can appear in any position in the clause without affecting the meaning. Rather, it is the case marking, the morphological information carried by the nominals themselves,  that plays the role of encoding grammatical relations information. In (\ref{warlpiri}), the presence of the ergative case on `child' and absolutive case on `dog' unambiguously identifies the former as the subject NP and the latter as the object NP, irrespective of their positions in the constituent structure.
+
+\ea \label{warlpiri} Warlpiri\\
+\gll Kurdu-ngku maliki wajilipu-ngu. \\
+ {child-\ERG} {dog.\ABS} {chase-\PST}\\
+ \glt `A child chased the dog.' (Mary Laughren, pers. comm.)\\[1ex]
+ Maliki wajilipu-ngu kurdu-ngku\\
+ Wajilipu-ngu kurdu-ngku maliki\\
+ Maliki kurdu-ngku wajilipu-ngu\\
+ Kurdu-ngku wajilipu-ngu maliki\\
+ Wajilipu-ngu maliki kurdu-ngku. 
+ \z
+ 
+\noindent %hyphenation
+The disassociation of grammatical functions from hierarchical constituent structure in this way is known as `non-configurationality', and discussion of Warlpiri, as well as some other dependent-marking Australian languages such as Wambaya \citep{nordlinger1998constructive} and Jiwarli \citep{AustBres96,Austin01} has been central to debates about the ways in which such languages are syntactically distinct from more configurational languages, and how best to represent these differences in formal syntactic theory.  \citet{Hale83} identifies three key properties of Warlpiri syntax that he considers to be characteristic of its non-configurational structure: `free word order' as illustrated in (\ref{warlpiri}), `the use of syntactically discontinuous expressions', whereby elements relating to the same grammatical relation can be discontinuous in the clause (\ref{discontinuous}), and `extensive use of null anaphora', which allows for the free omission of argument NPs (\ref{nullanaph}).
+
+\ea\label{ex:Australian:9} \label{discontinuous} Warlpiri\\
+\gll Wawirri kapi=rna panti-rni yalumpu\\
+{kangaroo.\ABS} {\AUX=1.\SG.\SBJ} {spear-\NPST} {that.\ABS}\\
+\glt `I will spear that kangaroo.' \citep[6]{Hale83}
+\z
+
+\ea \label{nullanaph} Warlpiri\\
+\gll Panti-rni ka.\\ 
+{spear-\NPST} {\AUX}\\ 
+\glt `He/she is spearing him/her/it.' \citep[7]{Hale83}
+\z
+
+Each of these properties illustrates the fact that grammatical relations in Warlpiri (and other similarly non-configurational languages) are not uniquely determined by the phrase structure position of the relevant argument NP. The fact that argument NPs can grammatically appear in any position in the clause, and that there can be multiple, discontiguous positions associated with the same grammatical function suggest that standard endocentric principles of X$'$ Theory do not apply uniformly in these languages. The free omission of argument NPs indicates that information about grammatical relations can be encoded elsewhere in the clause (e.g.\ as part of the verb's lexical and/or morphological content), not necessarily by phrase structure position. \citet{AustBres96} show that these three properties vary independently of each other and that a language may be non-configurational without allowing `discontinuous NPs', for example; rather, what is definitional for non-configurationality is the fact that grammatical relations are not directly defined by phrase structure position. 
+
+\citet{Simpson1983,Simpson1991} (also \citealt{Hale83,AustBres96,nordlinger1998constructive}) argue that such non-configurationality supports a theoretical model in which phrase structure constituency is separated from functional relations, as in LFG (\citealt{AustBres96} call this the `dual structure' hypothesis). The principles of c-structure in LFG, in addition to the standard categories determined by X$'$ theory, include a non-projective category S, distinguished from these other categories by the fact that it is not headed by something of the same category as itself (exocentric) (\citealt{bresnan2001lexical}; see also \citetv{chapters/Cstr}). The availability of this category in c-structure allows for languages to have non-hierarchical, non-configurational phrase structures. Since this category is non-projective and exocentric, it can have a head of any category and, since it is not subject to the constraints of X$'$ Theory, it can dominate multiple constituents not bearing the typical relations of sisters in endocentric structures.  Thus, S may define a totally flat phrase structure in which all constituents are sisters -- all daughters of the clause -- and functional annotations are assigned freely to all constituents, thereby capturing properties such as free word order and the possibility of discontinuous constituents.  Following the analysis of Warlpiri c-structure provided by \citet{AustBres96}, the c-structure of a basic Warlpiri sentence can be given as in (\ref{warl-cs}):\footnote{Note that this is a more elaborated c-structure than the simplified version shown in \figref{fig:Australian:nonconfig}, which captures the fact that the auxiliary is required to appear in second position.  See \citet{AustBres96} for more detailed discussion.}
+
+\ea \label{warl-cs}
+\begin{forest}
+[IP
+  [XP\\{(\UP\FOC)=\DOWN}]
+  [I$'$\\{\UP=\DOWN}
+    [I\\{\UP=\DOWN}]
+    [S\\{\UP=\DOWN}
+      [C\rlap{$^{+}$}\\{(\UP(\GF))=\DOWN}]]]]
+  \end{forest}\\
+  
+Where C = X$^{0}$, or NP
+\z
+
+
+In this structure a non-configurational category S is generated as a sister to I within IP.\footnote{In some non-configurational languages such as Jiwarli \citep{AustBres96} there may be no evidence for an IP so that the top node of a clause is simply S.}  I is the position of the auxiliary, and the (optional) specifier of IP carries the discourse function of \textsc{focus}.  The annotation (\UP\ (\textsc{gf})) = \DOWN\ associated with the constituents of S indicates that the functional annotations \mbox{\UP\ = \DOWN}\ (the head relation) and (\UP\ \textsc{gf}) = \DOWN (where \textsc{gf} stands for the disjunction of all possible grammatical functions) are assigned freely within S \citep{Simpson1991,AustBres96}.  Effectively this means that no specific functions are assigned within S at all.  Rather, it is the information encoded in the morphology in conjunction with the principles of Completeness and Coherence (see \citetv{chapters/CoreConcepts}) that ensures a grammatical c-structure and f-structure.
+
+The principle of Economy of Expression in LFG \citep{bresnan2001lexical} states that all phrase structure nodes are optional unless they are required by independent principles. This allows for the possibility of null anaphora, since argument NPs are not required if the relevant grammatical function information is also contributed by morphological information (or by something else in the structure). Grammatical relations such as \textsc{subject} and \textsc{object} are encoded at f-structure and, since words in LFG can contribute information to the f-structure in the same way as syntactic phrases (\citetv{chapters/CoreConcepts}), words can contribute grammatical function information to f-structure directly, without the need for such information to also be reflected in the phrase structure. This provides a great deal of flexibility in terms of where and how different languages may encode grammatical function information, and even allows for languages to express it redundantly in both the phrasal syntax and the morphology, as long as the information is compatible under unification at f-structure (see \citet[Chapter 3]{nordlinger1998constructive} for detailed discussion). Dependent-marking non-configurational languages such as Jiwarli \citep{Austin01} encode grammatical function information primarily in case marking morphology, while head-marking non-configurational languages such as Bininj Gun-wok do this through verbal morphology.  Warlpiri, with both case marking and pronominal argument clitics, combines both of these properties. These options and their treatment in LFG are shown in the following (examples repeated from (\ref{ex:Australian:1}), (\ref{BGW}) and (\ref{ex:Australian:9}) above):
+
+\ea Jiwarli\\
+\gll Ngatha tharla-laartu ngurru-martu-nha.\\
+{1\SG.\ERG} {feed-\USIT}	{old.man-\textsc{group}-\ACC}\\
+\glt `I used to feed the old men.’ \footnote{This example is modified from \citet[310]{Austin01}. I have left the adjunct phrase {\it pirru-ngku} `with meat' out here just to simplify the structures for presentational purposes.}\\	
+{\begin{forest}
+[S\\{\UP=\DOWN}
+      [\rnode{jsubj}{NP}\\{(\UP \textsc{gf})=\DOWN}
+      [N\\{\UP = \DOWN}
+      [{\it ngatha}]]]
+      [V \\{\UP = \DOWN},baseline,
+      [{\it tharla-laartu}]]
+      [\rnode{jobj}{NP}\\{(\UP \textsc{gf}) = \DOWN}
+      [N\\{\UP = \DOWN}
+      [{\it ngurru-martu-nha}]]]]
+  \end{forest}}
+\avm[style=fstr]{
+[ pred  & `feed\arglist{\SUBJ,\OBJ}'     \\
+  mood & usit\\
+  subj  &  \rnode{js}{[pred & `pro'\\
+  		pers & 1\\
+		num & sg\\
+  		case & erg]}\smallskip \\
+  obj   &  \rnode{jo}{[pred & `old.man'\\
+  	       num & paucal\\
+  	       case & acc]}]}
+\CONNECT{2pt}{10}{jsubj}{-1pt}{170}{js}
+\CONNECT{2pt}{0}{jobj}{-1pt}{170}{jo}
+\z
+
+\ea Bininj Gun-wok\\
+\gll Nga-ban-marne-dulk-djobge-ng.\\
+	{1\SG.\SBJ-3\PL.\OBJ-\BEN-tree-cut-\PST.\PFV}\\
+\glt	`I cut the tree for them.'\\
+{\begin{forest}
+[S\\{\UP=\DOWN},baseline,
+      [V \\{\UP = \DOWN}
+      [{\it \rnode{s}{nga}-\rnode{o}{ban}-marne-\rnode{t}{dulk}-djobge-ng}]]]
+\end{forest}}\hspace*{-2em}
+\avm[style=fstr]{
+[ pred  & `cut-for\arglist{\SUBJ,\OBJ,\OBL$_{ben}$}'\\
+tense & \textsc{pst.pfv}\\
+  subj  &  \rnode{fs}{[pred & `pro'\\
+  		pers & 1\\
+		num & sg]}\smallskip \\
+  obj   &  \rnode{ft}{[pred & `tree']}\smallskip \\
+  obl$_{ben}$  &  \rnode{fo}{[pred & `pro'\\
+  		      pers & 3\\
+		      num & pl]}]}
+\DOTCONNECT{2pt}{90}{s}{0pt}{190}{fs}
+\DOTCONNECT{2pt}{90}{o}{0pt}{190}{fo}
+\DOTCONNECT{2pt}{90}{t}{0pt}{190}{ft}
+\z
+
+\ea Warlpiri\\
+\gll Wawirri kapi=rna panti-rni yalumpu\\
+{kangaroo.\ABS} {\AUX=1.\SG.\SBJ} {spear-\NPST} {that.\ABS}\\
+\glt `I will spear that kangaroo.' \\
+
+\hspace*{-5mm}{\begin{forest}
+[IP
+  [\rnode{obj}{NP}\\{(\UP \FOC)=\DOWN}\\
+  [N\\{\UP = \DOWN}\\
+  {\it wawirri}]]
+  [I$'$\\{\UP=\DOWN},baseline,
+    [I\\{\UP=\DOWN}\\
+    {\it kapi=\rnode{r}{rna}}]
+    [S\\{\UP=\DOWN}
+      [V\\{\UP=\DOWN}\\
+      {\it panti-rni}]
+      [\rnode{dobj}{NP}\\{(\UP \OBJ) = \DOWN}\\
+      [N\\{\UP = \DOWN}\\
+      {\it yalumpu}]]]]]
+\end{forest}}\hspace*{-2em}
+\avm[style=fstr]{
+[ pred  & `spear\arglist{\SUBJ,\OBJ}'\\
+tense & \textsc{fut}\\
+  foc	  & \Rnode{foc}{~} \\	
+  subj  &  \rnode{s}{[pred & `pro'\\
+  		pers & 1\\
+		num & sg]}\smallskip \\
+  obj   &  \rnode{o}{[pred & `kangaroo'\\
+  		det & $+$\\
+		case & abs]}]}
+\CURVE[.6]{-2pt}{0}{o}{0pt}{0}{foc}
+\DOTCONNECT{2pt}{50}{r}{0pt}{190}{s}
+\CONNECT{2pt}{-5}{obj}{0pt}{175}{o}
+\CONNECT{2pt}{-5}{dobj}{0pt}{175}{o}
+\z
+
+
+In head-marking languages, grammatical function information is encoded as part of the inflected verb's lexical entry, associated with verbal agreement morphology in the usual way (see \citetv{chapters/Agreement}, also \citealt[Chapter~4]{BoNoSa19} for detailed exemplification).  Consider a Bininj Gun-wok verb such as that given in (\ref{with-NP}), the lexical entry for which is shown in (\ref{lex-entry}). Following \citet{BM87}, the \textsc{pred} values associated with the verbal morphology are optional to capture the fact that the verb can combine optionally with external argument NPs. When there are no co-referential NPs in the clause, the principle of Completeness will ensure that the \textsc{pred} \textsc{`pro'} features are present, since otherwise the resulting f-structure will be incomplete, containing a \textsc{subject} and \textsc{object} lacking \textsc{pred} features. In the presence of a co-referential NP, however, as in example (\ref{with-NP}), the \textsc{obj} \textsc{pred} feature will be omitted since it will not be able to unify with the \textsc{pred} value of the external object NP (see \citetv{chapters/CoreConcepts} for discussion of the Uniqueness principle and {\sc pred} values). This flexibility captures the fact that such verbal morphology can function as pronominal arguments, and also as agreement morphology in the presence of external NPs (see \citetv{chapters/Incorporation}). 
+
+\newpage
+\ea \label{with-NP} Bininj Gun-wok\\
+\gll Abanmani-na-ng bininj.\\
+{1\SG.\SBJ:3\DU.\OBJ-see-\PST.\PFV} {man}\\
+\glt `I saw the two men.' \citep[417]{Evans2003}
+\z
+
+
+\ea \label{lex-entry}
+\lexentry{abanmaninang}{
+(\UP \PRED) = `see\arglist{\SUBJ,\OBJ}'\\
+(\UP \TENSE) = \PST.\PFV\\
+((\UP \SUBJ \PRED) = `\textsc{pro}')\\
+(\UP \SUBJ \PERS) = 1\\
+(\UP \SUBJ \NUM) = \SG\\
+((\UP \OBJ \PRED) = `\textsc{pro}')\\
+(\UP \OBJ \PERS) = 3\\
+(\UP \OBJ \NUM) = \DU}
+\z
+ 
+In dependent-marking languages, such as Jiwarli and Warlpiri, grammatical function information is encoded by case morphology. There have been a number of different approaches to capturing this in LFG.  \citet{Simpson1983,Simpson1991} assumes a verb-mediated approach, where verbs select for the case values of their arguments in their lexical entries. Thus, a verb such as {\it panti-} `spear' would include in its lexical entry (\UP\SUBJ\textsc{case})=\ERG\ and (\UP\OBJ\textsc{case})=\ABS, which then must unify with the case value of the NP in the f-structure, constrained by the principles of Completeness and Coherence. \citet{NordBres2011} supplement the verb-mediated approach with case conditionals of the type in (\ref{case-conditional}), thus capturing the generalisation that there is a direct relationship between case and the encoding of grammatical functions.
+
+\ea \label{case-conditional}
+ (\DOWN\CASE) = $\kappa$ $\Rightarrow$\ (\UP\GF) = \DOWN
+ \z
+
+The idea is that each case value (represented here by $\kappa$) is associated in the grammar with a set of grammatical functions.  For example, the case conditional for the Warlpiri ergative case might look as in (\ref{warl-erg}), which specifies that an element with ergative case is to be associated with the subject grammatical function:
+
+\ea \label{warl-erg}
+(\DOWN\CASE) = \ERG\ $\Rightarrow$\ (\UP\SUBJ) = \DOWN
+\z
+
+Thus, by virtue of its case value each NP is assigned a grammatical function (or set of possible functions).  In addition, verbs and other lexical predicators select for the case features of their arguments.\footnote{In the majority of cases this is predictable from the argument structure of the verb, so can be covered by a lexical rule.}  The unification of the possible functions of the NP and the requirements of the predicator, in conjunction with the general principles of Uniqueness, Completeness and Coherence, ensures that the NPs in the c-structure are associated with the appropriate grammatical functions in the corresponding f-structure.
+
+For example, a transitive verb stem such as {\it wajilipi-} `chase' requires that its subject have ergative case and its object have absolutive case, thus corresponding to an f-structure such as the following:
+
+\eabox{
+\avm[style=fstr]{
+[ pred  & `chase\arglist{\SUBJ,\OBJ}'     \\
+  subj  &  [case & erg]  \\
+  obj   &  [case & abs]]}
+}
+
+The only f-structures for a sentence headed by this verb stem that satisfy Completeness and Coherence will be those in which an absolutive NP is identified with the \textsc{obj} grammatical function and an ergative NP is identified with the \textsc{subj} grammatical function. Thus, the f-structure for the sentence in (\ref{warlpiri2}) is that given in (\ref{warlpiri2-fs}). 
+
+\ea
+\ea\label{warlpiri2} Warlpiri\\
+\gll Kurdu-ngku maliki wajilipu-ngu. \\
+ {child-\ERG} {dog.\ABS} {chase-\PST}\\
+ \glt `A child chased the dog.'
+\ex\label{warlpiri2-fs}
+\avm[style=fstr]{
+[ pred  & `chase\arglist{\SUBJ,\OBJ}'     \\
+tense & \textsc{pst}\\
+  subj  &  [pred & `child'\\
+  		case & erg]  \\
+  obj   &  [pred & `dog'\\
+  		case & abs]]}
+\z\z
+
+\citet{nordlinger1998constructive} provides a third approach to the analysis of case morphology and its role in encoding grammatical relations, known as `constructive case'. This is discussed in more detail in \sectref{sec:const-case}.
+
+The discussion of non-configurationality in Australian languages and its treatment in LFG has been expanded in more recent years to integrate information structure and its interaction with different word order possibilities. \citet{Simpson2007} focusses on Warlpiri and the pragmatic constraints on its different word orders; this is also discussed for Jiwarli in \citet{Austin01}. \citet{Snijders2015} builds on and expands the earlier LFG work to provide a typology of configurationality that integrates information structure into the analysis, and extends the discussion beyond just the languages of Australia.
+
+\subsection{Flexible NP structure}
+\label{sec:Australian:FlexibleNP}
+
+Another feature common to many Australian languages that has been the subject of theoretical work in LFG is flexibility of NP structure.\footnote{Recent work investigating this aspect of Australian languages in more detail includes \citet{LouaVers16}, \citet{Louagie2020} and \citet{Reinohl2020}. The details of these typological studies have not yet been fully addressed within LFG analyses.}  While some researchers (including \citealt{Hale83}) consider this phenomenon to be central to the issue of non-configurationality, in fact -- as \citet{AustBres96}, \citet{nordlinger1998constructive} and others have argued -- the two phenomena are logically distinct, although they may co-exist in a single language of course, as found in Warlpiri \citep{Hale83}, Jiwarli \citep{Austin01}, Wambaya \citep{nordlinger1998constructive} and many other Australian languages. It is possible, however, for a language to be non-configurational at the clausal level while having strictly defined and non-flexible NPs. This is what we find in the Australian languages Kayardild \citep{Evans95} and Murrinhpatha \citep{Mujkic-hons}, for example, both of which have clearly defined NP constituents with little or no discontinuity, while allowing great word order freedom at the clausal level and no clear association of grammatical relations with phrase structure. Languages such as these are thus non-configurational as discussed in \sectref{sec:nonconfig} despite not allowing discontiguous nominal phrases.
+
+The flexibility of NP structure in (some) Australian languages has been addressed within the LFG literature with regards to two different aspects.  The first of these is NP discontinuity, the general LFG approach to which was discussed in \sectref{sec:nonconfig} above (see also \citealt{snijders_lfg_2016} and \citetv{chapters/Nominal}).  The second is nominal juxtaposition -- whereby many semantically different NP structures, including coordination, are expressed through the simple juxtaposition of nominals in seemingly flat NP structures (\citealt{SadlNord_apposition_2006,SadlNord2010}). \citet{SadlNord2010} provide the following illustrative examples:
+
+\ea \label{nyangu-agree} Coordination (Nyangumarta)\\
+\gll Pala-nga ngatu jarri-nya-pinti-ngi, mima-nikinyi-yi puluku, kujarra kangkuru-jirri waraja yalapara.\\
+{that-\LOC} {stationary} {\INCH-\NMLZ-\ASSOC-\LOC} {wait.for-\IPFV-3\PL.\SBJ} {3\DU.\DAT} {two} {kangaroo-\DU} {one} {goanna}\\
+\glt `And there, on the finishing line, the two kangaroos and one goanna waited for those two.'  \citep[315]{Sharp:Nyangumarta}
+\z
+
+\newpage
+
+\ea \label{yam} Generic-Specific (Yidiny)\\
+\gll Gana mayi jimirr jula:lin.\\
+\textsc{try} {vegetable(\ABS)} {yam(\ABS)} {dig.\textsc{going}.\IMP}\\
+\glt `Go and try to dig some yams up!' \citep[247]{Dixon:Yidiny}\footnote{This Yidiny example has been rewritten in a standard practical orthography which uses `ny' for a palatal nasal, `j' for a palatal stop and `rr' for an alveolar trill.}
+\z
+
+\ea \label{wamb-appos} Apposition (Wambaya)\\
+\gll Garidi-ni bungmanyi-ni gin-amany yanybi.\\
+{husband-\ERG} {old.man-\ERG} {3\SG.\M.\SBJ-\PST.\TWD} {get}\\
+\glt `(Her) old man husband came and got (her).' \citep[133]{Nordlinger:Wambaya}
+\z
+
+\ea \label{kayar-incl} Inclusory (Kayardild)\\
+\gll Nga-rr-a kajakaja warra-ja thaa-th.\\
+{1-\DU-\NOM} {daddy.\NOM} {go-\ACT} {return-\ACT}\\
+\glt `Daddy and I will go.' (lit. `We two, including daddy, will go') \citep[249]{Evans95}
+\z
+ 
+\citet{SadlNord2010} draw on the standard LFG treatment of coordination \citep{DalrympleKaplan2000} to account for asyndetic coordination structures such as (\ref{nyangu-agree}). Thus, the coordination structure is licensed by the c-structure rule in (\ref{schema2}), where X is a metavariable ranging over N and NP, and the syntactic resolution of \textsc{pers} and \textsc{num} features that is characteristic of coordination is captured by the template @\textsc{np-cnjt} associated with each coordinand, which is defined as in (\ref{coord-ps}).  The resulting f-structure of the coordinated NP in (\ref{nyangu-agree}) is given in (\ref{coord-fs}). 
+
+\ea \label{schema2} 
+\phraserule{\textsc{x}}{
+  \makebox[7em]{\rulenode{\textsc{x}\\ \DOWN\ $\in$ \UP\\ @\textsc{np-cnjt}}}
+  \makebox[1em]{,}
+  \makebox[7em]{\rulenode{\textsc{x}\\ \DOWN\ $\in$ \UP\\ @\textsc{np-cnjt} }}}
+\z
+
+\ea \label{coord-ps}
+\lexentry{\textnormal{\textsc{np-cnjt}}:} 
+ { (\DOWN\ \textsc{ind}  \PERS) $\subseteq$ (\UP\ \textsc{ind} \PERS)\\
+ (\DOWN\ \textsc{ind}  \NUM) $\subseteq$ (\UP\ \textsc{ind} \NUM)\\
+}
+\z
+
+\eabox{
+\label{coord-fs}
+\avm[style=fstr]{
+  [index & [pers & 3\\num & pl]\\
+    \{ [pred & `goanna'\\ index & [pers & 3\\num & sg]]\\
+       [pred & `kangaroo'\\ index & [pers & 3\\num & du]] \} ]}
+}
+
+\citet{SadlNord2010} show how this approach to coordination also extends naturally to discontinuous examples such as (\ref{kt45}) by combining the standard LFG approach to discontinuity and non-configurationality discussed in \sectref{sec:nonconfig} above. Since Economy of Expression allows all nodes to be optional unless independently required, each of the discontiguous coordinands can be represented at c-structure as a coordinate structure with just one daughter present (\ref{goodtree}), corresponding to the f-structure in (\ref{coord-kt}).
+
+\ea
+\label{kt45} Kuuk Thaayorre\\
+\gll Ngul       ngay    kirk    kempthe kal-m   thul=yuk.\\
+{then} {1\textsc{sg}(\ERG)} {spear(\ACC)} {apart} {carry-\PST.\IPFV} {woomera(\ACC)=\textsc{stuff}}\\
+\glt `I used to carry spears and woomeras separately.' \citep[320]{Gaby06}
+\z
+
+\ea \label{goodtree}
+{\begin{forest}
+    [S
+      [{NP\\(\UP\SUBJ)=\DOWN} [{N\\\UP=\DOWN} [I]]]
+      [{NP\\(\UP\OBJ)=$\downarrow_a$} [{N\\$\downarrow_c\in$\UP} [spears]]]
+      [{NP\\\DOWN$\in$(\UP\ADJ)} [{N\\\UP=\DOWN} [apart]]]
+      [{V\\\UP=\DOWN} [carry]]
+      [{NP\\(\UP\OBJ)=$\downarrow_b$} [{N\\$\downarrow_d\/\in$\UP} [woomeras]]]]
+ \end{forest}}
+\z
+
+\eabox{ \label{coord-kt}
+\avm[style=fstr]{
+[ pred  & `carry\arglist{\SUBJ,\OBJ}'     \\
+  adj & \{[pred & `apart']\}\\
+  subj  &  [pred & `pro'\\
+  	    index & [pers & 1\\num & sg]]\\
+  obj   &  \id{a\\b}{[\{\id{c}{[pred & `spear'\\case & acc\\index & [pers & 3\\num & pl]]}\\
+    \id{d}{[pred & `woomera'\\case & acc\\index & [pers & 3\\num & pl]]}\} & {}\\
+    {index}~{[pers & 3\\num & pl]}]}]}
+}
+
+All of the other instances of nominal juxtaposition exemplified above are also assumed to have the same syntactic structure with the differences between them arising from differences in the distribution of agreement features, and semantics. An appositional phrase such as (\ref{wamb-appos}), for example, is generated by the c-structure rule in (\ref{schema3}), which is the same as the c-structure rule for coordination given in (\ref{schema2}) except for the fact that each coordinand is associated with the appositional template @\textsc{np-appos} instead of @\textsc{np-cnjt}. The appositional template governs the distribution of agreement features as shown in (\ref{appos-ps}). This ensures that the coordinated structure has the same \textsc{index} features as each coordinand, as shown in the f-structure in (\ref{wamb-fs1}).
+
+\ea \label{schema3} 
+\phraserule{\textsc{x}}{
+  \makebox[7em]{\rulenode{\textsc{x}\\ \DOWN\ $\in$ \UP\\ @\textsc{np-appos}}}
+  \makebox[1em]{,}
+  \makebox[7em]{\rulenode{\textsc{x}\\ \DOWN\ $\in$ \UP\\ @\textsc{np-appos} }}}
+\z
+
+\ea \label{appos-ps}
+\lexentry{\textnormal{\textsc{np-appos}}:} 
+ { (\DOWN\ \textsc{ind}) $\subseteq$ (\UP\ \textsc{ind})\\
+}
+\z
+
+\eabox{ \label{wamb-fs1}
+\avm[style=fstr]{
+  [ \punk{index}{[pers & 3\\num & sg\\gend & masc]}\\
+    \{[pred & `husband'\\index & [pers & 3\\num & sg\\gend & masc]]\\
+      [pred & `old.man'\\index & [pers & 3\\num & sg\\gend & masc]]\} ]}
+}
+
+\citet{SadlNord2010} show how the different juxtaposed structures can be captured in LFG by assuming that they all share the same syntactic structure (modulo differences in the distribution of agreement features, as illustrated above), while mapping onto different semantics. In this way the flexible architecture of LFG provides a unified account of a range of juxtaposed nominal constructions common to many Australian languages, while still accounting for their semantic differences, through the use of hybrid structures already motivated independently for analyses of coordination \citep{DalrympleKaplan2000} (see also \citetv{chapters/Coordination}).
+
+\subsection{Constructive case and case stacking}
+\label{sec:const-case}
+
+In \sectref{sec:nonconfig} above we saw that case marking in non-configurational languages can encode grammatical relations, and saw that one way of capturing this in LFG is through the use of case conditionals. \citet{nordlinger1998constructive} provides an alternative approach, known as constructive case, which uses inside-out function application (see \citetv{chapters/CoreConcepts}) to capture the fact that the grammatical function information comes directly from the case morphology itself. Returning to the Warlpiri example discussed in (\ref{warlpiri2}), on the constructive case approach the functional information associated with the \ERG case would be that in (\ref{ccase-erg}):\footnote{This is a slightly simplified representation for expository purposes. \citet[73]{nordlinger1998constructive} in fact suggests that the grammatical function information would be ((\SUBJ\ \UP) \OBJ) for ergative case, to capture the fact that it is only used with transitive subjects (i.e.\ subjects of f-structures that also contain an \OBJ grammatical function).} 
+
+\ea
+\label{ccase-erg}
+(\UP \CASE) = \ERG\\
+(\SUBJ\ \UP)\\
+\z
+
+The second line in this functional description specifies that the f-structure with which the case morphology is associated (i.e.\ \UP) is the value of a \SUBJ\ function in a higher f-structure.  Thus, the inflected nominal {\it kurdu-ngku} `child-\ERG' does not just encode the fact that the nominal is inflected with ergative case, but also that the nominal is functioning as a subject of the higher clause, corresponding to the f-structure given in (\ref{ccase-erg-fs}):
+
+\eabox{ \label{ccase-erg-fs}
+\avm[style=fstr]{
+[ subj  &  [pred & `child'\\
+		case & erg]]}
+}
+
+This approach has the benefit of capturing the essence of dependent-marking more accurately than the verb-mediated approaches described in \sectref{sec:nonconfig} since the case-inflected nominal itself carries information about the grammatical function that it holds in the higher clausal f-structure. A further benefit, as discussed in detail by  \citet{nordlinger1998constructive}, is that it can straightforwardly capture other case behaviour found in dependent-marking Australian languages such as case stacking \citep{DE88,Andrews1996}, and the use of case morphology to mark clausal information such as tense{\slash}aspect{\slash}mood.
+
+Case stacking arises through abundant case agreement, where a single nominal can carry multiple case markers, each one signalling a relationship to a higher level of structure. Consider the following examples:
+
+\ea \label{cs-warl} Warlpiri\\
+\gll Karnta-ngku	 ka=rla kurdu-ku miyi yi-nyi parraja-rla-ku.\\
+{woman-\ERG}	{\PRS=3.\DAT} {baby-\DAT} {food.\ABS} {give-\NPST} {coolamon-\LOC-\DAT}\\
+\glt ‘The woman is giving food to the baby (who is) in the coolamon.’	\citep[206]{Simpson1991}
+\z
+
+\ea \label{cs-martu} Martuthunira\\
+\gll Ngayu	nhuwa-lhala	tharnta-a kupuyu-marta-a thara-ngka-marta-a.\\	
+{1.\SG.\NOM} {spear-\PST} {euro-\ACC} {little-\PROP-\ACC} {pouch-\LOC-\PROP-\ACC}\\
+\glt `I speared a euro with a little one in its pouch.’ \citep[7]{DE88}
+\z
+
+In (\ref{cs-warl}) the locative-marked nominal {\it parraja-rla} `coolamon' carries an additional case marker in agreement with the dative nominal {\it kurdu-ku} `baby' which it modifies. Thus, the case marking on `coolamon' specifies two different structural relationships: first, the locative case specifies that `coolamon' functions as part of a locative adjunct, and then the dative case specifies that this locative adjunct is part of a higher dative-marked oblique argument.  In (\ref{cs-martu}), the most deeply embedded nominal {\it thara} `pouch' is inflected with three case markers, each one specifying a successively higher structural relationship. Thus, the single inflected nominal {\it thara-ngka-marta-a} constructs the f-structure shown in (\ref{martu-fs}). 
+
+\eabox{ \label{martu-fs}
+\avm[style=fstr]{
+[ obj  &  [case & acc\\
+		\ADJROLE{prop} & \{ [case & prop\\	
+		\ADJROLE{loc} & \{ [pred & `pouch'\\
+				     case & loc] \}]\}]]}
+}
+
+\citet{nordlinger1998constructive} shows that this approach can account for a range of case stacking structures in Australian languages, as well as the interaction of case stacking with number marking and possession (see Chapters 4 and 5 therein). \citet{sadler-nordlinger2004,SadlNord2006}  extend and improve Nordlinger's formal account to provide an analysis that integrates better with an LFG approach to the morphology-syntax interface \citep{sadler-nordlinger2004}, and also show how Nordlinger's original morpheme-based account can be recast using a realizational approach to morphology \citep{SadlNord2006}. In some Australian languages, case morphology can also be used in complex clauses to encode cross-clausal reference and clause linkage relations. For discussion of how this use of case can be accounted for within the constructive case approach see \citet{nordlinger2000} and \citet{Austin2016}.
+
+\largerpage[2]
+The fact that case morphology provides information to the clausal f-structure (by attributing a grammatical function to it) allows for case morphology to contribute other types of clausal information as well, such as tense{\slash}aspect{\slash}mood.\footnote{A different type of interaction between case morphology and the clause arises with semantic cases that can also function as clausal predicates; see \citet{Simpson1991} for discussion.}  \citet[Chapter 4]{nordlinger1998constructive} shows that this is also found in some Australian languages, and can be accounted for straightforwardly with the constructive case approach. In Pitta Pitta \citep{Blake87}, for example, there are two ergative case morphs, one which is used in the future tense and the other in the non-future tense. The information associated with each of these can be represented as below, where the second f-description in each case specifies that the f-structure within which the case-marked nominal has a grammatical function (namely, the clausal f-structure) has a particular value for \TENSE. The tense information associated with the case marker will be unified with the clausal f-structure and any tense information associated with the verb, thereby contributing to the overall tense value of the clause.
+
+
+\ea
+\lexentry{-lu}{(\UP\CASE) = \ERG\\
+((\SUBJ\UP) \TENSE) $\not=$ \FUT}
+\z
+
+\ea
+\lexentry{-ngu}{(\UP\CASE) = \ERG\\
+((\SUBJ\UP) \TENSE) = \FUT}
+\z
+
+While it is typologically unusual for nominal morphology such as case to contribute clause-level information such as tense{\slash}aspect{\slash}mood, it is in fact found across languages of the world as shown by \citet{NordSadlLanguage,NordSadlNLLT}.  For a more detailed discussion of case in the LFG framework, see \citetv{chapters/Case}.
+
+
+\largerpage[2]
+\subsection{Complex predicates}
+\label{sec:complex-pred}
+A number of Australian languages have complex predicates that take the form of light verb and coverb structures (see \citetv{chapters/ComplexPreds} for a more detailed discussion; the construction type focussed on here corresponds to type (1b) in this chapter). Detailed discussion of these constructions across Australian languages can be found in \citet{Schulze-Berndt2000}, \citet{McGregor00} and \citet{Bowern14}. An example from Schultze-Berndt's discussion of Jaminjung is provided in (\ref{walk}).
+
+\ea \label{walk} Jaminjung\\
+\gll walig gani-ma-m barrig.\\
+{go.round} {3\SG:3\SG-\textsc{hit}-\PRS} {paddock}\\
+\glt `He walks around the fence (in a full circle).' \citep[4]{Schulze-Berndt2000}
+\z
+	
+In this construction the clausal predicate is formed through the combination of a finite inflected verb (e.g. {\it gani-ma-m}) with a coverb (e.g. {\it walig}). The two elements of the construction belong to distinct lexical classes, and thus are morphologically and syntactically different. Finite verbs are inflected for tense{\slash}aspect{\slash}mood and other verbal inflectional categories such as subject and object features. They form a closed class – in many languages restricted to between 10 and 30 members – and tend to have more general semantics (at least within the complex predicate). Coverbs, on the other hand, are usually uninflected, form a large open class and contribute more specific semantic content. The two elements together jointly determine the argument structure and event semantics, and therefore jointly construct the clausal predicate. In the languages of northern Australia where these constructions are found (see \citealt{Bowern14}), the majority of predicates are complex in this way.
+
+\citet{Wilson1999} provides a detailed LFG analysis of such complex predicates in Wagiman. Wilson shows that both the finite verb and the coverb in Wagiman are argument-taking predicates, and therefore each have their own \textsc{pred} values, yet the complex predicate heads a single syntactic clause which in LFG requires a single clausal \textsc{pred} at f-structure.  To account for this, Wilson develops an account of complex predicate formation which uses a type of predicate fusion, modelled using lexical-conceptual structures \citep{jackendoff1990semantic}, drawing on earlier work in LFG by \citet{Alsina:PhD,alsina1996the-role}, \citet{Butt1995,Butt1997}, \citet{MohananT1994,MohananT1997} and \citet{AndrewsManning1999}.
+
+
+\largerpage[2]
+Wilson's analysis follows that of \citet{Butt1995,Butt1997} in using lexical conceptual structures (\textsc{lcs}s) to model complex predicate formation, but follows \citet{AndrewsManning1999} in locating these in f-structure (rather than a-structure as Butt does), replacing the \textsc{pred} attribute with the more elaborated \textsc{lcs} attribute instead. Wilson proposes that the \textsc{lcs} of the coverb fuses into any position of the \textsc{lcs} of the finite verb where it is able to unify \citep[142]{Wilson1999}. As an illustrative example, consider the complex predicate in (\ref{wagiman1}): 
+
+\ea
+\label{wagiman1}Wagiman\\
+\gll guk-ga nge-ge-na gahan warri-buga?\\
+{sleep-\ASP} {2\SG-put-\PST} {that} {child-\PL}\\
+\glt `Did you put the kids to sleep?' (\citealt[136]{Wilson1999})
+\z
+
+
+According to Wilson's analysis, the finite verb {\it nge-ge-na} has the \textsc{lcs} in (\ref{verb-lcs}), and the coverb {\it guk-} has the \textsc{lcs} in (\ref{coverb-lcs}).\footnote{The abbreviations used in the \textsc{lcs}s and associated attribute value matrices (\textsc{avm}s) are as follows: the subscripted As denote positions which have to be linked to grammatical functions -- in the \textsc{avm}s these correspond to the attribute A-MARK with the value `yes'; `Ident' stands for Identificational and is used to extend otherwise spatial functions (such as BE or AT) to the semantic field of ascription (thus, AT\textsubscript{Ident} describes a property rather than a location); the value of the FUNC attribute in the \textsc{avm}s is the function which expands the entity (e.g. GO, CAUSE, etc.). ‘Thing’ entities are not expanded by functions, but they can contain information about their referent, which is stored in the CONTENT attribute.} 
+
+\ea
+\label{verb-lcs}
+[\textsubscript{Event~}CAUSE\/([\textsubscript{Thing~}]$_A$,
+  [\textsubscript{Event~}BECOME ([\textsubscript{State~}BE([\textsubscript{Thing~}]$_A$,[\textsubscript{Place~}---])])])]
+\z
+
+\ea
+\label{coverb-lcs}
+[\textsubscript{State~}BE\textsubscript{Ident}
+  ([\textsubscript{Thing~}]$_A$,[\textsubscript{Place~}AT\textsubscript{Ident}
+    ([\textsubscript{Property~} \textit{asleep}])])] 
+\z
+
+These can be presented as attribute value matrices, as shown in (\ref{verb-lcs1}) and (\ref{coverb-lcs1}) respectively.
+
+\ea
+\label{verb-lcs1}
+From \citet[145: example (36)]{Wilson1999}:\\
+\avm[attributes=\normalfont,values=\normalfont]{
+ [TYPE & Event\\
+  FUNC & CAUSE\\
+  ARG1 & [TYPE & Thing\\CONTENT & $\emptyset$\\A-MARK & yes]\\
+  ARG2 & [TYPE & Event\\FUNC & BECOME\\
+    ARG1 & [TYPE & State\\FUNC&BE\\
+      ARG1 &[TYPE & Thing\\CONTENT & $\emptyset$\\A-MARK & yes]\\
+      ARG2 & [TYPE & Place]]]]}
+\z
+
+\ea
+\label{coverb-lcs1}
+From \citet[147: example (39)]{Wilson1999}:\\
+\avm[attributes=\normalfont,values=\normalfont]{
+ [TYPE & State\\
+  FUNC & BE\\
+  FIELD & Ident\\ 
+  ARG1 & [TYPE & Thing\\CONTENT & $\emptyset$\\A-MARK & yes]\\
+  ARG2 & [TYPE & Place\\FUNC & AT\\FIELD & Ident\\
+    ARG1 & [TYPE & Property\\CONTENT & asleep]]]}
+\z
+
+The c-structure rule which creates the complex predicate in (\ref{wagiman1}) includes functional annotations that license and constrain predicate fusion through the unification of these \textsc{lcs}s. This is shown in (\ref{c-s}), where C is the category `coverb' \citep[144]{Wilson1999}. 
+
+\ea
+\label{c-s}
+\phraserule{\BAR{V}}{
+  \optrulenode{C\\
+    \UP\restrict{LCS}=\DOWN\restrict{LCS}\\
+    (\UP\ \textsc{lcs sf}*)=(\DOWN \textsc{lcs})}
+  ,
+  \rulenode{V\\\UP=\DOWN}}
+\z
+
+The finite verb is annotated with \UP=\DOWN so that its inflectional features such as tense, aspect, and the information about the subject and object contribute to the f-structure of the complex predicate, and ultimately that of the clause.  The annotations associated with the coverb ensure that (i) all information associated with the coverb apart from the \textsc{lcs} (e.g. any aspectual information) is contributed to the f-structure of the complex predicate, and (ii) the \textsc{lcs} of the coverb is fused into the \textsc{lcs} of the finite verb: (\UP\ \textsc{lcs sf*}) = (\DOWN\ \textsc{lcs}). Here \textsc{sf} stands for `semantic function' and is defined as the set of attributes which can be contained in \textsc{lcs}s such as (\ref{verb-lcs1}) and (\ref{coverb-lcs1}) (e.g. \textsc{type, func, arg1, arg2}). The use of functional uncertainty allows the \textsc{lcs} of the coverb -- (\DOWN\ \textsc{lcs}) -- to unify with any part of the \textsc{lcs} of the finite verb (the path consisting of any sequence of \textsc{sf}s, including none). So the f-structure will only be licit if the expansion of \textsc{sf}* picks out a place in the \textsc{lcs} of the finite verb where unification with the \textsc{lcs} of the coverb is possible.  In the case of the complex predicate given in (\ref{wagiman1}), based on the \textsc{lcs}s in (\ref{verb-lcs1}) and (\ref{coverb-lcs1}), this path must be (\UP\ \textsc{lcs arg2 arg1}), since the coverb {\it guk} `sleep' is of \textsc{type} State, and there is only one place in the \textsc{lcs} of the finite verb where this can unify.  Thus, the fused \textsc{lcs} for the complex predicate {\it guk -ge-} `put to sleep' is that given in (\ref{fused-lcs}):
+
+\ea
+\label{fused-lcs}
+From \citet[147: example (39)]{Wilson1999}:\\
+\avm[attributes=\normalfont,values=\normalfont]{
+ [TYPE & Event\\
+  FUNC & CAUSE\\
+  ARG1 & [TYPE & Thing\\CONTENT & $\emptyset$\\A-MARK & yes]\\
+  ARG2 & [TYPE & Event\\FUNC & BECOME\\
+    ARG1 & [TYPE & State\\FUNC & BE\\FIELD & Ident\\
+      ARG1 & [TYPE & Thing\\CONTENT & $\emptyset$\\A-MARK & yes]\\
+      ARG2 & [TYPE & Place\\FUNC & AT\\FIELD & Ident\\
+        ARG1 [TYPE & Property\\CONTENT & \textit{asleep}]]]]]}
+\z
+
+Wilson shows that this approach to complex predicates in Wagiman can account for the range of different complex predicates found in the language, without requiring a radical extension of the LFG formalism beyond that already proposed by other complex predicate analyses (e.g. \citealt{Alsina:PhD,alsina1996the-role}; \citealt{Butt1995,Butt1997}; \citealt{MohananT1994,MohananT1997}; \citealt{AndrewsManning1999}). This general approach to the formal analysis of complex predicate formation in Australian languages has also been adopted by \citet{Bowern2004} for Bardi, and \citet{Nordlinger2010} for associated motion and motion serial verb constructions in Wambaya.  An alternative approach to complex predicate formation using glue semantics as suggested in \citet{AndrewsManning1999} is proposed for the analysis of similar complex predicates in the central Australian language Arrernte by \citet{Drasetal2012}.
+
+\citet{Seiss2013} provides a comprehensive analysis of the complex predicate system in Murrinhpatha which builds on the \textsc{lcs}-based approaches discussed above, but combines \textsc{lcs}s with a relational approach to lexical semantics, modelled with hierarchies of selectional restrictions. These hierarchies are then used to derive the argument structure of the complex predicates in the form of what Seiss calls \textsc{lcs} blueprints (based on the idea of templates, e.g. \citealt{dalrymple2004linguistic}).  The blueprint \textsc{lcs} for causative complex predicates such as those in (\ref{mp1}) and (\ref{mp2}) is defined as in (\ref{mp-lcs}). The \textsc{lcs} blueprint states that the complex predicate expresses the meaning that something or someone ($\alpha$) causes something ($\beta$) to become a certain result state with the help of some specific instrument. In Murrinhpatha the complex predicate forms a single morphological word, and combines a classifier stem in first position in the verb, with a lexical stem (here {\it lerrkperrk}) in a subsequent position in the template. In a causative complex predicate, the result state is provided by the lexical stem while the instrument is provided by the classifier stem. For example, the lexical stem {\it lerrkperrk} `crush' contributes the result state `crushed', while the classifier stems `do with \textsc{hands}' and `do with \textsc{feet}' contribute the instruments `hand' and `foot' respectively. 
+
+\ea
+\label{mp1} Murrinhpatha\\
+\gll ku tumtum mam-lerrkperrk\\
+{\CLF:\ANIM} {egg} {1\SG.\SBJ.\textsc{hands}.\NFUT-crush}\\
+\glt `I crushed the egg in my hand.' \citep[127]{Seiss2013}
+\z
+
+\ea
+\label{mp2} Murrinhpatha\\
+\gll ngunungam-lerrkperrk\\
+{1\SG.\SBJ.\textsc{feet}.\NFUT-crush}\\
+\glt `I crushed the egg with my foot.' \citep[127]{Seiss2013}
+\z
+
+\eabox{
+\label{mp-lcs}
+\avm[attributes=\normalfont]{
+[  \mbox{CAUSE([\textsubscript{Thing~}]$^\alpha_A$, [BECOME ([BE([\textsubscript{Thing~}]$^\beta_A$,[RESULT])])])}\\
+\mbox{[ BY [CAUSE([\textsubscript{Thing~}]$^\alpha_A$,
+    [AFF$^-$([INSTRUMENT],[\textsubscript{Thing~}]$^\alpha_A$)])]]} ] }
+}
+
+On this view, the classifier stem and the lexical stem do not each bring a complete \textsc{lcs}, but instead just a specific instrument (the classifier stem) or a specific result state (the lexical stem). The rest of the \textsc{lcs} is provided by the \textsc{lcs} blueprint.  The lexical entries of the classifier stem and the lexical stem thus only consist of this information, as is illustrated in (\ref{mp-lex}).
+
+\ea\label{mp-lex}
+do with \textsc{hands}: instrument = hand\\
+do with \textsc{feet}: instrument = foot\\
+{\it lerrkperrk}: result = crushed
+\z
+
+The \textsc{lcs} blueprint used by a particular combination is determined by the classifier and lexical stem together, whose compatibility is modelled by the hierarchies of selectional restrictions; the reader is referred to the comprehensive discussion in \citet{Seiss2013} for further details. A notable aspect of Seiss's work on this topic is that, in addition to providing a comprehensive analysis of complex predicate combinations in Murrinhpatha, Seiss presents an implementation of Murrinhpatha's morphology using the Xerox finite-state technology tools \textsc{xfst} and \textsc{lexc} \citep{beesleykarttunen03}, and an implementation of some parts of Murrinhpatha's syntax using the \textsc{xle} grammar development platform \citep{xledoc}.
+
+Valence-changing constructions such as applicatives and causatives have also been analysed as complex predicates in many languages, including by \citet{Austin97}, who draws on Alsina's (e.g. \citeyear{Alsina1997}) approach to complex predicates in an\-a\-lys\-ing causatives and applicatives across a number of Australian languages (see \citetv{chapters/ComplexPreds} for further discussion of Austin's analysis in the context of LFG approaches to complex predicates).
+
+\section{Conclusion}
+In this chapter, I have covered the primary linguistic phenomena in Australian languages that have been given detailed analysis in LFG research, focussing particularly on the morphology-syntax interface, where the morphological complexity of Australian languages has made the most significant contributions to theoretical debate and development.  Other areas where there has been some work on Australian languages, but for which space was not available for discussion here, include control and obviation constructions in Warlpiri \citep{SimpBres1983}, zero anaphora \citep{Austin2001} and noun incorporation \citep{NordSadl2008,BakeNord2008,Egmond2008,Bakeretal2010}. Work on Australian languages within the LFG framework has also contributed to the discussion and analysis of grammatical relations cross-linguistically, in such areas as syntactic and morphological ergativity \citep{Manning1996}, information structure and its role in case marking patterns \citep{Simpson2012}, distinctions between syntactic and semantic cases \citep{Andrews2017} and the role of dative-marked NPs as core arguments or adjuncts \citep{Simpson1991}. The majority of LFG researchers working on Australian languages are also descriptive linguists engaged in fieldwork and language documentation. This crossover has ensured that theoretical questions and implications arising from LFG analyses are fed back into language description work unearthing new findings about the languages and how they are structured, and ensuring that this research both contributes to the development of the LFG framework and to our understanding and description of these fascinating languages.
+
+\section*{Acknowledgements}
+First and foremost, I would like to acknowledge all of the Indigenous language knowledge holders who have graciously worked with me and many other linguists over the years to share their knowledge and teach us about their languages. Nothing discussed in this chapter would have been possible without their generosity and insight. For input and assistance with various aspects of this chapter, I would like to thank Peter Austin, Mary Laughren, Stephen Wilson, two anonymous referees, and especially Mary Dalrymple, editor extraordinaire, who is nothing short of a \LaTeX\ wizard and without whom this chapter would have been nothing but text! My research has been funded by the Australian Research Council over many years, most recently through the ARC Centre of Excellence for the Dynamics of Language (CE140100041), and I gratefully acknowledge their support.
+
+\section*{Abbreviations}
+
+Abbreviations in glosses in this chapter follow the Leipzig Glossing Rules wherever possible. Non-standard abbreviations used are:\medskip
+
+\noindent\begin{tabularx}{.45\textwidth}{lQ}
+\gloss{act} & actual mood\\
+\gloss{anim} & animate\\
+\gloss{asp} & aspectual suffix\\
+\gloss{assoc} & associative case\\
+\end{tabularx}
+\begin{tabularx}{.45\textwidth}{lQ}
+\gloss{aug} & augmented number\\
+\gloss{ep} &  epenthetic morph\\
+\gloss{inch} & inchoative\\
+\gloss{pc} &  paucal number\\
+\end{tabularx}
+
+\begin{tabularx}{.45\textwidth}{lQ}
+\gloss{priv} & privative case\\
+\gloss{prop} & proprietive case\\
+\gloss{min} & minimal number\\
+\end{tabularx}
+\begin{tabularx}{.45\textwidth}{lQ}
+\gloss{twd} & direction towards\\
+\gloss{usit} & usitative mood\\
+\\
+\end{tabularx}
+
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}

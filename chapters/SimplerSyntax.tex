@@ -1,0 +1,855 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10186052}
+\title{LFG and Simpler Syntax}  
+\author{Giuseppe Varaschin\affiliation{Humboldt-Universität zu Berlin}}
+\abstract{The theories of \textsc{Lexical Functional Grammar} (LFG) \citep{kaplanbresnan82} and \textsc{Simpler Syntax} (SiSx) \citep{culicover2005simpler} both emerged out of a dissatisfaction with the conceptual and formal assumptions of \textsc{Mainstream Generative Grammar} (MGG) \citep{chomsky1957syntactic, chomsky1965aspects, chomsky1981lectures, chomsky1995the-minimalist}. Due to their similar origins, LFG and SiSx have a lot in common: the reduced role of phrase-structure in the explanation of linguistic phenomena, the adoption of constraint-based formalisms and the recognition of autonomous representations for grammatical functions. But there are also crucial differences between the two approaches that relate to some of the most lively issues in linguistics: e.g.\ the nature of the lexicon and the role of formal grammar in explaining linguistic judgments. The goal of this chapter is to compare these two alternatives to MGG, highlighting their differences and similarities with respect to theoretical and empirical issues.}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \boolfalse{bookcompile}
+   \input{../localhyphenation}
+   \togglepaper[45]%%chapternumber
+}{}
+
+\begin{document}
+\maketitle
+\label{ss:chap:SimplerSyntax}
+
+\section{Introduction} 
+
+The goal of this chapter is to provide a comparison between \textsc{Lexical Functional Grammar} (LFG) and \textsc{Simpler Syntax} (SiSx). Historically, both theories were born out of a dissatisfaction with the conceptual and formal assumptions of \textsc{Mainstream Generative Grammar} (MGG) \citep{chomsky1957syntactic, chomsky1965aspects, chomsky1981lectures, chomsky1995the-minimalist}. Due to their similar origins, LFG and SiSx have a lot in common: the reduced role of phrase-structure in the explanation of linguistic phenomena, the adoption of constraint-based formalisms and the recognition of autonomous representations for grammatical functions, to name a few. But there are also crucial differences that relate to some of the most lively issues in linguistics: e.g. the nature of the lexicon and the role of grammar in explaining linguistic judgments. %\footnote{The sources of LFG are \citegen{kaplan1975on-process} work on representing grammatical functions and \citegen{bresnan1978a-realistic} concern with the psychological reality of transformations (cf. \citetv{chapters/History}). SiSx emerged from the discovery of mismatches between syntax and semantics and of surprising regularities outside of ``core grammar'' \citep{jackendoff1990semantic, jackendoff1997the-architecture, culicover1999syntactic}.}
+
+In \sectref{ss:sec1}, I offer a short summary of the \textsc{Simpler Syntax Hypothesis} (SSH). In \sectref{ss:sec2}, I lay out some goals and architectural assumptions that SiSx and LFG share, as well some important theoretical differences between the two approaches. \sectref{ss:sec4} deals with the motivations for the constructional lexicon assumed in SiSx, which does not adhere to LFG's \textsc{Lexical Integrity Principle} \citep{bresnan1995the-lexical}. \sectref{ss:sec5} examines the role of constraints that are not part of the grammar, comparing SiSx with an LFG alternative. \sectref{ss:sec6} wraps up discussing what LFG and SiSx can learn from each other.  
+
+Throughout this chapter, I will assume basic familiarity with the LFG side of the comparison and focus mainly on explaining the SiSx approach. The basic source for the latter is \citet{culicover2005simpler}, but I will also draw freely on \citet{jackendoff2002foundations, jackendoff2010meaning}, \citet{jackendoff2020texture} and  \citet{culicover2009natural, culicover2013grammar, culicover2019origin}.
+
+%Historically, SiSx grew out two independent lines of investigation: the developments in Conceptual Semantics \citep{jackendoff1983semantics, jackendoff1990semantic} and the study of regularities in the so-called ``periphery'' of grammar \citep{culicover1999syntactic}. Both of these strands gradually led to a general dissatisfaction with Mainstream Generative Grammar (MGG) \citep{chomsky1957syntactic, chomsky1965aspects, chomsky1981lectures, chomsky1995the-minimalist} calling for a revision of its conceptual and formal assumptions. 
+
+
+\section{The Simpler Syntax Hypothesis}\label{ss:sec1}
+
+Like other syntactic theories, SiSx  is an attempt to describe and explain the language user’s ability to establish a correspondence between meaning and sound or gesture. What defines it is the claim that this correspondence should be as minimal as possible -- i.e. that syntax should \textit{only} be invoked when other factors  (e.g. semantics, prosody, processing) are insufficient to explain the phenomena at hand. This claim is embodied in the Simpler Syntax Hypothesis \citep[5]{culicover2005simpler}:
+
+
+\begin{exe}
+\ex{\textsc{The Simpler Syntax Hypothesis} (SSH) \\
+The most explanatory syntactic theory is one that imputes the minimum structure necessary to mediate between phonology and meaning.}
+\label{ss:ssh}
+\end{exe}
+
+Assuming \citegen{chomsky1965aspects} notions of descriptive and explanatory adequacy, what the SSH says is that, given a set of descriptively adequate grammars of a language $L$, the one the theorist should choose (i.e.  the more explanatory one) is the one that assigns less structure to the expressions of $L$. The SSH favors, thus, representational economy \citep{chomsky1991some, trotzke2014complexity} over other notions of simplicity, such as minimizing the class of possible grammars or the number of principles in particular grammars. The latter two goals are the main driving forces of MGG since the advent of the Principles and Parameters framework \citep{chomsky1973conditions, chomsky1981lectures, chomsky1995the-minimalist}. 
+
+
+\largerpage[2]
+As an example, contrast the relatively flat constituent structure SiSx assigns to the English sentence \textit{Hector might give the cake to Bianca} in (\ref{ss:1}b) with the MGG variant in (\ref{ss:1}a), which is based on the widely adopted VP-shell analysis \citep{larson1988double, kratzer1996severing, hale1993on-argument, chomsky1995the-minimalist}:
+\newpage
+
+
+\begin{exe}
+\ex[]{a. \begin{footnotesize}  \begin{forest}
+[IP,baseline, s sep=-5mm[DP \\ Hector$_{1}$ ] [I$'$, s sep=-2.5mm [I  \\ might] [VoiceP, s sep=-3mm  [DP \\ $t_{1}$] [Voice$'$, s sep=-6mm   [Voice \\ give$_{2}$] [VP, s sep=-3mm   [DP \\ the cake] [V$'$, s sep=0.1mm  [V \\ $t_{2}$]  [PP \\ to Bianca]]]]]]]
+\end{forest} \end{footnotesize} 
+  b. \begin{footnotesize} \begin{forest}
+      [S,baseline , s sep=-1.5mm[NP \\ Hector][Aux \\ might] [VP, s sep=-1.6mm[V \\ give][NP \\ the cake][PP \\ to Bianca]]]
+\end{forest} \end{footnotesize}}
+\label{ss:1}
+\end{exe}
+
+%\begin{exe}1
+%\ex\label{ss:1}
+%\begin{xlist}
+%\ex[]{\begin{footnotesize} \begin{forest}
+%[IP, s sep=0.1mm[DP \\ Hector$_{1}$ ] [I$'$, s sep=0.1mm [I, s sep=0.1mm  [might]  [give$_{2}$]] [VoiceP, s sep=0.1mm  [DP \\ $t_{1}$] [Voice$'$, s sep=0.1mm  [Voice \\ $t_{2}$] [VP, s sep=0.1mm  [DP \\ the cake] [V$'$, s sep=0.1mm  [V \\ $t_{2}$] [VP, s sep=0.1mm  [PP \\ to Bianca] [V$'$, s sep=0.1mm  [V \\ $t_{2}$] [PP \\ on Tuesday]]]]]]]]]
+%\end{forest} \end{footnotesize}}
+%\ex[]{\begin{footnotesize} \begin{forest}
+%[S[NP \\ Hector][Aux \\ might] [VP[V \\ give][NP \\ the cake][PP \\ to Bianca][PP \\ on Tuesday]]]
+%\end{forest} \end{footnotesize}}
+%\end{xlist}
+%\end{exe}
+
+MGG opts for structures like (\ref{ss:1}a) because the grammar that generates them involves \textit{fewer} principles (and is allegedly \textit{more restrictive}) than the one that yields (\ref{ss:1}b).\footnote{The suggestion that (\ref{ss:1}a) implies a more restrictive grammatical formalism is probably not true. As \citet{kornai1990the-x-bar} show, as soon as empty elements are introduced, X$'$-theory becomes equivalent to an arbitrary context-free grammar that can generate structures like (\ref{ss:1}b). Similar considerations apply to minimalist descendants of X$'$-theory (cf. \citealt{chomsky1995the-minimalist}).} The idea is that (\ref{ss:1}a) follows a universal blueprint for structure-building that is virtually \textit{invariant} across languages -- one that imposes strict binary branching, endocentricity and a rigid order among heads. Moreover, the hierarchical organization of phrases in (\ref{ss:1}a) is semantically transparent, reflecting a universal \textsc{thematic hierarchy}, in which \textsc{agents} are higher than \textsc{themes}, \textsc{themes} are higher than \textsc{goals} and \textsc{goals} are higher than \textsc{modifiers} (see \citealt{baker1997thematic}).
+
+The structure itself, however, is clearly much simpler in (\ref{ss:1}b): (\ref{ss:1}b)  has fewer degrees of embedding (just two), no empty functional projections (e.g. VoiceP) and no phonetically null elements (traces or deleted copies). Given a suitably flexible interface, (\ref{ss:1}a) can also be placed in correspondence with a level of \textsc{Semantic Structure} \citep{jackendoff1990semantic}. The semantic properties that (\ref{ss:1}a) purports to reflect can be more naturally represented in this level, which is independently required to explain inferences that go well beyond what narrow syntax can express.\footnote{Even the rich structure in (\ref{ss:1}a) fails to encode the inference that \emph{Hector} is the Source of \emph{the cake} (in addition to the Agent of \textit{give}), or that cakes are artifacts typically used for eating. The latter influences the interpretation of evaluative adjectives: a \textit{good cake} is a cake that is good to \textit{eat} \citep{pustejovsky1995generative}. The phrase-structure formalism has no natural way to represent this.} Thus, between representations (\ref{ss:1}a) and (\ref{ss:1}b) -- the former illustrating simplicity of principles and the latter simplicity of structure -- SSH recommends (\ref{ss:1}b).\clearpage
+
+A theoretical reason for pursuing the SSH (as opposed to other measures of simplicity) is that it approximates syntactic structures to what is directly inferable from input, thereby reducing the task of the language learner (cf. \citealt{culicover1998the-limits, culicover1999syntactic, jackendoff2011alternative}). The child has no direct evidence for the traces and empty elements assumed in (\ref{ss:1}a).  As \citet[19]{chomsky1982some} notes, this raises poverty-of-stimulus issues, which call for the invocation of a richer \textsc{Universal Grammar} (UG). Insofar as SiSx posits more concrete structures, it contributes to the minimalist project of a leaner UG (cf. \citealt{chomsky2005three, hornstein2009theory}).
+
+% SiSx still assumes a basic innate \textit{toolkit} for language, but the concrete structures it posits minimize learning, and, thus, contribute to the minimalist prospect of a leaner UG (cf. \citealt{chomsky2005three, hornstein2009theory}, \color{red}chapter on Minimalism\color{black}).
+
+
+Aside from being more \textit{explanatory}, the option for simpler structures is also more \textit{descriptively adequate} than accounts based on rich uniform representations like (\ref{ss:1}a). Classic constituency tests, for example, only provide motivation for the major constituent divisions shown in (\ref{ss:1}b): VPs, PPs, NPs, etc. The empirical virtues of the SSH also manifest in accounts of specific linguistic phenomena (some of which will be mentioned in Sections \ref{ss:sec4} and \ref{ss:sec5}). Most arguments for SiSx analyses have the following form:
+
+
+
+\begin{quote}
+[G]iven some phenomenon that has provided putative evidence for elaborate syntactic structure, there nevertheless exist numerous examples which demonstrably involve semantic or pragmatic factors, and in which such factors are [...] impossible to code uniformly into a reasonable syntactic level [...]. Generality thus suggests that, given a suitable account of the syntax–semantics interface, all cases of the phenomenon in question are accounted for in terms of the relevant properties of semantics/pragmatics; hence no complications are necessary in syntax. \citep[5]{culicover2005simpler}
+\end{quote}
+
+
+
+
+As this makes clear, the SSH eschews any kind of covert structure that is motivated exclusively in order to provide a uniform mapping onto semantics. This means that SiSx rejects the \textsc{syntactocentric} architecture of MGG -- i.e. the view that syntax is solely responsible for the combinatorial richness of language \citep[17]{culicover2005simpler} --, as well as the assumption of  \textsc{Interface Uniformity} -- i.e. the view that the interface between syntax and semantics is perfectly transparent \citep[47]{culicover2005simpler}.
+
+\hspace*{-4.1pt}As an alternative, SiSx adopts the \textsc{Parallel Architecture} of \citet{jackendoff2002foundations}, according to which linguistic structure is determined by (at least) three independent formal systems: phonology, syntax and semantics. In addition, SiSx borrows from LFG the idea of a separate syntactic layer for representing grammatical functions: the GF-tier \citep[chapter~6]{culicover2005simpler}. Each one of these systems is defined by its own characteristic primitives and formation rules and is connected to the others by means of more or less ``messy'' interfaces:
+
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[node distance=1cm, auto]
+    \node (init) {};
+    \node [block] (A) {{\small Phonological Structure}};
+    \node [block, right=of A] (B) {{\small Syntactic Structure}};
+    \node [block, right=of B] (C) {{\small GF-tier}};
+    \node [block, right=of C] (D) {{\small Semantic Structure}};
+
+    \draw[<->, thick] (A) -- (B);
+    \draw[<->, thick] (B) -- (C);
+    \draw[<->, thick] (C) -- (D);
+     \draw[<->, thick] (B) to [out=25,in=155] (D);
+      \draw[<->, thick] (A) to [in=210,out=-30] (D);
+\end{tikzpicture}
+\vspace{-20pt}
+\caption{The Parallel Architecture of SiSx}
+\label{ss:sspa}
+\end{center}
+\end{figure}
+
+
+
+A well-formed sentence must be well-formed in each level, in addition to having well-formed links among the interfaces.\footnote{An interface link is well-formed \textit{iff} it instantiates some lexeme or construction in the grammar: e.g. the links indicated by subscript 1 in (\ref{ss:2}) conform to what is stipulated by the lexical entry of \textit{Mary}. The way SiSx represents lexemes and constructions is discussed in \sectref{ss:sec4}.} A toy example is shown in (\ref{ss:2}), where natural numbers indicate interface links between the components:\footnote{Throughout this chapter, I will use the AVM notation adopted in \citet{culicover2019origin} for representing linguistic objects and the constraints that such objects must satisfy. For convenience, the formalism for SEM will be a simplified version of \citegen{montague1974formal} PTQ appended with an (implicit) event semantics. The thematic predicates (\textsc{agent}, \textsc{patient}, etc.) are abbreviations for relations between individuals and the events they partake in, as in \citet{parsons1990events}. The SEM tier in (\ref{ss:2}) is, thus, equivalent to $\exists e[\textbf{kiss}'(e) \& \textbf{ Agent}'(e,\textrm{mary}) \& \textbf{ Patient}'(e,\textrm{john})\& \textbf{past}'(e)]$.}
+
+\eabox{ \avm[style=plain]{[ PHON & !m{\textepsilon}{\textschwa}ri$_{1}$\#k{\textsci}s$_{2}$+d$_{3}$\#{\textdyoghlig}{\textturnscripta}n$_{4}$! \\
+ SYN & !$[_{\textrm{S}}$ NP$_{1}$ [$_{\textrm{VP}}$ V$_{2}$ - past$_{3}$ NP$_{4}]]$!\\
+ GF & !$[_{\textsc{pred}}$ GF$_{1}$ \textgreater\ GF$_{4}]_{2}$! \\
+ SEM & !$\textbf{past}'_{3}(\textbf{kiss}'_{2}(\textsc{agent:}\textrm{mary}_{1}, \textsc{patient:}\textrm{john}_{4}))$! ]}
+  \label{ss:2}
+ }
+
+
+The structure in (\ref{ss:2}) represents the sentence \textit{Mary kissed John}. The most opaque aspect of the formalism is likely the GF-tier. The basic units of this level are \textsc{preds} (short for syntactic predicates), which contain a sequence of ranked positions for syntactic arguments (excluding adjuncts). These positions are not explicitly labeled with grammatical function names, like \textsc{subject} or \textsc{object}. For reasons that will become clear in \sectref{ss:sec4}, these notions are relationally defined as \textit{first GF} of \textsc{pred}, \textit{second GF} of \textsc{pred}, etc. The ranking of GFs is determined according the \textsc{functional hierarchy}, which has its roots in Relational Grammar \citep{perlmutter1977toward, perlmutter1983some} and Keenan and Comrie's (\citeyear{keenan1977noun}) work.
+
+Note, furthermore, that there is nothing in SYN that signals that NP$_{1}$ in (\ref{ss:2}) corresponds to the string \textit{Mary} -- this information is phonological, and, as such, it is only represented in PHON. The terminal strings in a tree like (\ref{ss:1}b) are, thus, not strictly speaking part of the syntactic structure. A similar division between phonological, syntactic and semantic forms is anticipated in Distributed Morphology \citep{halle1994some, marantz1997no} as well as in variants of Categorial Grammar that build on \citegen{curry1964somelogical} \textsc{phenogrammar} \textit{vs}. \textsc{tectogrammar} distinction (e.g. \citealt{oehrle1994term-labeled, mihalicek2012distinguishing}).
+
+In order to capture the inner workings of the subsystems of language as well as how these systems  interact with each other, SiSx abandons the formal device of derivations in favor of \textsc{constraints} (or, in the terminology of \citet{jackendoff2020texture}, \textsc{schemas}). This and many of the other points mentioned above are shared with LFG, as we will see in the next section. SiSx also draws a lot from HPSG (\citealt{pollard1994head-driven}, \citealt{mue:etal:21:ed}, \citetv{chapters/HPSG}), as will become particularly clear in \sectref{ss:sec4}.
+
+
+
+
+\section{Goals and assumptions}\label{ss:sec2}
+
+Among all non-transformational syntactic theories, SiSx and LFG are probably the most closely related ones as far as  programmatic aspirations and architectural assumptions are concerned. Most of these stem from the adherence to what \citet[chapter~2]{jackendoff2007language} identifies as two founding themes of Generative Grammar: \textsc{mentalism} and \textsc{combinatoriality}.%\footnote{HPSG is more directly related to GPSG and Categorial Grammar.}
+
+\textsc{Mentalism} is the view that language is a product of the mind/brain of individual speakers. SiSx and LFG are committed to a particularly strong version of this, which \citet{bresnan1982introduction} and \citet{kaplanbresnan82}, following \citet[9]{chomsky1965aspects}, dub the \textsc{Competence Hypothesis}. This is the suggestion that the \textit{same} body of knowledge underlies \textit{every} type of language-related behavior (e.g. speaking, reading, learning).  In this approach, the linguist's theoretical constructs are not only \textit{psychologically real} in an abstract sense, but must be integrated to an account of how language is actually processed and acquired by real speakers. %This is the suggestion that “a reasonable model of language use will incorporate, as a basic component, the generative grammar that expresses the speaker-hearer’s knowledge of the language” (Chomsky 1965: 9). This position is particularly strong because it implies that the
+
+The second founding theme of Generative Grammar shared by LFG and SiSx is \textsc{combinatoriality}: i.e. the view that knowledge of language is instantiated as a finite system of \textit{rules} that define (or ``generate'') an unbounded array of structured expressions. The linguist's explicit formulation of these rules (i.e. the grammar) must, ideally, entail well-formedness for all sentences judged acceptable by speakers -- making no principled distinction between pure manifestations of ``core grammar'' and ``peripheral data'' \citep{culicover1999syntactic}. %What made early generative work particularly attractive was the realization that the linguist, aided by formal tools drawn from mathematical logic, can \textit{finitely} specify these rules. 
+
+%The commitment to \textsc{combinatoriality},  thus, includes what \citet{bresnan1982introduction} call the \textsc{creativity}, \textsc{finite capacity} and \textsc{reliability} constraints on the syntactic mapping problem. Both LFG and SiSx concur on this and reject the naive conception of language as a finite collection of unstructured pairings of sound and meaning.
+
+%stance
+
+In line with these commitments, LFG and SiSx seek to characterize the human language capacity in a way that is: (i) \textsc{psychologically plausible}, seeking a graceful integration of linguistic theory with what is known about the structure and function of mind/brain \citep{bresnan1978a-realistic, jackendoff2011what}; and (ii) \textsc{formally and descriptively adequate}, representing generalizations of varying granularities with sufficient precision. Different aspects of these objectives are emphasized by LFG and SiSx (e.g., LFG is much more preoccupied with the formal underpinnings and SiSx with the psychological and biological foundations). The remainder of this section summarizes some of the ways the theories converge and diverge in implementing these goals. %, but both claim to be better realizations of them than MGG.
+
+ % much more precise about the formal underpinnings while SiSx is more preocuppied with sorting out the consequences of the commitment to mentalism
+
+\subsection{The structure of the grammar}
+
+The commitments to \textsc{mentalism} and \textsc{combinatoriality} lead SiSx and LFG to similar conclusions regarding the overall structure of grammar. Compare Figure \ref{ss:sspa} above, which contains the architecture of SiSx, with the LFG architecture below:
+
+
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[node distance=1cm, auto]
+    \node (init) {};
+    \node [block] (A) {phonology};
+    \node [block, right=of A] (B) {c-structure};
+    \node [block, right=of B] (C) {f-structure};
+    \node [block, right=of C] (D) {s-structure};
+
+    \path [line] (A) -- node [midway,above] {$\pi$} (B);
+     \path [line] (B) -- node [midway,above] {$\phi$} (C);
+      \path [line] (C) -- node [midway,above] {$\sigma$} (D);
+\end{tikzpicture}
+\caption{LFG Architecture}
+\label{ss:lfgpa}
+\end{center}
+\end{figure}
+
+
+The most striking similarity between the two architectures above is that they abide by \textsc{Representational Modularity}, as defined by \citet{jackendoff1997the-architecture}:\footnote{There are actually different versions of LFG's general architecture going back to \citet{kaplan1987three} (\citealt{asudeh2006direct, findlay2017mapping, dalrymple2019lexical}, among others), but all agree on the essentials of Figure \ref{ss:lfgpa}. The most striking omission from Figure \ref{ss:lfgpa} is the separate component for a-structure proposed in \citet{butt1997architecture} and subsequently adopted by most researchers within LFG.}
+
+\begin{quote}
+The overall idea is that the mind/brain encodes information in some finite number of distinct representational formats or ``languages of the mind.'' Each of these ``languages'' is a formal system with its own proprietary set of primitives and principles of combination, so that it defines an infinite set of expressions along familiar generative lines. For each of these formats, there is a module of mind/brain responsible for it. \citep[41]{jackendoff1997the-architecture}
+\end{quote}
+
+In both theories, the primitives of phonology are things like segments (or featural decompositions thereof) and syllables. Constituent structure in syntax is built from syntactic categories (e.g. V, N, VP, and Aux) and their dominance and precedence relationships, as in a context-free grammar. The basic units of the GF-tier and f-structure are syntactic predicates and their arguments. Semantics is composed of entities, events, properties and relations (at least). These modules are connected to one another via systematic correspondences. In this sense, the architectures in Figures \ref{ss:sspa}-\ref{ss:lfgpa} can be called \textsc{correspondence architectures}.
+
+%The correspondence architecture sets LFG and SiSx apart from sign-based theories like HPSG and SBCG (\textcolor{red}{HPSG chapter}), which use the same kind of data structure to model all aspects of linguistic objects: i.e. typed features organized in AVMs. A sign is thought of as a function from a set of attributes (e.g. \{\textsc{phon, syn, sem}\}) to objects of each respective type. In this set-up, different types of information are related, not by means of modular correspondences, but in virtue of being values assigned to different attributes of the same sign. The design of HPSG/SBCG does not make it clear that phonology, syntax and semantics are autonomous combinatorial systems. Combinatorial relations (such as the ones captured in a context-free grammar) only exist at the level of signs as a whole: features like \textsc{val}(ence) take lists of \textit{signs} as values, and not syntactic nodes or categories.  
+
+The correspondence architecture sets LFG and SiSx apart from sign-based theories like HPSG (\citealt{pollard1994head-driven}, \citetv{chapters/HPSG}) and SBCG \citep{sag2012sign-based}. The latter use the same kind of data structure to model all aspects of linguistic objects: i.e. typed features organized in AVMs. Different types of information are not related by means of modular correspondences, but in virtue of being values assigned to different attributes of the same sign. The design of HPSG/SBCG does not make it clear that phonology, syntax and semantics are autonomous combinatorial systems. Combinatoriality only exists at the level of signs as a whole (e.g. in features like \textsc{dtrs}, which take lists of \textit{signs} as values, instead of syntactic nodes).
+
+Even though SiSx follows HPSG/SBCG in using AVMs to represent all aspects of linguistic objects, its basic ontology is much closer to  LFG's: each linguistic level is conceptualized as an autonomous formal system in its own right. Just as in LFG, this requires positing correspondence principles to link the objects independently defined by each of these systems.
+
+
+
+
+
+However, LFG and SiSx construe these correspondences in different ways. In LFG, structures of different types are related to each other in virtue of the projection functions $\pi$, $\phi$ and $\sigma$ of Figure \ref{ss:lfgpa}. This sort of mapping allows descriptions of elements in the range of a function to be defined in terms of elements in its domain. For instance, the function $\phi$ -- whose domain and range are, respectively, c-structure nodes and f-structures -- allows properties of f-structures to be ``read off'' from c-structure configurations.
+
+
+This is crucially exploited in LFG's annotated phrase-structure rules. An example is given in (\ref{ss:anps}), where ``$*$'' stands for the node that matches the element above it in the rule and $M$ is the \textit{mother-of} function \citep[18]{kaplan1995formal}:%\footnote{In the LFG literature, ``$\phi(M(*))$'' is abbreviated as ``$\uparrow$'' and ``$\phi(*)$'' is abbreviated as ``$\downarrow$''.}
+
+\eabox{ \label{ss:anps}
+\begin{tabular}{llll}
+S & $\rightarrow$ & \multicolumn{1}{c}{NP}                & \multicolumn{1}{c}{VP}  \\
+  &               & $(\phi(M(*)) \textsc{subj})=\phi(*)$ & $\phi(M(*)) = \phi(*)$
+\end{tabular}
+}
+
+
+This rule allows one to deduce from the c-structure of \textit{Anna wrote books} (assuming the annotations on lexical entry of \textit{Anna}) the correspondences in (\ref{ss:anna}):
+
+\eabox{\label{ss:anna}\begin{tabular}[t]{c@{\hspace*{4em}}c}
+\begin{forest} 
+[\rnode{11}{S},baseline,
+  [\rnode{22}{NP} \\  Anna]
+  [\rnode{55}{VP}[wrote books, , roof]]]
+\end{forest}
+ &
+{\avm[style=fstr]{\rnode{33}{[subj & \rnode{44}{[pred & `Anna']}]}}}
+\end{tabular}
+\nccurve[nodesepA=2pt,nodesepB=0pt,angleA={0},angleB={180},linewidth=.5pt]{->}{11}{33}
+\nccurve[nodesepA=2pt,nodesepB=0pt,angleA={10},angleB={190},linewidth=.5pt]{->}{22}{44}
+\nccurve[nodesepA=2pt,nodesepB=0pt,angleA={30},angleB={180},linewidth=.5pt]{->}{55}{33}
+}
+
+
+Since $\phi$ is a (total) function, it requires that \textit{all} elements in its domain be mapped into elements in its range. This entails that every c-structure node -- even nodes corresponding to adjuncts -- must be assigned a particular f-structure.
+
+In SiSx, on the other hand, correspondences between structures of different types are not functional, but merely relational. Therefore, there is no sense in which the properties of any level are ``projected'' from properties of any other, like f-structure is projected from c-structure in LFG. From the point of view of SiSx, this looks like a residue of MGG's syntactocentrism. Consider the SiSx equivalent to LFG's annotated phrase-structure rule in (\ref{ss:anps}) (italics indicate that the element is a variable and not a concrete member of its respective category):
+
+
+
+\eabox{ \avm[style=plain]{[ SYN & !$[_{\textit{S}}~ \textit{NP}_{1} ~ \textit{VP}_{2}]_{3}$!\\
+ GF & !$[_{\textsc{pred}} \textit{GF}_{1 }$ \textgreater $...]_{2,3}$! ] }
+  \label{ss:subj}
+ }
+
+
+
+
+Like (\ref{ss:anps}), (\ref{ss:subj}) expresses the information that the sister of VP corresponds to a \textsc{subject} (i.e. the highest ranked GF in a \textsc{pred}). But, unlike (\ref{ss:anps}), (\ref{ss:subj}) is not a phrase-structure rule: it is a \textsc{correspondence rule}, which is defined over independently well-formed representations on SYN and the GF-tier. No level has primacy over the others, as suggested by the symmetry of the coindexing notation. Since levels of structure are allowed more independence, the mapping between them can also be seen as only \textsc{partial}. This avoids the implication that all nodes in SYN must correspond to units on the GF-tier. I will come back to some positive consequences of this looser requirement below.
+
+
+
+  
+Regardless of these differences, LFG and SiSx both benefit from the general advantages of correspondence architectures, which are  better suited for integration with theories of other cognitive faculties than syntactocentric models (this point is hinted at by \citet[45]{bresnan1993interaction}, but see \citet{jackendoff2007parallel, jackendoff2011what} for full versions of the argument). It is a given that the mind includes relations between non-linguistic representations. For instance, visual and haptic information relate to a modality-independent understanding of the spatial structure of objects \citep{marr1982vision}. This spatial structure, in turn, relates to language in a way that allows us to talk about what we perceive \citep{jackendoff1987beyond, landau1993and}. Actions are also spatially guided, requiring an interface between spatial structure and schemas encoding action patterns. It does not make any sense to think of any of these representations as being \textit{algorithmically derived} from any other -- they are, rather, related in virtue of modular correspondences. 
+
+
+
+
+
+In this sense, the correspondence architectures of LFG and SiSx see the internal components of language as ``connected to each other in the same way as language is connected with the rest of the mind, and in the same way as other faculties of mind are connected to each other'' \citep[8]{jackendoff2020texture}. Though many details about how such connections work remain unknown, LFG and SiSx seem better suited for fruitful cross-disciplinary dialogue with cognitive science than MGG, which opts for a syntactocentric derivational design.
+
+
+%The   like LFG and SiSx have much brighter prospects much more congenial to graceful integration with theories of other cognitive faculties than MGG, which is based almost exclusively on the technology of algorithmic derivations. 
+
+
+%The upshot is that in correspondence architectures ``the internal components of language are connected to each other in the same way as language is connected with the rest of the mind, and in the same way as other faculties of mind are connected to each other'' \citep[8]{jackendoff2020texture}. This is a kind of graceful integration that seems very hard to attain within MGG.  
+
+
+
+\subsection{The role of grammatical functions}\label{ss:sec3}
+
+
+In any theory, grammatical functions (GFs) serve as abstract ``relators'' between a class of surface syntactic properties (e.g. linear order, case marking) and semantic roles. MGG  assumes that these abstract GFs are represented in the same format as syntactic groupings -- i.e. GFs are treated as epiphenomena of constituent structure configurations. An early statement of the MGG view is found in \citet[68--74]{chomsky1965aspects}, who claims that notions like \textsc{subject} and \textsc{object}  are universally definable in terms of the structural positions in (\ref{ss:confsubj}): %\citet[254--255]{chomsky1955logical},
+
+\begin{exe}
+\ex[]{\begin{small} \begin{forest}
+[S,baseline, [NP \\ \textsc{subject}] [VP \\ \textsc{predicate}]]
+\end{forest} \hspace{1cm}
+\begin{forest} 
+[VP,baseline, [V \\ \textsc{main verb}] [NP \\ \textsc{object} ]] 
+\end{forest} \end{small}}
+\label{ss:confsubj}
+\end{exe}
+
+
+LFG and SiSx both reject this \textsc{configurational design of UG} for similar reasons. Consider what it implies for the English sentence in (\ref{ss:rp}): % \footnote{The GF-tier was actually inspired by LFG's f-structure, as \citet[189]{culicover2005simpler} acknowledge -- though Jackendoff (personal communication) reports Relational Grammar \citep{perlmutter1977toward, perlmutter1983some} as a more direct influence. } % Since the more empirical arguments for keeping grammatical functions separate from the categorial component are well known among \textit{connoisseurs} of LFG, I will not dwell on them here (see \citealt{simpson1991warlpiri}, \textcolor{red}{other chapters?}). The main point is that, over the years, typological research has overwhelmingly shown that phrase-structure configurations are inadequate to represent the rich diversity found in the expression of grammatical functions (see \textcolor{red}{Language families part}).
+
+\begin{exe}
+\ex[]{Brad seems to like Janet.}
+\label{ss:rp}
+\end{exe}
+
+In (\ref{ss:rp}), \textit{Brad} behaves like the \textsc{subject} of two predicates: the one headed by \textit{seem} (where it establishes agreement) and the one headed by \textit{like} (where it gets interpreted semantically). The configurational design requires that each of these GFs be realized in different positions, which \textit{Brad} has to occupy simultaneously.  This, however, is technically impossible in a typical phrase-structure system, since it entails multi-dominance. The alternative is to posit a \textsc{sequence} of phrase-markers in which these positions are occupied at separate stages, as in (\ref{ss:drp}):
+
+\begin{exe} 
+\ex[]{seems [$_{\text{S}}$ Brad  [$_{\text{VP}}$ to like Janet]] $\Rightarrow$ [$_{\text{S}}$ Brad$_{i}$ [$_{\text{VP}}$ seems  [$_{\text{S}}$ $t_{i}$ to like Janet]]]}
+\label{ss:drp}
+\end{exe}
+
+The configurational design thus calls for operations that map phrase-markers onto phrase-markers -- i.e. syntactic transformations \citep[44]{chomsky1957syntactic}. Note, however, that these mappings are simply a way to encode the effects of multi-dominance in a system that does not naturally allow for it. 
+
+Though this might seem plausible for English (where \textsc{subjects} typically correspond to the configuration in (\ref{ss:confsubj})), it is less appealing for languages like Russian, where word order is freer and GFs are signaled mainly by case endings on nouns. A derivation for the Russian OVS sentence (\ref{ss:russ}) would have to look like (\ref{ss:russmgg}):
+
+\ea\label{ss:russ}Russian\\
+\gll    Vaz-u razbila Olj-a \citep[30]{kallestinova2007aspects}\\  
+     vase-\textsc{acc} broke Olya-\textsc{nom}\\ 
+\glt `Olya broke the vase' 
+\z
+
+\begin{exe}
+\ex[]{[$_{\text{S}}$ Olja [$_{\text{VP}}$ razbila vazu]] $\Rightarrow$ [$_{\text{S}'}$[$_{\text{VP}}$ razbila vazu]$_{i}$ [$_{\text{S}}$ Olja $t_{i}$]] \\$\Rightarrow$ [$_{\text{S}''}$ vazu$_{k}$ [$_{\text{S}'}$ [$_{\text{VP}}$ razbila $t_{k}$]$_{i}$ [$_{\text{S}}$ Olja $t_{i}$]]]} \label{ss:russmgg}
+\end{exe}
+
+The \textsc{subject} and \textsc{object} in (\ref{ss:russmgg}) are  base-generated in the positions signaled in (\ref{ss:confsubj}) and then scrambled to where they are actually pronounced via roll-up movements (cf. \citealt{bailyn2003purely}). The resulting structure is a representation of ``several types of information that seem quite dissimilar in nature'' \citep[137]{kaplzaen89}: on the one hand, GFs like \textsc{subject} and \textsc{object} and, on the other, linear order, dominance relations and syntactic categories. %The option for these hybrid representations thus leads to ``the attenuation of the classical properties of constituency [...] and to the concomitant adoption of increasingly abstract surface structures'' \citep[46]{bresnan2001lexical}.
+
+LFG and SiSx reject this on the grounds of \textsc{representational modularity}. Dominance, order and syntactic categories are naturally represented in a phrase-structure system but the organization of GFs has different formal properties (e.g. multi-dominance) that justify positing a separate component. This is the GF-tier in SiSx and f-structure in LFG. A SiSx analysis of (\ref{ss:rp}) is sketched in (\ref{ss:gfss}) (from now on, tenses will be ignored and PHON will be simplified as orthography):
+
+\eabox{ \avm[style=plain]{[ PHON & {Brad$_{1}$ seems$_{2}$ to like$_{3}$ Janet$_{4}$} \\
+SYN & ![$_{\text{S}}$ NP$_{1}$ V$_{2}$ [$_{\text{VP}}$ V$_{3}$ NP$_{4}$]]!\\
+ GF & !$[_{\textsc{pred}}$ GF$_{1}]_{2} [_{\textsc{pred}}$ GF$_{1}$ \textgreater\ GF$_{4}]_{3}$!\\
+ SEM & !$\textbf{seem}'_{2}(\textbf{like}'_{3}(\textsc{experiencer:}\text{brad}_{1}, \textsc{theme:}\text{janet}_{4}))$!]}
+  \label{ss:gfss}
+ }
+
+
+
+In the GF-tier, GF$_{1}$ (which corresponds to \textit{Brad}) is doubly dominated by the \textsc{pred} linked to \textit{seem} and the one linked to \textit{like}. This direct encoding of multi-dominance -- which is also central to LFG's functional control analysis of raising (see \citealt{bresnan1982control-complementation}) -- makes transformations like (\ref{ss:drp}) unnecessary.
+
+
+Likewise, the autonomy of GFs in SiSx and LFG also makes it possible to state mappings between GFs and SYN without specifying syntactic configuration or linear order. So, for dependent-marking languages like Russian, GFs can be linked directly to Ns with the appropriate case morphology, as in (\ref{ss:sscase}) \citep[154]{culicover2009natural}.
+
+\eabox{ a. \avm[style=plain]{[ SYN & !$[_{\textit{S}}$ ...  \textit{N}-\textsc{nom}$_{1}$ ... ]$_{2}$!\\
+ GF & ![$_{\textsc{pred}}$ \textit{GF}$_{1}$ \textgreater\  $...]_{2}$! ] }  \hspace{1cm}
+b. \avm[style=plain]{[ SYN & !$[_{\textit{S}}$ ... \textit{N}-\textsc{acc}$_{3}$ ... $]_{4}$!\\
+  GF & !$[_{\textsc{pred}}$ \textit{GF} \textgreater\ \textit{GF}$_{3}  ...]_{4}$! ]}
+  \label{ss:sscase}
+  }
+
+
+
+This proposal avoids abstract \textit{ad hoc} MGG derivations like (\ref{ss:russmgg}), opening the possibility of licensing flat structures. A  SiSx analysis for (\ref{ss:russ}) in this spirit could be something like (\ref{ss:flatst}). Note that configuration does not play a role in determining GFs in this case. (This does not mean that it cannot play a role in defining information structure properties, which are not being represented in (\ref{ss:flatst}).)
+
+\eabox{ \avm[style=plain]{[ PHON & {Vaz-u$_{3}$ razbila$_{2}$ Olj-a$_{1}$} \\
+ SYN & !$[_{\text{S}}$ N-\textsc{acc}$_{3}$ V$_{2}$  {N}-\textsc{nom}$_{1}]$!\\
+ GF & !$[_{\textsc{pred}}$ GF$_{1}$ \textgreater\ GF$_{3}]_{2}$!\\
+ SEM & !$\textbf{break}'_{2}(\textsc{agent:}\text{olya}_{1}, \textsc{patient:}\text{the-vase}_{3})$! ]}
+  \label{ss:flatst}
+ }
+
+
+The idea that word parts can carry information about GFs bypassing syntax is shared with LFG \citep{bresnan2001lexical}. The proposal sketched in (\ref{ss:sscase}--\ref{ss:flatst}) bears a particularly close resemblance to \citegen{nordlinger1998constructive} \textsc{constructive case} theory.
+
+Notwithstanding their similar motivations, LFG's f-structures and the GF-tier in SiSx have very different formal properties. The most striking of these is the fact that GFs in SiSx are \textsc{unlabeled}; hence, notions like \textsc{subject} and \textsc{object} are not primitives of the theory. They are defined \textsc{relationally} in terms of a hierarchy of arguments, as in Relational Grammar \citep{perlmutter1977toward, perlmutter1983some} -- the most direct inspiration for the GF-tier, according to Jackendoff (personal communication). A motivation for this will be given in \sectref{ss:sec4}.\footnote{\citet{patejuk2016reducing} argue that a similar move is advantageous for LFG as well.  Following  \citet{alsina1996the-role}, they show that most GF labels redundantly represent information already available in morphosyntax and s-structure. Borrowing ideas from HPSG (\citetv{chapters/HPSG}), they propose to replace GF attributes by a single ordered \textsc{deps} list which looks a lot like SiSx's GF-tier. This also allows a direct encoding of the functional hierarchy, which is used in LFG analyses of binding \citep{falk2001lexical} and control \citep{bresnan1982control-complementation}.} 
+
+Another peculiarity of the GF-tier is that it lacks the unlimited embedding found in LFG's f-structures. Each \textsc{pred} in the GF-tier is represented as a self-contained unit.  There is no sense in which the \textsc{pred} that corresponds to \textit{like}  in (\ref{ss:gfss})  is embedded under the one that corresponds to \textit{seem}. The f-structure LFG assigns to the same sentence, on the other hand,  virtually mirrors the hierarchical organization of the c-structure from which it is projected:
+
+\eabox{$f_{1}$:\avm[style=fstr]{[ \textsc{pred} & \textsc{`seem$\langle$xcomp$\rangle$ subj'} \\
+\textsc{subj} & $f_{2}$:[ \textsc{pred} & \textsc{`brad'} ] \\
+\textsc{xcomp} & $f_{3}$:[ \textsc{pred} &  \textsc{`like$\langle$subj, obj$\rangle$'} \\ 
+			   \textsc{subj} &  $f_{2}$	\\	
+			   \textsc{obj} &  $f_{4}$: [ \textsc{pred} & \textsc{`janet'} ]]] }
+\label{ss:lfggf}
+			   }
+
+
+Moreover, since SiSx is not committed to an exhaustive mapping from SYN nodes to the GF-tier, the inventory of GFs can be much smaller than in LFG. Only elements whose morphosyntactic forms are unrevealing about their semantic roles -- e.g. direct NP or CP arguments -- actually need a representation on the GF-tier \citep[chapter~6]{culicover2019origin}. This is not the case for adjuncts and (most) obliques, whose $\theta$-roles are transparent in the morphology or choice of preposition. In English, for instance, PPs headed by \textit{near} and \textit{under} are always \textsc{locations} while those headed by \textit{during} and \textit{after} are invariably interpreted as \textsc{times}. Correspondence rules for these elements can, thus, be stated directly as relations between SYN and SEM, circumventing the GF-tier (as anticipated in Figure \ref{ss:sspa}). %whose morphosyntactic make-up tends to be semantically transparent. wear semantic roles on their morphosyntactic sleeves %In split intransitive languages like Tsova-Tush, case-marking of \textsc{agents} and \textsc{patients} is constant across syntactic contexts. % \textit{By}-phrases within NPs (but not VPs) are always interpreted as \textsc{agents}.
+
+
+
+The GF-tier in SiSx is, therefore, restricted to LFG's \textsc{core} GFs \citep[96]{bresnan2001lexical}: \textsc{subj}, \textsc{obj} and \textsc{obj2} (relations 1, 2 and 3 in Relational Grammar). These are the GFs that most strongly justify a tier for GFs in the first place, because they are the typical targets for phenomena like agreement, raising, passive, and structural case-marking-- none of which can be stated in terms of direct correspondences between SEM and SYN  \citep[188--189]{culicover2005simpler}. LFG's \textsc{non-core} functions (e.g. \textsc{adj}, \textsc{obl}$_{\theta}$, \textsc{comp}, \textsc{xcomp}) are not necessary in SiSx. %\footnote{If the GF-tier is to provide a coherent formulation of these phenomena, it cannot be limited to GFs assigned within \textit{verbal} predicates, contrary to what \citet[231]{culicover2005simpler} claim. At least APs and some metaphorical PPs must map to  \textsc{preds} on the GF-tier, given the possibility of raising in \textit{Sue seems happy} and \textit{Sue seems in a bad mood}  \citep[chapter~12]{bresnan2001lexical}.}%Raising-to-object in \textit{Sue relies on it to be sunny} \citep[92]{postal2004skeptical} also suggests that GFs are assigned to the complements of governed prepositions. %all of which are largely independent of semantics, and, therefore, 
+
+
+What this shows is that, all in all, most of the richness that is present in SYN and SEM is absent from the GF-tier, which ends up being a much \textit{simpler} level than LFG's f-structure. This derives from the fact that SiSx builds upon a more radical version of representational economy than the one LFG assumes -- one that applies not only to phrase structure, but to \textsc{all levels of grammar}. If some correspondences \textit{can} be stated as direct relations between SYN and SEM, SiSx can do this without invoking an intermediate mapping through the GF-tier.
+
+This, however, is only possible because SiSx also abandons the assumption of \textsc{Interface Uniformity} (discussed in \sectref{ss:sec1}), which is pervasive in MGG and survives -- albeit in a much lighter fashion -- in LFG's version of the correspondence architecture in Figure \ref{ss:lfgpa}. It is the idea that the mapping to semantics is established uniformly on the basis of GFs that forces LFG to populate f-structure with semantically relevant c-structure information.
+
+SiSx's more sparing use of GFs is partly motivated by the commitment to what \citet{jackendoff2011alternative} calls the \textsc{evolutionary constraint} -- namely, the idea that the architecture of grammar should be compatible with a plausible evolutionary scenario. Proponents of SiSx concur with mainstream evolutionary psychologists in assuming that the emergence of human language was gradual, involving a series of incremental steps (protolanguages), each of which offered some adaptive advantage over the previous one \citep{pinker1990natural, corballis2017evolution, dennett2017bacteria, fitch2017empirical, boeckx2017not, martins2019language, de2020evolutionary}. 
+
+
+Given the absence of a fossil record, one of the main ways to investigate the particular stages of this incremental process is reverse-engineering: i.e. asking what components of language are advantageous without the whole system in place \citep{jackendoff1999possible, jackendoff2005nature, progovac2016gradualist}. In this spirit, \citet[261]{jackendoff2002foundations} speculates that the GF-tier is probably ``the latest developing part of the architecture'', since its properties are asymmetrically dependent upon the existence of articulated systems of constituent structure and semantics -- i.e. the latter two components can exist without the GF-tier, but not vice-versa. It is hard to reconcile the LFG architecture -- where f-structures are essential to the mapping between c-structure and semantics -- with these considerations.
+
+
+ %see how LFG's rich system of abstract f-structures could fit into this narrative.
+
+
+%LFG grants GFs an essential part in the mapping from form to meaning, it becomes hard to imagine how simpler stages of protolanguage could have existed.
+
+
+ %$$$$$$$$$$$$$$$$$CAN BE OMITTED $$$$$$$$$$$$$$$%%%
+
+%The GF-tier has no pretension of being a level from which semantics can be fully projected. In fact, there is no such level in SiSx, precisely because the mappings between representations is not functional.  As we will see in \sectref{ss:sec5}, this is partly motivated by the commitment to what \citet{jackendoff2011alternative} calls the ``Evolutionary Constraint'': the architecture and formal devices required by the grammar must be compatible with some plausible evolutionary scenario. A similar concern drives current Minimalist work \citep{hornstein2009theory} . This does not seem to be much of a worry in LFG, which is much more preoccupied with providing a formally precise and computationally tractable framework. 
+
+Regardless of these differences, the point remains that autonomous levels for GFs (as we see in LFG and SiSx) contribute to the overall simplification of the grammar. Insofar as these levels liberate syntax from encoding GFs configurationally, constituent structure can become more concrete. The next section shows that this is an advantage for theories that take psychological plausibility as a goal. 
+
+\subsection{Surface-oriented and model-theoretic grammars}
+
+Like HPSG (\citetv{chapters/HPSG}) and Construction Grammar (\citetv{chapters/ConstructionGrammar}), LFG and SiSx are \textsc{surface-orien\-ted}.  A model of grammar is \textsc{surface-oriented} if it posits syntactic structures that are directly associated with observable word strings, with a minimum of empty elements and degrees of embedding. In LFG and SiSx, this WYSIWYG flavor is a consequence of the correspondence architecture -- which provides \textit{other} levels for encoding GFs and semantic relations  -- along with principles that enforce representational economy on phrase-structure representations: Economy of Expression in LFG \citep[91]{bresnan2001lexical} and the SSH in SiSx.
+
+Surface-orientation is driven by matters of psychological plausibility. Empty elements are not easily detectable from linguistic input. This raises the question of how they come to be learned (as discussed above in connection to the SSH) and inferred in real-time language processing (see \citealt{sag2011performance}). The common conclusion is that they are \textit{not learned}, but constitute part of UG. Though this move does solve the learnability problem (albeit by raising the more difficult question of how these elements evolved in humans), it hardly addresses the concern over language processing. %So the  \textit{desideratum} of minimizing invisible structure remains, at least for linguists committed to \textsc{mentalism}.
+
+However, learnability and processing issues do not arise if empty elements \textit{can} be inferred on the basis of  language-internal evidence. This is arguably the case in situations where invisible structure systematically alternates with visible material, such as gaps in unbounded dependency constructions (see \citealt{kluender1993bridging, clark2011linguistic}).\footnote{For most of these scenarios, it can also be shown that grammars \textit{with} empty elements are extensionally equivalent to grammars \textit{without} them. This effectively reduces empty elements to notational devices for stating generalizations more directly and reducing the overall complexity of the grammar (see \citet[chapter~19]{muller2018grammatical} for discussion). If one assumes a simplicity-based evaluation metric like the one in \citet{chomsky1951morphophonemics}, this notational choice actually has empirical consequences for language acquisition (see \citet[45]{chomsky1965aspects} for a similar point).} In these cases LFG and SiSx \textit{do} allow them as a kind of ``last resort'' to maintain the generality of the mapping between form and meaning (\citealt[193]{bresnan2001lexical}; \citealt[304]{culicover2005simpler}). 
+
+
+The status of empty elements in LFG and SiSx is very different from their status in MGG: they are not leftovers of transformations, but directly licensed by \textsc{constraints}. This distinction reflects the contrast between the \textsc{proof-theoretic} design of MGG and the \textsc{model-theoretic} flavor of SiSx, LFG and many other syntactic theories (\citealt{pullum2001distinction, pullum2013central}). A \textsc{proof-theoretic grammar} (PTG) relies on the technology of stepwise algorithmic derivations to recursively enumerate the infinite set of grammatical expressions in a language. A \textsc{model-theoretic grammar} (MTG), on the other hand, formulates its basic statements as declarative constraints. The objects that satisfy the constraints (i.e. their models, in the logician's sense) are the expressions licensed by the grammar.%The idea is that expressions are generated by a finite sequence of ordered operations, each applying to the output of the previous step. %These amount to logical axioms with a model-theoretic interpretation.  %\footnote{To take a concrete example, consider two possible ways of characterizing the structure in (i): 
+
+%\begin{exe} \exi{(i)}{\begin{forest} [$n_{1}$ : VP [$n_{2}$ : V] [$n_{3}$ : NP]]  \end{forest} } \end{exe}
+%
+%A PTG can describe (i) by means of (ii), under the standard rewrite rule interpretation. %On this view, (i) is a summary of the derivational history of the string consisting of its terminals.
+%
+%\begin{exe} \exi{(ii)}{VP $\rightarrow$ V \hspace{0.04cm} NP} \end{exe}
+%
+%
+%MTGs, on the other hand, can describe (i) (and even interpret (ii) itself) in terms of the constraint in (iii), which is the conjunction of the \textsc{node admissibility conditions} \citep{mccawley1968concerning} that hold true for (i). I use \citegen{kaplan1995formal} notation, where $\lambda$ is a function from nodes to category labels, $M$ is the \textit{mother-of} function and $\prec$ indicates linear precedence.
+%
+%\begin{exe} \exi{(iii)}{$\lambda(n_{1})=\text{VP} \text{ } \&  \text{ }  \lambda(n_{2})=\text{V}  \text{ }  \&  \text{ }   \lambda(n_{3})=\text{NP}  \text{ }  \&  \text{ }  M(n_{2}) = n_{1}  \text{ }  \&  \text{ }  M(n_{3}) = n_{1}  \text{ }  \&  \text{ }  n_{2} \prec n_{3}$} \end{exe}}
+
+
+The manner of characterizing expressions in PTGs invites the dynamic and procedural metaphors that are routinely employed in the MGG literature. The problem with such locutions is that it is unclear what they should mean in terms of real-time processing. The practical consequence of this has been a gradual stiffening of the competence/performance distinction through the history of MGG. %One often reads that certain operations must apply ``before'' others, that structures are ``sent'' to PF/LF, or that grammatical roles are defined by the ``timing of insertion'' of constituents \citep[103]{boeckx2008bare}. 
+
+%A theory of competence should ideally make no claims (implicit or otherwise) about how processing takes place. Only theories of processing grounded in psycholinguistic experimental evidence should do so. 
+
+The MTG formalism avoids all such problems, lending itself to a much more direct relation to processing models (\citealt{sag2011performance, jackendoff2007parallel, jackendoff2011what}).  Since constraints have no inherent directionality, they can be invoked in \textit{any} order. Starting with a fragment of phonology, one can pass through its mappings to syntax and semantics and do the same the other way around. This accounts for the fact that the processor is ``opportunistic'' and uses diverse types of information as soon as they become available \citep{acuna2016opportunistic}. It also makes MTGs neutral with respect to production (which goes from semantics to phonology) and comprehension (which goes from phonology to semantics).% -- as a proper theory of competence should indeed be. 
+
+Moreover, constraints also yield a monotonic mapping from form to meaning -- i.e. there are no destructive operations that throw out information inferable from parts of a structure. This makes MTGs suitable to deal with the grammaticality of linguistic fragments and with the incremental nature of parsing -- yet another desirable property in light of psychological adequacy (\citetv{chapters/GrammarInduction}). %\footnote{\citet{pullum2001distinction} and \citet[chapter~6]{postal2004skeptical} also point out many advantages of MTGs over PTGs that are  independent of this commitment to psychological adequacy.} %information about an expression's phonological, syntactic and semantic representations ``is locally distributed across the expression structure in such a way that [it] can be inferred from the parts of the expression'' \citep[46]{bresnan2001lexical}
+
+%LFG and SiSx are almost entirely stated as MTGs. But there are two deviations:  in LFG, the machinery of \textsc{constraining equations}, which serves to check the presence of feature values \textsc{after} the defining equations are solved by an algorithm (see \citealt{blackburn1995a-specification}); and, in SiSx, the reference to the \textsc{unification} operation as part of the competence theory \citep[611]{jackendoff2011what}. Both of these ideas place an algorithmic procedure \textsc{within the grammar}, thus preserving the PTG notion that grammars include some sort of constructive device that ``builds structures'' \citep[325]{postal2004skeptical} 
+%
+%
+%However, these PTG residues are likely to be unnecessary. \citet{blackburn1995a-specification} suggest ways to eliminate constraining equations from LFG. In SiSx, unification can be reinterpreted as part of the theory of \textsc{performance}. For both theories, one can simply think of the set of constraints as \textsc{equivalent to the grammar} and let grammaticality be defined model-theoretically: e.g. an expression is grammatical \textit{iff} its parts and correspondences are models of the grammar. To be sure, constraints \textit{can} be coupled with a solution algorithm to construct members of a particular recursively enumerable set (e.g. for grammar engineering purposes). But they do not \textit{need} to (see \citealt[2--3]{pollard1996nature}). 
+
+%I stress these very abstract meta-theoretical points because they turn out to have practical consequences for the general architecture of the grammar. In a full-blown MTG set up, it no longer seems necessary to uphold a rigid distinction between the lexicon and the grammar, because \textsc{both} are stated in the very same format: i.e. the format of \textsc{constraints}. This is the topic of the next section.
+
+SiSx and LFG can both be naturally stated as MTGs (cf. \citealt{blackburn1995a-specification, pullum2019what} for some caveats). This has practical consequences for the general architecture of the grammar. As we will see below, in a full-blown MTG, it is no longer necessary to uphold a rigid distinction between the lexicon and the grammar, because \textsc{both} can be stated in the same format: i.e. as \textsc{constraints}. 
+
+
+
+
+
+\section{The structure of the lexicon}\label{ss:sec4}
+
+
+Up to now, I have talked mostly about how SiSx and LFG represent the structure of \textsc{linguistic objects}. This section turns to the kinds of \textsc{constraints} that are responsible for licensing these objects. A widespread assumption is that these constraints fall into two radically different classes, depending on whether they apply to \textsc{words} and their internal parts or to larger \textsc{phrasal units}. This view is famously expressed in LFG's \textsc{lexical integrity principle} (LIP):
+
+\begin{exe}
+\ex[]{\textsc{The Lexical Integrity Principle}  \citep[181]{bresnan1995the-lexical}: \\
+Words are built out of different structural elements and by different principles of composition than syntactic phrases.}
+\end{exe}
+
+
+LFG enforces LIP by separating the \textsc{lexicon} from the \textsc{rules of (phrasal) grammar}. The latter are responsible for the organization of novel phrases while the former is supposed to register idiosyncrasies as well as capture some partial regularities among stored items (in the form of \textsc{lexical rules}).\footnote{In its contemporary form, this distinction dates back to \citegen{chomsky1970remarks} \textsc{lexicalist hypothesis}. In that framework, however, the divide between \textsc{lexical rules} and \textsc{rules of grammar} overlapped with the distinction between \textsc{constraints} and \textsc{algorithms}. In a MTG -- where \textsc{all} rules are stated as constraints --  these two kinds of rules can only be distinguished by the types of variables they contain: variables on lexical constraints  range over word-like elements and the ones on grammatical constraints range over phrases. LIP is, then, a requirement that constraints containing different types of variables involve fundamentally different relations (i.e. ``different principles of combination''): e.g. constraints on word formation should not mention long-distance relationships between items, like the ones found in phrasal grammar. Though this is requirement is formulable in a MTG setting, it is not clear whether it can be empirically justified. See \citet{bruening2018lexicalist} for some relevant discussion.} %Though this is formulable in a MTG, it is a stipulation that must be empirically justified. 
+
+SiSx argues that there is much to be gained by abandoning this distinction. The first step of the argument involves asking \textsc{what the lexicon is}. Due to the \textsc{mentalist} commitment, SiSx frames this issue in essentially psycholinguistic terms, taking the lexicon to be whatever the language user has to learn and store in long-term memory. The argument then goes on to show that a lexicon thus conceived must contain entries of such variety that a sharp distinction between lexical items and grammatical rules becomes artificial (see \citealt{jackendoff1997the-architecture, culicover2017multiword, jackendoff2020texture}, among others). The slippery slope from words to rules of grammar prompts SiSx to view the latter as \textsc{part of} the lexicon, as in Construction Grammar \citep{goldberg1995constructions, sag2012sign-based}. This looks natural under an MTG design, where lexicon and grammar are equally stated as \textsc{constraints}.
+
+A typical instance of a lexical item is an individual word like \textit{cow}. SiSx, following the Parallel Architecture in Figure \ref{ss:sspa}, treats this as an interface rule, linking a small piece of phonology, a syntactic category and a meaning, as in (\ref{ss:cow}):
+
+\eabox{\avm[style=plain]{[ PHON & cow$_{1}$ \\
+ SYN & N$_{1}$ \\
+ SEM & !$\lambda x[\textbf{cow}'_{1}{(}x{)}]$! ] }
+\label{ss:cow}
+ }
+
+
+The same format can be used to represent items with idiosyncratic subcategorization properties that do not follow from general linking rules. The verb \textit{depend}, for example, subcategorizes for an NP within a PP headed by \textit{on}, as in (\ref{ss:look}):
+
+\eabox{ \avm[style=plain]{[ PHON & {depend$_{1}$ on$_{2}$ $\varphi_{3}$} \\
+ SYN & !$[_{\text{VP}}$ V$_{1}$ [$_{\text{PP}}$ P$_{2}$ \textit{NP}$_{3}]]$! \\
+ SEM & !$\lambda y[\lambda x[\textbf{depend}'_{1}(\textsc{experiencer:}x, \textsc{theme:}y)]](\sigma_{3})$! ]}
+ \label{ss:look}
+ }
+ 
+Italicized elements and Greek letters represent typed variables that must be contextually instantiated in order for the item to be licensed \citep{culicover2019origin}. They are what give lexical items their combinatoric potential.
+Productive morphology receives a similar treatment. Since regular forms \textit{can} be computed online -- and \textsc{must} be so computed in agglutinative languages like Turkish  \citep{hankamer1989morphological} -- we cannot require every one of them to be stored in the lexicon \citep{jackendoff1997the-architecture, jackendoff2002foundations}. Therefore, regular affixes must have their own lexical entries with variables specifying the phonology, category and semantics of their putative roots -- as was also assumed in American Structuralist models of immediate constituent analysis \citep{bloomfield1933language}. (\ref{ss:past}) is an entry for the English past suffix.
+
+\eabox{\avm[style=plain]{[ PHON & $\varphi_{2}$-ed$_{1}$ \\
+ SYN & !$[_{\textit{V}} \textit{V}_{2}$-\textsc{past}$_{1}]$! \\
+ SEM & !$\textbf{past}_{1}(\sigma_{2})$! ]}
+  \label{ss:past}
+ }
+
+
+Note that, as far as SiSx is concerned, there is no deep formal distinction between the \textit{syntactic} combinatoriality of the verb in (\ref{ss:look}) and the \textit{morphological} combinatoriality of the affix in (\ref{ss:past}). The only difference has to do with the nature of the variable in SYN: \textit{NP}$_{3}$ in (\ref{ss:look}) is phrasal and \textit{V}$_{2}$ in (\ref{ss:past}) is not. So SiSx, unlike LFG (see \citealt{sadler2004projecting}), has no separate \textsc{morphological component}.
+
+A lexicon conceived in these terms should also contain a variety of multiword entries \citep{culicover2017multiword}. Among these are idioms with fully specified material on all tiers, such as \textit{kick the bucket}. In SiSx, these expressions can be stored as whole phonological/syntactic units, linked to noncompositional semantics, as in (\ref{ss:bucket}). We know that this particular idiom instantiates the canonical syntactic structure of an English VP because \textit{kick} inflects just like an ordinary verb (e.g. \textit{John kick\textbf{ed} the bucket}, \textit{John \textbf{will} kick the bucket}, etc.).
+
+
+
+\eabox{ \avm[style=plain]{[ PHON &  {kick$_{1}$ the$_{2}$ bucket$_{3}$} \\
+ SYN & ![$_{\text{VP}}$ V$_{1}$ [$_{\text{NP}}$ Det$_{2}$ N$_{3}$]]$_{4}$! \\
+ SEM & !$\lambda x[\textbf{die}_{4}'(\textsc{patient:} x)]$! ]}
+ \label{ss:bucket}
+ }
+
+Like the verb in (\ref{ss:look}) and the affix in (\ref{ss:past}), some idioms have variables that grant them combinatorial potential of their own. These are cases like \textit{stab NP in the back}, \textit{put NP on ice} and \textit{catch NP's eye}. Here is a lexical entry for this last one:
+
+\eabox{\avm[style=plain]{[ PHON & {catch$_{1}$ $\varphi_{2}$'s$_{3}$ eye$_{4}$} \\
+ SYN & !$[_{\text{VP}}$ V$_{1}$  [$_{\text{NP}}$ \textit{NP}$_{2}$-\textsc{genitive}$_{3}$ N$_{4}$]]! \\
+ SEM & !$\lambda x[\textbf{notice}'(\textsc{experiencer:}\sigma_{2}, \textsc{theme:} x)]$! ] }
+ \label{ss:catch}
+ }
+
+
+The entries in (\ref{ss:bucket}) and (\ref{ss:catch}) pose a kind of ordering paradox for theories that assume a radical separation between grammar and lexicon, as prescribed by the LIP. The information that \textit{kick the bucket} and \textit{catch NP's eye} are VPs has to be stated \textit{in} the lexicon, because their semantics is idiosyncratic. However, the phrase-structure rule that generates VPs can only apply \textit{outside} the lexicon.
+
+In addition to these cases, the lexicon also has to include a class of \textsc{constructional idioms} that use normal syntax to unusual (i.e. noncompositional) semantic ends \citep{jackendoff1997the-architecture, jackendoff2002foundations}. An example is the \textsc{sound+motion construction} in (\ref{ss:smc}) \citep{levin1995unaccusativity, goldberg2004english}:
+
+\begin{exe}
+\ex[]{The car [$_{\text{VP}}$ rumbled past Sue].\\
+$\textbf{go}'(\textsc{theme:} \text{the-car}, \textsc{path:} \text{past-Sue}, \textsc{effect:} \textbf{rumble}'(\text{the-car}))$}
+\label{ss:smc}
+\end{exe}
+
+
+Syntactically, the VP in (\ref{ss:smc}) is merely a sequence of a verb followed by a PP. Its semantics is unusual because the verb is not interpreted as a functor over the PP, but as specifying the \textsc{effect} of a motion that is not codified by any of the words in the sentence. The effect of the motion, is, moreover, predicated of whoever is interpreted as the \textsc{theme} (i.e. the entity undergoing the motion). A lexical entry with these properties is sketched in (\ref{ss:smcc}).
+
+
+\eabox{\textsc{sound+motion construction} (adapted from \citealt[42]{culicover2013grammar}): \\
+    \avm[style=plain]{[ SYN & !$[_{VP} \text{ }  V_{1} \text{ } PP_{2}]$! \\
+        SEM & !$\lambda x[\textbf{go}'(\textsc{theme:} x, \textsc{path:} \sigma_{2}, \textsc{effect:} \sigma_{1}(x))]$! ]}
+  \label{ss:smcc}
+        }
+
+What is peculiar about constructional idioms is that the SYN tier in their lexical entries consists \textit{entirely} of variables that are completely unlinked to phonology.\footnote{The existence of ``defective'' lexical items lacking terms in some level is not surprising in a correspondence architecture. \citet[94]{jackendoff1997the-architecture} notes that there are words with phonology, syntax and no meaning (e.g. expletives), others with meaning, phonology and no syntax (\textit{hello, ouch, yes}) and even sequences with nothing but phonology (\textit{e-i-e-i-o, inka-dinka-doo, tra-la-la}). All of these are clearly stored in long-term memory and recognized in the same way typical words are. Moreover, they fit into the phonotactic and stress patterns of English. This indicates that, though some of them have no syntax, they are still part of language. The only reason for excluding them from the lexicon is syntactocentrism -- which is abandoned in SiSx and LFG.} This makes them much more rule-like than word-like.\footnote{This is what drives \citet{asudeh2013constructions} to propose that idioms  like (\ref{ss:smcc}) are not derived from lexical entries, but from phrase-structure rules annotated with templates. Other idioms, like the \textsc{way construction} (e.g. \textit{Sue laughed her way out of the restaurant}), would be lexically encoded by individual words (in that case, by \textit{way}). However, it is not clear how this account extends to idioms like (\ref{ss:bucket}--\ref{ss:catch}), which are specified by \textit{discontinuous} portions of morphosyntax. Space prevents me from exploring further details of LFG's template-based accounts of constructions.} However, since their interpretation does not follow from general principles, they have to be explicitly learned and stored just like words are (see \citealt{culicover1999syntactic}).
+
+Two other examples of constructional idioms along with the relevant lexical entries proposed in the SiSx literature are given below: (\ref{ss:dobc}) represents the \textsc{ditransitive construction} \citep{jackendoff1990semantic, goldberg1995constructions, asudeh2014meaning}; and (\ref{ss:prc}) represents the \textsc{proxy construction} (\citealt{nunberg1979non}, \citealt{jackendoff1997the-architecture}, \citealt{varaschin2020anti}), wherein the meaning of NP is coerced into a proxy of its literal denotation.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%TAKE THIS OUT IF NECESSARY%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exe}
+\ex\textsc{ditransitive construction} (adapted from \citealt[40]{culicover2019origin}): \label{ss:dobc}
+\begin{xlist}
+\ex[]{Brad kicked Janet the ball.}
+\ex[]{ \avm[style=plain]{[ PHON & {$\varphi_{1}\text{ } \varphi_{2} \text{ } \varphi_{3}$} \\
+ SYN & !$[_{VP} \text{ } V_{1} \text{ } NP_{2} \text{ } NP_{3}]$! \\
+ SEM & !$\lambda x. \textbf{transfer}'(\textsc{source:} x, \textsc{goal:} \sigma_{2}, \textsc{theme:} \sigma_{3}, \textsc{means:} \sigma_{1}(x))$! ] }}
+ \end{xlist}
+\end{exe}
+%%%%%%%%%%%%%%%%%%%%%%%%%%TAKE THIS OUT IF NECESSARY%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exe}
+\ex\textsc{proxy construction} (adapted from \citealt[11]{varaschin2020anti}): \label{ss:prc}
+\begin{xlist}
+\ex[]{I put $\langle$ \textit{book-by} $\rangle$ Keynes on the top shelf.}
+\ex[]{ \avm[style=plain]{[ SYN & \textit{NP}$_{1}$\\
+ SEM & !$ \textbf{proxy}'(\sigma_{1})$!  ] }}
+ \end{xlist}
+\end{exe}
+
+
+
+
+Language turns out to be full of constructional idioms like these (see \citealt{goldberg1995constructions, jackendoff1997the-architecture, jackendoff2008construction, culicover1999syntactic}). However,  insofar as recognizing their existence commits us to syntactically complex lexical items without phonology, nothing stops us from seeing general syntactic and interface rules – usually thought of as part of the \textsc{grammar} – in the same way. The context-free rule for a transitive VP can be construed as a declarative schema for licensing a particular configuration of labeled nodes, as in (\ref{ss:psrulec}):
+
+\begin{exe}
+\ex[]{\textsc{transitive vp construction} (adapted from  \citealt[180]{jackendoff2002foundations}): \\ 
+\avm[style=plain]{[ SYN & ![$_{\textit{VP}}$ \textit{V} \textit{NP} ]! ] }}
+\label{ss:psrulec}
+\end{exe}
+
+As far as SiSx is concerned, this is simply one of the possibilities allowed by the system: a lexical item with no idiosyncratic phonology or semantics, just syntactic category variables arranged in a particular configuration. In this respect, SiSx deviates from variants of Construction Grammar which require every syntactic configuration to be paired with a meaning (e.g. \cite{goldberg1995constructions}).
+
+Default principles of compositional type-driven interpretation can also be represented as lexical items which license a maximally general correspondence between syntactic variables and meaning variables of the appropriate type. (\ref{ss:comprule}) represents the two possible scenarios of \citegen{heim1998semantics} Functional Application rule (where X, Y and Z are variables over syntactic categories).\footnote{These general constraints on form and interpretation do not need to be instantiated by \textsc{all} grammatical expressions in a language. Many of them are not satisfied in idioms, for instance. For a linguistic object to be licensed in SiSx, it suffices that each of its terms and correspondences fully instantiate \textsc{some} constraint \citep{culicover2019origin}. This entails that a linguistic object can fail to satisfy a given constraint and still be grammatical \textsc{as long as} there is some other constraint in the grammar which it satisfies. For instance, the idiom in (\ref{ss:smc}) fails to meet the compositional constructions in (\ref{ss:comprule}). Since there is another (more specific) construction which it satisfies (the \textsc{sound+motion construction} in (\ref{ss:smcc})), SiSx predicts that (\ref{ss:smc})  is grammatical.}
+
+
+\begin{exe}
+\ex[]{ \textsc{compositionality constructions}: \\ 
+a. \avm[style=plain]{[ 	SYN & [$_{\textit{X}}$ \textit{Y}$_{1}$ \textit{Z}$_{2}$ ] \\
+			SEM & !$ \sigma_{1}(\sigma_{2}) $! ]}   \hspace{1cm}
+b. \avm[style=plain]{[ SYN & ![$_{\textit{X}}$ \textit{Y}$_{1}$ \textit{Z}$_{2}$ ]! \\
+                       SEM & !$ \sigma_{2}(\sigma_{1})$! ] }}
+\label{ss:comprule}
+\end{exe}
+
+
+Likewise, the main intuition guiding linking hierarchies -- such as the one in LFG's Lexical Mapping Theory \citep{bresnan1989locative} -- can also be formalized, within SiSx, as constructions that establish a correspondence between GF variables and SEM variables. (\ref{ss:linking}) represents the rule that says that the highest thematic argument maps to the first GF.
+
+\begin{exe}
+\ex[]{ \textsc{linking construction} (adapted from \citealt[185]{culicover2005simpler}): \\
+ \avm[style=plain]{[	GF & !$[_{\textsc{pred}}$ \textit{GF}$_{1}$ (> ...)]$_{2}$! \\
+                       SEM & !$\sigma_{2}(\theta\text{:}\sigma_{1}\text{, ...})$! ]}}
+\label{ss:linking}
+\end{exe}
+
+Correspondences between GFs and SYN -- which are accomplished by functional annotations in LFG -- can be stated as abstract lexical items as well. The canonical correspondence for \textsc{subjects} and (transitive) \textsc{objects} in English are (\ref{ss:subjobj}a) and (\ref{ss:subjobj}b), respectively:
+
+\begin{exe}
+\ex[]{\textsc{argument structure constructions}: \\ 
+a. \avm[style=plain]{ [		SYN & !$[_{\textit{S}}$ \textit{NP}$_{1}$ \textit{VP}$_{2}]_{3}$! \\
+			      	GF &  !$[_{\textsc{pred}}$ \textit{GF}$_{1} (> ...)]_{2,3}$! ] }  \hspace{1cm}
+b. \avm[style=plain]{ [		SYN & !$[_{\textit{VP}}$ \textit{V}$_{2} \textit{NP}_{1}]_{3}$! \\
+			      	GF &  !$[_{\textsc{pred}} \textit{GF}$ \textgreater $\textit{GF}_{1}]_{2,3}$! ] } }
+\label{ss:subjobj}
+\end{exe}
+
+In this set-up, the \textsc{passive} can be seen as a more complex strategy for linking the GF-tier to SYN, as in (\ref{ss:pass}) below. The same applies to relation-changing constructions in other languages (e.g. applicatives, anti-passives) \citep{culicover2009natural}.
+
+\begin{exe}
+\ex[]{ \textsc{passive construction} (adapted from \citealt[203]{culicover2005simpler}):\\
+  \avm[style=plain]{ [
+      PHON & !$\varphi_{1}$ (by$_{2}$ $\varphi_{3}$)! \\
+      SYN & !$[...$ \textit{V}-\textsc{passive}$_{1}$ $([_{\textit{PP}}$ \textit{P}$_{2}$ \textit{NP}$_{3}$])]$_{4}$! \\
+      GF &  !$[_{\textsc{pred}}$\textit{GF}$_{3}$\textgreater $[_{\textsc{pred}}$ \textit{GF}$]_{1,4}]$! ] }}
+\label{ss:pass}
+\end{exe}
+
+
+The construction in (\ref{ss:pass}) looks very much like a non-derivational version of the Relational Grammar account of passivization \citep{perlmutter1977toward}. It expresses two fundamental intuitions: (i) that the first GF (i.e. the ``logical subject'') is ``demoted'' to an optional \textit{by}-phrase (without disrupting the link between this GF and its $\theta$-role, as defined by (\ref{ss:linking})); and (ii) that the second GF gets mapped to SYN like a typical \textsc{subject} would in virtue of (\ref{ss:subjobj}a). This last result is accomplished by adding a second pair of brackets around the second GF.\footnote{This also happens to be the main technical reason why GFs in SiSx are unlabeled. If GFs were defined in terms of substantive roles (e.g. \textsc{subj}, \textsc{obj}), as in LFG, a constructional account of relation-changing rules like \textsc{passive} would involve replacing one function name by another. This would violate monotonicity and  \citegen{kaplanbresnan82} \textsc{direct syntactic encoding} principle. LFG avoids this problem by stating \textsc{passive} as a \textsc{lexical rule} \citep{bresnan1982the-passive}. For evidence that lexical accounts of argument structure (like the one found in LFG) are superior to the SiSx constructional account sketched here, see \citet{muller2013unifying, muller2018grammatical}. For a lexical account of \textsc{passive} in SiSx (which resembles the LFG one), see \citet{culicover2019origin}.} A concrete example of a linguistic object which instantiates (\ref{ss:pass}) is given in (\ref{ss:epass}):
+
+
+
+\eabox{\avm[style=plain]{[
+PHON & {The-cake$_{1}$ was-eaten$_{2}$ by$_{3}$ Hector$_{4}$}  \\
+SYN & !$[_{\text{S}} \text{NP}_{1} [_{\text{VP}} \text{V-\textsc{passive}}_{2} [_{\text{PP}} \text{P}_{3} \text{NP}_{4}]]_{5}]$!  \\
+GF &  !$[_{\textsc{pred}}$ GF$_{4}$ \textgreater $[_{\textsc{pred}}$ GF$_{1}$]$_{2,5}]$! \\
+SEM & !$\textbf{eat}'_{2,5}(\textsc{agent:}\text{hector}_{4}, \textsc{theme:}\text{the-cake}_{1})$! ] }
+\label{ss:epass}
+}
+
+
+SiSx's rule-like lexical entries can play two roles in the grammar: a \textsc{generative role}, where they are used in on-line processing to derive novel structures \textit{via} \textsc{unification} with other lexical entries; and a \textsc{relational role}, where they function like nodes in an inheritance hierarchy, ``lending'' their structure to other independently stored items \citep{jackendoff2020texture}. 
+
+
+
+
+The relational role of lexical entries can be defined in terms of \textsc{entailment} between separate constraints stored in the lexicon. A lexical entry $\alpha$ entails an entry $\beta$ \textit{iff} every linguistic object which is a model of $\alpha$ is a model of $\beta$. When a specific lexical entry $\alpha$ entails a more general entry $\beta$ we can say that $\alpha$ inherits structure from $\beta$. In this sense, the \textit{kick the bucket} idiom in (\ref{ss:bucket}) inherits structure from the more general VP construction in (\ref{ss:psrulec}), which, in turn, inherits from a more abstract \textsc{head-complement construction}, akin to the head-complement schema of HPSG (\citealt[33--34]{pollard1994head-driven}; \citetv[\pageref{page:1867}--\pageref{page:1868}, \pageref{fig:hpsg:types}]{chapters/HPSG}).
+
+Likewise, if  particular passive or past tense verbs happen to be overtly stored due to high frequency, they will inherit from the past tense and passive schemas in (\ref{ss:past}) and (\ref{ss:pass}). These relational links can be represented in an inheritance hierarchy, where the more dominated nodes entail the less dominated ones. SiSx assumes that, other things being equal, a lexical item with relational links should be easier to store and learn than one without such links (see \citealt{jackendoff1975morphological}).
+
+There is an obvious connection between this relational function of lexical entries  and the use of templates  in LFG and constructions in HPSG/SBCG \citep{sag2003syntactic, dalrymple2004linguistic, asudeh2013constructions}. These devices all do the work of lexical rules in earlier approaches going back to \citet{chomsky1970remarks}. But there is a difference:  since many of SiSx's abstract entries can \textit{also} be used generatively, unmarked lexical properties (e.g. regular morphology, subcategorization) can, \textit{in principle}, be kept out of individual lexemes. There is no need to list separately the active, passive and regular past tense forms for \textsc{all} verbs. These forms can be ``built'' by unification with abstract items like (\ref{ss:subjobj}b), (\ref{ss:pass}) and (\ref{ss:past}) (respectively) \citep[188]{culicover2005simpler}. In LFG terms, it is as if schemas like (\ref{ss:subjobj}b), (\ref{ss:pass}) and (\ref{ss:past}) were, at once, templates that can be invoked in particular lexical entries and rules to license novel structures that are not in the lexicon.
+
+ 
+The SiSx view, is, in sum, that rules of grammar \textsc{are} lexical items. There is a \textit{continuum} from stereotypical words, which specify fully linked phonology, syntax, and semantics (cf. (\ref{ss:cow})), through idioms with a few variables (cf. (\ref{ss:catch})), constructional idioms with \textit{nothing but} variables (cf. (\ref{ss:smcc}--\ref{ss:prc})) to fully general rules (cf. (\ref{ss:psrulec}--\ref{ss:pass})), from which many constructions can inherit structure. All of these things are stated in the same format: as declarative schemas, either licensing structures at a single level (e.g. (\ref{ss:psrulec})) or establishing correspondences between various levels (e.g. (\ref{ss:cow})). Theories like LFG, which adopt a rigid lexicon/grammar distinction, must draw an artificial line somewhere in this \textit{continuum}.
+
+%Having a uniform formalism for representing words and rules is not a virtue in and of itself. With it comes  iThe advantage of the SiSx approach is not merely one of uniformity -- though having a uniform formalism for representing highly specific lexical information all the way through general rules is also advantageous for learning. With a uniform formalism for words and phrases uniformity comes a Regarding argument structure configurations, for instance, the lexicalist alternative has to say either that 
+
+
+%A fundamental hypothesis is that all lexical entries that can be used generativelly can also be used relationally, because anything at all can, in principle, be stored if it is activated frequently enough. 
+
+%The only kind of information that has to be listed is \textsc{semantic valence}, as in 
+
+%How does LFG's LIP stand in light of this? As I said above, there is no morphological combinatoriality. Unlike some varieties of LFG (see \citealt{sadler2004projecting}), SiSx has no separate \textsc{morphological component}. A version of the LIP can be recast in SiSx by allowing syntactic schemas to apply only down to maximal X$^0$s, and morphological schemas to apply only up to maximal X$^0$s .However, it is not clear that this is desirable, given the existence of violations of the LIP \citep{bruening2018lexicalist}.
+
+%Careful examination of what the speaker has to store in the lexicon reveals items that are progressively more and more rule-like. As we slide through this slippery slope, we found that there are less and less reasons to
+
+
+%On the other hand, it might still be the case that syntax can't make reference to the inside of words, but this might be accomplished by a different mechanism.  In Relational Morphology, the idea is that syntactic schemas apply only down to maximal X0s, and morphological schemas apply only up to maximal X0s, and this is the (main) point where they intersect. 
+%BUT:  There are violations of Lexical Integrity, in both directions.  So it's not so clear you want LI to be a central feature of your theory, and I suppose you could equip LFG with an SS/RM-style lexicon, leaving the structures the same, if you cared to try.
+
+
+%We might think a little more about Lexical Integrity.  As I understand it, the idea is that the syntax can't make reference to the inside of lexical items, and morphology can't make reference to phrasal syntax.  LFG enforces this by having a component of Lexical Rules that operate before lexical insertion to create morphologically complex forms (only inflectional?  I don't remember).  As you say, Simpler Syntax doesn't have a separate class of lexical rules that apply first, so it's impossible for it to enforce Lexical Integrity that way.  
+
+
+%Another confusion with LI is that the lexical/phrasal separation is often taken to be coextensive with the unproductive/productive distinction, with the stored vs. computed distinction, and/or with the word vs. phrase distinction.  I think this grows out of Remarks on Nominalization.  But as we now know, there are nonproductive phrasal constructions (syntactic nuts), and there are stored phrases (e.g. idioms and collocations), so these distinctions don't coincide.  I think you have to ask which of these distinctions Lexical Integrity is supposed to be addressing, in particular how LFG views it.
+
+
+
+
+\section{Constraints outside of the grammar}\label{ss:sec5}
+
+If language is indeed integrated into the larger ecology of the mind, it is expected that grammatical constraints are not all there is to explain the (un)acceptability of sentences. Since \citet{miller1963finitary}, the influence of  \textsc{extra-grammatical} factors on  linguistic judgments has been a major topic of investigation -- one that is very much relevant to the pursuit of the SSH. In this section, I explore this issue in connection with the phenomena of \textsc{unbounded dependencies} (UDs). 
+
+
+The hallmark of UDs is the presence of a \textsc{gap}, by means of which a constituent in a non-canonical position (i.e. a \textsc{filler}) acquires its semantic role.  In SiSx -- as in HPSG \citep[161]{pollard1994head-driven} -- the effect of a gap can be reproduced by a lexical item that establishes a correspondence between an arbitrary phonological sequence containing the empty string ($\varepsilon$), a constituent containing an XP and a property which results from  $\lambda$-abstraction over whatever semantics the XP would have (see \cite{muskens2003language} for a similar proposal in Categorial Grammar):
+
+
+
+
+\begin{exe}
+\ex[]{\textsc{gap construction:} (adapted from \citealt[chap.7]{culicover2019origin}) \\ 
+\avm[style=plain]{ [			PHON & !/... $\varepsilon$ ... /$_{2}$! \\
+					SYN & ![... XP  ...]$_{2}$! \\
+			      		SEM &   !$\lambda z[\sigma_{2}(z)]$! ] }}
+\label{ss:gap}
+\end{exe}
+
+
+SiSx also needs a phrase-structure construction akin to (\ref{ss:psrulec}) in order to license fillers in the left-periphery of clauses. (\ref{ss:filler}) accomplishes this effect:
+
+\begin{exe}
+\ex[]{\textsc{filler construction:}  \\ 
+\avm[style=plain]{ [ SYN & ![$_{S'}$ \textit{YP  S} ]! ] }} \label{ss:filler}
+\end{exe}
+
+Consider how this works in the simple case of topicalization in (\ref{ss:top}) (I ignore the GF-tier and the information structure status of topics). The construction in (\ref{ss:gap}) licenses an empty NP as the complement of \textit{Janet kissed}, which, in turn, gets interpreted as a property (i.e. $\lambda z[\textbf{kiss}'(\textsc{agent:}\text{janet}, \textsc{theme:}z)]$). (\ref{ss:filler}) licenses a filler (i.e. \textit{Brad}) in sentence-initial position. In virtue of the \textsc{compositional construction} in (\ref{ss:comprule}b), the property attained by (\ref{ss:gap}) is applied to the semantics of the filler, yielding the right interpretation.
+
+
+\eabox{\avm[style=plain]{ [PHON & {Brad$_{1}$, /Janet$_{2}$ kissed$_{3}$ $\varepsilon$/$_{4}$} \\
+			SYN & ![$_{\text{S}'}$ NP$_{1}$ [$_{\text{S}}$ NP$_{1}$ [$_{\text{VP}}$V$_{3}$ NP]]$_{4}$]! \\
+			SEM &  !$ \lambda z[\textbf{kiss}'_{3,4}(\textsc{agent:}\text{janet}_{2}, \textsc{theme:}z)](\text{brad}_{1})$! ] }
+\label{ss:top}
+			}
+
+
+A similar structure is ascribed to the \textit{wh}-question in (\ref{ss:whq}). I follow \citet{culicover2019origin} in positing a quantifier-like entry for the \textit{wh}-word, as in (\ref{ss:what}).
+
+\begin{exe}
+\ex[]{[What$_{i}$ [did [Sue say Don bought $t_{i}$]]]?}
+\label{ss:whq}
+\end{exe}
+
+
+\eabox{
+\avm[style=plain]{ [	PHON & {what$_{1}$} \\
+			SYN & {\textit{NP}$_{1}$} \\
+			SEM &  !$\lambda P[\textbf{WH}x_{1}(P(x))]$! ] }
+\label{ss:what}
+			}
+
+
+
+The \textsc{gap construction} licenses a property interpretation for the portion of (\ref{ss:whq}) which excludes the \textit{wh}-phrase (\textit{Sue say Don bought} $\varepsilon$). This property, in turn, is fed as an argument to the \textbf{WH} quantifier (licensed in initial positon by (\ref{ss:filler})), which ends up binding a variable corresponding to the gap. (\ref{ss:wh}) illustrates the $\beta$-reductions in the SEM tier of (\ref{ss:whq}):
+
+\begin{exe}
+\ex[]{\begin{small} $\lambda P[\textbf{WH}x(P(x))]	(\lambda z[\textbf{say}'(\textsc{agent:}\text{sue}, \textsc{theme:} \textbf{buy}'(\textsc{agent:}\text{don}, \textsc{theme:}z))]) \\ 
+\rightarrow \textbf{WH}x(\lambda z[\textbf{say}'(\textsc{agent:}\text{sue}, \textsc{theme:} \textbf{buy}'(\textsc{agent:}\text{don}, \textsc{theme:}z))](x)) \\
+\rightarrow \textbf{WH}x(\textbf{say}'(\textsc{agent:}\text{sue}, \textsc{theme:} \textbf{buy}'(\textsc{agent:}\text{don}, \textsc{theme:}x))) $ \end{small}} \label{ss:wh}
+\end{exe}
+
+
+The constructions (\ref{ss:gap}--\ref{ss:filler}) and standard principles of type-driven interpretation are all SiSx needs to model the syntactic and semantic effects of UDs.\footnote{Note incidentally that the type-driven rules in (\ref{ss:comprule}) make the presence of subject gaps in sentences like \textit{Who sang?} unnecessary. In those cases, the \textbf{WH} quantifier can combine directly with the bare property semantics of the VP, with no need to invoke the \textsc{gap construction}.} The dependency between the filler and the gap is represented as variable-binding, while a null XP in SYN guarantees that the subcategorization requirements of the head that licenses the filler are locally satisfied.
+
+However, since this mechanism assumes that gaps can be freely introduced into representations, it does not explain why sentences like (\ref{ss:sentsubj}) are bad:
+
+
+
+
+\begin{exe}
+\ex[*]{Who$_{i}$ does that Brad admires $t_{i}$ disturb Janet?}
+\label{ss:sentsubj}
+\end{exe}
+
+
+ \largerpage
+It is entirely possible to derive a perfectly well-formed structure for (\ref{ss:sentsubj}) given the principles laid out so far. Most approaches to UDs take this ``overgeneration'' to be a flaw and attempt to encode into the grammar restrictions that prevent gaps from occurring in \textsc{island} environments like (\ref{ss:sentsubj}) \citep{ross1967constraints}.
+
+\citegen{kaplzaen89} LFG account of island constraints exemplifies this tendency. Their proposal represents UDs in terms of functional identity in f-structure (\citetv{chapters/LDDs}). So, for the sentence (\ref{ss:whq}) above, the identification between the focalized \textit{wh}-word and the \textsc{obj} of \textit{buy} is accomplished by the equivalence ($f$ \textsc{focus})=($f$ \textsc{comp obj}). This expression is an instantiation of a more general functional uncertainty equation which is annotated to the phrase-structure rule that introduces discourse functions (namely \textsc{topic} or \textsc{focus}). The particular equation \citet[153]{kaplzaen89} suggest for English is (\ref{ss:lfgis}).
+
+\begin{exe}
+\ex[]{($f$ \textsc{df}) = ($f$ $\{\textsc{comp, xcomp}\}$* \textsc{gf$-$comp})} \label{ss:lfgis}
+\end{exe}
+
+
+What (\ref{ss:lfgis}) says is that the f-structure for any discourse function (\textsc{df}) will be identical to a subordinate f-structure somewhere along a (possibly empty) path of \textsc{comp} and \textsc{xcomp} functions, as long as that path terminates in a GF function which is not a \textsc{comp}. The specifications on the \textsc{body} (i.e. the middle) and on the \textsc{bottom} of uncertainty paths like (\ref{ss:lfgis}) are how LFG records restrictions on UDs.
+
+
+For example, an identification between the filler and the gap in (\ref{ss:sentsubj}) requires passing through \textsc{subj}, which is not specified as a possible attribute in the body of (\ref{ss:lfgis}). This accounts for \textsc{subject island} violations in general. Likewise, \textsc{complex NP islands} like (\ref{ss:adj}) are also covered, because \textsc{relmod} (the GF \citet{kaplzaen89} assign to relative clauses) is not designated on the body of (\ref{ss:lfgis}) either.  %the unacceptability of
+
+\begin{exe}
+\ex[*]{What castle$_{i}$ does Janet know the strange man [who owns $t_{i}$]?} \label{ss:adj}
+%\end{xlist}
+\end{exe}
+
+From the point of view of SiSx, the functional uncertainty formalism is unobjectionable as a device to model UDs. However, it is not clear whether it should really embody substantive restrictions to account for the unacceptability of UDs in syntactic terms. Upon closer examination, there does not seem to be a purely grammatical characterization of precisely the contexts in which certain patterns of UDs are ruled out by speakers. The explanation for most (if not all) island constraints must, therefore, lie outside of the grammar, in pragmatics, discourse structure or in processing complexity. A growing body of literature points to this conclusion \citep{hofmeister2007locality,hofmeister2010cognitive,hofmeister2013islands,kluender1991cognitive,kluender1992deriving,kluender2004subject,kluender1993bridging,sag2007processing, chaves2013expectation, chaves2014subject, chaves2019frequency, culicover2013problems, culicover2013grammar}. In what follows, I briefly summarize some of the empirical evidence against grammatical theories of islands. Space limitations prevent me from getting into the details of particular performance-based alternatives.
+
+
+
+
+The suspicion that something is amiss in purely grammatical accounts of island phenomena comes from the observation that concrete proposals tend to be both too weak and too strong. The constraint in (\ref{ss:lfgis}), for example, is too weak because it fails to explain real contrasts like (\ref{ss:ert1}--\ref{ss:ert}),  originally due to \citet[84]{erteschik-shir1973on-the-nature}.
+
+\largerpage
+\begin{exe}
+\ex\label{ss:ert1}
+\begin{xlist}
+\ex[]{What$_{i}$ did Janet claim that veganism can do $t_{i}$ for you?}
+\ex[??]{What$_{j}$ did Janet transcribe that veganism can do $t_{j}$ for you?}
+\end{xlist}
+\end{exe}
+
+\begin{exe}
+\ex\label{ss:ert}
+\begin{xlist}
+\ex[]{What$_{i}$ did Frank say that Brad would like $t_{i}$ for lunch?}
+\ex[??]{What$_{j}$ did Frank snarl that Brad would like $t_{j}$ for lunch?}
+\end{xlist}
+\end{exe}
+
+The equation in (\ref{ss:lfgis}) predicts the b-cases to be just as good as the a-cases since, in both of them, the value for the \textsc{focus} attribute is identified with the value of \textsc{obj} through a path consisting of a single \textsc{comp} -- exactly as in (\ref{ss:whq}). That is, the a-cases and b-cases both contain ($f$ \textsc{focus})=($f$ \textsc{comp obj}) in their f-descriptions.
+
+It is, of course, possible to assign different GFs to the complement of \textit{transcribe} and \textit{snarl} other than \textsc{comp} (something like \textsc{islandcomp}). In this case (\ref{ss:ert1}b) and (\ref{ss:ert}b) would be excluded due to the body constraint in (\ref{ss:lfgis}). But this move is simply a stipulation -- one that is hard to imagine how a child could learn. The ultimate explanation might be related to the lexical semantics of the verbs (i.e. UDs are impossible with verbs that specify \textit{manner} of speaking) or simply to frequency (\textit{claim} and \textit{say} are more frequent than \textit{transcribe} and \textit{snarl}). Whatever the ultimate truth is, no apparent syntactic difference -- in f-structure or otherwise -- can be identified for pairs such as (\ref{ss:ert1}--\ref{ss:ert}).
+
+There are also cases in which grammatical principles that purport to account for island phenomena are too strong -- i.e. they exclude sentences that are actually acceptable. I observed above that (\ref{ss:lfgis}) derives the effects of \textsc{subject islands} and \textsc{complex NP islands}. However, UDs whose gaps are contained within Subjects and Complex NPs  are reasonably acceptable under suitable conditions \citep{kluender2004subject, sag2007processing, chaves2013expectation}, as the b-cases in (\ref{ss:sui}--\ref{ss:cnpc}) show:
+
+
+\begin{exe}
+\ex\label{ss:sui}
+\begin{xlist}
+\ex[*]{Who$_{j}$ does [that you baked ginger cookies for $t_{j}$] irritate you?}
+\ex[]{Who$_{i}$ does [baking ginger cookies for $t_{i}$] irritate you?}
+\end{xlist}
+\end{exe}
+
+\begin{exe}
+\ex\label{ss:cnpc}
+\begin{xlist}
+\ex[*]{Who$_{i}$ did Phyllis hear the claim [that Bob is dating $t_{i}$]?}
+\ex[]{Who$_{j}$ did Phyllis make the claim [that Bob is dating $t_{j}$]?}
+\end{xlist}
+\end{exe}
+
+The equation in (\ref{ss:lfgis}) rightly excludes (\ref{ss:sui}a) and (\ref{ss:cnpc}a). The problem is that, by the same token, it also bars (\ref{ss:sui}b) and (\ref{ss:cnpc}b). Since the a-b pairs are functionally indistinguishable -- the bracketed strings map to the same GFs (\textsc{subj} in (\ref{ss:sui}) and \textsc{relmod} in (\ref{ss:cnpc})) -- the real explanation for the contrasts must lie elsewhere.
+
+\citet{kluender2004subject} argues that the contrast in (\ref{ss:sui}) is due to a difference in the amount of discourse referential processing. In (\ref{ss:sui}a), the \textsc{subject} is a finite clause, which introduces the reference to a temporal event. This reference is absent for the non-finite form in  (\ref{ss:sui}b), which makes the sentence in question less complex in processing terms (see \citet{gibson2000the-dependency} for a similar account).
+
+For (\ref{ss:cnpc}), \citet{culicover2005simpler} suggest an explanation along the lines of \citet{kroch1998amount}: (\ref{ss:cnpc}a) presupposes the existence of \textit{the claim} while (\ref{ss:cnpc}b) doesn't. The unacceptability of (\ref{ss:cnpc}a)  follows from a general principle which says that a gap cannot be referentially dependent on an operator if its reference is part of a presupposition in the discourse. This principle extends to contrasts like (\ref{ss:npcd}), which are also hard to account for in purely syntactic terms.
+
+\begin{exe}
+\ex\label{ss:npcd}
+\begin{xlist}
+\ex[*]{Who$_{i}$ did he buy that picture of $t_{i}$?  \hfill (presupposes there is a picture)}
+\ex[]{Who did he buy a picture of $t_{i}$? \hfill (no presupposition)}
+\end{xlist}
+\end{exe}
+
+The debate on whether all island constraints reduce to extra-grammatical factors is still very much ongoing (see \citet{newmeyer2016nonsyntactic} for a useful survey). What this section meant to illustrate is that the  SiSx view -- which might seem too unconstrained at first glance -- could turn out to be just what the data requires. If there is no grammatically coherent characterization of when UDs are unacceptable, then island constraints should not be built into the rules that license UDs (in SiSx terms, they should not be registered as conditions on the \textsc{gap construction}). On this view, sentences that incur island violations are not technically ungrammatical, but merely unacceptable for performance-related reasons.\footnote{Extra-grammatical accounts of island constraints have a long history in SiSx. They go as far back as \citet{jackendoff1972a-reconsideration}, In this early paper, the authors propose that ``perceptual strategy constraints on acceptability'' explain otherwise puzzling contrasts like (i):
+
+\begin{exe}
+\exi{(i)}\label{ss:dat}
+\begin{xlist}
+\ex[]{Who$_{i}$ did John give a book to $t_{i}$?}
+\ex[*?]{Who$_{j}$ did John give $t_{j}$ a book?} 
+\end{xlist}
+\end{exe}
+
+
+Note that (i) is also not explained by \citet{kaplzaen89}, since the equation required to establish the dependency in (ib) -- i.e. ($f$ \textsc{focus}) = ($f$ \textsc{obj}) -- satisfies the constraint in (\ref{ss:lfgis}).}
+
+
+The overall view SiSx ends up with is this: Explanations about our intuitions regarding which structures are possible divide between grammatical constraints (as recorded in the lexicon) and extra-grammatical factors (pragmatics, processing, etc.). The former tend to correlate with sharp judgments, while the latter tend to show more variability and dependence on contextual factors (see \citealt{culicover2013simplersyntax}). Sources of universals are mostly confined to extra-grammatical factors and to the pressure to reduce constructional complexity \citep{culicover2013grammar}. These correspond to the \textsc{third factor} properties of \citet{chomsky2005three}. 
+
+This leads to a very minimalist conception of UG -- as it happens, one that conforms (in an unorthodox way) to what \citet[353]{baker2008macroparameter} calls the \textsc{Borer-Chomsky Conjecture}: the hypothesis according to which all parameters of variation among languages are attributed to individual properties of lexical items. In this respect, SiSx is closer to MGG than to LFG. But the difference between SiSx and MGG is that, as discussed in \sectref{ss:sec4}, lexical items are highly structured and include what are traditionally thought of as rules of grammar. The result is that most aspects of speakers' knowledge of language end up being potentially subject to variation.
+
+
+
+
+\section{What can SiSx and LFG learn from each other?}\label{ss:sec6}
+
+The purpose of this chapter was to survey the theoretical landscape of SiSx and compare it to LFG. This exercise revealed that both approaches seek to reconcile formal theories of grammar and psychological reality -- a common goal that leads them to adopt similar architectures and analyses for particular phenomena.  
+
+However, despite these programmatic and architectural similarities, the two theories differ in important respects. Many of these differences stem from SiSx's radical commitment to representational economy, which is sustained even when this entails messier and less systematic interfaces. Another source of discrepancies is the explicit recognition, on the part of SiSx, of extra-grammatical influences on linguistic judgments, as discussed in \sectref{ss:sec5}.
+
+Insofar as SiSx posits fewer constraints and fewer representational devices, less knowledge about abstract linguistic structure (of all kinds) is attributed to learners. This reduces the impulse to posit rich principles of UG, which, in turn, alleviates some of the burden on evolutionary accounts of the language faculty \citep{jackendoff1999possible, jackendoff2002foundations, jackendoff2005nature}. A similar concern with evolutionary adequacy drives current Minimalist work in MGG \citep{hornstein2009theory, berwick2015why}. This does not seem to be much of a worry in LFG, which is more preoccupied with providing a formally precise and computationally tractable framework. 
+
+There is sometimes a trade-off between formal refinement and the
+general goal of unification with other sciences. As we saw in \sectref{ss:sec2}, the fact that the mapping from form to meaning can bypass the GF-tier in SiSx helps integrating the theory into gradualist scenarios of language evolution, given that it is implausible that stages of protolanguage had anything like abstract GFs \citep{jackendoff1999possible, jackendoff2002foundations, progovac2016gradualist}. Since LFG makes the mapping to semantics critically dependent on f-structure, it is hard to imagine a story of how these simpler sound-meaning pairings could have existed in the evolutionary antecedents of language.  On the other hand, LFG's rich conception of f-structure lends itself to a much more complete and computation-friendly formalization, which makes the theory more easily testable.  
+
+
+
+SiSx and LFG can, therefore, learn a lot from each other.  LFG can profit from SiSx's more ambitious aspiration of connecting linguistics to human biology. This implies seeking theories of language which are not only descriptively and explanatorily adequate, but which also offer the prospect of integration with plausible evolutionary scenarios. Simpler Syntax, in turn, can benefit from a number of the virtues found in LFG, such as: (i) the development of a formally precise and fully explicit architecture which can feed computational applications and simulations; (ii) the great variety of typologically oriented work which constantly submits the theory's formal assumptions to the test of descriptive adequacy (\bookorchapter{\partref{part:languages}}{Part VI}).
+
+Once SiSx and LFG assimilate each other's merits, some of the differences between them might diminish and some others might become even sharper. Regardless of the outcome, the process of cross-theoretical comparison is a fruitful one, as it often leads to formal innovations and surprising discoveries about the foundations of linguistic theory.  
+
+%go ``beyond explanatory adequacy'' \citep{chomsky2004beyond} in  in relation to plausible evolutionary scenarios. 
+
+
+
+
+%The alternative is to distribute the combinatorial properties of language among independent tiers and to regard phonology and semantics as generative systems in their own right. phonology and semantics are autonomous systems which are able to carry some (though not \textit{all}) of the explanatory burden for linguistic phenomena
+
+
+\section*{Acknowledgements}
+I would like to express my gratitude to Peter Culicover, Ray Jackendoff and Rafaela Miliorini for the constant dialogue and for the numerous comments on previous drafts of this chapter. I would also like to thank Bob Levine, Vitor Augusto Nóbrega and Symon Stevens-Guille for discussions about some of these topics, as well as Mary Dalrymple for the help with \LaTeX. This research was partially funded by CAPES  with a PROEX scholarship 88882.344838/2019-01, a PDSE scholarship 88881.189650/2018-01. and by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) – SFB 1412, 416591334.
+
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}

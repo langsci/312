@@ -1,0 +1,1293 @@
+\documentclass[output=paper]{../langscibook}
+\ChapterDOI{10.5281/zenodo.10185938}
+\title{Grammatical functions in LFG}
+\author{Oleg Belyaev\affiliation{Lomonosov Moscow State University, Institute of Linguistics of the Russian Academy of Sciences, and Pushkin State Russian Language Institute}}
+\abstract{Grammatical functions ({\GF}s) such as subject and object play a central role in the architecture of LFG, which makes it quite different from most other formal theories of grammar. In this chapter, I discuss the motivation behind this design decision and the ways in which grammatical functions are distinct from each other: their classification and the properties of certain individual {\GF}s, namely subjects, sentential complements (\COMP) and possessors. I also discuss the status of so-called overlay or discourse functions, which serve to specify the status of {\GF}s with respect to additional syntactic constraints.}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[4]%%chapternumber
+   \boolfalse{bookcompile}
+}{}
+
+\hypersetup{colorlinks=true, citecolor=brown, pdfborder={0 0 0}}
+
+\begin{document}
+\maketitle
+\label{chap:GFs}
+
+ \section{Introduction}
+
+One of the distinguishing features of LFG is that grammatical functions ({\GF}s) are first-class citizens of syntactic structure. The set of available {\GF}s is viewed as universal, and each \GF is associated with a distinct set of structural properties. Some syntactic rules and generalizations refer to individual {\GF}s directly; others refer to their relative ranking, but, unlike GB/Minimalism (\citetv{chapters/Minimalism}) or HPSG (\citetv{chapters/HPSG}), the ranking itself is directly stipulated and is secondary to grammatical function status. The list of grammatical functions used in most LFG work includes subjects (\SUBJ), direct objects (\OBJ), secondary objects ({\OBJTHETA} or {\OBJ2}), obliques ({\OBLTHETA}), and adjuncts (\ADJ), which are familiar from traditional grammar but given more exact definitions in LFG. This list is not arbitrary; it is motivated by the classification of grammatical functions into ungovernable (\ADJ) vs.\ governable functions, terms (\SUBJ and \OBJ) vs.\ non-terms, semantically restricted ({\OBJTHETA} and {\OBLTHETA}) vs.\ unrestricted; each class is associated with a distinct expected pattern of behaviour. The list of basic {\GF}s is also motivated by the regularity of mapping between semantic roles and their syntactic expression: the cross-classification of {\GF}s into two binary features [$\pm{o}$] and [$\pm{r}$] and the mapping principles assumed in Lexical Mapping Theory \citep{bresnan1989locative} correctly predict both the regular mappings and their possible permutations. More unusually, LFG also treats certain specialized grammatical functions -- namely, clausal complements (\COMP), possessors (\POSS) and sometimes nonverbal predicates (\textsc{predlink}) -- as theoretical primitives on par with subjects and objects.
+ 
+ LFG also uses \textsc{overlay functions} to represent the locus of long-distance dependencies like wh-extraction. These do not formally belong to the class of grammatical functions, but are similar in that they are occupied by the same f-structures that represent clausal participants. In earlier versions of LFG, most overlay functions were called ``discourse functions'' and also represented information structure notions such as topic and focus. In modern LFG, there is usually a separate level for information structure, and there is no need to duplicate it at f-structure. Instead, a single function, here called \textsc{dis}, is used for all long-distance dependencies; some authors postulate additional overlay functions to model other grammatical information, such as \PIVOT for ``pivots'' in \citet{falk06}. To the extent that overlay functions are related to grammatical functions, they will be discussed in this chapter; further information on overlay functions with respect to long-distance dependencies is found in \citetv{chapters/LDDs}.
+ 
+ In this chapter, I summarize the key elements of the LFG understanding of grammatical functions. In \sectref{sect:gfs:genconc}, I briefly discuss the formal status of grammatical functions and their role as syntactic primitives in LFG. In \sectref{sect:gfs:class}, I describe the main mechanism through which grammatical functions obtain their distinctive properties -- their hierarchical ordering and cross-classification. In \sectref{sect:gfs:main-gfs}, I turn to individual grammatical functions -- subjects, objects, and obliques -- and discuss their distinctive properties that do not follow from their classification or ranking in the hierarchy. Finally, in \sectref{sect:gfs:overlay}, I discuss overlay functions, which represent additional functions that link clausal participants to the wider sentential or discourse context.
+ 
+ \section{General concepts\label{sect:gfs:genconc}}
+ 
+ Grammatical functions in LFG represent all kinds of relations that syntactic dependents may have to their predicates. This includes both grammatical relations like subject, object, or adjunct and additional functions -- so-called overlay functions -- that situate the event participant in some wider cross-clausal or discourse context (e.g. \textsc{dis} for dislocated -- usually topicalized or focalized -- elements, or \textsc{relpro} for relative pronouns). The values of grammatical functions are normally also event participants -- thus, in the words of \citet{BresnanEtAl2016}, grammatical functions can be called ``the `relators' of c-structure to a[rgument]-structure'' (p.~94). However, this is not always the case: adjuncts do not appear at argument-structure, and expletive arguments, like \textit{it} in \textit{It rains}, are purely syntactic and do not correspond to any semantic argument. 
+ 
+ In formal terms, a \textsc{grammatical function} is any f-structure attribute that has an f-structure as its value\footnote{F-structures appear as values not exclusively with {\GF}s. For example, many authors, among others \citet{AV:LFG14} and \citet{haug-nikitina2015}, use the function \textsc{agr} as a ``bundle'' of agreement features that is an f-structure that never has a \PRED value and that is neither an argument nor an adjunct.} and whose occurence is governed by Completeness, Coherence, and Extended Coherence. Completeness requires that features listed as arguments in a \PRED feature value appear within the same f-structure as this \PRED. Coherence prevents governable {\GF}s  (see \sectref{sect:gfs:govern}) from appearing in f-structures where they are not listed in the \PRED value. Extended Coherence restricts the occurence of \textit{non-governable} {\GF}s: adjuncts and overlay functions. Adjuncts can only appear in f-structures that have a \PRED feature (regardless of its value), while overlay functions like \textsc{dis} (for dislocated constituents), \textsc{relpro} (relative pronouns), \textsc{topic}, and \textsc{focus} (see \sectref{sect:gfs:overlay}) must be linked to non-overlay functions through structure sharing or anaphora.
+ 
+
+ For example, (\ref{ex:gfs:peter-paul}) represents the f-structure of the sentence \textit{Peter met Paul in Rome}. The value of the feature \PRED includes, in angled brackets, the list of arguments that are required by the verb \emph{meet} -- in English, this is a transitive verb that selects a subject and an object. These arguments appear as the features \SUBJ and \OBJ that have f-structures representing the NPs \textit{Peter} and \textit{Paul} as their values. The PP \textit{in Rome} is not selected by the verb (its occurrence is not obligatory) and is represented as an element of the set-valued feature \ADJ, for adjunct. The preposition \textit{in}, which contributes semantic content, has its own f-structure with the feature \PRED whose value defines a valency for \OBJ. The nouns \textit{Peter}, \textit{Paul} and \textit{Rome} do not require any syntactic arguments, and hence their \PRED feature values lack a list of arguments in angle brackets. For more detail on how arguments and adjuncts are licensed at f-structure, see \citetv{chapters/CoreConcepts}.
+ 
+ \eabox{\label{ex:gfs:peter-paul}
+ \avm[style=fstr]{
+ [ pred & `meet\arglist{\SUBJ, \OBJ}'\\
+   tense & past\\
+   subj & [  pred & `Peter'\\
+                  pers & 3\\
+                  num & sg\\
+               ]\\
+   obj & [  pred & `Paul'\\
+                 pers & 3\\
+                 num & sg\\
+              ]\\
+   adj & \{[ pred & `in\arglist{\OBJ}'\\
+                  obj & [ pred & `Rome'\\
+                              pers & 3\\
+                              num & sg\\
+                            ]
+               ]\}\\
+ ]
+ }
+ }
+ 
+ The fact that dependents are represented as values of f-structure \textit{features} is not at all trivial. The term ``grammatical relations'' used in typology implies that arguments and clauses are viewed as \textit{objects} literally linked to each other via \textit{relations}. Thus, where LFG has ($f$ \SUBJ) = $g$ ($f$ is a function, \SUBJ is an argument, $g$ is the feature value), the intuitive tradition would rather have $\SUBJ(f) = g$ (\SUBJ is a function, $f$ is an argument, $g$ is the value). The LFG view has certain interesting consequences for the handling of many syntactic phenomena. For example, the \textsc{Coordinate Structure Constraint} \citep{ross1967constraints} has no special status in the framework -- its effects are of exactly the same nature as the scoping of grammatical features (such as mood or case) over conjuncts in coordinate structures. This is a direct consequence of the fact that grammatical functions such as \SUBJ or \OBJ are features in exactly the same sense as grammatical features such as \textsc{case} or \textsc{mood}; for more information, see \citetv{chapters/Coordination}.
+ 
+ A core tenet of LFG is that grammatical functions are theoretical primitives; their set is universal and their properties are not derived from other, more fundamental principles.\footnote{Lexical Mapping Theory \citep{bresnan1989locative} is sometimes interpreted as involving the decomposition of grammatical functions into bundles of two binary features: [$\pm{r}$], [$\pm{o}$], cf.\ e.g.: ``Basic argument functions are not atomic but decomposable into features'' \citep{kibort14}. Under this view, it is these features that are primitives, instead of {\GF}s. But lexical mapping theory can also be interpreted as a classification rather than an actual decomposition; this is the position taken, for example, in the Oxford Reference Guide to LFG \citep{DLM:LFG}.}
+ 
+ Viewing {\GF}s as primitives amounts to saying that neither phrase structure relations nor semantics are sufficient to account for all the properties of individual arguments. As discussed in \citetv{chapters/Intro} and \citetv{chapters/Cstr}, the mapping from c-structure to grammatical functions is relatively unconstrained. X$'${} Theory, in formulations like that of \citet{bresnan2001lexical} and \citet{BresnanEtAl2016}, does impose certain restrictions, but these are very general and do not impose any specific mapping. For example, it is assumed that complements of lexical projections map to grammatical functions, but no specific mapping is enforced: the complement of VP does not have to map to \OBJ, but can map to any grammatical function, even \SUBJ. Thus in \citet{King95}, all postverbal (contrastive) foci in Russian, including subjects (\ref{ex:gfs:contfocrus}), are analyzed as VP complements.
+ 
+ \ea\label{ex:gfs:contfocrus} Russian (Slavic > Indo-European)\\
+ \gll Evgenija Onegina napisal \textbf{Puškin}\\
+ E.:\textsc{acc} O.:\textsc{acc} wrote P.:\textsc{nom}\\
+ \trans `It was \textbf{Pushkin} who wrote ``Eugene Onegin''.'
+ \begin{forest}
+  [IP
+   [\annode{NP}{(\UP\OBJ) = \DOWN \\ (\UP\TOPIC) = \DOWN}
+      [\textit{Evgenija Onegina},roof]
+   ]
+   [\annode{I$'${}}{\UP=\DOWN}
+      [\annode{I}{\UP=\DOWN}
+         [\textit{napisal}]
+      ]
+      [\annode{VP}{\UP=\DOWN}
+         [\annode{NP}{(\UP\SUBJ)=\DOWN}
+            [\textit{Puškin},roof]
+         ]
+      ]
+   ]
+  ]
+ \end{forest}
+
+ \z
+ 
+ In fact, a consistent mapping cannot be assumed even in so-called configurational languages like English: while in English declarative sentences, objects appear in Comp of VP, the arrangement changes in interrogative sentences, where objects occupy the clause-initial position (Spec of CP or CP adjunct) but the Comp of VP is left empty. Since LFG uses no transformations or any similar mechanism, this has to be accounted for by positing a notion of grammatical function independent from c-structure position.
+ 
+ Grammatical functions are also distinct from semantic roles. A patient, for example, may map to either \OBJ (in the active voice) or \SUBJ (in the passive), as evidenced by its syntactic properties (e.g.\ control of verb agreement, reflexive binding). In LFG, these two sentence types are defined as two different \textit{lexical mappings} between semantic roles and {\GF}s. While in terms of argument structure, i.e.\ the mapping from semantic roles to {\GF}s, the passive is treated as derivative to the active, at f-structure passive subjects are genuine, first-class subjects that are not derived from objects in any sense.
+ 
+ Finally, grammatical functions cannot be equated to case marking or another argument encoding mechanism, such as verb agreement. First of all, there are many languages which completely lack both agreement and case marking, but which nevertheless display evidence for grammatical functions. Thus Mandinka (Mande > Niger-Congo), which lacks both case marking and verbal indexing, nevertheless displays a distinction between the subject (sole argument of intransitive verbs, i.e.\ S in typological terminology, and the agent of transitive verbs, i.e.\ A) and all other arguments in a number of different constructions \citep{creissels2019}. For instance, pronominal resumption in relative clauses is only available for non-subject arguments. In (\ref{ex:gfs:mandinka}a) and (\ref{ex:gfs:mandinka}b), subjects (S and A arguments, respectively) are relativized, and the resumptive pronoun \textit{à} cannot appear in the subordinate clause in the normal subject position; the subject is represented by a gap. In contrast, in (\ref{ex:gfs:mandinka}c), it is the object that is relativized, and the pronoun \textit{à} may (optionally) appear in the object position after the verb. 
+ 
+ \ea\label{ex:gfs:mandinka} Mandinka (Mande > Niger-Congo: \citealt[339]{creissels2019})
+   \ea S relativized: resumption ungrammatical\\
+   \gll mùs-ôo \textbf{míŋ} (*\textbf{à}) táa-tá fàr-ôo tó\\
+   woman-\textsc{det} \textsc{rel} \phantom{(*}\textsc{3sg} go-\textsc{compl.pos} rice.field-\textsc{det} \textsc{loc}\\
+   \trans `the woman \textbf{who} went to the rice field'
+   
+   \ex A relativized: resumption ungrammatical\\
+   \gll mùs-ôo \textbf{míŋ} (*\textbf{à}) yè fǎaŋ-ó tǎa\\
+   woman-\textsc{det} \textsc{rel} \phantom{(*}\textsc{3sg} \textsc{compl.pos} cutlass-\textsc{det} take\\
+   \trans `the woman who took the cutlass'
+   
+   \ex P relativized: resumption possible\\
+   \gll fǎaŋ-ò \textbf{míŋ} mùs-ôo yè \textbf{à} tǎa\\
+   cutlass-\textsc{det} \textsc{rel} woman-\textsc{det} \textsc{compl.pos} \textsc{3sg} take\\
+   \trans `the cutlass that the woman took'
+   \z
+ \z
+ 
+ Furthermore, case marking or agreement do not always consistently identify specific grammatical functions. For example, in Icelandic \citep{Andrews82} agreement is always with the nominative argument, but subjects can be non-nom\-i\-na\-tive. Many languages with differential object marking (DOM) allow nominative objects \citep{DN}. For example, in Ossetic, human objects are normally genitive-marked (\ref{ex:gfs:oss-gendo}) and inanimate objects are nominative-marked (\ref{ex:gfs:oss-nomdo}), i.e.\ the case marking of subjects and objects can be identical.
+ 
+ \ea Ossetic (Iranian > Indo-European)
+ \ea\label{ex:gfs:oss-gendo} Human P: genitive\\
+ \gll alan \textbf{šošlan-ə} fetː-a\\
+ {} S.-\textsc{gen} see.\textsc{pfv-pst.3sg}\\
+ \trans `Alan saw \textbf{Soslan}.'
+ 
+ \ex\label{ex:gfs:oss-nomdo} Inanimate P: nominative\\
+ \gll alan \textbf{štʼol} fetː-a\\
+ {} table see.\textsc{pfv-pst.3sg}\\
+ \trans `Alan saw \textbf{a/the table}.'
+ \z
+ \z
+ 
+ Of course, this is not to say that grammatical functions never systematically correspond to any syntactic or morphological marking; if they did not, there would be no means of identifying them. The point of treating grammatical functions as primitives is that we \emph{cannot}, as a general rule, reduce them to any other linguistic phenomena such as case marking or word order. This logic is in line with the general spirit of LFG, which can be termed ``anti-reductionist'' in that it strives to factorize grammatical phenomena into distinct notions responsible for distinct patterns of behaviour, which may or may not correlate systematically across languages. Thus, in the LFG treatment of argument encoding, constituent structure, semantic roles, and case marking are all formally independent from each other. The framework itself puts no constraints on their relationship; it is the task of the theorist to establish how exactly they can or cannot correlate, both cross-linguistically and within individual languages.
+ 
+ We also have to assume, as a working hypothesis, that individual grammatical functions are associated with core sets of syntactic properties that are relatively stable across languages. If this is not the case, then using such terms as ``subject'' or ``direct object'' as anything more than convenient language-internal labels is not justified. This issue is still at the centre of much typological discussion, cf.\ the overview in \citet{bickel2010-gramrel}. In many syntactic frameworks, grammatical functions only exist, at best, in the form of an ordering relation among arguments -- this is true at least for most variants of HPSG \citep{pollard1994head-driven,mue:etal:21:ed} and Simpler Syntax (\citealt{culicover2005simpler}, \citetv{chapters/SimplerSyntax}). Thus, in recent versions of HPSG there is a list \textsc{arg-st} (or \textsc{deps}) containing all verbal arguments; the subject is the first element of this list, the direct object, the second, and so on, generally according to the Keenan--Comrie hierarchy \citep{keenan1977noun}. In many instances, both approaches make the same predictions, because in LFG the \GF hierarchy also plays a major role (see \sectref{sect:gfs:hier}); for example, in both LFG (\citetv{chapters/Anaphora}) and HPSG \citep{mul:bra:20}, anaphoric relations are licensed by the relative ranking of verbal arguments. But the key practical difference is that in HPSG or Simpler Syntax, distinctive properties are not associated with individual grammatical functions. For example, in LFG it is possible to analyze sentences as having only a subject (\SUBJ) and a secondary object ({\OBJTHETA}, without a primary \OBJ) when the ``second-ranking'' argument is deemed to lack features commonly associated with direct objects. This is done, for example, for certain classes of predicates in Plains Cree \citep{dahlstrom2009} and for unmarked direct objects in differential object marking systems in the analysis of \citet{DN}. Even subjectless sentences are possible if the highest-ranking argument lacks properties that are associated with subjecthood \citep{Kibort2006}. The standard LFG analysis of complementation (\sectref{sect:gfs:complementation}) also relies on the grammatical functions \COMP and \XCOMP (for clausal complements) being distinct from \OBJ \citep{DL00,AMM05}.  All of this would be impossible if grammatical functions were just an issue of ranking.
+ 
+ While {\GF}s have been a cornerstone of LFG since its inception, a variant of this framework without the traditional notion of \GF is also conceivable. Such an attempt was made in \citet{patejuk2016reducing}, who propose replacing features such as \SUBJ, \OBJ and \textsc{adjunct} with an ordered set \textsc{deps} in the style of HPSG. A detailed counterargument to this proposal can be found in \citet{kapl:17}.
+ 
+ In the following sections, I will describe the standard view of grammatical functions in current LFG: their inventory, their classification, and the properties of the core grammatical functions.
+ 
+ 
+ \section{The classification of grammatical functions\label{sect:gfs:class}}
+
+ \subsection{General remarks}
+ 
+ LFG generally operates with the following set of grammatical functions (with the addition of overlay functions, which will be discussed in \sectref{sect:gfs:overlay}): 
+ 
+ \ea\label{ex:gfs:list-gfs}
+    \begin{tabular}[t]{ll}
+     \SUBJ & subject\\
+     \OBJ & object\\
+     {\OBJTHETA} & secondary object\\
+     {\OBLTHETA} & oblique\\
+     \textsc{comp (xcomp)} & complement (closed/open)\\
+     \textsc{predlink} & nonverbal predicate in copular constructions\\
+     \textsc{adj (xadj)} & adjunct (closed/open)\\
+     \POSS & possessor\\
+    \end{tabular}
+ \z
+ 
+ The θ in {\OBJTHETA} and {\OBLTHETA} represents the particular semantic role that is filled by the argument. For example, a secondary object and an oblique with the semantic role Goal will be called {\OBJROLE{goal}} and {\OBLROLE{goal}}, respectively. Thus {\OBJTHETA} and {\OBLTHETA} are not individual {\GF}s but ``families'' of {\GF}s associated with particular semantic roles, but sharing some common properties. The main motivation for this will be discussed in \sectref{sect:gfs:semrest}.
+ 
+
+ As discussed above, {\GF}s in LFG are theoretical primitives on a par with such entities as constituents, or morphosyntactic or phonological features. Such primitives are never given definitions or identified on the basis of a fixed set of tests or criteria; rather, they are associated with a set of properties and used as building blocks for hypotheses whose predictions are to be tested. But this does not mean that the list of {\GF}s in (\ref{ex:gfs:list-gfs}) is completely arbitrary. On the contrary, in the following sections I will show how the core {\GF}s (\SUBJ, \OBJ, {\OBJTHETA}, {\OBLTHETA}, \ADJ) are mostly distinguished on the basis of three classifications: ungovernable (\ADJ) vs.\ governable, term (\SUBJ, \OBJ, {\OBJTHETA}) vs.\ non-term, semantically unrestricted (\SUBJ, \OBJ) vs.\ restricted. This only leaves the distinction between \SUBJ and \OBJ\ -- two semantically unrestricted terms -- unspecified, but these can be distinguished on the basis of the subject having a higher structural priority.
+ 
+ This classification is complemented by a different but related cross-classifica\-tion from the Lexical Mapping Theory (LMT,  \cite{bresnan1989locative}) based on two features: [$\pm{r}$] (for ``(semantically) restricted'') and [$\pm{o}$] (for ``objective''), seen in (\ref{ex:gfs:cross-class}).
+ 
+ \eabox{\label{ex:gfs:cross-class}
+ \begin{tabular}{ccc}
+ \toprule
+  & \textbf{$-r$} & \textbf{$+{r}$}\\
+  \midrule
+  \textbf{$-{o}$} & \SUBJ & {\OBLTHETA} \\
+  \textbf{$+{o}$} & \OBJ & {\OBJTHETA} \\
+  \bottomrule
+ \end{tabular}
+ }
+ 
+ This classification produces a markedness hierarchy of grammatical functions: \SUBJ [$-r$, $-{o}$] $<$ \OBJ [$-r$, $+{o}$],  {\OBLTHETA} [$+{r}$, $-{o}$]  $<$ {\OBJTHETA} [$+{r}$, $+{o}$] \citep{BresMosh90}. This hierarchy, together with the mapping principles, ensures the correct default mapping of semantic roles to grammatical functions. It also predicts the possible ways of remapping grammatical functions in passives, causatives and applicatives, although the details differ across variants (e.g. some versions of LMT allow mapping agents to \OBJ and some do not). It should be stressed that LMT does not \textit{directly} provide evidence for the set of grammatical functions, because in LFG the theory of f-structure and the theory of the mapping from semantic roles to f-structure are formally independent: one can analyze {\GF}s without adopting any particular theory of how they are mapped to semantic roles. But indirectly, the cross-classification of core {\GF}s can serve as an independent justification for their inventory. For more information on mapping principles in LFG, see \citetv{chapters/Mapping}.
+ 
+
+ \subsection{Functional hierarchy\label{sect:gfs:hier}}
+ 
+ The most fundamental distinction between grammatical functions is the universal functional hierarchy in (\ref{ex:gfs:gf-hierarchy}), which is the LFG version of the Keenan-Comrie Hierarchy \citep{keenan1977noun}.\footnote{The difference from Keenan and Comrie is mainly in the terminology ({\OBJTHETA} for what they call indirect object), but also in the split between \OBJ and \textsc{(x)comp} and the addition of adjuncts at the bottom of the hierarchy. Objects of comparison are not viewed as a special grammatical function in LFG and are therefore not included. Also, while Keenan and Comrie include genitive possessors, this is not done in LFG because possessors do not directly compete with clausal arguments and are somewhat special; they are discussed in \sectref{sect:gfs:poss}.}
+ 
+ \ea\label{ex:gfs:gf-hierarchy}
+ \SUBJ > \OBJ > {\OBJTHETA} > \COMP, \XCOMP > {\OBLTHETA} > \ADJ, \textsc{xadj}
+ \z
+ The Keenan-Comrie Hierarchy was originally devised as a typological hierarchy that constrains the range of possible grammatical functions that the relativized argument can occupy in the relative clause. It is now widely acknowledged that the same hierarchy can determine a number of grammatical processes within a single language. Phrase-structure-based frameworks try to account for such generalizations by reducing the hierarchy to differences in phrase structure configuration. For example, asymmetries in anaphoric binding are typically described in terms of c-command \citep{chomsky1982some}. In LFG, most such constraints, if they are indeed syntactic,\footnote{For many phenomena, it is not easy to decide whether the constraints should be formulated in terms of syntax, semantics, or both; in many ways this rests on the particular theories of the two and the syntax--semantics interface. For example, while mainstream generative grammar is notoriously syntactocentric, Simpler Syntax represents another extreme, where syntactic structure includes only a very basic notion of grammatical relations, and most of the work that is done by f-structure is assigned to a (very elaborate) semantic structure. As an illustration of the relationship between Culicover and Jackendoff's approach and LFG, \citet{belyaev2015} shows that the criteria that \citet{culicover-jackendoff1997} consider to be semantic are captured at the f-structure level in LFG.} are described in terms of f-structure.\footnote{It has been argued that anaphora is sometimes directly constrained by linear precedence, e.g. for Malayalam in \citet{mohanan1982}. In LFG, this has been modeled using the f-precedence relation (\cite{kaplan-zaenen1989-fprec}, also see \citetv{chapters/CoreConcepts}) by essentially stating that the c-structure nodes that map to the f-structure of the antecedent must precede the c-structure nodes that map to the f-structure of the anaphoric expression. Notably, the starting point is still the f-structure and the c-structure is only accessed through inverse mapping.} Thus, the relation of c-command is replaced by the relation of outranking in the hierarchy in (\ref{ex:gfs:gf-hierarchy}): see \citetv{chapters/Anaphora}.
+ 
+ \subsection{Governable and ungovernable {\GF}s\label{sect:gfs:govern}}
+ 
+ As stated above, most {\GF}s are \textsc{governable}: that is, in LFG terms, they must appear in the list of arguments in the \PRED value of their f-structure in order to be licensed. The \PRED value is usually that of a verb or other clausal predicate, as in (\ref{ex:gfs:mary-ran}), which is the f-structure of the sentence \textit{Mary ran quickly}.
+ 
+ \eabox{\label{ex:gfs:mary-ran}
+ \avm[style=fstr]{
+ [
+ pred & `run\arglist{subj}'\\
+ tense & past\\
+ subj & [
+               pred & `Mary'\\
+               pers & 3\\
+               num& sg\\
+             ]\\
+ adj & \{[ pred & `quickly' ]\}\\
+ ]
+ }
+ }
+ 
+ \noindent In this sentence, \SUBJ is a governable \GF that appears in the argument list in \PRED. The f-structure for \emph{quickly} appears as the value of the \GF \ADJ, which is ungovernable and is not licensed by the \PRED value.
+ 
+ If a governable \GF is included in the list of arguments in \PRED but has no value, Completeness is violated; conversely, if a governable \GF is present but not included in the list, Coherence is violated. Modifiers (\ADJ and \textsc{xadj}) are the only {\GF}s which are ungovernable. The only condition on their occurence is that the f-structure in which they appear should have \textit{some} \PRED value.\footnote{This constraint is part of \textit{extended coherence} \citep{BresnanEtAl2016}, which is not accepted by all LFG practitioners as a universal well-formedness condition. While the notion that only f-structures with \PRED values can have modifiers is intuitively plausible, it is difficult to find empirical justification for this condition on adjuncts, since \PRED-less f-structures normally correspond either to expletive pronouns or heads of categories like P, which both tend not to attach any modifiers at c-structure. Violation of extended coherence might be relevant for languages where some adpositions have \PRED values and some do not; only the former would then be able to have adjuncts.}
+ 
+ Determining the status of the dependents of a given predicate is not trivial in general, but especially in LFG because of its rigid separation between levels. Two distinctions are especially important for LFG: between semantic and syntactic argumenthood, because semantic arguments are not necessarily expressed as arguments in syntax, and vice versa (\sectref{sect:gfs:semsynarg}), and between arguments and adjuncts in syntax, whose status does not necessarily correlate with semantic argumenthood and adjuncthood (\ref{sect:gfs:argadj}).
+ 
+ \subsubsection{Semantic and syntactic arguments\label{sect:gfs:semsynarg}}
+ First of all, one must clearly differentiate between \textit{semantic} argumenthood and \textit{syntactic} argumenthood. Syntactic arguments may have no semantic counterparts; such is the case of subjects of verbs like \textit{rain}, or ``raised'' subjects and objects like \textit{John} in \textit{John seemed to come} or \textit{David} in \textit{I saw David come} (functionally controlled in LFG terms). In LFG, such ``non-arguments'' are notated as being outside the angled brackets in the argument list of the \PRED feature value, e.g. \textsc{`rain\arglist{~}subj'} or \textsc{`believe\arglist{subj xcomp}obj'}. This effectively makes f-structure include semantic information. As discussed in \citetv{chapters/CoreConcepts}, in modern Glue Semantics-based approaches, it is possible to either completely eliminate \PRED features from the syntax or at least remove semantic role information, which would make the separation between syntax and semantics more clear-cut.
+ 
+ Conversely, a semantic argument might have no syntactic expression. For example, unspecified object deletion or antipassivization can turn a transitive verb into an intransitive one that only has a single argument, the agent (\textit{We ate a meal.} → \textit{We ate.}). The semantic predicate `eat', and the corresponding real-life event, clearly have a patient participant regardless of whether it is syntactically expressed, and this omitted participant will be interpreted in some way. But there is broad consensus in the literature (see \cite{melchin2019}) that unspecified objects are not present in syntax in any form. In LFG, this means that they are both absent as constituents in c-structure, and as {\GF}s in f-structure, because f-structure is a syntactic level that does not directly reflect the thematic roles of the arguments.\footnote{The mapping from semantic roles to {\GF}s is handled in LFG by a separate component, Linking Theory. In the most widespread variant of Linking Theory, Lexical Mapping Theory, unspecified object deletion is captured by suppressing the realization of the patient argument, i.e.\ preventing it from being mapped to any \GF. See \citetv{chapters/Mapping} for further explanation.}
+ 
+ It is important to distinguish such cases of true omission of semantic arguments at f-structure from cases where arguments do not overtly appear at c-structure but are still present at f-structure. Two widespread cases when this occurs are pro-drop (like in Italian \textit{ha vinto} lit. `has won' = `s/he has won') and raising (\textit{John seems to have won}, where \textit{\textit{to have won}} appears to lack a subject). The ``little \textit{pro}'' analysis of null subjects in languages like Italian has been assumed at least since \citet{perlmutter1971} and is supported by much empirical evidence, such as the possibility of controlling PRO, serving as the antecedent of anaphors, controlling agreement etc. that is well-known from basic syntax textbooks and need not be repeated here. This evidence is also valid in LFG and leads one to conclude that while \textit{pro} is not needed at c-structure, it has to be present at f-structure in subject position.  Similarly, ``raised'' (functionally controlled) arguments overtly appear in main clauses but still have to satisfy the subcategorization constraints of the embedded clause. In the LFG analysis of raising, one f-structure is shared between the main clause subject or object and the subject of the embedded clause. Therefore, both components of the functional control relation are present in the syntax as arguments of their respective clauses; see \sectref{sect:gfs:comp-xcomp} and \citetv{chapters/Control} for more detail. 
+ 
+ \subsubsection{Arguments and adjuncts\label{sect:gfs:argadj}} In one form or another, the problem of arguments vs.\ adjuncts is relevant for all grammatical frameworks, but LFG is special in that it treats the syntactic distinction between arguments and adjuncts as fully separate from the homonymous semantic distinction. The syntactic distinction between arguments and adjuncts also does not exist in other frameworks in the same form; for example, the HPSG approach is typically to include all verbal dependents in an ordered list \textsc{deps}. This means that semantic subcategorization and semantic obligatoriness cannot be used as reliable criteria by themselves: it was shown above that semantic arguments might not correspond to any \GF in syntax. Similarly, some analyses treat passive agents as adjuncts, in spite of their semantic argumenthood. The issue is further complicated by the fact that additional, derived arguments that are not present in the lexical entry of the predicate can be introduced in the syntax \citep{needham:arguments}. Hence, criteria for distinguishing between arguments and adjuncts must be purely syntactic.
+ 
+ The main empirical difference between arguments and adjuncts can be formulated in terms of \citeauthor{dowty1982}'s (\citeyear{dowty1982}) \textit{subcategorization test}: modifiers, but not arguments, can be omitted. In a theory like LFG which uses no empty heads (see \citetv{chapters/CoreConcepts}), this criterion is clearly not general enough, because grammatical functions that are present at f-structure may lack a realization at c-structure, e.g. under pro-drop (see \sectref{sect:gfs:semsynarg} above). Normally, the presence of such ``null'' elements like \textit{pro} and their features is reflected in the morphology through agreement or argument incorporation, although some languages, like Japanese, are notorious for allowing almost unrestricted pro-drop --- for these languages, distinguishing between arguments and adjuncts using the subcategorization test is especially problematic.
+ 
+ Another truly syntactic criterion is that adjuncts can be freely multiplied in any number, whereas arguments cannot \citep[40]{kaplanbresnan82}:
+ 
+ \ea
+    The girl handed the baby a toy \textbf{on Tuesday}\textsubscript{\ADJ} \textbf{in the morning}\textsubscript{\ADJ}.
+    
+    \ex[*]{
+    The girl saw \textbf{the baby}\textsubscript{\OBJ} \textbf{the boy}\textsubscript{\OBJ}.}
+ \z
+  Crucially, the multiplication test is only relevant for adjuncts \textit{of the same type}. While a clause may have at most one subject and object, it may have several obliques or indirect objects (as elaborated in sections \ref{sect:gfs:obl} and \ref{sect:gfs:obj2} below). But there can still be only one indirect object or oblique with the same semantic role:
+ 
+ \ea[*]{
+    John went to Moscow to Red Square.}
+ \z
+ 
+ Other criteria have to do with the specific understanding of grammatical functions in LFG, their relative ordering and the licensing of long-distance dependencies. For example, some pronouns, such as the reflexive pronoun \textit{seg selv} in Norwegian, are specifically limited in their coreference to coarguments \citep{Hellan88}, and therefore cannot occur in adjunct position. The examples in (\ref{ex:gfs:norw}) are cited from \citet{DLM:LFG}. In (\ref{ex:gfs:norw}a) this reflexive is a direct object that is coreferent to the subject -- both are arguments. Similarly, in (\ref{ex:gfs:norw}b), the reflexive is used in a PP that is an oblique argument selected by the verb `tell'. But in (\ref{ex:gfs:norw}c), the prepositional phrase containing the reflexive is not an argument of the predicate and thus it cannot have the subject as its antecedent. Thus the cut-off point in the hierarchy in (\ref{ex:gfs:gf-hierarchy}) for \textit{seg selv} is just to the left of \textsc{adj, xadj}.
+ 
+ \ea\label{ex:gfs:norw} Norwegian (Germanic > Indo-European)\\
+ \ea
+    \gll Jon forakter \textbf{seg selv}.\\
+    Jon despises self\\
+    \glt `Jon$_i$ despises \textbf{himself}$_i$.'
+    
+    \ex
+    \gll Jon fortalte meg \textbf{om} \textbf{seg selv}.\\
+    Jon told me about self\\
+    \glt `Jon$_i$ told me \textbf{about himself}$_i$.'
+    
+    \ex[*]{
+    \gll Hun kastet meg \textbf{fra} \textbf{seg selv}.\\
+    she threw me from self\\
+    \glt (`She$_i$ threw me away \textbf{from herself}$_i$.')
+    }
+    \z
+ \z
+ 
+ It is also widely assumed in the literature that wh-extraction from adjuncts is impossible \citep{pollardsag87,huang82,rizzi1990}. However, this constraint does not seem to be cross-linguistically universal, or at least it does not apply to all types of modifiers. For example, while in English extraction from clausal adjuncts is prohibited (\ref{ex:gfs:when-extract}), extraction from PPs is allowed (\ref{ex:gfs:pp-extract}).
+ 
+ \ea[*]{\label{ex:gfs:when-extract}
+    \textbf{Which man} did John leave when he saw {\GAP}?}
+    \ex\label{ex:gfs:pp-extract} \textbf{Which bed} did David sleep \textbf{in} {\GAP}?
+ \z
+ 
+ \subsection{Terms and non-terms\label{sect:gfs:terms}}
+ 
+ Another distinction is between core arguments, or terms, and non-core arguments, or non-terms.
+ 
+ \ea\label{ex:gfs:terms}
+ $\underbrace{\SUBJ > \OBJ > {\OBJTHETA}}_{\text{terms}} > \COMP, \XCOMP > {\OBLTHETA} > \ADJ, \textsc{xadj}$
+ \z
+ 
+ There is no universal set of tests that distinguishes between terms and non-terms, but a number of constructions in different languages are systematically sensitive to this distinction; see \citet{Alsina:PhD} for a detailed discussion of termhood. Some of these constraints are discussed in the following sections.
+ 
+ \subsubsection{Agreement} In many languages, verb agreement seems to be only possible with terms, that is, subjects, objects or secondary objects. The idea goes back at least to \citet[157]{johnson1977}, where it is called the Agreement Law. It has the same status in Relational Grammar \citep{frantz1981}. Agreement with subjects is very widespread; many languages also have (obligatory or optional) agreement with direct objects; the map in WALS \citep{siewerska2013} cites 193 languages with both subject (A/S) and object (P) agreement out of a sample of 378. Object-only (or rather, P/S) agreement is considerably less common, exhibited by only 24 languages in the above-mentioned sample.  Indexing other arguments is even more rare, but some languages, like Basque (isolate), also agree with secondary objects. As seen in (\ref{ex:gfs:basqueagr}), finite ditransitive verbs in Basque agree with the ergative (\SUBJ), absolutive (\OBJ) and dative ({\OBJTHETA}) arguments in person and number.
+ 
+ \ea\label{ex:gfs:basqueagr}
+ Basque (isolate)\\
+ \gll d-a-kar-ki-da-zu\\
+ \textsc{3sg.abs-prs}-bring-\textsc{dat-1sg.dat-2sg.erg}\\
+ \trans `you bring it to me' \citep[209]{hualde-etal2003}\\
+ \z
+ 
+
+ From current LFG literature, it is unclear whether the restriction of agreement to terms is a theoretical postulate or an empirical observation, since the termhood of agreement controllers is usually confirmed by independent syntactic evidence.
+ 
+ \subsubsection{Control}\label{sec:GFs:Control} Cross-linguistically, only terms tend to be controllers or controllees in control constructions, both lexically determined (clausal complements) and not (clausal adjuncts).  For instance, \citet{Kroeger93} shows that in Tagalog, only terms can be anaphoric controllees\footnote{On the distinction between anaphoric and functional control (``raising'') in LFG, see \sectref{sect:gfs:comp-xcomp} below and \citetv{chapters/Control}.} in participial complement constructions and controllers in adjunct constructions. According to Kroeger, voice suffixes in Tagalog promote any argument to subject status, and the erstwhile subject (the agent) becomes an {\OBJTHETA} (see an illustration in (\ref{ex:gfs:tagalog}) below).\footnote{Such arguments must be treated as secondary objects because they are marked by the same genitive proclitic \textit{ng=} that marks direct objects, which do not change their mapping when an agent is demoted.} Thus, (\ref{ex:gfs:tag-av}) illustrates the verb `read' in the active voice; the controller is the subject. In (\ref{ex:gfs:tag-ov}), the verb `read' is marked by the ``object voice'' suffix: the Patient is promoted to subject status and carries the nominative proclitic \textit{ang=}. The controllee is still the Agent, which in this example is demoted to {\OBJROLE{ag}}. Finally, (\ref{ex:gfs:tag-obl}) shows that obliques, i.e.\ arguments that are not subjects, direct objects or demoted agent-like arguments in voice constructions, cannot be controllees, even if they have the same semantic role Agent.
+ 
+ \ea\label{ex:gfs:tag-av}
+ Tagalog (Malayo-Polynesian > Austronesian)\\
+ \gll In-abut-an ko siya=ng [ nagbabasa {\GAP}\textsubscript{\SUBJ} ng=komiks sa=eskwela].\\
+ \textsc{pfv}-find-\textsc{dv} \textsc{1sg.gen} \textsc{3sg.nom=comp} {} \textsc{av.ipfv}.read {} \textsc{gen}=comics \textsc{dat}=school\\
+ \trans `I caught him reading a comic book in school.' (\cite{Kroeger93}, via \cite[16]{DLM:LFG})
+ 
+ \ex\label{ex:gfs:tag-ov}
+ \gll In-iwan-an ko siya=ng [ sinususulat {\GAP}\textsubscript{{\OBJROLE{ag}}} ang=liham].\\
+ \textsc{pfv}-leave-\textsc{dv} \textsc{1sg.gen} \textsc{3sg.nom=comp} {} \textsc{ipfv}.write.\textsc{ov} {} \textsc{nom}=letter\\
+ \trans `I left him writing the letter.' (\cite{Kroeger93}, via \cite[16]{DLM:LFG})\\
+ 
+ \ex\label{ex:gfs:tag-obl}
+ \gll *In-abut-an ko si=Luz na [ ibinigay ni=Juan ang=pera {\GAP}\textsubscript{\OBLROLE{goal}}].\\
+ \phantom{*}\textsc{pfv-}find-\textsc{dv} \textsc{1sg.gen} \textsc{nom=}Luz \textsc{link} \textsc{} \textsc{iv.ipfv.}give \textsc{gen=}Juan \textsc{nom=}money {}\\
+ \trans (`I caught Luz being given money by Juan.') (\cite{Kroeger93}, via \cite[16]{DLM:LFG})\\
+ \z
+
+ Similarly, \citet{kibrik2000} argues that in Archi (Lezgic > East Caucasian), any of the core arguments / terms (subject or direct object) can be the controllee in control constructions.
+ 
+ \subsubsection{Reflexivization\label{sect:gfs:term-refl}}
+ 
+  \citet{kibrik2000} in fact claims that not only control constructions, but most constructions in Archi do not single out any argument beyond the term vs. non-term distinction. He shows that possessive reflexives can be controlled by the subject or direct object (i.e. A, S or P), in any direction (\ref{ex:gfs:archi1}), but not by non-core-arguments (\ref{ex:gfs:archi2}).
+ 
+ \ea Archi (Lezgic > East Caucasian)\\
+ \ea\label{ex:gfs:archi1}
+ \gll tow-mu$_i$ žu-n-a-ru$_i$ łːonnol a$<${r}$>$č-u\\
+ he-\textsc{erg} self-\textsc{gen-emph-cl2} wife(\textsc{cl2}) \arglist{\textsc{cl2}}kill-\textsc{prf}\\
+ \trans `He$_i$ (pron., erg.) killed his (refl.) wife$_i$ (abs.).' (A > P)
+ 
+ \ex
+ \gll tor$_i$ že-n-a-w$_i$ bošor-mu a$<${r}$>$č-u\\
+ she self-\textsc{gen-emph-cl1} husband(\textsc{cl1})-\textsc{erg} \arglist{\textsc{cl2}}kill-\textsc{prf}\\
+ \trans `Her$_i$ (refl.) husband (erg.) killed her (pron., abs.).' (P > A) \\\hspace*{\fill}\citep[62]{kibrik2000}
+ \z
+ \z
+ 
+ \ea\label{ex:gfs:archi2}
+ \ea
+ \gll tow$_i$ žu-n-a-bu$_i$ abej.me-tːi-š kʼolma-ši w-i\\
+ he self-\textsc{gen-emph-cl1.pl} parents(\textsc{cl1.pl})-\textsc{super-el} separate-\textsc{adv} \textsc{cl1}-be.\textsc{prs}\\
+ \trans `He$_i$ (pron., abs.) lives apart from his$_i$ (refl.) parents.' (\SUBJ > \textsc{obl}) (ibid.)
+ 
+ \ex 
+ \gll *tow.mu-tːi-š$_i$ žu-n-a-bu abaj kʼolma-ši b-i\\
+ \phantom{*}he-\textsc{super-el} self-\textsc{gen-emph-cl1.pl} parents(\textsc{cl1.pl}) separate-\textsc{adv} \textsc{cl1}-be\textsc{.prs}\\
+ \trans (`His$_i$ (refl.) parents (abs.) live apart from him$_i$ (pron., abs.).') (\textsc{obl} > \ABS) (ibid.)
+ \z
+ \z
+ 
+ \noindent Therefore, while subject-oriented reflexives are found in many languages (see \cite{dalrymple1993} and \citetv{chapters/Anaphora}), Archi is different in having subject \textit{and} object, i.e.\ term-oriented, reflexives.
+ 
+ \subsection{Semantically restricted and unrestricted arguments\label{sect:gfs:semrest}}
+ 
+ The classification of {\GF}s into terms and non-terms allows us to distinguish between subjects, objects and all other grammatical functions. But the difference between ``primary'' and ``secondary'' objects (\OBJ and {\OBJTHETA}) remains undefined. This distinction is captured by another classification of {\GF}s into semantically restricted and unrestricted arguments:
+ 
+ \ea\label{ex:gfs:restr}
+ $\underbrace{\SUBJ > \OBJ}_{\text{semantically unrestricted}} > {\OBJTHETA} > \COMP, \XCOMP > {\OBLTHETA} > \ADJ, \textsc{xadj}$
+ \z
+  As mentioned above, θ in the \GF names {\OBJTHETA} and {\OBLTHETA} stands for a particular thematic role that is filled by this argument. Thus they are families of {\GF}s, each of which is associated with a particular semantic role: {\OBLROLE{goal}}, {\OBJROLE{theme}}, etc. In this, they are contrasted with subjects  (\SUBJ) and direct objects (\OBJ), which do not have this additional qualifier attached to them.
+
+ The specific list of thematic roles is not agreed upon in LFG. In the case of \OBJTHETA and \OBLTHETA, it is not even clear whether the roles that appear in θ are universal or language-specific (the fact that θ is often equivalent to the \textsc{pcase} value supplied by an adposition suggests the latter). For more information on the mapping from thematic roles to {\GF}s, see \citetv{chapters/Mapping}.
+ 
+ A consequence of the distinction between semantically restricted and semantically unrestricted {\GF}s is the fact that only the latter can be non-arguments at the semantic level; the former must be assigned some thematic role. This, in turn, predicts that, first, arguments lacking any semantic role (expletives or dummy arguments) like English \textit{it} or \textit{there} (such as in \textit{It rained}) can only appear in subject or direct object position; second, that ``raising'' (functional control in LFG terms) is only possible when the matrix clause position is \SUBJ or \OBJ.
+ 
+ In what follows, I will discuss the motivation for treating each of these {\GF}s as semantically restricted or unrestricted in detail.
+ 
+ \subsubsection{Unrestricted {\GF}s}
+ 
+ \paragraph{Subjects}
+
+ One of the key features of subjects is that they are not restricted to one semantic role \citep{fillmore:case}. The semantic unrestrictedness of subjects is perfectly illustrated by the existence of passive constructions: the same lexical verb can have either the Agent (in the active voice) or the Patient (in the passive voice) as its subject. Some languages go even further and allow promoting any argument to subject status if it has discourse prominence, or for syntactic reasons. One such language is Tagalog, where the voice suffix on the verb determines which argument bears the \SUBJ \GF, according to the analysis in \citet{Kroeger93}: 
+ 
+ \newpage
+ \ea\label{ex:gfs:tagalog} Tagalog (Greater Central Philippine > Austronesian)
+    \ea active voice\\
+    \gll B<um>ili \textbf{ang=lalake} ng=isda sa=tindahan.\\
+    <\textsc{prf.av}>buy \textsc{nom}=man \textsc{gen}=fish \textsc{dat}=store\\
+    \glt `\textbf{The man} bought fish at the store.'
+    
+    \ex objective voice\\
+    \gll B<in>ili-∅ ng=lalake \textbf{ang=isda} sa=tindahan.\\
+    <\textsc{prf}>buy-\textsc{ov} \textsc{gen}=man \textsc{nom}=fish \textsc{dat}=store\\
+    \glt `The man bought \textbf{the fish} at the store.'
+    
+    \ex dative voice\\
+    \gll B<in>ilih-an ng=lalake ng=isda \textbf{ang=tindahan}.\\
+    <\textsc{prf}>buy-\textsc{dv} \textsc{gen}=man \textsc{gen}=fish \textsc{nom}=store\\
+    \glt `The man bought the fish \textbf{at the store}.'
+    
+    \ex instrumental voice\\
+    \gll Ip<in>am-bili ng=lalake ng=isda \textbf{ang=pera}.\\
+    <\textsc{pfv}>\textsc{iv}-buy \textsc{gen}=man \textsc{gen}=fish \textsc{nom}=money\\
+    \glt `The man bought fish \textbf{with the money}.'
+    
+    \ex benefactive voice\\
+    \gll I-b<in>ili ng=lalake ng=isda \textbf{ang=bata}.\\
+    \textsc{bv-<prf>}buy \textsc{gen}=man \textsc{gen}=fish \textsc{nom}=child\\
+    \glt `The man bought fish \textbf{for the child}.'
+    \z
+ \z
+   The formal marking of the subject is also not usually directly derived from its semantic role. We saw above that in Tagalog, the subject always receives the nominative preposition \textit{ang}. In languages where non-canonical subject marking is possible, there is still no consistent association between case marking and the semantic role of the subject. For example, Icelandic oblique subjects are never agent-like, but the choice of the case marker does not otherwise consistently correlate with particular semantic roles \citep{jonsson03}. Even among Daghestanian (East Caucasian) languages, where experiencer subjects are regularly marked by dative instead of ergative, there is some variation as to which case is selected by which verb; for example, in Gubden Dargwa, the verb `see' selects ergative case and the verb `want' selects dative case, while in the closely related Khuduts Dargwa both verbs have dative subjects \citep[246]{ganenkov2013}.\footnote{It is worth mentioning that some Daghestanian languages have been argued to lack the subject grammatical function. As mentioned above, \citet{kibrik2000} argued that in Archi, only core arguments (terms in LFG) can be distinguished, but there is no evidence for the privileged status of either of the core arguments. The universality of subjects is discussed in \sectref{sect:gfs:subj-univ}.} In short, subjects are usually consistently encoded regardless of their semantic role, and when there is variation in marking, it is usually lexical and idiosyncratic.
+  
+ \paragraph{Direct Objects} 
+  
+Direct objects, too, are not associated with specific semantic roles. While direct objects are never agents in English, they can still have a range of semantic roles: Patient (\textit{John ate \textbf{the cookie}}), Stimulus (\textit{John saw \textbf{David}}), Experiencer (\textit{It surprised \textbf{me}}), Theme (\textit{I gave \textbf{the book} to John}). Just like Tagalog can promote various arguments to subjects, some languages allow promoting arguments to direct objects via so-called applicative constructions. One such language is Hakha Lai (Tibeto-Burman > Sino-Tibetan), which I describe following \citet[15ff.]{peterson2007}. In Hakha Lai, verbs agree with two core arguments -- subjects and objects -- of transitive verbs, as in (\ref{ex:gfs:hakha-agr}).
+ 
+ \ea\label{ex:gfs:hakha-agr}
+ Hakha Lai (Tibeto-Burman > Sino-Tibetan)\\
+ \gll ʔan-kan-thoʔŋ\\
+ \textsc{subj.3pl-obj.1pl}-hit\\
+ \trans `They hit us.' \citep[16]{peterson2007}
+ \z
+ 
+ \noindent It can be reasonably assumed that, in LFG terms, the argument indexed by the first prefix is \SUBJ, while the argument indexed by the second prefix is \OBJ.
+ 
+ Hakha Lai also has a range of applicative suffixes that introduce additional morphologically unmarked arguments into the verb's argument structure. One such marker is the benefactive / malefactive suffix \textit{-piak}. When this suffix is used, it is the newly introduced argument that occupies the \OBJ position, as seen from the agreement pattern in (\ref{ex:gfs:hakha-appl}). The verb agrees with the first person singular benefactive argument (`on me') and not with the third person singular patient (`wood slab').
+ 
+ \ea\label{ex:gfs:hakha-appl}
+ \gll ʔaa! tleem-pii khaa maʔ-tii tsun taar-nuu=niʔ ʔa-\textbf{ka-}khaʔŋ-piak=ʔii…\\
+ \textsc{interj} wood.slab\textsc{-aug} \textsc{deic} \textsc{dem}-do \textsc{deic} old-woman=\textsc{erg} \textsc{subj.3sg}-\textsc{obj.1sg}-burn-\textsc{mal=conn}\\
+ \trans `Ah, the old woman burned the big slab of wood on me, and…'\\\hspace*{\fill} \citep[17]{peterson2007}\\
+ \z
+ 
+ \subsubsection{Obliques\label{sect:gfs:obl}}
+ 
+ The reason for treating obliques as semantically restricted and a family of functions is that, unlike subjects and objects, their marking will always vary depending on their semantic role. For example, Goals in English use the preposition \textit{to} (as in \textit{Mary went to London}), while Sources use the preposition \textit{from} (\textit{David came from Paris}). This justifies treating \textsc{obl} as a family of functions rather than a single GF.
+ 
+ Another reason for this architectural decision is that there may be multiple obliques in one clause. In English, this can be illustrated by sentences like \textit{John moved from London to Paris}, where \textit{from London} can be analyzed as {\OBLROLE{source}} and \textit{to Paris} as {\OBLROLE{goal}}. This can be disputed, however, because either of the obliques, or both, can be omitted; thus \citet{ZaenenCrouch2009} propose doing away with \textsc{obl} altogether, replacing \textsc{obl} with set-valued \ADJ. In other languages, however, the evidence for multiple \textsc{obl} arguments can be more compelling. \citet{dahlstrom2014} shows that in the Algonquian language Meskwaki, obliques are strictly positioned immediately before the verb (\ref{ex:gfs:meskwaki-obl}), while other arguments (subjects, objects, secondary objects and complement clauses) appear postverbally, as illustrated in (\ref{ex:gfs:meskwaki-core}), where `Wisahkeha' is analyzed as a direct object by Dahlstrom.
+ 
+ \ea\label{ex:gfs:meskwaki-obl}
+ Meskwaki (Algonquian > Algic)\\
+ \gll a˙kwi \textbf{nekotahi} wi˙h-nahi-iha˙-yanini\\
+ not anywhere \textsc{fut}-be.in.habit.of-go(thither)-\textsc{2/neg}\\
+ \trans `You will never go \textbf{anywhere}.' \citep[57]{dahlstrom2014}
+ 
+ \ex\label{ex:gfs:meskwaki-core}
+ \gll i˙ni=ke˙hi=ipi=meko e˙h-awataw-a˙či wi˙sahke˙h-ani metemo˙h-e˙h-a\\
+ then=and=\textsc{hrsy=emph} \textsc{aor-}take.\OBJ2.to-3>3$'${}\textsc{/aor} W.-\textsc{sg} old.woman\textsc{-dim-sg}\\
+ \trans `And right then, it's said, the old woman took it to Wisahkeha.' \citep[58]{dahlstrom2014}
+ \z
+ 
+ In Meskwaki, obliques are not optional but required by verbal stems or preverbs. For example, all verbs of quotation require an oblique argument. Therefore, the participants that Dahlstrom terms ``obliques'' cannot be analyzed as adjuncts in terms of LFG.
+ 
+ Dahlstrom further demonstrates that additional oblique arguments may be associated with preverbs (which can be viewed as a kind of applicative marker) or compounded verb stems. When more than one oblique appears in a clause, all must precede the verb, and each oblique argument must be adjacent to the associated root or preverb.
+ 
+ \ea\label{ex:gfs:meskwaki-multobl}
+ \gll awitameko \textbf{ke˙ko˙hi} iši-- \textbf{ateška˙wi} --išawihkapa\\
+ not.\textsc{pot=emph} any.way thus-- with.delays --thus.happen.to.S-2/\textsc{pot}\\
+ \trans `You would not have experienced delays in any way.' \citep[64]{dahlstrom2014}
+ \z
+ 
+ In (\ref{ex:gfs:meskwaki-multobl}), \textit{ateška˙wi} is associated with the verb stem, while \textit{ke˙ko˙hi} satisfies the valency introduced by the preverb \textit{iši-}. The special position of each of these obliques seems to present compelling evidence for treating them as separate (though related) semantically restricted {\GF}s.
+ 
+ \subsubsection{Secondary objects\label{sect:gfs:obj2}}
+ 
+ Among all the main {\GF}s, secondary objects are perhaps the most difficult to characterize. They are similar to objects in being terms, and to obliques in being semantically restricted. But these classifications are not easily translatable into specific empirical properties. We have seen above that arguments analysed as secondary objects are similar to direct objects in being terms, which allows them to trigger verbal agreement and act as controllees. But these criteria do not always serve to distinguish {\OBJTHETA}; for example, neither applies to English. Another property of secondary objects, which likens them to obliques, is their semantic restrictedness.
+ 
+ Secondary objects were originally thought of as occupying a single \GF\ {\OBJ2} \citep{kaplanbresnan82} and identified on the basis of constructions like (\ref{ex:gfs:english-indirect}) in English and other Germanic languages like Icelandic. In English, the identification of {\OBJ2} is straightforward due to the fact that it is the only argument apart from subject and direct object that is not marked by a preposition (which is a feature of obliques) and also due to the alternation of the double object construction in (\ref{ex:gfs:english-indirect}) with the oblique dative construction in (\ref{ex:gfs:english-oblique}). Thus, the same thematic roles map to two constructions that differ both in word order and case / preposition marking. This means that at least three different {\GF}s must be distinguished: \OBJ, {\OBLTHETA} and {\OBJTHETA}.
+ 
+ \ea\label{ex:gfs:english-indirect}
+    John gave [Mary]\textsubscript{\textsc{obj1}} [a book]\textsubscript{\textsc{obj2}}.
+    \ex\label{ex:gfs:english-oblique} John gave [a book]\textsubscript{\textsc{obj1}} [to Mary]\textsubscript{\textsc{obl}}.
+ \z
+The fact that \textit{Mary} is indeed the direct object in (\ref{ex:gfs:english-indirect}), even though it is called an ``indirect object'' in traditional grammar (due to its dative semantics), can be seen from the fact that in the passive version of (\ref{ex:gfs:english-indirect}), it is the recipient that is promoted to subject status (\ref{ex:gfs:english-indirect-passive}).
+ 
+ \ea\label{ex:gfs:english-indirect-passive}
+  \ea
+  Mary was given a book.
+  
+  \ex[*]{A book was given Mary.}
+  \z
+ \z
+ 
+ \hspace*{-.6pt}Passivization is not a \textit{direct} criterion for objecthood, because in LFG the passive is a lexical process and not a syntactic transformation \citep[28]{DLM:LFG}. But indirectly, lexical mapping constraints do determine which arguments can be passivized. Objects can be passivized because they are inherently classified as [$-r$], and, in the absence of a higher-ranking argument, fill the \SUBJ \GF which is defined as [$-{o}$, $-r$]. Secondary objects, in contrast, cannot be passivized because they are inherently defined as [$+{o}$]. This is one of the key features of secondary objects as opposed to direct objects.
+  
+ In English, the label {\OBJ2} may indeed be appropriate, because there can be only one secondary object, and this object is connected to only one semantic role (Theme). But other languages make much wider use of secondary object functions, such that there may be several {\OBJTHETA}s, each of which is restricted to a different semantic role. For example, \citet{BresMosh90} analyze Kichaga (Bantu) as having verbal indexing of multiple thematically restricted objects, each of which has its own slot in the verb form:
+ 
+ \ea
+ Kichaga (Bantu)\\
+ \gll n-ä-lꜝé-kú-shí-kí-kóṛ-í-à\\
+ \textsc{focus-1subj-pst-17obj-8obj-7obj-}cook\textsc{-appl-fv}\\
+ \trans `She/he cooked it with them there.' \citep[151]{BresMosh90}
+ \z
+ 
+\noindent Of the three object prefixes in this example, only the instrumental object (\textsc{8obj-}) is unrestricted; the other two are thematically objects that occupy the grammatical functions {\OBJROLE{loc}} (\textsc{17obj-}) and {\OBJROLE{patient}} (\textsc{7obj-}).
+ 
+Another use of {\OBJ2} / {\OBJTHETA} is to capture the difference between case-marked (topical) and unmarked objects in languages with Differential Object Marking (DOM), where the direct object can either be marked by a special (accusative) case or left unmarked (as discussed in \sectref{sect:gfs:genconc}; also see \citetv{chapters/Case}). According to \citet{DN}, in many such systems, accusative-marked direct objects have the \GF \OBJ, while unmarked objects are {\OBJTHETA}. The same distinction may be reflected in agreement patterns: \citet{DN} show that in Ostyak (Ob-Ugric > Uralic), objects that trigger agreement are \OBJ while objects that do not are {\OBJTHETA}. With respect to case marking, an opposite viewpoint is taken by \citet{BK96}, who treat focal, unmarked objects as \OBJ. It may be that different patterns are observed in different languages. It is also possible that in some languages, the distinction is not reflected by any overt case marking or agreement; the theory itself does not constrain this in any way.
+
+ 
+ 
+\subsubsection{Universality\label{sect:gfs:obl-univ}} From these examples it is clear that secondary objects are very similar to obliques in being semantically restricted and covering a similar set of semantic roles. Secondary objects have to be recognized only in those languages where there is evidence that some arguments are more prominent than obliques (e.g. in case marking, verb morphology, or anaphora) but less prominent than direct objects. Not all grammars involve such fine-grained distinctions, and in this sense {\OBJTHETA} is probably not universal.
+ 
+ In contrast, {\OBLTHETA} as it is understood and used in LFG is, in effect, architecturally necessary,\footnote{Assuming that {\OBJTHETA} is not universal. Logically speaking, if the language only draws a distinction between \SUBJ, \OBJ, and all other arguments, it does not matter whether the latter are called {\OBJTHETA} or {\OBLTHETA}.} because \SUBJ and \OBJ provide only two positions, which is not enough to map all possible thematic roles that verbs may have.
+ 
+ Finally, it is theoretically possible that some languages do not make use of the \GF \OBJ. Such a language would have only one semantically unrestricted function, \SUBJ; all other arguments would be {\OBJTHETA}s or {\OBLTHETA}s with various semantic roles. It would also lack a passive, because, under Lexical Mapping Theory, passivization depends on the presence of a second [$-r$] argument that is promoted to subject status. In effect, this would be a language where most semantic roles are directly encoded in the syntax, i.e.\ there is a one-to-one correspondence between {\GF}s and thematic roles, except for one unrestricted argument. This idea has been discussed in two distinct flavours. \citet{borjvinc08} consider whether the \OBJ vs.\ {\OBJTHETA} distinction should be abandoned as such (i.e.\ all objects in all languages are {\OBJTHETA}s). In contrast, \citet{lander-etal2021} make this proposal for the specific case of West Circassian (West Caucasian). West Circassian, a polysynthetic language, has a rather unusual system of applicative prefixes that is unlike the more typologically common system discussed above for Hakha Lai: see (\ref{ex:gfs:hakha-appl}) above. In Hakha Lai, additional arguments introduced by applicative morphology are promoted to \OBJ status, while the erstwhile object is demoted to {\OBJTHETA}. In West Circassian, applicative prefixes simply introduce additional arguments without altering the status of existing arguments. The absolutive argument is not indexed on the verb and the corresponding full NP (if present) bears Absolutive case. All other arguments are introduced by prefixes and their full NP counterparts bear Oblique case. For example, in (\ref{ex:gfs:flagindex}) the Absolutive Patient is `dishes' (\textit{laʁe-xe-r}) and has no corresponding verbal prefix. The three other arguments bear Oblique case: `boy' (\textit{č̣ʼale-m}) corresponds to the prefix \textit{jə-}, `girl' (\textit{pŝaŝe-m}) corresponds to \textit{∅-r-} and `you' is expressed only by the prefix \textit{b-də-}.\footnote{The colours represent the morphemes and f-structures associated with the arguments of the clause, for easier comprehension. The ergative subject (`boy') is in red, the oblique-marked recipient ('to the girl') is in brown, and the caseless comitative pronoun ('with thee') is in blue.}
+ 
+ \ea\label{ex:gfs:flagindex} West Circassian (West Caucasian)\\
+\gll \textcolor{lsLightWine}{č̣ʼale-m$_i$} \textcolor{brown}{pŝaŝe-m$_j$} laʁe-xe-r \textcolor{lsMidBlue}{we$_k$} qə-\textcolor{lsMidBlue}{b-$_k$də-}\textcolor{brown}{∅-$_j$r-}\textcolor{lsLightWine}{jə-$_i$}tə-ʁe-x\\
+boy-\textsc{obl} girl-\textsc{obl} dish-\textsc{pl}-\textsc{abs} you.\textsc{sg} \textsc{dir-}\textsc{2sg.io-com-}\textsc{3sg.io-dat-}\textsc{3sg.erg-}give\textsc{-pst}\textsc{-pl}\\
+\trans `The boy gave the dishes to the girl with you (sg.).' \citep[226]{lander-etal2021}
+\z
+\citet{lander-etal2021} argue for a syntactically ergative analysis of West Circassian, showing that the Absolutive argument has privileged status in certain constructions; it is assigned the grammatical function \SUBJ. In contrast, they find no evidence for a distinction between different types of indexed arguments and analyze them all as {\OBJTHETA}: ergative agents are {\OBJROLE{agent}}, recipients are {\OBJROLE{recip}}, instrumentals are {\OBJROLE{instr}} etc. Thus the sentence (\ref{ex:gfs:flagindex}) gets the f-structure (\ref{ex:gfs:fstr-adyghe}) in their analysis. 
+
+\eabox{\label{ex:gfs:fstr-adyghe}%\vtop{\strut\vskip-\baselineskip{
+\avm[style=fstr]{
+    [ pred & `give\arglist{\SUBJ , {\OBJROLE{ag}} , {\OBJROLE{goal}} , {\OBJROLE{com}}}'\\
+    tense & \textsc{past}\\
+    dir & \textit{qə}\\
+    subj & [pred & `dish'\\
+                 pers & 3\\
+                 num & \textsc{pl}] \\
+    {\OBJROLE{ag}} & \color{lsLightWine}[pred & `boy'\\
+                            pers & 3\\
+                            num & \textsc{sg}]$i$\smallskip\\
+    {\OBJROLE{goal}} & \color{brown}[pred & `girl'\\
+                               pers & 3\\
+                               num & \textsc{sg}]$j$\smallskip\\
+    {\OBJROLE{com}} & \color{lsMidBlue}[pred & `pro'\\
+                               pers & 2\\
+                               num & \textsc{sg}]$k$
+    ]
+}
+%}}
+}
+According to Lander et al., West Circassian does make use of the grammatical function {\OBLTHETA} for those arguments that are not indexed and are marked by postpositions, but there is no need for the grammatical function \OBJ in this language.
+ 
+ \section{Individual {\GF}s\label{sect:gfs:main-gfs}}
+ 
+ \subsection{General remarks\label{sect:gfs:gf-gen-remarks}}
+ 
+ In the preceding section, I described the cross-classification of grammatical functions according to three parameters: governability, termhood and semantic restrictedness. This subdivides the main {\GF}s into four classes: (1) \SUBJ and \OBJ (governable semantically unrestricted terms); (2) {\OBJTHETA} (governable semantically restricted term); (3) {\OBLTHETA} (governable semantically unrestricted non-term); (4) \ADJ (ungovernable). However, this is not enough to characterize all the grammatical functions for the following reasons. First, \textsc{(x)comp} and \POSS, being restricted to rather specific syntactic configurations, do not readily fit into this picture: while \textsc{(x)comp} is certainly governable, it is not clear whether it is a term; as for \POSS, while it is certainly semantically unrestricted, it is not clear whether it is a term and whether it is, in fact, governable. Secondly, the distinction between \SUBJ and \OBJ remains unspecified.\footnote{As mentioned above, Lexical Mapping Theory classifies them both as semantically unrestricted [$-r$], but \OBJ is ``objective'' [$+{o}$] while \SUBJ is not [$-{o}$]. But this distinction only plays a role in mapping thematic roles to grammatical functions; it is not relevant for the actual syntactic properties of subjects and objects, which is the focus of this chapter.} Thirdly, the cross-classification of grammatical functions is not meant to explain all of their properties: even grammatical functions like {\OBJTHETA}, whose existence is predicted by the cross-classification itself, may have individual properties that do not follow from their class membership.
+ 
+ Therefore, in this section, I will proceed from the ``big picture'' drawn above towards characterizing the unique properties of some of the more distinct grammatical functions in LFG, sometimes together with other {\GF}s in order to provide a better contrast. Subjects are opposed to all other grammatical functions and will be discussed separately in \sectref{sect:gfs:subj}. Many LFG approaches treat clausal complementation and nonverbal predication similarly, and both are discussed in \sectref{sect:gfs:complementation}. The treatment of possessors in LFG is rather special: in many ways they are like subjects, but they are also sometimes viewed as being ungovernable, likening them to adjuncts instead. Accordingly, they are given a separate treatment in \sectref{sect:gfs:poss}.
+ 
+ \subsection{Subjects\label{sect:gfs:subj}}
+ All grammatical frameworks that have any notion of grammatical function assign a special status to the subject. Its properties are mainly derived from its position at the top of the functional hierarchy, and are discussed in \sectref{sect:gfs:subj-core}. The centrality of the subject also raises the question of its universality, which can be approached from three different perspectives. First, is the subject universal across sentences within a single language, i.e.\ do all sentences have to have a subject (\sectref{sect:gfs:subj-less})? Secondly, do all languages map semantic arguments to subjects in the same way? For example, do ergative languages employ the same mapping as accusative languages? This is discussed in \sectref{sect:gfs:subj-nonacc}. Finally, is the notion of subject universal at all -- are there languages where no single argument can be identified as the priority target of most syntactic relations and processes (\sectref{sect:gfs:subj-univ})?
+
+ \subsubsection{Core properties\label{sect:gfs:subj-core}}
+ \largerpage
+ The subject can be characterized as the most prominent argument in the clause, both in terms of the hierarchy in (\ref{ex:gfs:gf-hierarchy}) and in that it is usually the sentence topic (at least in syntactically accusative languages). As with all other {\GF}s, there is no specific set of tests that would define subjects cross-linguistically. Rather, being highest-ranking in the Keenan-Comrie hierarchy, they are expected to always participate in processes that are dependent on this hierarchy. More specifically, if a syntactic construction always targets only one argument of a clause, this argument is likely to be identified as the subject. Many tests for subjecthood have been proposed in the literature (for one summary, see \citealt{andrews2007-np});\footnote{Subject criteria that are commonly proposed in the literature include: case marking and agreement; ellipsis under coordination; binding of reflexive pronouns; control of null subjects (PRO) of infinitives and gerunds; selection in switch reference systems (same-subject / different-subject). Many more language-specific tests have been proposed as well.} in the end, the particular set of diagnostics should be identified on a language-by-language basis.
+ 
+ One diagnostic is agreement. We have seen above that cross-linguistically, only terms can control agreement. But if any one term is the sole agreement controller in a language, this has to be the subject. \citet[364]{moravcsik1978-agr} proposes a typological universal: if a language has agreement with anything other than an intransitive subject, it also has to exhibit agreement with the intransitive subject. Note that this universal is carefully formulated to include ergative languages (which only show S/P agreement) and does not automatically identify the subject in the ``accusative'' sense (A/S). I will return to the question of subjecthood in non-accusative languages below.
+ 
+ It also seems that only subjects can be ``raised'',\footnote{Based on cross-linguistic data, \citet[155-161]{falk06} argues that only arguments bearing the grammatical function \PIVOT (in accusative languages equal to \SUBJ, see \sectref{sect:gfs:subj-nonacc}) can be controllees in functional control (raising) constructions, with the only exception being certain Polynesian languages. For the latter, he allows the possiblity of inside-out licensing of functional control, which does not obey his generalization on \PIVOT.} i.e.\ in LFG terms, shared (functionally controlled) with a term argument in the main clause. English only has subject-to-subject (\ref{ex:gfs:raising}) and subject-to-object (\ref{ex:gfs:raising-so}) raising.\footnote{A reviewer proposes English sentences like \emph{This book is tough to read} as potential counterexamples; however, \citet{dalrympleking2000} argue that this construction involves anaphoric control rather than raising/functional control (see \sectref{sec:GFs:Control} above for a termhood constraint on anaphoric controllees in certain languages).}  
+ 
+ \ea\label{ex:gfs:raising}
+ \textbf{John} seemed \textup{[}{\GAP} to agree\textup{]}.
+ 
+   \ex\label{ex:gfs:raising-so}
+    John believed \textbf{David} \textup{[}{\GAP} to be crossing the street\textup{]}.
+ \z
+ 
+ In Icelandic, the raising rule also applies to non-nominative (``quirky'') subjects \citep{Andrews82}. Thus, in (\ref{ex:gfs:quirky}a--c) the verbs select accusative, dative and genitive subjects, respectively.
+ 
+ \ea\label{ex:gfs:quirky}
+ Icelandic (Germanic > Indo-European)\\
+    \ea
+    \gll \textbf{Drengina} vantar mat.\\
+    boys.\textsc{def.acc} lacks food.\textsc{acc}\\
+    \trans `\textbf{The boys} lack food.'
+    
+    \ex
+    \gll \textbf{Barninu} batnaði veikin.\\
+    child.\textsc{def.dat} recovered.from disease.\textsc{def.nom}\\
+    \trans `\textbf{The child} recovered from the disease.'
+    
+    \ex
+    \gll \textbf{Verkjanna} gætir ekki.\\
+    pains.\textsc{def.gen} is.noticeable not\\
+    \trans `\textbf{The pains} are not noticeable.'
+    \z
+\z
+ 
+\noindent This case marking is retained under raising in the main clause (\ref{ex:gfs:icelandic-raising}). These examples also illustrate how subjecthood is independent not only from semantic role, but also from case marking.
+ 
+ \ea\label{ex:gfs:icelandic-raising}
+   \ea
+   \gll Hann telur \textbf{mig} (í barnaskap sínum) [vanta peninga].\\
+    he believes me.\textsc{acc} in foolishness his to.lack money.\textsc{acc}\\
+    \trans `He believes \textbf{me} (in his foolishness) to lack money.'
+    
+    \ex
+    \gll Hann telur \textbf{barninu} (í barnaskap sínum) [hafa batnað veikin].\\
+    he believes child.\textsc{def.dat} in foolishness his to.have recovered.from disease.\textsc{def.nom}\\
+    \trans `He believes \textbf{the child} (in his foolishness) to have recovered from the disease.'
+    
+    \ex
+    \gll Hann telur \textbf{verkjanna} (í barnaskap sínum) [ekki gæta].\\
+    he believes pains.\textsc{def.gen} in foolishness his not noticeable\\
+    \trans `He believes \textbf{the pains} (in his foolishness) not to be noticeable.'
+   \z
+ \z
+ 
+ \subsubsection{Subjectless sentences?\label{sect:gfs:subj-less}}
+ 
+ A persistent question in theoretical linguistics is whether subjects are universal --- that is, if subjectless sentences exist. Note that the very fact that this is a valid question follows from the LFG assumption that {\GF}s like \SUBJ are theoretical primitives (even if they tend to be associated with a set of typical empirical diagnostics). Were the subject only defined as the highest-ranking argument in a list of \textsc{args} (as in Simpler Syntax and some variants of HPSG), each clause would automatically have a ``subject'' as long as its predicate had any syntactic arguments. In LFG, subjects are also assumed to be, by and large, prominent in different senses (more on this below), but this does not entail that subjectless sentences cannot exist, if only at the periphery of grammar.
+ 
+ That being said, the Subject Condition in (\ref{ex:gfs:subj-cond}) is widely assumed to hold in LFG \citep{bresnan1989locative} --- as a theoretical stipulation, not as a consequence of the framework's architecture. Most versions of the Lexical Mapping Theory also predict that one of the arguments will always be mapped to \SUBJ.
+ 
+ \ea\label{ex:gfs:subj-cond}
+    \textup{Subject Condition:}\\
+    \textup{Every verbal predicate must have a subject.}
+ \z
+ 
+ The Subject Condition certainly holds in English, as well as in many other languages. But is it universal? Examples like (\ref{ex:gfs:nosubj-german}) from German and (\ref{ex:gfs:nosubj-russian}) from Russian at first sight seem to be exceptions to the Subject Condition.
+ 
+ \ea\label{ex:gfs:nosubj-german} German (Germanic > Indo-European)\\
+    \gll … weil getanzt wird\\
+    {} because danced become.\textsc{prs.3sg}\\
+    \glt `because there is dancing' 
+    
+    \ex\label{ex:gfs:nosubj-russian} Russian (Slavic > Indo-European)\\
+    \gll menja tošnit\\
+    I.\textsc{acc} nauseate.\textsc{prs.3sg}\\
+    \glt `I feel sick.'
+ \z
+ 
+ The German example in (\ref{ex:gfs:nosubj-german}) has an intransitive verb with no overt arguments, even though German is generally not a pro-drop language. The Russian verb in (\ref{ex:gfs:nosubj-russian}) only has an accusative experiencer argument; while Russian does allow null subjects, it does so in a limited number of contexts and always optionally, while here no nominative argument can be expressed. However, \citet{berman1999,Berman2003} argues that the agreement morphology indicates that German examples contain a null expletive subject with only \textsc{pers} and \textsc{num} features, and no \PRED value. The same analysis can be extended to the Russian data.
+ 
+ A more convincing case for subjectless sentences is found in the Polish examples like (\ref{ex:gfs:nosubj-polish}), discussed in \citet{Kibort2006}. In this construction, the verb stands in the infinitive form, thus having no agreement morphology. To Kibort, this indicates that such sentences are truly subjectless. The agent may be optionally expressed, but as an oblique prepositional argument --- not as a subject.
+ 
+ \ea\label{ex:gfs:nosubj-polish}
+ Polish (Slavic > Indo-European)\\
+ \gll Słychać {ją /} jakieś mruczenie.\\
+ hear.\textsc{inf} her.\textsc{acc} some.\textsc{n.acc} murmuring(\textsc{n}).\textsc{acc}\\
+ \glt `One can hear her/some murmuring.'
+ \z
+ 
+ Subjectless sentences also appear in \citeauthor{lowe-etal2021}'s (\citeyear{lowe-etal2021}) analysis of the Sanskrit raising verb \textit{śak} `can'. When this verb is passivized, one of the possible outcomes is for the raised subject of the subordinate clause to stand in the instrumental case, while the object remains in the accusative:
+ 
+ \ea
+ Sanskrit (Indo-Aryan > Indo-European)\\
+ \gll rājabhī rāmaṃ hantuṃ na śakyate\\
+ kings.\textsc{ins} R.\textsc{acc} slay.\textsc{inf} not can.\textsc{pass.3sg}\\
+ \trans `Rāma cannot be slain by the kings.'
+ \z
+  Lowe et al. argue that in this construction the matrix clause has two arguments: the instrumental as {\OBLTHETA} and the subordinate clause as \XCOMP, and thus it has no overt subject.\footnote{Lowe et al. acknowledge that, if \textsc{(x)comp} is assumed not to exist as a separate \GF (see \sectref{sect:gfs:comp}), the clause itself will have to be treated as \SUBJ. }
+ 
+ Thus, the Subject Condition may not be universal as a general rule --- although it does hold as an overall tendency, since subjectless constructions, if there are any, are usually found only at the periphery of grammar.
+ 
+ \subsubsection{Subjects in non-accusative languages\label{sect:gfs:subj-nonacc}}
+ 
+ The universality of subjects can also be questioned in a different way: Does the same mapping between thematic roles and {\GF}s obtain in all languages? This has long been debated in the literature concerning ergative and other non-accusative types of alignment. Most ergative languages are in fact only morphologically ergative, that is, have ergative case marking while syntactically behaving in the same way as accusative languages. But there are a few languages that have been claimed to be consistently syntactically ergative, e.g. Dyirbal \citep{dixon1979}, although this analysis is disputed, see \citet{legate2012}; less common syntactic alignment types are attested as well. These facts call for an adjustment to the standard approach to argument mapping.
+ 
+ There are two basic proposals for treating non-accusative languages in LFG. One, developed in \citet{Manning1996}, is to preserve the standard set of {\GF}s but map \SUBJ and \OBJ to thematic roles in different languages in different ways. Thus, while intransitive verbs always have a single \SUBJ argument, transitive verbs in accusative languages map agents to \SUBJ and patients to \OBJ (\ref{ex:gfs:acc}); in ergative languages, the mapping is reversed (\ref{ex:gfs:erg}).
+ 
+ \ea
+    \ea\label{ex:gfs:acc} accusative\\
+    \begin{tabular}{ccccc}
+     eat & \textlangle & \Rnode{ag}{ag} & \Rnode{pt}{pt} & \textrangle\\
+     \\
+         &   & \Rnode{su}{\SUBJ} & \Rnode{o}{\OBJ} &\\
+    \end{tabular}
+    \ncline[nodesep=2pt]{ag}{su}
+    \ncline[nodesep=2pt]{pt}{o}
+
+    \ex\label{ex:gfs:erg} ergative\\
+    \begin{tabular}{ccccc}
+     eat & \textlangle & \Rnode{ag}{ag} & \Rnode{pt}{pt} & \textrangle\\
+     \\
+         &   & \Rnode{su}{\SUBJ} & \Rnode{o}{\OBJ} &\\
+    \end{tabular}
+    \ncline[nodesep=2pt]{ag}{o}
+    \ncline[nodesep=2pt]{pt}{su}
+    \z
+ \z
+ 
+ Thus, in ergative languages, the transitive agent (A) is \OBJ while the transitive patient (P) is \SUBJ. This explains why the patient has subject-like properties in various constructions. Calling the agent a ``direct object'' is unfamiliar and confusing from a traditional perspective, which is why Manning proposes an alternative nomenclature of \textsc{pivot} (= \SUBJ) and \textsc{core} (= \OBJ, for \textsc{core} argument) instead.
+%  
+%  \hl{GIVE EXAMPLE}
+ 
+ This approach works well for languages where one of the arguments fully ``takes over'' all syntactic properties of subjecthood. However, such languages are an exception rather than the norm. More commonly, subject properties are distributed between the transitive agent (A) and the absolutive argument (P): some constructions are aligned in the ergative way, while others are still oriented towards A. For example, in Ashti Dargwa (field data), gender agreement on the verb follows the ergative pattern (S/P), and can even be long-distance (\ref{ex:gfs:ashti-lda}), which suggests syntactic ergativity. But reflexive binding still prefers the A argment, as in accusative languages (\ref{ex:gfs:ashti-binding}).
+ 
+ \ea\label{ex:gfs:ashti-lda}
+    Ashti (Dargwa > East Caucasian)\\
+    \gll di-l [šin \textbf{d-}ečː-ib] ha$<$\textbf{d}$>$eχʷ-i\\
+    I(\textsc{m})-\textsc{erg} \phantom{[}water(\textsc{npl}) \textsc{npl}-drink.\textsc{pfv}-\textsc{pcvb} $<${\textsc{npl}}$>$finish.\textsc{pfv}-\textsc{pret}\\
+    \glt `I finished drinking water.'
+    
+    \ex\label{ex:gfs:ashti-binding}
+        \ea
+        \gll rasul-li \textbf{sin-na} \textbf{sa-w} w-aˁqˁ.aqˁ-ipːi\\
+        R.-\textsc{erg} self-\textsc{gen} self-\textsc{m}(\textsc{abs}) \textsc{m}-hurt.\textsc{pfv}-\textsc{prf.3}\\
+        \glt `Rasul (erg.) hurt \textbf{himself} (abs.).'
+        
+        \ex[*]{
+        \gll \textbf{sin-na} \textbf{sin-dil} rasul w-aˁqˁ.aqˁ-ipːi\\
+        self-\textsc{gen} self-\textsc{erg} R.(\textsc{abs}) \textsc{m}-hurt.\textsc{pfv}-\textsc{prf.3}\\
+        \glt (intended translation: `Rasul hurt himself.'; lit. `Himself (erg.) hurt Rasul (abs.).')
+        }
+    \z
+ \z
+ 
+ \citet{falk06} observes that cross-linguistically, subject properties tend to fall into two classes exactly along these lines: anaphoric prominence, switch-ref\-erence, null expression, control of PRO (anaphoric control) and some other properties such as the ability to serve as the imperative subject are almost always tied to A/S, even in ergative languages. At the same time, properties related to cross-clausal continuity -- functional control, extraction properties, long-distance agreement -- and certain secondary properties (external structural position in non-con\-figur\-ational languages, agreement) may be tied to different arguments of the clause in different languages.
+ 
+ Accordingly, Falk proposes to recast the traditional LFG grammatical function \SUBJ as \GFHAT, which is the most prominent argument (A/S), while introducing the additional clausal continuity function \PIVOT, which can be identified with either \GFHAT or \OBJ. Subjecthood properties are distributed between these two functions along the lines in (\ref{ex:gfs:falk-props}).
+ 
+ \ea\label{ex:gfs:falk-props} Subject properties according to \citet{falk06}
+ \begin{tabular}{ll}
+  \toprule
+  \GFHAT & \PIVOT\\
+  \midrule
+  anaphoric prominence & extraction\\
+  anaphoric control & functional control\\
+  switch-reference & long-distance agreement\\
+  null expression & obligatory element\\
+  imperative subject & ``external'' structural position\\
+  \bottomrule
+ \end{tabular}
+ \z
+ 
+ \noindent Of these two functions, only \GFHAT can be properly called a grammatical function: it replaces \SUBJ in the argument lists of \PRED feature values; in terms of Lexical Mapping Theory, it is this function that the most prominent argument on the semantic role hierarchy is mapped to. \PIVOT always has to be structure-shared with one of the verbal arguments and is thus more correctly characterized as an overlay function (see \sectref{sect:gfs:overlay}).
+ 
+ \newpage
+ All the diverse surface manifestations of \PIVOT can be generalized in what Falk calls the Pivot Condition, informally summarized in (\ref{ex:gfs:pivcond}). This condition means that all cross-clausal dependencies, if they are not stated in terms of special overlay functions for long-distance dependencies such as \textsc{dis} (for ``dislocated'', or \textsc{topic} and \textsc{focus} in earlier approaches: see \sectref{sect:gfs:overlay} and \citetv{chapters/LDDs}) must be tied to \PIVOT. Thus \PIVOT is the locus through which argument information is shared across clauses.
+ 
+ \ea\label{ex:gfs:pivcond}
+ Pivot Condition:\\
+ A path inward through f-structure into another predicate-argument domain or sideways into a coordinate f-structure must terminate in the function \PIVOT. \citep[78]{falk06}
+ \z
+In English, and in other purely accusative languages, \GFHAT and \PIVOT are always occupied by the same f-structure. Falk calls such systems ``uniform-subject''. In other languages, these do not always coincide --- this class of languages is called ``mixed-subject''. The mixed-subject class is not uniform. Its most widespread members are ergative languages, where \PIVOT is identified with \GFHAT in intransitive clauses and with \OBJ in transitive clauses.
+ 
+ Given the facts in (\ref{ex:gfs:ashti-lda})--(\ref{ex:gfs:ashti-binding}), Ashti Dargwa can be analyzed as a mixed-subject, ergative language, with the f-structure of a transitive sentence `the girl drank water' as in (\ref{ex:gfs:ashti-falk}).
+ 
+ \eabox{\label{ex:gfs:ashti-falk}
+ \avm[style=fstr]{
+    [\PRED & {`\textsc{drink}\arglist{\GFHAT \OBJ'}}\\
+    \GFHAT  & [   \PRED  & \text{`girl'}\\
+                                \NUM & \textsc{sg}\\
+                                \GEND & \textsc{f}\\
+                                \CASE & \textsc{erg}]\\
+    \OBJ & \rnode{obj}{[        \PRED & \text{`water'}\\
+                                \NUM & \textsc{pl}\\
+                                \GEND & \textsc{n}\\
+                                \CASE & \textsc{abs}]}\\              
+    \PIVOT & \rnode{piv}{\strut}]}
+ \CURVE[.5]{-2pt}{0}{obj}{0pt}{0}{piv}
+ }
+ 
+ The Philippine type of alignment, illustrated in (\ref{ex:gfs:tagalog}) above, where any argument can become the ``subject'' through voice morphology, is interpreted by Falk as promotion to \PIVOT, as in (\ref{ex:gfs:falk-philippine}); the most prominent argument, \GFHAT, does not change its mapping.
+ 
+ \ea\label{ex:gfs:falk-philippine}
+ \begin{tabular}[t]{ll}
+  ``Active voice'': & (\UP\PIVOT)=(\UP\GFHAT)\\
+  ``Direct object voice'': & (\UP\PIVOT)=(\UP\OBJ)\\
+  ``Indirect object / locative voice'': & (\UP\PIVOT)=(\UP\OBJTHETA)\\
+  ``Instrumental voice'': & (\UP\PIVOT)=(\UP\OBLROLE{ins})\\
+  …\\
+ \end{tabular}
+ \z
+ 
+ Some languages do not entirely fit the uniform- vs.\ mixed-subject distinction. In topic prominent languages like Acehnese, \PIVOT is identified with any of the core arguments (\GFHAT and \OBJ) provided that it bears the information structure function \textsc{topic}, according to \citegen[172]{falk06} interpretation of the data in \citet{Durie1985}. Thus Falk's approach does not require \PIVOT to be necessarily tied to particular argument functions.
+ 
+ \subsubsection{Universality\label{sect:gfs:subj-univ}}
+ 
+ Since Falk's framework splits the traditional \SUBJ into two grammatical functions that may be identified with different arguments in different languages and constructions, it follows that the subject in the traditional sense -- i.e.\ a single highest-ranking grammatical function that dominates all syntactic rules and processes -- is not universal. But we may also ask whether \GFHAT and \PIVOT are universal. There are two ways in which a language may be said to lack \GFHAT. One is that this language encodes thematic roles directly in the syntax. Such claims have been made for different languages in the literature, especially in the typological tradition. \citet[169]{falk06} observes that in LFG terms, this amounts to saying that the language only has oblique {\GF}s: {\OBLROLE{agt}}, {\OBLROLE{pat}}, etc. This, in turn, entails that the language would have no distinction between core and non-core arguments --- a prediction that has empirical consequences. Evaluating such a possibility for Acehnese, one language that has been claimed to lack reference to grammatical relations in its grammar \citep{VanValin1997}, Falk concludes that its syntax does distinguish core functions from non-core functions and thus requires reference to \GFHAT. Similarly, \citet{kibrik2000}, as mentioned in \sectref{sect:gfs:term-refl}, argues that most constructions in Archi (Lezgic > East Caucasian) are only sensitive to the term (core argument) vs.\ non-term distinction. But there is one construction in Archi that is oriented towards A/S arguments (i.e.\ in Falk's terms, \GFHAT): clause-mate reflexivization. Nevertheless, the theoretical possibility of languages only having oblique arguments still exists and deserves to be investigated in more detail, although, based on the current state of our understanding, their existence does not seem likely.
+ 
+Another sense in which a language may lack \GFHAT is, conversely, if it draws a more fine-grained distinction between core arguments, i.e.\ does not unify the transitive agent (A) and the sole intransitive argument (S) in any way.\footnote{Another possible complication for Falk's theory, and the LFG view of grammatical relations in general, are so-called split-S languages, cf. \citet{VanValin1990}, sometimes described as languages with active alignment, a view that goes back at least to \citet{Sapir:Incorporation}. In such languages, the marking of S depends on the properties of the clause or the predicate, such as agentivity, control, and telicity. Unaccusativity \citep{Perlmutter1978} is a related phenomenon inasmuch as it amounts to a difference between classes of intransitive verbs or intransitive subjects. It is not obvious that this difference in marking requires distinguishing between two different {\GF}s. LFG work has tended to describe split intransitivity in terms of argument structure (cf.\ \citealt{bresnanzaenen90} on unaccusativity in English) or semantics (cf.\  \citealt{belyaev20}  on split S marking on the verb in Ashti Dargwa). However, split intransitivity / active alignment still requires a more thorough and systematic treatment in LFG.} Again, this approach is widespread in the typological / functionalist tradition, a prominent example being \citet{Dixon1984}, who treats A, S and P as syntactic primitives. This is useful for purposes of typology and cross-linguistic comparison: A, S and P serve as valid comparative concepts in the sense of \citet{haspelmath2010}. But applied to individual grammars, this distinction seems too fine-grained, failing to capture important generalizations. It is well-known, for example, that \GFHAT outranks other arguments in anaphoric constructions in the overwhelming majority of languages, regardless of their other alignment patterns. Nor do ``syntactically tripartite'' languages with S, A and P having distinct, non-intersecting sets of properties seem to be attested.\footnote{\citet[323-326]{Kibrik97} claims that syntactically tripartite alignment is observed in Jacaltec (Mayan), based on the analysis in \citet{VanValin:Ergative}, who identifies multiple pivots in the language. However, \citet[93-94]{falk06} interprets Jacaltec as syntactically ergative in terms of his LFG anlaysis instead.} 
+ 
+ Thus, \GFHAT is likely to be universal. A separate question is what a \textsc{pivotless} language could look like, and whether such languages exist. A pivotless language is \textit{not} a language where the pivot cannot be readily identified with any grammatical function; it could be identified with the topic, as in Acehnese, or with the highest-ranking argument on the person hierarchy, as in some analyses of Ojibwe (Algonquian > Algic, \cite{rhodes1994}). A pivotless language would rather lack constructions of the kind that are predicted to be pivot-sensitive by the Pivot Condition (\ref{ex:gfs:pivcond}). For example, there would be no cross-clausal extraction, with all interrogatives and relatives being localized in their local domains; coreference in coordination and in other multiclausal constructions would similarly involve no pivot sensitivity. Falk argues that at least two languages, Choctaw and Warlpiri, qualify for pivotless status.  Thus, unlike \GFHAT, \PIVOT is not universal according to Falk.
+ 
+ Falk's approach is insightful and makes a number of strong claims that deserve more thorough cross-linguistic investigation. It is widely accepted as the most adequate solution for ergativity and other syntactic alignments within LFG, although many authors still continue using the \SUBJ-\OBJ distinction for languages where Falk's fine-grained analysis is irrelevant, i.e.\ mainly in syntactically accusative languages. Falk's notion of \GFHAT and \PIVOT also has yet to be fully integrated with the recent developments in the relevant areas of LFG, such as Lexical Mapping Theory and semantic composition. 
+
+ 
+ \subsection{Complementation and nonverbal predication\label{sect:gfs:complementation}}
+ 
+ In the preceding sections, I have mostly avoided discussing sentential complements, because their specialized grammatical function \COMP stands apart from other grammatical functions in LFG. \COMP is not readily classifiable in terms of termhood and semantic restrictedness, and its limitation to a single semantic type (clauses / states of affairs) is unusual for LFG. In fact, the very existence of \textsc{(x)comp} as a separate \GF has been questioned in the theoretical literature, as discussed in \sectref{sect:gfs:comp}. In \sectref{sect:gfs:comp-xcomp}, I discuss the difference between closed (\COMP) and open (\XCOMP) complements. Nonverbal predication is also sometimes analysed using the grammatical function \XCOMP, and therefore it is discussed under the same umbrella in \sectref{sect:gfs:nvpred}.
+
+ \subsubsection{The status of \COMP\label{sect:gfs:comp}}
+ 
+ The status of \COMP as a specialized grammatical function in LFG is controversial. From the beginning, it was assumed that \textit{all} clausal complements are classified as \COMP \citep{kaplan-zaenen1989-fprec,BresnanEtAl2016}. As a formal assumption, this idea is suspect: the spirit of LFG is generally to separate categorial and functional information, such that f-structure should not draw a distinction between NP and CP complements. For this reason, the very existence of \COMP has been questioned, first in \citet{AlsinaMohananMohanan1996}, who proposed that \COMP can be replaced by \OBJ.
+ 
+ One argument in favour of \COMP is the fact that it can coexist with \OBJ and {\OBJTHETA}, as in (\ref{ex:gfs:bet-chris}).
+ 
+ \ea\label{ex:gfs:bet-chris}
+    David bet [Chris]\textsubscript{\OBJ} [five dollars]\textsubscript{{\OBJROLE{goal}}} [that he would win]\textsubscript{\COMP}.
+ \z
+As a further argument, \citet{DL00} show that while many clausal complements in English, German and Swedish do, indeed, behave like objects, others do not. For example, in German the complement of the verb `believe' can be replaced by a pronoun and moved to clause-initial position (\ref{ex:gfs:nor-assume}); the latter option is also available for ordinary object NPs (\ref{ex:gfs:de-np}). In contrast, neither option is possible for complements of `be happy' (\ref{ex:gfs:nor-insist}).
+ 
+ \ea German (Germanic > Indo-European)\label{ex:gfs:nor-assume}
+    \ea
+        \gll Ich glaube [\textbf{dass} die Erde rund ist].\\
+        I believe \phantom{[}that the earth round is\\
+        \glt `I believe \textbf{that} the earth is round.'
+        
+        \ex Ich glaube es.\\
+        `I believe \textbf{it}.'
+        
+        \ex
+        \gll [ \textbf{Dass} Hans krank ist] glaube ich.\\
+        {} that Hans sick is believe I\\
+        \glt `\textbf{That} Hans is sick, I believe.'
+    \z
+    \z
+    
+    \ea\label{ex:gfs:de-np}
+      \gll Einen Hund habe ich gesehen.\\
+      a dog have I seen\\
+      \glt `A dog, I have seen.'
+    \z
+    
+    \ea\label{ex:gfs:nor-insist}
+    \ea
+        \gll Ich freue mich [ \textbf{dass} Hans krank ist]\\
+        I gladden myself {} that Hans sick is\\
+        \glt `I am happy that Hans is sick.'
+        
+        \ex[*]{Ich freue mich \textbf{das} / \textbf{es}.\\
+        (`I am happy it.')}
+        
+        \ex[*]{[ \textbf{Dass} Hans krank ist] freue ich mich.\\
+        (`\textbf{That} Hans is sick, I am happy.')}
+    \z
+    \z
+\citet{DL00} conclude that while clausal arguments of verbs like `believe' do indeed bear the function \OBJ in German, complements of verbs like `be happy' should be recognized as genuine {\COMP}s. However, \citet{AMM05} contest this conclusion by appealing to the data of Catalan and Spanish. They claim that both examples like (\ref{ex:gfs:bet-chris}) and the data cited by Dalrymple and Lødrup only show that \OBJ alone is not enough to capture the behaviour of all types of clausal complements. But if some complements are treated as {\OBJTHETA} and {\OBLTHETA}, they can coexist with direct objects, and their syntactic properties can be adequately captured. A similar conclusion is reached in \citet{forst06} for the German data.
+ 
+ This debate still continues in the LFG literature. Thus \citet{BelyaevKozhemyakinaSerdobolskaya2017} conclude that the syntax of complementation in Moksha Mordvin requires appealing to \COMP in addition to \OBJ and {\OBLTHETA}. Moksha has object agreement morphology on transitive verbs. As discussed in \sectref{sect:gfs:terms} above, agreement is a feature of terms; clausal complements controlling agreement may thus be viewed as \OBJ. In Moksha, there is a split according to this criterion. Factives control agreement, and they can also be replaced by pro-forms (\ref{ex:gfs:moksha-factive}), like \OBJ-complements in German, passivized, coordinated with nouns, and replaced by quantificational expressions.
+ 
+ \ea\label{ex:gfs:moksha-factive} Moksha Mordvin (Mordvinic > Uralic)\\
+ factive complements\\
+    \ea object agreement\\*
+    \gll učitʼəlʼ-sʼ \textbf{sodas-inʼə /} *soda-sʼ [~\textbf{što} petʼɛ erʼ mejnʼɛ vorʼg-əčnʼ-i urok-stə]\\
+    teacher-\textsc{def.sg}[\textsc{nom}] know-\textsc{npst.3pl.o.3sg.s} \phantom{*}know-\textsc{npst.3sg} \phantom{[~}{\COMP} Peter every what.\textsc{tmpr} run.away-\textsc{ipfv-npst.3sg} class-\textsc{el}\\
+    \glt `The teacher \textbf{knows} (\SUBJ-\OBJ) \textbf{that} Peter always misses classes.'
+    
+    \ex pronominalization\\
+    \gll mon kunarə soda-jnʼə [ što vasʼɛ ašč-əlʼ tʼurʼma-sə]{ ---} də mon-gə \textbf{tʼɛ-nʼ} soda-sa\\
+    I[\textsc{nom}] for.a.long.time know-\textsc{pst.3.o.1sg.s} {} {\COMP} Basil[\textsc{nom}] be-\textsc{pqp.3sg} prison-\textsc{in} yes I-\textsc{add} this-\textsc{gen} know-\textsc{npst.3sg.o.1sg.s}\\
+    \glt `I have known (\SUBJ-\OBJ) for a long time that Basil had been in prison. – Yes, I know (\SUBJ-\OBJ) \textbf{it} too.'
+    \z
+ \z
+Other complement clauses do not control matrix verb agreement, i.e.\ the verb only agrees with the subject. However, this class is not homogeneous. Some non-factive complements, such as the complement of `fear', can be replaced by pronominal postpositional phrases or oblique case-marked pronouns --- these can uncontroversially be classified as obliques (\ref{ex:gfs:moksha-fear}). But complements of other non-factives, such as the verb `say', cannot be replaced by a pronoun --- an adverbial `so' should be used instead (\ref{ex:gfs:moksha-say}). They also cannot be replaced by quantificational expressions or coordinated with a nominal argument. \citet{BelyaevKozhemyakinaSerdobolskaya2017} conclude that this latter class of complements, being distinct from both \OBJ and {\OBLTHETA}, should be assigned the grammatical function \COMP.\footnote{Another option is available: these non-agreeing complements can be {\OBJTHETA}. This idea is appealing because \citet{DN} analyze some unmarked direct objects in DOM systems as {\OBJTHETA}. In Moksha, which displays DOM, direct objects can be nominative (unmarked) or genitive. Indeed, it is unmarked direct objects in Moksha that are similar to complements of verbs like `say': they do not trigger agreement, cannot be used with quantifiers; pronominal objects are always case-marked, etc. However, it is not clear whether unmarked and genitive direct objects in Moksha should be assigned to different grammatical functions: for instance, a marked and an unmarked direct object can be coordinated (Natalia Serdobolskaya, p.c.). In contrast, complements of verbs like `say' cannot be coordinated with a noun phrase \citep{BelyaevKozhemyakinaSerdobolskaya2017}. Thus for Moksha the answer depends on whether unmarked direct objects in this language are {\OBJTHETA}s and on whether the coordination facts can be given an alternative explanation.}
+ 
+ \ea\label{ex:gfs:moksha-fear} Moksha Mordvin (Mordvinic > Uralic)\\
+    non-factive `fear': pronominalization\\
+    \gll mon dumand-an [ što vasʼɛ af pastupanda-v-i] institut-u{ ---} mon tožə \textbf{tʼa-də} pelʼ-an\\
+    I[\textsc{nom}] think-\textsc{npst.1sg} {} {\COMP} Basil[\textsc{nom}] \textsc{neg} enter-\textsc{pass-npst.3sg} institute-\textsc{lat} I[\textsc{nom}] also that-\textsc{abl} fear-\textsc{npst.1sg}\\
+    \glt `I think (\SUBJ) that Basil will not enter the university. --- I am afraid (\SUBJ) \textbf{of that} as well.'
+    
+    \ex\label{ex:gfs:moksha-say} non-factive `say': no pronominalization\\
+    \gll nu mon \textbf{tʼaftə}{ /} *tʼɛ-nʼ af dumand-an\\
+    well I[\textsc{nom}] thus \phantom{*}this-\textsc{gen} \textsc{neg} think-\textsc{npst.1sg}\\
+    \glt \{Context: `Basil is so smart, he will surely pass the exams with excellent marks!' —\} `Well, I do not think (\SUBJ) \textbf{so} / *that.'
+ \z
+ 
+Not all languages with object agreement or indexing draw such a sharp distinction between different complement types, however. West Circassian (West Caucasian, polysynthetic), for example, treats most clausal complements in the same way as NP arguments, which is consistent with this language's weak distinction between nouns and verbs \citep{letuchiy2016}.
+
+Significant differences between clausal complements and ``nominal'' grammatical functions such as \SUBJ and \OBJ have also been described for Russian in \citet{Letuchiy2012}. Overall, the data strongly suggest that \COMP should at least be recognized as a possible \GF for clausal complements, although the extent to which languages use this possibility seems to vary. The semantic differences between \OBJ and \COMP complement clauses should also be investigated in more detail.
+ 
+ \subsubsection{Open and closed complements\label{sect:gfs:comp-xcomp}}
+ 
+ We mentioned above that clausal complements in LFG are split into two grammatical functions: \COMP and \XCOMP. The former is called `closed', the latter `open'. Closed clausal complements are, in principle, fully self-contained and have their own subjects (e.g.\ finite complement clauses);  the latter do not have a subject, which has to be structure shared with an argument of another clause. Open complements (\XCOMP) appear in structures called \textsc{functional control}, which involves structure sharing of an argument of the matrix clause and an argument (usually the subject) of the subordinate clause. Functional control is generally used to represent so-called raising constructions, as in (\ref{ex:gfs:raising}), repeated here, with the f-structure in (\ref{ex:gfs:raising-fstr}).
+ 
+\begin{exe}
+ \exr{ex:gfs:raising} \textbf{John} seemed \textup{[}{\GAP} to agree\textup{]}.
+
+ \exbox{\label{ex:gfs:raising-fstr}
+ \avm[style=fstr]{
+ [pred & `seem\arglist{\XCOMP}\SUBJ'\\
+ subj & \rnode{subj}{[pred & `John'\\
+         pers & 3\\
+         num & sg]}\smallskip\\
+ xcomp & [pred & `agree\arglist{\SUBJ}'\\
+          subj &\rnode{xcomp-subj}{\strut}\\
+         ]
+ ]
+ }
+ }
+ \CURVE[1.5]{-2pt}{0}{subj}{0em}{0}{xcomp-subj}
+ \end{exe}
+ 
+ Functional control in LFG is opposed to anaphoric control, which is often employed to analyse the construction known as Equi or simply control in English, see (\ref{ex:gfs:control}).\footnote{The discussion here presents a simplified view of the issue. In some LFG work, functional control is not limited to raising constructions but is also used in the analysis of some or all of the constructions traditionally called Equi or control. See \citetv{chapters/Control} for detailed information on control and raising in LFG.}
+
+ \ea\label{ex:gfs:control}
+    Chris told John$_i$ [(PRO$_i$) to come tomorrow].
+\z
+
+ \noindent Anaphoric control involves no structure sharing but only a covert pronominal subject in the subordinate clause (PRO); accordingly, complements whose subject is anaphorically controlled are treated as closed (\COMP). The f-structure of (\ref{ex:gfs:control}) is shown in (\ref{ex:gfs:control-fstr}), where the dashed line indicates coreference. 
+
+ \eabox{\label{ex:gfs:control-fstr}
+  \avm[style=fstr]{
+ [pred & `tell\arglist{\SUBJ, \OBJ, \COMP}'\\
+ subj & [pred & `Chris'\\
+         pers & 3\\
+         num & sg]\\
+ obj & \rnode{obj}{[pred & `John'\\
+         pers & 3\\
+         num & sg]}\smallskip\\
+ comp & [pred & `come\arglist{\SUBJ}'\\
+          subj & \rnode{pro}{[pred & `pro']}\\
+          adj & \{[pred & `tomorrow']\}
+         ]
+ ]
+ }
+ \DOTCURVE[2]{-2pt}{0}{obj}{-2pt}{0}{pro}
+ }
+
+ It is not clear if the distinction between \COMP and \XCOMP is really needed to account for the behaviour of control constructions. After all, equations that enforce structure sharing automatically ensure that the subject of the complement clause is overtly expressed only once: double expression would cause a \PRED conflict. F-structure does not take the linear order or c-structure position of elements into account, therefore it does not matter, in principle, \textit{where} the argument is expressed. This means that LFG allows Backward Raising constructions as in the West Circassian (\ref{ex:gfs:backward-raising}) by default \citep{sellssubsump}. In (\ref{ex:gfs:backward-raising}), the ``raised'' NP is overtly expressed only in the subordinate clause, which is seen in its case marking: the ergative is selected by the verb `lead'. The main clause subject, if it were overt, would have been in the absolutive (as seen in the crossed out pronoun).
+ 
+ \ea\label{ex:gfs:backward-raising}
+    West Circassian (West Caucasian)\\
+    \gll \st{a-xe-r} [ a-xe-me se s-a-šʼe-new] ∅-fježʼa-ʁe-x\\
+    \textsc{dem-pl-abs} {} \textsc{dem-pl-erg.pl} \textsc{1sg.abs} \textsc{1sg.abs-3pl.erg}-lead-\textsc{inf} \textsc{3abs}-begin-\textsc{pst-3pl.abs}\\
+    \glt `They began to lead me.' \citep[76]{PotsdamPolinsky2012}
+ \z
+ 
+ \noindent The English counterpart to this example would be *\textit{Began \textup{[}they to lead me\textup{]}} (or, to provide an uncontroversial example of raising, *\textit{Seem they to come}). The ungrammaticality of such examples requires independent explanation (for example, English {\XCOMP}s are expressed by VPs at c-structure, which do not have a subject position). See \citetv[\bookorchapter{§\ref{sec:Control:7}}{§7}]{chapters/Control} for further discussion of LFG analyses of backwards raising.
+ 
+ Similarly, anaphoric control is typically analyzed as coreference that is syntactically enforced through equations like (\UP\SUBJ\NINDEX) = \mbox{(\UP\COMP\SUBJ\NINDEX)}\footnote{In an approach where coreference is a semantic relation, such as \citet{Haug2013}, it cannot be enforced directly in the f-structure, but it can be done via a Glue meaning constructor (\citealt{Haug2014}, \citetv{chapters/Glue}).} and, possibly, (\UP\COMP\SUBJ\PRED)=\textsc{`pro'}. If the latter equation is present, an overt subject in the complement clause is precluded due to \PRED conflict. If it is not, argument expression is only constrained by general anaphoric requirements, which is why Backward Control \citep{polipots02} is impossible in most languages due to Principle C violations (see \citetv{chapters/Anaphora} for details on Principle C).
+ 
+ Crucially, such constraints follow from universal considerations, functional equations and general principles of individual grammars, but not from complements being \XCOMP rather than \COMP. Thus, it is not clear whether the traditional distinction between \COMP and \XCOMP is anything more than a useful notational convention; both could be said to refer to the same GF.
+ 
+\subsubsection{Nonverbal predication\label{sect:gfs:nvpred}} Traditionally, \XCOMP was used in LFG to represent nonverbal predicates, treating them as arguments of copular verbs such as \emph{be}, as in (\ref{ex:gfs:john-kind}).
+
+\ea\label{ex:gfs:john-kind}
+\ea John is kind.
+\ex
+\avm[style=fstr]{
+[
+pred & `be\arglist{subj, xcomp}'\\
+subj & \rnode{subj}{[ pred & `John'\\
+              pers & 3\\
+              num & sg]}\smallskip\\
+xcomp & [ pred & `kind\arglist{subj}'\\
+                  subj & \rnode{xcomp-subj}{\strut}]\\
+]
+}
+\CURVE[1.5]{-2pt}{0}{subj}{0pt}{0}{xcomp-subj}
+\z
+\z
+This effectively makes the nonverbal predicate into a kind of small clause. The main problem with this approach is that all lexical items that can serve as predicates must have two subcategorization frames, because in normal contexts at least nouns, and possibly adjectives (if they are not assumed to be predicated of their head noun), do not have a valency for \SUBJ. As observed in \citet{dalrympleetal04copular}, another problem for this approach is that clauses that already have subjects may function as predicates, as in the sentence \textit{The problem is that John came}. Such clauses have no open subject position to share with the matrix subject.
+ 
+ The main alternative is to replace \XCOMP with a special grammatical function \textsc{predlink} \citep{ButtEtAl1999}, which is not an open complement \GF and therefore does not have to share a subject valency, see (\ref{ex:gfs:john-kind-plink}) for \textit{John is kind} and (\ref{ex:gfs:problem-john}) for \textit{The problem is that John came}.
+
+\eabox{\label{ex:gfs:john-kind-plink}
+\avm[style=fstr]{
+[
+pred & `be\arglist{subj, predlink}'\\
+subj & [ pred & `John'\\
+              pers & 3\\
+              num & sg]\\
+predlink & [ pred & `kind']\\
+]
+}
+}
+ 
+ \eabox{\label{ex:gfs:problem-john}
+\avm[style=fstr]{
+[
+pred & `be\arglist{subj, predlink}'\\
+subj & [ pred & `problem'\\
+              det & def\\
+              pers & 3\\
+              num & sg]\\
+predlink & [ pred & `come\arglist{subj}'\\
+                  subj & [ pred & `John'\\
+                                pers & 3\\
+                                num & sg]\\]\\
+]
+}
+}
+One drawback of the \textsc{predlink} approach compared to the \XCOMP approach is related to the fact that in languages with adjective agreement, such as Russian (\ref{ex:gfs:rusagr}), the predicative adjectives agree in gender with the subject. In (\ref{ex:gfs:rusagr-f}), the word \textit{komnata} `room' is feminine, and therefore the predicative adjective \textit{malenʼkaja} is feminine. In (\ref{ex:gfs:rusagr-m}) \textit{dom} `house' is masculine, and the adjective is also masculine.
+ 
+ \ea\label{ex:gfs:rusagr} Russian (Slavic > Indo-European)
+    \ea\label{ex:gfs:rusagr-f}
+    \gll Komnata byla malen'kaja.\\
+    room(\textsc{f}).\textsc{sg.nom} was.\textsc{f.sg} small.\textsc{f}.\textsc{sg.nom}\\
+    \glt `The room was small (f.).'
+    
+    \ex\label{ex:gfs:rusagr-m}
+    \gll Dom byl malen'kij.\\
+    house(\textsc{m}).\textsc{sg.nom} was.\textsc{m.sg} small.\textsc{m.sg.nom}\\
+    \glt `The house was small (m.).'
+    \z
+ \z
+ 
+\noindent This is straightforward to capture in the \XCOMP approach, because the adjective has its own local subject with which it can agree: see (\ref{ex:gfs:room-small}).
+ 
+ \eabox{\label{ex:gfs:room-small}
+ \avm[style=fstr]{
+ [
+ pred & `be\arglist{subj, xcomp}'\\
+ subj & \rnode{subj}{[pred & `room'\\
+              pers & 3\\
+              num & sg\\
+              gend & f]}\smallskip\\
+ xcomp & [pred & `small\arglist{subj}'\\
+                  subj & \rnode{xcomp-subj}{\strut}]\\
+ ]
+ }
+ \CURVE[1.5]{-2pt}{0}{subj}{0pt}{0}{xcomp-subj}
+ }
+ 
+\noindent Adnominal adjectives like in (\ref{ex:gfs:small-room}a) can be treated in the same way by using a cyclic f-structure (\ref{ex:gfs:small-room}b) (see \cite{hau:nik:12}), requiring only one agreement pattern in the lexical entry (\ref{ex:gfs:xcomp-agr}).
+ 
+ \ea\label{ex:gfs:small-room} Russian (Slavic > Indo-European)
+ \ea
+ \gll malenʼkaja komnata\\
+ small\textsc{(f).sg.nom} room\textsc{(f).sg.nom}\\
+ \trans `small room'\\
+
+ \ex
+ \avm[style=fstr]{
+ \rnode{np}{[ pred & `room'\\
+   pers & 3\\
+   num & sg\\
+   gend & f \\
+   xadj & \{[
+               pred & `small\arglist{subj}'\\
+               subj & \rnode{xcomp-subj}{\strut}
+               ]\}
+ ]}
+ }
+ \CURVE[.5]{-2pt}{0}{np}{0pt}{0}{xcomp-subj}
+ \z
+ \z
+ 
+ \ea\label{ex:gfs:xcomp-agr}
+ \begin{tabular}[t]{lll}
+ \textit{malenʼkaja} & A & $(\UP\PRED) = \textsc{`small\arglist{subj}'}$\\
+ & & (\UP\SUBJ \NUM) = \SG\\
+ & & (\UP\SUBJ \GEND) = \textsc{f}\\
+ \end{tabular}
+ \z
+ 
+ In the \textsc{predlink} approach, agreement rules will have to be more complex, utilizing inside-out functional expressions as in (\ref{ex:gfs:adj-iofu}a) for adnominal adjectives and (\ref{ex:gfs:adj-iofu}b) for predicative adjectives.
+ 
+ \ea\label{ex:gfs:adj-iofu}
+ \ea ((\ADJ $\in$ \UP) \NUM) = \SG
+ \ex ((\PREDLINK \UP) \SUBJ \NUM) = \SG
+ \z
+ \z
+ 
+ Yet another approach is to unify the f-structure of the nonverbal predicate with the f-structure of the clause (via \UP=\DOWN); this is proposed in \citet{dalrympleetal04copular} for languages like Japanese, where predicative adjectives do not require a copula (\ref{ex:gfs:japadj}).
+ 
+ \ea\label{ex:gfs:japadj} Japanese (Japonic)
+ \ea
+ \gll hon wa akai\\
+ book \textsc{topic} red\\
+ \trans `The book is red.'\\
+
+ \ex
+ \avm[style=fstr]{
+ [
+ pred & `red\arglist{subj}'\\
+ subj & [pred & `book']\\
+ ]
+ }
+ \z
+ \z
+ 
+\noindent In Japanese, this analysis is quite reasonable because adjectives are morphologically a subclass of verbs. It is plausible to assume that even adnominal adjectives have subjects, and thus always have \PRED values like \textsc{`red\arglist{\SUBJ}'}. But for languages like Russian, where adjectives inflect like nouns, there is less evidence in favour of treating each adjective as having a subject. Therefore, this analysis suffers from the same disadvantage as the \XCOMP approach, in requiring two lexical definitions for each adjective or noun. Apart from this, it is structurally quite distinct from both the \XCOMP and the \textsc{predlink} approaches in being monostratal. Overall, as \citet{dalrympleetal04copular} conclude, it is likely that all three approaches are required to account for different constructions in different languages. For more information on copular constructions in LFG, see \citet[189--197]{DLM:LFG}.
+ 
+ \newpage
+ \subsubsection{The classification of \COMP\label{sect:gfs:comp-obl}} 
+ \paragraph{Termhood}  The termhood of sentential complements has not been frequently discussed in the literature. In no small part this is due to the unclear status of the grammatical function \COMP itself (see \sectref{sect:gfs:comp} above). A number of arguments in favour of treating \COMP as a non-term \GF are given in \citet{DLM:LFG}. If this view is combined with the idea that clausal complements are split between \COMP and \OBJ \citep{DL00}, one can predict that in languages with object agreement, \OBJ-like complements may trigger agreement on the verb while {\COMP}s may not. This prediction is confirmed in languages like Moksha Mordvin (Mordvinic > Uralic), where, as \citet{BelyaevKozhemyakinaSerdobolskaya2017} argue, the verb agrees with \OBJ-like complements (mainly those of factive verbs like `know') but does not agree with \COMP-like complements (mainly propositional complements of verbs like `promise'):
+ 
+ \ea
+    Moksha Mordvin (Mordvinic > Uralic)\\
+    \gll učitʼəlʼ-sʼ \textbf{soda-si-nʼə /} *soda-sʼ [~\textbf{što} petʼɛ erʼ mejnʼɛ vorʼg-əčnʼ-i urok-stə]\\
+    teacher-\textsc{def.sg}[\textsc{nom}] know-\textsc{npst.3pl.o.3sg.s} \phantom{*}know-\textsc{npst.3sg} \phantom{[]}{\COMP} Peter every what.\textsc{tmpr} run.away-\textsc{ipfv-npst.3sg} class-\textsc{el}\\
+    \glt `The teacher \textbf{knows} (\SUBJ+\OBJ) \textbf{that} Peter always misses classes.'
+    
+    \ex
+    \gll paša \textbf{abəščanda-sʼ /} *abəščanda-zʼə [~\textbf{što} il̥ʼсamanʼ kud-u]\\
+    Paul[\textsc{nom}] promise-\textsc{pst.3sg} \phantom{*}promise-\textsc{pst.3sg.o.3sg.s} \phantom{[~}{\COMP} accompany.\textsc{npst.1sg.o.3sg.s} house-\textsc{lat}\\
+    \glt `Paul \textbf{promised} (\SUBJ) \textbf{that} he would accompany me home.'
+ \z
+ 
+ \paragraph{Semantic restrictedness}
+ The status of \textsc{(x)comp} as semantically restric\-ted is less clear. Certainly, sentential complements are semantically diverse: at least factives and non-factives have been distinguished since \citet{kiparsky-kiparsky1970}, and other distinctions since then have been discussed in the literature, such as between fact, proposition, event \citep{peterson1997} and other abstract objects \citep{asher1993}. However, this is a difference in the semantic type of the argument and its entailments/presuppositions, which is not directly related to semantic roles; it might be more properly compared to the distinction between definite and indefinite NPs --- given that definites, like factives, presuppose the existence of their referents, and have other similar properties (see \cite{melvold1991}).
+ 
+ The range of semantic roles that clausal arguments can be associated with is difficult to resolve because these arguments are rather restricted in their distribution. There are very few verbs with two clausal arguments (exceptions being verbs like \textit{prove}, \textit{entail}, etc.), and these all have only \SUBJ and \COMP arguments; I am not aware of any verbs that have two sentential non-subjects (\COMP, \OBJ or \textsc{obl}). Clausal arguments often cannot have the markings characteristic of NP arguments and hardly ever undergo valency-changing processes (even clausal complements classified as \OBJ can be difficult to passivize). Hence, there is little distributional evidence that could help distinguish between the semantic roles of \COMP. On a purely speculative basis, one may say that most {\COMP}s are Themes, some are Stimuli (mental predicates), and some could be classified as Goals (e.g. verbs like \textit{try}). In terms of \citet{Dowty1991}, these all fall under the proto-role Patient; thus it is an open question whether these fine-grained distinctions are grammatically relevant. \citet{zaeneng94} believe that they are not, and that \textsc{(x)comp} is, in fact, semantically restricted, since this \GF can only be occupied by clausal arguments. Similarly, \citet{DL00}, who distinguish between \COMP and \OBJ (see \sectref{sect:gfs:comp}), assume that \COMP is semantically restricted and that this is what distinguishes \COMP from \OBJ.
+ 
+ The alternative is simply to avoid definitively classifying \COMP and \XCOMP as either semantically restricted or semantically unrestricted. \citet{falk2001lexical} proposes that \COMP and \XCOMP are different from all other {\GF}s in having the positive value for a special feature [\textsc{c}] (for complement). In practical terms, this is equivalent to the position of \citet{zaeneng94}. Another approach is to treat \COMP as underspecified for being semantically restricted or unrestricted, depending on the context, as in \citegen{berman2007} analysis of German.
+ 
+ The difficulties in resolving this question only serve to illustrate that \COMP and \XCOMP are really apart from all other {\GF}s and require a special analysis -- if they are to be distinguished at all, as discussed in detail in \sectref{sect:gfs:comp} above.
+ 
+ 
+ \subsection{Possessors\label{sect:gfs:poss}}
+  \largerpage[-1]
+ The discussion of grammatical functions has so far avoided mentioning possessors. This is because, being nominal dependents, they are not easily comparable to other, clause-level {\GF}s.
+ 
+ In LFG, possessors are standardly assumed to bear the grammatical function \POSS. Among clausal {\GF}s, it is most similar to \SUBJ in two ways. First, it is the most prominent argument, as, apart from possessors, nouns may only have oblique dependents. Second, it is semantically unrestricted. It is well-known that possessors (in the syntactic sense, i.e.\ genitive dependents) can have a very wide range of relations to their heads. The semantic non-restrictiveness of possessors is also evident from the fact that in many languages, genitive marks the same arguments in non-finite clauses that are mapped to \SUBJ in finite clauses (\ref{ex:gfs:destruction}).
+ 
+ \ea\label{ex:gfs:destruction}
+    \ea \textbf{The enemy} destroyed the city.
+    \ex\label{ex:gfs:destruction-poss} \textbf{the enemy's} destruction of the city
+    \z
+ \z
+ 
+ Therefore, some authors propose reducing \POSS to \SUBJ \citep{sulger2015}. This solution seems too radical, however --- at least for some languages. \citet{ChisaPayn03} were the first to introduce a hybrid approach that uses both \SUBJ and \POSS in noun phrases. They analyse English and Hungarian, which both allow two types of possessor expression: English has the ``Saxon Genitive'' \textit{'s} and \textit{of}-possessors, while Hungarian has nominative and dative possessors. Chisarik and Payne argue that English \textit{'s}-possessors and Hungarian nominative possessors are {\SUBJ}s, while the other two types of possessors are \textsc{adnom}s, which correspond to \POSS. \citet{Laczko2004}, critical of their analysis of the Hungarian data, also maintains that Hungarian possessors can be either \SUBJ or \POSS, but argues that the \GF of the possessor is independent of its marking pattern. Laczkó further develops this analysis of Hungarian in a series of papers, in particular  \citet{Laczko2009,Laczko17}. \citet{LaczkoRakosi2019} further argue that in some Hungarian examples such as (\ref{ex:gfs:hung-poss-subj}), both \SUBJ and \POSS are present in the f-structure of the nominalization. In this case, the possessor is the reciprocal which triggers 3rd person singular agreement on the nominalized verb, while the subject is the null pronominal coreferent with `boys' in the main clause (\ref{ex:gfs:hung-poss-fstr}).
+ 
+ \ea\label{ex:gfs:hung-poss-subj}
+ \gll A fiúk$_i$ dijazzák [\textsubscript{DP} az egymás$_i$ lefest-és-é-t].\\
+ the boys appreciate.\textsc{3pl} {} the each.other paint-\textsc{nmlz-poss.3sg-acc}\\
+ \trans `The boys appreciate the painting of each other.' \citep[163]{LaczkoRakosi2019}
+ \z
+
+  \eabox{\label{ex:gfs:hung-poss-fstr}
+ \avm[style=fstr]{
+ [
+ pred & \text{`appreciate\arglist{\SUBJ \OBJ}'}\\
+ subj & {\rnode{subj}{[\textnormal{``the boys''}]}}\smallskip\\
+ obj & [ pred & \text{`painting\arglist{\SUBJ \POSS}'}\\
+             subj & {\rnode{pro}{[\textnormal{``pro''}]}}\smallskip\\
+             poss & {\rnode{eacho}{[\textnormal{``each other''}]}}\\]\\
+ ]
+ }
+ \DOTCURVE[3.7]{-2pt}{0}{subj}{-2pt}{0}{pro}
+ \DOTCURVE[3.35]{-2pt}{0}{pro}{-2pt}{0}{eacho}
+ }
+ 
+ \newpage
+ If \POSS is a governable \GF like \SUBJ, all nouns with optional possessors must be assumed to have two variant \PRED values: with and without a possessor valency, e.g. `book' and `book-of\arglist{\POSS}' \citep[315 et passim]{bresnan2001lexical,BresnanEtAl2016}. This seems undesirable, so \citet{DLM:LFG} propose to treat \POSS as being ungovernable, like \ADJ, but positioned at the top of the \GF hierarchy, like \SUBJ. This means that \POSS is licensed in any f-structure having a \PRED value, including clausal f-structures; thus, additional care must be taken to ensure that \POSS is constrained not to appear in inappropriate positions.
+ 
+ \section{Overlay and discourse functions\label{sect:gfs:overlay}}
+ 
+ F-structures occupying \GF feature values may have additional functions in the clause that link the f-structure to the wider syntactic or discourse context. Following \citet[59]{falk2001lexical}, who took the term from \citet{johnson-postal1980}, these can be called \textsc{overlay functions} because they must always be connected to arguments or adjuncts by either anaphora or structure sharing (according to Extended Coherence, see \cite[62--63]{FF,Zaenen85,BM87,BresnanEtAl2016}). One overlay function, \PIVOT, serves to capture some of the subject properties of core arguments and has been discussed in \sectref{sect:gfs:subj-nonacc}. Two other important classes of functions are so-called grammaticalized discourse functions, which traditionally included \textsc{topic} and \textsc{focus} but are now increasingly replaced by a single function called \textsc{dis} or \textsc{udf} (discussed in \sectref{sect:gfs:topic}), and functions like \textsc{q} or \textsc{relpro} that are intended to mark elements relativized, questioned, or otherwise selected to serve as input to other syntactic or semantic processes (discussed in \sectref{sect:gfs:relpro}).
+ 
+ \subsection{\textsc{topic}, \textsc{focus} and \textsc{dis}\label{sect:gfs:topic}}
+ \largerpage[-2]
+ Since the earliest work in LFG, ``grammatic(al)ized discourse functions''  \textsc{topic} and \textsc{focus} have been used at f-structure to represent simultaneously the information structure status of participants and their role in establishing long-distance dependencies such as wh-extraction. It is also often assumed, e.g. in \citet{bresnan2001lexical} and \citet{BresnanEtAl2016}, that \SUBJ is unique in being both a grammatical function and a discourse function. This is meant to represent the discourse prominence of subjects and capture some generalizations in the c- to f-structure mapping, but it also means that discourse functions in this understanding are not necessarily overlay functions.\footnote{\citet{falk06}, whose approach was discussed in \sectref{sect:gfs:subj-nonacc} above, introduces the overlay function \PIVOT to account for those subject properties that are associated with syntactic prominence. Therefore, the properties that Bresnan et al. associate with \SUBJ as a discourse function can instead be associated with \PIVOT in Falk's approach, resolving the ambiguous status of subjects. I am grateful for this observation to an anonymous reviewer.}
+ 
+ Under this view, f-structure combines morphosyntactic and information-struc\-ture features, which is against LFG's tendency for localizing different aspects of language structure at different projections or levels (see \citetv{chapters/Intro} and \citetv{chapters/CoreConcepts}). This, with other formal and empirical considerations, has caused recent work, notably \citet{kingzaenen} and \citet{DN}, to promote information structure to a separate projection (see \citetv{chapters/InformationStructure}), which has removed the need to represent notions such as topic and focus at f-structure. Therefore, many authors feel that only one overlay function is now sufficient for all topicalized, focalized or otherwise displaced material. This function has been variously called \textsc{udf} for ``unbounded dependency function'' \citep{Asudeh12}, \textsc{op} for ``operator'' \citep{alsina2008}, or \textsc{dis} for ``dislocated'' \citep{DLM:LFG} in the literature.\footnote{The treatment of long-distance dependencies in LFG is described in detail in \citetv{chapters/LDDs}; here, I will only discuss issues related to the role overlay functions play in their analysis.}
+ 
+ Regardless of whether \textsc{dis} or \textsc{topic} / \textsc{focus} are used, these attributes have to be set-valued because there may be multiple dislocated elements in one sentence, whether in the same position, like in (\ref{ex:gfs:french-dis}) from French, where two phrases are right-dislocated (with clitic resumption), or in different positions, as in (\ref{ex:gfs:mary}) from English, where \textit{Mary} and \textit{me} are dislocated to the left and right edges of the clause, respectively.
+ 
+ \ea\label{ex:gfs:french-dis}
+ \ea
+ French (Romance > Indo-European)\\
+ \gll Je le lui ai donné, \textbf{le} \textbf{livre}, \textbf{à} \textbf{Jean}.\\
+ I.\textsc{cl} it.\textsc{cl} to.him.\textsc{cl} have given the book to J.\\
+ \glt`I gave it to him, the book, to Jean.'
+ 
+ \ex \avm[style=fstr]{
+ [
+ pred & `give\arglist{subj, obj, {\OBJROLE{recip}}}'\\
+ tense & past\\
+ dis & \{ [
+         pred & `book'\\
+         def & +\\
+         pers & 3\\
+         num & sg\\
+         gend & m
+         ]\\
+         [
+         pred & `Jean'\\
+         pers & 3\\
+         num& sg\\
+         gend & m\\
+         pcase & a
+         ] \}\\
+subj & [
+            pred & `pro'\\
+            pers & 1\\
+            num & sg\\
+            ]\\
+obj &   [
+            pred & `pro'\\
+            pers & 3\\
+            num & sg\\
+            gend & m\\
+            case & acc\\
+            ]\\
+\OBJROLE{recip} &   [
+            pred & `pro'\\
+            pers & 3\\
+            num & sg\\
+            gend & m\\
+            case & dat\\
+            ]\\
+ ]
+ }
+ \z
+ \z
+ 
+ \newpage
+ \ea\label{ex:gfs:mary}
+ \ea \textbf{Mary}, I saw her yesterday, \textbf{me}.
+ 
+ \ex
+ \avm[style=fstr]{
+ [
+ pred & `see\arglist{subj,obj}'\\
+ tense & past\\
+ dis & \{ [ pred & `Mary'\\
+             pers & 3\\
+             num & sg ]\\
+           [ pred & `pro'\\
+             pers & 1\\
+             num & sg\\
+             case & acc
+           ] \}\\
+ subj & [ pred & `pro'\\
+               pers & 1\\
+               num & sg\\
+               case & nom\\ ]\\
+ obj & [ pred & `pro'\\
+              pers & 3\\
+              num & sg\\
+              case & acc\\]\\
+ adj & \{ [ pred & `yesterday' ] \}\\
+ ]
+ }
+ \z
+ \z
+ 
+ \noindent Notice that the f-structures do not distinguish between two types of dislocation: in the \textsc{dis} approach, all dislocated elements are members of the same set, while in the \textsc{topic} / \textsc{focus} approach, both would be \textsc{topic}s due to their information structure status. Presumably, a distinction at f-structure is not required because the difference between types of dislocation is captured at other levels, such as information structure (i-structure) or prosody (p-structure).
+ 
+ In fact, when so much has been delegated to other levels, it is not clear whether it is really necessary to indicate the dislocated status of a constituent by any f-structure feature. Indeed, in all the analyses of long-distance dependencies that I am aware of, \textsc{dis} is locally introduced in the rule that defines the dislocated position by the equation \DOWN$\in$\:(\UP\DIS), and no other rules reference the value of \textsc{dis} directly. The symbol \textsc{gf} used in paths constraining long-distance dependencies usually includes only non-overlay {\GF}s \citep[206]{DLM:LFG}, so the dislocation of a phrase from one clause to another does not influence its availability for further extraction. When the dislocated phrase \textit{is} relevant for other processes, such as in relativisation and constituent questions, it occupies the special overlay functions \textsc{relpro} and \textsc{q}. It thus appears that the feature \textsc{dis} duplicates the information already present at c-structure -- that the element is in some dislocated position -- and is therefore redundant.  This question is discussed in detail in \citet[section~4.6]{Snijders2015}.
+ 
+
+ \subsection{\textsc{relpro} and \textsc{q}\label{sect:gfs:relpro}}
+ 
+ In some constructions, elements that are dislocated to designated structural positions serve as input to other syntactic or semantic rules and constraints. For example, in relative clauses, the relative pronoun must be linked to the head of the relative phrase, both in syntax (e.g. to ensure agreement in gender and/or number) and in semantics (in order to correctly restrict the reference of the head noun). Similarly, the semantic interpretation of constituent questions must be able to identify the f-structure of the interrogative.
+ 
+ It is not enough to use only \textsc{dis} in such constructions because \textsc{dis} is not specific enough. A sentence may have another dislocated element in addition to the relative pronoun or interrogative: for example, in the sentence \textit{John, who saw him?} the f-structures of both \textit{John} and \textit{who} will be elements of \textsc{dis}, but only \textit{who} must be correctly identified as the question word. The traditional distinction between \textsc{topic} and \textsc{focus} will not help either, because relativization or questioning of a phrase often leads to the extraction of a larger constituent in which it occurs (pied piping), as in the sentence \textit{Whose brother did John see?}, where the dislocated element occupying \textsc{focus} is \textit{whose brother}, but only \textit{whose} is the interrogative element.
+ 
+ For these reasons, LFG analyses of relativisation and constituent questions make use of the additional overlay features \textsc{relpro} and \textsc{q}, respectively, that specifically include the f-structure of the element that is relativized or questioned.\footnote{Similar effects could be achieved by using off-path constraints (see \citetv{chapters/CoreConcepts} on the notion) but this seems to be in essence equivalent to using the overlay functions but results in a more cumbersome analysis (Tracy Holloway King, p.~c.).  This possibility is explored in \citetv[\bookorchapter{\sectref{discoursefunctions}}{§4}]{chapters/LDDs}.} For example, the sentence \textit{Whose brother did John see?} will have the f-structure in (\ref{ex:gfs:whose-brother}).
+ 
+ \ea\label{ex:gfs:whose-brother}
+ \avm[style=fstr]{
+ [
+ pred & `see\arglist{subj,obj}'\\
+ tense & past\\
+ dis & \{\rnode{dis}{[ pred & `brother'\\
+                pers & 3\\
+                num & sg\\
+                poss & [ pred & `pro'\\
+                               prontype & wh\\
+                               pers & 3\\
+                               num & sg\\
+                               case & gen ]\pnode{poss} ]}\}\\
+ q & \rnode{q}{\strut}\\
+ subj & [ pred & `John'\\
+               pers & 3\\
+               num & sg ]\\
+ obj & \rnode{obj}{\strut}\\
+ ]}
+ \CURVE[1.3]{-2pt}{0}{poss}{0pt}{0}{q}
+ \CURVE[1.3]{-2pt}{0}{dis}{0pt}{0}{obj}
+ \z
+ 
+ \noindent In this example, the question word is the possessor \textit{whose}, but English does not allow extraction of just the possessor, so the whole object phrase \textit{whose brother} is dislocated to the left periphery and, consequently, appears in \textsc{dis} at f-structure. The wh-word itself occupies the value of the special overlay function \textsc{q}, which represents the element being questioned. For more information on the handling of long-distance dependencies in LFG, see \citetv{chapters/LDDs}.
+ 
+ 
+ \section{Conclusions}
+ 
+ In this chapter, I have described the key properties of the LFG view of grammatical functions. An important aspect of LFG is assigning to grammatical functions a central role in grammar, without reducing them to more basic phenomena such as semantic roles, constituent structure position or relative syntactic rank. The inventory of grammatical functions is assumed to be universal, and each grammatical function is supposed to be associated with a distinct pattern of syntactic behaviour. The optimal inventory and the syntactic status of its members are based on three generalizations: (1) the functional hierarchy, which determines constraints on anaphoric binding and semantic role mapping; (2) the classification of grammatical functions into governable vs.\ ungovernable, semantically restricted vs.\ unrestricted {\GF}s and terms vs.\ non-terms, as well as the related cross-classification of {\GF}s in lexical mapping theory; (3) individual properties of specific grammatical functions, primarily subjects. This defines the core five-way distinction between \SUBJ, \OBJ, {\OBJTHETA}, {\OBLTHETA} and \ADJ. Four grammatical functions -- \POSS, \COMP, \XCOMP and \textsc{predlink} -- stand somewhat apart due to being uniquely associated with very specific argument types: nominal possessors, clausal complements and nonverbal predicates. This has resulted in attempts to eliminate \textsc{predlink} and assimilate \POSS to \SUBJ and \textsc{(x)comp} to non-clausal other grammatical functions, but there are compelling independent arguments in favour of preserving their distinct status. In addition to these {\GF}s, LFG makes use of so-called overlay functions, which represent positions additionally occupied by {\GF}s that are required for cross-clausal or discourse continuity.
+ 
+ \hspace*{-1.7pt}This approach aligns LFG very well with typological and functional approaches to language, where \textit{grammatical relations} are direct counterparts to the LFG \textit{grammatical functions}. In spite of the superficial similarity, however, there is a crucial difference between the two approaches: typology does not generally assume one specific system of grammatical relations to be universal, while LFG is concerned with universality, at least in theory. This focus on universality implies that the LFG notions of grammatical functions are quite removed from their traditional definitions. In particular, there have been interesting developments in the treatment of subjects: \citet{Manning1996} replaces subject and object with more abstract functions \PIVOT and \textsc{core} that receive an inverse mapping in ergative languages, while \citet{falk06} retains the traditional \SUBJ as the most prominent argument (\GFHAT) while adding the overlay function \PIVOT to account for those subjecthood properties that can be associated with other arguments in syntactically non-accusative languages. The distinction between \OBJ and {\OBJTHETA} has also been extended beyond its traditional understanding, with {\OBJTHETA} being used for unmarked direct objects in differential object marking languages \citep{DN} and for coindexed arguments in polysynthetic languages (see \cite{lander-etal2021} for a rather radical approach). Finally, the LFG use of a distinct \GF \textsc{(x)comp} for clausal complements is unique in theoretical and typological literature and allows a wide range of intriguing generalizations.
+ 
+ Grammatical functions are a cornerstone of LFG, and their analysis is in line with the general spirit of this framework, which avoids reductionism to the extent of sometimes being overtly redundant in splitting linguistic phenomena into several mechanisms operating at different levels. The framework itself puts no constraint on the relationship betwen these levels; determining to what extent the mapping is regular becomes an empirical question. There is no formal obstacle to eliminating grammatical functions from LFG if it can be demonstrated that they can be reduced to other mechanisms. However, all such attempts to date have been unsuccessful, which demonstrates the viability of the LFG approach to grammatical functions.
+
+ \section*{Acknowledgments}
+
+I am grateful to Mary Dalrymple, Tracy Holloway King, Sylvain Kahane, and two anonymous reviewers for their insightful comments on earlier drafts of this chapter, which have made it much more comprehensive and cohesive.  I acknowledge the support of the RSF grant no. 22-18-00528 ``Clausal connectives in sentence and discourse: Semantics and grammaticalization paths''.
+
+\section*{Abbreviations}
+
+Besides the abbreviations from the Leipzig Glossing Conventions, this
+chapter uses the following abbreviations.\medskip
+
+\noindent\begin{tabularx}{.45\textwidth}{lQ}
+\textsc{add}& additive\\
+\textsc{aor}& aorist\\
+\textsc{aug}& augmentative (Hakha Lai)\\
+\textsc{av}& active voice (Tagalog)\\
+\textsc{bv}& benefactive voice (Tagalog)\\
+\textsc{cl}& clitic \\
+\textsc{cl1}& first agreement class (East Caucasian languages)\\
+\textsc{cl2}& second agreement class (East Caucasian languages)\\
+\textsc{conn}& connective (Hakha Lai)\\
+\textsc{compl}& completive\\
+\textsc{dim}& diminutive\\
+\textsc{dir}& directive\\
+\textsc{dv}& dative/locative voice (Tagalog)\\
+\textsc{el}& elative\\
+\textsc{emph}& emphatic\\
+\textsc{fv}& final vowel (Kichaga)\\
+\end{tabularx}\noindent\begin{tabularx}{.45\textwidth}{lQ}
+\textsc{hrsy}& hearsay evidential (Meskwaki)\\
+\textsc{interj}& interjection\\
+\textsc{in}& inessive\\
+\textsc{io}& indirect object\\
+\textsc{iv}& instrumental voice (Tagalog)\\
+\textsc{lat}& lative\\
+\textsc{lnk}& linker\\
+\textsc{mal}& malefactive\\
+\textsc{ov}& objective voice (Tagalog)\\
+\textsc{pcvb}&  participle-converb (Ashti)\\
+\textsc{pos} & positive\\ 
+\textsc{pot}& potential\\
+\textsc{pqp}&  pluperfect (Moksha Mordvin)\\
+\textsc{pret}& preterite\\
+\textsc{super}& location above landmark\\
+\textsc{tmpr}& temporal (Moksha Mordvin)\\
+\end{tabularx}
+ 
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}

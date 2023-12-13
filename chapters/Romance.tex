@@ -1,0 +1,1149 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10186016}
+\title{LFG and Romance languages}
+\author{Alex Alsina\affiliation{Universitat Pompeu Fabra}}
+\abstract{This chapter is an overview of the main topics in the Romance languages that have been the object of analysis within LFG. The topics reviewed include the analysis of verbal clitics, considering their morphological and c-structure status, their role in f-structure, and the role of the anaphoric reflexive clitics in a-structure, the grammatical function of direct and indirect objects and of clausal complements, passive and impersonal constructions, and complex predicates such as the causative construction.}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[34]%%chapternumber
+}{}
+
+% \renewcommand{\lsChapterPrefixString}{Chapter~}
+\begin{document}
+\maketitle
+\label{chap:Romance}
+
+\section{Introduction}
+\label{sec:Romance:1}
+
+This section consists of a brief presentation of the Romance languages and an overview of the chapter.
+
+\subsection{Brief presentation of the Romance languages}
+\label{sec:Romance:1.1}
+
+The Romance languages developed out of the varieties of Latin spoken in the areas under Roman domination as a result of the expansion of Latin throughout the territories around the Mediterranean Sea from the fifth century BC to the sixth century AD. The main present-day Romance languages with a standard form and/or official status in some state or region within a state are:
+
+\begin{itemize}
+\item 
+The closely related Portuguese and Galician;
+\item
+Spanish, or Castilian;
+\item
+Catalan, with Valencian as a regional name;
+\item
+French;
+\item
+Occitan, with a variety of regional names including Provençal, Langue d'Oc, Gascon, Limousin, etc.;
+\item
+Sardinian;
+\item
+Italian;
+\item
+Raeto-Romance, with Romansh, Ladin and Friulian as regional names;
+\item
+Romanian.
+\end{itemize}
+In addition, there are a number of languages without an official status, such as Asturian and Aragonese in Spain, Walloon, Picard and Bourguignon in France, the Italo-Romance varieties Piedmontese, Ligurian, Lombard, Sicilian, Neapolitan in Italy, and Corsican in France, and the Daco-Romance varieties Aromanian, Istro-Romanian, and Megleno-Romanian, to name just a few. As a consequence of the colonial policies of European states from the fifteenth to the nineteenth centuries, some of the Romance languages have large numbers of speakers outside Europe; this is the case of Spanish, Portuguese, and French, which are, in this order, the Romance languages with the largest numbers of speakers.
+
+Because of their (relatively recent) common ancestry, the Romance languages share many structural patterns, but they also have significant differences. Readers interested in finding more information about any aspect of this language family should consult \citet{LedgewayMaiden2016}.
+
+\subsection{Overview of the chapter}
+\label{sec:Romance:1.2}
+
+The choice of topics dealt with in this chapter is conditioned by the existence of LFG work on specific topics, theoretical interest, and space limitations. Most of the LFG work on Romance is on Spanish, French, Italian, Catalan, and Portuguese. Consequently, this chapter will deal mostly with these languages.
+
+\sectref{sec:Romance:2} focuses on so-called clitics in Romance. First, it addresses the debate about their morphological status: are clitics affixes or independent words? Second, it addresses their syntactic status: do they fill a grammatical function (GF) and, if so, what GFs can they fill? Can they be agreement markers? Do they have other roles? And, finally, the status of the anaphoric reflexive clitic is debated. \sectref{sec:Romance:3} discusses arguments, GFs, and case and addresses issues such as the inventory of GFs in LFG and what GFs should be used for objects in the Romance languages, subject-object alternations, passivization, etc. \sectref{sec:Romance:4} discusses complex predicate constructions such as the causative construction and the restructuring construction.
+
+Following are some topics not discussed in detail in this chapter:
+
+\begin{itemize}
+\item The phenomena that, in \citet{Rizzi1997} and subsequent works, are known as corresponding to the structure of the left periphery. Although there is not much LFG work on this topic within the Romance languages, \citet{Estigarribia2005,Estigarribia2013} analyses clitic left dislocation in Spanish; \citet{Gazdik2008,Gazdik2010} studies interrogatives and multiple questions in French; and \citet{ZipfQuaglia2017} discuss word order and information structure in Italian matrix wh-questions. See \citetv{chapters/InformationStructure} for a general discussion.
+\item Determiners and the structure of the NP. A salient feature of the Romance languages in general is the existence of a clitic-like definite article. In many of these languages it is homophonous (or partially so) with the third person pronominal accusative clitic. Article-preposition contracted forms in French are analyzed in \citet{wescoat2007} as lexical items involving lexical sharing. \citet{Alsina10} takes this idea a step further and assumes that the definite article in Catalan is always an affix that attaches to a word with lexical sharing. \citet{Alsina2011} identifies three types of determiners in Catalan depending on whether they must co-occur with a head noun, may (but need not) co-occur with a head noun, or cannot do so, and provides an analysis within LFG.
+\item Agreement. Verb agreement is generally taken to be agreement with the subject. However, \citet{AV:LFG14} show that the finite verb may agree with a non-subject (a nominative complement) in Catalan and Spanish, as can be seen in copular constructions; \citet{AlsinaYang2018} extend this assumption to intransitive clauses with an indefinite postverbal logical subject. \citet{CarreteroGarcia2017} proposes an analysis of the special form of adjectives used for agreement with non-count nouns in Asturian. 
+\item Diachrony. The diachronic development of infinitival complements from Latin to the Romance languages is discussed by \citet{Vincent2019}.
+\item Finiteness and tense, in connection with the morphology-syntax interface, are dealt with in \citet{Barron2000} and \citet{Schwarze2001a}, using data from Italian and French, respectively. 
+\item Auxiliaries. \citet{buttetal96} develop the idea of having a level of representation different from f-structure, called m-structure, for the analysis of auxiliaries in French, as well as in English and German. \citet{Schwarze1996} proposes an analysis of auxiliaries in Spanish, Italian and French, including auxiliary selection in the latter two languages.
+\end{itemize}
+
+\section{Clitics}
+\label{sec:Romance:2}
+
+The term ``clitic'' in this chapter is used as a purely descriptive term (without any theoretical implications) to refer to the class of phonologically dependent particles that attach to a verb and generally provide information about a GF of the clause. \sectref{sec:Romance:2.1} focuses on the debate as to whether clitics are syntactically independent words (though phonologically dependent) or affixes, what their correct analysis should be, and what implications this analysis has. In \sectref{sec:Romance:2.2}, we examine the f-structure status of clitics as the expression of an argument, as an agreement marker, and as the expression of a non-argument of the verb. The reflexive clitic, in its ``anaphoric'' use, is discussed in \sectref{sec:Romance:2.3}.
+
+\subsection{Morphological status}
+\label{sec:Romance:2.1}
+
+One of the central issues in the analysis of clitics is their morphological status: are they independent syntactic constituents or are they affixes? If they are affixes, should we treat them as morphemes  -- linguistic signs consisting of a phonological representation and a semantic and f-structure representation --  or should we treat them as the overt realization of particular bundles of morphological or syntactic features within a realizational approach to morphology?
+
+\subsubsection{Affixes vs. independent words}
+\label{sec:Romance:2.1.1}
+
+The most common assumption in connection with this issue in LFG is that they are independent syntactic constituents. This is not only the oldest approach, as it is found in the earliest analyses of clitics within LFG, as in \citet{Grimshaw1982}, but it is a very prevalent one, as it is found up to the present (see, for example, \citet{Schwarze2001} for French and Italian, \citet{Estigarribia2005,Estigarribia2013} for Spanish, \citealt{Quaglia2012} for Italian, and \citealt{BarbuToivonen2018} for Romanian). \citet[90]{Grimshaw1982} posits the following c-structure rule in order to account for the position of clitics in French:
+
+\ea\label{ex:Romance:1}
+\phraserule{V$'$}{(CL)$_1$ (CL)$_2$ (CL)$_3$ (AUX) V}
+\z
+In this approach, clitics are a special grammatical category (CL) that occupies a position in the c-structure. By a rule such as \REF{ex:Romance:1}, the position of clitics is restricted to being adjacent to a verb (or an auxiliary). 
+
+However, proponents of clitics as syntactic constituents generally do not pre\-sent arguments in favor of their position and against treating clitics as affixes, presumably because that position is seen as the default assumption, given that the standard orthographies in general separate clitics from their hosts by means of spaces, hyphens or apostrophes, at least in preverbal position, which induces the belief that clitics are words. (But see \citealt{Schwarze2001}, who makes an explicit defense of clitics as c-structure constituents, in French and Italian.)
+
+On the other hand, proponents of treating clitics as affixes have presented evidence in favor of this assumption that is highly problematic for the assumption that clitics are independent syntactic constituents. Evidence that clitics are morphological units (not c-structure constituents) has been presented, within different frameworks, by \citet{Bonet1991,Bonet1995}; \citet{Miller1992}; \citet{Crysmann1997}; \citet{MillerSag1997}; \citet{Monachesi1999}; \citet{LuisSadler2003}; \citet{LuisSpencer2005}, among others. Some of the evidence, of a strictly syntactic nature, is that clitics cannot be topicalized, cannot be substituted by full pronouns, cannot be coordinated, and cannot be modified. The following Portuguese examples illustrate the failure of coordination
+of clitics:\footnote{Examples, including cited ones, are glossed according to the Leipzig glossing rules, replacing the original glosses, if necessary. Unreferenced examples reflect the author's judgments. Clitics are glossed indicating only the corresponding features of person, number, gender, and case that are morphologically relevant. The reflexive clitic (\textit{se}, \textit{si}, \textit{s'}, and cognate forms) is glossed as \textsc{refl} (even when its meaning is not reflexive). Forms that cannot be glossed in a simple way are glossed with the form in small caps; example: the genitive and partitive clitic \textit{en} in Catalan or French is glossed as \textsc{en}.}
+
+\ea\label{ex:Romance:2} Portuguese \citep{Crysmann1997} 
+\ea[*]{\label{ex:Romance:2a}
+\gll eu vi o e Paulo.\\
+       I saw.\textsc{1sg} 3\textsc{sg.m.acc} and Paul\\
+\glt   `I saw him and Paul.'
+}
+\ex[*]{\label{ex:Romance:2b}
+\gll eu não o e a conheço.\\
+      I not 3\textsc{sg.m.acc} and 3\textsc{sg.f.acc} know.\textsc{1sg}\\
+      \glt   `I do not know him and her.'
+      }
+\z
+\z
+There is also evidence that can be classified as morphophonological. Clitics exhibit a high degree of selection with respect to their host: in most Romance languages, the clitic cluster must be adjacent to the verb. This is always the case when the clitic cluster is postverbal. The exception to the adjacency requirement of the verb and the clitic cluster is only found when the clitic cluster is preverbal in modern Portuguese \citep{Crysmann1997,LuisOtoguro2004}, as well as in medieval Spanish and Portuguese \citep{Fontana1993,Fontana1996,Fischer2002}, and only in very restricted contexts. There are morphophonological alternations that are restricted to clitic combinations. For example, in Portuguese, when a third person accusative clitic (\textit{{}-o,-a,-os,-as}) is in a clitic combination (either with a verb or with another clitic) following an oral coronal continuant (/s/, /z/, /r/), this consonant is replaced by [l] (see \citealt{Crysmann1997}): \textit{comprar + o $\rightarrow$ comprá-lo} buy.\textsc{inf} it, \textit{nos o dão} $\rightarrow$ \textit{no-lo dão} us-it give.3\textsc{pl}, etc. This alternation does not occur across word boundaries: \textit{todos os alunos} `all the students'. The same clitics are preceded by /n/ when suffixed to a verb form ending in a nasal vowel, as in \textit{eles conhecem + o/a $\rightarrow$ eles conhecem-no/na} `they know him/her' (see \citealt{Crysmann1997}), but this nasal insertion does not occur across word boundaries: \textit{eles conhecem o aluno/a aluna} vs. *\textit{eles conhecem no aluno/na aluna} `they know the student.\textsc{m}/the student.\textsc{f}'.
+
+One of the most compelling sources of morphophonological evidence for the affixal nature of clitics is the existence of opaque clitic combinations, i.e.\ combinations of clitics that do not coincide with the form of the corresponding clitics used in isolation \citep{Bonet1995}. One of the clearest examples of opaque clitic combinations is the so-called ``spurious \textit{se}'' in Spanish. While the clitic form of the third person singular indirect object is \textit{le} in isolation, as in \REF{ex:Romance:3b}, when it combines with a third person accusative object, such as \textit{lo} in \REF{ex:Romance:3a}, it adopts the form \textit{se}, as in \REF{ex:Romance:3c}, elsewhere used only as a third person reflexive clitic. The transparent combination *\textit{le lo} (or *\textit{lo le}) does not exist.
+
+\ea\label{ex:Romance:3}Spanish \citep[608]{Bonet1995}
+\ea\label{ex:Romance:3a}
+\gll
+El premio, lo dieron a Pedro ayer.\\
+the price 3\textsc{sg.m.acc} gave.\textsc{3pl} to Pedro yesterday\\
+\glt   `The price, they gave it to Pedro yesterday.'
+\ex\label{ex:Romance:3b}
+\gll
+A Pedro, \textbf{le} dieron el premio ayer.\\
+to Pedro, 3\textsc{sg.dat} gave.\textsc{3pl} the price yesterday\\
+\glt   `Pedro, they gave him the price yesterday.'
+\ex\label{ex:Romance:3c}
+\gll
+A Pedro, el premio, \textbf{se} \textbf{lo} dieron ayer.\\
+A Pedro the price \textsc{se} 3\textsc{sg.m.acc} gave.\textsc{3pl} yesterday\\
+\glt   `Pedro, the price, they gave it to him yesterday.'
+\z\z
+Another instance of an opaque clitic combination, among those reported in \citet{Bonet1995}, is the combination in standard Italian of the impersonal clitic \textit{si} with the third person reflexive clitic \textit{si}: instead of the expected \textit{si si} sequence (possible in certain dialects of Italian), the sequence \textit{ci si} is found:
+
+\ea\label{ex:Romance:4} Italian \citep[609]{Bonet1995}
+\ea\label{ex:Romance:4a}
+\gll Lo si sveglia.\\
+3\textsc{sg.m.acc} \textsc{impers} wake.up.\textsc{3sg}\\
+\glt   `One wakes him/it up.'
+\ex\label{ex:Romance:4b}
+\gll Se lo compra.\\
+\textsc{refl} 3\textsc{sg.m.acc} buy.\textsc{3sg}\\
+\glt   `S/he buys it for herself/himself.'
+\ex\label{ex:Romance:4c}
+\gll Ci si lava\\
+\textsc{refl} \textsc{impers} wash.\textsc{3sg}\\
+\glt   `One washes oneself.'
+\z\z
+These opaque clitic combinations are completely unexpected under the treatment of clitics as words and very difficult to explain in that approach. On the other hand, if clitics are affixes, this kind of allomorphy is much more natural.
+
+In addition, there is phonological evidence for the affixal status of clitics. One of the sources of such evidence is word stress. While clitics in most cases are stressless and have no effect on the stress pattern of the word they are attached to, there are some Romance varieties in which clitics affect the stress pattern of their host. This is the situation in the Catalan dialects of Mallorca and Minorca: the first column in \REF{ex:Romance:5} illustrates verb forms without postverbal clitics and the second column shows the same verb forms with postverbal clitics:
+
+\ea\label{ex:Romance:5}Mallorcan Catalan \citep[579]{Colomina2002}
+\begin{tabular}[t]{ll}
+dona `give' [{\textprimstress}donǝ]  &  dona'm `give me' [do{\textprimstress}nǝm]\\
+agafa `pick up' [ǝ{\textprimstress}ɣafǝ]  & agafa'l `pick it up' [ǝɣǝ{\textprimstress}fǝl]\\
+entra `enter' [{\textprimstress}ǝntrǝ] & entra-hi `enter there' [ǝn{\textprimstress}trǝj]
+\end{tabular}
+\z
+In these dialects, the presence of a clitic in postverbal position causes stress to be placed on the final syllable of the verb form, instead of on the penultimate syllable. Given that word stress in Catalan does not depend on elements external to the word, one must conclude that clitics are part of the word at the point in the derivation in which word stress placement rules apply. In other dialects, clitics are affixes that do not affect stress placement.
+
+All of these facts argue conclusively for treating clitics as word parts, specifically, affixes.
+
+\subsubsection{Alternative analyses of clitics as affixes}
+\label{sec:Romance:2.1.2}
+
+The affixal status of clitics is consistent with two approaches to morphology, in particular, to inflectional morphology: the morpheme-based approach and the realizational approach. Within the morpheme-based approach, an affix is a linguistic sign, consisting of a phonological representation and a semantic and/or syntactic representation. Under this view, an affix is very much like a word, only, instead of being an element that can appear as a terminal node in the c-structure, it is part of a word and combines with other word parts in a tree structure to form a word. Within the realizational approach, an affix is the phonological realization or spell-out of semantic and/or syntactic features of a word, possibly mediated by morphological features. In inflectional morphology, for every lexeme there are as many feature combinations as there are possible forms in the paradigm of the lexeme and there are rules spelling out specific features or feature combinations as particular affixes.\footnote{These two approaches are mutually exclusive within LFG, although they are not necessarily so in a derivational framework such as Minimalism. As pointed out by a reviewer, this would be the case with Distributed Morphology \citep{hallemarantz}, which is claimed to be both morpheme-based and realizational. In this framework, morphemes are bundles of morphosyntactic features as terminal nodes in the syntax without a phonological representation and are subsequently assigned a phonological form.}
+
+To compare the two approaches, consider the form \textit{lo} that appears in Italian examples such as \REF{ex:Romance:4a}, \REF{ex:Romance:4b}. In a morpheme-based approach, the form \textit{lo} would have a dictionary entry that, instead of specifying its grammatical category, as it would for a word, indicates what kind of word part it is.\footnote{Standardly, in LFG the term ``lexical entry'' refers to the information associated with a fully inflected word, as it appears in the syntax. Since clitics, as affixes, are not fully inflected words, I avoid using the term ``lexical entry'' to refer to the phonological, morphological, f-structure, and semantic information that characterizes a sublexical element such as an affix, but use the term ``dictionary entry'' instead.} For the purpose of illustration, we can assume that form would be classified as a special kind of affix, which we can call \textit{cl} (for clitic), as in \REF{ex:Romance:6}:
+
+\ea\label{ex:Romance:6}
+\catlexentry{lo}{\textit{cl}}{(\UP\PRED)=`pro'\\
+(\UP\CASE)=\ACC\\
+(\UP\PERS)=3\\
+(\UP\GEND)=\M\\
+  (\UP\NUM)=\SG}
+\z
+Affixes of type \textit{cl} combine with other \textit{cl} elements to form a clitic cluster (CCL). In Italian, a CCL attaches preverbally (as a prefix) to finite verb forms except for imperatives and postverbally (as a suffix) to imperatives and non-finite verb forms. There has to be some mechanism to place clitics in the right order within a CCL: as we see in \REF{ex:Romance:4}, \textit{lo} precedes the impersonal clitic \textit{si} but follows the third person reflexive \textit{si} (which takes on the form \textit{se} in this context). This can be achieved by having a template with several clitic positions and having each clitic subclassified as to the position it occupies in the template. Alternatively, there can be linear precedence rules that are sensitive to the syntactic features of the clitics (such as person, case, reflexivity, etc.) and order the clitics within a CCL according to these features.
+
+In a realizational approach, there are rules that spell out bundles of f-structure features (or the corresponding morphological features) as the appropriate clitic form. So, if a verb form has the f-structure features in \REF{ex:Romance:6}, a rule is triggered that introduces the form \textit{lo} in a CCL, along the following lines:
+
+\ea\label{ex:Romance:7}
+\phraserule{\textsc{[{pred} `pro', {case} acc, {pers} 3, {gend} m, {num} sg]}}{CCL \{...lo...\}}
+\z
+As in the previous approach, there would also have to be a mechanism such as a template, linear precedence rules, or ordered blocks of rules to obtain the right order of clitics when more than one is present in a CCL.
+
+At first sight there might seem to be little difference between the two approaches. Both approaches can account with a similar degree of success for the strictly syntactic evidence for the affixal nature of clitics noted in \sectref{sec:Romance:2.1.1} (such as the failure to be topicalized, substituted by full pronouns, coordinated or modified): these processes affect c-structure units, which clitics are not in either approach. The phonological evidence for the affixal status of clitics (e.g.\ instances in which stress assignment applies to the word structure that includes clitics) is accounted for in a similar way whether affixes are viewed as morphemes or as the product of spell-out rules.
+
+Many of the morphophonological arguments for the affixal status of clitics can also be accounted for in either approach. To account for an allomorphic alternation such as the \textit{o/lo/no} alternation in Portuguese noted earlier, within the morpheme-based approach, we would have to assume that the third person singular accusative masculine clitic morpheme has three allomorphs that are phonologically conditioned; within the realizational approach, we would have to assume that there are three different spell-out rules for the same syntactic (or morphological) feature bundle each one with a different phonological context. The existence of opaque clitic combinations, such as the ones illustrated in \REF{ex:Romance:3} and \REF{ex:Romance:4}, is probably the strongest argument in favor of the realizational approach. From the morphemic perspective, these can be thought of simply as instances of allomorphic alternations. To use the example of the Spanish spurious \textit{se}, illustrated in \REF{ex:Romance:3}, the third person dative clitic morpheme would have two allomorphs: \textit{se}, when it co-occurs with another third person clitic; and \textit{le}, elsewhere. A problem with this approach is that it fails to explain the observation by \citet{Bonet1995} that, in opaque clitic combinations, the unexpected form always coincides with a clitic that exists independently in the language. If the third person dative \textit{se} is an allomorph of the more general \textit{le}, it is just an accident that it is homophonous with the third person reflexive \textit{se}; it could just as easily be \textit{che}, \textit{je}, \textit{na}, or any other form that does not coincide with an existing clitic. On the other hand, the realizational approach has the means of capturing that observation, as in \citet{Bonet1995}; see also \citet{Grimshaw1997} using Optimality Theory.\footnote{The facts involving the expression and omission of the reflexive clitic in Catalan presented in \citet{Alsina2020} are further evidence for the realizational treatment of clitics in Romance.}
+
+\subsubsection{Proclisis and enclisis in European Portuguese}
+\label{sec:Romance:2.1.3}
+
+This subsection illustrates to what extent Romance data can call standard LFG assumptions into question, in particular, the way the Lexical Integrity Principle is to be interpreted. The position of clitics (or, more exactly, of the CCL) in European Portuguese (EP) with respect to the verb of their clause poses an important problem for theories of syntax, morphology, and the syntax-morphology interface. Two properties that distinguish EP from the other modern Romance languages are relevant in this context:\footnote{An additional specificity of the positioning of CCL in EP is the phenomenon of mesoclisis: with future and conditional verb forms, the enclitic position is not after the tense, aspect and person affixes, but before them. See \citet{LuisSpencer2005} for an analysis within LFG and realizational morphology. When a present tense form such as \textit{mostramos} `we show' combines with the clitic complex \textit{lho} (3.\textsc{dat}+3\textsc{sg.m.acc)} in enclitic position, the result is \textit{mostramos-lho} `we show it to him', but, if instead we use a future tense form such as \textit{mostraremos} `we will show', the enclitic attachment of \textit{lho} results in \textit{mostrar-lho-emos}, not *\textit{mostraremos-lho}.}
+
+\begin{itemize}
+\item With finite verb forms, the CCL can appear after the verb (enclisis) or before it (proclisis), depending on the kind of syntactic constituent, if any, that precedes the verb. 
+\item When it appears before the verb, it need not be adjacent to it, but may be separated from it by words such as some adverbs and the negation \textit{não} (interpolation) (see \sectref{sec:Romance:2.1.1}).
+\end{itemize}
+These properties are a problem for the affixal treatment of clitics. If we assume that clitics are affixes in both preverbal and postverbal position, the fact that the choice between the two positions is dependent on a syntactic property (the presence or absence of certain types of syntactic constituents before the verb) is a prima facie problem for that assumption. The standard view of the syntax-morphology interface in a lexicalist framework assumes that the morphology may impose constraints on the syntax, but the syntax cannot impose constraints on the morphology. But, in the case in point, a particular morphological property -- the linearization of CCL before or after V -- is determined by the syntax.
+
+Example \REF{ex:Romance:8} shows that the same finite verb form, here \textit{vê}, can take a clitic before it, as in \textit{me vê}, or after it, as in \textit{vê-me}, depending on what precedes it. 
+
+\ea\label{ex:Romance:8} Portuguese \citep{LuisOtoguro2004}
+\ea\label{ex:Romance:8a}
+\gll
+O João raramente me vê.\\
+the João rarely 1\textsc{sg} see.3\textsc{sg}\\
+\ex\label{ex:Romance:8b}
+\gll
+O João vê-me raramente.\\
+the João see.3\textsc{sg}{}-1\textsc{sg} rarely\\
+\glt   `João rarely sees me.'
+\z\z
+The accepted assumption in work such as \citet{LuisSadler2003}, \citet{LuisOtoguro2004,LuisOtoguro2005}, and \citet{LuisSpencer2005}, among others, is that enclisis is the default linearization of CCL and the verb in EP, whereas proclisis is triggered by the presence of certain c-structure constituents in preverbal position, which can be referred to as proclisis-triggers. So, for example, a non-quantified preverbal subject, such as \textit{o João} in \REF{ex:Romance:8}, is not a proclisis-trigger, which implies that the default option of enclisis is chosen in \REF{ex:Romance:8b}; on the other hand, the adverb \textit{raramente} in preverbal position is a proclisis-trigger, which explains the proclitic sequence \textit{me vê} in \REF{ex:Romance:8a}.
+
+The approach adopted in \citet{LuisSadler2003} is that all syntactic constituents that are proclisis-triggers are associated with the f-structure feature (\UP\textsc{type})=\textsc{non-neutral} (or with the morphological feature [Restricted:Yes] in \citealt{LuisOtoguro2004}). For example, the negative element \textit{não} is associated with this feature. (It has not been possible to find a common configurational or semantic/discourse denominator for the set of syntactic contexts that trigger proclisis; hence the proposal of having an f-structure feature for proclisis.) 
+
+The linearization rule `Proclitic-LR', which ensures that CCL is placed preverbally, applies only under the existence of the (\UP\textsc{type})=\textsc{non-neutral} feature in the f-structure of the verb. In the absence of this feature, the linearization rule that places CCL postverbally applies. So, the \textsc{type} feature reflects the idea that proclisis is the marked option in EP.
+
+However, the two alternative sequences \textit{vê-me} and \textit{me vê} are not identical from the syntactic point of view: even though they are both assumed to be a word from the morphological point of view, the form with enclisis, \textit{vê-me}, is assumed to constitute a single X\textsuperscript{0} (either I or V), whereas the form with proclisis, \textit{me vê}, is assumed to correspond to two different c-structure positions. This assumption is necessary in order to account for two phenomena: scope over coordinated VPs and so-called interpolation. Focusing on interpolation, we find that certain words, which are clearly independent syntactic constituents, can appear between the proclitic CCL and the verb. These words can be the negative element \textit{não}, certain adverbs like \textit{ainda} `yet', subject pronominals, and a combination of them, as in \REF{ex:Romance:9}:
+
+\ea\label{ex:Romance:9}  Portuguese \citep{LuisOtoguro2005}\\
+\gll
+... acho que ela o ainda não disse.\\
+... think.\textsc{1sg} that she 3\textsc{sg.m.acc} yet not told.3\textsc{sg}\\
+\glt `... I think that s/he hasn't told it to him/her/them yet.'
+\z
+The clitic \textit{o} in \REF{ex:Romance:9} is separated from the verb \textit{disse} by two words: \textit{ainda} and \textit{não}. This indicates that \textit{o} and \textit{disse} must be two independent c-structure elements (c-structure words). On the other hand, according to \citet{LuisSadler2003}, \citet{LuisOtoguro2004,LuisOtoguro2005}, and \citet{LuisSpencer2005}, these two elements constitute a single unit at the morphological level (a morphological word). This is a departure from the standard idea in LFG that words -- the minimal units of c-structure -- are the output of the morphological component and, so, there should be no reason to distinguish between a c-structure word and a morphological word. 
+
+The exact implementation of the syntactic representation of the form with proclisis varies depending on the work. In \citet{LuisSadler2003}, the proclitic CCL attaches to the left of the VP headed by the verb that constitutes a morphological word with the preverbal CCL. In \citet{LuisOtoguro2004}, it is assumed that, in certain cases, i.e.\ proclisis, a morphological token may correspond to two or more c-structure terminals.
+
+In both approaches, a morphological unit is decomposed into two elements in the c-structure, which is a clear violation of the Lexical Integrity Principle -- the idea that the internal structure of words is invisible to the c-structure. More specifically, this treatment of proclisis in Portuguese can be seen as a violation of Zwicky's Principle of Morphology-Free Syntax, according to which ``syntactic rules cannot make reference to the internal morphological composition of words or to particular rules involved in their morphological derivation'' \citep[650]{Zwicky1987}, which he considers equivalent to the Lexicalist Hypothesis or the belief that syntax is blind to morphology \citep[244]{ONeill2016}.
+
+\subsection{F-structure status}
+\label{sec:Romance:2.2}
+
+In this subsection we address the issue of the GF that the clitic corresponds to, if any, and its status as a pronoun or an agreement marker, leaving aside the reflexive clitic, to be discussed in \sectref{sec:Romance:2.3} and \sectref{sec:Romance:3.2}.
+
+\subsubsection{The GF the clitic corresponds to}
+\label{sec:Romance:2.2.1}
+
+In most cases, a clitic corresponds to a GF in its clause. In some languages (e.g., Spanish, Portuguese, Catalan, Italian), a clitic cannot correspond to the subject; it can correspond to an object only, both accusative and dative, as in Spanish and Portuguese, or to an object, as well as an oblique, as in Catalan and Italian. In French, clitics can correspond to a subject, in addition to objects and obliques.\footnote{Some Northern Italian languages also require a subject clitic, in a wide range of modalities (see \citealt{RenziVanelli1983} and \citealt{CardinalettiRepetti2010}). See \citet{PolettoTortora2016} for variation in subject clitics in the different Romance languages that are claimed to have subject clitics.}
+
+The most common situation with clitics is that in which the clitic is in complementary distribution with the phrasal expression of the GF that the clitic corresponds to. As \citet[88]{Grimshaw1982} notes for French, ``accusative clitics are in complementary distribution with NP objects.'' With a verb like \textit{voit} `sees', which requires a direct object, either an NP object or an accusative clitic satisfies this requirement, as in \REF{ex:Romance:10b} and \REF{ex:Romance:10c} respectively, but they cannot co-occur, as in \REF{ex:Romance:10d}:
+
+\ea\label{ex:Romance:10}French \citep[88]{Grimshaw1982}
+\ea[*]{\label{ex:Romance:10a}
+\gll
+Jean voit.\\
+John see.3\textsc{sg}\\
+\glt `John sees.'
+}
+\ex[]{\label{ex:Romance:10b}
+\gll
+Jean voit l'homme.\\
+John see.3\textsc{sg} the.man\\
+\glt`John sees the man.'
+}
+\ex[]{\label{ex:Romance:10c}
+\gll
+Jean le voit.\\
+John 3\textsc{sg.m.acc} see.3\textsc{sg}\\
+\glt   `John sees him.'
+}
+\ex[*]{\label{ex:Romance:10d}
+\gll
+Jean le voit l'homme.\\
+John 3\textsc{sg.m.acc} see.3\textsc{sg} the.man\\
+\glt `John sees him the man.' 
+}
+\z\z
+How these facts are explained depends in part on whether we treat clitics as c-structure constituents or as affixes and, within the affixal treatment, as morphemes or as exponents of morphological or syntactic features. We shall consider the different approaches to clitics in explaining distributional facts such as those illustrated in \REF{ex:Romance:10}.
+
+\citet{Grimshaw1982} takes the position that clitics are c-structure constituents belonging to the CL (clitic) grammatical category -- let us call it the clitic-as-word approach. The observation that the direct object requirement is satisfied by either an NP following the verb or an accusative clitic before the verb is explained: (a) by annotating as an \textsc{obj} both the NP daughter of VP and one of the CL (clitic) positions daughters of V'; (b) by assuming that both nouns and pronouns, including pronominal clitics, have a \textsc{pred} feature in their lexical entries and that the clitic \textit{le} has the lexical entry in \REF{ex:Romance:11}; and (c) by appealing to the standard well-formedness conditions of Consistency, Completeness, and Coherence.
+
+\ea\label{ex:Romance:11}
+\catlexentry{le}{CL}{
+  (\UP\PRED) = `\textsc{pro'}\\
+(\UP\CASE) = \ACC\\
+(\UP\NUM) = \SG\\
+(\UP\PERS) = 3\\
+(\UP\GEND)=\M}
+\z
+This clitic, in the appropriate CL position, satisfies the \textsc{obj} requirement of the verb and provides the necessary \textsc{pred} feature to satisfy Completeness. It is an alternative to the NP realization of the object, in which a noun provides the \textsc{pred} feature. This explains the alternative expression of the object illustrated in (\ref{ex:Romance:10b}) and (\ref{ex:Romance:10c}). In addition, if both ways of expressing the \textsc{obj} are used in the same clause, a violation of Consistency results, as the \textsc{obj} would have two \textsc{pred} values, given the convention that \textsc{pred} values are not unifiable, which accounts for \REF{ex:Romance:10d}.
+
+The affixal treatment of clitics is common to the two approaches in \sectref{sec:Romance:2.1.2}. In the morpheme-based approach, the main difference with the clitic-as-word approach is that clitics are not joined to a verb in the c-structure, but are joined to it in the lexicon. A clitic such as \textit{le}, being a morpheme, has a ``sublexical'' entry identical or very similar to that in \REF{ex:Romance:11}, except that ``CL'' is not a c-structure category, but a type of affix. One could either assume that there is a word template with different clitic affix positions, one of which would be annotated as the \textsc{obj}, and then a sublexical entry like that in \REF{ex:Romance:11} would fit into that position providing the f-structure features to the \textsc{obj}. Alternatively, the clitic-affix \textit{le} would be specified in its sublexical entry with features indicating the GF they correspond to, such as (\UP\OBJ\PRED) = `\textsc{pro',} (\UP\OBJ\CASE) = \textsc{acc}, etc. The concatenation of a clitic (or clitic cluster) with a verb yields a word whose f-tructure information is the union of that of the clitic and that of the verb, so that a word such as \textit{le voit} carries the f-structure information of the clitic and the f-structure information of the verb \textit{voit}. This would be an instance of pronominal incorporation similar to the analysis of object markers in Chiche\^wa by \citet{BM87}.
+
+Within the realizational approach, the phonological representation of the clitic -- \textit{le}, in the French example \REF{ex:Romance:10b} -- is the result of exponence rules and linearization rules, to use the concepts of \citet{LuisSadler2003}. Adapting the approach of \citet{LuisSadler2003} to the present example, we can assume that one of the forms of the paradigm of the verb \textit{voit} has the morphological feature (or m-feature) bundle \textsc{\{acc,3,sg,m\}}. This feature bundle is realized phonologically as \textit{le} and this exponent is linearized preceding the verb stem, giving the form \textit{le voit}. In addition, there is a mapping between the m-features and f-structure features. Specifically, the m-feature bundle \textsc{\{acc,3,sg,m\}} corresponds to the same f-structure features of the \textsc{obj} as those in \REF{ex:Romance:11}. This is shown schematically in \REF{ex:Romance:12a} for the phonological realization and in \REF{ex:Romance:12b} for the f-structure correspondence.
+
+\ea\label{ex:Romance:12}
+\ea\label{ex:Romance:12a}
+\{\ACC,3,\SG,\M\} $\rightarrow$ /l\textschwa/, preceding \textit{voit}
+\ex\label{ex:Romance:12b}
+\{\ACC,3,\SG,\M\} $\rightarrow$ \begin{tabular}[t]{l}
+  (\UP\OBJ\PRED)=\textsc{`pro'}\\
+  (\UP\OBJ\CASE)=\ACC\\
+  (\UP\OBJ\NUM)=\SG\\
+  (\UP\OBJ\PERS)=3\\
+  (\UP\OBJ\GEND)=\M
+\end{tabular}
+\z\z
+So, in this view, the word \textit{le voit} is lexically assigned the syntactic features of \textit{voit}, as well as the syntactic features in \REF{ex:Romance:12b}. Since this word carries the f-structure information of the object, the use of this word satisfies the object requirement of the verb and precludes the appearance of an NP object for the same reasons noted for the clitic-as-word approach.
+
+\subsubsection{Agreement vs. pronoun; clitic doubling}
+\label{sec:Romance:2.2.2}
+
+In many cases, a clitic is not in perfect complementary distribution with the corresponding phrasal expression, but some amount of clitic doubling is found. In European Spanish, clitic doubling with direct objects (or accusative objects) is found only with pronominal expressions: a definite pronominal direct object is obligatorily expressed as a clitic, optionally doubled by the phrasal expression, as in \REF{ex:Romance:13}:
+
+\newpage
+\ea\label{ex:Romance:13}   European Spanish \citep[540]{Andrews90}
+\ea[]{\label{ex:Romance:13a}
+\gll
+Lo vimos (a él).\\
+\textsc{3sg.m.acc} see.\textsc{pst}.1\textsc{pl} \,\textsc{a} \textsc{him}\\
+\glt   `We saw him/HIM.'
+}\ex[]{\label{ex:Romance:13b}
+*vimos a él.
+}
+\z\z
+In contrast, Rioplatense Spanish (also called Porteño and River Plate Spanish), as well as other varieties of South American Spanish, has a much more general use of direct object clitic doubling, as in \REF{ex:Romance:14}:
+
+\ea\label{ex:Romance:14}  Rioplatense Spanish \citep{Estigarribia2005}
+\ea\label{ex:Romance:14a}
+\gll
+Yo las tenía guardadas las cartas.\\
+I \textsc{3pl.f.acc} have.\textsc{pst}.1\textsc{sg} stored the letters\\
+\glt   `I had the letters stored.'
+\ex\label{ex:Romance:14b}
+\gll
+¿La vas a llamar a Marta?\\
+\textsc{3sg.f.acc} go.2\textsc{sg} \textsc{a} call \textsc{a} Marta\\
+\glt   Are you going to call Marta?
+\z\z
+In these cases, there is a single GF corresponding to the direct object, which is encoded in the c-structure by both the direct object clitic and by its phrasal expression: \textit{las} and \textit{las cartas} in \REF{ex:Romance:14a} and \textit{la} and \textit{a Marta} in \REF{ex:Romance:14b}. The standard way of analyzing clitic doubling is to assume that it is a kind of agreement: the clitic in examples such as \REF{ex:Romance:14} merely specifies the formal features of person, number and gender of the object, while the corresponding phrasal expression contributes, in addition, the semantic \textsc{pred} feature of the object. This means that there are two sets of specifications associated with clitics that have the dual function exemplified in \REF{ex:Romance:13a}: as the sole expression of the object, the clitic is lexically associated with the {[\textsc{pred}~`\textsc{pro}']}  feature needed to satisfy Completeness; as an agreement marker, the clitic lacks this feature in its set of lexical specifications, enabling it to satisfy Uniqueness. This choice is assumed regardless of whether clitics are treated as words, as morphemes, or as exponents.
+
+This analysis follows the treatment given in \citet{BM87} to subject markers (SM) in Chiche\^wa, in contrast with object markers (OM). (See also \citealt{FassiFehri1984,FF}.) OMs in Chiche\^wa are assumed to be always incorporated object pronouns and thus are lexically associated with the {[\textsc{pred}~`\textsc{pro}']} feature. SMs in Chiche\^wa are claimed to be alternatively pronouns and agreement markers, which follows from the optional {[\textsc{pred}~`\textsc{pro}']} feature in the sublexical entry of the SM. \citet{Andrews90} adapts this idea to the analysis of clitic doubling in Spanish. This way of analyzing the dual function of clitics is used in \citet{Mayer06} for Limeño Spanish, in \citet{Estigarribia2013} for Rioplatense Spanish, and in \citet{BarbuToivonen2018} for Romanian, among others.\footnote{Although this section deals with object clitics, it should be mentioned that subject clitics, in those languages that have them (e.g.\ French and Northern Italian languages), also vary as to whether they function as pronouns or as agreement markers, depending on the language and on the context \citep{PolettoTortora2016}. See \citet{CardinalettiRepetti2010} for the claim that subject clitics in Northern Italian languages should be analyzed as pronouns.}
+
+The two sets of lexical specifications associated with clitics that have the dual function just mentioned may differ in more features that in the presence or absence of the {[\textsc{pred}~`\textsc{pro}']} feature. In \citet{Estigarribia2013}, it is proposed that the doubling use of the direct object clitic in Rioplatense Spanish not only lacks the pronominal feature, but carries a constraint that the object cannot be non-specific. The pronominal (or non-doubling) use of the clitic is necessarily definite and specific, but a direct object clitic can double (or agree with) an NP with specific reference (not necessarily definite).
+
+\citet{Andrews90} explains the facts of European Spanish illustrated in \REF{ex:Romance:13} by assuming that direct object clitics also have two lexical entries: the pronominal entry, with the {[\textsc{pred}~`\textsc{pro}']} feature, and the doubling entry, which has a constraining {[\textsc{pred}~`\textsc{pro}']} specification, instead of the defining one. This constraining specification effectively restricts the doubling use to situations in which the clitic doubles a pronominal phrase (such as \textit{a él}, in \REF{ex:Romance:13a}). The obligatoriness of the clitic double with pronominal NPs is explained by appealing to Andrews's Morphological Blocking Principle. Without this principle, the clitic double would just be an option with pronominal object NPs.
+
+Given two lexical items L1 and L2 such that L1's f-structure specifications are a proper subset of those of L2, the Morphological Blocking Principle requires the use of L2 -- the more highly specified lexical item -- in a structure in which both L1 and L2 are compatible. In order for this principle to be able to choose between a verb form with a clitic and the same verb form without that clitic, it is necessary to assume that a verb form with a clitic is a lexical item. In other words, the Morphological Blocking Principle presupposes the affixal status of clitics. Given that a clitic is always associated with a set of f-structure features not present in the verb form to which it attaches, a lexical item consisting of a verb and a clitic is always going to be more highly specified in terms of f-structure features than the same lexical item without the clitic. So, if the lexical item with the clitic can be used, it must be used. This explains the obligatoriness of the clitic double in cases like \REF{ex:Romance:13}.
+
+Constructions that are similar to clitic doubling but which need to be distinguished from it are clitic left dislocation and clitic right dislocation. Languages that do not have clitic doubling or make a very restricted use of it allow these dislocation constructions quite freely. Catalan, which only allows clitic doubling of the direct object in pronominal cases, does not allow a doubling clitic with a neutral intonation in an example like \REF{ex:Romance:15a}, but allows a direct object clitic, and in fact requires it, when the apparent direct object is fronted, as in \REF{ex:Romance:15b}, or postposed, with a clear intonational break, as in \REF{ex:Romance:15c}:\footnote{The periphrastic past perfect tense in Catalan consists of an auxiliary form, such as \textit{va} in \REF{ex:Romance:15}, and an infinitive. The auxiliary is diachronically descended from the present indicative tense of \textit{anar} `go', but synchronically it is not the same form. The past tense auxiliary has the forms \textit{vaig} or \textit{vàreig} (1\textsc{sg}), \textit{vas} or \textit{vares} (\textsc{2sg}), \textit{va} (\textsc{3sg}), \textit{vam} or \textit{vàrem} (\textsc{1pl}), \textit{vau} or \textit{vàreu} (\textsc{2pl}), and \textit{van} or \textit{varen} (\textsc{3pl}), whereas the present indicative of \textit{anar} `go' has the forms \textit{vaig} (\textsc{1sg}), \textit{vas} (\textsc{2sg}), \textit{va} (\textsc{3sg}), \textit{anem} (\textsc{1pl}), \textit{aneu} (\textsc{2pl}), and \textit{van} (\textsc{3pl}). For this reason, the past tense auxiliary is not glossed as if it were a form of \textit{anar} `go'.}
+
+\ea\label{ex:Romance:15} Catalan \citep[1233--1237]{Vallduvi2002}
+\ea\label{ex:Romance:15a}
+\gll
+(*El) va regalar el llibre a la biblioteca.\\
+\textsc{3sg.m.acc} \textsc{pst.3sg} give.\textsc{inf} the book \textsc{a} the library\\
+\glt   `She/he gave the book to the library.'
+\ex\label{ex:Romance:15b}
+\gll
+El llibre, el va regalar a la biblioteca.\\
+the book \textsc{3sg.m.acc} \textsc{pst.3sg} give.\textsc{inf} \textsc{a} the library\\
+\glt   `The book, she/he gave it to the library.'
+\ex\label{ex:Romance:15c}
+\gll
+El va regalar a la biblioteca, el llibre.\\
+\textsc{3sg.m.acc} \textsc{pst.3sg} give.\textsc{inf} \textsc{a} the library the book\\
+\glt  `She/he gave it to the library, the book.'
+\z\z
+The left or right dislocations in \REF{ex:Romance:15} fulfill functions at the information-structure level, but from the f-structure point of view the dislocated phrase does not fill an in-clause GF, but should be analyzed as a \textsc{udf} (unbounded dependency function). In other words, the phrase \textit{el llibre} `the book' is not an object in either \REF{ex:Romance:15b} or \REF{ex:Romance:15c}, but a \textsc{udf} anaphorically bound to the object clitic \textit{el}. It is this element that fulfills the accusative object function in these examples.
+
+\subsubsection{Non-argument clitics}
+\label{sec:Romance:2.2.3}
+
+While clitics in most cases either fulfill a GF that is an argument of the clause or agree with it, there are many instances in which clitics are neither an argument nor a marker of agreement with an argument. This is the case with the reflexive clitic, which can have an inherent use (see \sectref{sec:Romance:2.2.3.1}), an anaphoric use (\sectref{sec:Romance:2.3}), and a use as a marker of passivization or impersonalization (\sectref{sec:Romance:3.2}). We shall focus here on two non-argument uses of clitics, leaving aside the reflexive clitic: (a) inherent clitics; and (b) clitics as adjuncts.\footnote{In addition, one can argue that the clitic \textit{en/ne} found in Catalan, French, and Italian has two other non-argument uses: the partitive use and the genitive use. In the partitive use, the clitic appears instead of the head noun of an object of the verb (see \citealt{AlsinaYang2018} for an analysis of the partitive clitic in Catalan) and cannot be argued to substitute for the whole object. In the genitive use, it fills the complement of a nominal or adjectival complement of the verb and therefore does not correspond to an argument of the verb. Because of space limitations, I will not discuss these uses further.}
+
+\subsubsubsection{Inherent clitics}
+\label{sec:Romance:2.2.3.1}
+
+Inherent clitics cannot alternate with a phrasal expression and their semantic contribution is not compositional: the predicate consists of a verb and a specific clitic or clitic combination. Examples of verbs with inherent clitics in Catalan include the following: \textit{dinyar-la} `die', \textit{tocar-hi} `have a grasp of things', \textit{anar-se'n} `go away', \textit{jugar-se-la} `take a risk', etc. Without the clitic or clitics, the verb either does not exist (e.g.\ \textit{dinyar}) or has a different meaning and argument structure (e.g.\ \textit{tocar} `touch'). While one might like to think of these clitics as affixes attached to their verb, they cannot be treated as inseparable affixes, since they can appear separated from the verb by a number of auxiliaries and restructuring verbs, as in the following examples, where the verb and its associated clitics are underlined:
+
+\ea\label{ex:Romance:16}   Catalan
+\ea\label{ex:Romance:16a}
+\gll
+\tightuline{L}' hauries poguda \tightuline{dinyar}.\\
+\textsc{3sg.f.acc} have.\textsc{cond.2sg} could.\textsc{ptcp.f.sg} die.\textsc{inf}\\
+\glt `You could have died.'
+\ex\label{ex:Romance:16b}
+\gll
+\tightuline{Se} \tightuline{l'} està començant a \tightuline{jugar}.\\
+\textsc{refl} \textsc{3sg.f.acc} be.\textsc{3sg} beginning to play.\textsc{inf}\\
+\glt   `He is beginning to take a risk.'
+\z\z
+These examples show that the word to which the inherent clitics attach is not the verb that must be used in combination with these clitics. The string of auxiliaries and restructuring verbs in \REF{ex:Romance:16} is clearly not a word, but a sequence of verbs, each one imposing a form requirement on the next. For example, the auxiliary \textit{haver}, in the form \textit{hauries} in \REF{ex:Romance:16a}, requires the following verb to be in the past participle form, and the verb \textit{poder}, in the form \textit{poguda}, requires the following verb to be in the infinitive form. In addition, \textit{poguda} is in the feminine singular form (as opposed to the unmarked \textit{pogut}) showing agreement with the feminine singular clitic \textit{la}, which in this respect behaves like a direct object. The position in which inherent clitics are realized and the possibility of triggering past participle agreement, among other facts, are the same as with any other clitic.
+
+One might assume that verbs with inherent clitics are listed in the lexicon with one or more fully specified GFs that have no semantic content. For example, \textit{dinyar-la} would fully specify an accusative object with no correspondence to an argument at a-structure or to a semantic participant.\footnote{One could debate whether this object should have a [\textsc{pred~`pro'}] feature. Depend\-ing on how one views the syntax-morphology mapping for clitics, this feature might be necessary. On the other hand, the presence of this feature on a non-semantic GF would yield a violation of Coherence, according to some definitions of this condition which require a \textsc{pred} feature on all and only those GFs with semantic content.} It would be listed as the verb \textit{dinyar} taking a feminine singular accusative object, as indicated in \REF{ex:Romance:17}:
+
+\ea\label{ex:Romance:17}
+\catlexentry{dinyar}{V}{\avm[style=fstr]{[pred & `die\arglist{arg}'\\
+      obj & [case & acc\\pred & `pro'\\pers & 3\\num & sg\\gend & fem]]}}
+  \z
+
+Under a realizational approach to clitic morphology, we can assume that the features of the object in \REF{ex:Romance:17} are mapped onto the clitic \textit{la}. As for the position of this clitic in a string of restructuring verbs, it is no different from that of any clitic. The syntactic dependents of the most embedded verb following a string of restructuring verbs can cliticize onto the highest verb in the string of verbs.
+
+One of the uses of the reflexive clitic is as an inherent clitic. In this use, there is no reflexive interpretation. Following \citet{Grimshaw1982}, we can distinguish two classes of verbs within the class of verbs that take an inherent reflexive clitic: the lexically stipulated class of reflexive verbs and the class of inchoative verbs (in Grimshaw's terminology). The first class consists of verbs that are lexically required to take a reflexive clitic and either do not exist in a non-reflexive form or are not related in a systematic way with their non-reflexive counterpart. Examples of this class in Catalan are \textit{desmaiar-se} `faint' or \textit{penedir-se} `repent', which do not exist without a reflexive clitic. In the second class we find the intransitive alternant of the causative alternation, such as \textit{trencar-se} `break.\textsc{intr'} or \textit{obrir-se} `open.\textsc{intr'} in Catalan. See \citet{Alsina2020} for a treatment of inherently reflexive verbs.
+
+\subsubsubsection{Clitics as adjuncts}
+\label{sec:Romance:2.2.3.2}
+
+Although clitics generally correspond to objects (or subjects, in languages with subject clitics, such as French), in some languages they can also correspond to obliques: this is the case of \textit{en} and \textit{y} in French, \textit{en} and \textit{hi} in Catalan, and \textit{ne} and \textit{ci} or \textit{vi} Italian. The clitic \textit{y/hi/ci}(\textit{vi}) may correspond either to an argument of the verb or to an adjunct, as we see in \REF{ex:Romance:18} for French and in \REF{ex:Romance:19} for Catalan:
+
+\ea\label{ex:Romance:18} French \citep{Schwarze2001}
+\ea\label{ex:Romance:18a}
+\gll
+J' y ai pensé.\\
+I \textsc{y} have.\textsc{1sg} thought\\
+\glt   `I have thought of it.'
+\ex\label{ex:Romance:18b}
+\gll
+Je l' y ai vu.\\
+I \textsc{3sg.f.acc} \textsc{y} have seen\\
+\glt   `I saw him there.'    
+\z\z
+
+\ea\label{ex:Romance:19} Catalan \citep{Todoli2002}
+\ea\label{ex:Romance:19a}
+\gll
+Encara no s' hi han acostumat.\\
+still not \textsc{refl} \textsc{hi} have.\textsc{3pl} accustomed\\
+\glt   `They haven't got used to it yet.'
+\ex\label{ex:Romance:19b}
+\gll
+No es pot circular sense casc, però molts motoristes hi circulen.\\
+Not \textsc{refl} can ride.\textsc{inf} without helmet, but many motorcyclists \textsc{hi} ride.\textsc{3pl}\\
+\glt   `You cannot ride without a helmet, but many motorcyclists do so.'
+\z\z
+
+In \REF{ex:Romance:18a} and \REF{ex:Romance:19a}, \textit{y/hi} corresponds to an argument, but in the (b) examples it is an adjunct: in \REF{ex:Romance:18b} it expresses the location in which an event takes place, and in \REF{ex:Romance:19b} it expresses the means or manner. One can take this to mean that \textit{y/hi} has a double function, being alternatively an oblique or an adjunct, as in \citet{Schwarze2001}. Or one can take this as evidence that there is no adjunct grammatical function, as argued in \citet{alsina1996the-role}. According to \citet{alsina1996the-role}, the distinction between argument and adjunct is made at the level of a-structure: a GF that corresponds to a position at the a-structure is an argument, whereas a GF with semantic content that does not is an adjunct. This distinction need not be duplicated at the level of GFs by increasing the inventory of GFs with \textsc{adj,} and adjuncts are simply obliques (\textsc{obl}) at the level of GFs. Consequently, all we need to say about \textit{hi/y} is that it corresponds to an \textsc{obl}. By not restricting it to arguments, it follows that it can correspond to either an argument or an adjunct.
+
+\subsection{The anaphoric reflexive clitic}
+\label{sec:Romance:2.3}
+
+We can define reflexive clitics as those that show agreement in person and number with the logical subject\footnote{See the glossary for the definition of \textit{logical subject}.} of the predicate that the clitic combines with. First and second person clitics do not have a special reflexive form distinct from their non-reflexive form. The third person does have a specific form for the reflexive use, \textit{se} (and cognate forms), which, however, does not distinguish singular from plural. The third person form, being the only one that is unambiguously reflexive, will be normally used to illustrate the behavior of reflexive clitics.
+
+In this section, we will only consider what we might call the anaphoric use of the reflexive clitic, by which the predicate has a semantically reflexive or reciprocal interpretation. In \sectref{sec:Romance:2.3.1}, we compare the pronominal analysis and the valence-reducing analysis of the anaphoric reflexive. And in \sectref{sec:Romance:2.3.2}, we consider three variants of the valence-reducing analysis. 
+
+The other uses of the reflexive clitic are the inherent use (\sectref{sec:Romance:2.2.3}) and the passive and impersonal use (\sectref{sec:Romance:3.2}).\footnote{The homonymy or syncretism of the anaphoric reflexive with the passive/impersonal reflexive is complete in some Romance languages (e.g.\ Spanish, Catalan, or French), but is not complete in some others, specifically, in Italian. In Italian, in both uses, it has the form \textit{si} when it is not in combination with another clitic, but, when the two uses co-occur in the same clause, we obtain the combination \textit{ci si}, as in \textit{ci si lava} in \REF{ex:Romance:4c}. In addition, the anaphoric reflexive precedes a third person accusative clitic, whereas the impersonal reflexive follows it, as shown in \REF{ex:Romance:4}. This indicates that they are different morphs in Italian, which explains the possibility of their co-occurrence together with another clitic, as \textit{ce lo si compra} `one buys it for oneself', as pointed out by an anonymous reviewer.}
+
+\subsubsection{The reflexive clitic as an argument or as a marker of valence-reduction}
+\label{sec:Romance:2.3.1}
+
+In general, any verb that can take an object (direct or indirect) can also take a reflexive clitic instead of the phrasal object, so that the logical subject and another direct argument of the verb are interpreted as being the same set of participants: this is the anaphoric use of the reflexive clitic. The interpretation is reflexive or reciprocal depending on whether the same participant (individual or group) is involved in the relation -- reflexive interpretation -- or a different participant of the set is involved -- reciprocal. Using Catalan to exemplify the anaphoric use of the reflexive clitic, \REF{ex:Romance:20a} is a transitive sentence in which the direct, or accusative, object is expressed as an NP; \REF{ex:Romance:20b} shows that a reflexive clitic can be used instead of the NP object, in this case with a reflexive interpretation; and this sentence resembles \REF{ex:Romance:20c}, where a pronominal non-reflexive clitic is used instead of the object NP. The examples in \REF{ex:Romance:21} show the possibility of the reflexive clitic appearing instead of a dative object and yielding a reciprocal or reflexive interpretation.
+
+\ea\label{ex:Romance:20}   Catalan
+\ea\label{ex:Romance:20a}
+\gll
+Mira com contradiu el director.\\
+look how contradict.3\textsc{sg} the manager\\
+\glt   `See how she contradicts the manager.'
+\ex\label{ex:Romance:20b}
+\gll
+Mira com es contradiu.\\
+       look how \textsc{refl} contradict.3\textsc{sg}\\
+\glt   `See how she contradicts herself.'
+\ex\label{ex:Romance:20c}
+\gll
+Mira com el contradiu.\\
+look how 3\textsc{sg.m.acc} contradict.3\textsc{sg}\\
+\glt   `See how she contradicts him.'
+\z\z
+
+\ea\label{ex:Romance:21} Catalan
+\ea\label{ex:Romance:21a}
+\gll
+Avui els estudiants enviaran regals a la professora.\\
+today the students send.\textsc{fut.3pl} presents \textsc{a} the teacher\\
+\glt   `Today the students will send the teacher presents.'
+\ex\label{ex:Romance:21b}
+\gll
+Avui els estudiants s' enviaran regals.\\
+today the students \textsc{refl} send.\textsc{fut.3pl} presents\\
+\glt   `Today the students will send each other/themselves presents.'
+\ex\label{ex:Romance:21c}
+\gll
+Avui els estudiants li enviaran regals.\\
+ today the students 3\textsc{sg.}\textsc{dat} send.\textsc{fut.3pl} presents\\
+ \glt   `Today the students will send her presents.'
+ \z\z
+This pattern of facts lends itself to an analysis in which the reflexive clitic only differs from pronominal object clitics in its anaphoric properties, being obligatorily bound by some antecedent in a local domain, and is the realization of an argument of the clause. This is in fact the analysis proposed in \citet{AlencarKelling2005}, which we can call the ``pronominal analysis.'' In examples like \REF{ex:Romance:20b} and \REF{ex:Romance:21b}, the reflexive clitic would be argued to realize an accusative object or a dative object, just like the non-reflexive clitics do. However, this analysis has been shown to be problematic since \citet{Grimshaw1982}. \citet{Grimshaw1982,Grimshaw90} gives compelling evidence for the claim that the reflexive clitic in its anaphoric use should be treated as not realizing an argument of the clause but as valence-reducing morphology.
+
+\newpage
+
+The clearest evidence presented by \citet{Grimshaw1982,Grimshaw90} for the valence-reducing analysis of the reflexive clitic concerns the behavior of the causative construction. The logical subject of the infinitive in a causative construction, with \textit{faire} in French, is realized differently depending on the transitivity of the infinitive: indirect object if the infinitive has a direct object, and direct object otherwise, as shown in \REF{ex:Romance:22}:
+
+\ea\label{ex:Romance:22} French \citep[153]{Grimshaw90}
+\ea\label{ex:Romance:22a}
+\gll
+Il fera boire un peu de vin *(à) son enfant.\\
+he make.\textsc{fut.3sg} drink.\textsc{inf} a bit of wine \textsc{a} his child\\
+\glt   `He will make his child drink a little wine.'
+\ex\label{ex:Romance:22b}
+\gll
+Il fera partir \{les/*aux\} enfants.\\
+he make.\textsc{fut.3sg} leave.\textsc{inf} the/*\textsc{a}.the children\\
+\glt   `He will make the children leave.'
+\z\z
+When the infinitive has a reflexive clitic corresponding to its direct object, it behaves like an intransitive verb and its logical subject is realized as a direct object, as in \REF{ex:Romance:23a}. In contrast, if the direct object of the infinitive is expressed as a non-reflexive clitic, its logical subject is an indirect object, as in \REF{ex:Romance:23b}.
+
+\ea\label{ex:Romance:23} French  \citep[153]{Grimshaw90}
+\ea\label{ex:Romance:23a}
+\gll
+La crainte du scandale a fait se tuer \{le/*au\} frère du juge.\\
+       the fear of.the scandal has made \textsc{refl} kill.\textsc{inf} the/*\textsc{a}.the brother of.the judge\\
+\glt   `Fear of scandal made the brother of the judge kill himself.'
+\ex\label{ex:Romance:23b}
+\gll
+La crainte du scandale l'a fait tuer \{au/*le\} juge.\\
+       the fear of.the scandal 3\textsc{sg.m.acc}.has made kill.\textsc{inf} \textsc{a}.the/*the judge\\
+\glt   `Fear of scandal made the judge kill him.'
+\z\z
+If we assume that the reflexive clitic is not an object, unlike the non-reflexive clitic, but an element of the morphology that signals the binding of two arguments so that there is only one open argument position, we explain that the verb behaves like an intransitive verb.
+
+\citet{Grimshaw1982} also presents NP extraposition in French as evidence for the intransitive behavior of reflexivized verbs, i.e., verbs with an anaphoric reflexive clitic. French allows arguments that can normally appear as subjects, as in \REF{ex:Romance:24a}, to alternatively appear as objects with a dummy \textit{il} in subject position, as in \REF{ex:Romance:24b}:
+
+\ea\label{ex:Romance:24} French  \citep[112]{Grimshaw1982}
+\ea\label{ex:Romance:24a}
+\gll
+Un train passe toutes les heures.\\
+A train passes all the hours\\
+\ex\label{ex:Romance:24b}
+\gll
+Il passe un train toutes les heures.\\
+\textsc{il} passes a train all the hours\\
+\glt   `A train goes by every hour.'
+\z\z
+
+However, the construction of NP extraposition, illustrated in \REF{ex:Romance:24b}, is restricted to intransitive verbs. In addition, there are semantic constraints on NP extraposition, but the intransitivity requirement is independent of these semantic restrictions. A reflexivized verb behaves like an intransitive verb in allowing NP extraposition, unlike verbs with non-reflexive object clitics, as the contrast in \REF{ex:Romance:25} illustrates:
+
+\ea\label{ex:Romance:25} French  \citep[113]{Grimshaw1982}
+\ea[]{\label{ex:Romance:25a}
+\gll Il s' est dénoncé trois mille hommes ce mois-ci.\\
+\textsc{il} \textsc{refl} is denounced three thousand men this month\\
+\glt   `Three thousand men denounced themselves this month.'
+}
+\ex[*]{\label{ex:Romance:25b}
+\gll Il l' a dénoncée trois mille hommes.\\
+\textsc{il} 3\textsc{sg.f.acc} has denounced three thousand men\\
+\glt   `Three thousand men denounced it.'
+}
+\z\z
+
+\subsubsection{Three alternative valence-reducing analyses}
+\label{sec:Romance:2.3.2}
+
+Having shown that reflexive cliticization turns a transitive verb into an intransitive one, three possibilities emerge as to how the two argument roles involved in the binding relation signaled by the reflexive clitic map onto only one GF (typically the subject, but not necessarily, as shown in \REF{ex:Romance:25a}). The three analyses, described in \REF{ex:Romance:26}, have in common the idea that the anaphoric reflexive clitic signals the binding at the level of argument structure of the logical subject and another core argument of the same predicate:
+
+\ea\label{ex:Romance:26}
+\ea\label{ex:Romance:26a}
+\textit{The unergative analysis}: the lower argument is lexically bound and therefore unable to be expressed as a GF; only the logical subject is expressed as a GF. Proposed by \citet{Grimshaw1982}.\\
+\ex\label{ex:Romance:26b}
+\textit{The unaccusative analysis}: the logical subject is lexically bound and therefore unable to be expressed as a GF; only the lower argument in the binding relation is expressed as a GF. Proposed by \citet{Grimshaw90}.\\
+\ex\label{ex:Romance:26c}
+\textit{The a-structure binding analysis}: both arguments involved in the binding relation are expressed as a GF and are expressed as the same GF. Proposed by \citet{Alsina:PhD,alsina1996the-role}.
+\z\z
+Schematically, the three analyses can be depicted as in \REF{ex:Romance:27}, where ``{$\widehat{\mbox{θ}}$}'' represents logical subject, ``I'' represents internal argument, co-subscripting signifies binding of arguments, and underlining of an argument signifies that the argument has no mapping to GF:
+
+\ea\label{ex:Romance:27}
+\begin{tabular*}{.8\textwidth}{@{\extracolsep{\fill}}ccc}
+  {Unergative}  & {Unaccusative} & {A-structure binding}\\
+  {analysis} &  {analysis} & {analysis}\\[1ex]
+\rnode{1}{$\widehat{\mbox{θ}}_1$} \qquad \underline{I$_1$} &
+\underline{$\widehat{\mbox{θ}}_1$} \qquad \rnode{3}{I$_1$} &
+\rnode{5}{$\widehat{\mbox{θ}}_1$} \qquad \rnode{6}{I$_1$}\\[4ex]
+  {\rnode{2}{GF}} & {\rnode{4}{GF}} & {\rnode{7}{GF}}\\
+\end{tabular*}
+\LINE{2pt}{270}{1}{2pt}{90}{2}
+\LINE{2pt}{270}{3}{2pt}{90}{4}
+\LINE{2pt}{270}{5}{2pt}{90}{7}
+\LINE{2pt}{270}{6}{2pt}{90}{7}
+\z
+\citet{Grimshaw1982} does not present evidence specifically for the unergative analysis. The evidence presented in \citet{Grimshaw90} for the unaccusative anaysis rests primarily on the facts of auxiliary selection in Italian, as we shall see. Some of the evidence presented in favor of this analysis is really neutral with respect to the other two analyses in competition. Since, according to \citet[154]{Grimshaw90}, reflexivization satisfies an external argument (by binding), it cannot apply to predicates that do not have an external argument or have a suppressed external argument. It follows that it cannot apply to passives or subject-raising predicates. This explains the contrast between English and French with subject-raising verbs (from \citealt[155]{Grimshaw90}):
+
+\ea\label{ex:Romance:28}
+\ea[]{\label{ex:Romance:28a}
+They appear to each other to be intelligent.
+}
+\ex[*]{\label{ex:Romance:28b}
+\gll Jean se semble intelligent.  (French)\\
+Jean \textsc{refl} seems intelligent.\\
+\glt   `Jean seems intelligent to himself.'
+}\z\z
+\citet{Grimshaw90} takes the ungrammaticality of \REF{ex:Romance:28b} to follow from the assumption that a raising verb like \textit{sembler} `seem' does not have an external argument. However, it can also be attributed to the observation that this verb does not have two arguments that can be involved in binding: the subject in \REF{ex:Romance:28b} is not an argument of the raising verb, but of its complement, so that the two arguments that would be involved in binding in \REF{ex:Romance:28b} belong to two different predicates. And the three analyses described in \REF{ex:Romance:26}--\REF{ex:Romance:27} require that the two arguments involved in reflexive cliticization be arguments of the same predicate.
+
+As for auxiliary selection in Italian, unergative verbs select \textit{avere} `have' as the auxiliary in perfective compound forms and unaccusative verbs select \textit{essere} `be' (following \citealt{Perlmutter1978,Perlmutter1983,Perlmutter1989} and \citealt{Rosen1984}; see \citealt{Loporcaro2016} for an update), as shown in \REF{ex:Romance:29}. The fact that reflexivized verbs select \textit{essere}, as in \REF{ex:Romance:30}, even though their non-reflexive counterparts select \textit{avere}, is taken as evidence in \citet{Grimshaw90} that reflexivized verbs are unaccusatives:
+
+\ea\label{ex:Romance:29}  Italian \citep{Katerinov1975}
+\ea\label{ex:Romance:29a}
+\gll
+Avete viaggiato bene?\\
+have.\textsc{2pl} travelled well\\
+\glt   `Have you travelled well?'
+\ex\label{ex:Romance:29b}
+\gll Sono uscito.\\
+ be.\textsc{1sg} gone.out\\
+\glt   `I have gone out.'
+ \z\z
+
+\ea\label{ex:Romance:30}  Italian \citep{Katerinov1975}
+\ea\label{ex:Romance:30a}
+\gll
+Maria e Paola si sono salutate.\\
+Maria and Paola \textsc{refl} be.\textsc{3pl} greeted.\textsc{f.pl}\\
+\glt   `Maria and Paola greeted each other.'
+\ex\label{ex:Romance:30b}
+\gll
+Mi sono comprato una casa nuova.\\
+\textsc{1sg} be.\textsc{1sg} bought a house new\\
+\glt   `I bought myself a new house.'
+\z\z
+If the expressed argument in reflexivized verbs is the internal argument, and the external argument is not assigned to a GF, as in the unaccusative analysis in \REF{ex:Romance:27}, it is clear that reflexivized verbs are like unaccusative verbs. However, let us suppose that the relevant notion for auxiliary selection is that verbs whose highest GF maps onto an internal argument select \textit{essere} (where \textsc{subj} ranks higher than \textsc{obj}, and \textsc{obj} than \textsc{obl}). Then, both the unaccusative analysis and the a-structure binding analysis fare equally in predicting that both unaccusative verbs and reflexivized verbs select \textit{essere}. 
+
+But the a-structure binding analysis does not treat reflexivized verbs as unaccusatives, since the highest GF of the former is an external argument, as well as an internal argument. This has an advantage over the unaccusative analysis as it allows us to explain two facts that the unaccusative analysis fails to explain. First, the highest GF of reflexivized verbs, being an external argument, tends to be a subject much more so than that of unaccusative verbs, which is not an external argument. This contrast between reflexivized verbs and unaccusative verbs can be clearly illustrated by using the same verb with a reflexive clitic yielding a potential ambiguity between the anaphoric and the passive interpretations. Using Catalan data, a sentence like \REF{ex:Romance:31a} is ambiguous between these two interpretations, whereas \REF{ex:Romance:31b} only allows the anaphoric interpretation:
+
+\ea\label{ex:Romance:31}Catalan
+\ea\label{ex:Romance:31a}
+\gll Es defensaran dos diputats al parlament.\\
+       \textsc{refl} defend.\textsc{fut.3pl} two deputies at.the parliament\\
+\glt`Two deputies will defend themselves at the parliament.'\\
+   `Two deputies will be defended at the parliament.'
+\ex\label{ex:Romance:31b}
+\gll
+Dos diputats es defensaran al parlament.\\
+ two deputies \textsc{refl} defend.\textsc{fut.3pl} at.the parliament\\
+\glt`Two deputies will defend themselves at the parliament.'\\
+   *`Two deputies will be defended at the parliament.'
+\z\z
+
+The preverbal position of the NP, with no object clitic anaphorically dependent on it attached to the verb, unambiguously signals that the NP is the subject -- or, more exactly, a topic anaphorically linked to the null pronominal subject. While an internal argument, especially if expressed as an indefinite NP, is assigned the object function, an external argument favors the assignment to the subject function.
+
+The contrast between the reflexivized verb and the reflexive passive form is even clearer, when, under the appropriate discourse conditions, we omit the noun \textit{diputats} from \REF{ex:Romance:31}. If the NP \textit{dos} is postverbal, with obligatory presence of the partitive clitic \textit{en}, only the passive interpretation is allowed; if the NP \textit{dos} is preverbal, with no partitive clitic, only the reflexivized reading is possible:
+
+\ea\label{ex:Romance:32}   Catalan
+\ea\label{ex:Romance:32a}
+\gll Se' n defensaran dos al parlament.\\
+       \textsc{refl} \textsc{en} defend.\textsc{fut.3pl} two at.the parliament\\
+\glt      *`Two will defend themselves at the parliament.'\\
+`Two will be defended at the parliament.'
+\ex\label{ex:Romance:32b}
+\gll
+Dos es defensaran al parlament.\\
+two \textsc{refl} defend.\textsc{fut.3pl} at.the parliament\\
+\glt `Two will defend themselves at the parliament.'\\
+*`Two will be defended at the parliament.'
+\z\z
+If, as assumed in \citet{Grimshaw90}, the reflexive passive and the reflexivized verb have the same syntactically expressed arguments, namely, the internal argument in both cases, the difference shown in \REF{ex:Romance:31} and \REF{ex:Romance:32} would be completely unexpected. On the other hand, under the a-structure binding analysis of reflexivized forms, these forms have a GF that is both an internal and an external argument, contrasting with reflexive passive forms, in which the highest GF is only an internal argument.
+
+The second fact that favors the a-structure binding analysis is found in triadic predicates: when the binding relation involves an argument that in the non-reflexivized form of the verb is a dative object, the corresponding GF is not dative in the reflexivized form, but nominative. If argument realization with reflexivized verbs were the same as with unaccusative or passive verbs, we would not expect dative case to disappear. Dative case is retained under passivization, blocking the dative expression from being the passive subject. We see this not only with participial passives, but also with reflexive passives, as in \REF{ex:Romance:33b}. The goal argument is dative and cannot be expressed as a nominative phrase in a reflexive passive, as in \REF{ex:Romance:33c}. However, in the reflexivized form, in \REF{ex:Romance:33d} with a reciprocal interpretation, the goal argument is nominative and the subject.\footnote{The phenomenon is illustrated with Catalan data, but the facts are essentially the same in French, Italian, and Spanish. See, for example, the Italian reflexivized form \REF{ex:Romance:30b}, where the first person singular reflexive clitic signals the binding of the agent and the goal, which are encoded as the (null) subject.}
+
+\ea\label{ex:Romance:33} Catalan
+\ea[]{\label{ex:Romance:33a}
+\gll El metge va ensenyar els resultats al pacient.\\
+       the doctor \textsc{pst.3sg} show.\textsc{inf} the results \textsc{a}.the patient\\
+\glt   `The doctor showed the patient the results.'
+}
+\ex[]{\label{ex:Romance:33b}
+\gll
+ Es van ensenyar els resultats al pacient.\\
+       \textsc{refl} \textsc{pst.3pl} show.\textsc{inf} the results \textsc{a}.the patient\\
+\glt   `The patient was shown the results.'
+}
+\ex[*]{\label{ex:Romance:33c}
+\gll El pacient es va ensenyar els resultats.\\
+       the patient \textsc{refl} \textsc{pst.3sg} show.\textsc{inf} the results\\
+\glt   `The patient was shown the results.'
+}
+\ex[]{\label{ex:Romance:33d}
+\gll Els pacients es van ensenyar les cicatrius.\\
+ the patients \textsc{refl} \textsc{pst.3pl} show.\textsc{inf} the scars\\
+\glt   `The patients showed each other the scars.'
+}\z\z
+Under the unaccusative analysis, the NP \textit{els pacients} in \REF{ex:Romance:33d} is the goal internal argument, just as the phrase \textit{al pacient} in \REF{ex:Romance:33b}; so, it is very unclear why it has dative case in the passive example, which prevents it from being the subject, as in \REF{ex:Romance:33c}, but not in the reflexivized form, in which the goal argument is nominative.\footnote{\citet[184]{Grimshaw90} points out this problem in an endnote and essentially leaves it unsolved, although one of the solutions she sketches involves precisely a-structure binding.} On the other hand, within the a-structure binding analysis, the phrase \textit{al pacient} in the passive example \REF{ex:Romance:33b} is the goal internal argument and no other argument, whereas the phrase \textit{els pacients} in the reflexivized structure \REF{ex:Romance:33d} is both the goal internal argument and the external argument. Here there are two arguments that map onto the same GF. If we assume, as in \citet{alsina1996the-role}, that dative case is assigned to the GF that maps onto the more prominent of two internal arguments, as long as it is \textbf{not an external argument}, it follows that dative case will be assigned to the goal internal argument in the active and passive forms \REF{ex:Romance:33a} and \REF{ex:Romance:33b}, but not in the reflexivized form \REF{ex:Romance:33d}. 
+
+The a-structure binding analysis of the anaphoric use of the reflexive clitic just described relies on the idea essential to LFG that grammatical information is factored into different levels of representation, allowing for mismatches among these levels. In particular, the distinction between argument roles at a-structure and GFs at f-structure plays a crucial role in this analysis. If we allow for the possibility that a given GF corresponds to two different argument roles, as schematized in \REF{ex:Romance:27} for the a-structure binding analysis, we can explain not only the valence-reducing effect of the anaphoric reflexive clitic, but those properties of the GF that group it with an internal argument, as in the unaccusative analysis, and those properties that group it with an external argument, as in the unergative analysis. 
+
+Following the proposal in \citet{alsina1996the-role}, we can illustrate this by comparing the non-reflexive use of a dyadic predicate such as \textit{defensar} `defend' in Catalan with the same predicate with the anaphoric reflexive clitic. This predicate has an external argument and an internal argument, represented by [Ext] and [Int] respectively at a-structure. Each argument has its linking index, represented as a subscripted number, which, in the default case, is different for each argument, entailing a different mapping to GF. This is the situation in \REF{ex:Romance:34a}, where the external argument maps onto the subject and the internal argument onto the object. The effect of the anaphoric reflexive clitic is to coindex the logical subject of a predicate with an internal argument, so that they have the same linking index and therefore map onto the same GF, as shown in \REF{ex:Romance:34b}. The principles mapping argument roles to GFs are satisfied in \REF{ex:Romance:34b}: the external argument is required to map onto the subject and the internal argument is required to map onto a direct GF (either subject or object) and, since the subject is a direct GF, both mapping requirements are met. The a-structure is represented as the value of the feature \textsc{pred} in \REF{ex:Romance:34}.
+
+\ea\label{ex:Romance:34}
+\ea\label{ex:Romance:34a}
+Non-reflexive use of \textit{defensar} `defend':\\
+\avm[style=fstr]{[pred & `defend\arglist{[Ext]$_1$~[Int]$_2$}'\\
+    subj$_1$\\
+    obj$_2$]}
+\ex\label{ex:Romance:34b}
+Reflexivized use of \textit{defensar-se} `defend-\textsc{refl}':\\
+\avm[style=fstr]{[pred & `defend\arglist{[Ext]$_1$~[Int]$_1$}'\\
+    subj$_1$]}
+\z\z
+  
+\section{Arguments, grammatical functions, and case}
+\label{sec:Romance:3}
+
+This section deals with the morphosyntactic expression of arguments in terms of grammatical functions and case. \sectref{sec:Romance:3.1} considers the inventory of GFs, especially the GFs of subjects, objects, and clausal complements. The passive and impersonal reflexive constructions are examined in \sectref{sec:Romance:3.2}. 
+
+\subsection{Objects and their realization}
+\label{sec:Romance:3.1}
+
+\subsubsection{Direct and indirect objects: GF and case}
+\label{sec:Romance:3.1.1}
+
+Traditional grammar, as well as Relational Grammar, distinguishes two kinds of objects in the Romance languages: direct object (DO) and indirect object (IO). DOs, in their phrasal expression, are generally NPs without any case marker or preposition, except that in some languages a subset of DOs are marked by a preposition,\footnote{\label{fn:Romance:15}The prepositional marking of the DO, also known as differential object marking, is found in Spanish, Catalan, southern Italian dialects, and Sardinian, which use the same preposition as for IOs, and in Romanian, in which the preposition \textit{pe} is used \citep[920--921]{DragomirescuNicolae2016}. See \citet{BarbuToivonen2018} for the distribution of DO \textit{pe} in Romanian.} whereas IOs, as phrases, are PPs introduced by the preposition \textit{a}. Both kinds of objects can be expressed as clitics and all Romance languages have different sets of pronominal clitics in the third person for the two kinds of objects. First and second person clitics do not distinguish between the two kinds of objects.\footnote{\label{fn:Romance:16}Neither do third person reflexive clitics, but then, according to \sectref{sec:Romance:2.3}, they are not object clitics. Instances of DO-IO syncretism are found even in third person non-reflexive clitics: this is the case of Spanish \textit{leísmo}, in which the clitic \textit{le} is used for both IOs and human masculine DOs. Other forms of DO-IO syncretisms in third person clitics are found in regional varieties of Spanish \citep[398]{TutenPatoSchwarzwald2016}.} Given that LFG does not have a DO and an IO in its standard inventory of GFs, researchers have accommodated this distinction into the LFG inventory of GFs in different ways. The proposals that restrict themselves to the standard LFG inventory of GFs have in common the assumption that the DO is \textsc{obj} and differ in the GF attributed to the IO, which is one of the following three: \textsc{obl}, \textsc{obj}\textsubscript{$\theta$}, and \textsc{obj}.\footnote{Some exceptions to this observation are found. \citet[344--349]{LuisOtoguro2004} treat the single object of a clause as \textsc{obj}, whether it is direct or indirect (i.e., accusative or dative) and, in ditransitive clauses, treat the DO as \textsc{obj}\textsubscript{$\theta$} and the IO as \textsc{obj}. \citet{LuisSpencer2005} use the GFs \textsc{obj1} and \textsc{obj2} for the IO and the DO respectively, where we can assume that \textsc{obj1} is another name for \textsc{obj} and \textsc{obj2} replaces \textsc{obj}\textsubscript{$\theta$}. No argumentation is presented for these proposals.}
+
+\subsubsubsection{IO as \textsc{obl}} This proposal is found in \citet{Schwarze2001} and \citet[185--194]{Sells2013}, although no motivation is given for adopting it instead of the available alternatives. \citet[150--160]{alsina1996the-role}  enumerates eight properties that group IOs with DOs, in the class of direct functions, together with subjects, contrasting them with obliques: (1) doubling of independent personal pronouns in the verbal morphology (as clitics); (2) expression of person and number distinctions in the verbal morphology; (3) the ability to be bound at a-structure (by means of the reflexive clitic); (4) the ability to launch a floating quantifier; (5) disjoint reference of pronouns; (6) the ability to bind quantifiers; (7) the ability of independent (or strong) pronouns to function as resumptive pronouns; and (8) the ability to be the target of secondary predication. All of these properties argue against treating the IO as an oblique and show that it belongs to the class of direct GFs, together with subjects and objects.\footnote{To these properties we could add the IO-DO syncretism in first and second person and reflexive clitics in Romance in general, the partial IO-DO syncretism in third person non-reflexive clitics in Spanish (see footnote \ref{fn:Romance:16}), and the partial syncretism in the phrasal expression of IO and DO in those languages that use the same preposition for both objects (see footnote \ref{fn:Romance:15}).}
+
+\subsubsubsection{IO as \textsc{obj}\textsubscript{θ}}  This proposal is found in \citet[115--118]{falk2001lexical}, \citet{AlencarKelling2005}, \citet{Aranovich2012}, \citet{Quaglia2012}, and \citet{CarreteroGarcia2018}. \citet{Grimshaw1982} can be grouped in this proposal, as she assumes that the DO is \textsc{obj} and uses the GF \textsc{a} \textsc{obj}, instead of \OBJTHETA, for the IO. The main argument for this proposal is the observation that dative arguments cannot be encoded as subjects: they are never the subject of a passive form, with verbs that can be passivized, and are not the subject of psychological verbs of the `like`-type. While this is true, there are many reasons for rejecting this proposal. In languages such as Chiche\^wa (asymmetrical object languages), in which the \textsc{obj}{}-\textsc{obj}\textsubscript{$\theta$} distinction is strongly motivated, the \textsc{obj} has the ability to be expressed as a morphologically incorporated pronominal, can be accessed by an a-structure binding operation (reciprocalization), and alternates with the \textsc{subj} in a passive form, whereas the \textsc{obj}\textsubscript{$\theta$} lacks all of these properties (see \citealt{Baker1988,Baker:Theta}, \citealt{AlsinaMchombo1990}, \citealt{BresMosh90}, \citealt{Alsina:Passive}, among others).\footnote{In addition, in Chiche\^wa, the \textsc{obj} precedes the \textsc{obj}\textsubscript{$\theta$} when both are expressed as NPs in the VP. However, this is not a necessary property of asymmetrical object languages, as there are languages of this type, including other Bantu languages, that allow either order of the objects. Also, the fact that the DO precedes the IO in Romance in the unmarked order is simply a consequence of the different grammatical category of the two objects, the DO being an NP and the IO being a PP.} The IO, like the DO, in Romance is able to be expressed as a morphologically incorporated pronoun, as illustrated in examples \REF{ex:Romance:3b}, \REF{ex:Romance:3c} and \REF{ex:Romance:21c} (see also \REF{ex:Romance:35}), and, like the DO, can be accessed by an a-structure binding operation (by means of the reflexive clitic), as in \REF{ex:Romance:21b}, \REF{ex:Romance:30b}, and \REF{ex:Romance:33d}. The only property that the IO shares with the \textsc{obj}\textsubscript{$\theta$} is the fact that it cannot be a subject. To focus on this one feature of the IO in order to claim that it is an \textsc{obj}\textsubscript{$\theta$} is to ignore the fact that there is a cluster of properties associated with the \textsc{obj}{}-\textsc{obj}\textsubscript{$\theta$} distinction, as has been mentioned, and the fact that DO and IO are distinguished by grammatical case, unlike \textsc{obj} and \textsc{obj}\textsubscript{$\theta$} in most asymmetrical languages. 
+
+In addition to this, there is a difference in the thematic roles that map onto \textsc{obj}\textsubscript{$\theta$} in the subclass of asymmetrical languages of the Chiche\^wa type termed non-alternating in \citet{Alsina:Passive} and the thematic roles that correspond to IO in the Romance languages. In Chiche\^wa, only thematic roles below goal in the thematic hierarchy (i.e., instrumental, theme, patient, locative) can map onto \textsc{obj}\textsubscript{$\theta$}, as the higher roles in the hierarchy (agent, beneficiary, goal) cannot map to \textsc{obj}\textsubscript{$\theta$}. In contrast with this, the IO in Romance typically corresponds to the higher roles in the hierarchy (agent, beneficiary, goal, experiencer).
+
+In other words, to assume that IO is \textsc{obj}\textsubscript{$\theta$} implies abandoning the idea that there is a cluster of properties associated with \textsc{obj}\textsubscript{$\theta$} and assuming that the only necessary and sufficient condition for the \textsc{obj}\textsubscript{$\theta$} function is the failure of alternating with the \textsc{subj} function, which is clearly an undesirable loss of predictive power of the theory. And it also requires assuming that the mapping of argument roles to \textsc{obj}\textsubscript{$\theta$} may vary radically from language to language.
+
+\subsubsubsection{IO as OBJ} This proposal is argued for in \citet{alsina1996the-role} and is also found in \citet{Vanhoe2002}. It places a lot of importance on the observation that DO and IO are distinguished primarily by means of grammatical case. Both DO and IO are the GF \textsc{obj} and are distinguished because IO is dative and DO is non-dative (i.e., accusative, although nominative is also an option, see \sectref{sec:Romance:3.1.3}). What needs to be accounted for in this approach is case assignment, particularly, the assignment of dative case. \citet{alsina1996the-role} notes that dative case is assigned either on the basis of the semantics, specifically, the thematic role involved, or on the basis of the a-structure configuration. In the first case, dative is claimed to be assigned to arguments whose thematic role is goal and this assignment does not depend on there being a non-dative object in the clause, as illustrated in \REF{ex:Romance:35a}. In the second case, dative is assigned to the GF corresponding to the more prominent of two internal arguments, as in \REF{ex:Romance:35b}. As there need to be two internal arguments each mapping to a different GF for the latter type of dative case assignment, dative fails to be assigned to the single internal argument of a clause (unless it meets the semantic requirement), as in \REF{ex:Romance:35c}. The dative-accusative case alternation in \REF{ex:Romance:35b}--\REF{ex:Romance:35c} also occurs with the causee in causative constructions depending on transitivity of the embedded infinitive (see \REF{ex:Romance:22} and \sectref{sec:Romance:4.1}).
+
+\ea\label{ex:Romance:35}  Catalan \citep[172]{alsina1996the-role}
+\ea\label{ex:Romance:35a}
+\gll En Ferran li ha escrit (una carta).\\
+    \textsc{art} Ferran 3\textsc{sg.dat} has written a letter\\
+\glt   `Ferran has written him (a letter).'
+\ex\label{ex:Romance:35b}
+\gll
+ Li ensenyen llatí.\\
+       3\textsc{sg.dat} they.teach Latin\\
+\glt   `They teach him Latin.'
+\ex\label{ex:Romance:35c}
+\gll L' ensenyen.\\
+       3\textsc{sg.m.}\textsc{acc} they.teach\\
+\glt   `They teach him.'
+\z\z
+The only property that seems to indicate that IO behaves like \textsc{obj}\textsubscript{$\theta$} is the claim that dative arguments are never subjects in Romance, but must be objects instead. \citet{alsina1996the-role} claims that this fact is best accounted for through a constraint prohibiting subjects with dative case. This constraint is active in the Romance languages, which do not allow dative subjects,\footnote{However, some authors have claimed that dative experiencers can be subjects, e.g.\ \citet{Cardinaletti2004} for Italian and \citet{FernandezSoriano1999} for Spanish.} but is not active in languages such as Icelandic or Hindi (see \citealt{ZMT85:Case} and \citealt{MohananT1994}, respectively, among others), in which dative subjects are possible. The thematic roles to which dative case is assigned are very similar across these different languages, but Romance differs from Icelandic and Hindi basically because dative blocks the assignment of the subject function in the former, but not in the latter. Introducing the \textsc{obj}{}-\textsc{obj}\textsubscript{$\theta$} distinction in the description of the facts would just obscure the differences and similarities among these languages.\footnote{Certain verbs take a dative object as their sole object. This occurs in Latin with verbs such as \textit{subvenire} `help', \textit{parcere} `spare', etc., as well as in the Romance languages. This is unlike the \textsc{obj}\textsubscript{$\theta$} in languages such as Chiche\^wa, where it occurs only in a double object construction.}
+
+Accepting the idea that IO is \textsc{obj} implies that a given clause may have more than one GF \textsc{obj}\textsubscript{,} since clauses often have an IO and a DO and sometimes even more than one IO. In this respect, \textsc{obj} would not be different from \textsc{obj}\textsubscript{$\theta$} or \textsc{obl}\textsubscript{$\theta$}, of which clauses may have more than one. This requires modifying the framework, which, in its standard form, does not allow multiple GFs with the same attribute, unless the GF in question is assumed to take a set of f-structures as its value rather than a single f-structure. \citet{alsina1996the-role} assumes that the only GF that is unique in a clause is the subject, whereas the other two GFs, namely, object and oblique (in a reduced inventory of GFs with only the three named GFs), are not required to be unique and can have multiple instantiations. This proposal can be implemented by assuming that both \textsc{obj} and \textsc{obl} take a set of f-structures as their value, whereas \textsc{subj} takes an f-structure as its value. See also \citet{patejuk2016reducing} for a different implementation of the idea that the inventory of GFs consists of only the three GFs mentioned.\footnote{This idea is also valid for asymmetrical languages like Chiche\^wa, since the distinction between primary and secondary object (\textsc{obj} and \textsc{obj}\textsubscript{$\theta$}, respectively, in standard LFG) needs to be made at the level of a-structure, as argued in \citet{Alsina:PhD,Alsina2001}, by means of a feature (R) that marks secondary objects, and only at that level, so that both primary and secondary objects are simply objects at the level of GFs.}
+
+\subsubsection{The GF of clausal complements}
+\label{sec:Romance:3.1.2}
+
+The debate about the inventory of GFs in LFG has also addressed the issue of the GF \textsc{comp}, a GF that in standard LFG is reserved for clausal complements, typically finite. \citet{AMM05} (AMM) argue that this GF is not necessary and, in fact, complicates the statement of generalizations and that clausal complements should be assumed to be either objects or obliques.\footnote{A defense of the GF \textsc{comp} can be found in \citet{DL00}, \citet{Lodrup04,Lodrup2012}, and \citet{BelyaevKozhemyakinaSerdobolskaya2017}.} The argument based on Catalan is as follows. Catalan has two types of clausal complements introduced by the complementizer \textit{que}, without a preposition: those that alternate with a nominal complement, which can be expressed by the object clitic \textit{ho}, and that can passivize, and those that alternate with a prepositional complement, that can be expressed by one of the oblique clitics \textit{hi} or \textit{en}, and that cannot passivize. \REF{ex:Romance:36} exemplifies a complement of the first type: the verb \textit{entendre} `understand' can take a nominal complement, as in \REF{ex:Romance:36a}, can cliticize its clausal complement by means of \textit{ho}, as in \REF{ex:Romance:36b}, and can passivize with the dependent clause as the subject, as in \REF{ex:Romance:36c}:
+
+\ea\label{ex:Romance:36} Catalan (AMM)
+\ea\label{ex:Romance:36a}
+\gll (La teva explicació) no l' he entesa.\\
+       the your explanation not \textsc{3sg.f.acc} have.\textsc{1sg} understood.\textsc{f}\\
+\glt   `(Your explanation\textsubscript{i}) I didn't understand it\textsubscript{i}.'
+\ex\label{ex:Romance:36b}
+\gll
+ (Que hagis arribat tan tard) no ho he entès.\\
+       that have.2\textsc{sg} arrived so late not \textsc{ho} have.1\textsc{sg} understood\\
+\glt   `(That you should have arrived so late\textsubscript{i}) I
+didn't understand it\textsubscript{i}.'
+\ex\label{ex:Romance:36c}
+\gll
+Que votessis a favor de la proposta no va ser entès per una part del públic.\\
+       that vote.\textsc{sbjv}.\textsc{2sg} in favor of the proposal not \textsc{pst}.3\textsc{sg} be understood by a part of-the audience\\
+\glt   `That you should have voted in favor of the proposal was not
+understood by part of the audience.'
+\z\z
+\textit{Convèncer} `convince' is a verb that takes a clausal complement of the second type: it alternates with a PP, as in \REF{ex:Romance:37a}, but does not take a preposition, as in \REF{ex:Romance:37b}, and can be expressed by means of the oblique clitic \textit{en}, as in \REF{ex:Romance:37c}:
+
+\ea\label{ex:Romance:37} Catalan (AMM)
+\ea\label{ex:Romance:37a}
+\gll M' heu de convèncer \textbf{de} les seves possibilitats.\\
+       me have.\textsc{2pl} to convince of the 3\textsc{poss} possibilities\\
+\glt   `You have to convince me of his possibilities.'
+\ex\label{ex:Romance:37b}
+\gll
+ M' heu de convèncer (\textbf{*de}) que torni a casa.\\
+       me have.2\textsc{pl} to convince of that return.1sg to home\\
+\glt   `You have to convince me to return home.'
+\ex\label{ex:Romance:37c}
+\gll
+Me n' heu de convèncer.\\
+me \textsc{en} have.2\textsc{pl} of convince\\
+\glt   `You have to convince me of that.'
+\z\z
+Another class of verbs that take a clausal complement introduced by \textit{que} is illustrated by \textit{estar d'acord} `agree', which takes a different preposition, \textit{en}, when the complement is not clausal, and a different clitic form, \textit{hi} (see relevant examples in AMM). 
+
+The choice of oblique clitic (\textit{en} vs. \textit{hi}) is related to the choice of oblique preposition: oblique complements introduced by the preposition \textit{de} can be expressed by means of the clitic \textit{en}, whereas other obliques alternate with the clitic \textit{hi}. Replacing one oblique clitic by the other one renders the sentences ungrammatical. In addition, neither of the two classes of verbs allows the dependent clause introduced by \textit{que} to be the subject of a passive form, as illustrated in \REF{ex:Romance:38} for \textit{convèncer}.
+
+\ea \label{ex:Romance:38} Catalan (AMM)\\
+\gll *~Que tornés a casa va ser convençut en Martí.\\
+   ~~that return\textsc{.sbjv.3sg} to home \textsc{past.3sg} be convinced the Martí\\
+\glt `That he return home was convinced Martí.'
+\z
+
+
+A possible LFG approach to these facts using the \textsc{comp} function would assume that a clausal complement can be either an \textsc{obj} or a \textsc{comp}: it is an \textsc{obj} in cases like \REF{ex:Romance:36b}, where it alternates with an NP, with object clitics, and with the subject in a passive clause, whereas it is a \textsc{comp} in \REF{ex:Romance:37b}, where it has none of these properties. This means that predicates like \textit{convèncer} and \textit{estar d'acord} have two different subcategorization frames depending on whether the complement is nominal or clausal: they take an \textsc{obl} for sentences such as \REF{ex:Romance:37a} and a \textsc{comp} for sentences such as \REF{ex:Romance:37b} and, to complicate matters further, the clitic that corresponds to the \textsc{obl} and to the \textsc{comp} is unique for each verb regardless of whether it corresponds to the \textsc{obl} or to the \textsc{comp}, as in \REF{ex:Romance:37c}. No generalization can be made regarding the choice of clitic, given that some \textsc{comp}s are expressed as \textit{en} and some others are expressed as \textit{hi}, and the choice does not depend on the \textsc{comp} but on the \textsc{obl} that appears on the alternative subcategorization frame of the verb.
+
+If, on the other hand, we assume that there is no such GF as \textsc{comp}, as claimed in AMM, but clauses can be the c-structure realization of either \textsc{obj} or \textsc{obl} (just as they can be of \textsc{subj}), the different behavior of the clausal complements shown in \REF{ex:Romance:36}--\REF{ex:Romance:38} simply follows from their being either \textsc{obj} or \textsc{obl}, together with a constraint preventing clausal complements from taking a preposition. This constraint (let us call it *P+CP) is active in languages like Catalan or French (see \citealt{forst06} for relevant data on French) and English, where clausal complements are not preceded by a preposition, but not in languages like Spanish, where complements take their required preposition regardless of the category of the complement (nominal or clausal).\footnote{Danish, according to Nigel Vincent (p.c.), is another language where the *P+CP constraint is not active: e.g.\ \textit{det endte med at han blev fyret} `it ended with that he was fired'.}
+
+In languages with an active *P+CP, a verb selecting an oblique with a particular case feature (say genitive) will normally require this case feature to be overtly realized (by means of the preposition \textit{de} or by means of the clitic \textit{en}, which are alternative ways of realizing genitive case), but, if the realization of the oblique should cause a violation of *P+CP, an alternative expression is chosen that does not cause this violation, even though it fails to realize the case requirement. This can be done in an OT framework, although other ways of obtaining prepositionless oblique clauses are possible.
+
+In this way, eliminating \textsc{comp} from the inventory of GFs not only results in a simplification of the framework (it is preferable to have fewer theoretical constructs), but also in a simplification of the analysis (verbs that alternate between taking a PP complement and a plain clausal complement, such as \textit{convèncer}, have only one subcategorization frame, with an \textsc{obl}, rather than two, one with an \textsc{obl} and one with a \textsc{comp}) and it reduces the redundancy in the theory (the c-structure realization of \textsc{comp} is predictably clausal, i.e., CP or IP, but not NP or PP, whereas in the framework without \textsc{comp}, both \textsc{obl} and \textsc{obj} can map onto either a nominal or a clausal category) and makes it possible to state generalizations that are obscured in the framework with \textsc{comp} (e.g., the fact that the clitic realization that corresponds to a clausal complement is the one that corresponds to the object or oblique complement of the verb).
+
+\subsubsection{Mixed subject-object properties}
+\label{sec:Romance:3.1.3}
+
+It is generally assumed that the single core argument of unaccusative verbs alternates between subject and object.\footnote{The Unaccusative Hypothesis  -- the idea that intransitive verbs are classified into two classes depending on whether their core argument has some objecthood properties or not --  was originally proposed by \citet{Perlmutter1978} within the framework of Relational Grammar and subsequently adapted to other frameworks. See \sectref{sec:Romance:2.3.2} for the different behavior of unaccusative and unergative verbs with respect to auxiliary selection in Italian.} It can be shown that this argument sometimes has objecthood properties and sometimes has subjecthood properties. A paradox arises when we observe that this argument can have both types of properties in the same structure. 
+
+Evidence for assuming that the single core argument of unaccusative verbs can be expressed as an object is provided by the possibility of encoding this argument by means of the partitive clitic in those languages that have it, such as Catalan, French, and Italian. Since \citet{Perlmutter1983}, \citet{Rosen1984}, and \citet{Burzio1986} for Italian (see also \citealt{alsina1996the-role} for Catalan), the claim is that this clitic must correspond to a direct object.\footnote{The claim that, among intransitive verbs, only unaccusatives allow the partitive clitic, though commonly accepted, has been questioned by various scholars, who have pointed out that unergative verbs also allow the partitive clitic corresponding to their single core argument, at least under certain circumstances, such as \citet{Lonzi1986} and \citet{Saccon1995} for Italian, \citet{CortesGavarro1997} and \citet{AlsinaYang2018} for Catalan. Regardless of the correctness of this claim, the shared assumption is that the partitive clitic in these languages corresponds to a DO, which implies that the single core argument of an intransitive verb can be encoded as an object.} Example \REF{ex:Romance:39} shows that the unaccusative verb \textit{sortir} `go out' in Catalan allows its single core argument to be expressed by means of the partitive clitic, which, in this example, corresponds to the postverbal NP \textit{un}. Given the claim just noted, this NP has to be a direct object.
+
+\ea\label{ex:Romance:39} Catalan    \citep[48]{AlsinaYang2018}\\
+\gll
+Cada dia surten molts trens, però avui només n' ha sortit       un.\\
+every day leave.\textsc{3pl} many trains but today only \textsc{en} has left one\\
+\glt   `Every day many trains leave, but today only one has left.' 
+\z
+
+Additional evidence supporting the claim that the argument partially encoded by the partitive clitic is an object comes from past participle agreement. In Catalan, the past participle optionally agrees in gender and number with a third person object clitic, when co-occurring with the perfective auxiliary \textit{haver} `have'. The partitive clitic is one of the third person object clitics that can trigger past participle agreement, as in \REF{ex:Romance:40}:
+
+\ea\label{ex:Romance:40}Catalan \citep[160]{Fabra1912}\\
+\gll
+N' han arribats molts.\\
+\textsc{en} have.\textsc{pl} arrive.\textsc{ptcp.m.pl} many.\textsc{m.pl}\\
+\glt   `Many have arrived.'  
+\z
+
+In addition, the possibility of expressing the single direct argument of an intransitive verb as a bare indefinite NP provides further evidence for the objecthood of this argument, given the observation that this type of expression is excluded for the subject of transitive verbs.
+
+\newpage
+Alongside the object encoding of the single direct argument in examples like \REF{ex:Romance:39}--\REF{ex:Romance:40}, it is also possible for this argument to be expressed as the subject. The clearest evidence for this alternative encoding is the possibility of subject pro-drop. In a subject pro-drop language such as Catalan, a subject (and only a subject) can be null and be interpreted as having a definite referent, which indicates that, in \REF{ex:Romance:41}, the missing argument, the logical subject of \textit{sortir} `leave', is its subject:
+
+\ea\label{ex:Romance:41}   Catalan (based on \citealt[50]{AlsinaYang2018})\\
+\gll
+Avui Ø surten tard.\\
+today {} leave.\textsc{3pl} late\\
+\glt   `Today they are leaving late.'
+\z
+If we should take verb agreement to be a subjecthood diagnostic in Catalan, we would have a problem in examples like \REF{ex:Romance:39}--\REF{ex:Romance:40}. We find that the verb does not only agree with the subject, as is the case in \REF{ex:Romance:41}, but also with the argument that is claimed to be an object. In \REF{ex:Romance:40}, for example, the single core argument of \textit{arribar} `arrive' is expressed as the NP \textit{molts} `many', which has been argued to be an object, and yet this object agrees with the finite verb form \textit{han}. But there is no need to assume that the agreement trigger is a subject. The verbal agreement facts of languages like Icelandic or Hindi indicate that the verb can agree with a grammatical function other than the subject, provided that it is in nominative case. And there is independent evidence that this is the case in Catalan as well. As shown in \citet{AV:LFG14}, in copular constructions with a predicative NP in Catalan, which are characterized by having two nominative phrases, the verb agrees with the nominative phrase that is higher in a person-number hierarchy where first and second person outrank third person and, among third persons, plural outranks singular (similar facts are found in Spanish and Italian). This indicates that what is necessary is for the agreement trigger to be a nominative expression.
+
+\citet{AlsinaYang2018} propose an argument realization theory in which
+case is assigned to arguments independently of their GF and has the effect of constraining the GF assigned to an argument. According to their case assignment principles, nominative is assigned as a default to a core argument: a core argument that is not assigned dative or accusative case receives nominative. A constraint disallowing subjects with a case value other than nominative ensures that subjects in Catalan, and in the Romance languages in general, are nominative. Crucially, while all subjects are nominative, not all nominative arguments are subjects. The single core argument of an unaccusative verb is assigned nominative case and maps either onto the subject or the object.\footnote{\citet{AlsinaYang2018} assume that this nominative argument maps onto the subject, when it is definite, and onto the object, when it is indefinite. This follows from treating the Subject Condition as a constraint in an OT setting and ranking it below an Indefinite Subject Ban, which penalizes an indefinite subject, in subject pro-drop languages like Catalan. So, the single core argument is a subject in an example like \REF{ex:Romance:41}, but is an object in examples like \REF{ex:Romance:39}--\REF{ex:Romance:40}.} 
+
+Thus, the paradox noted at the beginning of this subsection disappears. The single core argument of an unaccusative seems to have simultaneous subjecthood and objecthood properties: in examples like \REF{ex:Romance:39}--\REF{ex:Romance:40} it is encoded by the partitive clitic and triggers past participle agreement, which are properties of objects, and it triggers finite verb agreement, which is usually assumed to be a property of subjects. However, once we observe that finite verb agreement is triggered by the nominative argument, all we need to assume is that the single core argument of a verb is always nominative and alternates between the subject and the object functions. As a nominative object, it has the standard objecthood properties, shared with accusative objects, and triggers finite verb agreement, a property of nominative arguments.
+
+\subsection{Passive and impersonal constructions}
+\label{sec:Romance:3.2}
+
+In this subsection we deal with passive and impersonal constructions. In \sectref{sec:Romance:3.2.1}, we compare the participial passive (or passive with auxiliary ESSE `be') and the reflexive passive. And in \sectref{sec:Romance:3.2.2}, we review the evidence for considering the reflexive passive and the reflexive impersonal as the same or different constructions. 
+
+\subsubsection{Two passive constructions}
+\label{sec:Romance:3.2.1}
+
+All Romance languages have two passive constructions, which we will call the participial passive and the reflexive passive. (The reflexive impersonal construction will be discussed in \sectref{sec:Romance:3.2.2}.) The participial passive is characterized by having the main predicate in the past participial form,\footnote{The assumption that past participles (of transitive verbs) can be passive and that it is the participial morphology that signals that the construction is passive is made in \citet[9--10]{bresnan1982the-passive} for English and in \citet{LoporcaroPesciaRamos2004} for Romance, among others. The syntactic structure in which the participle is used (e.g., whether the auxiliary is `be' or `have') constrains the choice of the active or passive reading of the participle.} by the agreement in gender and number of this participle with its subject, by the fact that this subject has the same thematic role as the accusative object of the corresponding active form, and by the fact that the thematic role of the subject of the corresponding active form is either unexpressed or expressed by means of an oblique phrase (introduced by the preposition \textit{da} in Italian, \textit{par} in French, \textit{por} in Spanish and Portuguese, \textit{per} in Catalan, etc.). The passive participle can be used heading an adjunct clause, modifying either a clause or a noun, or as the main predicate of the clause along with a special auxiliary for passive clauses -- the equivalent of \textit{be} in the different languages (\textit{ser}, \textit{être}, \textit{essere}, etc., although some languages have additional passive ``auxiliaries,'' such as \textit{venire} or \textit{andare} in Italian), as in the Catalan examples in \REF{ex:Romance:42}:
+
+\ea\label{ex:Romance:42} Catalan
+\ea\label{ex:Romance:42a}
+\gll Examinada la situació pels experts, la solució arribarà       aviat.\\
+     examine.\textsc{ptcp}.\textsc{f.sg} the.\textsc{f.sg} situation by.the experts the solution arrive.\textsc{fut.3sg} soon\\
+\glt `Once the situation has been examined by the experts, the solution will arrive soon.'
+\ex\label{ex:Romance:42b}
+\gll
+ La situació serà estudiada pels experts fins a l' últim detall.\\
+     the.\textsc{f.sg} situation be.\textsc{fut.3sg} study.\textsc{ptcp}.\textsc{f.sg} by.the experts until \textsc{a} the last detail\\
+     \glt `The situation will be studied by the experts up to the last detail.'
+     \z\z
+
+Participial passives are also known as periphrastic passives, as they require an auxiliary in order to function as the main predicate of a clause other than an adjunct clause; however, since they can occur without an auxiliary in adjunct clauses such as in \REF{ex:Romance:42a}, the term ``participial passive'' seems more appropriate.
+
+The reflexive passive (or ``Middle se'' to use \citegen{Grimshaw1982} term) is characterized by the use of the reflexive clitic in the third person. The effects of this clitic on the mapping between arguments and GFs are very similar to those of the participial passive: the logical subject is suppressed, i.e., not expressed as a direct GF, and the direct object of the active form is the nominative GF, typically the subject. However, with the reflexive passive, the suppressed logical subject is generally not expressible as an oblique phrase. Morphologically, the reflexive passive is identical to the anaphoric and inherent uses of the reflexive reviewed in \sectref{sec:Romance:2.2.3} and \sectref{sec:Romance:2.3} and, potentially, gives rise to ambiguities with those uses of the reflexive. Two examples of reflexive passives in Catalan are given in \REF{ex:Romance:43}, using verbs that, without the reflexive clitic, are transitive (i.e.\ take a direct, or accusative, object).
+
+\newpage
+
+\ea\label{ex:Romance:43} Catalan
+\ea\label{ex:Romance:43a}
+\gll Aquesta obra s' estrenarà demà.\\
+  this play \textsc{refl} premiere.\textsc{fut.3sg} tomorrow\\
+\glt  `This play will be premiered tomorrow.'
+\ex\label{ex:Romance:43b}
+\gll
+Es preparen moltes pizzes en aquest local.\\
+ \textsc{refl} prepare.\textsc{3pl} many pizzas in this establishment\\
+ \glt `Many pizzas are prepared in this establishment.'
+ \z\z
+The direct object of the non-reflexive form corresponds to the nominative GF in the reflexive passive. As a nominative GF, it shows agreement with the verb: singular in \REF{ex:Romance:43a} vs. plural in \REF{ex:Romance:43b}. It can be the subject, and often is (see \sectref{sec:Romance:3.1.3}): as such, it can appear in clause-initial position without an agreeing clitic on the verb, as in \REF{ex:Romance:43a}, can be omitted with a definite interpretation, as in \REF{ex:Romance:44a}, and cannot be expressed by means of a definite clitic, as in \REF{ex:Romance:44b}:\footnote{\REF{ex:Romance:44b} is grammatical with an anaphoric interpretation, irrelevant here: `They prepare them for themselves in this establishment.'}
+
+\ea\label{ex:Romance:44} Catalan
+\ea[]{\label{ex:Romance:44a}
+\gll S' estrenarà demà.\\
+\textsc{refl} premiere.\textsc{fut.3sg} tomorrow\\
+\glt `It will be premiered tomorrow.'
+}
+\ex[*]{\label{ex:Romance:44b}
+\gll Se les preparen en aquest local.\\
+\textsc{refl} \textsc{3pl.f.acc} prepare.\textsc{3pl} in this establishment\\
+\glt  `They are prepared in this establishment.'
+}
+\z\z
+In subject pro-drop languages, like Catalan, subjects can be omitted with a definite interpretation, accounting for \REF{ex:Romance:44a}. And definite object clitics such as \textit{les} can only correspond to objects, which explains \REF{ex:Romance:44b}.
+
+Whereas the anaphoric and inherent uses of the reflexive clitic are compatible with all person features (first, second, and third), the reflexive passive can only occur with the third person clitic. It is not possible to have a reflexive passive with a first or second person subject, as that would require a first or second person reflexive clitic. Compare a well-formed participial passive with a first person subject, \REF{ex:Romance:45a}, with the corresponding ill-formed reflexive passive, \REF{ex:Romance:45b}.
+
+\ea\label{ex:Romance:45} Catalan
+\ea\label{ex:Romance:45a}
+\gll He estat vist passant per la plaça.\\
+have.\textsc{1sg} been seen passing by the square\\
+\glt  `I have been seen walking across the square.'
+\ex[*]{\label{ex:Romance:45b}
+\gll M' he vist passant per la plaça.\\
+  me have.\textsc{1sg} seen passing by the square\\
+  \glt  `I have been seen walking across the square.'
+  }
+  \z\z
+The two passive constructions are different morphologically, but share the definitional properties of a passive construction: the logical subject cannot be encoded as a direct GF and there is an internal argument encoded as a nominative GF, often the subject.
+
+\subsubsection{Reflexive passive and reflexive impersonal: one or two
+  constructions?}
+\label{sec:Romance:3.2.2}
+
+The construction that we may call the impersonal reflexive, which is common at least in Spanish, Catalan, and Italian, like the reflexive passive also involves the reflexive clitic. It has a passive-like interpretation, as the argument that would be the subject without the reflexive clitic is unexpressed and interpreted as an arbitrary or unspecified human. It is found with intransitive predicates of both agentive and non-agentive types, as in \REF{ex:Romance:46}. It also occurs with transitive verbs, in which case the internal argument should be analyzed as an accusative object because it does not agree with the verb and can be expressed by means of a definite object clitic, as in \REF{ex:Romance:47}. 
+
+\ea\label{ex:Romance:46} Catalan
+\ea\label{ex:Romance:46a}
+\gll Demà no es treballa.\\
+       tomorrow not \textsc{refl} work.\textsc{3sg}.\\
+\glt   `There is no work tomorrow.'
+\ex\label{ex:Romance:46b}
+\gll
+ No se surt fins que ho digui jo.\\
+       not \textsc{refl} go.out.\textsc{3sg} until that \textsc{ho} say.\textsc{sbjv}.\textsc{1sg} I\\
+\glt   `No one goes out until I say so.'
+\ex\label{ex:Romance:46c}
+\gll
+S' ha de ser tossut per fer això.\\
+ \textsc{refl} have.\textsc{3sg} of be.\textsc{inf} stubborn to do.\textsc{inf} this\\
+ \glt   `You've got to be stubborn to do this.'
+ \z\z
+
+\ea\label{ex:Romance:47} Catalan
+\ea\label{ex:Romance:47a}
+\gll S' ha seguit els sospitosos fins al seu pis.\\
+\textsc{refl} have.\textsc{3sg} followed the suspects until \textsc{a}.the their flat\\
+\glt   `The suspects have been followed up to their flat.'
+\newpage
+\ex\label{ex:Romance:47b}
+\gll
+ Se' ls ha seguit fins al seu pis.\\
+       \textsc{refl} \textsc{3pl.m.acc} have.\textsc{3sg} followed until \textsc{a}.the their flat\\
+       \glt   `They have been followed up to their flat.'
+       \z\z
+There are clear similarities between the reflexive passive and the impersonal reflexive constructions that make it desirable to assume that the reflexive clitic performs the same function in both cases. The two constructions share the fact that the logical subject is not expressed and is interpreted as an arbitrary or unspecified human and that they can only be used with the third person form of the reflexive clitic. For this reason it is not possible to distinguish them semantically. This has led some researchers, such as \citet{Cardona2015}, to claim that both constructions should be treated as a passive construction.\footnote{See \citet{Bentley2006} for an attempt to capture both the differences and the commonalities between the anaphoric, passive and impersonal uses of the reflexive clitic in Italian, within the framework of Role and Reference Grammar.}
+
+However, no attempt to derive the two constructions from a single operation performed by the reflexive clitic has successfully explained all the facts of both constructions. The main objections to such a reductionist approach, which would assume that the reflexive clitic is the morphological exponent of a passive operation in both constructions, have been pointed out in \citet{Yang2019}. The first objection concerns the conditions on accusative case assignment. Accusative case can only be assigned in an argument structure that contains an external argument expressed as a direct function. This explains the observation that passive sentences in Romance, including reflexive passive sentences, do not have accusative objects: for this reason the reflexive passive \REF{ex:Romance:44b} is ungrammatical, as it has an object clitic that corresponds to an accusative object. But if the impersonal reflexive were also a passive form, we would not be able to explain the grammaticality of \REF{ex:Romance:47b}, which does contain a clitic corresponding to an accusative object. As a passive form, it would not have a direct function mapped onto the external argument and accusative case should not be assigned.
+
+The second objection has to do with the observation that the impersonal \textit{se} can occur in constructions in which one cannot argue that a logical subject is being suppressed, either because the argument that is interpreted as a generic or arbitrary human is not a thematic argument of the predicate or because it is not the logical subject. This is arguably the situation with copular sentences, such as \REF{ex:Romance:46c}, on the assumption that the subject of the copula is not an argument of the copula, but of its predicative complement. And it is definitely the case when impersonal \textit{se} is attached to a participial passive sentence, as in \REF{ex:Romance:48}. Although such examples are rare and hard to contextualize, they are not ungrammatical.
+
+\ea\label{ex:Romance:48}  Catalan   \citep[895]{Catalans2016}\\
+\gll Passava això quan s' era expulsat del partit.\\
+happened this when \textsc{refl} was expelled from.the party\\
+\glt`This is what happened when one was expelled from the party.'
+\z
+
+The reflexive clitic cannot be the exponent of the suppression of the logical subject of the verb in participial form, because this argument is already suppressed by the participial morphology. If anything is suppressed by the reflexive morphology, it is the subject of the copula, a non-thematic GF of this verb that controls the subject of the participial verb, which is not its logical subject.
+
+Given these two objections to the unified analysis of the reflexive passive and the reflexive impersonal, it seems necessary to assume that they are two different constructions, as concluded in \citet{Yang2019}: the reflexive passive is a passive construction, in which the logical subject is suppressed, whereas the reflexive impersonal licenses a null, 3rd person singular subject, with an arbitrary human interpretation. This is also the proposal in \citet{Kelling2006}.
+
+The reflexive passive and the reflexive impersonal, although different constructions, are in competition. According to \citet{Aranovich2009}, with dyadic predicates, in Spanish, the choice between the two constructions is determined by the animacy features of the internal argument. If this argument is animate, the reflexive impersonal construction is employed, but if it is inanimate the reflexive passive is preferred:\footnote{While there might be a strong preference for the choice between the two constructions to depend on the animacy of the internal argument, sentences such as \REF{ex:Romance:50} are generally not considered to be ungrammatical.}
+
+\ea\label{ex:Romance:49} Spanish  \citep[623--624]{Aranovich2009}
+\ea\label{ex:Romance:49a}
+\gll Ayer se atrapó a los ladrones.\\
+       yesterday \textsc{refl} caught.\textsc{3sg} \textsc{a} the thieves\\
+\glt   `The thieves were caught yesterday.'
+\ex\label{ex:Romance:49b}
+\gll
+ Ayer se atraparon las pelotas.\\
+       yesterday \textsc{refl} caught.\textsc{3pl} the balls\\
+\glt   `Yesterday, the balls were caught.'\z\z
+
+\ea\label{ex:Romance:50} Spanish \citep[623--624]{Aranovich2009}
+\ea[*]{\label{ex:Romance:50a}
+\gll Ayer se atraparon los ladrones.\\
+       yesterday \textsc{refl} caught.\textsc{3pl} the thieves\\
+\glt   `The thieves were caught yesterday.'
+}
+\ex[*]{\label{ex:Romance:50b}
+\gll Ayer se atrapó las pelotas.\\
+       yesterday \textsc{refl} caught.\textsc{3sg} the balls\\
+       \glt   `Yesterday, the balls were caught.'
+       }
+       \z\z
+\citet{Aranovich2009} develops an analysis using Optimality Theory (OT) and Lexical Mapping Theory (LMT). In this analysis, the alternation between the reflexive impersonal and the reflexive passive is the result of a conflict between two constraints, one favoring the assignment of the subject function to the reflexive clitic and another one penalizing inanimate objects. The difference between the two constructions is reflected in the GF assigned to the reflexive clitic, which is a subject in the reflexive impersonal and an oblique in the reflexive passive. The reflexive passive avoids the marked configuration of an inanimate object by allowing the inanimate internal argument to be realized as the subject. See \citet{Aranovich2009} for the details of the analysis.
+
+\section{Complex predicates}
+\label{sec:Romance:4}
+
+Complex predicates have been the object of investigation within LFG in a variety of languages since work such as \citet{Mohanan1990,MohananT1994}, \citet{Matsumoto1992}, \citet{Alsina:PhD,alsina1996the-role}, and \citet{Butt1993,Butt1995}. For present purposes we can follow \citegen[2]{Butt1995} definition and take a complex predicate to be a construction whose argument structure is complex, in the sense that two or more semantic heads contribute to it, and whose GF structure is that of a simple predicate. The Romance languages have made a significant contribution to this investigation, as they have several constructions that are analyzed as complex predicates, particularly, the causative construction and restructuring constructions. In \sectref{sec:Romance:4.1} we examine the facts of these constructions and, in \sectref{sec:Romance:4.2}, we review some of the analyses that have been proposed for them.
+
+\subsection{The causative and restructuring constructions}
+\label{sec:Romance:4.1}
+
+\subsubsection{The causative construction}
+\label{sec:Romance:4.1.1}
+
+In contrast with languages where causative verb forms are a single word consisting of a stem and a causative affix (as in Chiche\^wa and many Bantu languages), causative constructions in the Romance languages comprise two verb forms (leaving aside the fact that they can also be accompanied by auxiliaries): the causative verb and an infinitive complement.\footnote{The Romance languages also include many verbs that are causative in meaning but cannot be considered to be complex predicates in the sense intended here as they are not decomposable into a base predicate and a causative predicate (whether bound morpheme or independent word). This is the case of \textit{romper} `break' or \textit{abrir} `open' in Spanish, or \textit{chiudere} `close' or \textit{raffreddare} `cool' in Italian. Some of these verbs, including the examples given, undergo the causative-anticausative alternation, which is signaled morphologically by means of the reflexive clitic on the anticausative member of the alternation (e.g.\ \textit{romperse} or \textit{abrirse} in Spanish and \textit{chiudersi} or \textit{raffreddarsi} in Italian). It is, therefore, an \textit{anticausative} alternation, in \citegen{Haspelmath1993} terms (see also \citealt[971]{Cennamo2016}), in contrast with the Bantu pattern, where the alternation is causative.} There are two causative verbs, which behave alike in most respects syntactically: \textit{fare} `make' and \textit{lasciare} `let' in Italian, and the corresponding pairs in French (\textit{faire} and \textit{laisser}), Spanish (\textit{hacer} and \textit{dejar}) or Catalan (\textit{fer} and \textit{deixar});\footnote{Some of these verbs also admit a biclausal raising-to-object construction, in which both the causative verb and the dependent infinitive head their own clause and the object of the causative verb functionally controls the subject of the infinitival clause. This is the case of a French example such as \textit{Elle a laissé Jean laver la voiture} `She let John wash the car.' Since these constructions are not complex predicates, they will not be discussed here.} see examples \REF{ex:Romance:51}--\REF{ex:Romance:54}.
+
+What distinguishes the causative construction in Romance from other constructions in which a verb takes an infinitival complement is what we might call the monoclausality of the causative construction, that is, the fact that the causative verb and the infinitive behave as if they were part of one and the same clause from the point of view of the f-structure. As shown in \citet{Alsina1997}, the causative verb and the infinitive are a unit at the level of f-structure, very much like causative verbs in Chiche\^wa, but are clearly two different units (i.e., two separate verbs) at the level of c-structure, unlike causative verb forms in Chiche\^wa, which are a unit at both levels.
+
+\hspace*{-4.8pt}Following is some of the evidence in favor of the monoclausality of the causative construction:
+
+\subsubsubsection{The case alternation on the causee} (I use the term causee here to refer to the logical subject of the infinitive, or embedded predicate, in the causative construction.) As shown in \sectref{sec:Romance:2.3.1}, example \REF{ex:Romance:22}, repeated here as \REF{ex:Romance:51}, the case of the causee depends on the transitivity of the embedded predicate: it is dative if the embedded predicate has an accusative object, and it is accusative otherwise.
+\largerpage
+
+\ea\label{ex:Romance:51} French \citep[153]{Grimshaw90}
+\ea\label{ex:Romance:51a}
+\gll Il fera boire un peu de vin *(à) son enfant.\\
+       he make.\textsc{fut.3sg} drink.\textsc{inf} a bit of wine \makebox[1.2em][r]{\textsc{a}} his child\\
+\glt   `He will make his child drink a little wine.'
+\clearpage
+
+\ex\label{ex:Romance:51b}
+\gll  Il fera partir \{les/*aux\} enfants.\\
+he make.\textsc{fut.3sg} leave.\textsc{inf} the/*\textsc{a}.the children\\
+\glt   `He will make the children leave.'
+\z\z
+This case alternation would be unexpected if the infinitive were the f-structure head of an embedded clause. By viewing the two verbs in the construction as forming a unit, a \textsc{pred}, at f-structure, this case alternation can be made to follow from a theory of argument realization in which dative case is assigned only as a marked option, that is, to the more prominent of two internal arguments (as proposed in \citealt{alsina1996the-role} and \citealt{AlsinaYang2018}).
+
+\subsubsubsection{Clitic climbing} Clitics that correspond to argument roles of the embedded predicate usually appear attached to the causative verb (or to a higher auxiliary or restructuring verb), as in \REF{ex:Romance:52}:
+
+\ea\label{ex:Romance:52} Catalan
+\ea\label{ex:Romance:52a}
+\gll
+Això m' hi ha fet pensar.\\
+that me \textsc{hi} has made think.\textsc{inf}\\
+\glt   `That made me think about it.'
+\ex\label{ex:Romance:52b}
+\gll
+Aquests documents, els faré enquadernar.\\
+ these documents \textsc{3pl.m.acc} I.will.make bind.\textsc{inf}\\
+\glt`These documents, I will have them bound.'
+\z\z       
+The clitic \textit{hi} in \REF{ex:Romance:52a} corresponds to the oblique complement of \textit{pensar} `think' and yet appears attached to the auxiliary of the causative verb; likewise in \REF{ex:Romance:52b}, where the clitic \textit{els} corresponds to the accusative object of \textit{enquadernar} `bind'. This property is not found with verbs that take an infinitival clausal complement, such as \textit{semblar} `seem', \textit{caldre} `be necessary', \textit{convenir} `be convenient', \textit{insistir} `insist, etc., in which case the clitics dependent on the infinitive appear attached to the infinitive.
+
+\subsubsubsection{Reflexivization} The reflexive clitic can encode the binding of the logical subject of the causative predicate and an argument of the embedded predicate, as in \REF{ex:Romance:53a}.
+
+\subsubsubsection{Reflexive passive} A reflexive passive of the causative predicate, encoded by the reflexive clitic, can have an argument of the embedded predicate as its nominative argument, agreeing with the causative verb (or a higher auxiliary or restructuring verb), as in \REF{ex:Romance:53b}.
+
+\ea\label{ex:Romance:53} Catalan
+\ea\label{ex:Romance:53a}
+\gll S' ha fet criticar durament.\\
+       \textsc{refl} has made criticize.\textsc{inf} hard\\
+\glt   `She has got herself criticized severely.'
+\ex\label{ex:Romance:53b}
+\gll
+ S' han fet arreglar les façanes del carrer principal.\\
+       \textsc{refl} have.\textsc{3pl} made fix.\textsc{inf} the façades of.the street main\\
+\glt   `The façades of the main street have been made to be repaired.'\z\z
+
+\subsubsubsection{Passivization} Some Romance languages allow participial passivization of the causative construction, in which an argument of the embedded predicate is the subject of the passivized causative structure. This possibility is illustrated for Italian in \REF{ex:Romance:54a}, from \citet{Frank:96}, whereas French is a language that does not allow it.
+
+\subsubsubsection{Past participle agreement}
+\sloppy Among those Romance languages in which the past participle of compound ten\-ses agrees with the accusative object expressed as a clitic (or, depending on the language, in other cases as well), Italian has this phenomenon in causative constructions, as in \REF{ex:Romance:54b}, although French does not.
+\fussy
+
+\ea\label{ex:Romance:54}   Italian
+\ea\label{ex:Romance:54a}
+\gll Questo libro è stato fatto leggere a Mario da Giovanni.\\
+       this book is been made read.\textsc{inf} \textsc{a} Mario by Giovanni\\
+\glt   `This book has been made to be read by Mario by Giovanni.'
+\ex\label{ex:Romance:54b}
+\gll
+ Le tavole, le ho fatte riparare a Gianni.\\
+       the.\textsc{f.pl} table.\textsc{f.pl} \textsc{3pl.f.acc} have\textsc{.1sg} make\textsc{.ptcp.f.pl} repair.\textsc{inf} \textsc{a} {Gianni}\\
+\glt   `The tables, I have made Gianni repair them.'\z\z
+
+Other phenomena that support the monoclausal treatment of the causative construction include \textit{tough} movement, which in Romance is a clause-bound phenomenon: as it can affect the object of the embedded predicate in a causative construction, it shows that the causative predicate and the embedded predicate constitute a single complex predicate. Although the facts are quite compelling in this respect, there are some attempts to explain them adopting a biclausal approach, as in \citet{Yates2002}.
+
+\subsubsection{The restructuring construction}
+\label{sec:Romance:4.1.2}
+
+The restructuring construction, present in many of the Romance languages, but absent in modern French, is similar to the causative construction in that it also involves two verbs (not counting auxiliaries) that form a complex predicate and behave as if they belonged to the same clause, but differs from it in not increasing the valence of the embedded predicate. The list of restructuring verbs varies somewhat from language to language, and even from one speaker to another, but it typically includes verbs such as (using Catalan for the examples) \textit{voler} ʻwantʼ, \textit{poder} ʻcan, be ableʼ, \textit{saber} ʻknowʼ, \textit{venir a} ʻcome toʼ, \textit{anar a} ʻgo toʼ, \textit{tornar} ʻdo againʼ, \textit{començar} \textit{a} ʻbeginʼ, \textit{acabar de} ʻfinishʼ, etc. The construction was first described by \citet{AiPe76} and \citet{Rizzi1976},\footnote{Although these works are better known through later publications, specifically \citet{AiPe83} and \citet{Rizzi:Issues}, the fact that the first version of these works has the same date of publication suggests that they were developed independently of each other.} who proposed an optional process of clause union or restructuring, respectively, in order to explain that a restructuring verb, such as those just mentioned, and a dependent verb can behave as if they were a single verb from the point of view of their GFs.
+
+As with the causative construction, one of its salient features is the possibility of clitic climbing. Reflexivization and the reflexive passive are also possible with the restructuring construction. Some verbs allow participial passive and languages that have past participle agreement with the object in compound tenses also exhibit this phenomenon in the restructuring construction. In languages that have auxiliary selection, like Italian, the choice of auxiliary is determined by the embedded verb. To illustrate just some of these phenomena in Italian, \textit{dovere} ʻhave toʼ, as a verb taking an infinitival phrase, allows clitic climbing, as the position of the clitic \textit{gli} illustrates in \REF{ex:Romance:55}, and also allows, but does not require, the choice of auxiliary to be determined by the infinitive, as shown in \REF{ex:Romance:56}:
+\largerpage
+
+\ea\label{ex:Romance:55}   Italian  \citep[4]{Rizzi:Issues}
+\ea\label{ex:Romance:55a}
+\gll Gianni ha dovuto parlargli personalmente.\\
+      Gianni has had.to speak.3\textsc{sg.m.}\textsc{dat} personally\\
+      \ex\label{ex:Romance:55b}
+      \gll
+       Gianni gli ha dovuto parlare personalmente.\\
+       Gianni 3\textsc{sg.m.}\textsc{dat} has had.to speak personally\\
+\glt   `Gianni has had to speak with him personally.'\z\z
+
+\ea\label{ex:Romance:56}   Italian \citep[19]{Rizzi:Issues}\\
+\gll
+Piero ha / è dovuto venire con noi.\\
+       Piero has / is had.to come with us\\
+\glt   `Piero has had to come with us.'\z
+Interestingly, when clitic climbing takes place from an infinitive such as \textit{venire} `come', which selects \textit{essere}, the option of using the \textit{avere} auxiliary disappears, as shown in \REF{ex:Romance:57}:
+
+\ea\label{ex:Romance:57}   Italian  \citep[21]{Rizzi:Issues}
+\ea[]{\label{ex:Romance:57a}
+\gll Maria c' è dovuta venire molte volte.\\
+Maria \textsc{ci} is had.to.\textsc{f.sg} come many times\\
+}
+\ex[*?]{\label{ex:Romance:57b}
+\gll Maria ci ha dovuto venire molte volte.\\
+Maria \textsc{ci} has had.to come many times\\
+\glt   `Maria has had to come there many times.'
+}\z\z
+Restructuring is optional, accounting for the options in \REF{ex:Romance:55}--\REF{ex:Romance:56}. When restructuring occurs, clitic climbing is required and auxiliary choice is determined by the dependent infinitive, which accounts for the contrast in \REF{ex:Romance:57}.
+
+\subsection{Analyses of the Romance complex predicates}
+\label{sec:Romance:4.2}
+
+\citet{alsina1996the-role}, adapting \citegen{Alsina1992} proposal for the causative predicate in Chiche\^wa, assumes that the causative predicate in Romance has a three-place argument structure, in which there is a causer, an affected (or acted-upon) argument, and a caused event. In addition, the affected argument is fused with an argument of the caused event, so that there is a GF that corresponds to two argument roles: the affected argument of the causative predicate and another role of the caused event. The caused event position in the causative argument structure is filled by the predicate of the infinitive in the causative construction.
+
+In this way, the causative complex predicate is formed in the syntax in Romance, whereas it is formed in the lexicon in Chiche\^wa. As argued in \citet{Alsina1997}, the causative complex predicate is the same in the two languages as far as the argument structure is concerned, but they differ in that it corresponds to a single word in Chiche\^wa (containing a verb stem and a causative suffix), but it corresponds to two words in Romance (the causative verb and the infinitive). If the lexicon is the linguistic component in which words are formed, as well as stored, and the syntax operates with fully formed words, the difference between the two languages concerning causative predicates resides in the component in which this complex predicate is formed: the lexicon in Chiche\^wa, the syntax in Romance. Given that this proposal implies some departure from classical LFG assumptions (such as the idea that the list of GFs that a predicate requires is fixed in the lexicon and cannot be altered in the syntax), there are alternative proposals that assume that the causative complex predicate is formed in the lexicon, as in \citet{Frank:96}, in spite of the fact that it corresponds to two distinct words in the syntax.
+
+The treatment of causatives in \citet{alsina1996the-role} can be adapted to handle restructuring constructions. The only difference is that a restructuring verb either takes an event argument as its sole argument, as would be the case of \textit{dovere}, or takes an additional argument role that is fused with the logical subject of the event argument, as would be the case of \textit{volere} `want' or \textit{venire} `come'. In either case, the resulting restructuring construction has no more expressed arguments than the base predicate, the infinitive. When restructuring takes place, the auxiliary selection properties of the construction are determined by the base predicate and the highest verb in the sequence of restructured verbs, including auxiliaries, is the one to which clitics are attached.
+
+The idea that predicate formation may take place in the syntax, as opposed to the lexicon, has been met with some resistance by some LFG practitioners. Yet, the alternative, namely, that complex predicate formation with restructuring and causative verbs takes place in the lexicon, is hard to maintain given that the sequence of such verbs is potentially unlimited. Following are two examples with a long sequence of restructuring and causative verbs in Catalan:
+
+\ea\label{ex:Romance:58} Catalan
+\ea\label{ex:Romance:58a}
+\gll La va haver de tornar a començar a escriure.\\
+       \textsc{3sg.f.acc} \textsc{past.3sg} have.\textsc{inf} to repeat.\textsc{inf} to begin.\textsc{inf} to write.\textsc{inf}\\
+\glt   `She had to start writing it again.'
+\ex\label{ex:Romance:58b}
+\gll
+ L' hi he volgut fer acabar de recitar.\\
+       \textsc{3sg.m.acc} 3.\textsc{dat} have.\textsc{1sg} want.\textsc{ptcp} make.\textsc{inf} finish.\textsc{inf} of recite.\textsc{inf}\\
+\glt   `I wanted to make him finish reciting it.'\z\z
+In both examples the clitics (\textit{la} in \REF{ex:Romance:58a} and \textit{l'hi} in \REF{ex:Romance:58b}) are thematically related to the base predicate, but appear attached to the matrix verb (the past tense auxiliary \textit{va} in \REF{ex:Romance:58a} and the perfective auxiliary \textit{he} in \REF{ex:Romance:58b}), indicating that there is complex predicate formation involving all the verbs from the auxiliary to the base predicate.
+
+An issue that \citet{alsina1996the-role,Alsina1997} does not address is how the light verb (the causative, restructuring, or auxiliary verb) in a complex predicate imposes form requirements on the dependent verb. Some verbs, such as the causative verbs and restructuring verbs like \textit{poder} `can' and \textit{voler} `want', require a prepositionless infinitive, as seen in \REF{ex:Romance:58b} and preceding examples. Other verbs require a specific preposition before the infinitive: \textit{haver} in \REF{ex:Romance:58a} and \textit{acabar} in \REF{ex:Romance:58b} require the preposition \textit{de} before the infinitive; \textit{tornar} and \textit{començar} in \REF{ex:Romance:58a} require the preposition \textit{a} before the infinitive. 
+
+The traditional LFG way to capture these dependencies is through the f-struc\-ture. However, if the f-structure is ``flat'' so that there is no feature structure corresponding to the dependent verb that is distinct from that of the embedding verb, this mechanism is no longer available. \citet{AndrewsManning1999} notice this problem and propose a way to capture the monoclausality of complex predicates, while retaining an embedding relation between the light verb and its dependent verb. The leading idea in \citet{AndrewsManning1999} is that the features traditionally assumed to be part of f-structure are grouped into three classes: \textit{ρ}: grammatical relations (\textsc{subj}, \textsc{obj}, …); \textit{α}: argument structure features such as \textsc{pred} and others; and \textit{μ}: morphosyntactic features (\textsc{gend}, \textsc{num}, \textsc{tense}, etc.). In addition, every node in the c-structure specifies which of these feature classes is shared with its mother node. In this way, it is possible to achieve a flat f-structure as far as GFs are concerned by having the two verbs in the complex predicate share the \textit{ρ} class with the mother, but having only the light verb share its \textit{α} and \textit{μ} features with the mother, whereas the dependent verb would contribute its \textit{α} and \textit{μ} features to an \textsc{arg} attribute. \textsc{Arg} is not a grammatical relation, but one of the features on the \textit{α}{}-projection. Having this \textsc{arg} feature allows the light verb to specify form features on its dependent verb (whether it is an infinitive or a gerund, what preposition it requires, if any, etc.). The embedding at the \textit{α}{}-projection allows \citet{AndrewsManning1999} to capture the fact that the order of the light verbs is reflected in the meaning of the complex predicate, as in the following Catalan examples:
+
+\ea\label{ex:Romance:59} Catalan \citep{Alsina1997}
+\ea\label{ex:Romance:59a}
+\gll Li acabo de fer llegir la carta.\\
+       \textsc{3sg.dat} I.finish of make.\textsc{inf} read.\textsc{inf} the letter\\
+\glt   `I finish making him read the letter.' or `I just made him read the letter.'
+\ex\label{ex:Romance:59b}
+\gll
+ Li faig acabar de llegir la carta.\\
+       \textsc{3sg.dat} I.make finish.\textsc{inf} of read.\textsc{inf} the letter\\
+\glt   `I make him finish reading the letter.'\z\z
+This proposal is not very different from the proposal in \citet{buttetal96}, which is designed to account for structures with auxiliaries, but can easily be applied to the analysis of complex predicates. \citet{buttetal96} propose to split the traditional f-structure into two structures, or projections: the grammatical features of verb forms (having to do with whether the form is an infinitive, a gerund, etc.) are removed from the f-structure and placed in the m-structure, which allows the f-structure of an auxiliated structure, and of complex predicates, to be ``flat'', i.e., not containing an embedding relation between the auxiliary or restructuring verb and its dependent verb. The dependent verbs in auxiliated structures, and by extension in complex predicates, provide their form features to a \textsc{dep} attribute. In this way, the auxiliary, or the light, verb can impose form requirements on their \textsc{dep} (the dependent verb) achieving a similar result to that achieved by \citet{AndrewsManning1999}. More recent LFG developments in the analysis of complex predicates include \citet{Andrews2007}, \citet{HomolaColer2013}, and \citet{Lowe2015}, which shift the burden of explanation onto the semantics.
+
+\section*{Acknowledgments}
+
+I am very grateful to Nigel Vincent and two anonymous reviewers for their comments, which have helped improve this chapter in many ways.
+
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}

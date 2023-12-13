@@ -1,0 +1,76 @@
+% add all extra packages you need to load to this file
+
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{url}
+\urlstyle{same}
+%\usepackage{amsmath,amssymb}
+
+% Tight underlining according to https://alexwlchan.net/2017/10/latex-underlines/
+\usepackage{contour}
+\usepackage[normalem]{ulem}
+\renewcommand{\ULdepth}{1.8pt}
+\contourlength{0.8pt}
+\newcommand{\tightuline}[1]{%
+  \uline{\phantom{#1}}%
+  \llap{\contour{white}{#1}}}
+  
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily,tabsize=2,breaklines=true}
+
+% \usepackage{langsci-basic}
+\usepackage{langsci-optional}
+\usepackage[danger]{langsci-lgr}
+\usepackage{langsci-gb4e}
+%\usepackage{langsci-linguex}
+%\usepackage{langsci-forest-setup}
+\usepackage[tikz]{langsci-avm} % added tikz flag, 29 July 21
+% \usepackage{langsci-textipa}
+
+\usepackage[linguistics,edges]{forest}
+\usepackage{tikz-qtree}
+\usetikzlibrary{positioning, tikzmark, arrows.meta, calc, matrix, shapes.symbols}
+\usetikzlibrary{arrows, arrows.meta, shapes, chains, decorations.text}
+
+%%%%%%%%%%%%%%%%%%%%% Packages for all chapters
+
+% arrows and lines between structures
+\usepackage{pst-node}
+
+% lfg attributes and values, lines (relies on pst-node), lexical entries, phrase structure rules
+\usepackage{packages/lfg-abbrevs}
+
+% subfigures
+\usepackage{subcaption}
+
+% macros for small illustrations in the glossary
+\usepackage{./packages/picins}
+
+%%%%%%%%%%%%%%%%%%%%% Packages from contributors
+
+% % Simpler Syntax packages
+\usepackage{bm}
+\tikzstyle{block} = [rectangle, draw, text width=5em, text centered, minimum height=3em]
+\tikzstyle{line} = [draw, thick, -latex']
+
+% Dependency packages
+\usepackage{tikz-dependency}
+%\usepackage{sdrt}
+
+\usepackage{soul}
+
+\usepackage[notipa]{ot-tableau}
+
+% Historical
+\usepackage{stackengine}
+\usepackage{bigdelim}
+
+% Morphology
+\usepackage{./packages/prooftree}
+\usepackage{arydshln}
+\usepackage{stmaryrd}
+
+% TAG
+\usepackage{pbox}
+
+\usepackage{langsci-branding}

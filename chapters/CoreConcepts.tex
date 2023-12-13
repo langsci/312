@@ -1,0 +1,1772 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10185936}
+\title{Core concepts of LFG}
+\author{Oleg Belyaev\affiliation{Lomonosov Moscow State University, Institute of Linguistics of the Russian Academy of Sciences, and Pushkin State Russian Language Institute}}
+\abstract{This chapter provides an in-depth coverage of the main features of the LFG framework, focusing mainly on its syntactic representations: c- and f-structure. The makeup of each level is discussed in detail. For c-structure, I describe the version of X$'$ theory used in LFG and the status of lexical integrity as a core principle of the framework. I discuss the notion of f-structure as a function/set of feature-value pairs that is used in the majority of LFG work; attribute value types and well-formedness conditions on f-structure (Uniqueness, Completeness and Coherence) are covered as well. I also describe the metalanguage for defining f-structures and the mapping from c- to f-structures, and note some linguistically relevant consequences of how this mapping is organized. Three proposed extensions of the standard architecture are also discussed: templates (constructions), minimal c-structure, and lexical sharing.}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \input{../localhyphenation}
+   \boolfalse{bookcompile}
+   \togglepaper[2]%%chapternumber
+}{}
+
+
+\begin{document}
+\maketitle
+\label{chap:CoreConcepts}
+
+\nocite{chapters/GFs,chapters/Intro}
+ \section{Introduction}
+ 
+ This chapter provides a detailed survey of the main syntactic levels of LFG, constituent structure (c-structure) and functional structure (f-structure). It complements the more general introduction in \citetv{chapters/Intro}. In \sectref{sect:c-structure}, I describe the c-structure model used in standard LFG, its understanding of constituency, and the role of X$'$ theory. In \sectref{sect:f-structure}, the notion of f-structure is discussed, including the metalanguage used for describing f-structures and constraints on possible f-structure. In \sectref{sect:metalanguage}, I discuss the mapping from c- to f-structure. Finally, in \sectref{sect:ext} I describe recently proposed modifications to the basic architecture of LFG that have not yet been universally accepted, but which may shape the development of this framework in the future.
+ 
+ \section{C-structure\label{sect:c-structure}}
+ 
+ The nature of constituent structure (c-structure) in LFG and its main properties are summarized in \citetv{chapters/Intro}. Briefly, c-structure is a phrase structure tree; constraints on possible trees are usually described via context-free rules as in (\ref{ex:phr}). Other metalanguages are sometimes used as well.
+ 
+ \ea\label{ex:phr}
+ \phraserule{S}{NP ~ VP}
+ \z
+ 
+\noindent An important feature of c-structure in LFG is that empty nodes are not usually employed. This is not a limitation imposed by the framework itself, but a theoretical decision. It is formally possible to define grammars with null terminal nodes in LFG: this is implemented in XLE \citep{xledoc} and was used to capture long-distance dependencies in early versions of LFG \citep{kaplanbresnan82}. However, since \citet{kaplzaen89} it has become a universal practice to capture long-distance dependencies through functional uncertainty at f-structure, and the use of empty categories at c-structure has become unnecessary (see \citetv{chapters/LDDs}). For more information on the formal features of c-structure in LFG, see \citetv{chapters/Cstr}.
+
+Without additional theoretical restrictions, context-free grammars allow far more possible phrase structure trees than actually attested in natural languages. In this section, I will focus on two main constraints on c-structure in LFG: X-Bar Theory and lexical integrity.
+ 
+ \subsection{X$'$ Theory\label{sect:xbar}}
+ 
+ Every theory of constituency based on phrase structure grammar faces what \textcite{everett2015}, in his review of \textcite{adger2013}, called ``Lyons' Problem''. \textcite{lyons1968} famously asked what guarantees that NPs are headed by Ns, VPs are headed by Vs, etc., such that rules like \mbox{VP → … V …} or \mbox{NP → … N …} are allowed, but rules like \mbox{NP → … V …} are not.
+ 
+ Indeed, from the point of view of context-free rules, VP and V are atomic symbols that are not related to each other; labeling one of the daughters of NP as N is merely a convention, and nothing in the formalism excludes a hypothetical language with constituent structures like in (\ref{ex:monster}) -- ``monsters'' in \citeauthor{BresnanEtAl2016}'s (\citeyear{BresnanEtAl2016}) terms.
+ 
+ \ea\label{ex:monster}
+   \begin{forest}
+   [S
+    [NP
+      [N
+	[John]
+      ]
+      [I
+	[had]
+      ]
+    ]
+      [V
+	[seen]
+      ]    
+    [VP
+      [Det
+	[a]
+      ]
+    ]
+      [AdvP
+	[N
+	  [mouse]
+	]
+      ]
+   ]
+  \end{forest}
+ \z
+ Intuitively, there are many things that are wrong with this structure: an I head cannot be the daughter of NP; the VP cannot be headed by, or even immediately dominate, a Det; an AdvP cannot be headed by a noun.\footnote{Curiously, each of the features of this illustration \textit{ad absurdum} has a counterpart in real languages: noun phrases do sometimes mark the tense of their clauses, verbs do mark the definiteness of their arguments, and bare nouns (although probably not nouns like `mouse') are used adverbially. But there is broad consensus in theoretical lingustics that such phenomena are more exceptions than rules and should \textit{not} be modeled by allowing the theory of phrase structure to license such configurations.} The principle that prohibits this is called \textsc{endocentricity}; roughly stated, it means that the external distribution of a phrase (e.g. NP) is determined by the category of one and only one of its daughters, the \textsc{head}. Disallowing non-endocentric structures requires a theory of constituent structure labels that limits the range of available configurations. To this end, \textsc{X-bar (X$'$) theory} has been proposed in mainstream generative grammar \parencite{chomsky1970remarks,jackendoff1977}.
+ 
+ X$'$ theory enforces endocentricity by introducing the notion of projection and ``bar level'' and requiring that each non-maximal projection (X$^0$ and X$'$; X$''$, or XP, is usually assumed to be the maximum level of projection) be dominated by a node belonging to the same category, with the bar level either incremented by one or unchanged. The sisters of c-structure heads (complements, specifiers and adjuncts) have to be maximal projections or non-projecting words (on which see below).
+ 
+ One variant of X$'$ theory has been adopted in LFG from the very early days and continues to be used in most LFG work. An in-depth exposition of X$'$ theory as it is used in LFG, with certain additional theoretical innovations, can be found in \textcite{BresnanEtAl2016}. The most important features of X$'$ theory as it is practiced in LFG are as follows. First, as in the original formulation, X$'$ theoretical constraints are viewed as constraints on phrase structure \textit{rules}; the later GB view of a kind of universal ``X$'$ schema'' has not gained acceptance in LFG, primarily because the architecture of the framework is fundamentally based on language-specific rules and does not allow such schemas.
+ 
+ Second, X$'$ theory in LFG allows for the following positions: complement (\ref{ex:xbar-cstr}a), specifier (\ref{ex:xbar-cstr}b), X$'$ adjunct (\ref{ex:xbar-cstr}c) and XP adjunct (\ref{ex:xbar-cstr}d).\footnote{The order of constituents is only an illustration; X$'$ theory itself does not impose any specific order.}
+ 
+ \ea\label{ex:xbar-cstr}
+ a. \begin{forest} baseline
+     [X$'$
+        [X$^0$]
+        [YP]
+     ]
+    \end{forest} ~
+b. \begin{forest} baseline
+    [XP
+        [YP]
+        [X$'$]
+    ]
+   \end{forest} ~
+c. \begin{forest} baseline
+    [X$'$
+        [YP]
+        [X$'$]
+    ]
+   \end{forest} ~  
+d. \begin{forest} baseline
+    [XP
+        [YP]
+        [XP]
+    ]
+   \end{forest}      
+ \z
+As in all versions of X$'$ theory, only maximal projections may appear in these positions.
+
+There is some disagreement concerning the possibility of X$'$ adjunction: While most authors accept both kinds of adjunction, \textcite{Toivonen:NonProj} only allows XP-adjunction (and head adjunction, see below) because in her theory only constituents of the same bar level may be adjoined.
+ 
+The LFG literature also generally allows for multiple complements and specifiers dominated by the same mother node; thus, a sequence of several phrases instead of YP is possible in (\ref{ex:xbar-cstr}a--c); multiple adjuncts in one position are also usually allowed, even though this creates redundancy since this structure could always be replaced by multiple binary adjunction.
+ 
+ Third, LFG uses the following functional projections: DP for NPs, IP and CP for VPs. Some work also uses additional phrases, such as KP/CaseP for clitic case markers \parencite{broadwell2008}. The number of functional positions is limited compared to mainstream theories, and this is not merely a stipulation: LFG requires all constituency in a given language to be empirically motivated in a way that is more narrow than in frameworks that represent the bulk of syntactic information in phrase structure (such as transformational frameworks). Specifically, heads may only be stipulated if there is actual lexical material that can occupy them; therefore, even the existence of projections such as CP or IP cannot be automatically assumed for all languages. More abstract projections such as TopicP or ForceP are not usually introduced because there are few suitable candidates for the status of heads of these phrases, and little distributional evidence to argue that their specifiers are distinct structural positions.
+ 
+ It turns out, in fact, that the set of functional projections listed above is fully adequate for the overwhelming majority of languages. Moreover, some categories, like DP, are not viewed as universal; %some
+ authors, such as \textcite{sells1994} for Japanese and Korean, even limit the number of projections to one (X$'$) instead of the standard two.
+ 
+ Fourth, LFG admits non-projecting words, i.e. lexical items that do not project X$'$ and XP levels and hence cannot have complements or specifiers; their maximum projection level is 0. The category of non-projecting words is marked as X$^0$. \textcite{Toivonen:NonProj} develops a detailed theory of non-projecting words. Being maximal projections, they can appear at any non-head X$'$ theoretic positions (i.e. specifier, complement, or adjunct), but the only dependents that they may have are X$^0$ adjuncts, which must themselves be non-projecting. Thus, an additional type of adjunction -- head adjunction -- is introduced into X$'$ theory, illustrated in (\ref{ex:zeroadj}), where X$^0$ can also be \NONPROJ{X}, but, crucially, \NONPROJ{Y} cannot be Y$^0$, as that would violate the principle that only maximal projections can appear in non-head positions.
+ 
+ \ea\label{ex:zeroadj}
+ \begin{forest} 
+  [X$^0$
+    [\NONPROJ{Y}]
+    [X$^0$]
+  ]
+ \end{forest}
+ \z
+ 
+ The theory of non-projecting words presented in \textcite{Toivonen:NonProj} further requires that only same-level projections are adjoined; this effectively prohibits adjoining non-projecting words at X$'$ or XP level, as well as any adjunction at X$'$ level in languages where XP is the maximal projection (because only maximal projections can be adjuncts, as stated above). However, these more restrictive principles are not accepted by all authors who use non-projecting words in their analyses: for example, \textcite{spencer2005} analyzes case markers in Hindi as \NONPROJ{P} nodes adjoined to NP. X$'$ adjunction also remains quite common in LFG analyses.
+ 
+ \textcite{SadlArno94} use non-projecting words to account for the behaviour of English prenominal adjectives, which cannot have phrasal complements if they are prenominal; consider the contrast between (\ref{ex:proud1}) and (\ref{ex:proud2}), while (\ref{ex:proud3}) is ungrammatical.
+ 
+ \ea
+    \ea\label{ex:proud1} a \textbf{proud} man
+    \ex\label{ex:proud2} a man [\textbf{proud} of himself]
+    \ex[*]{\label{ex:proud3}a [\textbf{proud} of himself] man}
+    \z
+ \z
+Sadler and Arnold argue that this contrast is due to the fact that prenominal adjectives in English are non-projecting words with the category \NONPROJ{A} that are adjoined to N$^0$, while postnominal adjectives form AP and can therefore have complements. Thus the structure of (\ref{ex:proud1}) is (\ref{ex:nonproj-struct}a), while the structure of (\ref{ex:proud2}) is (\ref{ex:nonproj-struct}b).
+ 
+ \ea\label{ex:nonproj-struct}
+    a. \begin{forest} baseline
+         [NP
+            [Det
+                [a]
+            ]
+            [N$'$
+                [N$^0$
+                    [\NONPROJ{A}
+                            [proud]
+                    ]
+                    [N$^0$
+                        [man]
+                    ]
+                ]
+            ]
+         ]
+        \end{forest}
+    b. \begin{forest} baseline
+         [NP
+            [Det
+                [a]
+            ]
+            [N$'$
+                [N$'$
+                    [N$^0$
+                        [man]
+                    ]
+                ]
+                [AP
+                    [A
+                        [proud]
+                    ]
+                    [PP
+                        [of himself, roof]
+                    ]
+                ]
+            ]
+         ]
+        \end{forest}
+ \z
+ 
+ Finally, X$'$ theoretic principles are not viewed as fully universal in LFG. The most prominent exception is the exocentric category S.\footnote{\textcite[112ff.]{BresnanEtAl2016} present the category S and non-projecting words as effectively the \textit{only} exceptions from standard principles of X$'$ theory. This, however, is a theoretical idealization insofar as it applies to actual LFG analyses, which routinely make us of \textit{ad hoc} categories such as CL, CCL (for ``clitic'', ``clitic cluster'') in \textcite{boegel-etal2010} and \textcite{lowe2011}. Such minor innovations do not seem to influence the overall theory in any meaningful way, since they deal with exceptional cases such as second-position clitics or language-specific, idiosyncratic linear order distributions. It is also conceivable that many of them could be converted to analyses that conform to X$'$ theoretic principles; for example, CCL could be treated as a phrase consisting of multiple \NONPROJ{D} head adjunction (if the clitics are pronominal).} This category does not have a ``head'' in the normal sense: it can be ``headed'' by a verb, but also by an adjective or another nonverbal predicate; this is why the term S is used instead of, for example, VP. The category S is most extensively used in nonconfigurational languages (see \citetv{chapters/Cstr}), but this is not its exclusive role. Many languages have a fairly configurational structure overall but allow predicates of various categories to be embedded under a general ``predicative marker'', which sits in the I or C node. For example, \textcite[119]{Kroeger93} proposes the phrase structure in (\ref{ex:tagalog-ps}) for Tagalog. The \textsc{spec} position can be optionally occupied by fronted constituents of several types (such as topics); the I node is occupied by an auxiliary or the finite verb; the predicate XP can be a VP in verbal sentences, but can also be AP or NP if the predicate is nonverbal. Hence, the structure is indeed non-endocentric, and the use of the label S is justified.
+ 
+ \ea\label{ex:tagalog-ps}
+ \begin{forest} for tree={s sep=2cm}
+  [IP
+    [SPEC]
+    [I$'$
+        [I]
+        [S
+            [{XP\\(PRED)}]
+            [{NP\\(SUBJ)}]
+        ]
+    ]
+  ]
+ \end{forest}
+
+ \z
+ 
+Since c-structure is not the only level of representation in LFG and models only a subset of syntactic phenomena (word order, embedding), X$'$ theory does not do much by itself to limit the range of possible languages. Unlike frameworks such as GB, for which the theory was originally devised, X$'$ positions are not inherently or uniquely associated with specific syntactic or semantic functions -- as a result, X$'$ theory, understood purely in terms of c-structure, is little else than a system of labeling nodes which allows us to generalize endocentricity at constituent structure level. In order to make it more meaningful, it should be augmented by a set of principles that determine the mapping of X$'$ positions to f-structure -- such a system has been developed in LFG, and will be described in \sectref{sect:regularities}.
+%  
+%  \subsubsection{Optionality}
+ 
+ \subsection{Lexical Integrity\label{sect:integrity}}
+ 
+ As its name implies, Lexical Functional Grammar was originally conceived as a lexicalist framework, a term that has several meanings. In the most general sense, lexicalism implies that the features of individual syntactic elements (morphemes and wordforms) as well as their subcategorization frames are determined in the lexicon, and cannot be modified in the syntax (such as by promoting the direct object in a passive construction). Lexicalism in this sense requires no additional stipulation and is enforced by the LFG architecture itself: there are no transformations or other means to change the c-structure or f-structure features; syntax can only mutiply define lexical features, but cannot override them.\footnote{\textcite{kaplanwedekind93} introduced the restriction operator: $f\restrict{A}$ denotes the f-structure $f$ with the attribute \textsc{a} and its value removed. As suggested by an anonymous reviewer, this violates lexical integrity in the weak sense, because here the syntax effectively accesses an f-structure constructed otherwise (possibly by means of morphology) to retrieve some of its information. This operator is not widely employed but was used in several LFG analyses, notably in \textcite{Asudeh12} and \textcite{falk2010}.}
+ 
+ LFG is also lexicalist in another sense: it subscribes to the idea that the building blocks of syntax are not roots or affixes, but individual words that are constructed from different blocks and according to different rules than syntactic constituents.\footnote{These two understandings of lexicalism are sometimes conflated, but they are actually independent: A framework may be lexicalist in the former sense, but consider the distinction between words and syntactic phrases to be ephemeral.} Thus, the distinction between morphology and syntax in LFG is viewed as fundamental, which is against the views of many recent approaches, both formal \parencite{bruening2018lexicalist} and typological \parencite{haspelmath2011}.
+ 
+ This understanding of lexicalism is more formally termed \textsc{lexical integrity} and has been given two formulations in LFG (\ref{ex:lexicalism1})--(\ref{ex:lexicalism2}).
+ 
+ \ea\label{ex:lexicalism1}
+  Words are built out of different structural elements and by different principles of composition than syntactic phrases. \parencite[181]{bresnan1995the-lexical}
+ \z
+
+ \ea\label{ex:lexicalism2}
+ Morphologically complete words are leaves of the c[onstituent]-structure tree and each leaf corresponds to one and only one c[onstituent]-structure node. \parencite[92]{BresnanEtAl2016}
+ \z
+The definition in (\ref{ex:lexicalism1}) is rather broad and can be compatible with several different understandings of the morphology--syntax interface, as long as the border between the two levels in maintained in some way. The second definition (\ref{ex:lexicalism2}) is more specific and is only compatible with one view of the interaction between morphology and syntax. For example, lexical sharing, which allows one word to correspond to two X$^0$ nodes (discussed in \sectref{sec:CoreConcepts:LexSharing}), is compatible with (\ref{ex:lexicalism1}) but not with (\ref{ex:lexicalism2}).
+ 
+ Interestingly, despite the rather strict definition in (\ref{ex:lexicalism2}), much work in LFG  uses the concept of ``sublexical nodes'', like in the rule for Greenlandic nouns in (\ref{ex:sublexical}), from \textcite[368]{BresnanEtAl2016}. This is formally incompatible with (\ref{ex:lexicalism2}) because the preterminal nodes correspond to morphemes, not morphologically complete nodes.
+ 
+ \ea\label{ex:sublexical}
+ N → N\textsubscript{stem} \quad N\textsubscript{aff}
+ \z
+ 
+\noindent In practice, such analyses are rather harmless because in their predictions they are equivalent to analyses that strictly adhere to (\ref{ex:lexicalism2}): since all morphology is sublexical, the position of individual affixes cannot have any syntactic relevance, as opposed to approaches like Distributed Morphology \citep{hallemarantz}, where morphological features often occupy higher-level functional projections that can scope over syntactic phrases. However, the use of sublexical representations does raise the issue of how the individual contribution of morphemes to f-structure should be represented -- standard LFG does not provide such a way, because words are viewed as complete, unsegmented bundles of morphosyntactic information. These issues are discussed in detail in \citetv{chapters/Morphology}.
+ 
+ \section{F-structure\label{sect:f-structure}}
+ 
+ \subsection{The notion of f-structure\label{sect:identity}}
+ 
+ As described in \citetv{chapters/Intro}, c-structure in LFG is complemented by an additional level of representation called \textsc{f-structure}. F-struc\-ture is an attribute-value structure that includes information on valency, grammatical functions, and the features of clauses and their syntactic arguments. An f-structure for the English sentence \textit{John has seen David} is given in (\ref{ex:fstr}).
+ 
+ \eabox{\label{ex:fstr}
+ \avm[style=fstr]{
+    \id{f}{[pred & `see\arglist{($f$ {subj}) ($f$ {obj})}'\\
+        tense & prs\\
+        aspect & perf\\
+        subj & \id{g}{[ pred & `John'\\
+                     pers & 3\\
+                     num & sg ]}\smallskip\\
+        obj & [ pred & `David'\\
+                     pers & 3\\
+                     num & sg ]
+    ]}}
+}
+
+F-structure is usually thought of as a set of attribute-value pairs,
+or a function that maps attribute names to their values. This
+understanding of f-structure has important implications for the
+architecture of LFG. Specifically, it implies that f-structures are
+solely and uniquely defined by their set of attribute-value pairs;
+there is no type system as in \textcite{carpenter1992} or HPSG
+\parencite{pollard1994head-driven}. Therefore, there is no such thing
+as two different f-structures having the same set of attributes and
+values; the notion of an empty f-structure is also problematic,
+because all empty structures are equivalent to each
+other.\footnote{Observe that the standard LFG notation does not even
+have a way to specify empty f-structures, on the tacit assumption that
+every non-vacuous f-structure would have at least one feature. However, the notion could be useful e.g. for expletive arguments that are not specified for any morphosyntactic features such as \PERS\ or \CASE\ but simply appear to satisfy Completeness.} This notion of identity is somewhat mitigated by the uniqueness of \PRED\ values (\sectref{sect:pred}), which ensures that any two independently introduced, semantically interpreted f-structures are formally distinct, even if they have the same lexical predicate and the same set of morphosyntactic features. However, not all f-structures have \PRED\ values; thus, for instance, all expletive subjects of the same form are described by the same f-structure, regardless of the clauses in which they occur. For example, all bundles of agreement features (\textsc{agr}) with the same set of values are identical to each other. One \textsc{agr} bundle may be required to be identical to another via agreement sharing \parencite{haug-nikitina2015} in the f-description (using an equation such as \mbox{(\UP\AGR)=(\UP\SUBJ\AGR)}), but it will also be identical to all other such bundles elsewhere in the same sentence, if they occur. Counterintuitive though such results may seem, it is not clear whether they can lead to any undesirable effects in practice. The notion of identity of f-structures is important for understanding the concept of \textsc{structure sharing} (\sectref{sect:fstrval}).  
+ 
+ \subsection{The metalanguage}
+ 
+ \subsubsection{Defining equations}\label{sec:CoreConcepts:Defining}
+
+The standard notation for describing f-structures are \textsc{defining equations}.%, which
+These utilize the idea that f-structures are functions. For example, the value of the attribute \TENSE\ of f-structure $f$ in (\ref{ex:fstr}) can be defined by the equation ($f$~\TENSE)=\PRS. It is possible to use nested function applications; thus, since ($f$~\SUBJ)=$g$, (($f$~\SUBJ) \PERS) is equivalent to ($g$~\PERS) and has the value $3$. By convention, function application is left associative, thus the parentheses can be omitted and the equation written as ($f$~\SUBJ\PERS)=3.
+
+\hspace*{-2mm}Defining equations are grouped into \textsc{f-descriptions}. An f-description describes the \textit{minimal} f-structure that satisfies all the equations included in the description. The default relation between equations forming an f-description is conjunction, but disjunction is also possible; for example, \{\,(\UP\SUBJ\PERS)=1\,|\,(\UP\SUBJ\PERS)=2\,\} means that the subject is defined as being either 1st or 2nd person.\footnote{Disjunction can be represented by either a vertical line ( | ) or a logical disjunction sign (∨); both notations are found in the literature.} For more examples and discussion of defining equations, see \citetv{chapters/Intro}.
+
+ \subsubsection{Constraining equations\label{sect:constequ}}
+ 
+ The f-structure equations described above are all evaluated to construct the minimal complete and coherent f-structure that satisfies all of them together (if such an f-structure exists). In this sense, they are ``constructive'', or \textsc{defining}: informally, a defining equation introduces a feature value, regardless of whether it is the only such equation or the same value is defined elsewhere.
+ 
+ But sometimes it is necessary to check the value of a feature without actually assigning it. For example, a matrix verb might require its complement to have a specific mood value, such as subjunctive. A defining equation like (\UP\COMP\MOOD)=\SBJV\ also licenses a complement that is not marked for mood, i.e.\ does not have a lexically defined \textsc{mood} feature (e.g., it is non-finite), which probably leads to an incorrect prediction (unless additional constraints block the use of such forms in this context).
+ 
+ Defining equations also provide no way to capture purely negative requirements, i.e.\ to ensure that a feature \textit{does not} have a specific value. Clearly, this is not equivalent to the disjunction of other possible values of the feature, since, first, absence of the feature also satisfies the negative condition; second, the disjunction would freely assign any feature value except for the disallowed one, which is definitely not what a negative constraint should do.
+
+ The need for such constraints is accounted for in LFG by allowing a special class of equations, \textsc{constraining equations}. These equations are special in that they do not participate in constructing the f-structure of the sentence. In contrast, they are only evaluated once the minimal f-structure satisfying all defining equations has been constructed. Then, violation of a constraining equation leads to ungrammaticality.
+ 
+ The simplest type of constraining equations involve equality relations; these are annotated in the same way as defining equations, but with a subscript \textit{c}, e.g.: $(f\:a)=_c~$\textsc{x}. To illustrate how constraining equations work, consider the following f-descriptions and their corresponding f-structures:
+ 
+ \ea\label{ex:constequ}
+ \ea\label{ex:constequa}
+ $\begin{array}[t]{lll@{\hspace*{1em}}l@{\hspace*{1em}}}
+ (f~\textsc{a}) &=& \textsc{x}\\
+ (f~\textsc{b}) &=& \textsc{y} &   \rightarrow\\
+ (f~\textsc{a}) &=_c& \textsc{x}\\
+ \end{array}$
+ \raisebox{-1em}{\avm[style=fstr]{\id{f}{[ a & x\\
+   b & y ]}
+ }} \hfill(constraining equation satisfied)
+ \ex \label{ex:constequb}
+ $\begin{array}[t]{lll@{\hspace*{1em}}l@{\hspace*{1em}}}
+ (f~\textsc{b}) &=& \textsc{y} &  \not\rightarrow\\
+ (f~\textsc{a}) &=_c& \textsc{x}\\
+ \end{array}$
+ \avm[style=fstr]{\id{f}{[b & y]}} \hfill(constraining equation not satisfied)
+ \z\z
+In (\ref{ex:constequa}), the constraining equation is satisfied because the feature value is defined elsewhere. By contrast, in (\ref{ex:constequb}) the constraining equation is not satisfied because \textsc{a} has no value, and a value cannot be assigned by a constraining equation. 
+ 
+ Note that constraining equations serve as a good illustration of the LFG principle of separation between description and the object being described. Just as multiple feature definitions are not represented in the f-structure, there is also no trace of constraining equations having been ``checked'' in (\ref{ex:constequa}). The only thing a constraining equation does is to put constraints on permissible structures; it does not contribute to the structures themselves.
+ 
+ The other two types of constraining equations are \textsc{existential} and \textsc{negative} constraints. Existential equations check that a feature has \textit{any} value rather than testing for a specific value. They are written as simple function applications: $(f\:a)$ means that the f-structure $f$ must have the feature $a$ with any value; the absence of an equality statement indicates that we are dealing with an existential constraint. Negative constraints check that a feature does not have a given value ($(f\:a) \neq x$; this is compatible with the feature having no value) or has no value ($\neg(f\:a)$; this is called a negative existential constraint).
+ 
+ Constraining equations are also implicitly introduced by \textsc{conditional statements} of the form $X \Rightarrow Y$.  These are, by definition \parencites[61]{BresnanEtAl2016}[168]{DLM:LFG}, equivalent to a disjunction: $\neg A \vee (A_c \wedge B)$.
+
+\textsc{Off-path constraints} are conceptually similar to conditional statements in that they are used to restrict function application to apply only to f-structures satisfying additional conditions on their features. For example, \begin{center}\mbox{($f$~\textsc{\offp{a}{($\rightarrow$b) $=_c$ $y$}~\textsc{c}}) = $x$}\end{center} means that the value $x$ is only assigned to the feature $\textsc{c}$ of the f-structure $(f~\textsc{a})$ if $(f~\textsc{a})$ has an attribute $\textsc{b}$ with the value $y$. If only constraining equations are used in such statements (as assumed in some of the literature), they could all in principle be rewritten as conditional statements (provided that local names are used: see \sectref{sec:CoreConcepts:localname}), but the notation is more cumbersome. This is indeed assumed in some LFG literature, and perhaps most prominently in the XLE implementation \parencite{xledoc}, where defining equations cannot be used in off-path constraints (see \cite[7]{PatejukPrzepiorkowski2014} for a discussion). However, in spite of their name, the theoretical literature \parencites[65, fn. 26]{BresnanEtAl2016}[230]{DLM:LFG} unanimously suggests that off-path constraints can be constructive, and this feature is used in some LFG analyses.\footnote{I am thankful to an anonymous reviewer for drawing my attention to this fact.}  Off-path constraints are especially important for Functional Uncertainty expressions (\sectref{sect:fu}), where a path may be a regular expression with many elements and the direct use of conditional statements is impractical.
+ 
+ It is clear from the discussion above that while the concept of constraining equations appears rather simple, it actually introduces some additional complexity into the system. Instead of just evaluating an f-description that consists of a set of defining equations, the resolution of a valid f-structure for a sentence must proceed through two steps: (a) evaluation of defining equations; (b) evaluation of constraining equations. The notion of constraining equations has also raised concerns about the metatheoretical status of LFG grammars; in particular, \textcite{pullum2013central} and \textcite{blackburn1995a-specification} have argued that constraining equations introduce a degree of procedurality into the framework, which is incompatible with the notion of model-theoretic syntax. However, the specific implications of this procedurality have never been systematically studied. It is clear that many, perhaps most, grammars that use constraining equations could be rewritten without them, but with more notational complexity: for example, by requiring every f-structure to have certain attributes, introducing ``empty'' attribute values (i.e. treating ``no value'' as one of the values for atomic features), and so on. Thus the issue might, in the end, be more of notation rather than substance, as suggested, in fact, in the conclusion to \textcite{blackburn1995a-specification}. 
+ 
+ \subsubsection{Functional uncertainty\label{sect:fu}}
+
+ The basic LFG architecture outlined in the preceding sections is adequate to handle most phenomena that are relevant to the local structure of clauses and noun phrases, such as argument selection and realization, modification, and word order. However, it is missing a component that could handle unbounded dependencies of any kind, i.e. those dependencies between elements of a sentence that are not tied to any specific structural position. For example, consider the behaviour of ``cyclic'' extraction from complement clauses. This process is in principle unbounded: an interrogative might be extracted from the matrix clause (\ref{ex:wh.extract-local}), from the complement clause (\ref{ex:wh.extract-comp1}), from the complement of the complement (\ref{ex:wh.extract-comp2}), etc.
+ 
+ \ea\label{ex:wh.extract}
+    \ea\label{ex:wh.extract-local} \textbf{Who} does John like \_?
+    \ex\label{ex:wh.extract-comp1} \textbf{Who} does John think Mary likes \_?
+    \ex\label{ex:wh.extract-comp2} \textbf{Who} does John believe David thinks Mary likes \_?
+    \z
+ \z
+For (\ref{ex:wh.extract-local}), one might write an f-structure equation annotating the extracted NP node such as (\UP\OBJ)=\DOWN, and augment it with a disjunction for each other available grammatical function -- which, by itself, is not very elegant, but seems to adequately account for the facts. To capture (\ref{ex:wh.extract-comp1}), another set of equations must be added to the disjunction, this time with \textsc{comp} before \textsc{obj}: (\UP\COMP\OBJ)=\DOWN, etc. This already seems like a rather artificial solution, but when (\ref{ex:wh.extract-comp2}) is considered, yet another disjunction is required: (\UP\COMP\COMP\OBJ)=\DOWN, etc. Clearly, the sequence of \textsc{comp}'s can be arbitrarily large (if memory constraints and other extralinguistic considerations are not taken into account), and any grammatical framework must account for such boundless iteration. LFG, in its basic form described above, clearly cannot do so.
+ 
+ Intuitively, what is required is to allow generalizing over sets of functional equations, specifically, introducing disjunction to allow selecting different GFs, and arbitrary iteration of \COMP. This is achieved by the notion of \textsc{functional uncertainty}, introduced to LFG in \textcite{kaplzaen89}. In a nutshell, functional uncertainty extends the LFG notion of function application by allowing function names -- $x$ in a statement like $(f~x)$ -- to be regular expressions. Thus, a single f-structure equation may correspond to a (possibly infinite) set of statements. More formally, functional uncertainty defines function application as in  (\ref{ex:fu-def}).
+ 
+ \ea\label{ex:fu-def}%\attop{
+ $(f \: \alpha) = v$ holds if and only if $f$ is an f-structure, $\alpha$ is a set of strings, and for some $s$ in the set of strings $\alpha$, $(f \: s) = v$.
+ %}
+ \z
+Thus, the distribution in (\ref{ex:wh.extract}) can be captured by a single equation, such as in the following rule for extracted interrogatives:
+ 
+ \ea
+ \phraserule{CP}{\rulenode{NP\\
+     (\UP\DIS) = \DOWN \\
+     (\UP\COMP* \{\OBJ\,|\,\OBJTHETA\,|\,\OBLTHETA \}) = \DOWN}
+   \rulenode{C$'$\\\UP=\DOWN}}
+ \z
+The disjunction in the NP annotation is typically abbreviated as \GF, which stands for ``any grammatical function'' -- but which GFs exactly can appear in a given position is construction-specific; for example, adjuncts may or may not be included in the list of \textsc{gf}s. In general, so-called ``island constraints'' are typically captured in LFG as constraints on paths in functional uncertainty equations \parencite{kaplzaen89}. This correctly predicts that what counts as an ``island'' varies across languages and across different constructions within the same language.
+  
+   \subsubsection{Inside-out function application and functional uncertainty}
+   \label{sec:CoreConcepts:IOFU}
+ 
+ Standard function application in LFG is ``outside-in'': an expression $(f~a)$ refers to a feature that belongs to the f-structure $f$ or at any deeper level of embedding. This presupposes a ``top-down'' style of describing and constraining f-structures. However, it may sometimes be useful to describe constraints on the \textit{external} distribution of an f-structure: for instance, limit the range of attributes it may occupy, or define some features of ``sister'' f-structures, i.e. f-structures that occupy different attributes in the containing f-structure (e.g., \SUBJ\ constraining attributes of \OBJ). For this, LFG uses an additional mechanism called \textsc{inside-out expressions}. Inside-out expressions use the same parenthetical notation as ordinary LFG notation, but the f-structure now acts as an argument rather than as a function. Formally, inside-out expressions are defined as follows:
+ 
+ \ea
+ $(a \: f) = g$ holds if and only if $g$ is an f-structure, $a$ is a symbol, and the pair $\langle a, f \rangle \in g$.
+ \z
+Informally, this definition means that $(a~f)$ refers to an f-structure $g$ (or set of f-structures) whose attribute $a$ has $f$ as its value. For example, in (\ref{ex:insideout-ex}), $(\textsc{a} \: g) = f$ holds because $(f~\textsc{a}) = g$ is satisfied.
+ 
+ \ea\label{ex:insideout-ex}
+ \avm{\id{f}{[ a & \id{g}{[ b & x ]} ]}}
+ \z
+  
+  Functional uncertainty can also be extended to cover inside-out expressions by replacing $a$ in the definition above by a regular expression $\alpha$. The formal definition is as follows:
+  
+  \ea
+  $(\alpha \: f) \equiv{} g$ if and only if $g$ is an f-structure, $\alpha$ is a set of strings, and for some $s$ in the set of strings $\alpha$, $(s \: f) = g$.
+  \z
+  
+  Inside-out function application is by its nature a rather limited formal device compared to ``outside-in'' function application. It is mainly used either to constrain the grammatical functions that an f-structure may occupy, or to constrain the features of a higher-level f-structure. Importantly, it cannot actually be used as the main mechanism of constructing f-structures. For example, one may formulate a defining equation such as $((\textsc{a}~f)\,\textsc{a}) = f$ to force $f$ to appear in grammatical function $\textsc{a}$. But this definition will produce an ``orphaned'' f-structure which can only be integrated with other f-structures by additional ``outside-in'' statements, which, in turn, make such an inside-out statement redundant.
+  
+  Which grammatical phenomena is inside-out functional uncertainty used to model? Perhaps the simplest is the restriction of certain grammatical forms to certain syntactic positions. For example, if nominative marking in a given language is always associated with the grammatical function \SUBJ, one may avoid referring to a feature \CASE, instead adding (\SUBJ\UP) to the lexical entries of all nominative nouns. This correctly ensures that nominative nouns are only used in those positions which the grammar defines as being associated with subjects. 
+  
+  Another phenomenon where inside-out function application plays a role is agreement on modifiers. For example, Russian adjectives agree in gender and number with their heads. In standard LFG terms, this means that they are lexically annotated to co-define (together with the head noun) the features \CASE\ and \textsc{num} of the f-structures whose \textsc{adjunct} position they occupy. An adjective like \textit{krasnaja} `red' (fem. sg.) might have the following lexical entry:\footnote{The set membership symbol $\in$ may be used in inside-out statements just as well as it can be used in outside-in statements. $(\textsc{a} \in f) = g$ entails that $(g~\textsc{a} \in) = f$, which is notationally equivalent to $f \in (g~\textsc{a})$. See \sectref{sect:fstrval}.}
+  
+  \ea
+  \catlexentry{krasnaja}{Adj}{(\UP\PRED) = \textsc{`red'}\\
+   ((\ADJ $\in$ \UP)~\NUM) = \textsc{sg}\\
+    ((\ADJ $\in$ \UP)~\GEND) = \textsc{fem}}
+  \z
+  
+  A somewhat more exotic phenomenon that inside-out functional uncertainty succeeds at capturing is ``case stacking'' in Australian languages, where NP-in\-ter\-nal dependents are marked not only with the case that indicates their position within this NP, but also for the case that indicates the position of this NP at a higher level. \textcite{nordlinger1998constructive} develops a theory called Constructive Case\footnote{``Constructive'' is, in fact, somewhat of a misnomer: as shown above, inside-out statements cannot actually ``construct'' anything, but can only test for feature values of f-structures that have already been constructed.} to account for this behaviour; ``stacked'' cases are treated as denoting the case values of the f-structures that contain the noun as their complement, via the mechanism of inside-out functional uncertainty.
+ 
+ \subsubsection{Local names}\label{sec:CoreConcepts:localname}
+
+ 
+ F-structures in annotated rules are typically referred to relative to the nodes in the phrase structure rule, i.e. using paths that begin in the metavariables \UP\ or $\DOWN$. This is sufficient if these paths are uniquely and unambiguously resolved; the relevant reference may just be repeated in all equations that use it. But in some cases functional annotations do not uniquely identify f-structures that should be referred to. This most frequently occurs when functional uncertainty is involved (described in \sectref{sect:fu}), i.e. when paths are regular expressions that can resolve to different f-structures. Another example is when the same set of rules can apply to different f-structures, either in free variation or subject to additional conditions. Consider a hypothetical language where verbal agreement morphology can alternatively define the person and number features of the subject or direct object.\footnote{This example is actually not so hypothetical: such an analysis of Dargwa is proposed in \textcite{belyaev2013-agr}, where person-number agreement can be associated with either subject or object, and the choice is then ``filtered'' using a set of OT constraints.} In this case, it is of course possible to introduce disjunction of two sets of equations, as in (\ref{ex:disj-nolocal}), but this clearly misses the crucial generalization that the same features are defined in both disjuncts.
+
+ \ea\label{ex:disj-nolocal}
+ \begin{tabular}[t]{l@{}l}
+ $\big\{$ & (\UP\SUBJ\PERS) = 1\\
+ &(\UP\SUBJ\NUM) = \SG\\
+ \,|\, &(\UP\OBJ\PERS) = 1\\
+   &(\UP\OBJ\NUM) = \textsc{sg} $\big\}$
+   \end{tabular}
+ \z
+A more economical way to formulate this constraint is to introduce a temporary label for the f-structure involved -- a \textsc{local name} -- and then refer to this name in the two equations assigning person and number features. Normal names in LFG, by convention, are written with an initial \% and assigned using the standard equation operators, as in (\ref{ex:disj-local}):
+ 
+\ea\label{ex:disj-local}
+\begin{tabular}[t]{l}
+ $\big\{$ {\%\textsc{agr}} = (\UP\SUBJ)\ \,|\, {\%\textsc{agr}} = (\UP\OBJ) $\big\}$\\
+ (\%\textsc{agr}~\PERS) = 1\\
+ (\%\textsc{agr}~\NUM) = \SG
+\end{tabular}
+  \z
+
+While local names are not very frequent in LFG analyses, their use is essential for some phenomena where there is a need to consistently refer to an f-structure whose identity is not uniquely deducible from its path (set members, functional uncertainty, etc.).
+ 
+ \subsubsection{F-precedence\label{sect:fprec}}
+ 
+ The basic architecture of LFG is devised to be modular, such that different linguistic phenomena are accounted for at separate levels. In the interaction between c- and f-structure, c-structure is exclusively concerned with linear order and hierarchical embedding, while f-structures do not reflect linear order or constituent structure in any way. Therefore, linear order is relevant for most morphosyntactic constraints only in a limited way, insofar as it distinguishes between different c- to f-structure mappings (such as, for example, in English, where Spec,IP is mapped to subject and precedes the verb and Comp,VP). Without extensions to the standard LFG notation, there is no way to state a constraint like ``the verb agrees in person and number with whatever NP stands to its left'', because agreement features are the domain of f-structure, and functional equations can only refer to f-structure functions, not linear or constituent-based positions.
+ 
+ However, in certain cases linear order does seem to play a role in determining constraints on syntactic relations. A well-known example is the availability of discourse anaphora between adverbial clauses and main clauses: If the antecedent precedes the pronoun, coreference is possible regardless of which clauses the two are located in (\ref{ex:free-anaphora}), while cataphora (backwards anaphora) is only possible if the cataphor stands in the subordinate clause (\ref{ex:cataphora}).
+ 
+ \ea\label{ex:free-anaphora}
+    \ea {[} When John\textsubscript{i} came ], I saw him\textsubscript{i}.
+    \ex I saw John\textsubscript{i} [ when he\textsubscript{i} came ].
+    \z
+ \z
+ 
+ \ea\label{ex:cataphora}
+    \ea {[} When he\textsubscript{i} came ], I saw John\textsubscript{i}.
+    \ex[*]{I saw him\textsubscript{i} [ when John\textsubscript{i} came ].}
+    \z
+ \z
+Such behaviour has been generalized since \textcite{langacker1969} as ``precede-and-command''.\footnote{The relevance of linear order has been hotly contested in the literature on anaphora, especially in mainstream transformational grammar; for a recent take on precede-and-command, see \textcite{bruening2014}. This is not relevant for our discussion, though, as within LFG no one ever argued against linear-order constraints on anaphora.} Coindexation is possible if at least one of the following is true: the antecedent c-commands\footnote{In LFG, c-command is replaced by outranking on the grammatical function hierarchy: see \citetv{chapters/Anaphora}.} the pronoun; the antecedent precedes the pronoun.
+
+ Similar constraints operate in other languages. For example, \textcite{mohanan1982} argues that in Malayalam, pronouns \textit{must} follow their antecedents. In LFG, such constraints can be captured using the relation of \textsc{f-precedence} \parencite{kaplan-zaenen1989-fprec}, which is a way of introducing linear order constraints in f-structure using the inverse projection $\phi^{-1}$, which maps f-structures to the corresponding c-structure nodes.
+ 
+ \ea\label{ex:fprec}
+  $f$ \textit{f-precedes} $g$ ($f <_f g$) if and only if for all $n_1 \in \phi^{-1}(f)$ and for all $n_2 \in φ^{-1}(g)$, $n_1$ c-precedes $n_2$.
+ \z
+The formal definition in (\ref{ex:fprec})\footnote{C-precedence requires that all daughter nodes of a node precede all daughter nodes of another node -- essentially a linear precedence relation for c-structure constituents.} essentially means that an f-structure $f_1$ f-precedes $f_2$ iff all c-structure constituents that map to $f_1$ linearly precede the constituents that map to $f_2$. Given this definition, anaphoric constraints such as precede-and-command may be formulated as the requirement that the pronoun's antecedent f-precede the pronun.
+ 
+ Note that f-precedence is a rather straightforward relation if an f-structure corresponds to a single constituent. In more complex situations, such as when discontinuous constituents are involved, or one of the elements does not have a c-structure exponent, its application is not so intuitive. In particular, in the latter case, null elements f-precede and are f-preceded by all other elements in the sentence, because one of the sets $n_1, n_2$ is empty. This property of f-precedence is used to analyze the behaviour of null anaphora in languages like Malayalam \parencite{mohanan1982} or Japanese \parencite{kameyama85}, where null pronouns behave differently from full pronouns. For such languages, the definition in (\ref{ex:fprec}), combined with the generalization in the preceding paragraph, correctly predicts that linear order does not influence the anaphoric requirements of null pronouns \parencite[257]{DLM:LFG}.
+ 
+ An alternative definition of f-precedence, that leads to a different treatment of null pronouns, is proposed in \textcite[213]{BresnanEtAl2016}:
+ 
+ \ea
+ $f$ f-precedes $g$ if and only if the rightmost node in $\phi^{-1}(f)$ precedes the rightmost node in $\phi^{-1}(g)$.
+ \z
+Under this definition, null pronouns in fact do not f-precede and are not f-prece\-ded by any constituent, because their inverse projections lack a rightmost node. To capture the data of Japanese or Malayalam using this definition, a different, negative formulation of the precedence binding constraint should be used: ``The domain of a binder \textit{excludes} any pronominal that f-precedes it'' (\cite[213]{BresnanEtAl2016}, emphasis mine), i.e. the pronoun \textit{must not} f-precede its antecedent. For more information on f-precedence and linear order constraints on anaphora in general, see \citetv{chapters/Anaphora}.
+ 
+ Thus, the use of inverse projection does allow a degree of influence of linear order on syntactic constraints, in a limited way (as intended): linear order may serve as an additional constraint on relations formulated in f-structure terms, but does not serve as the only or as the main factor determining these relations.
+
+ 
+ \subsection{Attribute value types\label{sect:valtypes}}
+ 
+ \subsubsection{General remarks}
+ 
+ The system of attribute values in the core LFG architecture is very straightforward. There are only three types of values: atomic values, semantic forms and other f-structures (of which sets are a special instance).
+ 
+ The simplicity of this system follows from the fact that, as mentioned above, LFG has no type system for f-structures. This means that the list of potential attributes and their values for any given f-structure is defined only by annotated phrase structure rules and lexical entries. Thus, there is nothing in the formal architecture or in any part of an LFG grammar that would prohibit a ``clausal'' f-structure to have the feature \CASE\ or a ``nominal'' f-structure to have the feature \TENSE; such constraints are only implicit in the way these f-structures are constructed and mapped from c-structure nodes.
+ 
+ Similarly, the attributes themselves are not by default associated with any specific value type: LFG grammars by themselves contain no stipulation of possible attributes and the values they may take. Only grammatical function values are required to be f-structures, and \PRED\ values to be semantic forms due to Completeness and Coherence (see \sectref{sect:conditions}). Nothing prevents the value for \CASE\ or \PERS to be an f-structure rather than an atomic value; in fact, the former option has been used in analyses such as \textcite{DalrympleKaplan2000}.
+ 
+ This simplicity of the type system may be viewed as an advantage, as it simplifies the LFG metalanguage without introducing unnecessary redundancy (see \citealt[412ff.]{asudtoiv06} for a criticism of the Minimalist feature system). There are few problems that a more complex type system would solve, as the architecture of a well-defined grammar typically prevents f-structures from being assigned incorrect attribute values. Still, sometimes it is necessary to check that an f-structure belongs to a given type -- for example, whether it is nominal or clausal. LFG provides several ways to do so: one might directly check the category of the corresponding c-structure node using an inverse projection (\sectref{sect:annotated}), or check for certain characteristic attributes (such as \CASE\ for nominals or \TENSE\ for finite clauses) using constraining equations. The latter method, however, is error-prone, as the grammar writer has to ensure that all relevant f-structures have these attributes. This issue can be partly remedied using templates \parencite{asudeh2013constructions}, but templates are an optional, purely notational device; care must be taken that templates are used consistently.
+ 
+ Another solution has been implemented in XLE, which allows the grammar writer to optionally use \textsc{feature declarations} to describe the restrictions on feature values \parencite{crouchking08}.  This is a robust system which, if employed properly, can provide grammars with a higher degree of generalization while also decreasing the number of accidental errors in feature descriptions. Unfortunately, it is virtually unknown in the LFG theoretical literature, being meant as an engineering solution rather than a theoretical proposal and limited to computational work that uses XLE (see \citetv{chapters/ImplementationsApplications} for more detail). 
+ 
+ \subsubsection{Atomic values}
+
+ The simplest type of attribute value is an atomic value: essentially a token that represents a given value of a grammatical feature (e.g. \ACC\ for the feature \CASE, \textsc{present} for the feature \TENSE, etc.). There is no single agreed-upon set of ``standard'' features and the valid values they might take: in principle, it is the task of the grammar writer or analyst to determine the set of features required to describe a particular language.
+ 
+ In current LFG practice, there is, however, a set of informal conventions on the general inventory of atomic features. These fall into two types. The first type are morphosyntactic features of the same kind as those standardly used in typology and descriptive grammars: features such as \CASE, \TENSE, \ASP, \PERS, etc. An overview of the use of features in syntactic and morphological description can be found in \textcite{corbett2012}.
+ 
+ The second type are more technical features that are specific to the LFG understanding of specific syntactic phenomena. For example, \textcite[396ff.]{dalrymple01} uses the feature \textsc{ldd} (for \textsc{l}ong-\textsc{d}istance \textsc{d}ependency) to mark whether an f-struc\-ture is available for extraction. If $(f~\textsc{ldd})=-$, the f-structure $f$ cannot be in the path that specifies a long-distance dependency. This feature is checked by an off-path constraint (see \sectref{sect:constequ}). These and similar constraints are discussed in more detail in \citetv{chapters/LDDs}.
+ 
+ Similarly, features such as \textsc{prontype} or \textsc{nuclear} are used in \textcite{dalrymple1993,BresnanEtAl2016} to distinguish between different kinds of pronouns to account for the differences in binding constraints. See \citetv{chapters/Anaphora} for more detail.
+ 
+ In spite of the theoretical significance and cross-linguistic ubiquity of such features as \textsc{ldd} and \textsc{prontype}, it is generally assumed that they are also not universal and not part of an innate grammatical blueprint (although, to my knowledge, this question has never been explicitly discussed in the literature). Thus, while \citegen{BresnanEtAl2016} approach to anaphora relies on grammar-wide constraints and distinguishes pronouns via their features, \textcite{dalrymple1993} rather assumes that all binding constraints are lexically specified by the pronouns themselves. The latter point of view is supported by the cross-linguistic diversity of binding domains. It might be that both approaches are valid, but the efficiency of each depends on the language in question. Hence, like in many other domains, LFG as a framework is agnostic as to whether cross-linguistic similarities are due to innate, universal constraints or are a result of independent, functionally motivated convergence of grammars in the course of their evolution. Particular analyses can strike a balance between these two factors that explain cross-linguistic similarities.%\todo{reread and clarify this paragraph}
+
+ \subsubsection{F-structure\label{sect:fstrval}} As seen in (\ref{ex:fstr}), f-structures can themselves serve as attribute values. F-structures are predominantly values of grammatical functions such as \SUBJ, \OBJ, etc., and discourse functions such as \DIS (or \TOPIC\ and \FOCUS\ in earlier approaches; see \citetv{chapters/GFs}). F-structures are sometimes also used to represent ``compound'' attribute values; for example, agreement features are sometimes represented as the ``bundle'' \textsc{agr} in (\ref{ex:agrbundle}), and \PRED\ values can be viewed as composite (\sectref{sect:pred}).
+ 
+ \begin{exe}
+ \ex\attop{\label{ex:agrbundle}
+ \avm[style=fstr]{
+  [ pred & `house'\\
+    agr & [ pers & 3\\
+                num & sg]
+  ]
+ }}
+ \end{exe}
+ 
+ Just as different atomic-valued attributes can have identical values, one f-struc\-ture can also serve as a value for several attributes. This phenomenon is called \textsc{structure sharing} and is the closest LFG counterpart to the notion of ``movement'' in transformational frameworks; it is discussed in more detail in \citetv{chapters/Intro}. This configuration can be visually represented in two ways: either the f-structure is fully spelt out in every occurence (\ref{ex:structsharinga}), or only once -- then the other occurences are connected by lines (\ref{ex:structsharingb}) or coindexed (\ref{ex:structsharingc}).
+ 
+ \ea
+ \ea\label{ex:structsharinga}
+  \avm[style=fstr]{
+    [ attr1 & [ a1 & v1\\
+                      a2 & v2]\\
+      attr2 & [ a1 & v1\\
+                      a2 & v2]
+    ]}
+ \ex\label{ex:structsharingb}
+ \avm[style=fstr]{
+ [ attr1 & [ a1 & v1\\
+                   a2 & v2]\pnode{x}\\
+   attr2 &  \Rnode{y}{~} ]}
+ \ex\label{ex:structsharingc}
+ \avm[style=fstr]{
+ [ attr1 & \id{f}{[ a1 & v1\\
+                       a2 & v2]}\\
+   attr2 &  {$\scriptstyle f$}
+ ]}
+ \ncangles[angle=0,armA={.4},linearc=.15,nodesep=-2pt,linewidth=.5pt]{x}{y}
+  \z\z
+  
+ Some grammatical phenomena, in particular coordination, adjunction and feature indeterminacy, are represented in LFG via set-valued attributes, as in (\ref{ex:set}).
+ 
+ \begin{exe}
+ \ex\attop{\label{ex:set}$f$:\avm{
+ [ a & \{ [ distr1 & l\\
+               distr2 & m]\\
+              [distr1 & l\\
+               distr2 & n]\}]}}
+ \end{exe}
+At first sight, this may appear to violate the notion of f-structure as a function, and the consequent Uniqueness constraint (\sectref{sect:uniqueness}). However, sets in LFG are not multiple values of a single attribute; they are rather viewed as a special kind of f-structure -- a \textit{hybrid object} that has both attributes that pertain to it as a whole and attributes whose value is determined based on the values of the set members. This is based on the distinction between \textsc{distributive} and \textsc{non-distributive} features.\footnote{This distinction is normally understood as being grammar-wide, or even universal; some authors have recently proposed treating distributivity as a property of \textit{feature application}, not features as such; the most recent such account seems to be \textcite{przepiorkowski-patejuk2012}, and similar ideas are explored in \textcite{belyaev-etal2015} and \textcite{Andrews2018shs}.} The value of a \textit{distributive} feature for a set is determined as follows:
+ 
+ \eas
+ \attop{If $a$ is a \textit{distributive} feature and $s$ is a set of f-structures, then $(s \; a) = v$ holds if and only if $(f \; a) = v$ for all f-structures $f$ that are members of the set $s$. \parencite{bresnan-etal1985,DalrympleKaplan2000}}
+ \zs%\todo{pages!}
+
+ \largerpage
+\noindent A distributive feature for a set is only defined as having a value if it has this value in all f-structures in the set. Thus, for (\ref{ex:set}), the equation \mbox{$(f~\textsc{a}~\textsc{distr1})=\textsc{l}$} is true; conversely, no equation invoking the feature \textsc{distr2} (such as \mbox{$(f~\textsc{a}~\textsc{distr2})=\textsc{m}$} or \mbox{$(f~\textsc{a}~\textsc{distr2})=\textsc{n}$)} can be satisfied, since the set elements differ in the value of this feature. Crucially, there is no requirement that distributive features be the same for all elements of a set unless they have been invoked; the structure in (\ref{ex:set}) is valid as long as the grammar does not assign any value to $(f~\textsc{a}~\textsc{distr2})$.
+ 
+ While distributive features are resolved on the basis of their values for individual members of a set, \textit{non-distributive} features apply to sets as a whole:
+ 
+ \eas
+ \attop{If $a$ is a \textit{non-distributive} feature, then $(f \; a) = v$ holds if and only if the pair $\langle{}a, v\rangle{} \in f$. \parencite{bresnan-etal1985,DalrympleKaplan2000}}
+ \zs
+In (\ref{ex:CoreConcepts:31}),  the value of the attribute \textsc{a} illustrates a set with a non-distributive feature.  
+ 
+ \begin{exe}\label{ex:CoreConcepts:31}
+ \ex\attop{\label{ex:set-nondistr}
+ $f$:\avm[style=fstr]{
+ [ a & [ ndistr & n\\
+            \{ [ ndistr & l ] \\
+                [ ndistr & m ] \}
+          ]
+ ]}}
+ \end{exe}
+This notation, standard in LFG work, is meant to represent that, while the feature \textsc{ndistr} has the values \textsc{l} and \textsc{m} for the individual set members, it has the value \textsc{n} for the whole set. The equation $(f~\textsc{a}~\textsc{ndistr}) = \textsc{n}$ is therefore satisfied regardless of the set members' values of $\textsc{ndistr}$.
+ 
+ Distributive and non-distributive features in LFG are used to model different ways in which feature values are resolved and checked in coordination and similar structures. For example, number is typically viewed as non-distributive, because a coordinate NP triggers plural agreement regardless of the number features of its conjuncts. In contrast, case is usually distributive: when a case value is assigned to a coordinate phrase, it must be borne by all its conjuncts. The issue of sets and distributivity with respect to coordination is dealt with in \citetv{chapters/Coordination}.
+ 
+\subsubsection{Semantic forms\label{sect:pred}}
+ 
+ A \textsc{semantic form} is a special type of attribute value that is exclusively assigned to the attribute \PRED. Semantic forms consist of the predicate name followed by the list of its syntactic arguments; arguments that are assigned thematic roles are written in angled brackets, while arguments that are not thematic (such as expletive subjects or ``raised'' subjects and objects) are written outside angled brackets. For example, the \PRED\ value for a transitive verb like `see' will be `see\arglist{\SUBJ \OBJ}'. A verb like `rain', which has no thematic arguments but an expletive subject, will have the \PRED\ value \textsc{`rain\arglist{\/}\SUBJ'}. Finally, an ``object raising'' verb like `believe' will have the \PRED\ value \textsc{`believe\arglist{\SUBJ}\OBJ'}: its subject is assigned a semantic role, while its object is not.
+ 
+ In the preceding paragraph, arguments were represented as mere lists of grammatical function names. This convention, which is followed in much LFG work (see e.g. \citealt{dalrymple01}, \citealt{DLM:LFG}), is but a simplification: arguments inside \PRED\ values are usually understood as direct references to the corresponding attribute values. Thus, in the left-hand side of (\ref{ex:predvalues}), the \PRED\ value is represented as `see\arglist{($f$~\SUBJ) ($f$~\OBJ)}'. As observed in \textcite[63]{Kuhn-CSLI-book}, \PRED\ values as used in typical LFG representations can be viewed as shorthands for complex structures such as in the right-hand side of (\ref{ex:predvalues});\footnote{I follow the representation used by \textcite{Kuhn-CSLI-book}, which does not distinguish between thematic and non-thematic arguments. In XLE, this is implemented by distinguishing between the attributes \textsc{arg1}, \textsc{arg2}, … for thematic arguments and \textsc{notarg1}, \textsc{notarg2}, …. for non-thematic arguments.} \textsc{fn} is an abbreviation for \textsc{functor}; \textsc{sfid} stands for ``semantic form identifier'', on which see below. Similar structures are used in implemented parsers like the Xerox Grammar Writer's Workbench \parencite{kaplanmaxwell96} and the Xerox Linguistic Environment (XLE, \cite{xledoc}; see \citetv{chapters/ImplementationsApplications}).
+
+ \begin{exe}
+ \ex\label{ex:predvalues}
+ \avm[style=fstr]{\id{f}{
+ [ pred & `see\arglist{($f$ \SUBJ) ($f$ \OBJ)}\\
+   subj & [ pred & `John'\\
+                 num & sg\\
+                 pers & 3]\\
+   obj  & [ pred & `David'\\
+                  num & sg\\
+                  pers & 3]
+ ]}}
+ =
+ \avm[style=fstr]{
+ [ pred & [ fn & see\\
+                  argument1 & \Rnode{ag}{~}\\
+                  argument2 & \Rnode{ah}{~}\\
+                  sfid & $i$ ]\\
+   subj & [ pred & [ fn & {John}\\
+                                sfid & $j$]\\
+                 num & sg\\
+                 pers & 3]\pnode{g}\smallskip\\
+   obj &   [ pred & [ fn & {David}\\
+                               sfid & $k$]\\
+                  num & sg\\
+                  pers & 3]\pnode{h}
+ ]}
+ \end{exe}
+ \ncangles[angle=0,armA={1.5},linearc=.15,nodesep=-2pt,linewidth=.5pt]{ag}{g}
+ \ncangles[angle=0,armA={1.7},linearc=.15,nodesep=-2pt,linewidth=.5pt]{ah}{h}
+
+ \largerpage
+ If semantic forms were just a bundle of a functor and one or more argument slots, there would be no need to treat them as a special argument value type. What distinguishes them from any other value is their \textit{uniqueness}: each introduction of a \PRED\ value is treated as unique. That is, whenever an expression like ($f$\;\PRED)=\textsc{`fn'} introduces a new semantic form, it is assigned a unique identifier, even if it is lexically identical to another predicate. Thus the equivalence in (\ref{ex:pred-uniqueness}): each \PRED\ assignment is viewed as also introducing an invisible ``index'' to distinguish between individual \PRED\ values. Thus, if atomic values can be introduced multiple times, \PRED\ values cannot; different grammatical or discourse functions can have the same \PRED\ value only through structure sharing,\footnote{Or, as an anonymous reviewer observes, through sharing of the PRED value itself, as e.g. in the analysis of
+adjective coordination in \citet{belyaev-etal2015}.} when the whole f-structure is constrained to be identical. In XLE and other implemented versions of LFG, this uniqueness effect is achieved by including a special feature \textsc{sfid} in the \PRED, that is assigned a unique value each time a \PRED\ is introduced in the f-description.\footnote{XLE extends standard LFG by allowing any atomic value to be unique -- an \textit{instantiated symbol} notated via a subscript following its name: \textsc{val\_}. Thus in XLE, semantic forms do not seem to require any special machinery as such. However, an anonymous reviewer observes that if the left-hand side of (\ref{ex:predvalues}) is indeed the abbreviation of its right-hand side, it should be possible to manipulate argument structure in the syntax via equations such as (\UP\PRED\textsc{argument3})=\DOWN. XLE seems to circumvent this by tacitly introducing a negative existential constraint that prevents any additional attributes from appearing in \PRED\ except the ones included at its introduction. This includes both argument features and any other feature names: both the XLE version of the above statement and (\UP\PRED\textsc{foo})=\textsc{bar} lead to an existential constraint violation. It is also impossible to ``construct'' a semantic form using a set of separate statements for the individual features; thus even XLE does technically treat semantic forms as a special value type.}
+
+ The uniqueness of \PRED\ values is needed to prevent multiple introduction of arguments and will be discussed in \sectref{sect:uniqueness}.
+ 
+ \ea \label{ex:pred-uniqueness}
+ \begin{tabular}[t]{lll}
+   \bigg\{\begin{tabular}{l}
+     ($f$~\PRED) = \textsc{`apple'}\\
+     ($f$~\PRED) = \textsc{`apple'}\\
+   \end{tabular}\bigg\}
+   & ≡ &
+      \bigg\{\begin{tabular}{l}
+     ($f$~\PRED) = \textsc{`apple\textsubscript{1}'}\\
+     ($f$~\PRED) = \textsc{`apple\textsubscript{2}'}\\
+   \end{tabular}\bigg\}
+\end{tabular}
+ \z
+
+In current LFG research, \PRED\ values mainly serve only to specify argument lists to satisfy Completeness and Coherence, and to provide unique ``labels'' for f-structures that have {\PRED}s. Even this limited functionality is contested in the literature, with some authors proposing to abandon f-structures in favour of a purely semantic approach, see \sectref{sect:redundancy}. Originally, however, {\PRED}s were thought to have a more central role, providing a kind of link from syntax to semantics \parencite{kaplanbresnan82}. It is important to observe that {\PRED}s are no longer viewed in these terms in the LFG literature; the functor names are only arbitrary labels, and all semantic derivation is separate from syntax, being done through Glue Semantics, described in \citetv{chapters/Glue}.\footnote{A kind of hybrid approach is proposed in \textcite{andrews2008}, which introduces a variant of Glue Semantics where meaning is at least in part derived from f-structure feature values; in this approach, \PRED\ features do play a prominent role in semantic composition.}
+ 
+  \subsection{Well-formedness conditions\label{sect:conditions}}
+ 
+ There are three conditions that any f-structure must satisfy in order to be treated as valid: Uniqueness (also known as Consistency), Completeness, and Coherence. Any f-structure that violates these conditions cannot be part of a valid analysis of any sentence, regardless of the rules of a particular grammar.
+ 
+ \subsubsection{Uniqueness\label{sect:uniqueness}}
+ 
+ \subsubsubsection{Definition}
+ 
+ Uniqueness (Consistency) is the requirement that every attribute in an f-struc\-ture must have a single value. Thus, the two equations in (\ref{ex:uniqueness}) do not describe any valid f-structure.
+
+ \begin{exe}
+ \ex\label{ex:uniqueness}Ill-formed f-structure:\\[1ex]
+ \begin{tabular}{l}
+  $(f~\textsc{a}) = \textsc{l}$\\
+  $(f~\textsc{a}) = \textsc{m}$\\
+ \end{tabular} \qquad
+ \avm[style=fstr]{
+    \id{f}{[ a & \begin{tabular}{l}\fbox{l}\smallskip\\\fbox{m}\end{tabular} ]}}
+ \end{exe}
+It should be noted that Uniqueness is not, in fact, a constraint that needs to be stipulated separately: it follows from the notion of f-structure as a function, since a function maps arguments to single values (thus defining a one-to-one or many-to-one, but not a one-to-many or many-to-many correspondence).
+ 
+ \subsubsubsection{Multiple specification of a value}
+ 
+ Uniqueness does not in any way imply that multiple specification of an attribute value is ruled out. When the \textit{same} value is assigned to an attribute two or more times, the resulting f-structure is valid, as seen in (\ref{ex:multassign}).
+ 
+\begin{exe}
+ \ex\label{ex:multassign}\attop{
+ \begin{tabular}{l}
+  $(f~\textsc{a1} \; \textsc{a2}) = \textsc{l}$\\
+  $(f~\textsc{a1} \; \textsc{a2}) = \textsc{l}$\\
+  $(g \; \textsc{a2}) = \textsc{l}$\\
+  $(g \; \textsc{a3}) = \textsc{m}$\\
+  $(f~\textsc{a1}) = g$\\
+ \end{tabular} \qquad
+ \avm[style=fstr]{
+    \id{f}{[ a1 &  \id{g}{[ a2 & l\\
+            a3 & m]}]}}}
+\end{exe}
+In (\ref{ex:multassign}), the attribute $(g~\textsc{a2})$ is assigned its value three times and referred to in two different ways, but this ``history'' of its origin is not displayed in the resulting f-structure and is not recoverable from it in any way. This is an illustration of the LFG distinction between a \textit{description} and the \textit{object} that it describes, a crucial feature of LFG that separates it from most other frameworks, where syntactic constraints are usually encoded in the structure itself in one way or another.
+ 
+ Turning to a linguistically meaningful example, this distinction between description and object is manifest in the standard LFG approach to agreement (see \citetv{chapters/Agreement} for more detail). Agreement targets do not normally have a ``copy'' of their controller's features; they only lexically specify the same features that are separately specified by the controller. If there is a conflict, the resulting f-structure is invalid. If there is no conflict, the agreement features are displayed in the f-structure once and there is nothing in the f-structure indicating that agreement feature checking has taken place. Compare the Italian examples (\ref{ex:ita1}) and (\ref{ex:ita2}) below, which map to the same f-structure even though the person-number features are described in two positions in (\ref{ex:ita1}) but defined once in (\ref{ex:ita2}).
+
+ \subsubsubsection{Uniqueness and \PRED\ values}
+ 
+ One place where multiple specification is virtually prohibited is \PRED\ features, whose values are special objects called semantic forms. As described above in \sectref{sect:pred}, each assignment of a \PRED\ value is treated as a unique object; it is thus impossible to assign a \PRED\ value more than once, even if the value to be assigned has the same functor name.
+ 
+ The reason why \PRED\ values are treated in this way is to ensure that each argument position, and each predicative element in general, is instantiated by exactly one lexical head. Since there is no one-to-one correspondence between c-structure positions and f-structure functions, this cannot, in the general case, be ensured by phrase structure rules alone.  Even in a configurational language like English, a displaced constitutent is not directly linked to its ``original'' (normal, unmarked) position at c-structure; consequently, the c- to f-structure correspondence allows introducing it twice, as in (\ref{ex:pred-conflict}).\footnote{For the sake of exposition, I assume that the topicalized direct object appears as an IP adjunct -- this carries no theoretical significance.}
+ 
+ \newpage
+ \begin{exe}
+ \ex \label{ex:pred-conflict}
+ Ill-formed f-structure for \emph{*John, Mary saw John}:\\[1ex]
+ \hspace*{-1cm}%
+ \scalebox{.7}{\begin{forest} for tree={anchor=north}
+ [,phantom
+ [IP
+    [\annode{NP}{(\UP \TOPIC) = \DOWN\\
+                 (\UP \OBJ) = \DOWN}
+        [\annode{N}{\UP=\DOWN}
+            [\anterm{John}{\textcolor{red}{(\UP \PRED) = \textsc{`John'}}\\
+                           (\UP \NUM) = \SG\\
+                           (\UP \PERS) = 3\\
+            }]
+        ]
+    ]
+    [\annode{IP}{\UP=\DOWN}
+        [\annode{NP}{(\UP \SUBJ) = \DOWN}
+            [\annode{N}{\UP=\DOWN}
+                [\anterm{Mary}{(\UP \PRED) = \textsc{`Mary'}\\
+                               (\UP \NUM) = \SG\\
+                               (\UP \PERS) = 3\\
+                },l*=2]
+            ]
+        ]
+        [\annode{I$'$}{\UP=\DOWN}
+            [\annode{VP}{\UP=\DOWN}
+                [\annode{V}{\UP=\DOWN}
+                    [\anterm{saw}{(\UP \PRED) = \textsc{`see\arglist{(\UP \SUBJ)(\UP \OBJ)}'}\\
+                                  (\UP \TENSE) = \PST\\
+                    },l*=2.3]
+                ]
+                [\annode{NP}{(\UP \OBJ) = \DOWN}
+                    [\annode{N}{\UP=\DOWN}
+                        [\anterm{John}{\textcolor{red}{(\UP \PRED) = \textsc{`John'}}\\
+                                    (\UP \NUM) = \SG\\
+                                    (\UP \PERS) = 3\\
+                        },l*=2.2]
+                    ]
+                ]
+            ]
+        ]
+    ]
+ ]
+    [\mbox{\avm[style=fstr]{
+          [ topic & \rnode{t}{\strut}\\
+            pred & {`see\arglist{\SUBJ \OBJ}'}\\
+              tense & pst\\
+              subj & [ pred & {`Mary'}\\
+                            num & sg\\
+                            pers & 3]\\
+              obj & [ pred & \rnode{o}{\fcolorbox{red}{white}{\begin{tabular}{ll}
+                                  {\textcolor{red}{`John$_{1}$'}}\\
+                                  {\textcolor{red}{`John$_{2}$'}}\\
+                                 \end{tabular}}}\\
+                        num & sg\\
+                        pers & 3]
+            ]}}]]
+ \end{forest}}
+ \CURVE[.5]{0pt}{0}{o}{0pt}{0}{t}
+ \end{exe}
+What ensures the ungrammaticality of (\ref{ex:pred-conflict}) is precisely the uniqueness of \PRED\ values. This effect is even more pronounced in non-configurational languages, where no c-structure position is tied to any grammatical function, and any number of NPs may be freely mapped to any grammatical function; see \citetv{chapters/Cstr} for detail.  
+  
+ \subsubsection{Completeness}\label{sec:CoreConcepts:Completeness}
+ 
+ The Completeness condition requires every grammatical function governed by the \PRED\ value of a given f-structure to exist in this f-structure. In other words, all arguments of a predicate must be ``filled'' by f-structures. This disallows examples such as (\ref{ex:compl-viol}).
+ 
+  \begin{exe}
+ \ex \label{ex:compl-viol}\attop{
+   Ill-formed f-structure for \emph{*Mary saw}:\\[1ex]
+ \begin{forest} for tree={anchor=north}
+ [,phantom
+    [\annode{IP}{\UP=\DOWN}
+        [\annode{NP}{(\UP \SUBJ) = \DOWN}
+            [\annode{N}{\UP=\DOWN}
+                [\anterm{Mary}{(\UP \PRED) = \textsc{`Mary'}\\
+                               (\UP \NUM) = \SG\\
+                               (\UP \PERS) = 3\\
+                },l*=2]
+            ]
+        ]
+        [\annode{I$'$}{\UP=\DOWN}
+            [\annode{VP}{\UP=\DOWN}
+                [\annode{V}{\UP=\DOWN}
+                    [\anterm{saw}{(\UP \PRED) = \textsc{`see\arglist{(\UP \SUBJ)(\UP \OBJ)}'}\\
+                                  (\UP \TENSE) = \PST\\
+                    },l*=2.3]
+                ]
+            ]
+        ]
+    ]
+    [\mbox{\avm[style=fstr]{
+    [ pred & \textup{`see\arglist{\SUBJ \textcolor{red}{\OBJ}}'}\\
+      tense & pst\\
+      subj & [ pred & `Mary'\\
+                    num & sg\\
+                    pers & 3]]       
+    }}]
+ ]
+ \end{forest}
+ }
+ \end{exe}
+ 
+C-structure rules cannot be conditioned by argument structure; hence, Completeness violation is the only reason why this sentence is ungrammatical. The c- to f-structure correspondence is otherwise entirely valid.
+ 
+ It is important to understand that completeness only refers to f-structure and has nothing to do with whether arguments are expressed overtly or covertly. Since LFG avoids empty nodes, covert subjects in pro-drop languages do not correspond to any c-structure NP or DP, but Completeness still has to be satisfied at f-structure. This is normally done via equations introducing the pronominal \PRED\ of the subject in the verb's lexical entry: see (\ref{ex:italex}) below.
+ 
+ An additional Completeness constraint has to do with the parameter of semantic argumenthood. It states that semantic arguments (i.e. those whose names stand within angled brackets in the \PRED) have to themselves contain a \PRED. Conversely, non-arguments (those whose names stand outside angled brackets) are required not to contain a \PRED, unless these f-structures are arguments or adjuncts elsewhere (such as, for example, in raising constructions).  This is meant to exclude, respectively, expletive arguments in positions where semantic roles are assigned (\ref{ex:noexpl}), and meaningful NPs in expletive positions (\ref{ex:nosemrole}).
+ 
+ \ea\label{ex:noexpl} *{I saw \textbf{there}.}\z
+ 
+ \ea\label{ex:nosemrole} *{\textbf{The sky} rained.}\z
+ 
+ \subsubsection{Coherence}\label{sec:CoreConcepts:Coherence}
+ 
+ The Coherence condition is the converse of Completeness: no governable functions (i.e. f-structure functions representing grammatical functions such as \SUBJ, \OBJ, etc., see \citetv{chapters/GFs}) may appear in an f-structure without being listed in a \PRED\ value. This ensures that no ``orphaned'' arguments appear in an f-structure, disallowing examples such as (\ref{ex:coher-viol}).
+
+ \ea\label{ex:coher-viol}
+ Ill-formed f-structure for \emph{*Mary came John}:\\[1ex]
+ \hspace*{-.8cm}
+ \begin{forest} for tree={anchor=north}
+ [,phantom
+    [\annode{IP}{\UP=\DOWN}
+        [\annode{NP}{(\UP \SUBJ) = \DOWN}
+            [\annode{N}{\UP=\DOWN}
+                [\anterm{Mary}{(\UP \PRED) = \textsc{`Mary'}\\
+                               (\UP \NUM) = \SG\\
+                               (\UP \PERS) = 3\\
+                },l*=2]
+            ]
+        ]
+        [\annode{I$'$}{\UP=\DOWN}
+            [\annode{VP}{\UP=\DOWN}
+                [\annode{V}{\UP=\DOWN}
+                    [\anterm{came}{(\UP \PRED) = \textsc{`come\arglist{(\UP \SUBJ)}'}\\
+                                  (\UP \TENSE) = \PST\\
+                    },l*=2.3]
+                ]
+                [\annode{NP}{(\UP \OBJ) = \DOWN},for tree={red}
+                    [\annode{N}{\UP=\DOWN}
+                        [\anterm{John}{(\UP \PRED) = \textsc{`John'}\\
+                                    (\UP \NUM) = \SG\\
+                                    (\UP \PERS) = 3\\
+                        },l*=2]
+                    ]
+                ]                
+            ]
+        ]
+    ]
+    [\mbox{\avm[style=fstr]{
+        [ pred & `come\arglist{\SUBJ}'\\
+          tense & pst\\
+          subj & [ pred & `Mary'\\
+                        num & sg\\
+                        pers & 3 ]\\   
+          \textcolor{red}{obj} & \textcolor{red}{[ pred & `John'\\
+                                                  num & sg\\
+                                                  pers & 3 ]}
+        ]}}
+    ]
+ ]
+ \end{forest}
+ \z
+Here, again, the c- to f-structure correspondence itself is valid, but the resulting f-structure is incoherent.
+ 
+ The coherence condition only applies to argumental grammatical functions and does not say anything about adjuncts or discourse functions. Where these elements may appear is constrained by a separate condition called Extended Coherence \parencite[63]{BresnanEtAl2016}. Extended Coherence requires that the f-structure where adjuncts appear have a \PRED\ value. This ensures that no adjuncts appear in \PRED-less f-structures. Discourse / overlay functions (\textsc{dis} in more recent approaches, \textsc{topic} and \textsc{focus} in earlier work) are required to be linked to a grammatical function in some way: either functionally (via structure sharing) or anaphorically. For more information on the differences between various types of grammatical functions, see \citetv{chapters/GFs}.
+ 
+ \subsubsection{Redundancy of PRED?\label{sect:redundancy}}
+
+ The description of Completeness and Coherence in this chapter follows the traditional LFG model, which had little to say about semantics; therefore, all valency restrictions had to be modeled at f-structure. Since at least the papers in \textcite{dalrympleetal93}, Glue Semantics (see \citetv{chapters/Glue}) has been gaining acceptance in LFG as the model of the syntax-semantics interface. Glue Semantics is resource-sensitive, which automatically ensures both Completeness and Coherence: Completeness, because all premises of the meaning constructor introducing the main predicate have to be saturated; Coherence, because no unused resources have to be left. The role of uniqueness of \PRED\ for ensuring lack of multiple argument introduction / duplicate heads (\sectref{sect:uniqueness}) also follows from Glue semantics due to the fact that any resource can only be consumed once. Therefore, many authors, among others \textcite{kuhn2001,AsudGior12,asudeh2014meaning}, have argued that \PRED\ features in their original form are no longer necessary in LFG. At least argument lists can, for the most part, be safely dispensed with.\footnote{Non-thematic arguments like \textit{it} in \textit{it rained} might still be relevant insofar as they are not selected by any semantic predicate. However, these arguments may be forced to appear using existential constraining statements.} Many authors, therefore, continue to use \PRED\ values but only include the name of the functor, not arguments in angled brackets; the remaining role of \PRED\ values is only to provide an index for the f-structure, guaranteeing its uniqueness (that may be relevant for purely syntactic purposes that are not handled in semantics), and to provide information on the lexical content of its head.
+
+\section{The c- to f-structure mapping\label{sect:metalanguage}}
+ 
+%  \subsubsection{Annotated c-structure rules}
+ 
+ \subsection{Annotated c-structure rules\label{sect:annotated}}
+ 
+ The metalanguage discussed in the preceding section can describe individual f-structures, but cannot, by itself,  generate or evaluate natural language expressions. F-descriptions must come from somewhere. The only generative component in LFG is c-structure; therefore, phrase structure rules must be coupled with some mechanism that specifies how the nodes in the c-structure tree are mapped to f-structures -- the projection function $\phi$. In LFG, this is normally done using \textsc{annotated phrase structure rules} where nodes at the right-hand side are supplemented by f-descriptions that reference the c- to f-structure mapping. This referencing is done by introducing two additional notational symbols:
+
+\eas
+ \begin{tabular}[t]{ll}
+  the current c-structure node: & $*$\\
+  the immediately dominating c-structure node: & $\MSTAR$\\
+ \end{tabular}
+ \zs
+These are normally not used directly in LFG grammars; instead, two metavariables ↓ and ↑ are used, which signify the following:
+ 
+   \eas
+ \begin{tabular}[t]{llll}
+  ↓ & = & $\phi(*)$ & (the f-structure corresponding to the current \\
+  & & & c-structure node)\\
+  ↑ & = & $\phi(\MSTAR)$ & (the f-structure corresponding to the immediately \\
+  & & & dominating c-structure node)\\
+ \end{tabular}
+ \zs
+This notation allows formulating rules of the type:
+ 
+ \ea\label{ex:vprule}
+ \phraserule{VP}{\rulenode{V\\\UP=\DOWN} \rulenode{NP\\(\UP\OBJ)=\DOWN}}
+ \z
+In (\ref{ex:vprule}), the annotation for V stands for ``this node (V) maps to the same f-structure as the dominating node (VP)'', while the annotation for NP stands for ``this node (NP) maps to the \OBJ attribute of the f-structure of the dominating node (VP)''. The mapping that this rule defines is illustrated in (\ref{ex:vpmap}). The nodes VP and V map to the same f-structure labeled as $f$, while NP maps to the f-structure labeled as $g$ -- the direct object of the clause.
+ 
+ \eas\label{ex:vpmap}\attop{
+   \begin{tabular}[t]{c@{\hspace*{4em}}c}
+   \begin{forest}
+    [\rnode{vp}{VP}
+      [\rnode{v}{V}
+      ]
+      [\rnode{np}{NP}
+      ]
+    ]
+    \end{forest} &
+    \avm{\id{f}{\rnode{f}{
+     [ obj & \id{g}{\rnode{g}{[ ~ ]}}\\
+     ]
+    }}}
+    \end{tabular}}
+    \nccurve[nodesepA=2pt,nodesepB=-2pt,angleA={0},angleB={180},linewidth=.5pt,linecolor=lsRichGreen]{->}{vp}{f}
+    \nccurve[nodesepA=2pt,nodesepB=-3pt,angleA={45},angleB={180},linewidth=.5pt,linecolor=lsRichGreen]{->}{v}{f}
+    \nccurve[nodesepA=2pt,nodesepB=0pt,angleA={0},angleB={190},linewidth=.5pt,linecolor=lsRed]{->}{np}{g}
+ \zs
+ 
+ The LFG metalanguage also allows for a notation for the inverse projection $\phi^{-1}$, that maps f-structures to the c-structure node(s) that map to them. This mapping is one-to-many and thus, unlike the direct projection, not a function. For example, in (\ref{ex:vpmap}), $\phi^{-1}(f)$ refers to two nodes: VP and V. The inverse projection is, by design, seldom used and, in fact, rarely required; but it is indispensable for certain construction which place selective requirements on the categorial status of their elements, such as the verb \textit{wax} in examples like \textit{wax poetical}, which is only compatible with an AP complement (the construction is discussed in \cite{pollard1994head-driven}; for an LFG implementation, see \cite[6.10.3]{DLM:LFG}).
+ 
+  \subsection{Some consequences of the mapping}
+  
+ \subsubsection{Locality}\label{sec:CoreConcepts:Locality}
+ 
+ The annotated rule format described in the preceding section is not merely a question of notation; it defines a rather rigid constraint on the way c-structure nodes can be mapped to f-structure. Namely, the mapping is strictly local: it can refer only to the nodes that are involved in a given phrase structure rule. It is not possible to freely traverse the tree and refer to, say, the node dominating the mother node, the child node of the current node, or the root node. LFG assumes that no linguistically meaningful generalizations can be captured using such ``long-distance'' references. For the majority of cases, this is clearly true, and consequently, there have been no serious attempts to extend the LFG metalanguage in this direction.\footnote{As observed by an anonymous reviewer, if ↑ and ↓ are only abbreviations of $\phi(\MSTAR)$ and $\phi(*)$, it is possible to also use $\phi(\hat{\MSTAR})$ and so on, making annotated rules potentially non-local. As mentioned above, low-level ``designators'' like $*$ are not normally used in LFG analyses: grammars are expected to operate only with ↑ and ↓.}
+ 
+ However, the strict locality of c-structure to f-structure mapping does create problems for the analysis of certain idiomatic combinations -- multi-word expressions (MWEs), as they are called in the literature. Such MWEs often span whole syntactic phrases, and the lexical constraints involved cannot be captured locally. One solution that has been proposed in LFG is to replaced the context-free c-structure by a variant of Tree-Adjoining Grammar (TAG), see \textcite{findlay2017,findlay2019}; this proposal is described in some detail in \citetv{chapters/TAG}.
+
+ Within the local domain of c-structure rules, the mapping to f-structure is further constrained in that it is only possible to refer to the immediately dominating and current nodes, but not to any of the sister nodes. Unlike the locality constraint, this has been challenged in some LFG literature. For example, \textcites[120]{dalrymple01}[222--223]{DLM:LFG}, developing the ideas of \textcite{nordlinger1998constructive}, extend this notation by defining the metavariables \LSTAR\ and \RSTAR\ for ``left sister of the current node'' and ``right sister of the current node'', respectively; the corresponding f-structures are $\phi(\LSTAR)$ and $\phi(\RSTAR)$. Similarly, XLE defines the metavariables LS* and RS* for the same concepts.
+ 
+ The status of such innovations in the general LFG framework is uncertain. On the one hand, the analyses that introduce such notational conventions make convincing cases that they are necessary for analyzing certain phenomena, or at least vastly simplify such analyses. On the other hand, it is telling -- and usually implied -- that their use is somewhat exceptional and limited to a handful of specific phenomena. The fact that phrase structure nodes and lexical items do not refer to the information contributed by their left or right sisters in the vast majority of cases seems to be an important cross-linguistic generalization -- one that is lost if this possibility is introduced in the formalism. If such formal devices are necessary, additional theoretical stipulations should supposedly constrain their use, but in practice, this possibility is almost never explored. %The same goes for Lexical Sharing.\todo{Probably move this to an additional discussion section}  
+ 
+ \subsubsection{Monotonicity}
+ 
+ As \textcite[73ff.]{BresnanEtAl2016} observe, the limitations of the metalanguage described above (even if additional designations like \LSTAR\ and \RSTAR\ are included) lead to several important consequences for grammatical architecture. Specifically, the locality of the c- to f-structure mapping leads to the monotonicity of information flow in the syntax: the f-structure of a larger fragment is always more specific than the f-structure of a smaller fragment.
+ 
+ Let us first consider what ``being more specific'' means for an f-structure. By definition, f-structures are sets of feature-value pairs. It is clear, then, that $g$ in (\ref{ex:specific1}) is more specific than $f$, as it has exactly the same features and values as $f$ and one additional feature.
+ 
+ \begin{exe}
+ \ex \label{ex:specific1}\attop{
+ \avm[style=fstr]{\id{f}{
+    [ a & x\\
+      b & y ]
+ }}\qquad
+ \avm[style=fstr]{\id{g}{
+    [ a & x\\
+      b & y\\
+      c & z ]
+ }}}
+ \end{exe}
+ 
+ Now consider a more complex case. In (\ref{ex:specific2}), $f$ and $g$ have the same features, but intuitively, $g$ is more specific than $f$ because the f-structure value of $\textsc{a}$ in $g$ is more specific than the value of $\textsc{a}$ in $f$.
+ 
+ \begin{exe}
+ \ex \label{ex:specific2}\attop{
+ \avm[style=fstr]{\id{f}{
+    [ a & [ c & z ]\\
+      b & y ]}}\qquad
+\avm[style=fstr]{\id{g}{
+    [ a & [ c & z\\
+               d & m ]\\
+      b & y ]}}
+}
+ \end{exe}
+ 
+ Thus, specificity can be defined recursively: $g$ is at least as specific as $f$ if for every attribute $a$ in $f$, $(g \: a) = (f \: a)$ or $(g \: a)$ is at least as specific as $(f~a)$ \parencite[74]{BresnanEtAl2016}. This relation is essentially equivalent to subsumption \parencite[240]{DLM:LFG}, and can be notated accordingly: $g \sqsupseteq f$ or $f \sqsubseteq g$ means that $g$ is at least as specific as $f$, or $f$ subsumes $g$.
+ 
+ Now recall that every f-description can in principle correspond to infinitely many f-structures that satisfy it. Let us, then, define $\phi(d)$ to be the smallest f-structure $\phi$ that satisfies $d$; this gives the mapping $\phi$ from the set of functional descriptions $D$ to the set of f-structures $F$. This mapping is \textsc{monotonic}: the larger the f-description $d$, the more specific the corresponding f-structure $f$. In other words, $\phi : D \rightarrow F$ has the property that if $d \subseteq d'$ and both $d$ and $d'$ have f-structure solutions, then $\phi(d) \sqsubseteq \phi(d')$.
+
+This property of the mapping between f-descriptions and the corresponding f-structures follows from the nature of the f-structure equations: New equations can only specify additional information about the f-structure or check existing information; they cannot, as it were, ``delete'' existing feature values or otherwise make the structure less specific.
+ 
+ \subsubsection{Fragmentability} Another feature of syntax in the LFG architecture that follows, in part, from monotonicity is \textsc{fragmentability} of language \citep[79--82]{BresnanEtAl2016}. Recall that f-descriptions in annotated c-structure rules can only refer to the f-structures of the nodes involved in the rule (the node at the left side of the rule -- the dominating node -- and its daughters). This means that, the larger the tree, the longer its f-description; due to monotonicity, the f-structure of a larger tree fragment is, then, always more specific than the f-structure of any of its subtrees. Therefore, a valid f-structure can be constructed for any tree fragment dominating an arbitrary sequence of terminal nodes (a substring of a complete sentence), and this f-structure will not be overridden by any additional information that is contained in the complete sentence (unless it renders the f-structure ill-formed, in which case the sentence is ungrammatical).
+ 
+ Note that this property of the c- to f-structure correspondence does not depend on whether the tree fragment corresponds to a sequence of terminal nodes in a complete sentence; it may even not be a constituent. Any sentence fragment is ``self-contained'' in the sense that its content is not modified by additional nodes in the tree.\footnote{Note, however, that a tree fragment may be ambiguous between two or more interpretations; this ambiguity may be resolved by further material in the tree.} Consider the c- and f-structures in (\ref{ex:fragment1}). Here, the combination ``thinks that'', which is not even a constituent in a fully formed sentence, contributes the argument structure of the matrix clause, the person and number features of the subject, and the complement type. It can be extended both upwards (with the addition of a subject) and downwards (with the addition of a complement clause), with f-structure information increasing monotonically in both cases.
+
+ \begin{exe}
+\ex\label{ex:fragment1}\attop{
+   \hspace*{-1cm}\begin{forest} for tree={anchor=north}
+   [,phantom
+   […,baseline
+    [VP,before computing xy={s=15}
+      [{V\\\UP=\DOWN}
+        [{thinks\\
+        (\UP \PRED) = \textsc{`think\arglist{\SUBJ \textsc{comp}}'}\\
+        (\UP \SUBJ \PERS) = 3\\
+        (\UP \SUBJ \textsc{num}) = \textsc{sg}\\
+        (\UP \textsc{comp} \textsc{ctype}) =$=_c$ \textsc{that}\\
+        }]
+      ]
+      [{CP\\(\UP \textsc{comp})=\DOWN}
+            [{C\\\UP=\DOWN}
+                [{that\\(\UP \textsc{ctype}) = \textsc{that}}]
+            ]
+            […]
+      ]
+     ]
+    ]
+    [\mbox{\avm[style=fstr]{
+                    [ pred & {`think\arglist{\SUBJ \COMP}'}\\
+                      tense & prs\\
+                      subj & [ pers & 3\\
+                                    num & sg ]\\
+                      comp & [ctype & that ]
+                    ]
+    }}]
+    ]
+    \end{forest}}
+ \end{exe}
+ 
+ Within the non-transformational architecture of LFG, the properties of monotonicity and fragmentability may seem trivial. But this is not so for transformational frameworks, where elements may be extracted from within constituents, thus violating the principle of fragmentability: sentence fragments may become modified during derivation, losing some of the information they initially contain. Fragmentability captures the fact that sentence fragments frequently occur in natural discourse and are parsed without effort by native speakers.
+
+ \subsubsection{Non-configurationality}
+ 
+ Another consequence of the mapping between c- and f-structure is \textsc{non-con\-fi\-gu\-ra\-tio\-na\-li\-ty} of language. This property means that information in the f-structure does not necessarily correspond to specific positions in the tree. Thus, features of a single constituent may be ``collected'' from several nodes or assigned several times in different positions. This is usually related to the interaction between syntactic and morphological encoding.
+ 
+ For example, in Italian, a pro-drop language, a third person singular verb form might be defined as in (\ref{ex:italex}) -- with the optional assignment of a \PRED\ feature to the subject (the standard analysis of pro-drop in LFG). If there is a subject NP in Spec,IP, this annotation is not selected, as it would lead to a \PRED\ conflict. If, however, there is no overt subject, this annotation \textit{must} be used, because otherwise the resulting f-structure would violate Coherence: \SUBJ would have no \PRED\ value. Both options can be seen in (\ref{ex:ita1}) and (\ref{ex:ita2}).
+
+\ea\label{ex:italex}
+    \catlexentry{dorme}{V}{(\UP \PRED) = \textsc{`sleep\arglist{\SUBJ}'}\\
+               (\UP \TENSE) = \PRS\\
+               (\UP \SUBJ) = \DOWN\\
+               \qquad ((\DOWN \PRED) = \textsc{`pro'})\\
+               \qquad (\DOWN \PERS) = 3\\
+               \qquad (\DOWN \NUM) = \SG}
+    \z
+    
+\ea\label{ex:ita1}
+    \begin{forest}
+     [,phantom
+     [IP
+        [\annode{NP}{(\UP \SUBJ) = \DOWN}
+            [\annode{N}{\UP = \DOWN}
+                [\anterm{Marco}{(\UP \PRED) = \textsc{`Marco'}\\
+                                (\UP \PERS) = 3\\
+                                (\UP \NUM) = \SG}]
+            ]
+        ]
+        [\annode{I$'$}{\UP = \DOWN}
+            [\annode{I}{\UP = \DOWN}
+                [\anterm{dorme}{(\UP \PRED) = \textsc{`sleep\arglist{\SUBJ}'}\\
+                                (\UP \TENSE) = \PRS\\
+                                (\UP \SUBJ) = \DOWN\\
+                                \mbox{\st{\textsc{($\downarrow$\;pred) = `pro'}}}\\
+                                (\DOWN \PERS) = 3\\
+                                (\DOWN \NUM) = \SG}]
+            ]
+        ]
+     ]
+    [\mbox{\avm[style=fstr]{
+        [ pred & {`sleep\arglist{\textsc{subj}}'}\\
+          subj & [ pred & {`Marco'}\\
+                        pers & 3\\
+                        num & sg] ]
+    }}]
+     ]
+    \end{forest}
+    \z
+    
+    \ea\label{ex:ita2}
+    \begin{forest}
+     [,phantom
+     [IP
+        [\annode{I$'$}{\UP = \DOWN}
+            [\annode{I}{\UP = \DOWN}
+                [\anterm{dorme}{(\UP \PRED) = \textsc{`sleep\arglist{\textsc{subj}}'}\\
+                                (\UP \TENSE) = \PRS\\
+                                (\UP \SUBJ) = \DOWN\\
+                                (\DOWN \PRED) = \textsc{`pro'}\\
+                                (\DOWN \PERS) = 3\\
+                                (\DOWN \NUM) = \SG}]
+            ]
+        ]
+     ]
+     [\mbox{\avm[style=fstr]{
+        [ pred & {`sleep\arglist{\textsc{subj}}'}\\
+          subj & [ pred & {`pro'}\\
+                        pers & 3\\
+                        num & sg ] ]
+    }}]
+    ]
+    \end{forest}
+    \z
+ Thus, in Italian, the \PERS and \NUM\ features of the subject are always assigned at the I node, and they may also be assigned at the N head, if it is present. The \PRED\ feature, in contrast, can be supplied either at the I node (if no overt head is present) or at the N node. This means that even in languages with relatively rigid word order and clausal phrase structure such as Italian (and English, although examples are less illustrative; see \cite{BresnanEtAl2016}), there is no universal mapping between c-structure positions and f-structure features.
+ 
+ ``Non-configurationality'' is usually understood in a more narrow sense, describing languages with no evidence for a hierarchical clause structure, such as Warlpiri \parencite{Hale83,AustBres96}. In (\ref{ex:warlpiri}), from \textcite[229]{AustBres96}, two NPs, one having a head and the other only specifying an adjunct, map to the same f-structure function \SUBJ. Thus information that is split at f-structure is collected together at f-structure.
+ 
+  \begin{exe}
+  \ex\label{ex:warlpiri}\attop{
+  \hspace*{-.9cm}\begin{forest} for tree={anchor=south}
+ [,phantom
+    [IP,baseline
+        [{\annode{\rnode{np1}{NP}}{(\UP \FOC)=\DOWN \\ (\UP \SUBJ)=\DOWN}}
+            [{kurdu-jarra-rlu\\child-\textsc{dual-erg}},roof]
+        ]
+        [\annode{I$'$}{\UP=\DOWN}
+            [\annode{I}{\UP=\DOWN}
+                [{ka-pala\\\textsc{pres}-3du\textsc{subj}}]
+            ]
+            [\annode{S}{\UP=\DOWN}
+                [\annode{NP}{(\UP \OBJ)=\DOWN}
+                    [{maliki\\dog.\textsc{abs}},roof]
+                ]
+                [\annode{V}{\UP=\DOWN}
+                    [{wajilipi-nyi\\chase-\textsc{npast}}]
+                ]
+                [{\annode{\rnode{np2}{NP}}{(\UP \SUBJ)=\DOWN}}
+                    [{wita-jarra-rlu\\small-\textsc{dual-erg}},roof]
+                ]
+            ]
+        ]
+    ]
+    [\mbox{\avm[style=fstr]{
+        [ pred & {`chase\arglist{\textsc{subj} \textsc{obj}}'}\\
+          tense & npast\\
+          aspect & pres.imperf\\
+          foc & \Rnode{foc}{~}\\
+          subj & \rnode{subj2}{[ pred & {`child'}\\
+                                 num & dual\\
+                                 case & erg\\
+                                 adj & \{ [pred & \textsc{`small'} ] \} ]}\smallskip\\
+          obj & [ pred & {`dog'}\\
+                       num & sg\\
+                       case & abs ] ]
+    }}]
+ ]
+ \end{forest}}
+ \CURVE[1.3]{-2pt}{0}{subj}{0pt}{0}{foc}
+ \CONNECT{2pt}{160}{np1}{-2pt}{200}{subj2}
+ \CONNECT{2pt}{10}{np2}{-2pt}{-10}{subj2}
+ \end{exe}
+  
+ These, of course, are only more radical manifestations of the phenomenon illustrated above. In Italian, the features of certain grammatical functions can be defined in different positions, but these positions, at least, are generally fixed, such that the overt subject, if present, occupies the Spec,IP postion, the full NP direct object occupies Comp,VP, and the verb provides the agreement and \PRED\ features of the subject. In radically non-configurational languages, in contrast, there is no association between c-structure positions and grammatical functions at all: any NP daughter of the S node can be mapped to any grammatical function, and any category, not only the verb, can function as the predicate of the clause. Non-configurational syntax and its challenges are described in more detail in \citetv{chapters/Cstr}.
+ 
+ \subsubsection{Equality, unification, and non-compositionality}
+ 
+ As seen in \citetv{chapters/Intro} and elsewhere above, statements specifying the equality of one f-structure to another -- most prominently, \UP=\DOWN\ -- play a key role in the LFG c- to f-structure mapping and syntactic analyses. These kinds of statements allow mapping more than one c-structure node to the same f-structure and permit structure sharing and the checking of compatibility of f-structure features. Equality in LFG is very similar in its effects to \textsc{unification} found in many other non-transformational formalisms -- such that LFG itself is included in the class of \textsc{unification-based grammars} in \textcite{shieber1986}.
+
+ However, as \textcite[8ff.]{kapl:89} points out, there is a crucial difference between LFG grammars and most unification-based frameworks (GPSG, HPSG, etc.): namely, the distinction between linguistic representations and the \textit{descriptions} of said representations. The clearest case of this distinction are constraining equations, which impose additional constraints on admissible f-structures which, if not violated, do not show up anywhere in the f-structure. Defining equations behave similarly: the same feature may be defined several times in the tree, but the f-structure will contain no trace of its ``pedigree'': only the resulting feature value will be included.
+ 
+ Another way in which LFG grammars are different from unification grammars is their \textsc{non-compositionality}. Even if a c-structure node is annotated with the ``unificational'' statement \UP=\DOWN, the f-structure it maps to in the complete sentence may contain additional values that are introduced higher in the tree. Thus, in (\ref{ex:mapping}) the VP node maps to an f-structure that includes a \SUBJ feature that is not introduced anywhere in the VP subtree.
+ 
+ \begin{exe}
+ \ex\label{ex:mapping}\attop{
+   \begin{tabular}[t]{cc}
+   \hspace*{-1cm}\begin{forest}
+    [\rnode{ip}{IP}
+      [\annode{\rnode{np1}{NP}}{(\UP \SUBJ) = \DOWN}
+	[\annode{\rnode{n1}{N}}{\UP=\DOWN}
+	  [\anterm{John}{(\UP \PRED)=\textsc{`John'} \\ (\UP \PERS) = 3 \\ (\UP \NUM) = \SG}]
+	]
+      ]
+      [\annode{\rnode{ibar}{I$'$}}{\UP=\DOWN}
+	[\annode{\rnode{vp}{VP}}{\UP=\DOWN}
+	  [\annode{\rnode{v}{V}}{\UP=\DOWN}
+	    [\anterm{came}{(\UP \PRED) = \textsc{`come\arglist{(\UP \SUBJ)}'} \\ (\UP\TENSE) = \PST}]
+	  ]
+	]
+      ]
+    ]
+    \end{forest} &
+    \mbox{\avm[style=fstr]{\id{f}{\rnode{f}{
+    [   pred & {`come\arglist{($f$ subj)}'}\\
+        tense & past\\
+        subj & \id{g}{\rnode{g}{[ pred & {`John'}\\
+                                           pers & 3\\
+                                           num & sg ]}}\\
+        ]}}}}
+    \end{tabular}}
+\end{exe}
+    \nccurve[nodesepA=2pt,nodesepB=0pt,angleA={0},angleB={180},linewidth=.5pt,linecolor=lsRichGreen]{->}{ip}{f}
+    \nccurve[nodesepA=2pt,nodesepB=0pt,angleA={0},angleB={180},linewidth=.5pt,linecolor=lsRichGreen]{->}{ibar}{f}
+    \nccurve[nodesepA=2pt,nodesepB=0pt,angleA={0},angleB={180},linewidth=.5pt,linecolor=lsRichGreen]{->}{i}{f}
+    \nccurve[nodesepA=2pt,nodesepB=0pt,angleA={0},angleB={180},linewidth=.5pt,linecolor=lsRichGreen]{->}{vp}{f}
+    \nccurve[nodesepA=2pt,nodesepB=0pt,angleA={0},angleB={180},linewidth=.5pt,linecolor=lsRichGreen]{->}{v}{f}
+    %
+    \nccurve[nodesepA=2pt,nodesepB=0pt,angleA={0},angleB={190},linewidth=.5pt,linecolor=lsRed]{->}{np1}{g}
+    \nccurve[nodesepA=2pt,nodesepB=0pt,angleA={0},angleB={190},linewidth=.5pt,linecolor=lsRed]{->}{n1}{g}
+    %
+ In a single-tier unificational model like GPSG or HPSG, where the counterpart to f-structure information directly occupies phrase structure nodes together with categorial information, the flow of information would be different: The content of a dominating node would be a function of the content of its children, hence, information contained in VP would be a subset of the information contained in IP. In LFG, as discussed above, \textit{f-descriptions} do indeed increase monotonically, and a \textit{fragment} associated with a node like VP does indeed contain a subset of the information contained in a larger constituent. However, in the full structure, this is not the case: every node mapped to a given f-structure maps to \textit{all} the information contained in this f-structure, even to the information that is introduced only higher above.
+
+ \subsection{Regularities in the c- to f-structure correspondence\label{sect:regularities}}
+
+
+ In \sectref{sect:xbar}, I briefly described X$'$ theory in the way that it is used in most LFG work. However, given that c-structure plays a limited role in LFG compared to the frameworks for which X$'$ theory was originally devised, in this form it amounts to little more than a system for labelling nodes. In order to give significance to the notion of being a head, a specifier, a complement, or an adjunct, X$'$ theory must be augmented by f-structure mapping principles.\footnote{It is by no means implied that these principles dictate the \textit{only} annotations that can be associated with a given node: additional annotations are not only possible, but sometimes even required to produce a valid f-structure (for example, \textsc{dis} must usually be associated with a grammatical function).} A set of such principles is broadly accepted in LFG, although some details vary. For a more detailed exposition of X$'$ theory, see  \textcite{DLM:LFG,BresnanEtAl2016}.
+ 
+ \subsubsection{Heads}
+
+ Headedness is a key concept of X$'$ theory; all projecting nodes, i.e.\ preterminal nodes (X$^0$) and intermediate projections (X$'$), are heads. We saw in all examples above that all projections of a single X$'$ category are mapped to the same f-structure, and this is for good reason: X-bar theory aims to model endocentricity, and so heads map to a ``matrix'' f-structure while specifiers, adjuncts, and complements (with the exception of functional categories) map to its dependents. Thus, heads are always annotated as \UP=\DOWN. This principle was first proposed in \textcite{bresnan1982control-complementation} and further developed in \textcite{zaenen1983}, where it is called the Head Convention.  Additionally, XP is also annotated as \UP=\DOWN\ when other categories are adjoined to it.
+ 
+ This principle of head annotation allows us to formalize \textsc{endocentricity} as the requirement that every lexical category have a head \parencite{BresnanEtAl2016}, or, more correctly, an extended head (see below), because some phrases can have a lexically instantiated functional head but no lexically instantiated lexical head.
+ 
+ \subsubsection{Complements}
+ 
+ Complements are annotated differently depending on whether they are attached to functional or lexical heads. In essence, functional projections are little more than extensions of lexical projections, and generally map to the same f-structure: for example, CP, IP and VP map to the same clausal structure, while DP and NP map to the same nominal structure. Thus, complements of functional projections are f-structure \textsc{co-heads}, annotated as \UP=\DOWN\ (\ref{ex:func-comp}). The heads of functional categories are known as \textsc{extended heads} of lexical categories; a formal definition of extended head can be found in \textcite[136]{BresnanEtAl2016}.
+ 
+ \ea\label{ex:func-comp}%\attop{
+%  \begin{adjustbox}{valign=t}
+ \begin{forest} baseline
+ [F$'$
+    [{F\\\UP=\DOWN}]
+    [{XP\\\UP=\DOWN}]
+ ]
+ \end{forest}
+%  \end{adjustbox}
+ %}
+ \z
+ 
+ \largerpage
+ Complements of lexical projections are assigned to various functions of their heads' f-structures. Most typically these are, more specifically, grammatical functions, i.e. those functions that are governed by predicates and have no additional discourse significance (\ref{ex:lex-comp1}); the label \textsc{gf} stands for ``grammatical function'' and includes such notions as subject (\SUBJ), direct object (\OBJ), secondary object (\textsc{obj\textsubscript{θ}}) and oblique (\textsc{obl\textsubscript{θ}}). In \textcite{BresnanEtAl2016}, this is formulated as a strict requirement that the complement may be any grammatical function except \SUBJ (which, in their model, is both a grammatical and a discourse function, see \citetv{chapters/GFs}). However, this restricted understanding of lexical complements is not universally accepted. For example, \textcite{laczko2014} analyzes postverbal subjects in Hungarian as occupying the same position as postverbal direct objects, i.e. VP complements.
+ 
+ \ea\label{ex:lex-comp1}
+ \begin{forest} baseline
+ [X$'$
+    [{X\\\UP=\DOWN}]
+    [{YP\\(\UP \textsc{gf})=\DOWN}]
+ ]
+ \end{forest}
+ \z
+ 
+ Complements of lexical heads may also behave in the same way as complements of functional projections, i.e. be annotated as \UP=\DOWN. This possibility should be allowed for to handle cases where the same f-structure extends over more than two projections, e.g. in certain English auxiliary constructions (\ref{ex:lex-comp2}), see \textcite[111]{BresnanEtAl2016}.
+ 
+ \ea\label{ex:lex-comp2}
+ \begin{forest} %remember picture
+  [,phantom,s sep+=2cm
+  [IP,baseline
+    [NP
+        [N
+            [John]
+        ]
+    ]
+    [I$'$
+        [I
+            [has]
+        ]
+        [VP
+            [{\rnode{v}{V}\\\UP=\DOWN}
+                [been]
+            ]
+            [{\rnode{vp}{VP}\\\UP=\DOWN}
+                [V
+                    [walking]
+                ]
+            ]
+        ]
+    ]
+  ]
+  [\mbox{\avm[style=fstr]{
+    \rnode{f}{[ pred & {`walk\arglist{\SUBJ}'}\\
+      tense & prs\\
+      aspect & perf.prog\\
+      subj & [ pred & {`John'} ] ]}}}
+  ]]
+ \end{forest}
+  \CONNECT{2pt}{10}{v}{-2pt}{180}{f}
+  \CONNECT{2pt}{10}{vp}{-2pt}{180}{f}
+ \z
+ The higher VP in this case thus operates as a kind of intermediate functional projection. An alternative solution would be to introduce an additional functional projection for English, but this does not seem justified as the forms used in these positions are identical to V complements of simpler auxiliary constructions. At the same time, the X$'$ model itself is obviously too simplistic to describe the full system of constraints on the English system of verbal periphrasis. This requires reference to morphological features of c-structure nodes; see
+ \bookorchapter{
+    \citetv[\sectref{sec:ImpApp:Devices}]{chapters/ImplementationsApplications}
+    }{
+    \citet[Section 2.2 {\ob}this volume{\cb}]{chapters/ImplementationsApplications}
+    }
+ for a discussion of complex c-structure categories which can encode such information.
+   
+ \subsubsection{Specifiers}
+ 
+ Specifiers are similar to complements in that they are mapped to f-structure positions in the f-structure of their heads. In the literature on LFG, there are two views on exactly what functions specifiers can be mapped to. The traditional approach as described in \textcite{dalrymple01,BresnanEtAl2016} is that specifiers map to \textsc{discourse functions} (DF), which consist of \textsc{topic}, \textsc{focus} and \SUBJ (which is unique in being simultaneously a grammatical function and a discourse function). However, a trend in much LFG work \parencite{King1997,BK00,DN} is to eliminate information structure functions from syntax, instead relegating them to a separate projection, i-structure. Thus \textcite{DLM:LFG} instead propose that specifiers must be \textit{either} syntactically prominent or prominent in information-structure terms. Syntactic prominence means that the f-structure of the specifier is either the subject, or it bears the overlay function \textsc{dis} (which replaces the earlier \textsc{topic} and \textsc{focus} and handles long-distance dependencies). Discourse prominence means that the specifier occupies the discourse functions \textsc{topic} or \textsc{focus} at i-structure.\footnote{In contemporary LFG, discourse functions are usually modeled not in f-structure but in a separate projection: see \citetv{chapters/LDDs} for more information. The notation in (\ref{ex:spec-annot}) follows the model of information structure in \citet{DN}.} This question is discussed in more detail in  \citetv{chapters/LDDs}.
+
+ According to this approach, then, specifiers can be given annotations as in either (\ref{ex:spec-annot}a) or (\ref{ex:spec-annot}b):
+ 
+ \ea\label{ex:spec-annot}
+ a.\begin{forest} baseline
+    [XP
+        [{YP\\(\UP \{\SUBJ\,|\,\textsc{dis}\})=\DOWN}]
+        [{X$'$\\\UP=\DOWN}]
+    ]
+   \end{forest}\hspace*{\fill}
+ b. \begin{forest} baseline
+    [XP
+        [{YP\\(\DOWNS \textsc{df}) = \{\TOPIC\,|\,\FOCUS\} \\ (\UP \textsc{gf}) = \DOWN}]
+        [{X$'$\\\UP=\DOWN}]
+    ]
+   \end{forest}
+ \z
+
+ \subsubsection{Adjunction}
+ 
+ Unlike specifiers and complements, adjuncts may be freely iterated.\footnote{As noted in \sectref{sect:xbar}, some versions of LFG X$'$ theory allow multiple complements or specifiers. However, this is not the same as adjunct iterations, because, if multiple complements or specifiers are used in a grammar, these receive different annotations, thereby not causing a conflict. In contrast, multiple application of the same adjunct rule will lead to a uniqueness violation if it selects the same grammatical function.} Naturally, then, they tend to be associated with the only grammatical function that is always set-valued,\footnote{Due to the possibility of coordination, all grammatical functions can be set-valued. However, this requires the use of a special syntactic configuration at c-structure, whereas adjuncts are set-valued ``by definition''.} \textsc{adj} (or \textsc{xadj}), see (\ref{ex:adj}). As new adjuncts are added to the tree, they get added to the adjunct set, thereby not violating uniqueness.
+
+ \ea\label{ex:adj}
+ \ea\begin{forest} baseline
+  [XP
+    [{YP\\\DOWN $\in$ (\UP\ADJ)}]
+    [{XP\\\UP=\DOWN}]
+  ]
+ \end{forest}
+ \ex\begin{forest} baseline
+     [X$'$
+        [{YP\\\DOWN $\in$ (\UP\ADJ)}]
+        [{X$'$\\\UP=\DOWN}]
+     ]
+    \end{forest}
+ \z\z
+ 
+ C-structure adjuncts do not always map to f-structure adjuncts, however. Extraposed focused or topicalized material is often adjoined at c-structure, especially at XP level; it is then associated with an information structure function like \textsc{topic} or \textsc{focus}, a grammatical function, and the overlay function \textsc{dis}.
+ 
+ Some analyses also use adjunction as the main mechanism of introducing grammatical functions, not only adjuncts, into the f-structure, without them having any special information structure role. A prominent example is the analysis of Japanese and Korean in \textcite{sells1994,sells1995}. Building on the ideas of \textcite{fukui1986}, Sells proposes that the maximal projection in Japanese and Korean is X$'$, and that the main sentence-building operation is the adjunction of verbal arguments and adjuncts to V$'$, and nominal dependents to N$'$. Adjunction of this sort can be described in LFG notation by rules such as (\ref{ex:sells-rule}), where \textsc{gf} is any grammatical function. Unlike flat structures of non-configurational languages, the resulting structures like (\ref{ex:sells-tree}), from Korean, are binary-branching, but the use of unrestricted adjunction of this kind ensures that the order of constituents is free.
+
+ \ea\label{ex:sells-rule}
+ \phraserule{X$'$}{\rulenode{Y$'$\\(\UP\GF)=\DOWN} \rulenode{X$'$\\\UP=\DOWN}} \qquad \parencite[354]{sells1994}
+ \z
+ 
+
+ \ea\label{ex:sells-tree}\attop{
+\hspace*{-1cm}\scalebox{.8}{\begin{forest} for tree={anchor=north, parent anchor=south, child anchor=north}
+  [,phantom%,s sep+=2cm
+  [V$'$,baseline
+    [\annode{N$'$}{(\UP \SUBJ)=\DOWN}
+        [{Swuni-ka\\Sooni-\textsc{nom}},roof]
+    ]
+    [\annode{V$'$}{\UP=\DOWN}
+        [\annode{N$'$}{(\UP \OBJ)=\DOWN}
+            [{yenge-lul\\English-\textsc{acc}},roof]
+        ]
+        [\annode{V$'$}{\UP=\DOWN}
+            [\annode{N$'$}{(\UP\OBLROLE{loc})=\DOWN}
+                [{mikwuk-eyse\\America-in},roof]
+            ]
+            [\annode{V$'$}{\UP=\DOWN}
+                [\annode{Adv$^{0}$}{\DOWN$\in$(\UP\ADJ)}
+                    [{cal\\well}]
+                ]
+                [\annode{V$^{0}$}{\DOWN$\in$(\UP\ADJ)}
+                    [\annode{Neg$^{0}$}{\UP=\DOWN}
+                        [{mos\\cannot}]
+                    ]
+                    [\annode{V$^{0}$}{\UP=\DOWN}
+                        [{paywu-ess-ta\\learn\textsc{-past-decl}}]
+                    ]
+                ]
+            ]
+        ]
+    ]
+  ]
+  [\mbox{\avm[style=fstr]{
+    [ pred  & `learn\arglist{\textsc{subj} \textsc{obj} \OBLROLE{loc}}'\\
+      subj & [ pred & {`Sooni'}\\
+                    case & nom ]\\
+      obj & [ pred & {`English'}\\
+                   case & acc ]\\
+    \OBLROLE{loc} & [ pred & {`America'}\\
+      case & loc ]\\
+    \ADJ & \{ [pred & `well']\\[pred & `cannot'\\adjtype & neg]\}]}}
+    ]]
+ \end{forest}}}\\
+ `Sooni did not learn English well in America.' \parencite[355]{sells1994}
+ \z
+  
+ \subsubsection{The category S}\label{sec:CoreConcepts:S}
+ 
+ As discussed above, the category S, being by definition exocentric, does not have a head in the X$'$-theoretic sense. This does not mean, however, that it has no head in the sense of c- to f-structure mapping, i.e. no node that is annotated as \UP=\DOWN. In fact, S usually includes at least one such node that represents the predicate; for example, in (\ref{ex:tagalog-ps}), representing the clause structure of Tagalog, the predicative XP is annotated as \UP=\DOWN, which causes the f-structure of the clause to be unified with the f-structure of the predicate, regardless of what its c-structure category may be.\footnote{The actual developed analysis can be somewhat more complex, as there are several views on nonverbal predication in LFG, and the (non-)identity of its structure to that of verbal predications.} Moreover, unlike X$'$-theoretic structures, a nonconfigurational S node can have more than one head: for example, a V node representing the lexical verb and an Aux node representing an auxiliary that contributes tense, agreement and other grammatical information.
+ 
+ It is remarkable that S is the only systematic exception from the X$'$ schema\footnote{It is also the only consistent exception from endocentricity, although, as an anonymous reviewer observes, the X$'$ theory elaborated in \textcite{BresnanEtAl2016} only requires endocentricity for lexical, not functional, projections (p.~137), thereby allowing, among other things, the standard treatment of mixed categories \parencite[311ff.]{BresnanEtAl2016}.} that is admitted in mainstream LFG, at least in theory. While the use of S for both nonconfigurational and ``partially non-endocentric'' languages like Tagalog or Irish is universally accepted as a valid and theoretically solid decision, there has been no discussion of exocentric NPs or other categories in the literature. Whether this represents a lack of empirical evidence for such structures in languages of the world, or is simply the result of a lack of focus and a kind of predetermined conviction, is not clear.
+ 
+ \subsubsection{Optionality of c-structure positions\label{sect:optionality}}
+
+ Now that X$'$ theory is supplemented by f-structure well-formedness constraints and annotation principles, we can introduce an additional feature of LFG c-struc\-tures: \textsc{economy of expression}, which amounts to optionality of most nodes, because the relevant grammatical constraints are for the most part captured at f-structure. This broad principle is formulated in the most radical way in \textcite[90]{BresnanEtAl2016}, who state that \textit{all} nodes (including nonbranching intermediate X$'$ projection nodes, heads, complements and specifiers) are optional:
+ 
+ \ea
+  \textsc{Economy of expression:}\\
+  All syntactic phrase structure nodes are optional and are not used unless required by independent principles (completeness, coherence, semantic expressivity). \parencite[90]{BresnanEtAl2016}
+ \z
+ 
+ Note that this is a \textit{theoretical} principle whose \textit{formal} implementation is a separate issue, partly discussed in \sectref{sect:minimal}. For example, in the standard phrase stucture rule formalism, the notions of complement and specifier crucially depend on the presence of intermediate X$'$ nodes, even if these are redundant in the sense of unary branching. Thus, as \textcite{Dalrympleetal2015} observe in their detailed discussion of economy of expression, this principle leads to a proliferation of rules, such as in (\ref{ex:xpr-elision}).
+ 
+ \ea\label{ex:xpr-elision}
+ \textsc{X$'$ elision} \parencite[384]{Dalrympleetal2015}\\
+ If an LFG grammar $G_{\mathcal{G}}$ contains an annotated rule of the form\\
+ \qquad \phraserule{XP}{$\alpha$ \rulenode{X$'$\\\UP=\DOWN} $\beta$}\\
+ it also contains a rule of the form\\
+ \qquad \phraserule{XP}{$\alpha$ \rulenode{X\\\UP=\DOWN} $\beta$}
+ \z
+ In general, \textcite{Dalrympleetal2015} conclude that economy of expression is plausible as an informal principle that emerges through the interaction of other, more basic principles, and that grammars, in general, tend to obey; but it is not plausible as a formal principle to be incorporated into the theory of grammar, because it not only introduces additional complexity into the framework, but also fails to account for cases of genuine non-optionality (such as, for example, in configurational languages where certain nodes are obligatory regardless of independent principles).
+ 
+ Still, the degree of optionality commonly allowed in LFG grammars is rather large and certainly greater than what is assumed by most other phrase-structure-based frameworks. I will now go through each of the X$'$ theoretic categories and show why they can be optional (except adjuncts, because these are optional by definition, by virtue of the rules that introduce them).
+ 
+ \subsubsubsection{Complements and specifiers} Complements and specifiers not only can but must, as a rule, be optional because the c-structure does not contain any valency information and there is no way to verify at c-structure if, for example, the verb has a direct object. Thus, the rule in (\ref{ex:vprule}), repeated in (\ref{ex:vprule-repeat}),  will hold for all English sentences, but the NP complement will only be licensed in transitive clauses. 
+
+  \ea\label{ex:vprule-repeat}
+ \phraserule{VP}{\rulenode{V\\\UP=\DOWN} \optrulenode{NP\\(\UP\OBJ)=\DOWN}}
+ \z
+ 
+ If the verb is transitive (i.e. its \PRED\ feature has \OBJ in the list of arguments), omitting the complement will result in a violation of Completeness (unless the object is introduced in another position). By contrast, if the verb is intransitive, introducing the object here will lead to a Coherence violation, because the grammatical function \OBJ will not be selected by any argument.
+
+ Optionality of complement and specifier positions, and c-structure positions where arguments are introduced in general, is also required because the material that they ``canonically'' contain may be displaced elsewhere, for example, to a position designated for wh-movement or information structure function. In this case, only one position must be filled, otherwise conflict of \PRED\ values will lead to a Uniqueness violation. Thus (\ref{ex:vprule}) may produce a single V node even in a transitive clause, provided that the direct object is introduced in another position (such as wh-movement \textit{Whom did you see?} or topicalization \textit{John, I saw.}).
+ 
+ \subsubsubsection{Heads} Similarly, c-structure heads can be optional in LFG because of Completeness and Coherence. \PRED\ features are almost always\footnote{It is technically possible to introduce a \PRED\ feature in a different position. For example, the annotation of a complement or specifier might include an additional annotation like (\UP\OBJ\PRED)=\textsc{'pro'}. I am not aware of any analyses utilizing this possibility; ``external'' \PRED\ assignment normally only happens in verbal heads assigning \PRED\ features to pro-dropped subjects and in similar such structures. However, Mary Dalrymple (p.c.) points out that such annotations seem to be required in asyndetic relative clauses like \textit{The man John saw}, where the pronominal \OBJ in the relative clause has to be introduced by a phrase structure rule since there is no lexical material that could plausibly contribute its content.} introduced by head nodes, i.e. nodes carrying the unificational annotation \UP=\DOWN. Therefore, a structure lacking a head (without its \PRED\ features introduced elsewhere) will be \PRED-less and will not be able to include any grammatical functions, because that would violate Coherence.
+ 
+ Headless XPs are quite widespread at clause level; their role is to account for variation in head positions in configurational languages. For example, in English lexical verbs always appear in V, but the I head can be filled or not depending on whether the verb form is periphrastic or synthetic. In German and other V2 languages, the distribution is more complex: the V head is only occupied if the verb form is periphrastic, and the auxiliary, or the finite verb in synthetic forms, stands in the I node in subordinate clauses (\ref{ex:german-subord}) and in the C node in main clauses (\ref{ex:german-main}). Examples are from \textcite[448--450]{BresnanEtAl2016}.
+ 
+ \newpage
+ \ea\attop{\label{ex:german-subord}\begin{forest} for tree={anchor=north}
+   [,phantom
+   [CP,baseline
+    [\annode{C}{\UP=\DOWN}
+        [{daß\\that}]
+    ]
+    [\annode{IP}{\UP=\DOWN}
+        [\annode{NP}{(\UP \SUBJ)=\DOWN}
+            [{Karl},roof]
+        ]
+        [\annode{I$'$}{\UP=\DOWN}
+            [\annode{VP}{\UP=\DOWN}
+                [\annode{DP}{(\UP \OBJ)=\DOWN}
+                    [{das Buch\\the book},roof]
+                ]
+            ]
+            [\annode{I}{\UP=\DOWN}
+                [{kaufte\\bought}]
+            ]
+        ]
+    ]
+   ]
+   [\mbox{\avm[style=fstr]{
+    [ pred & \textup{`buy\arglist{\SUBJ \OBJ}'}\\
+      comptype & that\\
+      tense & past\\
+      mood & decl\\
+      subj & [ pred & {`Karl'} ]\\
+      obj & [ pred & {`book'}\\
+                  def & + ] ]
+   }}]
+   ]
+  \end{forest}}
+  \sn `that Karl bought the book'
+  \z
+  
+ \ea\label{ex:german-main}
+ \begin{forest} for tree={anchor=north}
+ [,phantom
+  [CP,baseline
+    [\annode{DP}{(\UP \TOPIC)=\DOWN}
+        [{Karl},roof]
+    ]
+    [\annode{C$'$}{\UP=\DOWN}
+        [\annode{C}{\UP=\DOWN}
+            [{hat\\has}]
+        ]
+        [\annode{IP}{\UP=\DOWN}
+            [\annode{VP}{\UP=\DOWN}
+                [\annode{DP}{(\UP \OBJ)=\DOWN}
+                    [{das Buch\\the book},roof]
+                ]
+                [\annode{V}{\UP=\DOWN}
+                    [{gekauft\\bought}]
+                ]
+            ]
+        ]
+    ]
+  ]
+  [\mbox{\avm[style=fstr]{
+    [ pred & {`buy\arglist{\SUBJ \OBJ}'}\\
+      tense & pst\\
+      mood & decl\\
+      topic & \Rnode{top}{~}\\
+      subj & \rnode{subj}{[ pred & {`Karl'} ]}\smallskip\\
+      obj & [ pred & {`book'}\\
+              def & $+$ ]
+  ]}}]
+]
+ \end{forest}
+ 
+ `Karl has bought the book.'
+ \CURVE[.9]{0pt}{0}{subj}{0pt}{0}{top}
+ \z
+ 
+ 
+ This analysis corresponds quite closely to the standard view of German word order in GB / Minimalism, such as \textcite{vikner1995}. The key difference is that there is no verb movement in LFG; verbs and auxiliaries are always ``base-generated'' in C, I, or V depending on clause types and the verb form. The correct word order is ensured by feature licensing; multiple occurences of a verb form or verbless sentences are excluded at f-structure through Uniqueness and Coherence.
+ 
+ Another type of headless XP occurs in languages which allow freely discontinuous constituents, like the example from Warlpiri in (\ref{ex:warlpiri}) above. Non-con\-fig\-u\-ra\-tional languages like Warlpiri allow freely assigning any grammatical function to Spec,IP (which is additionally interpreted as a focus) and to any NP children of S. Hence, two or more NPs might be mapped to the same grammatical function; if there is no \PRED\ clash or case mismatch, the resulting sentences will be grammatical and these multiple NPs will be mapped to the same f-structure. For more information on non-configurational languages, see \citetv{chapters/Cstr}. 
+ 
+ Finally, headless constituents appear in certain instances of incorporation, such as in West Greenlandic (\ref{ex:greenlandic}), where an incorporated noun head can have non-incorporated dependents (here, agreeing in instrumental case with the incorporated argument).
+ 
+ \ea\label{ex:greenlandic}Greenlandic \parencite[446]{BresnanEtAl2016}
+ \hspace*{-1cm}\begin{forest} for tree={anchor=north}
+  [,phantom
+  [S,baseline
+    [\annode{NP}{(\UP \textsc{obl})=\DOWN}
+        [\annode{N}{(\UP \ADJ)=\DOWN \\ (\UP \CASE) = (\DOWN \CASE) \\ (\UP \NUM) = (\DOWN \NUM)}
+            [{ataatsinik\\one.\textsc{ins}}]
+        ]
+    ]
+    [\annode{V}{\UP=\DOWN}
+        [\annode{N\textsubscript{stem}}{(\UP \textsc{obl})=\DOWN}
+            [{qamuteq\\sled}]
+        ]
+        [\annode{V\textsubscript{suff}}{\UP=\DOWN}
+            [{arpoq\\have}]
+        ]
+    ]
+  ]
+  [\mbox{\avm[style=fstr]{
+        [ pred & {`have\arglist{\SUBJ \OBJ}'}\\
+          mood & indic\\
+          subj & [ pred & {`pro'}\\
+                        num & sg\\
+                        pers & 3\\
+                        case & abs ]\\
+          obl & [ pred & {`sled'}\\
+                      case & ins\\
+                      num & pl\\
+                      adj & [ pred & {`one'}\\
+                                  case & ins\\
+                                  num & pl ]\\
+                    ]
+          ]
+  }}]
+  ]
+ \end{forest}
+
+ `I have one sled.' 
+ \z
+ 
+ \section{Extensions of the core architecture\label{sect:ext}}
+
+ The core architecture of LFG has remained remarkably stable since the framework was first introduced in \textcite{bresnan1982control-complementation}; the only major innovations are the introduction of various additional projections, briefly described in \bookorchapter{\citetv[\sectref{sect:intro:addlevels}]{chapters/Intro}}{
+ \citet[Section 5 {\ob}this volume{\cb}]{chapters/Intro}}, and functional uncertainty (earlier LFG used traces to model long-distance dependencies). Nevertheless, there have been proposals to alter and extend the core architecture, mainly from three directions: to adopt a view of c-structure different from context-free grammar; to introduce construction-based approaches to LFG using templates; to eliminate \PRED\ values, fully relegating their work to semantics. None of these approaches have been adopted by mainstream LFG practitioners, with the exception of templates, which have gained some acceptance. Nevertheless, these proposals may represent venues in which LFG could develop in the future.
+
+ \subsection{Constructions and LFG: Templates}\label{sec:CoreConcepts:templates}
+
+ In many ways, LFG is close in spirit to other non-transformational frameworks such as HPSG \parencite{pollard1994head-driven} or various versions of construction grammar (see \cite{HoffmannTrousdale2013}). All these frameworks, unlike mainstream generative grammar, are not committed to cross-linguistically universal structures and instead define syntactic rules on a language-by-language basis. However, LFG is crucially different from these other approaches in lacking any concept comparable to the notion of construction. The basic building blocks of syntax are phrase structure rules and lexical entries (which formally are a subtype of phrase structure rules); there is a general set of principles governing the mapping from phrase structure positions to f-structure. It is, of course, possible to define separate phrase structure rules and lexical entries to handle specific phenomena and constructions, but these will not be formally related to other rules -- there is no hierarchy of phrase structure rules that would allow defining, for example, an exceptional subtype of a specifier rule. In general, most theoretical principles in LFG (such as the principles of c- to f-structure mapping described above) are formulated in such a way as to define a structure that obtains by default, but which can be overriden in individual languages. This is at odds with the main tenets of construction-based approaches, where no general or universal principles or structures are usually assumed, and each construction hierarchy is language-specific.
+ 
+ Furthermore, while it is possible to define rules that are specific to individual constructions or lexical items, it is impossible to directly define a construction that spans more than the scope of one phrase structure rule (e.g., a specific combination of a specifier, head and complement). Of course, the same effect may be achieved by using combinations of defining and constraining equations, as in analyses of idioms; for an example, see \textcite[77]{falk2001lexical}. But such analyses do not treat idioms or constructions as theoretical objects in their own right; the collocation is only enforced by the combination of equations acting at different levels.
+  
+ These ``limitations'' related to the c-structure to f-structure correspondence are not necessarily disadvantages of the LFG system: they are the result of a conscious design decision that influences the way LFG analyses are structured; in most cases, it is possible to account for ``construction-based'' phenomena in LFG, but the description will be different than in Construction Grammar and related frameworks. However, there are certainly genuine cases of construction-specific phenomena, such as so-called multi-word expressions (MWEs); these are difficult to describe in standard LFG. A possible, but radical, solution is the replacement of context-free grammar by Tree-Adjoining Grammar (TAG) at c-structure, as described in \citetv{chapters/TAG}.
+ 
+ Another reason why some counterpart to the notion of construction might be useful in LFG is that f-structure equations associated with rules and lexical items are not generalized in any way. Thus, nouns may have annotations such as (\UP\NUM)=\SG\  and (\UP\NUM)=\PL, and verbs, (\UP\TENSE)=\PST, but nothing in the grammar \textit{requires} nouns and verbs to introduce these equations, and there is no place where such generalizations are stated explicitly -- in effect, they are only the result of consistency on the part of the grammar writer.\footnote{Note that in LFG, this issue is distinct from the issue of permissible f-structure attributes and values discussed in \sectref{sect:valtypes}. The two are, of course, related, and would have been the same issue in other frameworks, but not in LFG, where, as discussed above, structures are distinct from the descriptions that license them. An LFG grammar may not generalize over \textit{structures} directly (unless feature declarations are used), but it may well generalize over \textit{descriptions}.} This limitation, again, cannot be overcome using a kind of type inheritance system common to construction-based approaches, because that would require a ``hierarchy'' of f-descriptions. But f-descriptions are only sets of expressions, not objects that can be manipulated or inherit information from each other.
+ 
+ A possible compromise between the description-based approach of LFG and constructions, explored in \textcite{asudeh2013constructions}, is based on the use of \textsc{templates} -- bundles of grammatical descriptions extensively used in computational LFG, such as in XLE, but also in some theoretical work \parencite{dalrymple2004linguistic,Asudeh12}. Templates are basically symbols that serve as shorthands for f-descriptions that are substituted for the template call wherever it is invoked in an f-description. For example, the combination of third person and singular number agreement, highly relevant for English grammar, can be abbreviated as the template \textsc{3sg} (\ref{ex:3sg-template}). This template can then be called as in (\ref{ex:3sg-call}). Furthermore, just like an f-description, a template can be negated; thus, as \textcite[19]{asudeh2013constructions} propose, English unmarked present-tense forms can be naturally captured as in (\ref{ex:3sg-neg}), which resolves to (\ref{ex:3sg-neg-resolve}).\footnote{Note that such negation tacitly changes the equation type from defining to constraining, because negative statements can only be constraining. This change is not formally problematic, but care should be taken to ensure that other parts of grammar, which may depend on these defining equations, are not compromised.}
+ 
+ \ea\label{ex:3sg-template}
+   \begin{tabular}[t]{ll}
+    \textsc{3sg} $\equiv$\footnotemark & (\UP\SUBJ\PERS)=3\\
+    & (\UP\SUBJ\NUM)=\SG\\
+   \end{tabular}\footnotetext{\textcite{asudeh2013constructions} use $:=$ for template assignment, which is a standard assignment operator in some programming languages (e.g. Pascal), also used in computer science.}
+   \ex\label{ex:3sg-call}
+   \catlexentry{laughs}{V}{(\UP\PRED) = \textsc{`laugh\arglist{\SUBJ}'}\\\textsc{@3sg}}
+   \ex
+   \ea\label{ex:3sg-neg}
+   \catlexentry{laugh}{V}{(\UP\PRED) = \textsc{`laugh\arglist{\SUBJ}'}\\$\neg\textsc{@3sg}$}
+   \ex\label{ex:3sg-neg-resolve}
+    \catlexentry{laugh}{V}{(\UP\PRED) = \textsc{`laugh\arglist{\SUBJ}'}\\
+     $\big\{$ (\UP\SUBJ\PERS) $\neq$ 3  \\
+     | (\UP\SUBJ\NUM) $\neq$ \textsc{sg} $\big\}$}
+   \z
+ \z
+ 
+ Templates can also be parametric, with parameters supplied in parentheses, as in programming languages. When a template is called, all mentions of each parameter are replaced by the string given in the parentheses. Note that this is done via simple string substitution,\footnote{For this reason, if the parameter is an f-structure reference, it may be ambiguous within a template if it includes Functional Uncertainty. To ensure that the same f-structure is referred to in all expressions, the template should first assign the parameter to a local name.} and the parameters can be any kind of symbol; often, a reference to an f-structure, but not necessarily. For example, \textcite{asudeh2013constructions} define the following template for intransitive verbs:
+ 
+ \ea \template{intrans(p)}{(\UP\PRED) =
+   \textsc{`\textsc{p}\arglist{\SUBJ}'}} \z
+
+\ea \catlexentry{laughs}{V}{\textsc{@intrans}(\textsc{laugh})\\$\textsc{@3sg}$} \z
+ 
+ Templates by themselves are not theoretical objects: they are a simple mechanism for reusing common parts of f-descriptions. Nevertheless, if used consistently, they can serve as a powerful mechanism for capturing generalizations in grammatical structure. In particular, a kind of hierarchy of templates can be defined if the use of a template in a lexical item, phrase structure rule, or in another template is viewed as inheritance from that template. For example, both \textit{laugh} and \textit{laughs} inherit from the \textsc{3sg} template:\footnote{This may seem counterintuitive, given that \textit{laugh} is not a third person singular form. However, inheritance in this approach is purely a matter of calling a template in the f-description: it does not matter in what context it is called (under negation, in disjunction, etc.). This graph captures the intuition that the English unmarked Present Simple form is defined with reference to the third person singular features (as opposed to, e.g., being a disjunction of all alternative person-number combinations). Note that ``inheritance'' here is purely a matter of visualization and metagrammatical analysis; it has no special status in the formalism itself.}
+ 
+ \ea
+    \begin{forest}
+     [\textsc{3sg}
+        [\textit{laugh}]
+        [\textit{laughs}]
+     ]
+    \end{forest}
+
+ \z
+ 
+ \textcite{asudeh2013constructions} use this template system to develop a detailed analysis of the traversal / result construction (\textit{Smithy drank his way through university}, \cite{
+ jackendoff1992,goldberg1995constructions}) in English, Swedish, and Dutch. Since this seminal work, templates have been widely used in LFG literature, although their adoption is not universal. Importantly, an advantage of the template-based approach to constructions is that they only introduce a purely notational convention; they do not change the architecture of LFG in any way. Thus template-based analyses are fully compatible with non-template-based ones.
+ 
+ This simplicity can also be perceived as a disadvantage, in that constructions are not ``first class citizens'' of the theory: the template mechanism is unconstrained, and its use is fully optional. However, this follows the overall spirit of LFG: As seen above, the core architecture and metalanguage are relatively unconstrained and certainly more expressive than is needed for the purposes of describing natural languages. Constraints on possible languages are meant to be captured by theoretical generalizations (such as the regularities of c- to f-structure mapping described in \sectref{sect:regularities}) that are not part of the formal framework itself. Likewise, templates only serve as a useful mechanism of generalizing over f-descriptions; what these templates should look like and how consistently they should be used are theoretical decisions that should be viewed as additional constraints on LFG grammars, not part of the formal architecture itself. 
+ 
+ \subsection{Modifications of c-structure\label{sect:cmod}}
+
+ Compared to developments in other frameworks, such as Minimalism (cf. \cite{adger2013}), there have been few advances in the development of constituent structure in LFG. Apart from the introduction of non-projecting words in \textcite{Toivonen:NonProj}, the version of X$'$ theory used in most LFG work is the same as the original version developed in transformational grammar. However, there have been several alternative approaches to c-structure proposed in the literature, some relatively minor while others quite radical. In this section, I will describe two approaches -- minimal c-structure \parencite{lovestrand-lowe2017} and lexical sharing \parencite{wescoat2002}. Another modification \parencite{findlay2017,findlay2019}, which replaces context-free grammar with tree-adjoining grammar (TAG) while preserving core features of the LFG formalism, is described in \citetv{chapters/TAG}. Several categorial grammar-based approaches have been proposed \parencite{oehrle1999,muskens2001,kokkonidis2007}, but have not gained much traction, possibly because they are no longer compatible with standard LFG and have to be regarded as separate, though related, frameworks.
+ 
+ \subsubsection{Minimal c-structure\label{sect:minimal}}
+ 
+ \textcite{lovestrand-lowe2017} propose a modification of X$'$ theory to account for two shortcomings that they perceive in its standard LFG version. First, X$'$ categories and projection levels are stipulated by the theory but not actually represented as discrete features; in formal terms, c-structure node labels are just monolithic symbols, even though they are given a theoretical interpretation. Second, consistent application of X$'$ theoretic principles leads to many redundant nodes, e.g. unary branching X$'$ nodes have to be used if an XP has a complement but no specifier or adjuncts. This redundancy is sometimes eliminated by appealing to economy of expression, either by ``pruning'' the superfluous nodes \parencite{BresnanEtAl2016} or by introducing additional rules into the grammar (such as XP → X ZP in addition to XP → X$'$ YP and X$'$ → X ZP).  However, both solutions introduce additional complexity into LFG and could be avoided. Third, some analyses work with fewer than two levels of X$'$ structure: for example, \textcite[130]{BresnanEtAl2016} take Welsh IP to lack a specifier, dominating only I and S. \textcite{sells1994,sells1995} similarly assumes that all phases in Japanese and Korean have X$'$ as their maximal projection. This kind of ``deficiency'' is not formalized in traditional X$'$ theory.
+ 
+ An earlier attempt to refine X$'$ theory in LFG is \textcite{marcotte2014}, which, however, has been criticized in \textcite{lovestrand-lowe2017} for failing to account for some common syntactic structures, such as adjunction and non-projecting words. Lovestrand and Lowe propose, following \textcite{kapl:89}, that additional categorial features are projected in a separate feature structure (l-structure) via the function $\lambda$. L-structure contains the features \textsc{l} (for \textsc{l}evel) and \textsc{p} (for \textsc{p}rojection) that represent the ``current'' bar level of the node and the maximal level that this particular phrase has in the sentence. C-structure itself only contains syntactic category information; thus X, X$'$, and XP are all represented as X. Lovestrand and Lowe then define a set of templates and rule schemas that describe all the positions allowed by X$'$ theory. For example, the template \textsc{ext} in (\ref{ex:template-ext}) is a conjunction of the tem1lates \textsc{lpm} (\ref{ex:template-lpm}) and \textsc{lp} (\ref{ex:template-lp}), which mean that the annotated node is a maximal projection (\textsc{lp}) that is a daughter of a maximal projection (\textsc{lpm}). This applies to specifiers and adjuncts. The template \textsc{headx} (\ref{ex:template-headx}) is used on all X$'$ theoretic heads and consists of the templates \textsc{ldown} (\ref{ex:template-ldown}) and \textsc{pud} (\ref{ex:template-pud}), which mean that, first, the bar-level of the annotated node is lower than the level of the mother by 1; (b) the maximal projection level is inherited from the head to the overall structure. These templates allow us to define the specifier rule template in (\ref{ex:spec-rule}).\footnote{For clarity, conjunction is explicitly represented as $\wedge$ in (\ref{ex:template-ext}) and (\ref{ex:template-headx}).}
+ 
+ \largerpage
+ \ea templates for specifier
+    \ea\label{ex:template-ext} \template{ext}{$\textsc{@lpm} \wedge \textsc{@lp}$}
+    \ex\label{ex:template-lpm} \template{lpm}{(\MSTAR\textsubscript{λ} \textsc{l}) = (\MSTAR\textsubscript{λ} \textsc{p})}
+    \ex\label{ex:template-lp} \template{lp}{(*\textsubscript{λ} \textsc{l}) = (*\textsubscript{λ} \textsc{p})}
+    \z
+    \clearpage
+ \ex templates for head
+    \ea\label{ex:template-headx} \template{headx}{$\textsc{@ldown} \wedge \textsc{@pud}$}
+    \ex\label{ex:template-ldown} \template{ldown}{\{(*\textsubscript{λ} \textsc{l}) = 0 $\wedge$ (\MSTAR\textsubscript{λ} \textsc{l}) = 1 \; | \; (*\textsubscript{λ} \textsc{l}) = 1 $\wedge$ (\MSTAR\textsubscript{λ} \textsc{l}) = 2 \}}
+    \ex\label{ex:template-pud} \template{pud}{(\MSTAR\textsubscript{λ} \textsc{p}) = (*\textsubscript{λ} \textsc{p})}
+    \z
+ \ex\label{ex:spec-rule} specifier rule\\
+    \phraserule{X}{\rulenode{Y\\\textsc{@ext}} \rulenode{X\\\textsc{@headx}}}
+ \z
+ 
+ The application of this approach leads to c-structures notated as in (\ref{ex:tree-minimal}), where the superscript numbers are shorthand for \textsc{l/p} feature values of the node.
+ 
+ \ea\label{ex:tree-minimal}
+ \begin{forest}  for tree={anchor=north}
+  [I$^{1/1}$
+    [N$^{1/1}$
+        [D$^{0/0}$
+            [the]
+        ]
+        [N$^{0/1}$
+            [A$^{0/}$
+                [small]
+            ]
+            [N$^{0/1}$
+                [dog]
+            ]
+        ]
+    ]
+    [V$^{1/1}$
+        [V$^{0/1}$
+            [eats]
+        ]
+        [N$^{0/0}$
+            [biscuits]
+        ]
+    ]
+  ]
+ \end{forest}
+ \z
+ 
+ In this example, prenominal A in English is treated as a non-projecting category, hence it lacks the \textsc{p} feature altogether.\footnote{While Lovestrand and Lowe assume no DP in English, D is not treated as a non-projecting word: in their theory, \textit{'s} possessors can attach to D as internal arguments (complements).} It is seen from this example that the ``maximal'' projection level (\textsc{p}) is inherited bottom-up and represents the highest projection that the phrase has in this specific sentence. For example, the specifier noun phrase \textit{the small dog} has a specifier, hence its dominating node has the category N$^{1/1}$, while the complement \textit{biscuits} has no modifiers, and its head is only N$^{0/0}$. Thus the system results in minimal c-structures solely by using standard LFG mechanisms of templates and projections, without employing additional formal devices such as Economy of Expression.
+ 
+ \subsubsection{Lexical sharing}
+ \label{sec:CoreConcepts:LexSharing}
+ 
+ The principle of lexical integrity, and the general idea that there is a definite boundary between morphology and syntax, has long been criticized in the generative literature (perhaps the most recent such attempt is \cite{bruening2018lexicalist}) and, recently, in typological approaches (see \cite{haspelmath2011}). Not all of the objections to lexicalism are necessarily applicable to LFG, but one persistent problem is the putative existence of syntactic structure where one lexical item (either completely idiosyncratic or derived in the morphology) occupies two or more syntactic heads. One example are preposition-determiner contractions in languages like French and German \parencite{wescoat2007}: Items like French \textit{au} [o] `to the (masculine)' (← \textit{à} + \textit{le}) are clearly idiosyncratic, historically motivated mergers of the preposition and the article (compare \textit{à le faire} `to do it', where \textit{le}, identical in form to the masculine singular definite article, is the object proclitic of \textit{faire} `do', and thus does not trigger merger), but syntactically, they obey all the constraints that are independently imposed on prepositions and determiners in the language.
+ 
+ To account for such phenomena, \textcite{wescoat2002} proposed \textsc{lexical sharing}: a modification of the LFG architecture to allow a single word (supplied by the lexicon) to occupy more than one c-structure node. In Wescoat's system, lexical items are no longer part of c-structure; category nodes like N, V, I (preterminals in the standard system) are now terminal nodes that are mapped, via the projection function $\lambda$, to morphological words that comprise an ordered list at a separate level of representation, l-structure.\footnote{It is unfortunate that the same name of the level and the projection function were independently used in \citeauthor{lovestrand-lowe2017}'s (\citeyear{lovestrand-lowe2017}) proposal of minimal c-structure, which creates confusion. However, as will be shown below, Wescoat's approach can be integrated into the contemporary LFG architecture without stipulating an additional level.} In the simplest and most common case, each terminal c-structure node corresponds to exactly one word:
+ 
+ \ea
+ \begin{forest}
+  where n children=0{tier=word,edge={->}}{}
+  [PP
+    [P
+        [{à\\to}]
+    ]
+    [DP
+        [D
+            [la\\the.\textsc{f}]
+        ]
+        [NP
+            [N
+                [fille\\girl]
+            ]
+        ]
+    ]
+  ]
+ \end{forest}
+
+ \z
+ 
+ Lexical sharing occurs when two or more terminal c-structure nodes are mapped to one morphological word:
+ 
+ \ea
+ \begin{forest}
+%  \tikzset{>=latex}
+ [PP, s sep+=2em
+    [P
+        [{au\\to+the.\textsc{m}},name=au,tier=word,before drawing tree={x+=2em},edge={->}]
+    ]
+    [DP
+        [D,name=d]
+        [NP
+            [N
+                [{garçon\\boy},tier=word,edge={->}]
+            ]
+        ]
+    ]
+ ]
+ \draw[->] (d) -- (au);
+ \end{forest}
+ \z
+To avoid excessive reorderings, Wescoat puts a constraint on the correspondence between c-structure and l-structure which he calls the \textit{order preservation axiom}: For all $n_1$ and $n_2$ in the set of terminal nodes, if $\lambda(n_1)$ precedes $\lambda(n_2)$, then $n_1$ precedes $n_2$. This means that words cannot be reordered. It also follows from this axiom that only adjacent nodes may be shared. Thus lexical sharing is, in fact, rather constrained and does not seem to introduce much additional complexity into the system.
+ 
+ Lexical entries in lexical sharing analyses are defined as in (\ref{ex:ls-entry}), with each node having a separate f-description. The syntactic analysis then proceeds according to the standard f-structure rules defined by the grammar; lexical sharing configurations are licensed if a word is defined as coinstantiating adjacent nodes.
+ 
+ \ea\label{ex:ls-entry}
+ \textit{au}\hspace*{1ex}{$\longleftarrow$}\hspace{.6em}{\small\rulenode{P\\(\DOWN\PCASE)=\textsc{to}\\$\Downarrow$=\DOWN}
+        \rulenode{D\\(\DOWN\SPEC)=\textsc{def}\\(\DOWN\GEND) $=_c$ \textsc{m}\\(\DOWN\NUM) $=_c$ \textsc{sg}}}
+ \z
+
+ This correctly predicts the scope difference between the preposition and definite article in examples like (\ref{ex:ls-scope}). The order preservation axiom also predicts that structures like (\ref{ex:ls-incorrect}a) and (\ref{ex:ls-incorrect}b) are ungrammatical, because the shared nodes are not adjacent; the only possible word order is (\ref{ex:ls-correct}). 
+ 
+ \ea\label{ex:ls-scope}
+ \begin{forest}
+  [PP, s sep+=2em
+    [P
+        [{au\\to+the.\textsc{m}},name=au,tier=word,before drawing tree={x+=2em},edge={->}]
+    ]
+    [DP
+        [DP
+            [D,name=d]
+            [NP
+                [N
+                    [{travailleur\\worker(\textsc{m})},tier=word,edge={->}]
+                ]
+            ]
+        ]
+        [Conj
+            [{et\\and},edge={->},tier=word]
+        ]
+        [DP
+            [D
+                [{sa\\his.\textsc{f}},edge={->},tier=word]
+            ]
+            [NP
+                [N
+                    [{famille\\family(\textsc{f})},edge={->},tier=word]
+                ]
+            ]
+        ]
+    ]
+  ]
+  \draw[->] (d) -- (au);
+ \end{forest}\\
+ `to the worker and his family'
+ \z
+ 
+ \newpage
+ \ea\label{ex:ls-incorrect} Ill-formed c-structures:\\[1ex]
+ a.\begin{forest}
+%   where n children=0{tier=word,edge={->}}{} 
+  [PP
+    [P
+        [{au\\to+the.\textsc{m}},name=au,tier=word,edge={->}]
+    ]
+    [QP
+        [Q
+            [{tout\\all[\textsc{m}]},tier=word,edge={->}]
+        ]
+        [DP
+            [D,name=d]
+            [NP
+                [N
+                    [{personnel\\staff(\textsc{m})},tier=word,edge={->}]
+                ]
+            ]
+        ]
+    ]
+  ]
+  \draw[->] (d) -- (au);
+ \end{forest}
+ b. \begin{forest}
+%   where n children=0{tier=word,edge={->}}{} 
+  [PP
+    [P,name=p]
+    [QP
+        [Q
+            [{tout\\all[\textsc{m}]},tier=word,edge={->}]
+        ]
+        [DP
+            [D
+                [{au\\to+the.\textsc{m}},name=au,tier=word,edge={->}]            
+            ]
+            [NP
+                [N
+                    [{personnel\\staff(\textsc{m})},tier=word,edge={->}]
+                ]
+            ]
+        ]
+    ]
+  ]
+  \draw[->] (p) -- (au);
+ \end{forest}
+ \z
+ 
+ \ea\label{ex:ls-correct}
+ \gll \'a tout le personnel\\
+ to all[\textsc{m}] the.\textsc{m} staff\\
+ \glt `to all the staff'
+ \z
+ 
+ 
+ 
+ Note that Wescoat assumes that the correspondence function $\phi$ should have l-structure in its domain, hence the use of \DOWN\ in annotations, instead of \UP\ in standard LFG analyses. This assumption also motivates the symbol $\Downarrow$; this stands for the abbreviation $\phi(\lambda(\DOWN))$, i.e. ``the f-structure of the lexical exponent of the current node'' -- this is needed to determine which of the co-instantiated f-structures the word itself maps to. However, this is not actually required, and \textcite{lowe2015clitic}, in his analysis of the English ``Saxon genitive'' \textit{'s}, proposed a modification of lexical sharing that dispenses with both these additional notations and integrates the proposal into modern mainstream LFG. Lowe observes that Wescoat's ``l-structure'' in fact serves the exact same function as the s-string -- the set of morphosyntactic words that map to terminal c-structure nodes -- in the LFG projection architecture, including the recent proposal of \textcite{DM11}. Ordinarily, the s-string in LFG maps to terminal tree nodes that are occupied by morphosyntactic words; lexical sharing can be implemented by assuming that the c-structure tree terminates in category labels (preterminals), to which elements of the s-string are mapped. The replacement of l-structure by the s-string means that the symbol $\Downarrow$ and all the related machinery is no longer needed, because s-structure does not map to f-structure.\footnote{This seems rather harmless, because lexical sharing entries overwhelmingly just use $\Downarrow=\downarrow$ on one of the nodes, which doesn't seem to influence anything. However, \textcite{wescoat2007} does use constraints on the l-structure to f-structure mapping to model certain limitations on preposition-determiner contractions in German.} For the same reason, lexical entries use \UP, as in normal LFG, instead of \DOWN.\footnote{In fact, while standard LFG allows using \DOWN\ in lexical entries, this model does not. This means that analyses that make use of \DOWN\ in lexical entries, such as the Italian example in (\ref{ex:italex}), have to be reformulated to use \UP. In most cases, this should not influence anything, although the definition and application of f-precedence might require some modification.} In Lowe's version of lexical sharing, the entry in (\ref{ex:ls-entry}) will look as follows:
+ 
+ \ea\label{ex:ls-entry-lowe}
+ \begin{tabular}[t]{ll}
+ \multicolumn{2}{l}{\textit{au}: P D}\\
+ P & (\UP\PCASE) = \textsc{to}\\
+ D & (\UP\SPEC) = \textsc{def}\\
+   & (\UP\GEND) $=_c$ \textsc{m}\\
+   & (\UP\NUM) $=_c$ \textsc{sg}\\
+ \end{tabular}
+ \z 
+ 
+ While lexical sharing has been used to analyze several phenomena, including auxiliary reduction \parencite{wescoat2005}, preposition-determiner contractions \parencite{wescoat2007}, suspended affixation \parencite{broadwell2008,belyaev2014-case-EN,Belyaev2021}, endoclitics \parencite{wescoat2009}, and morphologically bound complementation \parencite{panova2020}, it has not been adopted as part of mainstream LFG, mainly, it seems, due to its apparent violation of lexical integrity and the potential to vastly increase the number of possible analyses. Indeed, if unconstrained, lexical sharing can be used to produce structures where every morphological category has its separate functional projection that is shared with the lexical head, reminiscent of Distributed Morphology (DM, \cite{hallemarantz}). However, as both \textcite{broadwell2008} and \textcite{lowe2015clitic} observe, lexical sharing can be constrained to be used only when there is independent syntactic evidence in favour of a separate lexical head. Under this interpretation, lexical sharing analyses present an advantage over non-lexicalist analyses in that functional heads like CaseP or NumP are only stipulated as needed; for example, in \citeauthor{broadwell2008}'s (\citeyear{broadwell2008}) analysis of suspended affixation, there is an empirical difference between languages where case is realized by a coinstantiated head (these allow suspended affixation) and languages where it is purely morphological (these do not); this opposition is lost in non-lexicalist approaches, where other, arguably less intuitively plausible mechanisms have to be used, such as a constraint on coordinating sub-CaseP constituents, feature deletion \parencite{kharytonava2012}, or morphological ellipsis \parencite{erschler2012-suspaff}.
+ 
+ Furthermore, as mentioned in \sectref{sect:integrity}, lexical sharing does not really violate lexical integrity as formulated in \textcite{bresnan1995the-lexical}, see (\ref{ex:lexicalism1}), i.e. as the general principle that words are built from different blocks and according to different rules than syntactic units. Indeed, syntax does not have any access to internal word structure in lexical sharing analyses, and coinstantiated nodes map to words as complete units, not to morphemes, disembodied features, or anything similar.\footnote{In fact, from a certain perspective this might be viewed as a disadvantage of lexical sharing analyses in that they fail to capture the fact that coinstantiated material usually corresponds to a well-defined, segmental, agglutinatively attached element of the wordform. For example, Ossetic affixal case features are realized on the Case head, while stem-based ones are realized on N \parencite{belyaev2014-case-EN,Belyaev2021}. I am not aware of any analyses where coinstantiated heads encode features that are realized by stem change, suppletion, or apophony. This fact might be explained diachronically, however, since lexical sharing usually reflects an ongoing process of (de)grammaticalization.} This gives lexical sharing analyses a distinct flavour that separates them from both mainstream LFG analyses and from truly non-lexicalist analyses that situate morphemes or features in functional projections (which have also been proposed in LFG: see \citealt{Melchin2020} for a DM-like approach to LFG morphology).  Notably, it still allows an independent morphological module (usually described in LFG in terms of a lexicalist realizational framework like PFM, see \citet{Belyaev2021} and \citetv{chapters/Morphology}) to do its work.
+ 
+
+ \section{Conclusion}
+ 
+In this article, I have tried to summarize the state of the art of the core syntactic representations of LFG -- the c- and f-structures. While the understanding of various phenomena has considerably changed in almost all areas of grammar (for example, in semantics and information structure: see \citetv{chapters/Glue} and \citetv{chapters/InformationStructure}), the formal underpinnings of LFG have remained remarkably stable over the years. The only fundamental innovation to the original c- and f-structure architecture of \textcite{kaplanbresnan82} is the introduction of functional uncertainty in \textcite{kaplzaen89}. Since then, new levels of projection were introduced, and the architecture extended in various ways, but the core mechanisms of c- and f-structure -- notation, featurehood, even the basic set of GFs -- have remained constant. This serves as an impressive testimony of the versatility of the architecture proposed in \textcite{kaplanbresnan82}, and its remarkable suitability to describing natural languages.
+ 
+ The architecture of LFG is both similar to that of other constraint-based frameworks and very different from them in various ways. The main difference is the parallel architecture of LFG, and the related emphasis on the distinction between descriptions (a set of syntactic constraints) and the structures that are licensed by these descriptions. While constructions and lexical entries are \textit{structures} in most other frameworks, in LFG they are sets of \textit{statements} that describe a range of possible structures. This architectural feature enables LFG to make use of mechanisms such as functional uncertainty and inside-out application, which are unavailable in other frameworks. 
+ 
+ While the empirical coverage of LFG work is impressive, and a number of important developments are now taking place in several theoretical directions, not all areas of syntax have been researched to the same extent. The focus on f-structure and the view of GFs as theoretical primitives has prompted a lot of fruitful and insightful work on subjects and other core grammatical relations. Functional uncertainty and structure sharing have also proved to be efficient mechanisms for describing long-distance dependencies. The notion of sets and feature distributivity allow for elegant analyses of coordination -- an area traditionally underrepresented in mainstream syntactic frameworks. In contrast, c-structure has seen much less attention,\footnote{The reason for this might be that the range of phenomena handled by c-structure is much less than those handled by f-structure, as c-structure only directly models word order and embedding. However, as an anonymous reviewer observes, c-structure in LFG is analogous to Merge in Minimalism, being the main generative component that connects different projections together while also providing codescription for the semantics. This role can hardly be described as minor, but the existing model handles this purpose rather adequately.} although here important developments are also taking place. The notion of lexical integrity, assumed as a stipulation early in the history of LFG, has not been extensively discussed and refined, in spite of numerous challenges. These challenges will have to be dealt with if LFG is to compete with other frameworks for the originally envisaged role of ``a theoretically justified representation of the native speaker's linguistic knowledge'' \parencite{kaplanbresnan82}.
+ 
+\section*{Acknowledgements}
+
+I am grateful to two anonymous reviewers, whose comments made a significant contribution to the final form of this chapter, and to Mary Dalrymple for her attentive reading and insightful comments.  This research has been supported by the Interdisciplinary Scientific and Educational School of Moscow University ``Preservation of the World Cultural and Historical Heritage''.
+
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}

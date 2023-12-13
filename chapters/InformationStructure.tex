@@ -1,0 +1,764 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10185972}
+\title{Information structure}
+\author{Annie Zaenen\affiliation{Stanford University}}
+\abstract{The first section of this chapter gives an overview of the conceptual discussions in information structure (IS), and the second section describes the LFG work in the area. The third section intends to be an exhaustive overview of the LFG work on IS.
+
+}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+%    \addbibresource{../InformationStructure.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[21]%%chapternumber
+}{}
+
+\begin{document}
+\maketitle
+\label{chap:InformationStructure}
+
+\largerpage
+\section{Introduction}
+In LFG, attention to information structure has led to many interesting lan\-guage-specific studies but, contrary to the situation in, for instance, syntax, there is no generally accepted view of either the distinctions needed or the terminology to be adopted. Given this situation, we start with a general, non-LFG-specific overview of conceptual discussions in IS (\sectref{is}). The hope is that this will alert the reader to check which notion of say, topic, focus or contrast, is used in the LFG contribution they happen to be reading. In \sectref{sec:IS:2}, we describe the general lines of the LFG work, highlighting some of the concepts that are often appealed to and the major proposals that have been made about how IS should be integrated in the LFG architecture. \sectref{sec:IS:studies} gives exhaustive thumbnails of the LFG work on IS. The overview in this chapter does not include historical studies. These will be covered in \citetv{chapters/Historical}.
+\section{What is Information Structure?} \label{is} 
+
+Information Structure looks at how a producer of an utterance presents linguistically encoded information to the audience. It studies the sentence-internal aspects of this organization, while Discourse Structure (DS) studies the overall organization of bigger units of a text. The term \textsc{information structure} (IS) was coined by \citet{Halliday1967}; \citet{Chafe1976} introduced the term \textsc{information packaging}, which is also used by \citet{Vallduvi}. Recently it has been generally accepted that it is desirable to keep DS and IS separate, but it is often not possible to describe IS without making some assumptions about DS: for instance, the notion of sentence topic and discourse topic are related and often not kept clearly separated. Both DS and IS are generally considered to be part of pragmatics and different from semantics, which is mainly concerned with \textsc{information content}, while DS and IS are concerned with \textsc{information management} (cf. \citealt{Krifka}). But, again, certain aspects of information content and information management are closely intertwined, e.g.\ scope phenomena, the notion of predication, and pronoun interpretation (see e.g.\ \citealt{Reinhart} and \citealt{kingzaenen}). 
+
+IS distinctions can be realized through \textit{prosody}, \textit{word order} and/or \textit{morphology}. In this section we mainly discuss word order and morphology; for prosody, see \citetv{chapters/Prosody}.
+%\subsection{Are IS concepts linguistic or psychological?} \label{psycho}
+ 
+IS entities can be talked about as being linguistic in nature, e.g.\ NPs, VPs, etc., or they can be thought of as psychological. In most cases the only thing we can access and study are the linguistic reflexes of psychological states. This leads to terminological confusion. For example, is a topic a textual entity in the sentence, or is it the entity/state of affairs which the producer of this utterance intends to talk about, the denotation? Reinhart's discussion, for instance, is very much in terms of linguistic entities:  all the NPs in a sentence are possible topics, and new information will be added to the file card for the NP or a new file card will be created, in the sense of \citet{Heim82} or \citet{Kamp81}.
+
+\largerpage
+In the discussion of topic, the ambiguity is often not too harmful. It leads to more confusion in the discussion of focus. Consider the sentence \textit{John washed it} as an answer to \textit{What happened to the car?} Here \textit{John washed} is taken to be the focus, but in most syntactic theories this is not a constituent at any level, the exception being Steedman's Categorial Grammar framework (see e.g.\ \citealt{steedman00}).
+
+\citet{Lambrecht} and \citet{Vallduvi} state explicitly that they see topic and focus as psychological, and that the linguistic entities should be termed \textsc{topic} and \textsc{focus expressions}. They appeal to a pragmatic notion of common ground\footnote{The original notion comes from \citet{Stalnaker1970}, who defines it as the set of pragmatic presuppositions shared by interlocutors at the moment of the utterance of the sentence. For Stalnaker, a proposition is pragmatically presupposed when the participants in the discourse ``take its truth for granted'', and ``assume that others involved in the context do the same''. It is not totally clear that Lambrecht has the same idea. \citet[44]{Lambrecht} states: ``\/`To have knowledge of a proposition' is understood here in the sense of `to have a mental picture of its denotatum', not in the sense of `to know its truth'\/''.  See \citealt{dryer1995} for an extensive discussion.} in which interlocutors' intentions play a role. This relates to the issue of how IS fits into a full-fledged formal representation of text, which is often left rather vague. The most common metaphor is that the IS gives instructions to update file cards. For \citet{Lambrecht}, the pragmatic presupposition and assertion are sets of propositions, and topic and focus structure is defined in relation to them. How all this is ultimately represented in the human mind is definitely outside of the scope of this overview. For convenience, I will assume that interlocutors have a structured representation of the discourse they are engaged in, and I will refer to this as the \textsc{denotation} of the linguistic entities that encode IS. 
+%later [As we will discuss later, in early LFG, topic and focus are talked about as syntactic elements but this changed with \citet{King1997}. Here we will assume that the are not c-structure or f-structure concepts and that they have a communicative psychological basis.]
+
+IS, viewed as part of pragmatics, assumes that information transmission relies on the interlocutors having a common ground from which the interaction proceeds,  with the producer of the utterance introducing information not yet known by the audience. The interlocutors are in a particular information state that they intend to change through the interaction. 
+An utterance, then, can be divided into two parts, one that links it to what precedes and one that introduces new information.  Under this bipartite subdivision, the \textsc{topic}, \textsc{theme} or \textsc{background} is the part that relates it to the preceding discourse and the \textsc{comment}, \textsc{rheme} or \textsc{focus} advances the discourse by providing new information. Even ignoring the notion of \textsc{discourse topic} and the existence of \textsc{all focus} utterances, both sets of notions are unclear and defined differently by different authors. A useful way to get a grip on the main distinctions is to start from \citegen{Dahl} observation (see also \citealt{Jacobs}) that, assuming a context in which what John drinks is at issue, a sentence such as \textit{John drinks beer} can simultaneously be analyzed as having \textit{John} as its topic and \textit{drinks beer} as the comment or \textit{John drinks} as the background and \textit{beer} as the (narrow) focus. The sentence is about \textit{John} (the topic), so the rest is comment, but the new information, the focus, is \textit{beer},  as we already know that John drank something. Researchers interested in focus often see the main division as \textsc{background-focus}, whereas those interested in topic see it more often as \textsc{topic-comment}. The two views are combined in the tripartite proposal of Vallduv\'{i}, who proposes \textsc{link-focus-tail}, where \textsc{link} and \textsc{tail} together form the \textsc{ground}. 
+
+Apart from these discrete views, there are views that see information structure as gradient. For instance, the Prague school (e.g.\ \citealt{Firbas}) describes topics as the material lowest in ``communicative dynamism'', where the latter is determined by three parameters: linear order, semantic considerations (e.g.\ the type of the verb), and the degree of context dependency. These views are not often referred to in the LFG literature, but some researchers have proposed hierarchical analyses with respect to the notions of activation/salience  (see \citealt{A09} and \citealt{Connor2006}) or topic-worthiness (\citealt{DN})
+
+Other authors have proposed to further analyze notions such as topic and focus as feature bundles, as we will discuss in \sectref{features}. This allows for more fine-grained distinctions. 
+
+There is no accepted view of IS in LFG, but the views that have had the most influence are \citet{Lambrecht}, Vallduv\'{i} (\citealt{Vallduvi}, \citealt{VallduviandVilkuna1998},
+\citealt{VallduviEngdahl}), and \citet{Reinhart}.
+ %\citet{Erteschik-Shir2007}.
+ Only a few LFG proposals address the conceptual issues wholesale.
+ 
+In what follows I will review some IS notions in more detail and then discuss the LFG work in the area.  
+
+
+\subsection{Notions of topic}\label{sec:topic}
+
+One of the most influential proposals is that of \textsc{aboutness topic},  so named by \citet{Reinhart},  but the idea goes back at least as far as Kuno's early work, later published as \citet{Kuno} (see also \citealt{Dahl}). The link to the previous discourse that is assumed here is rather broad: the referent of a topic is presupposed to exist (based on \citealt{Strawson1964}). Reinhart, following Kuno,  uses locutions such as \textit{X says about Y}, \textit{Speaking of X}, \textit{As for X} as tests to distinguish the topic from other NPs in the sentence. It is recognized that these tests do not work very well. \textit{Speaking of X}, for instance, is an expression notoriously used to change the topic, so it cannot be used as a diagnostic for continuing topics.
+
+Reinhart uses the file card metaphor (cf. \citealt{Heim82}) to explain what a topic does: it indicates where the hearer should store the information contained in the sentence. The proposal does not distinguish between continuing topics and switch topics (see below) and makes the explicit assumption that every sentence has only one topic. For instance, for the sentence \textit{All crows are black}, the information provided is classified under crows and understood as an assertion about the set of all crows. (So, the natural way to assess it will be to check the members of the set of crows and see if any of them are not black, rather than checking the non-black things to see if any of them are a crow.) This view seems to be based on an overly literal conception of a file card. With a discourse fragment like \textit{What about John and Mary? They got married but he doesn't love her} (adapted from \citealt{Lambrecht}), it seems difficult to claim that this information is stored only under \textit{John} rather than (also) under \textit{Mary}.
+ 
+The one-topic idea is explicitly rejected by \citet{Lambrecht}, who sees \citegen{Reinhart} distinction between topics and non-topic definites as a difference in salience.  This view has led to the proposal to distinguish between primary and secondary topics (see below). Lambrecht also rejects Reinhart's semantic notion of presupposition. For Reinhart, following \citet{Strawson1964}, topics are presupposed to exist. Lambrecht's notion of presupposition is pragmatic and does not require this. For him, the most important pragmatic articulation of a structured meaning is that between \textsc{pragmatic presupposition} and \textsc{pragmatic assertion} (comment), where the pragmatic  presupposition is assumed by the speaker to be equally assumed by the hearer and the pragmatic assertion is what the hearer is expected to assume after having heard the sentence. For Lambrecht, the negative quantifier \textit{nobody} can be a topic. Most authors, however, confine the notion of topic to referents that can be expressed by definites or specific indefinites. However, not everybody agrees with this: see e.g.\ \citet{Endriss09} and \citet{GK}. 
+
+\citegen{Vallduvi} notion of \textsc{link} is close to that of topic,  but it is explicitly restricted to elements in first position. He sees this first position\footnote{He allows for two topics under the condition that they precede all other elements in the sentence.} in terms of a requirement for such elements to act as address pointer, instructing the hearer to go to an address or card in the sense of \citet{Heim82}.  When the elements in the sentence do not require a pointer to a new address, they are not \textsc{links} (topics) but \textsc{tails}. Tails correspond more or less to what others have called \textsc{secondary} or \textsc{continuing topics}. Vallduví's notion of link is restricted to what have been called \textsc{switch topics}: topics that are different from the topic of the previous sentence.\footnote{The discussion in section 5.1.1 of \citet{VallduviEngdahl} shows that the alignment between switch topic and first position cannot be right for all languages. It also shows that restricting the notion of topic to switch topic is awkward,  as Swedish examples show this is also a position of continuing topics.} 
+
+As this short discussion shows, it is useful to distinguish topics depending on properties of the element in the previous discourse with which they are in an anaphoric relation. (The discussion tends to be restricted to consideration of elements in the previous sentence.) The antecedent can be a topic, in which case we have a \textsc{continuing topic}; or it can be a focus, in which case we have a \textsc{switch topic} (corresponding to Vallduv\'{i}'s \textsc{link}). It has been claimed that some constructions explicitly signal switch topics.\footnote{For example, first position elements in Catalan as analyzed in \citet{Vallduvi}.} The notion of \textsc{continuing topic} comes close to that of \textsc{discourse topic}. The two might be distinguished in the sense that a continuing topic has to be the topic of the immediately preceding discourse unit (e.g.\ sentence), whereas the discourse (or \textsc{familiar}) topic can be broader, but not all authors make that distinction. Some authors reserve the term \textsc{aboutness topic} for \textsc{switch topic} and hence distinguish them from \textsc{continuing topics} (see e.g.\ \citealt{FH}, who show that in Italian and German these have a different linguistic realization). \textsc{Continuing topics} are often not overtly expressed (e.g.\ in so-called pro-drop languages). Some authors consider these sentences as topicless, while others assume the understood topic to be part of the IS of the sentence.
+
+A further distinction is invoked with the term \textsc{contrastive topic}. Contrast is most often invoked with respect to foci, and the concept will be discussed further in \sectref{contrast}. Here we point out that topic expressions can contain elements that are new as well as old. For example, in the short discourse \textit{What about cars? Which ones do you like? -- Fast cars I like}, \textit{cars} is topical, but \textit{fast} is new information. Contrastive topics are seen as implying that a set of alternatives is active in the speaker's mind. They can be linked to the notion of \textsc{d-linking} \citep{Pesetsky}. D-linked elements are defined (following \citealt{Buring2003}) as related to the question under discussion ({QUD}). This, again, brings discourse topics into the discussion of sentence topics.
+
+The types of topics mentioned above are typically expressed as NPs, but there is a kind of topic that is most often realized as a {PP}. It occurs in so-called ``all focus'' sentences such as \textit{In California, there are often forest fires}. Here, the initial element restricts the range of the rest of the sentence. These elements were dubbed \textsc{stage topics} by \citet{Erteschik-Shir2007}, but they have been discussed earlier, e.g.\ \citet{Gundel74}. Erteschik-Shir claims there is a silent stage topic in all-focus sentences that do not have an overt topic. Some researchers seem to think the stage topic only occurs in sentences that have no other topic,  but for others, stage topics can co-occur with \textsc{aboutness} topics. \citet{BC} discuss the specific lexical-semantic restrictions on all-focus constructions in Romance languages. LFG researchers have not worked on stage topics, but \citet{Szucs2017} discusses English adverbials that could be considered as, in part, falling in that class. 
+
+\subsubsection{Accessibility hierarchies} \label{AH}
+
+ Apart from the aboutness tests proposed by Reinhart, some proposals in IS appeal to notions, such as salience or topic-worthiness, that distinguish among the entities that are assumed to be in the discourse participants' consciousness at the moment a new utterance is produced or heard. Following \citet{Chafe1987}, who introduced the idea, various hierarchies or, at least, classifications have been proposed  (see e.g.\ \citealt{Givon}, \citealt{Ariel}, \citealt{Lambrecht}, \citealt{Erteschik-Shir2007}). Within LFG the ones that are referred to are \citegen{Prince} notions of \textsc{discourse old/new} and \textsc{hearer old/new}, \textsc{evoked}, and \textsc{inferrable} (see also \citealt{WardBirner}) and Gundel's \textsc{givenness hierarchy} (e.g.\ \citealt{GHZ93}). 
+ 
+ Prince's categories are about entities. If they have been mentioned in the discourse, they are discourse old; if not, they are discourse new (or inferrable).  Referents may also be old/new with respect to (the speaker's beliefs about) the hearer's beliefs. In feature decomposition approaches in LFG, following \citet{Choi1996}, the {+\textsc{new}} feature corresponds to Prince's notion of discourse new. \citet{Lambrecht} proposes a connection between Prince's notions and topics (his Topic Accessibility Scale) but notes that inherent semantic factors such as animacy may also play a role. 
+ 
+ The \textsc{givenness hierarchy} of \citet{GHZ93} proposes six ordered cognitive statuses: in focus > activated > familiar > uniquely identifiable > referential > type identifiable. These statuses determine the form of referring expressions and are assumed to correspond to the status of the referent in the memory of the discourse participants. For instance, for English: 
+
+\begin{itemize} \label{GH}
+\setlength\itemsep{-1pt}
+    \item \textsc{type identifiable}: necessary for the appropriate use of any nominal expression
+    \item \textsc{referential}: speaker refers to a particular object, hearer needs to know the referent; necessary for appropriate use of definite expressions
+    \item \textsc{uniquely identifiable}: necessary for the appropriate use of \textit{the}
+    \item \textsc{familiar}: necessary for the uses of personal and definite demonstrative pronouns
+    \item \textsc{activated}: necessary for all pronominal forms and sufficient for demonstrative \emph{that} and stressed personal pronouns
+    \item \textsc{in focus}: necessary for the use of zero and unstressed pronouns.
+\end{itemize}
+
+Especially the last two items on the scale have been used to argue for differences in status between elements which are not treated equally: cognitive accessibility relates to how prominent the entity is in memory. This does not in itself determine whether it will be a topic or a focus. The accessible elements are all topic-worthy, but depending on their place on the scale, they will require different linguistic expression. 
+
+\subsubsection{Other hierarchies}
+
+The topic-worthiness of a discourse element has also been claimed to be influenced by the prominence features that play a role in the \textsc{referential hierarchy} \citep{Silverstein,Dixon1984}, such as person, definiteness, and animacy. This hierarchy has played a more important role in studies about the alignment of grammatical functions but, as \citet{Simpson2012} (following \citealt{Bickel}) observes, a hierarchy with pronouns on one end and full NPs on the other is bound to have something to do with IS. 
+
+In recent literature, it is generally accepted that topic-worthiness or accessibility are not enough to guarantee topichood, and that \textsc{aboutness} is the crucial factor. It is, however, not clear how aboutness can be detected. The decision to construct a sentence/utterance about a particular sentence topic seems to be a decision that the speaker/writer makes which is constrained, but not uniquely determined, by the previous discourse. In some languages this choice must always be clearly marked, while in others that is not the case and a specific marking may be absent or optional.
+
+
+\subsection{Focus and related notions} \label{focus}
+
+The focus is (or is part of) what is informationally new in a sentence, what is not assumed to be common ground between the hearer and the speaker at the moment that the sentence is uttered. A common proposal is that the focus can be found by considering what question the sentence could be an answer to. The focus is what replaces the wh-term in the question.\footnote{This test runs into problems when a particular language has a special marking for answers to questions that distinguishes these from other arguable foci. Another more general problem with the test is that full answers to wh-questions are often unnatural. Most of the topical information would be silent. These versions are, however, rather uninformative when the test is used to probe word order constraints.} A typical set of question-answer pairs is the following:
+
+\ea\label{pred}
+   Q: What did Mary do? \\
+   A: She [washed the car].
+\z
+\ea\label{arg}
+    Q: What did Mary wash?\\
+ A: She washed [the car].
+\z
+\ea\label{arg2} 
+     Q. Who washed the car?\\
+     A: [Mary] washed the car.
+\z
+\ea\label{pred2}
+     Q: What happened to the car?\\
+     A: [Mary washed] it. 
+\z
+\ea\label{sent}
+     Q: What happened?\\
+     A: [Mary washed the car].
+\z
+\ea\label{pred3}
+     Q: What did Mary do with the car?\\
+     A: She [washed] it.
+\z
+
+The focus of each answer is the material in square brackets. \citet{Lambrecht} distinguished three notions of focus structure: \textsc{predicate focus} (\ref{pred} and, presumably, \ref{pred2} and \ref{pred3}), \textsc{argument focus} (\ref{arg} and \ref{arg2}) and \textsc{sentence focus} (\ref{sent})
+
+The question-answer approach tends to tie the IS notion of focus to alternative sets as used in semantics, as the meaning of wh-questions can be considered as the set of possible answers \citep{Hamblin1973}, or one can think of the alternative sets of \citegen{Rooth1992} view on focus and focus particles. The problem with appealing to these semantic notions is that one can get bogged down by the issue of how explicit these alternatives have to be. It is clear that, in a certain sense, every assertion is made against the background of all other possible assertions that could have been made at that particular moment in the discourse, but that does not mean that one can list/define a set of alternatives (see below).
+
+It is often claimed that different types of foci are distinguished by the degree to which the set of alternatives has been made explicit. In the examples discussed so far, the syntax is unremarkable and the stress pattern is what would be found in normal narrative text. The foci in these examples are called \textsc{information} or \textsc{completive} or  \textsc{identification foci}. They are often expressed in what is thought of as `neutral' or `default' syntax. In some languages, specific constructions allow the speaker to signal whether she has a particular set of alternatives in mind, or even whether she wants to convey that only one option is possible. This has led to the distinction between the foci above and \textsc{contrastive} and/or \textsc{exhaustive foci}. Moreover,  \textsc{exclusive} foci can be distinguished from \textsc{exhaustive} foci: exclusive foci exclude some alternatives, while \textsc{exhaustive} foci exclude all alternatives. 
+%(Both types have been further divided into weak and strong (van der Wal 2014).) 
+Some researchers have proposed additional subdivisions of focus. \citet{Dik1981} distinguish \textsc{completive} focus, which is \textsc{non-contrastive},  from all other \textsc{contrastive} forms: \textsc{parallel, selective} and three types of corrective foci: \textsc{expanding, restricting}, and \textsc{replacing}. Most of these subtypes can be seen as specifying relations between the set of alternatives and the focus.\footnote{Not all researchers distinguish clearly between the \textsc{focus domain} and \textsc{focus exponent}. For instance, in the  English examples (\ref{pred}-\ref{pred3}), focus is normally indicated with pitch accent. As discussed at least since \citet{jackendoff72}, the nuclear stress rule assigns stress to the final constituent of a focus, while the focus itself can be projected up any higher constituent, so the answers in (\ref{pred}), (\ref{arg}), and (\ref{sent}) get the same stress assignment but have different foci. Even when phenomena such as \textsc{focus projection} are recognized, researchers tend to concentrate their attention on \textsc{focus markers} and are often not very clear on what constitutes the \textsc{focus domain}. For some it is actually the markers that deserve the term focus. In this overview I assume that the conceptual category can be distinguished from its realizations.} 
+
+In running text, it is not always clear what the question is. Consider example (\ref{book}) (adapted from \citealt{VallduviEngdahl}).
+ 
+\ea\label{book}
+\ea Mary bought a book yesterday morning.
+\ex She read it in the afternoon.
+\z\z
+ 
+Sentence (\ref{book}b) can be seen as an answer to the question \textit{What did she do then?} as well as an answer to the question \textit{What did she do with the book?}  In the first case, (the denotation of) the VP is focal. In the second case, both \textit{she} and \textit{it} are topics and the rest of the material is focal. Written material, especially reduced by a window of at most two sentences, is prone to being pragmatically ambiguous. By turning the text into a set of questions and answers, an interpretation is imposed which reduces the ambiguity. Looking at larger pieces of text might also help in figuring out what the right question is in a particular context, but that leads to discourse analysis as distinct from information structure. 
+
+%\subsubsection{Questions and focus}
+
+%The wh-test above proposes a strong link between answers to questions and focus. This raises the question of the IS status of the questions themselves. Different researchers have given different answers; for some the wh-constituent itself is focal (king: yes, guys working on Hungarian no, Mycock: questions can have all is functions ).  
+
+\subsubsection{Contrast} \label{contrast}
+Although there are many subdivisions of focus, the main dividing line seems to be between non-contrastive and contrastive focus. Once this line has been drawn, however, one realizes that contrast is not only relevant for focus but also for topic. Take, for instance, an exchange like the following: 
+
+\ea\label{languages}\begin{itemize} 
+\setlength\itemsep{-1pt}
+    \item Q. Which foreign languages do your children speak?
+    \item A. Anna speaks English and Maria speaks German.
+\end{itemize}
+\z
+
+In languages such as English there will be \textsc{contrastive stress} on \textit{Anna} and \textit{Maria} as well as on \textit{English} and \textit{German}. Some researchers see this as a reason to adopt contrast as an independent notion and propose to distinguish between  \textsc{\pm{contrastive}} topics and foci.
+                                                   
+Here, again, a confusing factor is that contrast can be used to refer to an abstract category or to a linguistic signal, e.g.\ a particular stress pattern. Contrastive focus, then, can mean that the focus has some special stress or pitch pattern (dubbed Kontrast by \citealt{VallduviandVilkuna1998}) or it can mean that the focus element contrasts with other elements that could fill the same position in the sentences by being an alternative to these elements. When seen as the latter, the notion is as confusing as that of focus and, in fact, it is difficult to see a difference between the two. 
+
+The various notions of contrast are discussed in \citet{repp2016}. She distinguishes:
+\ea\label{contrastypes}
+\ea Restricted, contextually clearly identifiable set of alternatives: \emph{John} would be marked for contrast  in an example like \emph{John, Pete and Josie all offered help. I asked John.} \citep{kiss1998}.
+\ex Alternatives must be in the sentence. 
+\ex Substitution of alternatives must create a false statement \citep{neelemanandvermeulen2012}. 
+%Lauri's idea of the meaning of questions.
+\ex Alternatives always contrast, simply by being different (alternative semantics) (\citealt{VallduviandVilkuna1998}, also \citealt{Krifka}).
+\ex Interlocutors' belief systems: unexpected, remarkable \citep{frey06}.
+\z 
+\z
+
+These are, by and large, the notions of the set of alternatives which have been proposed in discussions of focus.  At the limit, we find notions such as \textit{unexpected, remarkable} that seem to depend on the speaker's frame of mind without being independently detectable. Moreover, as we have seen above, contrast is not limited to foci:  it can also occur with topics. Some researchers have bit the bullet and taken contrast as the correct notion, e.g.\ \citet{KS}. Under that view, contrast within the topic indicates that part of the topic is actually focal \citep{Krifka,Erteschik-Shir2007}. Others, however, see contrast as an additional distinction,  and much work in LFG takes that approach. This is a view that has been argued for explicitly by, for example, \citet{neelemanandvermeulen2012}, who distinguish between contrastive and non-contrastive topics as well as contrastive and non-contrastive foci. They illustrate their approach with word order data in Dutch, but claim that in other languages it can be detected through prosodic marking. As noted above, their notion of contrast relies on the generalization that in contrastive contexts, the substitution of alternatives leads to false statements. 
+
+\subsubsection{Relational newness} \label{new}
+\largerpage
+
+For researchers who treat \textsc{contrast} as a feature that can belong to both topics and foci, the question remains: what is the characteristic that distinguishes focus from topic? \citet{Choi1996}, among others, proposes that foci must be \textsc{discourse new} in the sense of \citet{Prince}. This view is, however, contested by e.g.\ \citet{Lambrecht} and \citet{Gundel74}, who draw attention to examples such as (\ref{movie}) (adapted from \citealt{Lambrecht}):
+ 
+\ea \label{movie}
+\ea Last night Anne and Paul were bored. 
+\ex They hesitated between going to the neighborhood restaurant or going to the new movie at the Rex. 
+\ex Finally they went to the movie.
+\z\z
+
+\noindent (The denotation of) \textit{last night} in (\ref{movie}a) can be considered to be a stage topic and the rest of the material in that sentence is focal. In (\ref{movie}b) and (\ref{movie}c), the aboutness topic is (the denotation of) \textit{they} (=Anne and Paul). (\ref{movie}b) and (\ref{movie}c)  (as well as (\ref{movie}a)) establish new relations between these referents and the rest of the sentence. In (\ref{movie}c), \textit{the movie} and even \textit{going to the movie} are as much old information as \textit{they}. What is new is the relation between the elements. The referents of the NPs have become part of the common ground between speaker and hearer before the sentence is uttered. They are not \textsc{discourse new} in Prince's sense or \textsc{referentially new} in Gundel's terminology. Rather, they are \textsc{relationally new} in Gundel's terminology. Once it is determined that the topic is (the denotation of) \textit{they}, the choice between the restaurant and the movie is the relevant relationally new information. Thus, (the denotation of) \textit{the movie} is the element about which a new relation is asserted, marked as \textsc{+new}.  It is the alternative that is chosen in opposition to all other possible choices.\footnote{ Some authors, most clearly \citet{Lambrecht}, see the relation itself as new, and hence as the focus. Still others, e.g.\ \citet{Erteschik-Shir2007}, see the focus as a complex structure that can contain topical material.}
+
+Note that under this view of newness, it is not immediately clear that (the denotation of) \textit{they} is the topic: the relation between (the denotation of) \textit{they} and (the denotation of) the rest of the sentence is also new.  To determine the focus, it is necessary to know already what the topic is and  what we are adding information about.  Here we are assuming that (\ref{movie}a) leads to the question \textit{What were they going to do about being bored?} and (\ref{movie}b) to \textit{Where did they go?}
+
+A sentence can establish new relations between several different entities. In (\ref{cookie}b), the \textit{give} relation holds between three participants. 
+
+\ea \label{cookie}
+\ea Mary was wondering what she would give little Hansi: the candy bar or the chocolate chip cookie.
+\ex She gave him the chocolate chip cookie.  
+\z\z
+
+Assuming that \emph{Mary} is the topic, (\ref{cookie}b) can be analyzed as the answer to \textit{What did Mary do?}, in which case the denotation of the whole VP is the focus, or as the answer to \textit{What did she give to him?}\footnote{There are other possibilities which we ignore here. Our point is not an exhaustive analysis of this stretch of text.}, in which case the denotation of \textit{the chocolate chip cookie} is the focus. The second question presupposes that both speaker and hearer already assume that Mary has given Hansi something, so the relational new information is that it is a chocolate chip cookie. What is the status of \textit{him} under that analysis? Here it seems useful to remember the terminological ambiguity remarked upon in the introduction: is focus seen as a synonym of comment, or is it to be opposed to background? When one assumes an opposition to background, it is reasonable to consider \textit{him} to be part of the background and, possibly, as a special part of the background: a secondary topic. 
+
+The comment can also consist of more than just the focus. Consider the ques\-tion-answer pair in (\ref{ex:IS:potatoes}):
+
+\ea\label{ex:IS:potatoes}
+\ea Q: Where was Mary?
+\ex A: She was cooking potatoes in the kitchen.
+\z\z
+
+Here \textit{in the kitchen} is the answer to question (\ref{ex:IS:potatoes}a) and presumably the focus, but \textit{cooking potatoes} is also new information. Presumably it is part of the \textsc{comment}. It can be seen as supplementary or \textsc{completive} information.\footnote{What has been analyzed in the literature as focus marking is very heterogeneous. This has led some researchers, most prominently \citet{MaticWedgwood2013}, to question the assumption that the linguistic processes that are described in the literature as marking foci indeed have a uniform function. \citet{Hedberg2006} already argues that several proposals about the relation between pitch accent and IS in English are not mutually compatible,  nor are the proposals about \textit{wa} in Japanese or those about \textit{nun} in Korean. \citet{MaticWedgwood2013} go further and try to show that many proposals invoking focus marking in various languages actually isolate markers whose functions are quite different and whose effect on the focus is only a byproduct of these functions.}
+
+%oth \textit{him} and \textit{the chocolate chip cookie} can considered to have entered in a new relation and hence be marked a +new, but only the latter picks out an informative alternative. Here we come back to the notion of contrast discussed above.  So the \textit{chocolate chip cookie} will be marked as +new and +contrastive, while \textit{him} will be marked at +new and -contrastive.  it can be seen as part of the comment but it is not part of the focus.     
+
+%One might be tempted to appeal to the familiarity distinctions discussed above. It is certainly true that topical material needs to be familiar whereas that is not the case with focal material. The notions of accessible as discussed above are meant to be based on what is in the speaker's and hearer's memory. It seems, however, that something more is needed. We have to assume that in a discourse, the attention of the speaker and the hearer is directed to some discourse elements (the relevant file cards), whereas other elements might just be bit players. The speakers make assumptions about the hearers and for an element to be focal they have to assume that the hearer doesn't know in which relation the focal material stands to the topic. This, again, might bring in the notion of "discourse topic" or "question under discussion", even it we intend to consider only information structure. The question also arises of how to distinguish the bit players from the topic and the focus: we saw in section one that topic and focus are in fact notions that come from two different informational subdivisions of the sentence: topic-comment and background-focus. Most of the studies ignore the part of the comment that is not the focus and the part of the background that is not the topic.  
+
+% For instance in the example [ref] above, one could claim that the focal elements are \textit{read} and \textit{tonight} and that \textit{it} is part of the background, whereas under the topic-comment view, one would be tempted to see the two sentences as about \textit{I} with the rest of the material as focal. This is, however, not a necessary analysis. If the next sentence is \textit{It promises to be very entertaining}, one could see both \textit{I} and \textit{it} as topical elements in the second sentence. 
+
+\section{The LFG approach}\label{sec:IS:2}
+
+For LFG, there are two main issues related to IS: (1) what are the relevant distinctions to be made, and how are they encoded? and (2) how does IS interact with the LFG architecture? We discuss these in turn.
+
+\subsection{Feature decomposition}\label{features}
+In the previous section we have seen that the notions of topic and focus, although generally accepted, are felt to be insufficient to encode all relevant IS distinctions. With respect to topic, there seems to be a need to further distinguish between different levels of salience and/or topic-worthiness of the entities which are accessible to the discourse participants. With respect to focus, there seems to be a need to distinguish between explicitly contrastive and not explicitly contrastive elements. Moreover,  it has been observed that some topical information assumes the existence of subsets among which a choice has to be made. This has led many researchers, including many LFG researchers,
+%In the face of the proliferation of distinctions and concepts described above, most work in LFG has taken a rather opportunistic approach. Most researchers 
+to use features, most often binary features, to describe the IS behavior of linguistic entities and to define notions such as topic and focus. There is at this point no closed set of such features. Descriptive studies in this vein would provide a good basis for more theoretical investigations if the terminology was constant and explicit. Unfortunately, this is not the case. The same labels are used for different concepts and often no clear definition is given that allows the reader to figure out which meaning of an ambiguous term is intended. There are, however, some general tendencies: many researchers follow \citet{Choi1996} and \citet{BK96} and decompose the notions of topic and focus with two binary features.
+
+In the light of the preceding discussion, one might expect that the notion of contrast would be represented in these dichotomies. This is, however, not the case in the proposals of \citet{Choi1996} and \citet{BK96}. 
+
+%The discussion of contrast above led to the distinction between two notions of focus and topic: +contrastive and -contrastive. Together with the observation that the difference between topic and focus is some notion of +/-new, this invites one to repartition the IS-domain as a combination of two features, each with two values. 
+
+Choi proposes the features {\pm\textsc{new}} and \textsc{\pm\text{prom}}, for `prominence', as shown in \tabref{table:IS:Choi}.  Her notion of \textsc{new} is \citegen{Prince} discourse new. Above, we saw that that notion is based on what is mentioned in the discourse and, hence, is problematic for certain analyses of focus. Choi's notion of \textsc{prom} collapses the distinction between contrastive and completive focus and that between tail and link in Vallduv\'{i}'s sense. She does not discuss explicitly what such a collapsed notion would correspond to intuitively.
+
+\begin{table}
+\begin{tabularx}{\textwidth}{lCcCc}
+\lsptoprule
+Discourse function    & Topic & Contr Focus & Tail & Compl/Pres Focus  \\
+\midrule
+\textsc{prom} & + & + & $-$ & $-$   \\
+\textsc{new} & $-$ & + & $-$ & + \\
+\lspbottomrule
+\end{tabularx}
+\caption{Choi's features}\label{table:IS:Choi}
+\end{table}
+
+\begin{table}
+\begin{tabularx}{\textwidth}{lCCcc}
+\lsptoprule
+Discourse function    & Topic & Focus & Background & Completive Info  \\
+\midrule
+\textsc{prom} & + & + & $-$ & $-$   \\
+\textsc{new} & $-$ & + & $-$ & + \\
+\lspbottomrule
+\end{tabularx}
+\caption{Butt and King's features}\label{table:IS:BK}
+\end{table}
+
+\citet{BK96} adapt Choi's proposal, making the distinctions in \tabref{table:IS:BK}. \citet{BK96} do not use the \textsc{prom} feature to distinguish between contrastive and non-contrastive focus,  as they only discuss cases of what they consider non-contrastive focus in their paper. This, of course, leaves open the question of which distinctions need to be made to account for the cases that have been discussed as contrastive versus non-contrastive focus. 
+
+Another difference between the two feature systems seems to be whether IS should be a full representation of everything in the sentence, or just some important parts. Whereas Choi's version of the features suggests that only some parts of the sentence will be represented, \citegen{BK96} labeling assumes a full representation of the sentence. This latter view is also espoused in more formal treatments (see \sectref{representation}).
+
+Another version of the scheme is found in \citet{GazdikKomlosy2011}, who use the d-link distinction of \citet{Pesetsky} instead of the {\pm\textsc{new}} feature, as shown in \tabref{table:IS:GK}. They consider continuing topics to be background,  and discuss the difference between hocus and focus in Hungarian as well as the status of question words.  This more recent proposal takes into account the most important distinctions discussed in the literature reviewed above. The notion of prominence seems to correspond to the notion of contrast, and d-linking is a way to distinguish between more and less salient elements. This proposal is, however, only worked out for Hungarian.
+
+
+\begin{table}
+\begin{tabularx}{\textwidth}{lcccc}
+  \lsptoprule
+  Discourse &   Focus, Question    & Contrastive Topic,  & & \\
+  function    & word, Hocus & Question word & Completive & Background  \\
+\midrule
+\textsc{prom} & + & + & $-$ & $-$   \\
+\textsc{d-linked} & $-$ & + & $-$ & + \\
+\lspbottomrule
+\end{tabularx}
+\caption{Gazdik and Komlósy's features}\label{table:IS:GK}
+\end{table}
+
+The switch in interpretation between \citet{Choi1996} and \citet{BK96} and the further switch in interpretation in \citet{GazdikKomlosy2011} shows that the features are not clearly enough defined to apply unambiguously. It might be just this vagueness that has allowed several other LFG accounts, e.g \citet{MB05}, \citet{DN}, \citet{Mycock2013}, \citet{MycockLowe2013} and \citet{Otoguro16} to adopt the approach of \citet{Choi1996}/\citet{BK96}. 
+
+What these two-feature approaches suggest is that, on an abstract level, only four distinctions need to be made to account for the IS distinctions that natural languages encode, even if these distinctions are not exactly the same in all languages. This is not necessarily false, but it is not something that has been argued for in any detail. 
+
+With respect to \textsc{topic}, we often find one further distinction, although some authors have proposed more subdivisions. \citet{BM87} distinguish between \textsc{contrastive} (new) topics and \textsc{non-contrastive} ones. Although they refer mainly to early work by Lambrecht, their distinction seems to be basically Vallduv\'{i}'s distinction between \textsc{link} and \textsc{tail}. The distinction between \textsc{link} and \textsc{tail} is also appealed to in \citet{DN} as closely corresponding to their distinction between \textsc{primary} and \textsc{secondary} topics. Based on an analysis and data treated in more detail in  \citet{Nikolaeva2000}, \citet{DN05} argue explicitly for a distinction between \textsc{primary} and \textsc{secondary topic} in Ostyak: according to the \textit{what about X?} test, the primary topic has to be a subject in this language, but agreeing objects are secondary topics. They are typical answers to questions such as \textit{What did X} (= primary topic) \textit{do to Y} (= secondary topic)? This analysis is further developed for several other languages by \citet{DN} in the context of their discussion of differential object marking.
+
+\citegen{Abubakari} \textsc{familiarity} and \textsc{contrastive} topics (in Kusaal) seem to be intended to capture the distinctions between \textsc{switch} and \textsc{continuing} topic, but he seems to assume that there could be more than two varieties of topic. \citet{MMF05} use the feature \pm\textsc{contrastive} to make a distinction with\-in the class of \textsc{switch topics}; switch topics themselves are distinguished from \textsc{continuing topics}. \citet{Kifle11} proposes three topics in certain sentences in Tigrinya. \citet{Szucs2014} sees the distinction between \textsc{contrastive} and \textsc{non-con\-tras\-tive} topics (= \textsc{$-$new} elements) as crucial for left-dislocation and `topicalization' in English: the topic position can be occupied by a contrastive element, be it topic or focus, whereas left-dislocation requires a non-contrastive new element. His distinctions seem to be similar to the ones made in \citet{MMF05}, but similarities and dissimilarities are not discussed.
+
+Early work on \textsc{focus} often distinguishes between \textsc{contrastive} and \textsc{presentational} focus (e.g.\ \citealt{King95}). A distinction between \textsc{contrastive} and \textsc{non-contrastive foci} is made in \citet{Abubakari}. \citet{Dalstrom03} appeals to \citegen{Lambrecht} three-way distinction among foci: \textsc{predicate focus}, \textsc{argument focus}, and \textsc{sentence focus}. \citet{GazdikKomlosy2011} also distinguish between \textsc{hocus} and \textsc{focus} in Hungarian.
+
+When four distinctions are felt not to be enough, appeal is made to various hierarchies to introduce further distinctions. The \textsc{givenness hierarchy} is invoked to make distinctions among topical and/or focal elements: see e.g.\ \citet{Connor2006} and \citet{A08,A09,A13}, who appeal to the notion \textsc{{\pm}actv} (activated). Andr\'easson's and Connor's analyses are based on the Gundel hierarchy, but similar ideas are found in \citet{Lambrecht}. 
+
+\citet{Morimoto2000} appeals to an animacy hierarchy in her analysis of subject-object inversion; following \citet{bresnan2001lexical}, she treats subject as a grammaticalized discourse function, and shows that animacy plays a role in the determination of the subject function in Bantu. Other hierarchies proposed are the Silverstein hierarchy (e.g.\ \citealt{Simpson2012} and similar hierarchies of topic-worthiness: \citealt{DN}), or appeal to animacy, definiteness and specificity as in \citet{Mayer06}. \citet{Mycock2013} adds a feature for questions that can co-occur with all other features. \citet{Connor2006} adds the feature \textsc{{\pm}open} to capture representations with and without a variable. The most extensive feature taxonomy in LFG, to my knowledge, has been proposed by \citet{CookPayne} (see \sectref{sec:IS:studies}).
+
+In general, the LFG analyses would profit from more cross referencing and more discussion of the similarities and dissimilarities among the various proposals. An exception is \citet{DN}, who adopt the two-feature scheme of \citet{BK96} and discuss how their notions of \textsc{primary} and \textsc{secondary topic} are different. The feature \textsc{contrastive} is liberally used by various authors, but often not further defined. Given how problematic it is, it would profit from a systematic clarification. 
+
+In general, not much attention is spent on the question of how to identify topic or focus independently of their syntactic, prosodic or morphological characteristics. Thus, it is not always clear that the marking that is thought to be that of an IS unit might not mark another distinction.
+
+\subsection{Representation of IS in LFG} \label{representation}
+\subsubsection{From f-structure functions to a separate IS representation}
+
+The first mention of IS notions in LFG can be found in the discussion of the \textsc{topic/focus} functions in \citet{kaplanbresnan82} and \citet{Zaenen85}. These are  taken over from the phrase structure treatment of long distance dependencies in the grammatical frameworks that were then current. The discussion of what these discourse functions did was limited to the observation that they were ``overlay'' functions, requiring an extension of the coherence principle: topics or foci were not only topics or foci, but also had an argument function such as subject or object. The actual content of the notions topic and focus was not discussed. The discourse functions were treated in the f-structure, just like other functions. In the early nineties, several Stanford theses (e.g.\ \citealt{Alsagoff92}, \citealt{Joshi93}, \citealt{Kroeger91}) investigated the relation between \textsc{subject} and \textsc{topic} in Asian languages in syntactic terms.
+
+In the first studies to discuss IS as such, the grammaticalized discourse function approach is also used, e.g.\ by \citet{BM87} and by \citet{King95}, who investigates in detail the phrase structure configuration needed to account for the configurational encoding of Russian discourse relations. 
+
+\citet{King1997} discusses the drawbacks of an approach that integrates IS notions into the c-structure and the f-structure. She illustrates in detail the potential mismatches between f-structure units and IS units, and proposes to handle IS as a separate projection. This is what most researchers have done in subsequent work. We will refer to this separate module as the \emph{i-structure}. 
+
+As already indicated above, most researchers start from a two-feature analysis of topic and focus, in most cases augmented with background and completive roles. The representation given is generally an attribute-value matrix (\textsc{avm}), with the roles as attributes. The nature of the values depends on the way the relation of the i-structure to the other projections is articulated. 
+
+\subsubsection{How does the IS relate to the other components of the grammar?}
+
+As IS can be signaled in various ways, the flow of information from the different components to the separate i-structure has to be modeled.  LFG has a modular structure which allows researchers to experiment with various approaches while keeping other aspects of the framework constant. One of two models is generally adopted. One is proposed in an early paper by \citet{BK96} and \citet{King1997} and discussed further in \citet{BK00}; a later, different one is proposed in \citet{DN} and further work in glue semantics.
+
+In \citet{BK96,BK00}, the c-structure feeds into the i-structure. The i-structure and the f-structure feed into the semantic structure and the i-structure is related to the f-structure,  as every \textsc{pred} appearing in the f-structure has to be linked to a discourse function. Butt \& King's model is assumed in \citet{Sulger09}, \citet{Dione12} and \citet{A07},  but it has not been worked out in detail. 
+
+\citet{DN} develop a structured meaning approach à la \citet{vonStechow} and \citet{Krifka06}. In their view, the semantic structure encodes how meaning constructors relate to each other. The i-structure adds further structure specifying the pragmatic relations. Every meaning constructor in a sentence has to have a role at i-structure. What this role is can be positionally determined, through a c-structure annotation, or morphologically or prosodically determined. The feeding relations are c-structure to f-structure to s-structure to i-structure. The Dalrymple \& Nikolaeva model is worked out in detail in \citet{DLM:LFG}. For discussion of how the prosodic information fits in, see \citet{DM11}, \citet{MycockLowe2013}, \citet{Mycock2013} and \citetv{chapters/Prosody}. 
+Apart from these two proposals, there are proposals by individual researchers that draw attention to specific problems; for example, \citet{Connor2006} stresses the importance of the i-structure (his d-structure) relation to prosody.  For him, part of the goal is to link an \textsc{avm} representation for i-structure (his discourse structure) to a tree representation for prosody.  \citet{Otoguro03} discusses the relation to morphology. \citet{Dalstrom03} draws attention to the necessity of allowing constructional information to distinguish the various types of focus, especially sentence focus, and tentatively proposes an i-structure organized as a set of propositions. 
+
+Several researchers (e.g.\ \citealt{Connor2006}, \citealt{Choi1996}, and \citealt{A10}) propose an Optimality-Theoretic calculation to determine what is topic or focus or what is reanalyzed in a particular way, but no precise proposals are made about how this OT part fits with the rest of the architecture. 
+
+\section{Studies of IS phenomena in LFG}\label{sec:IS:studies}
+ 
+ In the following, I list LFG contributions in IS in chronological order, with some short comments intended to inform the reader which language data can be found in the contribution and which issues are most prominent.
+ %\subsection{Fassi Fehri, 1984}
+ %Not available
+ 
+ \vspace{+6pt} 
+ 
+\citet{BM87} \textit{Topic, pronoun, and agreement in Chiche\^wa.} This early paper treats the IS concepts as part of the f-structure. It discusses mainly word order and the notions subject and object in Chiche\^wa and some other Bantu languages.
+
+%\begin{itemize} 
+% \setlength\itemsep{-1pt}
+%    \item language(s): Chiche\^wa and other Bantu languages
+%    \item phenomena discussed: word order, object and subject head marking
+%     \item IS distinctions made: topic and (contrastive) focus; relation between subject and topic
+%     \item architecture: IS units in f-structure; extended coherence principle
+% \end{itemize}
+
+\vspace{+6pt}  
+ \citet{King95} \textit{Configuring topic and focus in Russian.} A revised version of a PhD thesis. Discusses topic, contrastive and presentational focus and background in Russian, Serbo-Croatian and Bulgarian. The IS notions are encoded in c- and f-structure, and other possible architectures are discussed. 
+ 
+% \begin{itemize}
+% \setlength\itemsep{-1pt}
+%     \item language(s): Russian, Serbo-Croatian and Bulgarian.
+%     \item phenomena discussed: word order, question formation, clefts
+%     \item IS distinctions made: topic (sentence initial, possible multiple), some indications about ordering: most recent first); contrastive focus (immediately preverbal) and presentational focus;  background
+%     \item architecture: encoded in c-structure and f-structure, discussion of other architectures, points out that in some cases the info has to be available in semantic structure.
+% \end{itemize}
+
+\vspace{+6pt}
+\citet{Choi1996} \textit{Optimising structure in context: scrambling and information structure.} This PhD thesis discusses scrambling in German and Korean and appeals to the notions of 
+aboutness topic and contrastive and presentational focus. It influenced later research by introducing the feature decomposition \textsc{\pm{new}} and \textsc{\pm{prom}}(inent) and by its use of Optimality Theory to calculate the results. 
+% \begin{itemize}
+%  \setlength\itemsep{-1pt}
+%     \item language(s): German, Korean
+%     \item phenomena discussed: scrambling, specificity
+%     \item IS distinctions made: aboutness topic; contrastive and presentational focus. Choi's subdivisions, based on Vallduv\'{i}:
+%\begin{itemize}
+%\setlength\itemsep{-1pt}
+%\item focus = +New;
+%completive focus = -Prom, 
+%contrastive focus  =+Prom
+%\item ground = -New;
+%ground: topic and tail,
+%topic = +Prom,
+%tail = -Prom
+%\end{itemize}
+%     \item architecture: c-structure and f-structure; %\textsc{ot}
+% \end{itemize}
+
+\vspace{+6pt} 
+\citet{BK96} \textit{Structural topic and focus without movement.} The paper discusses word order and discourse configurationality in Urdu and Turkish and distinguishes topic, focus, background and completive information. It is influential in the new way it used the features \textsc{\pm{new}}, \textsc{\pm{prom}}. 
+
+% \begin{itemize}
+% \setlength\itemsep{-1pt}
+%     \item language(s): Urdu and Turkish
+%     \item phenomena discussed: word order, discourse configurationality
+%     \item IS distinctions made: topic in first position, focus in immediate preverbal position, background (=-new): post-verbally, completive:(=+new) between topic and focus, preverbally; represented with 2 features
+%     \item architecture: encoded in f-structure but that is seen as not ideal  \begin{itemize}
+%     \setlength\itemsep{-1pt}
+% \item topic -new, +prom; 
+% \item focus:+new, +prom; 
+% \item background: -new, -prom; 
+% \item completive: +new, -prom.
+% \end{itemize}
+% \end{itemize}
+ 
+
+\vspace{+6pt}
+\citet{King1997} \textit{Focus domains and information-structure.} The paper explicitly discusses the problem created by representing IS in the c- and the f-structure on the basis of Russian data. It proposes an i-structure parallel to the f-structure.  
+
+% \begin{itemize}
+%  \setlength\itemsep{-1pt}
+%     \item language(s): Russian
+%\item phenomena discussed: see \citet{King95}
+%     \item IS distinctions made: see\citet{King95}
+%     \item architecture: discussion of the problems with the encoding of IS in the f-structure: cannot get the right units for focus: too wide and circular structure. Proposes: i-structure parallel to f-structure but read off c-structure.
+% \end{itemize}
+
+\vspace{+6pt} 
+\citet{Sharma99} \textit{Nominal clitics and constructive morphology in Hindi.} The focus of this paper is the representation of focus clitics in Hindi via inside-out uncertainty. 
+
+%\begin{itemize}
+%\setlength\itemsep{-1pt}
+%    \item language(s): Hindi
+%     \item phenomena discussed: clitics
+%     \item IS distinctions made: focus
+%     \item architecture: IS in f-structure using inside-out functional uncertainty
+% \end{itemize}
+
+\vspace{+6pt} 
+\citet{Broadwell} \textit{The interaction of focus and constituent order in San Dionicio Zapotec. } The paper uses Optimality Theory to calculate the right word order for focused constituents in Zapotec.
+
+ % \begin{itemize}
+%\setlength\itemsep{-1pt}
+%     \item language(s): Zapotec
+%     \item phenomena discussed: word order 
+%     \item IS distinctions made: focus
+%     \item architecture: IS in f-structure, OT
+% \end{itemize}
+
+\vspace{+6pt} 
+\citet{Morimoto2000} \textit{Discourse configurationality in Bantu morphosyntax} (see also \citealt{Morimoto09})  This dissertation looks at Kirundi and Kinyarwanda and discusses subject-object inversion. Following \citet{bresnan2001lexical} in analyzing \textsc{subject} as both an argument and a discourse function and using the features of \citet{Choi1996}, it argues for two notions of topic in Bantu: external and internal topic. The distinctions are encoded in the f-structure.
+
+%\begin{itemize}
+%     \item language(s): Bantu, mainly Kirundi and Kinyarwanda
+%     \item phenomena discussed: subject-object inversion; left and right dislocation
+%     \item IS distinctions made: topic, focus, subject taken from Bresnan (2000); features from Choi. Main argument for internal and external topic in Bantu, based on subject-object inversion construction.
+%     \item architecture: IS distinctions encoded in the f-structure.
+% \end{itemize}
+
+\vspace{+6pt}
+\citet{BK00} \textit{Null elements in discourse structure.} The paper discusses pro-drop in Hindi/Urdu. It adds the distinction between switch and continuing topic to the distinctions made in \citet{BK96}. It uses a separate i-structure projected mainly from the c-structure.
+
+%\begin{itemize}
+%\setlength\itemsep{-1pt}
+%     \item language(s): Hindi/Urdu
+%     \item phenomena discussed: pro-drop
+%     \item IS distinctions made: see \citet{BK96}, plus the distinction between switch and continuing topic and null background
+%     \item architecture: separate i-structure, projected mainly from c-structure
+% \end{itemize}
+
+\vspace{+6pt}
+\citet{Otoguro03} \textit{Focus clitics and discourse information spreading.} The paper studies focus clitics in Japanese and argues for an architecture in which the c-structure is the input to the i-structure as well as to the f-structure and both are input to the morphology. It uses Optimality Theory to calculate the outcomes.
+
+%\begin{itemize}
+%\setlength\itemsep{-1pt}
+%     \item language(s): Japanese
+%     \item phenomena discussed: focus particles
+%     \item IS distinctions made: focus, topic
+%     \item architecture: separate i-structure, c-structure is input to f-structure and i-structure, both are input to the morphology that also communicates with the c-structure directly, \textsc{ot} mapping
+% \end{itemize}
+
+\vspace{+6pt}
+\citet{Dalstrom03} \textit{Focus constructions in Meskwaki.} The paper starts from \citegen{Lambrecht} three focus types and discusses the various constructions, exemplifying them in Meskwaki. Following \citet{Lambrecht}, it proposes an i-structure which is structured as a set of propositions. 
+
+%\begin{itemize}
+%\setlength\itemsep{-1pt}
+%     \item language(s): Meskwaki (Fox)
+%     \item phenomena discussed: focus types
+%     \item IS distinctions made: based on \citet{Lambrecht}: predicate focus, argument focus, sentence focus
+%     \item architecture: separate i-structure; set of propositions. 
+% \end{itemize}
+
+\vspace{+6pt}
+\citet{DN05} \textit{Non-subject agreement and discourse roles.} The paper makes an argument for the notion secondary topic based on agreement facts in Ostyak. It assumes a separate i-structure. 
+
+%\begin{itemize}
+%\setlength\itemsep{-1pt}
+%     \item language(s): Ostyak
+%     \item phenomena discussed: agreement
+%     \item IS distinctions made: primary topic, secondary topic, focus
+%     \item architecture: separate i-structure
+% \end{itemize}
+
+\vspace{+6pt}
+\citet{MB05} \textit{Information structuring in Akan question word fronting and focus constructions.} Starting from Akan question word fronting, the paper studies the difference between focus and background. It assumes a separate i-structure.
+
+%\begin{itemize}
+%\setlength\itemsep{-1pt}
+%     \item language(s): Akan
+%     \item phenomena discussed: question word fronting
+%     \item IS distinctions made: focus and background
+%     \item architecture: separate i-structure
+% \end{itemize}
+
+\vspace{+6pt}
+\citet{MMF05} \textit{Partitioning discourse information: A case of Chiche\^wa split constituents.} The paper argues that the topic in Chiche\^wa can be split into a \textsc{$-$prom} and a \textsc{+prom} part. The \textsc{+prominent} part can be in initial position or not, and it can be \textsc{\pm{contrastive}}.
+
+% \begin{itemize}
+%  \setlength\itemsep{-1pt}
+%     \item language(s): Chiche\^wa
+%     \item phenomena discussed: word order, split constituents and object marking on the verb
+%     \item IS distinctions made: splitting the topic into a -prom part that occurs at the end of the sentence and a +prom part. The +prom part can be clause internal or it can occur in initial position; both the initial position and the sentence final position are assumed to be dislocated. Four types of topics: +/- prominent, where + prominent can be +/-contrastive  
+%     \item architecture: separate i-structure projected from the c-structure; \textsc{ot} constraints.
+% \end{itemize}
+
+\vspace{+6pt} 
+\citet{CookPayne} \textit{Information structure and scope in German.} The paper examines the interaction between word order and scope in German and claims we need to distinguish between \textsc{\pm{topic}}, \textsc{\pm{new}} and \textsc{\pm{contrastive}}. The facts discussed relate to what others have called topic-within-focus. The account uses a separate i-structure, glue semantics and Optimality Theory. 
+
+% \begin{itemize}
+%  \setlength\itemsep{-1pt}
+%     \item language(s): German
+%     \item phenomena discussed: scope and word order
+%     \item IS distinctions made: +/-topic, +/-new, +/-contrastive; a topic is assume to be +new when additional information is given, seems to correspond to what others have called topic within focus
+%    \item architecture: i-structure together with f-structure + glue semantics; \textsc{ot}
+% \end{itemize}
+
+\vspace{+6pt} 
+\citet{Mayer06} \textit{Optional direct object clitic doubling in Limeño Spanish.} The paper discusses clitic doubling in Limeño Spanish. It contains an extensive discussion of the factors that are usually associated with differential object marking (\textsc{dom}):  animacy, definiteness and specificity. It proposes that some of the objects discussed might be secondary topics. 
+
+%\begin{itemize}
+%\setlength\itemsep{-1pt}
+%     \item language(s): Lime\~{n}o Spanish
+%     \item phenomena discussed: clitic doubling
+%     \item IS distinctions made: traditional \textsc{dom} distinctions(extensive discussion of animacy, definiteness and specificity), possible secondary topic
+%    \item architecture: not clear
+% \end{itemize}
+
+\vspace{+6pt}
+\citet{Connor2006} \textit{Information structure in lexical-functional grammar: The dis\-course-prosody correspondence.} This dissertation discusses prosody and pitch accent in Serbo-Croatian and their link to IS notions. It is based on \citegen{Lambrecht} distinction between presupposition and assertion and the distinction between active and non-active referents. %("An active referent is one which the speaker assumes the hearer to be able to retrieve easily from the discourse context.", "..a non active referent is one which one which at the time of utterance is at the forefront of the speaker's mind only.")
+In O'Connor's terminology, discourse structure corresponds to what is called i-structure in this paper. O'Connor represents discourse structure as an \textsc{avm} and discusses how it should be linked to the prosodic structure that is represented as a tree.
+
+% \begin{itemize}
+%  \setlength\itemsep{-1pt}
+%     \item language(s): English, Serbo-Croatian
+%     \item phenomena discussed: prosody, pitch accent
+%     \item IS distinctions made: Topic, focus, (a la Lambrecht: presupposition and assertion, actually, presupposition, assertion, focus, focus domain), +/-\textsc{actv}, +/-\textsc{open} (features): -\textsc{actv}. "An active referent is one which the speaker assumes the hearer to be able to retrieve easily from the discourse context." +\textsc{actv}"..a non active referent is one which one which at the time of utterance is at the forefront of the speaker's mind only." It is either new or part of the background, often marked prosodically. -\textsc{open} are complete propositions, +\textsc{open} structures contain a variable (mainly questions).
+%     \item architecture: what is called i-structure in this article is called discourse structure in O'Connor. His i-structure is the relation between the discourse structure and the other components of the grammar, mainly prosodic structure. Prosodic structure is represented as a tree, whereas the d-structure is an \textsc{avm}; \textsc{ot}
+% \end{itemize}
+ 
+ %The relation between pitch accent and +/-ACTVN is complicated. Have to compare this to what Steedman proposes for Kontrast. 
+
+\vspace{+6pt} 
+\citet{Simpson2007} \textit{Expressing pragmatic constraints on word order in Warlpiri. }The paper discusses word order in Warlpiri, arguing for a distinction between prominent and non-prominent information as well as the distinction between new and not new. The \textsc{aux} marks the transition from prominent to less prominent information. New information precedes the verb. Both prominence and newness are seen as relational notions. The separate IS is intended to be capable of representing hierarchies of newness and prominence. 
+ 
+% \begin{itemize}
+% \setlength\itemsep{-1pt}
+%     \item language(s): Warlpiri
+%     \item phenomena discussed: word order
+%     \item IS distinctions made: argues for prominent as distinct from old and new: prominent info comes before the \textsc{aux}. The \textsc{aux} attaches to a prominent constituent but it contains continuing topics. New information precedes the verb, the \textsc{aux} forms the transition to less prominent, what precedes the verb is new, not clear what the IS status of post verbal material is. Prominence and newness are relational notions: there can be more than one element that is prominent, new not prominent information is found between \textsc{aux} and verb.
+%     \item architecture: separate; not worked out but it assumes the possibility of hierarchies of newness and prominence. 
+% \end{itemize}
+ 
+\vspace{+6pt} 
+\citet{Kifle07} \textit{Differential object marking and topicality in Tigrinya.} See also \citet{Kifle11}. The discussion is based on \citet{DN05}, but it is claimed that for Tigrinya further distinctions are needed. The topic is represented at f-structure in the implementation.
+
+%\begin{itemize}
+%\setlength\itemsep{-1pt}
+%     \item language(s): Tigrinya
+%     \item phenomena discussed: object marking
+%     \item IS distinctions made: topic, secondary topic, focus, Topichood affects object properties. The discussion is based on \citet{DN05} but it is claimed that further distinctions are necessary  
+%     \item architecture: no discussion, topic is represented in the f-structure in the implementation.
+% \end{itemize}
+
+\vspace{+6pt}
+\citet{A07} \textit{The architecture of i-structure.} The paper argues for a function \textsc{scene} distinct from \textsc{ground} and \textsc{rheme} and from \textsc{stage topic}. The data come from Scandinavian languages, mainly Swedish, where the \textsc{scene} is placed between the \textsc{ground} and the \textsc{rheme}. A separate i-structure is assumed, but it is not clear how it relates to the rest of the grammar. 
+
+% \begin{itemize}
+%  \setlength\itemsep{-1pt}
+%     \item language(s): Swedish, Danish, Icelandic
+%     \item phenomena discussed: order of objects and adverbs
+%     \item IS distinctions made: argues for a function \textsc{scene} different from ground and rheme. \textsc{scene} is claimed to be different from stage topic; in Swedish it is placed between the ground and the rheme.
+%     \item architecture: separate i-structure, not clear how it is related to the rest.
+% \end{itemize}
+
+\vspace{+6pt}
+\citet{A08} \textit{Not all objects are born alike.} 
+
+\citet{A09} \textit{Pronominal object shift --- not just a matter of shifting or not. }
+
+\citet{A10}, \textit{Object shift or object placement in general?}
+
+\citet{A13} \textit{Object shift in Scandinavian languages: the impact of contrasted elements.} This series of papers studies the different factors that influence Object Shift in Scandinavian, especially in Danish and Swedish. \citet{A08} argues for an accessibility hierarchy a la \citet{GHZ93}; \citet{A09} argues for the importance of factivity when clausal antecedents are involved; and  \citet{A13} explores the role of contrastive focus. They assume a separate i-structure and discuss its link to the c-structure. 
+% \begin{itemize}
+%  \setlength\itemsep{-1pt}
+%     \item language(s): Swedish, Danish, Icelandic
+%     \item phenomena discussed: object shift
+%     \item IS distinctions made: argues for an accessibility hierarchy for referential expressions based on \citet{GHZ93}; akin to O'Connor's \textsc{actv} (\citet{A08}); factivity with clausal antecedents (\citet{A09}; \textsc{ot} analysis of contrastive focus in situ, adverb position, interaction with prosody(\citet{A13} 
+%     \item architecture: separate i-structure, discussion of link to c-structure
+% \end{itemize}
+
+\vspace{+6pt} 
+\citet{Sulger09} \textit{Irish clefting and information-structure.} The paper argues for the distinction between \textsc{ground} and \textsc{focus} in Irish clefts. It assumes a separate i-structure projected from the c-structure.
+
+%\begin{itemize}
+% \setlength\itemsep{-1pt}
+%    \item language(s): Irish
+%     \item phenomena discussed: clefts
+%     \item IS distinctions made: focus and ground
+%     \item architecture: separate i-structure, mainly projected from c-structure 
+% \end{itemize}
+ 
+% \subsection{Liao: An LFG Account of Empty Pronouns in Mandarin Chinese}
+%not available
+
+\vspace{+6pt}
+\citet{Gazdik2010} \textit{Multiple questions in French and in Hungarian: An LFG account.} The paper studies questions in French and Hungarian, making a distinction between \textsc{focus}, \textsc{topic} and \textsc{background} using a separate i-structure.
+
+%\begin{itemize}
+% \setlength\itemsep{-1pt}
+%     \item language(s): French and Hungarian
+%     \item phenomena discussed: questions
+%     \item IS distinctions made: focus, topic, background
+%     \item architecture: separate i-structure
+% \end{itemize}
+\vspace{+6pt}
+\citet{DN} \textit{Objects and information structure.} This book discusses (differential) object marking and agreement in several languages (Uralic languages including Ostyak, Tundra Nenets, Vogul; Iranian languages; Indo-Ary\-an languages) with a typological and historical perspective. It mainly discusses primary and secondary topics and distinguishes the notion of topic from that of topic-worthiness, which is based on prominence features such as animacy, definiteness, and specificity. It uses \citegen{Lambrecht} notions of assertion and presupposition. It proposes a separate i-structure and provides a structured meaning representation for topic and focus projected from the semantic structure.
+
+%\begin{itemize}
+% \setlength\itemsep{-1pt}
+%     \item language(s): Uralic (Ostyak, Tundra Nenets, Vogul), Iranian languages, Indo-Aryan languages; typological and historical proposal.
+%     \item phenomena discussed: object marking, agreement
+%     \item IS distinctions made: focus, topic, based on Lambrecht's pragmatic notions of presupposition and assertion, topic (Vallduvi's link): presuppositional part: a referent is taken by the interlocutors to be the center of current interest; topic is not directly related to familiarity or definiteness on NPs but topic-worthiness is measured in terms of prominence features such as animacy, definiteness, specificity; primary and secondary (Vallduv\'{i}'s tail) topics. Not clear that primary topics have to be switch topics as assumed by Vallduví.  
+%     \item architecture: separate i-structure, structured meaning representation of topic and focus, a projection of the semantic structure
+% \end{itemize}
+
+\vspace{+6pt}
+\citet{GazdikKomlosy2011} \textit{On the syntax-discourse interface in Hungarian.} The paper discusses word order and prosody in the Hungarian preverbal field. It distinguishes between the hocus (an element that highlights an unusual feature of a otherwise usual event) and the focus, and proposes a revision of \citegen{BK96} schema appealing to the notion of d-linking \citep{Pesetsky}. It uses a separate i-structure. 
+
+%\begin{itemize}
+% \setlength\itemsep{-1pt}
+%     \item language(s): Hungarian
+%     \item phenomena discussed: word order and prosody, specially the preverbal field
+%     \item IS distinctions made: import the notion of hocus, an element that highlights an unusual feature of a otherwise usual event, into LFG; adaptation of Butt and King. They end up with the following schema: 
+ %    + prom:    not d-linked --> focus, QW, hocus.
+ %               d-linked --> thematic shifter (contrastive topic), QW
+ %    - prom:    not d-linked --> completive information
+ %               d-linked --> background information (continuing topic)
+ %    \item architecture: separate i-structure
+ %\end{itemize}
+ 
+\vspace{+6pt}
+\citet{Simpson2012} \textit{Information structure, variation and the referential hierarchy. }The paper discusses agreement and word order in Warlpiri and Arrernte and points out the importance of the Silverstein hierarchy to account for the data. It does not address architectural issues.  
+
+%\begin{itemize}
+ %\setlength\itemsep{-1pt}
+%     \item language(s): Warlpiri, Arrernte
+%     \item phenomena discussed: agreement and word order
+%     \item IS distinctions made: Silverstein hierarchy and %IS
+%     \item architecture: not addressed
+% \end{itemize}
+
+\vspace{+6pt}
+\citet{Dione12} \textit{An LFG approach to Wolof cleft constructions.} The paper mainly discusses clefts in Wolof. It argues that the i-structure can be part of the f-struc\-ture when it has been syntactized.
+
+%\begin{itemize}
+% \setlength\itemsep{-1pt}
+%     \item language(s): Wolof
+%     \item phenomena discussed: clefts
+%     \item IS distinctions made: focus, given-topic
+%     \item architecture: i-structure separate in some languages, projected %from c-structure; in f-structure if the IS-function is %syntactized.
+% \end{itemize}
+
+\vspace{+6pt}
+\citet{Mycock2013} \textit{Discourse functions of question words.} The paper discusses questions in English and Urdu/Hindi. It follows \citegen{BK96} proposal but adds a Q mark to all distinctions. It assumes a separate i-structure. 
+
+%\begin{itemize}
+%\setlength\itemsep{-1pt}
+%     \item language(s): English, Urdu/Hindi
+%     \item phenomena discussed: questions
+%     \item IS distinctions made: follows the \citet{BK96} proposal but adds a Q mark to all distinctions
+%     \item architecture: separate i-structure
+% \end{itemize}
+
+\vspace{+6pt}
+\citet{MycockLowe2013} \textit{The prosodic marking of discourse functions.} The paper discusses the prosody of broad and narrow focus in English. The IS distinctions are based on \citet{DN}. It addresses the relation between c-structure, i-structure and p-structure.
+
+%\begin{itemize}
+% \setlength\itemsep{-1pt}
+%     \item language(s): English
+%     \item phenomena discussed: prosody and focus; narrow and broad focus, 
+%     \item IS distinctions made: based on \citet{DN}
+%     \item architecture: based on \citet{DN} discusses relation between c-structure, i-structure and p-structure
+% \end{itemize}
+
+\vspace{+6pt}
+\citet{Butt14} \textit{Questions and information structure in Urdu/Hindi.} The paper develops the distinctions made in \citet{BK96}, proposing more subdivisions to account for questions in Urdu/Hindi. It assumes a separate i-structure, but does not discuss the relation between projections.
+
+%\begin{itemize}
+% \setlength\itemsep{-1pt}
+%     \item language(s): Hindi
+%     \item phenomena discussed: questions
+%     \item IS distinctions made: Topic, Focus, divided in default and secondary, given, subdivided in given-default and given-background, seen as a development of \citet{BK96}
+%     \item architecture: separate i-structure, no discussion of relation among projections
+% \end{itemize}
+
+\vspace{+6pt}
+\citet{Szucs2014} \textit{Information structure and the English left periphery.}
+
+\citet{Szucs2017} \textit{English left-peripheral constructions from an LFG perspective.} These papers discuss the English left periphery based on insights from \citet{Prince} and \citet{WardBirner}. They argue for a distinction between \textsc{\pm{new}} and \textsc{\pm{d-linked}} which is further subdivided into \textsc{\pm{contrastive}}. The IS notions are represented in the f- and the c-structure. 
+%\begin{itemize}
+%\setlength\itemsep{-1pt}
+%     \item language(s): English
+%     \item phenomena discussed: English left-periphery; English left-dislocation, adverbs, based on insights in Prince and Ward
+%     \item IS distinctions made:  -/+ new, +/- d-linked, +/- contrastive as a subdivision on the of +d-linked.
+%     \item architecture: IS distinction in c- and f-structure.
+% \end{itemize}
+
+\vspace{+6pt} 
+\citet{Zymlaetal15} \textit{Modeling the common ground for discourse particles.} The paper discusses discourse particles in German in the context of the \textsc{pargram} \textsc{akr} (Abstract Knowledge Representation).
+
+%\begin{itemize}
+% \setlength\itemsep{-1pt}
+%     \item language(s): German
+%     \item phenomena discussed: discourse particles
+%     \item IS distinctions made:
+%     \item architecture: \textsc{pargram-akr}, information encoded in the conceptual and context structure of the \textsc{akr}.
+% \end{itemize}
+
+\vspace{+6pt}
+\citet{Otoguro16} \textit{Focus clitics and discourse information spreading.} The paper discusses quantifier float in Dutch, English and Japanese. Based on \citegen{BK96} distinctions, it argues that quantified NPs are topics and the floated quantifer is part of the focus. 
+%\begin{itemize}
+% \setlength\itemsep{-1pt}
+%     \item language(s): English, Dutch, Japanese
+%     \item phenomena discussed: quantifier float
+%     \item IS distinctions made: \citet{BK96} distinctions; quantified NP are topic, the floated quantifier is focal ; \textsc{actv} features
+%     \item architecture: \citet{DN} 
+%\end{itemize}
+
+\vspace{+6pt}
+\citet{Belyaev} \textit{Information structure conditions on agreement controller in Darg\-wa.} The paper argues for the importance of the notion \textsc{pivot} as defined in \citet{falk06} to account for agreement in Dargwa. The notions used are syntactically encoded.
+
+%\begin{itemize}
+%\setlength\itemsep{-1pt}
+%     \item language(s): Kubachi Dargwa
+%     \item phenomena discussed: agreement
+%     \item IS distinctions made: discourse topic (\citet{Givon})  and pivot \citep{Falk}; obviation; very tentative.
+%    \item architecture: f-structure, argues for a pivot role in syntax
+% \end{itemize}
+
+\vspace{+6pt}
+\citet{Abubakari} \textit{Information structure and the Lexical-Functional framework. }The paper argues for a subdivision of focus in contrastive and completive based on data from the morphological markings on focus and topic in Kusaal. The morphological markers themselves are retained in the i-structure.  
+
+%\begin{itemize}
+%\setlength\itemsep{-1pt}
+%    \item language(s): Kusaal
+%     \item phenomena discussed: morphological markings of focus and topic
+%     \item IS distinctions made: focus and topic can subdivided by features; focus is subdivided into contrastive and completive focus; 
+%     \item architecture: separate i-structure, projected from the c-structure; it retains information about the forms (particles or features of various types)
+% \end{itemize}
+\vspace{+6pt} 
+\citet{Szucs2019} \textit{Left-dislocation in Hungarian.} The paper argues for a distinction between topic left-dislocation and clitic topicalization in Hungarian. It mainly discusses the f- and the c-structure.
+
+%\begin{itemize}
+%\setlength\itemsep{-1pt}
+%    \item language(s): Hungarian
+%     \item phenomena discussed: topic left dislocation and clitic topicalization
+%    \item IS distinctions discussed: topic 
+%     \item architecture: mainly discussion of the syntax (c- structure and f-structure)
+% \end{itemize}
+
+%\ea
+%\gll cogito                           ergo      sum\\  
+%     think.\textsc{1sg}.\textsc{pres} therefore %\textsc{cop}.\textsc{1sg}.\textsc{pres}\\ 
+%\glt `I think therefore I am.'
+%\z
+
+%\subsection{Historical Studies}
+
+%coordinate with the chapter on historical linguistics
+
+
+%\section*{Abbreviations}
+\section*{Acknowledgements}
+Thanks to three anonymous reviewers and to Tracy Holloway King for comments on an earlier version. Needless to say, only I am responsible for any remaining errors or omissions. 
+%\citet{Nordhoff2018} is useful for compiling bibliographies
+
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}

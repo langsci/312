@@ -1,0 +1,564 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10185940}
+\title{Anaphora}
+\author{György Rákosi\affiliation{University of Debrecen}}
+\abstract{The LFG approach to anaphora explicitly recognizes the substantial amount of variation that we see attested in the grammar of anaphoric elements, and it offers a lexicalist account that captures this diversity. This chapter provides an overview of the major tenets of this approach. We discuss how LFG captures prominence relations between anaphors and antecedents, as well as the inventory of further constraints that determine the size of the binding domain and the search for an antecedent. The chapter includes a brief commentary on logophoric elements and on how the anaphoric dependency itself is represented in LFG accounts, and it concludes with an outlook on other pertinent issues addressed in the LFG literature.}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[5]%%chapternumber
+}{}
+
+\begin{document}
+\maketitle
+\label{chap:Anaphora}
+
+
+\section{Introduction}
+\label{sec:Anaphora:1}
+
+In the broader sense of the term, anaphora is a referential dependency relation between an \textsc{antecedent} and an \textsc{anaphoric element}, with the latter being dependent on the former for its interpretation. In (\ref{ex:Anaphora:1}), for example, the embedded subject \emph{he} is in principle free to refer to any available singular discourse participant that matches the gender of the pronoun, but assuming topic continuity between the matrix and the subordinate clauses, the most likely interpretation is that the subordinate subject is anaphorically linked to the matrix subject.\footnote{Examples (\ref{ex:Anaphora:1}), (\ref{ex:Anaphora:2}) and (\ref{ex:Anaphora:4}) are from the British National Corpus \citep{noauthor_undated-hr}.}
+
+\ea\label{ex:Anaphora:1} He thought that \emph{he} would catch a train up to London.
+\z
+
+\ea\label{ex:Anaphora:2} My mother, \emph{she} just entered a mysterious decline.
+\z
+
+\noindent In (\ref{ex:Anaphora:2}), the anaphoric link between the subject pronoun \emph{she} and the left-dislocated noun phrase \emph{my mother} is obligatory. But this is a property of the construction itself (see \citetv{chapters/Agreement} on \textsc{anaphoric agreement} of this sort), since the personal pronoun \emph{she} is not constrained elsewhere to occur in the company of a linguistically expressed antecedent. Personal pronouns can in fact establish reference to discourse participants through a deictic pointing gesture, as happens in (\ref{ex:Anaphora:3}):
+
+\ea\label{ex:Anaphora:3} Who did you mean? \emph{Him} or \emph{her} over there?
+\z
+
+\noindent Thus personal pronouns are born free, even if they often end up bound to antecedents under particular linguistic circumstances.
+
+Personal pronouns are unlike reciprocals or reflexives in this respect, which do normally require the presence of a linguistic antecedent. In the small discourse universe of (\ref{ex:Anaphora:4}), the subject pronoun \emph{he} refers back to Graham, and the object pronoun \emph{them} to the group of Slater and Sarah. This is a very likely interpretation, but one that is in principle not obligatory. The reciprocal \emph{each other}, however, must be in a strict dependency with an antecedent, which is the object pronoun \emph{them} in (\ref{ex:Anaphora:4}).
+
+\ea\label{ex:Anaphora:4} Graham didn't mind Slater knowing about Sara – he had  introduced them to \emph{each other}, after all.
+\z
+
+\noindent Likewise, the object reflexive \emph{themselves} requires the availability of a local antecedent, the subject \emph{these animals} in the case of (\ref{ex:Anaphora:5}).
+
+\ea\label{ex:Anaphora:5} These animals protect \emph{themselves} against being eaten by  secreting poisonous substances.
+\z
+
+\noindent Following the accepted practice of generative grammars, I will refer to reflexives and reciprocals as \textsc{anaphors} in this chapter. The term \textsc{anaphoric element} is used here as a cover for anaphors and anaphorically interpreted personal pronouns.
+
+An anaphor in this narrow, categorial sense is a referentially dependent type of pronominal expression, which cannot be used deictically and which requires the presence of a linguistically expressed antecedent. The primary aim of this chapter is to give an overview of what anaphoric phenomena have attracted attention in LFG-based research, and what discussions these phenomena have generated. The standard LFG approach to the grammar of anaphors has two major descriptive tenets. First, in line with the lexicalist nature of LFG, the constraints that govern the grammar of anaphoric elements are stated in their lexical entries. Whether these lexical constraints are comprehensive, and thus more or less fully specify the grammar of anaphors, or they are to be supplemented by what \citetv{chapters/CoreConcepts} calls \textsc{grammar-wide constraints}, is an issue where particular approaches may vary. \citet{dalrymple1993,dalrymple01} and \citet{DLM:LFG} postulate lexical entries that are rich enough in themselves, while \citet{bresnan2001lexical} and \citet{BresnanEtAl2016} emphasize the role of pertinent constraints that form part of the inventory of the universal design features of grammar. But this is partly a matter of perspective and emphasis, and in the lexicalist nature of LFG architecture, everything can be stated in the lexicon (evoking redundancy rules or templates where generalisations need to be captured). This chapter takes a comprehensive descriptive approach in presenting pertinent LFG research.
+
+The second major tenet of the LFG approach to anaphora is the recognition that the distinction between anaphors and personal pronouns is not necessarily pronounced: neither empirical reasons, nor general theoretical concerns necessitate an approach in which anaphors and pronouns are considered to be two entirely distinct and discrete categories of grammar. Particular LFG descriptions may make use of a \textsc{prontype} attribute with values \textsc{personal}, \textsc{reflexive} or \textsc{reciprocal} (as well as other pronominal types not relevant for us), but such features tend to play relatively little theoretical role in the actual analysis itself. Therefore, the term \textsc{anaphor} is used here mostly for expository purposes only, with no specific theoretical commitment attached. One reason why the study of anaphoric systems has become a favourite topic of many researchers is exactly their versatile nature, and a major aim of this chapter is to demonstrate how the LFG architecture can be employed to describe this rich landscape adequately.
+
+The structure of this chapter is as follows. In \sectref{sec:Anaphora:2} and \sectref{sec:Anaphora:3}, I provide an overview of the standard LFG-theoretic approach to the binding of anaphors, discussing first the prominence relations between anaphors and their potential antecedents (\sectref{sec:Anaphora:2}), and then the constraints that determine the binding domain and the search for the antecedent (\sectref{sec:Anaphora:3}).  In \sectref{sec:Anaphora:4}, I briefly discuss the LFG approach to discourse-dependent or logophoric elements. In \sectref{sec:Anaphora:5}, I make some comments on anaphor interpretation and on how the anaphoric dependency itself is represented in LFG accounts. \sectref{sec:Anaphora:6} concludes this chapter.
+
+\section{Prominence relations and anaphora}
+\label{sec:Anaphora:2}
+
+\subsection{Syntactic rank}
+\label{sec:Anaphora:2.1}
+
+One core property of anaphoric dependencies is that the antecedent needs to be more prominent than the anaphor \emph{at some level of representation}. In Chomskyan generative approaches, the anaphor is required to have a c-commanding antecedent. The relation c-command is defined over hierarchical structures represented as trees, but LFG employs f-structure as the primary locus for capturing generalizations about abstract syntactic relations.\footnote{Several definitions of c-command exist; here we simply assume the textbook variety.} Thus, syntactic prominence relations are primarily described in terms of f-structure. This allows us to abstract away from attested variation in the surface coding of anaphoric dependencies in case such variation does not seem to correlate with grammatically relevant differences in how these dependencies are constructed. I illustrate the motivation for the LFG approach with parallel English and Hungarian data involving the reciprocal anaphor.
+
+The triadic predicate \emph{introduce} projects onto a syntactic structure in which the reciprocal anaphor may assume two syntactic functions: it is either the oblique PP argument (\ref{ex:Anaphora:6a}) or the object (\ref{ex:Anaphora:6b}), and it is ungrammatical as a subject (\ref{ex:Anaphora:6c}). The antecedent may either be the object or the subject argument in (\ref{ex:Anaphora:6a}), but if the reciprocal is the object, then only the subject can antecede it (\ref{ex:Anaphora:6c}):
+
+\ea\label{ex:Anaphora:6}
+\ea\label{ex:Anaphora:6a} They$_i$ introduced the children$_k$ to \emph{each other}$_{i/k}$.
+\ex\label{ex:Anaphora:6b} They$_i$ introduced \emph{each other}$_{i/*k}$ to the children$_k$.
+\ex\label{ex:Anaphora:6c} *\emph{Each other} introduced them to the children.
+\z\z
+
+\noindent This observed syntactic asymmetry between the anaphor and the antecedent is described as a difference in syntactic rank as defined by the Functional Hierarchy, which is independently needed in the description of other grammatical phenomena:\footnote{\label{fn:Anaphora:3}This hierarchy has played an important role in LFG, and it has its predecessors and analogues in other frameworks; see, for example, the accessibility hierarchy of \citet{keenan1977noun}, or \citet{Pollard1992-cv}.}
+
+\ea\label{ex:Anaphora:7}
+\ea\label{ex:Anaphora:7a} Functional Hierarchy \citep[229]{BresnanEtAl2016}\\[1ex]
+ \SUBJ > \OBJ > \OBJTHETA > \OBLTHETA > \COMP, \XCOMP > \ADJ
+ \newpage
+\ex\label{ex:Anaphora:7b} Syntactic rank \citep[230]{BresnanEtAl2016}\\[1ex]
+ \textit{A} locally outranks \textit{B} if \textit{A} and \textit{B} belong to the same f-structure and \textit{A} is more prominent than \textit{B} on the functional hierarchy. \textit{A} outranks \textit{B} if \textit{A} locally outranks some \textit{C} which contains \textit{B}.
+\z\z
+
+\noindent An anaphor requires an antecedent which outranks it. Applying (\ref{ex:Anaphora:7}) to the data in (\ref{ex:Anaphora:6}), \textit{B} is the anaphor \emph{each other} and \textit{A} is the antecedent, which is either the subject \emph{they} or the object \emph{the children} in (\ref{ex:Anaphora:6a}), or only the former in (\ref{ex:Anaphora:6b}). (\ref{ex:Anaphora:6c}) is out because, among other things, the reciprocal anaphor \emph{each other} is the subject, and since the subject function is at the topmost position of the hierarchy, no outranking antecedent is available in the clause.\footnote{\label{fn:Anaphora:4}This does not necessarily mean that \emph{each other} cannot be a \SUBJ, since it can be the subject of a subordinate clause under certain circumstances (see \citet[724]{lebeaux83} for pertinent discussion). The following examples are from the British National Corpus \citep{noauthor_undated-hr}:
+\ea We all read what \emph{each other} had written, anyway.
+\ex One wonders how on earth they speak to each other, or if indeed they even know who \emph{each other} is.
+\ex We all know how \emph{each other} plays and that's why things are ticking.
+\z
+The matrix antecedent outranks \emph{each other} in these cases, too, according to (\ref{ex:Anaphora:7}), since the matrix \SUBJ\ antecedent locally outranks the \COMP\ that contains the subject anaphor.}
+
+The advantages of the f-structure-centered LFG approach to binding are especially apparent if we compare the English data in (\ref{ex:Anaphora:6}) to their counterparts in other languages, where clausal syntax is different. Hungarian is one such language. In particular, it allows for the pro-drop of subjects (treated as pronoun incorporation in LFG, see \citetv{chapters/Incorporation}), and it has a non-configurational VP.\footnote{See \citetv{chapters/FinnoUgric} and \citealt{Laczko2021} on the non-configurational nature of the Hungarian VP, and on pro-drop phenomena in Hungarian.} Consequently, the Hungarian versions of (\ref{ex:Anaphora:6a}) may lack an overt subject, and the linear ordering of the constituents is also relatively free within the VP. (\ref{ex:Anaphora:8a}--\ref{ex:Anaphora:8b}) represent two discourse neutral configurations, and each has the same ambiguity in terms of antecedent choice that we have seen in the case of the English (\ref{ex:Anaphora:6a}).
+
+\ea\label{ex:Anaphora:8} Hungarian
+\ea \label{ex:Anaphora:8a}\gll
+Bemutat-ták  a gyerekek-et  egymás-nak.\\
+ introduce-\PST.{3\PL} the children-{\ACC}  each.other-{\DAT}\\
+ \glt`They$_i$ introduced the children$_k$ to each other$_{i/k}$.'
+\ex \label{ex:Anaphora:8b}\gll
+Bemutat-ták  egymás-nak  a gyerekek-et.\\
+ introduce-{\PST}.{3\PL} each.other-{\DAT} the children-{\ACC}\\
+ \glt`They$_i$ introduced the children$_k$ to each other$_{i/k}$.' 
+\z\z
+
+\noindent Disregarding empirical details that are irrelevant for the purposes of the current discussion (such as the fact that Hungarian employs dative case on the oblique anaphor instead of an adposition), the divergent English and Hungarian c-structures all map onto the same f-structure in (\ref{ex:Anaphora:9}).\footnote{No \NINDEX\ features (\PERS\ and \NUM) are specified for the reciprocal anaphor in the f-structure $j$ in (\ref{ex:Anaphora:9}). We provide an overview of the LFG treatment of the feature content of anaphoric elements in \sectref{sec:Anaphora:5}.}
+
+\ea\label{ex:Anaphora:9} f-structure of (\ref{ex:Anaphora:6a}) and (\ref{ex:Anaphora:8a}--\ref{ex:Anaphora:8b})\\[1ex]
+{\avm[style=fstr]{\id{f}{[pred & `introduce\arglist{subj, obj, \OBLROLE{to}}'\\
+ tense & pst\\
+ subj  & \id{g}{[ pred & `pro$_i$' \\
+         prontype & pers\\
+         pers & 3\\
+         num & pl]}\\
+ obj  & \id{h}{[pred &  `children$_k$'\\
+               num & pl]}\\
+ \OBLROLE{to} & \id{j}{[pred  & `pro$_{i/k}$'\\ 
+                       prontype & recip]}]}}}
+\z
+   
+\noindent Syntatic rank is a device that is used to describe variation in syntactic prominence as stated at the level of f-structure, and it is primarily at this level where elegant and universally relevant generalisations can be made about anaphoric phenomena. One such generalisation is that an anaphor needs an antecedent that outranks it in the sense of (\ref{ex:Anaphora:7}).\footnote{Note that the antecedent in (\ref{ex:Anaphora:9}) locally outranks the anaphor since both are members of the same f-structure $f$. By (\ref{ex:Anaphora:7b}), this relation need not be local, and it is not always local in the case of other types of anaphors that we discuss in \sectref{sec:Anaphora:3}. See also footnote \ref{fn:Anaphora:4}.}
+
+Syntactic rank captures the most salient aspect of c-command, the arrangement of constituents along a hierarchy. Embedding configurations may create issues which may scope beyond what reference to syntactic rank transparently solves. For example, the potential antecedent cannot be embedded too deeply within the search domain of the anaphor, hence the ungrammaticality of (\ref{ex:Anaphora:10}).
+
+\ea\label{ex:Anaphora:10} *The children$_i$'s mother washed themselves$_i$.
+\z
+
+\eabox{\label{ex:Anaphora:11}
+{\avm[style=fstr]{\id{f}{[
+ pred &  `wash\arglist{subj, obj}'\\
+ tense & pst\\
+ subj &  \id{g}{[ poss & \id{i}{[ pred & `child'\\
+                          num & pl]}\\
+	   pred & `mother'\\
+	   num  & sg]}\\
+ obj & \id{j}{[pred &  `pro'\\
+             prontype & refl\\
+             index  & \id{k}{[pers & 3\\
+                             num & pl]}]}]}}}
+}
+
+\noindent The plural reflexive anaphor \emph{themselves} can only take a plural antecedent. The plural possessor \emph{the children} could in principle act as one, but since it is properly contained within the possessive structure of the subject (f-structure $i$ is in f-structure $g$), it cannot license the anaphor and therefore sentence (\ref{ex:Anaphora:10}) fails. LFG employs the notion of f-command to constrain such scenarios.\footnote{As \citet[239]{DLM:LFG} discuss, a more complex definition of f-command is required to cover constructions that involve structure-sharing dependencies. Those concerns are not directly relevant for us now, and (\ref{ex:Anaphora:12}) suffices for our purposes.}
+
+\ea\label{ex:Anaphora:12} F-command \citep[238]{DLM:LFG}\\[1ex]
+$f$ f-commands $g$ if and only if $f$ does not contain $g$, and all f-structures that contain $f$ also contain $g$.
+\z
+
+\noindent The English reflexive anaphor \emph{themselves} needs an f-commanding antecedent that outranks it. F-structure $g$ f-commands f-structure $j$ in (\ref{ex:Anaphora:11}), but since $g$ is a singular noun phrase, it does not match the {\NINDEX} features of the anaphor (see \sectref{sec:Anaphora:5}). F-structure $i$ is plural and could thus be a potential antecedent for the reflexive, but it does not f-command it: one f-structure that contains $i$, namely f-structure $g$, does not contain the f-structure of the anaphor, $j$. Therefore the noun phrase \emph{the children} does not f-command the reflexive anaphor \emph{themselves}, and (\ref{ex:Anaphora:10}) is ungrammatical.
+
+While f-command is a universal requirement on anaphor licensing, there still are anaphors in some languages that may take non-f-commanding antecedents under certain circumstances. We discuss here two reflexives to illustrate this phenomena. The antecedent of the Icelandic reflexive \emph{sig} or the Mandarin reflexive \emph{ziji}, for example, can be an embedded human possessor under the right discourse conditions. The Icelandic example (\ref{ex:Anaphora:13a}) describes Sigga's opinion, and the embedded clause, which includes the anaphor, is interpreted in her model of the world. The anaphor is thus tied to an antecedent who is a perspective holder, and this saves the configuration even if f-command is not satisfied (and even if the antecedent and the anaphor are not in the same clause). Since the embedded possessor (\emph{Olaf}\/) is not a perspective holder in the case of (13b), the reflexive is unacceptable there.
+
+\ea\label{ex:Anaphora:13} Icelandic \citep[220--222]{Maling84}
+\ea\label{ex:Anaphora:13a}\gll
+ Skoðun Siggui er  að   \emph{sig}  vanti   hæfileika.\\
+ opinion Sigga's is  that self.{\ACC}  lacks.{\SBJV}  talent\\
+ \glt`Sigga$_i$'s opinion is that she$_i$ lacks talent.' 
+\ex\label{ex:Anaphora:13b}\gll
+ *Trú  Ólafs á guð  bjargaði  \emph{sér}.\\
+ belief Olaf$_i$'s in god saved  self.\DAT\\
+ \glt`Olaf's$_i$ belief in god saved him$_i$.'
+\z\z
+
+\noindent As is expected, the possessor cannot be an inanimate noun phrase in examples of this kind, since inanimate entities do not have mental states. \citet{Charnavel2018-qa} explicitly show that inanimate possessors are degraded in this construction in Mandarin (\ref{ex:Anaphora:14b}), even if they are claimed to be able to antecede \emph{ziji} elsewhere (see \citealt{Lam2021-rq} for a discussion and for further data on \emph{ziji} with an antecedent embedded in the subject). But (\ref{ex:Anaphora:14a}) is a description of the mental state of the antecedent, Zhangsan, and this is apparently enough to license the anaphor even in the absence of f-command.
+
+\ea\label{ex:Anaphora:14} Mandarin (a: \citealt[100]{10.2307/4047781}, b: \citealt[140]{Charnavel2018-qa})
+\ea\label{ex:Anaphora:14a}\gll
+ Zhangsan de jiaoao  hai-le   ziji.\\
+ Zhangsan \gloss{de} pride   hurt.{\ASP} self\\
+ \glt`Zhangsan$_i$'s pride harmed him$_i$.'
+\ex\label{ex:Anaphora:14b}\gll
+*Zhe ke shu de guoshi  ya  wan le  ziji.\\
+ this \gloss{cl} tree \gloss{de} fruit   press  bent  {\ASP}  self\\
+ \glt`The fruits of this tree$_i$ bent it$_i$.'
+\z\z
+
+\noindent We discuss the role of point of view in the licensing of certain types of anaphora in \sectref{sec:Anaphora:4}. What the above data in (\ref{ex:Anaphora:13}) and (\ref{ex:Anaphora:14}) illustrate is that human or animate possessors in some languages can gain the kind of prominence that allows them to license anaphors even when the f-command relation between antecedent and anaphor is not satisfied.\footnote{\citet[268]{BresnanEtAl2016} offer an LFG analysis of the Icelandic construction in (\ref{ex:Anaphora:13a}) that includes the postulation of an f-command relation between the possessor and the embedded reflexive subject. For a recent LFG approach to the Mandarin data, see \citet{Lam2021-rq}.}
+
+I discuss the LFG approach to domain restrictions on anaphora in \sectref{sec:Anaphora:3}. But before we turn to that, I briefly review anaphoric data where syntactic rank in the sense as we have discussed this notion here, does not seem to be the dominant factor in the search for a prominent antecedent.
+
+\subsection{Thematic prominence}
+\label{sec:Anaphora:2.2}
+
+Certain anaphors or anaphoric dependencies are constrained by factors that are at least partially independent of syntactic rank. Argument structure relations represent one such factor.  If, for example, both the antecedent and the anaphor are oblique arguments of the same predicate, then they are indistinguishable with respect to the Functional Hierarchy in (\ref{ex:Anaphora:7a}). \citet[154]{dalrymple1993} discusses the following minimal pair, where the complement of the \emph{to}-PP can antecede the complement of the \emph{about}-PP, but not vice versa (see also \citealt[266]{Pollard1992-cv}):
+
+\ea\label{ex:Anaphora:15}
+\ea\label{ex:Anaphora:15a} Mary talked to John$_i$ about \emph{himself}$_i$.
+\ex\label{ex:Anaphora:15b} *Mary talked about John$_i$ to \emph{himself}$_i$.
+\z\z
+
+\noindent This binding asymmetry can be described with reference to a hierarchy among argument roles, like that of the Thematic Hierarchy of \citet{bresnan1989locative} in (\ref{ex:Anaphora:17}), under the assumption that the \textit{to}-PP bears a type of recipient role in (\ref{ex:Anaphora:15}), while the \textit{about}-PP is a theme.
+
+\ea\label{ex:Anaphora:16} Thematic Hierarchy \citep{bresnan1989locative}\\[1ex]
+\textsc{agent > benefactive > recipient/experiencer >  instrument >}\\
+\hfill\textsc{theme/patient > locative}
+\z
+
+\noindent What rules (\ref{ex:Anaphora:15b}) out is that the antecedent PP \emph{about John} is less prominent thematically than the anaphoric PP \emph{to himself}. This is because \textsc{theme} is lower on the hierarchy than \textsc{recipient}. The Functional Hierarchy, in and of itself, cannot capture this difference, since both PP's are obliques in the f-structure of the sentence.
+
+One potential counterargument to this understanding of the data in (\ref{ex:Anaphora:15}) is to deny the argumenthood of the \emph{about}-PP. If it is an adjunct, as \citet[715]{10.2307/4178836} argue, then syntactic rank suffices to explain the ungrammaticality of (\ref{ex:Anaphora:15b}), since an adjunct PP is less prominent than an oblique on the Functional Hierarchy, and therefore the former cannot antecede the latter. Similar concerns may arise with other predicates that take two PP dependents, since it is often the case that one can find reasons to assume that one of the two PP's is less argument-like than the other.\footnote{\label{fn:Anaphora:10}\citet{ZaenenCrouch2009} argue on the basis of computational efficiency that  semantically marked optional PPs are best treated as adjuncts.}
+
+But reference to the thematic hierarchy may still be necessary elsewhere. \citet[153]{dalrymple1993} discusses the following Norwegian data set (citing \citealt{Hellan88}) as a relevant case. Norwegian ditransitive verbs allow either of their two VP-internal objects to become subjects in the passive construction. (\ref{ex:Anaphora:17b}) illustrates the version where the recipient is the passive subject, and (\ref{ex:Anaphora:17c}) has the theme in the same function.
+
+\ea\label{ex:Anaphora:17} Norwegian \citep[162]{Hellan88}
+\ea\label{ex:Anaphora:17a}\gll
+ Vi overlot  Jon  pengene.\\
+ we gave Jon money\\
+ \glt`We gave John the money.'
+\ex\label{ex:Anaphora:17b}\gll
+ Jon ble  overlatt  pengene.\\
+ Jon was given  money\\
+ \glt`John was given the money.'
+\ex\label{ex:Anaphora:17c}\gll
+ Pengene  ble  overlatt  Jon.\\
+ money was  given  Jon\\
+ \glt`The money was given to John.'  
+\z\z
+
+\noindent Norwegian has a dedicated reflexive possessor, \emph{sin}. Interestingly, when the object contains this reflexive, as in (\ref{ex:Anaphora:18}), then only one of the two potential readings of the passive sentence is acceptable. It is reading (i) below, which includes the malefactive subject argument binding the reflexive in the theme object. We assume that malefactives and benefactives occupy the same position on the Thematic Hierarchy.
+
+\ea\label{ex:Anaphora:18} Norwegian \citep{Hellan88}\\
+\gll
+     Barnet  ble fratatt  sine  foreldre.\\
+ child  was taken self parents\\
+ \glt (i) `The child was deprived of self's parents.'     \textsc{malefactive > theme} \\
+ (ii)   *`The child was taken away from self's parents.'\\
+ \hfill\textsc{theme > malefactive} 
+\z
+
+\noindent Reading (ii) would have the theme subject binding into the malefactive object, or in other words, a thematically less prominent antecedent binding into a more prominent one. Reference to the Thematic Hierarchy is thus essential here to be able to distinguish between the acceptable and the unacceptable reading of (\ref{ex:Anaphora:18}).
+
+\subsection{Linear order}
+\label{sec:Anaphora:2.3}
+
+Anaphoric relations are sometimes constrained by linear order, inasmuch as the anaphor may be required to have an antecedent that precedes it linearly. Linear order thus represents another dimension of prominence relations relevant in the description of binding phenomena. Facts concerning the linear order of constituents are captured at the level of c-structure in the LFG architecture, and given the f-structure centered nature of LFG, such facts need to be addressed  separately.
+
+Consider the following Hungarian data set for the purposes of illustration \citep{Kiss2008-ls}. Binding among co-arguments is primarily constrained by the Functional Hierarchy in Hungarian, so the object can bind the oblique argument (\ref{ex:Anaphora:19a}), but the oblique cannot bind the object (\ref{ex:Anaphora:19b}).
+
+\ea\label{ex:Anaphora:19} Hungarian \citep[451]{Kiss2008-ls}
+\ea\label{ex:Anaphora:19a}\gll
+Meg-kérdeztem  a   fiúk-at       egymás-ról.\\
+ \PFV-asked.{1\SG}    the boys-{\ACC}  each.other-about\\
+ \glt`I asked the boys about each other.'
+\ex\label{ex:Anaphora:19b}\gll
+     *Meg-kérdeztem  a   fiúk-ról        egymás-t.\\
+ \PFV-asked.{1\SG}   the boys-about  each.other-{\ACC}\\
+\glt (`I asked each other$_i$ about the boys$_i$.')
+\z\z
+
+\noindent \citeauthor{Kiss2008-ls} notes, however, that linear order plays an important role in the case of non-coargument binding: when the antecedent precedes the anaphor embedded in another argument of the verb, then the acceptability of the anaphor improves significantly, even if the antecedent ranks lower on the Functional Hierarchy.
+
+In (\ref{ex:Anaphora:20a}), the object locally outranks the oblique antecedent, and therefore the reciprocal possessor embedded in the object cannot be bound. But when the oblique antecedent linearly precedes the object, as happens in (\ref{ex:Anaphora:20b}-\ref{ex:Anaphora:20d}), then the sentence becomes much less degraded (and in fact, many speakers find these examples fully acceptable).
+
+\ea\label{ex:Anaphora:20} Hungarian \citep[452]{Kiss2008-ls}
+\ea\label{ex:Anaphora:20a}\gll
+ *Meg-kérdeztem  egymás   szülei-t        a fiúk-ról.\\
+ \PFV-asked.{1\SG}   each.other  parents.\POSS-{\ACC} the boys-about\\
+ \glt(`I asked each other$_i$'s parents about the boys$_i$.')
+\ex\label{ex:Anaphora:20b}\gll
+ ?A fiúk-ról  egymás     szülei-t         kérdeztem meg.\\
+ the boys-about each.other parents.\POSS-{\ACC} asked.{1\SG}  {\PFV}\\
+ \glt`About the boys$_i$, I asked each other$_i$'s parents.'
+\ex\label{ex:Anaphora:20c}\gll
+    ?A fiúk-ról    meg-kérdeztem egymás     szülei-t. \\
+ the boys-about  \PFV-asked.{1\SG}    each.other  parents.\POSS-{\ACC}\\
+\ex\label{ex:Anaphora:20d}\gll
+  ?Meg-kérdeztem a fiúk-ról      egymás    szülei-t\\     
+ PFV-asked.1SG   the boys-about   each.other  parents.\POSS-{\ACC}\\
+\z\z
+
+\noindent Thus changes in the linear order save this sort of binding dependency. In other words, both syntactic rank and linear order play a role in constraining non-coargument binding in Hungarian, but the linear order constraint apparently outranks the syntactic rank constraint imposed on the antecedent.\footnote{In addition, the antecedent must also f-command the anaphor. This requirement is satisfied in each example in (\ref{ex:Anaphora:20}).}
+
+In the LFG literature, \citet{BresnanEtAl2016} provide a comprehensive discussion of the role of linear precedence in conditioning pronominal anaphoric dependencies (see also \citetv{chapters/CoreConcepts}). \citet{mohanan1982} shows that overt pronouns cannot precede their antecedent in Malayalam, and \citet{kameyama85} discusses pertinent Japanese data. In order to be able to capture these and other phenomena sensitive to linear order, LFG relies on the notion of f-precedence, which \citet{kaplan-zaenen1989-fprec} define as follows:
+
+\ea\label{ex:Anaphora:21}  $f$ f-precedes $g$ ($f <_f\ g$) if and only if for all $n1 \in \phi^{-1}(f)$ and for all $n2 \in \phi^{-1}(g)$, $n1$ c-precedes $n2$.
+\z
+
+\noindent The usual flow of information in the correspondence architecture of LFG is from c-structure to f-structure. The relation $\phi^{-1}$ provides for the inverse correspondence from f-structure to c-structure: it associates f-structures with the c-struc\-tures nodes they correspond to. The term $n1 \in \phi^{-1}(f)$ identifies the set of c-structure nodes that correspond to the f-structure $f$. The definition in (\ref{ex:Anaphora:21}) thus states that f-structure $f$ f-precedes f-structure $g$ if and only if all the c-structure nodes corresponding to $f$ c-precede all the c-structure nodes corresponding to $g$. The relation \textsc{c-precedence} can be defined as follows:\footnote{I thank an anonymous reviewer of this paper and Mary Dalrymple for their help in constructing the definition in (\ref{ex:Anaphora:22}). By \emph{precede} we simply mean `be to the left of' in the string.}
+
+\ea\label{ex:Anaphora:22} C-precedence\\[1ex]
+A c-structure node $n1$ c-precedes a node $n2$ if and only if $n1$ does  not dominate $n2$, $n2$ does not dominate $n1$, and the string that $n1$  dominates (or $n1$ if $n1$ is itself a terminal) precedes the string  that $n2$ dominates (or $n2$ if $n2$ is itself a terminal).
+\z
+
+\noindent F-precedence allows us to make reference to linear ordering facts at the level of f-structure, the locus where binding dependencies are primarily constrained in LFG. It relies on the notion of the inverse correspondence from f-structure to c-structure, which is evoked as a somewhat marked feature of the grammatical model. But this only reflects the fact that while conditioning anaphoric dependencies by linear order is an existing pattern in languages, it is not the dominant mode of licensing anaphors.
+
+\section{Constraining binding domains}
+\label{sec:Anaphora:3}
+
+The comprehensive description of a binding relation includes several components, which are stated in terms of f-structural properties in LFG. Anaphors require an antecedent that is available within a particular binding domain. The antecedent and the anaphor need to have matching agreement features, and antecedents are often constrained to be of specific types. For example, some anaphors require a subject antecedent, while others may need an antecedent that is a perspective holder. And, as we have seen in \sectref{sec:Anaphora:2}, the antecedent must be more prominent than the anaphor, which, by default, means that the antecedent f-commands the anaphor as well as outranks it on the Functional Hierarchy. \citet{dalrymple1993} proposed that these binding constraints are lexically specified on the anaphors, and there is a universally available inventory of them. \citet{dalrymple01}, \citet{DLM:LFG}, \citet{bresnan2001lexical}, and \citet{BresnanEtAl2016}, among others, extend this line of research, which I briefly overview in this section, adding some complementary remarks in \sectref{sec:Anaphora:4} and \sectref{sec:Anaphora:5}. What lies at the heart of the LFG approach is that the grammatical space that anaphors occupy is too rich to be described in terms of generalizations of the type that classical Principle A represents. Anaphors vary along the parameters summarized above both across languages, and possibly within a single language. This versatility must be captured in any adequate description of anaphoric phenomena.
+
+The core underlying assumption is that anaphors find or search for an antecedent within a specified domain. Inside-out functional uncertainty is used to model this search, since it allows reference to enclosing structures.\footnote{See \citetv{chapters/CoreConcepts} for an overview discussion of inside-out function application and functional uncertainty, as well as for references to pertinent LFG literature. \citet{Strahan:LFG09,Strahan2011} develops a proposal in which the search is inverted: the antecedent searches for the anaphor using outside-in functional uncertainty.} (\ref{ex:Anaphora:23}) is the general formula employed in the lexical description of binding dependencies:
+
+\ea\label{ex:Anaphora:23} ((\GF* \GFPRO\UP) \GFANT)
+\z
+
+\GFANT\ is the grammatical function of the antecedent, and \GFPRO\ is the grammatical function of the anaphoric element.\footnote{(\ref{ex:Anaphora:23}) is in fact applicable to any anaphoric element, be it a reflexive or a reciprocal anaphor proper, or an anaphorically used personal pronoun.} The expression \GF*~\GFPRO\UP defines a path from the f-structure of the anaphoric element to an f-structure that contains the antecedent.\footnote{This path may consist of a single attribute only.} In terms of a schematic f-structure, (\ref{ex:Anaphora:23}) describes the following scenario:
+
+\ea\label{ex:Anaphora:24}
+{\avm[style=fstr]{\id{f}{[\GFANT & \id{g}{[antecedent]}\smallskip\\
+...gf*... & [ \GFPRO & \id{j}{[anaphor]}]]}}}
+\z
+
+\noindent Here \GF* \GFPRO\UP\ defines a path from f-structure $j$ to f-structure $f$, which contains the antecedent (f-structure $g$).
+
+(\ref{ex:Anaphora:23}) requires the f-structure of the antecedent to f-command the anaphor (compare \ref{ex:Anaphora:12} and \ref{ex:Anaphora:23}). In addition, further prominence relations can be stated in terms of off-path constraints on the f-structure of the antecedent. These include the prominence relations we have surveyed in \sectref{sec:Anaphora:2}: relations defined over the Functional Hierarchy or the Thematic Hierarchy, or linear order constraints. \citet[516--517]{DLM:LFG} offer a discussion of how such constraints can be implemented, here I simply indicate the availability of this tool by adding a generic prominence template as an off-path constraint, which is meant to represent different types of prominence descriptions as is relevant for the anaphor.
+
+
+\ea\label{ex:Anaphora:25} ((\GF* \GFPRO\UP)  \offp{\GFANT}{\textsc{@prominent}} )
+\z
+
+\noindent Such an off-path constraint requires the antecedent to be more prominent than the anaphor along one or more of the dimensions discussed here.
+
+Anaphors may also impose further specific requirements on their antecedents. They may require them, for example, to be subjects (see \citealt{BresnanEtAl2016}  and \citealt{DLM:LFG} for pertinent discussions). The Norwegian reflexive possessor \emph{sin} can only be bound by the subject (\ref{ex:Anaphora:26a}), but not by the object (\ref{ex:Anaphora:26b}):
+
+\ea\label{ex:Anaphora:26} Norwegian (\citealt[510]{DLM:LFG}, citing \citealt[75]{Hellan88})
+\ea\label{ex:Anaphora:26a}\gll
+ Jon  ble  arrestert  i  {sin}  kjøkkenhave.\\
+ Jon was arrested in self's  kitchen.garden\\
+ \glt`Jon$_i$ was arrested in his$_i$ kitchen garden.'
+\ex\label{ex:Anaphora:26b}\gll
+ *Vi arresterte  Jon  i  {sin}  kjøkkenhave.\\
+ We arrested Jon in self's  kitchen.garden\\
+\glt `We arrested Jon$_i$  in his$_i$ kitchen garden.'
+\z\z
+
+\noindent This can be stated simply by constraining the antecedent to be a \SUBJ in the (partial) lexical specification of the reflexive possessor \emph{sin}:
+
+\ea\label{ex:Anaphora:27} ((\GF* \GFPRO\UP)  \SUBJ )
+\z
+
+\noindent The Mandarin Chinese anaphor \textit{ziji} has also been claimed to show subject orientation, and thus (\ref{ex:Anaphora:27}) is part of its lexical specification (see \citealt{Lam2021-rq} for further details):\footnote{In addition, \textit{ziji} can also be bound by an antecedent properly contained in the subject, and it is sensitive to logophoricity (see \citealt{Lam2021-rq}, as well as example (\ref{ex:Anaphora:14}) above). We discuss logophoricity in \sectref{sec:Anaphora:4}.}
+
+\ea\label{ex:Anaphora:28} Mandarin Chinese \citep[296]{10.2307/20100748}\\
+\gll
+Zhangsan  gei-le      Lisi  yi-zhang  ziji   de  xiangpian.\\
+Zhangsan give-{\ASP} Lisi    one-\gloss{cl} self      \gloss{de}  picture\\
+\glt`Zhangsan$_i$  gave Lisi$_k$ a picture of himself$_{i/*k}$.'
+\z
+ 
+\noindent In contrast, the Norwegian anaphor \textit{ham selv} can only be bound by a non-subject argument, compare (\ref{ex:Anaphora:29a}) with (\ref{ex:Anaphora:29b}).
+
+\ea\label{ex:Anaphora:29} Norwegian \citep[29--30]{dalrymple1993}
+\ea\label{ex:Anaphora:29a}\gll
+Jeg ga    Jon en bok    om     ham selv.\\
+ I    gave Jon a    book about  him self\\
+ \glt`I gave Jon$_i$ a book about himself$_i$.'
+\ex\label{ex:Anaphora:29b}\gll
+  *Jon snakker om      ham selv.\\
+ Jon  talks      about  him  self.\\
+ \glt`Jon$_i$ talks about himself$_i$.'
+\z\z
+
+\noindent The anti-subject orientation of \emph{ham selv} can be stated as a negative constraint in the lexical entry of this anaphor: the antecedent cannot be a \SUBJ.
+
+The final component of the description of anaphoric dependencies, and the one that has received most attention in LFG since the seminal work of \citet{dalrymple1993}, is the delimitation of the binding domain. Four such domains have been found to be relevant in the description of anaphoric binding, which are listed in (\ref{ex:Anaphora:30}). These domains can be defined with the help of inside-out functional designators and appropriate off-path constraints, which are also added in (\ref{ex:Anaphora:30}) below \citep[507]{DLM:LFG}.
+
+\ea\label{ex:Anaphora:30}
+\ea\label{ex:Anaphora:30a} Coargument Domain:
+ minimal domain defined by a \PRED\ and the grammatical   functions it governs\\[1ex]
+ (\offp{\GF*}{$\neg$(\RIGHT\PRED)}  \GFPRO\UP)
+\ex\label{ex:Anaphora:30b} Minimal Complete Nucleus: 
+ minimal domain with a \SUBJ\ function\\[1ex]
+ (\offp{\GF*}{$\neg$(\RIGHT \SUBJ)} \GFPRO\UP)
+\ex\label{ex:Anaphora:30c} Minimal Finite Domain: 
+ minimal domain with a \TENSE\ attribute\\[1ex]
+ (\offp{\GF*}{$\neg$(\RIGHT\TENSE)}  \GFPRO\UP)
+\ex\label{ex:Anaphora:30d} Root domain: 
+ f-structure of the entire sentence\\[1ex]
+ (\GF* \GFPRO\UP)
+\z\z
+
+\noindent These domain specifications are stated in the lexical entries of anaphors as either \textsc{positive} or \textsc{negative} binding requirements. A positive binding constraint requires the anaphor to be in a binding relation with some entry within the domain described (subject to further constraints, as discussed above), whereas a negative binding constraint states that the anaphor must not be bound to any element within that domain. Positive and negative binding constraints take the following general forms:\footnote{Identity is stated between the semantic representations of the antecedent and the anaphor. The $\sigma$-projection provides the mapping from f-structure to the LFG-type s(emantic)-structure; see \sectref{sec:Anaphora:5} for more on this.}
+
+\ea\label{ex:Anaphora:31}
+\ea Positive binding constraint\\[1ex]
+(\UP\textsc{antecedent})$_\sigma$ = ((\GF* \GFPRO\UP)  \GFANT )$_\sigma$
+\ex Negative binding constraint\\[1ex]
+(\UP\textsc{antecedent})$_\sigma$ ≠ ((\GF* \GFPRO\UP)  \GFANT )$_\sigma$
+\z\z
+
+\noindent In what follows, we discuss some examples to show how this system of lexical specifications works. Further and more comprehensive discussions can be found in \citet{dalrymple1993}, \citet{DLM:LFG} and \citet{bresnan2001lexical}.
+
+The Norwegian complex anaphor \emph{seg selv} is described in \citet{Hellan88} and \citet{dalrymple1993} as a subject oriented anaphor that requires a co-argument binder. And while \citetv{chapters/Scandinavian} shows that speakers may also accept object binders in some cases, the co-argument binder requirement seems to be strong. The contrast between the following two examples illustrates this:
+
+\ea\label{ex:Anaphora:32} Norwegian (\citealt[505--506]{DLM:LFG}, citing \citealt[67,~69]{Hellan88})
+\ea\label{ex:Anaphora:32a}\gll
+Jon fortalte meg  om  \textit{seg}    \textit{selv}.\\
+ Jon told  me  about  \gloss{refl}  self.\\
+ \glt`Jon$_i$ talks about himself$_i$.'
+\ex\label{ex:Anaphora:32b}\gll
+ *\textit{Hun}  kastet meg  fra  \textit{seg}   \textit{selv}.\\
+ she  threw me  from  \gloss{refl} self.\\
+ \glt`She$_i$ threw me away from self$_i$.'
+\z\z
+\noindent The difference between the two constructions is that (\ref{ex:Anaphora:32b}) contains a semantic preposition with a \PRED\ feature, while the oblique PP in (\ref{ex:Anaphora:32a}) does not.
+
+Consider the f-structure of the grammatical (\ref{ex:Anaphora:32a}) first. The Coargument Domain constraint (\ref{ex:Anaphora:30a}) requires a path from f-structure $j$ to the f-structure that contains the \SUBJ\ antecedent. Since this is a short path, no \PRED\ feature occurs on the way, and therefore the off-path constraint $\neg$(\RIGHT\PRED) is satisfied. (\ref{ex:Anaphora:33}) is the (simplified) f-structure of (\ref{ex:Anaphora:32a}):
+
+\ea\label{ex:Anaphora:33} f-structure of (\ref{ex:Anaphora:32a})\\[1ex]
+\avm[style=fstr]{\id{f}{[ pred &  `tell\arglist{subj, obj, \OBLROLE{about}}'\\
+ subj  & \id{g}{[pred &  `jon$_i$']}\smallskip\\
+ obj  & ~~[pred &  `pro']\\
+ \OBLROLE{about} & \id{j}{[pred & `pro$_i$' \\
+                    prontype & refl]}]}}
+\z
+
+\noindent In contrast, (\ref{ex:Anaphora:32b}) projects a more complex f-structure, with a more complex domain path:\footnote{The PP \emph{fra seg selv} `from self' could alternatively be analyzed as an \OBL, but the choice between the \ADJ\ and the \OBL\ analysis is largely orthogonal to our current concerns. See also footnote~\ref{fn:Anaphora:10} on this issue.}
+
+\ea\label{ex:Anaphora:34} f-structure of (\ref{ex:Anaphora:32b})\\[1ex]
+{\avm[style=fstr]{\id{f}{[ pred &  `throw\arglist{subj, obj}'\\
+ subj  & \id{g}{[pred &  `pro$_i$']}\smallskip\\
+ obj  & ~~[pred &  `pro']\\
+ adjunct  & \{ \id{j}{[pred & `from\arglist{obj}'\\
+                obj & \id{k}{[prontype & refl]}]}\}]}}}
+\z
+
+\noindent Here the domain path starts at f-structure $k$, and to reach the f-structure of the antecedent, we need to pass the \PRED\ feature in $j$ – a move that the off-path constraint $\neg$(\RIGHT\PRED) prohibits. As a result, (\ref{ex:Anaphora:32b}) is ungrammatical.
+
+The primary Hungarian reflexive, \emph{maga}, is grammatical in non-selected spatial PPs. In fact, it is often the only option in standard Hungarian, and a pronominal PP is unacceptable in the particular case of the Hungarian version of (\ref{ex:Anaphora:32b}) \citep{Rakosi2010}.
+
+\ea\label{ex:Anaphora:35} Hungarian
+\ea\label{ex:Anaphora:35a}\gll
+János$_i$  el-tolt    engem  magá-tól$_i$.\\
+ János away-pushed.{3\SG} me  himself-from\\
+ \glt`János$_i$ pushed me away from himself$_i$.'
+\ex\label{ex:Anaphora:35b}\gll
+*János$_i$ el-tolt   engem  (ő$_i$-)től-e$_i$.\\
+ János away-pushed.{3\SG} me  he-from-{3\SG}\\
+\glt `János$_i$ pushed me away from him$_i$.'
+\z\z
+
+\noindent The source marker corresponding to the English preposition \emph{from} is  expressed as ablative case morphology in Hungarian (\emph{-tól/-től}). Reflexives behave like lexical nouns in this respect, and they take the ablative case suffix as expected (\ref{ex:Anaphora:35a}). Personal pronouns, however, trigger agreement morphology on the case marker, and the pronoun itself is usually pro-dropped (\ref{ex:Anaphora:35b}). But whether this pronoun is overt or is pro-dropped, it cannot have a clause-mate antecedent, resulting in the ungrammaticality of (\ref{ex:Anaphora:35b}).
+
+(\ref{ex:Anaphora:35a}) is thus in direct contrast with (\ref{ex:Anaphora:32b}). The Hungarian reflexive \emph{maga}, unlike Norwegian \emph{seg selv}, is subject to the Minimal Complete Nucleus constraint: it has to be bound within a domain that includes a subject. This is captured in (\ref{ex:Anaphora:30b}) with the help of the off-path constraint  $\neg$(\RIGHT\SUBJ). The f-structure of (\ref{ex:Anaphora:35a}) is analogous to (\ref{ex:Anaphora:34}), and using that f-structure for the purposes of illustration, the relevant domain path in Hungarian would take us from the f-structure of the reflexive ($k$) to f-structure $j$ of the adjunct PP, which is contained within the matrix f-structure $f$, together with the subject antecedent $g$. Subject $g$ can serve as the antecedent of the reflexive. Being subject to the Minimal Nucleus Constraint requires this search not to pass a subject antecedent, and it follows that Hungarian \emph{maga} cannot take antecedents that are in another clause.
+
+Interestingly, the Hungarian reciprocal anaphor \emph{egymás} is somewhat freer than the reflexive \emph{maga}, as it can take antecedents from within the Minimal Finite Domain. Compare the following two sentences:
+
+\newpage
+\ea\label{ex:Anaphora:36} Hungarian \citep[153]{LaczkoRakosi2019}
+\ea\label{ex:Anaphora:36a}\gll
+A    fiúk    látták   a     lányok-kat  lerajzol-ni    maguk-at.\\
+ the boys  saw.{3\PL} the  girls-{\ACC}  draw-{\INF}   themselves-{\ACC}\\
+ \glt`The boys$_i$ saw the girls$_k$        draw (a picture of) themselves$_{*i/k}$.'
+\ex\label{ex:Anaphora:36b}\gll
+ A    fiúk    látták   a     lányok-kat   lerajzol-ni    egymás-t. \\
+ the boys  saw.{3\PL} the  girls-{\ACC}  draw-{\INF}   each.other-{\ACC}\\
+ \glt`The boys$_i$ saw the girls$_k$        draw (a picture of) each other$_{i/k}$.'
+\z\z
+
+\noindent The reflexive object of the infinitive can only be co-construed with the infinitival subject (controlled by the matrix object), but it cannot take the matrix subject as its antecedent in (\ref{ex:Anaphora:36a}). It is thus unlike the reciprocal in (\ref{ex:Anaphora:36b}), which can.
+
+The Norwegian reflexive \emph{seg selv}, the Hungarian reflexive \emph{maga}, and the Hungarian reciprocal \emph{egymás} are all anaphors, yet the binding constraints that apply to them are different. \emph{Seg selv} needs an antecedent in the Coargument Domain, \emph{maga} takes one from the Minimal Complete Nucleus, and \emph{egymás} may have an antecedent even outside of its own embedding clause as long as the search is confined to the Minimal Finite Domain. In fact, the binding constraints that we have discussed in this section create a relatively large space within which particular lexical types of anaphors may vary, and research in the framework of LFG has shown that this space is indeed occupied by an abundance of anaphoric elements attested cross-linguistically. The list includes such relatively atypical anaphors as the \emph{ìı} pronouns of Y\c{a}g Dii, which must take long distance antecedents \citep{Dalrymple2015} within a logophoric domain. We discuss logophoricity and these pronouns in \sectref{sec:Anaphora:4} below.
+
+\section{Logophoricity}
+\label{sec:Anaphora:4}
+
+Anaphors, especially reflexives, may sometimes appear without a clause- or a sentence-mate antecedent, or even in the complete absence of a linguistically expressed antecedent. The following BNC \citep{noauthor_undated-hr} examples contain such reflexives.
+
+\ea\label{ex:Anaphora:37}
+\ea\label{ex:Anaphora:37a} And suddenly Briant felt better. These people were    professionals, like \emph{himself}.
+\ex\label{ex:Anaphora:37b} I've not done this before and I wanted to try it out with a   small group like \emph{yourselves} to see how we go on with it.
+\ex\label{ex:Anaphora:37c} Our group consisted of Stephen, David, Laura and    \emph{myself}, and we were aged twenty-two.
+\ex\label{ex:Anaphora:37d} Lots of love to Birgitta and \emph{yourself}, and to the boys    when you see them.
+\z\z
+
+\noindent One hallmark of these types of reflexives is that they are more or less freely exchangeable with personal pronouns. Thus, for example, \emph{himself} in (\ref{ex:Anaphora:37a}) can be replaced with \emph{him}, and both will refer to Briant in the given context.
+
+Many instances of such types of anaphora have been claimed to be conditioned by discourse factors (see \citealt{Maling84}, \citealt{Sells:Log}, \citealt{Pollard1992-cv}, \citealt{10.2307/4178836}, \citealt{Culy:Log}, and \citealt{BresnanEtAl2016}, among others). The most prominent of these factors is perspective or viewpoint, in the sense that the (discourse) antecedent of the reflexives is a perspective holder. The reflexive in (\ref{ex:Anaphora:37a}), for example, occurs in a discourse context in which the feelings of Briant are described, and (\ref{ex:Anaphora:37c}) projects the speaker's perspective and hence creates a context in which the reflexive \emph{myself} is licensed in the absence of a linguistically expressed antecedent. From a purely syntactic perspective, anaphoric data of this type are often approached as exceptional (see the term \textsc{exempt anaphora} in \citealt{Pollard1992-cv}). Pertinent research in LFG has focused on anaphoric elements which, unlike the English reflexive, must take a linguistically expressed antecedent which is a perspective holder. Such anaphoric elements are called \textsc{logophors}.\footnote{Most of the pertinent research both within and outside of LFG has focused on reflexives, but, as \citet{Pollard1992-cv} point out, reciprocal anaphors may also be exempt. \citet{Szucs2019b} discusses complex event nominalization data from Hungarian to show that Hungarian reciprocals embedded in such noun phrases may lack a linguistic antecedent and are then licensed as logophors.}
+
+\citet{BresnanEtAl2016} offer an in-depth discussion of logophoricity, including its relation to subjectivity. A logophoric pronoun ``refers to one whose speech, thoughts, or feelings are represented in indirect discourse, from that person's own point of view'' (Bresnan 2016: 255). They treat the Icelandic reflexive \emph{sig} as a logophoric element (see also \citealt{Maling84}, as well as \citet{Strahan:LFG09,Strahan2011}), and \citet{Lam2021-rq} provides a logophoric LFG-analysis of the Mandarin Chinese reflexive \emph{ziji}, as well as of the Cantonese reflexive \emph{jighei} (see also \citealt{10.2307/20100748} on the nonsyntactic uses of \emph{ziji}). A very intriguing type of a logophoric pronominal is discussed in \citet{Dalrymple2015}. The Y\c{a}g Dii language (Niger-Congo/Adamawa-Ubangi, Cameroon) has a complex pronominal system that includes the \emph{ìı} pronouns. These pronouns are like regular anaphors inasmuch as they cannot be used deictically, and they cannot take discourse antecedents. However, ``the antecedent of \emph{ìı} must be the subject of a clause that is at least two clauses distant'' \citep[1090]{Dalrymple2015}. In example (\ref{ex:Anaphora:38}), this pronoun is the subject of the embedded clause S3, and it must be co-construed with the subject of the matrix clause S1.
+
+\ea\label{ex:Anaphora:38}  Y\c{a}g Dii \citep[1091]{Dalrymple2015}\\
+\gll
+$_{S1}$[ \`Ak\`aw $\emptyset$
+\c{\`o} $_{S2}$[ lig $_{S3}$[ b\`a {{\`\i}i} lá h\c{e}n lál{\acutetextbari} pásk\`a kan
+    waa duul{\'\i} b{\`\i}{\`\i} v{\textbaru}
+  w{\textbaru}l{\acutetextbari} máa] b\`a d{\textbari}
+  t\'{\textepsilon}lá?]\\
+{} Teacher$_i$ (he$_i$) say {} house {} that {he.{{\`\i}i}}$_{i/*j}$ eat
+thing eating Easter with child following his$_i$ {\PL} there when,
+that.it is.there where?\\
+\glt `$_{S1}$[ The teacher$_i$ asks, $_{S2}$[where is the
+house $_{S3}$[in which {he.{{\`\i}i}$_{i/*j}$} will eat the Easter meal with his$_i$
+disciples?]]]'\z
+
+\noindent The antecedent subject must be a perspective holder, and the intermediate subject in $S2$ may or may not be coreferential with the pronoun as long as it does not introduce an independent logophoric domain.
+
+Disregarding now details that are irrelevant for our purposes, the binding constraints on this pronoun can be stated as follows:
+
+\ea\label{ex:Anaphora:39} Binding constraints for \emph{ìı} \citep[1117]{Dalrymple2015}
+\z
+
+(\UPS\textsc{antecedent}) = ((\offp{\GFLOG}{(\RIGHT\LOG)} ~ \offp{\GF*}{$\neg$(\RIGHT\LOG)}\UP)   \SUBJ )$_\sigma$ \smallskip
+
+\noindent This lexical specification requires the pronoun to take a subject antecedent from an f-structure where a logophoric domain is specified, and the domain path needs to include an intermediate f-structure where no independent logophoric domain is introduced. Formally, the \LOG\ feature appears within the f-structure that corresponds to the logophoric domain:
+
+\eabox{\label{ex:Anaphora:40}
+{\avm[style=fstr]{\id{S1}{[\SUBJ & [logophoric antecedent]\\
+\GFLOG & \id{S2}{[\LOG & $+$\\
+                 ~ \id{S3}{[...ìı... ]}]}]}}}
+}
+
+\noindent Y\c{a}g Dii thus has a pronominal system where logophoricity is a grammaticised notion, and it must be employed as an f-structure feature \LOG\ in the determination of the binding domain. In the particular case of the logophor \emph{ìı}, this domain must be unusually large as it must include an extra clause between the clause that hosts the antecedent and the clause that hosts the logophor.
+
+\section{On representing referential dependencies}
+\label{sec:Anaphora:5}
+
+Anaphoric dependencies may be represented via referential indices. These can be used in the f-structures themselves, a practice which I have followed in this chapter. The indices themselves do not form an integral part of the formalism, however; they are mere mnemonics that help visualize the dependency. The machinery that we have introduced in \sectref{sec:Anaphora:3} allows us to represent such dependencies in a more elegant manner. The notation, in the tradition of \citet{dalrymple1993}, states that the semantic structure of the antecedent and of the anaphoric element are equivalent. The following is an abbreviation for the binding constraints on the basis of \citet{Asudeh2019-eg}, where $f$ is the f-structure of the anaphor and $f_\sigma$ is its semantic structure (see \citetv{chapters/Glue} for semantic structure in LFG).
+
+\ea\label{ex:Anaphora:41} ($f$~\textsc{antecedent})$_\sigma$ = $f_\sigma$
+\z
+
+\noindent As \citet{Asudeh2019-eg} argues, this notation has several theoretical advantages over the referential index notation. Firstly and most importantly, it shifts attention to semantic structure, which is the appropriate place to represent referential dependencies.
+
+The postulation of semantic equivalence between anaphor and antecedent abstracts away from the issue that it is often the case that no strict referential identity is required between the two. In (\ref{ex:Anaphora:42}), for example, the anaphor stands for the image of Kate in the mirror, whereas the antecedent noun phrase refers to the actual individual herself.
+
+\ea\label{ex:Anaphora:42} Kate saw \emph{herself} in the mirror.
+\z
+
+\noindent \citet{Rakosi2009} argues that the Hungarian complex anaphor \emph{önmaga} is especially well-suited to contexts of such referential shifts. In fact, it may even take restrictive adjectival or participial modifiers, as in (\ref{ex:Anaphora:43}) below.
+
+\ea\label{ex:Anaphora:43} Hungarian\\
+\gll
+a  tükör-ben  lát-ott   \textit{önmagam}\\
+the mirror-in see-\gloss{ptcp} myself\\
+\glt `my self/image seen in the mirror'
+\z
+
+\noindent (\ref{ex:Anaphora:43}) evokes a context where the speaker feels alienated from his or her own image. To what extent this variation in anaphora interpretation is integral to the study of the grammar of anaphora is partly a matter of perspective (see also \citealt{Jackendoff1992-eq} on this issue in general). In any case, if it is, semantic structure is a natural locus to address this issue.
+
+The statement of semantic identity between anaphor and antecedent, in and of itself, does not account for the semantic differences between plural reflexives and reciprocal anaphors, which obviously differ in interpretation. Moreover, reciprocal interpretation is subject to variation from relatively strong (\ref{ex:Anaphora:44a}) to relatively weak (\ref{ex:Anaphora:44b}) readings.
+
+\ea\label{ex:Anaphora:44}
+\ea\label{ex:Anaphora:44a} The students like \emph{each other}.
+\ex\label{ex:Anaphora:44b} The students followed \emph{each other} into the classroom.
+\z\z
+
+\noindent These issues and the overall semantics of reciprocals are discussed at length in \citet{DKKMP:LP} and \citet{Haug2020-is}. \citet{DalrympleAl17} develop an LFG-based, fine-grained and comprehensive semantic structure representation of anaphoric dependencies within a dynamic semantics framework, which provides a solution to the issues that we have briefly addressed here (see also \citealt{DLM:LFG}). What must be stated on the syntactic side, that is, at the level of f-structure, is the requirement that anaphors and antecedents must have matching agreement features. This is achieved in LFG via the {\NINDEX} feature set, discussed in detail in \citetv{chapters/Agreement}.\footnote{\citet{Rakosi22} argues on the basis of Hungarian data that at least certain types of anaphors may only constrain the {\NINDEX} features of their antecedents, but they do not have {\NINDEX} features of their own.}
+
+\section{Summary}
+\label{sec:Anaphora:6}
+
+We have seen that LFG differs from other generative frameworks in explicitly recognizing the empirical fact that anaphoric elements are subject to substantial variation both within and across languages, and no single rule or principle of grammar can capture this versatility in itself. Binding relations are complex dependencies with several parameters, all of which can be stated in the lexical entry of anaphors, in line with the lexicalist nature of LFG grammars.
+
+Research within the LFG tradition also addressed other aspects of the grammar of anaphora which we have not focused on. Constraints on coreference relations including pronouns are discussed in \citet{BresnanEtAl2016}, whereas \citet{DalrympleAl17} and \citet{DLM:LFG} provide an in-depth introduction to the semantic composition of anaphora, including discourse anaphoric relations encoded by personal pronouns and other types of pronominals which we have not touched upon in this chapter.
+
+As happens in other frameworks, too, LFG research has focused mostly on the grammar of reflexive anaphors, but reciprocals have also received attention, see especially \citet{Hurst:Syntaxa,Hurst2010,Hurst:PhD} and \citet{HurstNordlinger2021}. Morphosyntactic variation is in general significant among different types of anaphors, which, given the f-structure centered approach of LFG, is often not the primary focus of investigation. Nevertheless, a number of LFG works address this variation, from the syntactically active bound anaphoric morphemes in Bantu languages (see \citetv{chapters/African}) to the monomorphemic markers of Germanic, Romance and Slavic languages, which may either act as anaphors or as intransitivizers (see, among others, \citealt{Sells1987-xz}, \citealt{AlencarKelling2005}, \citetv{chapters/Romance}, and \citetv{chapters/Slavic}). Complex reflexives may have even more complex variants, with interesting syntactic and semantic consequences discussed in \citet{Rakosi2009}. \citet{BresnanEtAl2016} give an overview of some issues in typological variation in the morphology of anaphors and its syntactic correlates.
+
+% ***********************************************************************************
+
+\section*{Acknowledgments}
+
+I am profoundly grateful to Mary Dalrymple for her editorial help and endless patience. I am also indebted to the three anonymous reviewers, whose comments and suggestions were essential in improving this text. Any remaining errors are mine.
+
+I acknowledge the support of the János Bolyai Research Scholarship of the Hungarian Academy of Sciences, as well as support by the ÚNKP-22-5 New National Excellence Program  of  the  Ministry  for Innovation  and  Technology  from  the  source  of  the National Research, Development and Innovation Fund.
+
+\section*{Abbreviations}
+
+Besides the abbreviations from the Leipzig Glossing Conventions, this
+chapter uses the following abbreviations.\medskip
+
+\noindent
+\begin{tabular}{ll@{\qquad}ll}
+\gloss{asp} & aspectual marker &  \gloss{cl} & classifier\\
+\end{tabular}
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}

@@ -1,0 +1,109 @@
+\documentclass[output=book,chinesefont,japanesefont,collection,babelshorthands,
+               leqno]{langscibook}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\newcommand{\disabletodonotes}{disable}
+\input{localmetadata.tex}
+\input{localpackages.tex}
+\input{localhyphenation.tex}
+\input{localcommands.tex}
+\addbibresource{localbibliography.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%             Frontmatter                      %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+\frontmatter
+
+\currentpdfbookmark{Contents}{name} % adds a PDF bookmark
+{\sloppy\tableofcontents}
+
+\include{chapters/preface}
+
+\mainmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%             Chapters                         %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\part{Overview and introduction}
+\label{part:intro}
+
+\includepaper{chapters/Intro}
+\includepaper{chapters/CoreConcepts}
+\includepaper{chapters/GFs}
+
+\part{Grammatical phenomena}
+\label{part:phenomena}
+
+\includepaper{chapters/Anaphora}
+\includepaper{chapters/Agreement}
+\includepaper{chapters/Case}
+\includepaper{chapters/ComplexPreds}
+\includepaper{chapters/Coordination}
+\includepaper{chapters/Cstr}
+\includepaper{chapters/LDDs}
+\includepaper{chapters/Negation}
+\includepaper{chapters/Nominal}
+\includepaper{chapters/Incorporation}
+\includepaper{chapters/Control}
+
+\part{Grammatical modules and interfaces}
+\label{part:interface}
+
+\includepaper{chapters/Glue}
+\includepaper{chapters/Mapping}
+\includepaper{chapters/Prosody}
+\includepaper{chapters/InformationStructure}
+\includepaper{chapters/Morphology}
+
+\part{Linguistic disciplines}
+\label{part:disciplines}
+
+\includepaper{chapters/Historical}
+\includepaper{chapters/OT}
+
+\part{Formal and computational issues and applications}
+\label{part:computational}
+
+\includepaper{chapters/Computational}
+\includepaper{chapters/ImplementationsApplications}
+\renewcommand{\lsChapterFooterSize}{\footnotesize}
+\includepaper{chapters/GrammarInduction}
+\renewcommand{\lsChapterFooterSize}{\footnotesize}
+\includepaper{chapters/Treebanks}
+
+\part{Language families and regions}
+\label{part:languages}
+\includepaper{chapters/African}
+\includepaper{chapters/Australian}
+\includepaper{chapters/Austronesian}
+\includepaper{chapters/Celtic}
+\includepaper{chapters/WestGermanic}
+\includepaper{chapters/FinnoUgric}
+\includepaper{chapters/Romance}
+\includepaper{chapters/Scandinavian}
+\includepaper{chapters/Semitic}
+\includepaper{chapters/Sinitic}
+\includepaper{chapters/Slavic}
+
+\part{Comparing LFG with other linguistic theories}
+\label{part:comparison}
+
+\includepaper{chapters/ConstructionGrammar}
+\includepaper{chapters/Dependency}
+\includepaper{chapters/HPSG}
+\includepaper{chapters/Minimalism}
+\includepaper{chapters/RRG} 
+\includepaper{chapters/SimplerSyntax}
+\includepaper{chapters/TAG}
+
+\appendix
+\includepaper{chapters/glossary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%             Backmatter                       %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{backmatter.tex}
+\end{document}

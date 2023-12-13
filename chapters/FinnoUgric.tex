@@ -1,0 +1,1478 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10186012}
+\title{LFG and Finno-Ugric languages}
+\author{Tibor Laczkó\affiliation{Károli Gáspár University of the Reformed Church in Hungary}}
+\abstract{The chapter discusses some salient, sometimes competing, LFG analyses of a variety of (morpho-)syntactic phenomena in Finno-Ugric languages, with occasional glimpses at alternative generative approaches and at some related phenomena in languages belonging to Samoyedic, the other major branch of Uralic languages. We concentrate on clausal c-structure representational issues, verbal modifiers, focused constituents, negation, copula constructions, argument realization, subject-verb agreement, differential object marking, evidentiality and a set of noun phrase phenomena related to event nominalization. It argues that LFG provides an appropriate and suitably flexible formal apparatus for a principled analysis of all the phenomena in all the Finno-Ugric languages discussed here. In addition, it shows that the analysis of some of these phenomena can also contribute to LFG-internal theorizing.}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[32]%%chapternumber
+}{}
+
+\begin{document}
+\maketitle
+\label{chap:FinnoUgric}
+
+\section{Introduction}
+\label{sec:FinnoUgric:1}
+\subsection{General remarks on Finno-Ugric languages}
+\label{sec:FinnoUgric:1.1}
+
+\largerpage[-1]
+Finno-Ugric is one of the two branches of Uralic, the other branch being Samoyedic. In \figref{fig:FinnoUgric:1} we show the major branches of the Uralic family tree and those leaves (languages) that are discussed, or at least mentioned, in this chapter. This figure is in accordance with the general remarks in the introductory chapter of \citet{MiestamoTammWagnerNagy2015} on the representation of the Finno-Ugric branch.\footnote{We are thankful to Anne Tamm for helpful discussions of certain family tree issues.} We use the names of the individual languages as they appear in that volume.\footnote{Several languages in this figure are also referred to by alternative names in some other works, e.g. Khanty = Ostyak, Mansi = Vogul, Udmurt = Votyak, Mari = Cheremis; see the discussion of \citet{DN} in \sectref{sec:FinnoUgric:7.1.2}, for instance. When we cite authors, we keep the version of the name of a language that they use.} The authors point out that, although there are several alternative approaches to this branch, most of them share the view that the following language groups are valid genealogical units: Samoyedic, Ugric, Permic, Mari, Mordvin, Saamic and Finnic. However, the details of the relationships among certain languages are subject to variation across these competing approaches.\footnote{For a recent, fundamentally similar Uralic family tree representation indicating all the languages (including those that are extinct by now), see \citet{Maticsak2020}.}
+
+  
+\begin{figure}[t]
+  \begin{forest} %for tree={forked edges}
+    [URALIC\\
+        [\textsc{Samoyedic}
+          [\textsl{\textsc{Northern}}[\textit{Tundra}\\\textit{Nenets}]]
+          [\textsl{\textsc{Southern}}[\textit{Selkup}]]]
+        [\textsc{Finno-Ugric}, l sep+=3cm
+          [\textsl{\textsc{Finno-Permic}}
+            [Permic [\textit{Udmurt}]]
+            [Finno-Volgaic
+              [Finno-Saamic
+                [Saamic [\textit{Inari}\\\textit{Saami}]]
+                [Finnic [Northern [\textit{Finnish}]
+                ]
+                        [Southern [\textit{Estonian}]
+                        ]
+                ]
+               ]
+               [\textit{Mari}]
+               [\textit{Moksha}\\\textit{Mordvin}]
+            ]
+          ]
+          [\textsl{\textsc{Ugric}}
+                [Ob-Ugric
+                        [\textit{Khanty}]
+                        [\textit{Mansi}]]
+                        [\textit{Hungarian}]]
+                        ]
+                        ]
+  \end{forest}
+\caption{The (simplified) family tree of Uralic languages}
+\label{fig:FinnoUgric:1}
+\end{figure}
+
+For the sake of a complete picture, we have included the Samoyedic branch as well. In the Northern branch there are two major sub-branches: Enets-Nenets and Nganasan. From the Enets-Nenets sub-branch Tundra Nenets will be discussed and compared with some Finno-Ugric languages in \sectref{sec:FinnoUgric:7.1.2} with respect to differential object marking. The only living representative of the Southern branch is Selkup, also mentioned in \sectref{sec:FinnoUgric:7.1.2}. Saamic languages also have a variety of sub-branches. From these languages Inari Saami will be discussed in \sectref{sec:FinnoUgric:5.2} on copula constructions and in \sectref{sec:FinnoUgric:7.1.1} on subject-verb agreement.
+
+As regards the geographical distribution of the languages indicated in \figref{fig:FinnoUgric:1}, Estonian is primarily spoken in Estonia, Hungarian is spoken in Hungary, Finnish and Inari Saami are spoken in Finland, and all the other languages are spoken in Russia.
+
+Several languages belonging to the Finno-Ugric branch of Uralic languages have a considerable number of properties that have contributed to linguistic research in LFG. On the one hand, these phenomena provide empirical or typological evidence for theoretical generalizations. On the other hand, they exhibit cases in which LFG is well-suited for the development of principled analyses. Such phenomena include, but are not limited to, discourse-functionality, negation, \textit{wh}-questions, copular clauses, particle-verb constructions, event nominalization, possessive constructions, the nature and inventory of grammatical functions, evidentiality, rich inflectional morphology, partitives, duals and complex agreement patterns.
+
+In this chapter we can only concentrate on those phenomena in Finno-Ugric languages that have been analyzed in an LFG framework in such a way that the summary of the given analysis within the limitations of space serves the purposes of the chapter, as outlined in the foregoing paragraph. Consequently, this determines which languages appear in the chapter. Given that Hungarian is the most intensively and extensively researched Finno-Ugric language in LFG,\footnote{For introductions to LFG in Hungarian, see \citet{Laczko1989} and \citet{Komlosy2001}. The following works also have introductory sections to LFG: \citet{Szabo2017} in Hungarian and \citet{Tamm2004c} in Estonian.} the discussions of LFG analyses of Hungarian phenomena outnumber the discussions of phenomena in other Finno-Ugric languages. For further information on related and additional phenomena and other Uralic or Finno-Ugric languages, the interested reader is referred to the following comprehensive sources: \citet{Abondolo1998}, \citet{WALS}, \citet{MiestamoTammWagnerNagy2015} and \citet{Groot2017}.\footnote{In \sectref{sec:FinnoUgric:9} we make brief references to additional works on Uralic languages in general and Finno-Ugric languages in particular that we cannot discuss here for limitations of space.} The online journal \textit{Finno-Ugric Languages and Linguistics} (\url{http://full.btk.ppke.hu}) regularly contains generative papers on Finno-Ugric languages.\footnote{See, for instance, \citet{Brattico2019} on Finnish word order, \citet{Kiss2020} on pronominal objects in Ob-Ugric, and \citet{Asztalos2020} on focus in Udmurt.} In addition, \citet{TammVainikka2018} present an overview of generative works on Finnish and Estonian syntax.\footnote{In her review, Anne Tamm has kindly provided the following information about the history of syntactic research on Estonian. ``For a long while since the mid-20\textsuperscript{th} century, there was more work on Estonian syntax than on Finnish syntax. Keeping abreast with western mainstream linguistics in the 60s, 70s and early 80s resulted in numerous formal syntactic works and a tradition of understanding syntax that is, in spirit, rather similar to LFG approaches. \citet{Ratsep1978}, for instance, is a lexicalist analysis of patterns of argument structures and their alternations; this work has certainly been influential in the context Uralic syntax. \citet{Tamm2012c} provides an overview of the treatment of verb classes in this and related works, these early generative-style lexicalist works are available in Estonian only […]. Almost all LFG work on Estonian expands that work in some way.''}
+
+As regards comprehensive analyses of several phenomena in Hungarian, Lacz\-kó \citeyear{Laczko2021} offers a synthesis of his earlier LFG(-XLE)\footnote{In his XLE work he further develops \citegen{laczkorakosi08} implemented Hungarian grammar.} accounts of the following phenomena in Hungarian finite clauses: sentence structure, verbal modifiers, operators, negation and copula constructions. He posits all this in the context of a critical overview of alternative Chomskyan and lexicalist approaches to these phenomena. \citet{Tamm2004a} develops a comprehensive LFG approach to the relations between Estonian aspect, verbs and case.
+
+
+The following databases on Uralic languages are useful resources about their syntactic properties:
+the Uralic language typological data set at \url{bedlan.net/data/uralic-language-typological-data-set}
+the Selkup and Kamas corpora at \url{www.slm.uni-hamburg.de/inel},
+and
+the typological database of Ugric languages at \url{en.utdb.nullpoint.info}.
+
+
+\subsection{The structure of the chapter} 
+\label{sec:FinnoUgric:1.2}
+
+In accordance with the scopes of LFG works on Finno-Ugric languages, the significantly larger part of this chapter (\sectref{sec:FinnoUgric:2}-\sectref{sec:FinnoUgric:7}) concentrates on the investigation of clausal phenomena, and this is followed by the discussion of salient LFG analyses of some noun phrase phenomena (\sectref{sec:FinnoUgric:8}). In \sectref{sec:FinnoUgric:2} we discuss clausal c-structure representational issues by focusing on a variety of LFG approaches to Hungarian. In \sectref{sec:FinnoUgric:3} we concentrate on verbal modifiers in Hungarian and Estonian in general and on their radically different relations to focus in these languages in particular. In \sectref{sec:FinnoUgric:4} we offer a brief overview of an LFG-XLE analysis of negation in Hungarian by also pointing out its potential contribution to the treatment of negation phenomena cross-linguistically. In \sectref{sec:FinnoUgric:5} we discuss LFG accounts of copula constructions in Hungarian, Inari Saami and Finnish. In \sectref{sec:FinnoUgric:6} we deal with LFG treatments of some aspects of argument realization in Finnish and Estonian. In \sectref{sec:FinnoUgric:7} we concentrate on a selection of morphosemantic phenomena: (i) subject-verb agreement in Inari-Saami and Finnish; (ii) differential object marking in Uralic with particular attention to Finno-Ugric languages; (iii) the grammaticalized expression of evidentiality in Udmurt and Estonian. In \sectref{sec:FinnoUgric:8} we present a summary of a variety of LFG approaches to noun phrase phenomena in Hungarian: (i) c-structure issues; (ii) event nominalization, and we add a short section on the morpho-syntax of possessive noun phrases in Finnish and Hungarian. In \sectref{sec:FinnoUgric:9} we make brief references to additional relevant LFG(-related) works on Finno-Ugric languages that space limitations have prevented us from discussing. In \sectref{sec:FinnoUgric:10} we conclude.
+
+\section{C-structure representation in clauses}
+\label{sec:FinnoUgric:2}
+
+\citet{Groot2017} presents a very useful tabular comparison of the major word order properties of 21 Uralic languages. In \tabref{tab:FinnoUgric:1} we present the parts of his table that are relevant for our current purposes.
+
+
+\begin{table}
+\begin{tabularx}{.8\textwidth}{Xlll}
+\lsptoprule
+{Language} & {word order} & {major pattern} & {focus position}\\\midrule
+Finnish & free & SVO & \\
+Estonian & free & SVO & clause final\\
+Votic & free & SVO & \\
+Ingrian & free & SVO & clause final\\
+Veps & free & SVO & clause final\\
+Karelian & free & SVO & \\
+South Saami & free & SOV/SVO & \\
+North Saami & free & SVO & \\
+Skolt Saami & free & SVO & \\
+Erzya & free & SVO & \\
+Mari & free & SOV & Foc V\\
+Komi & free & SOV/SVO & Foc V / V Foc\\
+Udmurt & free & SOV & Foc V\\
+Hungarian & free & SOV/SVO & Foc V\\
+Khanty & free & SOV & Foc V\\
+Mansi & free & SOV & \\
+Nenets & not free & strict SOV & Foc V\\
+Enets & not free & strict SOV & Foc V\\
+Nganasan & free & SOV & \\
+Selkup & free & SOV & \\
+Kamas & free &  & \\
+\lspbottomrule
+\end{tabularx}
+\caption{Word order properties of 21 Uralic languages (part of Table 11, \citealt[548]{Groot2017})}
+\label{tab:FinnoUgric:1}
+\end{table}
+
+As the table shows, in these languages word order is predominantly free (except for Enets and Nenets). The two major patterns are SVO and SOV with roughly the same frequency. In seven languages there is a designated preverbal focus position (and in one of them, Komi, there is an additional postverbal Foc position). In three languages the Foc position is clause final. This is the general word order picture. Below we fundamentally concentrate on Hungarian because several alternative LFG c-structure analyses have been proposed for this language. In addition, we make some comparative remarks on Finnish and Estonian. 
+
+\newpage
+Hungarian is a classic example of a discourse configurational language: see \citet{Kiss1995}, for instance.\footnote{On sentence structure and discourse-functionality in Finnish in non-LFG frameworks, see \citet{Vilkuna1995} and \citet{Brattico2019}, for instance. According to \citet{Vilkuna1995}, there is a preverbal K (contrast) and also a T (topic) position in Finnish. While fundamentally these two positions are also available in Estonian, on the basis of their experimental and corpus investigation, \citet{SahkaiTamm2018a,SahkaiTamm2019} claim that other types of constituents can also occur in the preverbal domain. While Hungarian exhibits strong discourse-configurationality, Estonian is only weakly discourse-configurational: see \citet[416--417]{SahkaiTamm2018a}. \citet{Hiietam2003} argues that topic is to be defined semantically and not configurationally in this language. In addition, Estonian is the only Uralic language with V2, and its V2 is prosodic: see \citet{SahkaiTamm2018b}. \citet{Tael1988} claims that the focus position is at the end of the clause in Estonian.} The crucial empirical generalizations about Hungarian sentence structure are as follows. The fundamental sentence articulation is topic-predicate (also called topic-comment in a variety of approaches). In the topic field, the order of topics and sentence adverbs is free. In the preverbal domain, quantifiers follow the topic field. In neutral sentences\footnote{The standard description of a neutral sentence is that it does not contain negation or focus, it is not a \textit{wh}-question, and it has level prosody.} there is a designated immediately preverbal position for a special constituent type: `verbal modifier' (\textsc{vm}). This is a conventionally used cover term for a range of radically different categories sharing the syntactic property of occupying this designated preverbal position. Preverbs (also known as verbal particles or coverbs),\footnote{Other Ob-Ugric languages have developed verbal particles to a lesser extent, see \citet{Zsirai1933}. For more information on Uralic (aspectual) verbal prefixation and verbal particles, see \citet{KieferHonti2003}. For an analysis of Estonian sentence-final particles with focus, see \citet[224--242]{Tamm2004a}, discussed in \sectref{sec:FinnoUgric:3.2}.} bare nouns, designated XP arguments, etc. are all assumed to be \textsc{vm}s. Basically, the word order of postverbal elements is also free. In a non-neutral sentence the (heavily stressed) focused constituent occupies the immediately preverbal position, and, as a consequence, the \textsc{vm} has to occur postverbally, i.e. the \textsc{vm} and the focus are in complementary distribution. How to capture this complementarity is a crucial cross-theoretical issue. The two salient solutions are as follows. (i) There is only a single designated preverbal position for which focused constituents and \textsc{vm}s compete. (ii) There are two distinct positions for the two elements: focus and \textsc{vm}. In this approach it needs to be explained why these two elements cannot co-occur.
+
+\citet{BoPaChi99} offer some general considerations against functional projections like TopP and FocP (\emph{à la}\/ Government and Binding Theory and the Minimalist Program) for languages like Hungarian and some hints at a possible LFG alternative with an extended verbal projection in which word order regularities are capturable by dint of Optimality Theoretic (OT) style constraints. They claim that the assumption that discourse functions are not necessarily associated with the specifier positions of functional projections allows an analysis of Hungarian in which quantifier phrases and topics are positioned within an extended verbal projection, avoiding the postulation of functional projections without heads. They propose that Hungarian sentences are VP projections, as in \REF{ex:FinnoUgric:1},\footnote{The superscripts in V\textsuperscript{1} and V\textsuperscript{2} indicate bar-levels.} and they suggest that the immediately preverbal occurrence of the focused constituent should be captured in terms of OT constraints. In this work, there is no discussion of \textsc{vm}s and their complementarity with focused phrases.
+
+
+\ea\label{ex:FinnoUgric:1}
+\begin{forest}
+  [V$^2$,baseline,[{XP\\(\UP\TOPIC)=\DOWN}]
+    [V$^2$, [{XP\\(\UP\TOPIC)=\DOWN}]
+      [V$^1$, [{XP\\{}[$+$Q]}]
+        [V$^1$, [{XP\\{}[$+$Q]}]
+          [V$^1$, [{XP\\(\UP\FOCUS)=\DOWN}]
+            [V]
+            [XP*]]]]]]      
+\end{forest}
+\z
+
+Adopting the basic representational assumptions and ideas of \citet{BoPaChi99}, in their OT-LFG framework, \citet{PayneChisarik2000} develop an analysis of Hungarian preverbal syntactic phenomena: the complementarity of constituent question expressions, focused constituents, the negative marker and verbal modifiers.
+
+\citet{Gazdik2012}, capitalizing on \citet{GazdikKomlosy2011}, outlines an LFG analysis of Hungarian finite sentence structure, predominantly driven by discourse functional assumptions and considerations. She postulates two sentence structure types, and she assumes that both structures are available to both neutral (N) and non-neutral (NN) sentences, which are distinguished by their different prosodic behaviours. \REF{ex:FinnoUgric:2} shows one of the two structures. Here the immediately preverbal XP has a presentational-focus-like function in N sentences and the standard identificational focus function in NN sentences. The other structure differs in one important respect: the preverbal element is a \textsc{vm}, and the \textsc{vm} and the verb are dominated by V$'$. The \textsc{vm} receives the usual phonological-word-initial stress in N sentences and the focus stress in NN sentences.
+
+\ea\label{ex:FinnoUgric:2}
+\begin{forest}
+  [S,baseline,
+    [XP$^*$\\topic field]
+    [XP$^*$\\quantifiers]
+    [XP]
+    [V]
+    [XP$^*$\\\parbox{6em}{\centering completive or background information}]]
+\end{forest}
+\z
+
+\citet{Laczko14}, after a detailed critical overview of previous LFG approaches, postulates the skeletal sentence structure in \REF{ex:FinnoUgric:3}.\footnote{In \REF{ex:FinnoUgric:3} \textsc{t} stands for topic (position), \textsc{q} stands for quantifier (position), \textsc{sp} stands for the specifier position. S* and VP* encode the possibly iterative left-adjunction of XP(\textsc{t}) and XP(\textsc{q}) to S and VP, respectively.} He argues against assuming an IP for the structural-categorial representation of Hungarian sentences and he argues for S as the core category.\footnote{In LFG IP and S are taken to be parametric options in Universal Grammar.} He proposes a CP/S alternative that is closest in spirit to \citeapo{Kiss1992} special GB approach.\footnote{For a comparison of these GB and LFG approaches, see \citet{Laczko2020}.}
+\ea\label{ex:FinnoUgric:3}
+\begin{forest}
+  [CP,baseline, [C]
+    [S$^*$\\
+      [XP(\textsc{t})] [S\\
+        [XP(\textsc{t})] [VP$^*$
+          [XP(\textsc{q})] [VP
+            [XP(\textsc{sp})] [V$'$
+              [V] [XP$^*$]]]]]]]          
+\end{forest}
+\z
+Adopting one of the most crucial aspects of \citegen{Kiss1992} analysis, he assumes that \textsc{vm}s and focused constituents target the Spec,VP position. He employs disjunctive functional annotations to capture this preverbal complementarity.\footnote{For details and the discussion of what other elements are assumed to compete for the Spec,VP position, see \sectref{sec:FinnoUgric:3.1} and \sectref{sec:FinnoUgric:4}.} 
+
+Consider the following generalization. `The daughters of S may be subject and predicate' \citep[112]{bresnan2001lexical}. In his analysis, Laczkó proposes that this generalization should be modified in the following way.
+
+\ea%4
+\label{ex:FinnoUgric:4}
+The daughters of S may be subject/topic and predicate.
+\z
+He points out that this modification receives independent support from the following rule from \citet{BM87}.\footnote{On the basis of \REF{ex:FinnoUgric:5}, \textit{subject and/or topic} is even more appropriate than \textit{subject/topic} in \REF{ex:FinnoUgric:4}.}
+
+
+\ea%5
+\label{ex:FinnoUgric:5}
+\phraserule{S}{\optrulenode{NP\\(\UP\SUBJ)=\DOWN},
+  \optrulenode{NP\\(\UP\TOPIC)=\DOWN},
+  \optrulenode{VP\\\UP=\DOWN}}
+\z
+Laczkó argues that a VP can contain a subject if the XP in \mbox{[\textsubscript{S} XP VP]} is a topic. This requires all other occurrences of VP to be subjectless. In this scenario, the following three parametric options seem to emerge across languages: (i) strictly VP-external subject, as in English; (ii) VP-internal subject in a designated position, as in Russian\footnote{See \citet{King95}, for instance.}; (iii) VP-internal subject without a designated position, see Hungarian.
+
+
+This section has demonstrated that LFG provides a suitably flexible formal apparatus by the help of which the sentence structures of typologically different languages can be described in a principled manner with respect to discourse functional configurationality.
+
+\section{Verbal modifiers and focus}
+\label{sec:FinnoUgric:3}
+
+In this section we discuss analyses of verbal modifiers in Hungarian (\sectref{sec:FinnoUgric:3.1}) and Estonian (\sectref{sec:FinnoUgric:3.2}).
+
+\subsection{Hungarian}
+\label{sec:FinnoUgric:3.1}
+
+As has been pointed out in \sectref{sec:FinnoUgric:2}, the crucial (cross-)theoretical question to address in the case of Hungarian is how to account for the preverbal complementarity of focused constituents and verbal modifiers. Compare the examples in \REF{ex:FinnoUgric:6}. \REF{ex:FinnoUgric:6a} is a neutral sentence and the \textsc{vm} \textit{oda} `to.there', which is categorially a preverb, immediately precedes the verb. By contrast, \REF{ex:FinnoUgric:6b} is a non-neutral sentence, and in it the \textsc{vm} can neither precede nor follow the focused constituent (in \textsc{smallcaps}) in the preverbal domain.
+
+\ea%6
+\label{ex:FinnoUgric:6}Hungarian:
+\ea\label{ex:FinnoUgric:6a}\gll
+János minden-t oda adott Mari-nak.\\
+John.\textsc{nom} everything-\textsc{acc} \textsc{vm} gave Mary-\textsc{dat}\\
+\glt `John gave everything to Mary.'
+\ex\label{ex:FinnoUgric:6b}\gll
+János minden-t (*oda) \textsc{Mari-nak} (*oda) adott oda.\\
+John.\textsc{nom} everything-\textsc{acc} \textsc{vm} Mary-\textsc{dat} \textsc{vm} gave \textsc{vm}\\
+\glt`John gave everything \textsc{to} \textsc{Mary}.'
+\z\z
+The cross-theoretic question is whether we should assume that the two constituents fight for one and the same syntactic position or that they occupy two distinct positions. With the salient exception of \citet{Kiss1992,Kiss1994}, the GB/MP mainstream assumes two distinct positions, and employs a variety of principles that block the simultaneous occurrence of constituents in these positions: see \citet{Brody1990} and \citet{Kiss2004}, for instance, and also see \citet{Laczko2021} for a comparative overview of different analyses of the complementarity of focused constituents and verbal modifiers in Hungarian.
+
+Several LFG approaches have a similar view, see \citet{Ackerman1987,Ackerman1990}, \citet{PayneChisarik2000}, \citet{Mycock2006,Mycock2010}, the basic idea being that \textsc{vm}s get semantically and morphologically incorporated into the verb.\footnote{At first sight, it can be taken to be a supporting fact that the \textsc{vm}s of the preverb type and the verb make up one phonological word, i.e. it is only (the first syllable of) the preverb that receives word-initial stress. However, even XP \textsc{vm}s follow the same pattern (in which the following verb loses its word-initial stress).} In \sectref{sec:FinnoUgric:2} we also pointed out that \citet{Gazdik2012} has a special proposal. She employs two distinct sentence structures, both having neutral and non-neutral versions. The main point here is that the basic \textsc{vm} vs. focus contrast is treated in two different structural dimensions. Thus, this can be regarded as an extreme instance of assuming that the two elements do not fight for the same syntactic position.
+
+By contrast, \citet{Laczko14} argues that focus constituents (ordinary foci, the immediately preverbal \textit{wh}{}-phrases and negated constituents)\footnote{On the details of negation in Hungarian, see \sectref{sec:FinnoUgric:4}.} and \textsc{vm}s (of various types) target the same Spec,VP position, hence their complementarity. In \REF{ex:FinnoUgric:7} we repeat the relevant part of his overall sentence structure shown in \REF{ex:FinnoUgric:3} in \sectref{sec:FinnoUgric:2}.
+
+\ea\label{ex:FinnoUgric:7}
+\begin{forest}
+  [VP [XP(\textsc{sp})]
+    [V$'$ [V] [XP$^*$]]]
+\end{forest}
+\z
+\citet{Laczko14} employs disjunctive functional annotations to capture the complementarity of the elements he assumes to compete for this position.
+
+As we pointed out in \sectref{sec:FinnoUgric:2}, \textsc{vm}s come in several varieties: preverbs, idiom chunks, secondary predicates, designated reduced or full arguments. Preverbs are the central and theoretically by far the most challenging members of this heterogeneous group, because their combination with the finite verb, often called particle-verb construction (\textsc{pvc}), exhibits both lexical and syntactic properties (and the former motivate the incorporation analysis). Their most salient lexical characteristics are as follows. The preverb can affect the argument structure of the main verb, \textsc{pvc}s are often non-compositional, and both non-compositional and compositional \textsc{pvc}s can undergo productive derivational processes like event nominalization. However, the preverb and the main verb are strictly separable syntactically under clearly definable circumstances. For instance, as exemplified in \REF{ex:FinnoUgric:6} above, a focused constituent, as a rule, immediately precedes the main verb, and in such cases the preverb must occur postverbally.
+
+In several recent LFG approaches, for instance \citet{forstetal10}, \citet{LaczkoRakosi2011}, \citet{RakosiLaczko2011}, \citet{Laczko2013a}  and \citet{Laczko14}, it is assumed that preverbs and other types of \textsc{vm}s uniformly occupy a distinct preverbal syntactic position (typically Spec,VP), as opposed to the \textsc{vm}{}-incorporation analysis, which is primarily motivated by the preverbal complementarity of \textsc{vm}s, focused and \textit{wh}{}-constituents.
+
+\citet{forstetal10} propose an LFG{}-XLE treatment of a variety of particle-verb constructions in English, German and Hungarian. Their main claim is that non-compositional and non-productive \textsc{pvc}s should be treated radically differently from compositional and productive \textsc{pvc}s. The former are best analyzed along lexical lines with the help of XLE's \textsc{concatenation} device. By contrast, the authors argue that the productive \textsc{pvc} types call for a syntactic treatment. One of the most important motivations for this sharp distinction is that productive \textsc{pvc}s can be analyzed `on the fly', i.e. automatically and straightforwardly, in the syntax, without previously and lexically encoding them. Their solution is complex predicate formation in the syntax by applying XLE's \textsc{restriction} operator.\footnote{For formal details, see \citet{forstetal10}.} 
+
+\largerpage[-2]
+\citet{LaczkoRakosi2011} and \citet{RakosiLaczko2011} explore the tenability and implementational applicability of the approach proposed by \citet{forstetal10} by each developing an LFG-XLE analysis of two different \textsc{pvc} types. \citet{LaczkoRakosi2013} posit this approach in a cross-linguistic and cross-theoretical context. As opposed to previous LFG accounts, \citet{Laczko2013a} argues that compositional \textsc{pvc}s should also be treated lexically in a manner similar to the treatment of non-compositional \textsc{pvc}s. He points out that one of the advantages of this uniform lexical treatment is that classical LFG's view of the distribution of labour between the lexical and the syntactic components of grammar can be maintained, at least in this domain. He also shows how various morphological processes (often consecutively) involving \textsc{pvc}s can be handled (e.g. causativization, nominalization, and preverb reduplication), which may cause potential problems for a syntactic analysis of compositional \textsc{pvc}s.
+
+\hspace*{-1.3pt}\citet{Laczko14} captures the preverbal complementarity of focused constituents and \textsc{vm}s by assuming that they fight for the same Spec,VP position. He encodes this by associating the disjunctive sets of annotations in \REF{ex:FinnoUgric:8} with this position. The first disjunct of the main disjunction says that a constituent bearing any grammatical function can have the focus discourse function. The second disjunct handles \textsc{vm}s. Laczkó employs XLE's \textsc{check} feature device here.\footnote{The essence of this device is that \textsc{check} features come in pairs: there is a defining equation and it has a constraining equation counterpart. These \textsc{check} feature pairs, which can be used both in c-structure representations and lexical forms, can ensure that two elements will occur together in a particular configuration or a particular element occurs in a particular position. The \textsc{check} feature in \REF{ex:FinnoUgric:8} is of the latter type.}
+
+\ea%8
+\label{ex:FinnoUgric:8}
+\begin{tabular}[t]{l@{\;}l}
+  \{&(\UP\GF) = \DOWN\\
+  &(\UP\FOCUS) = \DOWN\\
+  $\mid$&(\DOWN\gloss{check\_vm}) =$_c$ +\\
+  &\{\;\UP=\DOWN\\
+  &$\mid$\;(\UP\GF) = \DOWN\,\}\}
+\end{tabular}
+\z
+The \textsc{check} feature in \REF{ex:FinnoUgric:8} is used for all types of \textsc{vm}s. It requires the presence, in Spec,VP, of an element lexically marked with the defining counterpart of this feature. Preverbs are intrinsically associated with this feature, i.e. in their lexical forms they are associated with the defining member of the \textsc{check\_vm} feature pair, and they receive the functional (co-)head annotation, see the first disjunct in the second major disjunct. All the other types of \textsc{vm}s are specified for this status by individual verbs. It depends on the verb whether it selects a \textsc{vm}, and, if so, which argument (bearing any subcategorized grammatical function) will be singled out, see the second disjunct in the second major disjunct.\footnote{Laczkó also assumes that a \textit{wh}{}-phrase (or, in multiple \textit{wh}{}-questions the immediately preverbal \textit{wh}{}-phrase) also fights for the Spec,VP position, so he adds another disjunction to \REF{ex:FinnoUgric:8} to capture this, by using additional (interrogative) \textsc{check} features: for details, see \citet{Laczko14}. In addition, he assumes that negated constituents also occupy this position. Furthermore, he postulates that in the type of predicate negation in which there is no focused constituent, the negative marker also targets this position. Therefore, he adds two more disjuncts, see \sectref{sec:FinnoUgric:4}.}
+
+\newpage
+\citet{laczko2014} outlines an LFG analysis of a variety of \textsc{vm}s other than preverbs: bare nouns,\footnote{\citet{Viszket2004} offers a detailed empirical description of a whole range of bare noun phrases in Hungarian. In neutral sentences these constituents can only occur immediately preverbally, in the \textsc{vm} position. In her LFG account of the syntax of bare noun phrases, Viszket adopts \citeauthor{Laczko95}'s (\citeyear{Laczko95,Laczko00}) [+\textsc{vm]} feature and she also introduces a special [•\textsc{vm]} feature. Her new feature, when associated with a predicate in its lexical form, bans the occurrence of a bare NP in the \textsc{vm} position; practically, it prevents such a constituent from occurring in neutral sentences. Viszket identifies seven major types of predicates that need to be provided with this feature in their lexical forms. For instance, the verbs of \textsc{pvc}s, the predicates of certain idioms and certain predicates with resultative \textsc{xcomp}s belong here. These types also have the [+\textsc{vm]} feature. In addition, there are predicates without the [+\textsc{vm]} feature that also need [•\textsc{vm].} For example, nominal and adjectival predicates, and verbs that always need word-initial stress belong here. On partitive mass and plural NPs in Estonian, corresponding to bare nominal \textsc{vm}s in Hungarian, see \citet{Tamm2007a,Tamm2007b}.} \textsc{obl} XP arguments, \textsc{xcomp} arguments and idiom chunks. The crucial aspect of this analysis is that in the lexical form of the verb taking any one of these \textsc{vm} types it is specified that either the verb occurs in a sentence containing a focused constituent or else its designated complement must occupy the Spec,VP position.\footnote{In her review, Anne Tamm points out that there are similarities between Laczkó's analysis of Hungarian particle verbs and the analysis of Estonian particle verbs and aspect in \citet{Ratsep1969} written in Estonian, which \citet[62--63,~72--75]{Tamm2012c} has summarized, or \citegen{Ratsep1978} account of government structures of complex verbs in Estonian.}
+
+\subsection{Estonian}
+\label{sec:FinnoUgric:3.2}
+
+\citet{Tamm2004a} presents a detailed description of \textsc{pvc}s in Estonian, and she outlines an LFG analysis. She points out that Estonian separable particles are basically comparable to their Hungarian counterparts, the most important difference being that aspectual particles typically occupy the clause final focus position. Tamm distinguishes three basic uses of Estonian particles, and she discusses the particle \textit{ära,} which can perform all the three functions. Consider her examples.
+
+\ea%9
+\label{ex:FinnoUgric:9}Directional (deictic) use of \textit{ära}, Estonian:\\
+    \gll ära veerema\\
+    away roll    \\
+    \glt `roll away'
+\z
+Tamm points out that verbs combining with \textit{ära} in this use have an implicit path argument that is only optionally realized overtly. The closest Hungarian counterpart is \textit{el} `away' (as in \textit{el-gurul} `roll away').
+
+\ea%10
+    \label{ex:FinnoUgric:10}Completive use of \textit{ära}, Estonian:\\
+    \gll Naaber suri ära.\\
+       neighbour die.\textsc{pst.}3\textsc{sg} \textsc{ära} \\
+    \glt `The neighbour died.'
+    \z
+Verbs that combine with \textit{ära} in this use have a theme or patient argument, obligatorily realized as a subject or an object. The closest Hungarian equivalents are \textit{meg} `\textsc{pfv}' (as in \textit{meg-hal} `\textsc{pfv}{}-die') and \textit{el} `away' (as in \textit{el-olvad} `away-become.mel\-ted').
+
+\ea%11
+    \label{ex:FinnoUgric:11} Bounding use of \textit{ära}, Estonian:\\
+    \gll Ta suudles tüdruku ära.\\
+     s/he kiss.\textsc{pst.}3\textsc{sg} girl.\textsc{gen} \textsc{ära}\\
+    \glt `S/he did the kissing of a girl.'
+    \z
+This sentence is appropriate in the following situation, for instance. Someone makes a bet to kiss a girl, and when this goal is achieved, the result can be reported by using this \textsc{pvc}. The closest Hungarian counterparts are \textit{meg} `\textsc{pfv}' (\textit{meg-ebédel} `have/eat up one's lunch') and \textit{ki} `out' (as in \textit{ki-alussza magát} out-sleep oneself.\textsc{acc} `sleep one's share, as much as needed').
+
+Tamm assumes that \textit{ära} in its directional use has a \PRED\ feature, and she gives the following lexical representation \citep[231]{Tamm2004a}.
+
+\ea%12
+    \label{ex:FinnoUgric:12}
+    \catlexentry{ära}{P}{(\UP\PRED) = `away\arglist{(\UP\SUBJ)}'\\
+        \{\;((\XCOMP\UP)\;\gloss{b1}) $\vee$ ((\XCOMP\UP)\;\gloss{b2}) \}}
+\z
+This encodes that the particle functions as the \PRED\ of the lexical verb, and it has a subject argument. In addition, it has disjunctive existential constraints on the boundedness (\textsc{b}) attributes.
+
+Tamm assumes that \textit{ära} in its completive use also has a \PRED\ feature, see her lexical form in \REF{ex:FinnoUgric:13} \citep[232]{Tamm2004a}.
+
+\ea%13
+    \label{ex:FinnoUgric:13}
+    \catlexentry{ära}{P}{(\UP\PRED) = `up, completely\arglist{(\UP\SUBJ)}'\\
+      \{\;((\XCOMP\UP)\;\gloss{b1}) = \gloss{max} $\vee$ ((\XCOMP\UP)\;\gloss{b2})\;\}}
+\z
+
+As opposed to its previous two uses, Tamm assumes that \textit{ära} in its bounding use has no \PRED\ feature, and it only encodes \textsc{b} and focus specifications, see \REF{ex:FinnoUgric:14} \citep[229]{Tamm2004a}.
+
+\ea%14
+\label{ex:FinnoUgric:14}
+\catlexentry{ära}{Prt}{
+  (\UP\gloss{b1}) = \gloss{max}\\
+  (\UP\gloss{b2}) = \gloss{min}\\
+  (\UP\FOCUS\gloss{b1}) = \gloss{max}\\
+  (\UP\FOCUS\gloss{b2}) = \gloss{min}}
+\z
+The particle in this use contributes f-structure information about the aspectual features of the clause, see the first two annotations, and it also encodes that this boundedness is the focused information, see the last two annotations.
+
+In addition, verbal predicates can also carry aspectual information in their lexical forms. For instance, Tamm assumes that \textit{suudlema} `kiss', see \REF{ex:FinnoUgric:11} for instance, has the following lexical representation.
+
+\ea%15
+    \label{ex:FinnoUgric:15}
+\catlexentry{suudlema}{V}{(\UP\PRED) = `kiss\arglist{(\UP\SUBJ)(\UP\OBJ)}'\\
+  (\UP\gloss{b2})}
+\z
+
+This verb has an existential constraint on \gloss{b2}, which can be unified with the \textsc{min} value of the \textsc{b}2 of the particle in \REF{ex:FinnoUgric:14}. Finally, the partitive and total case-markers on object arguments also encode aspectual information, so the entire aspectual feature value set of an Estonian sentence comes from three main sources via unification: verbs, aspectual particles and partitive/total case markers.\footnote{On the aspectual interaction of various verb types and partitive/total case in Estonian, see the discussion of \citegen{Tamm2006} analyses in \sectref{sec:FinnoUgric:6.2}.}
+
+\subsection{Concluding remarks}
+\label{sec:FinnoUgric:3.3}
+\largerpage
+At the end of \sectref{sec:FinnoUgric:3} we can make the following concluding remarks.
+
+Hungarian \textsc{vm} phenomena are relevant from both cross-theoretical and LFG{}-specific perspectives in two important respects.
+
+First, the focus-\textsc{vm} complementarity is a general generative theoretical issue. As the foregoing discussion shows, LFG provides a flexible formal platform even for alternative analyses significantly different in nature, which may be due to partially different views of the relevant components of the architecture of LFG.
+
+Second, the behaviour of Hungarian \textsc{pvc}s, representing the major class of \textsc{vm}s, is of great importance in the realm of complex predicates across typologically different languages, see \citet{AlsinaBresnanSells:ComplexPreds} in general and \citet{AckermanLesourd1997} in that volume, in particular. The mixed lexical-morphological and syntactic properties of compositional and productive as well as non-compositional and unproductive \textsc{pvc}s pose a substantial challenge for both syntactically and lexically oriented generative theories, including LFG.  From their entirely lexicalist perspective, \citet{AckermanStumpWebelhuth2011} give a taxonomic overview of a variety of approaches to complex predicates in LFG and HPSG. They point out that the classical models of the two theories rejected argument-structure-changing operations in the syntax, including complex predicate formation: see \citet{bresnan1982the-passive} and \citet{pollardsag87}. However, some more recent views in both theories admit syntactic complex predicate formation: see \citet{Alsina1992,Alsina1997}, \citet{Butt2003} and \citet{Muller2006}. By contrast, \citet{AckermanStumpWebelhuth2011}, in their Realization-Based Lexicalism (RBL) model, reject complex predicate formation in the syntax, and, as a trade-off, they admit analytic, i.e.\ multiple-word, forms of predicates in their lexicon as a marked option. As regards the treatment of Hungarian \textsc{pvc}s, \citet{Ackerman2003} develops an RBL analysis. \citet{forstetal10}, \citet{LaczkoRakosi2011}, \citet{RakosiLaczko2011} and \citet{LaczkoRakosi2013}, in their LFG-XLE framework, handle the productive types in the syntax by means of the \textsc{restriction} operator. By contrast, \citet{Laczko2013a}, in the same framework, argues that both productive and unproductive \textsc{pvc}s need a lexical treatment.
+
+As regards Estonian, \citegen{Tamm2004a} analysis has demonstrated that LFG also provides an appropriate formal apparatus for capturing the interplay of discourse functionality and the complex, multidimensional aspectuality system of this language.
+
+\section{Negation in Hungarian}
+\label{sec:FinnoUgric:4}
+\largerpage
+\citet{MiestamoTammWagnerNagy2015} discuss negation in Uralic in a
+comprehensive and systematically comparative fashion.\footnote{There
+is a publicly accessible database on negation in Ob-Ugric and
+Samoyedic languages at
+\url{https://www.univie.ac.at/negation/index-en.html}.} They show that 17
+Uralic languages employ negative auxiliaries. Hungarian, Khanty, Mansi
+and Estonian are exceptions in that they have no such auxiliaries. Of
+all these languages, we are only aware of a few LFG analyses of
+negation in Hungarian (most of them being rather sketchy and covering
+only some aspects of negation phenomena).
+
+\citet{Laczko2014a} develops
+the first comprehensive LFG{}-XLE approach to the following six major
+types of clausal (aka predicate) and constituent negation in
+Hungarian: (i) ordinary constituent negation (the negated constituent
+is focused); (ii) universal quantifier negation without (another)
+focused element  (= ordinary constituent negation, i.e. the negated
+universal quantifier is focused); (iii) universal quantifier negation
+with focus (= there is a preverbal focused constituent following the
+negated universal quantifier); (iv) predicate negation, without focus,
+the negative particle precedes the verb; (v) predicate negation, with
+focus, the negative particle precedes the verb; (vi) predicate
+negation, with focus, the negative particle precedes the
+focus.\footnote{\citet{PayneChisarik2000}, in their OT-LFG framework,
+also sketch an analysis of some of these types. For a critical overview, see \citet{Laczko2014a}.} He proposes the
+following structural analysis.\footnote{In (\ref{ex:FinnoUgric:16}) NEG stands fo the (category of the) negative particle and the abbreviations in square
+brackets indicate the types of negation: [\textsc{uqn}] = universal
+quantifier negation, [\textsc{epn}] = \mbox{(VP-)external} predicate negation,
+[\textsc{cn}] = constituent negation, [\textsc{ipnp}h] = (VP-)internal
+predicate negation, phrasal adjunction, [\textsc{ipnh}] = (VP-)internal
+predicate negation, head-adjunction. The curly brackets signal the
+complementarity of [\textsc{cn}] and [\textsc{ipnp}h].}
+
+\newsavebox{\xptree}\sbox{\xptree}{\begin{forest}for tree={inner sep=0}[XP\\[NEG][XP]]\end{forest}}
+\ea\label{ex:FinnoUgric:16}
+\begin{forest}
+  [S
+    [VP
+      [{\textsc{[uqn]}\\XP(QP)}
+        [NEG]
+        [{XP(QP)}]]
+      [VP
+        [{\textsc{[epn]}\\NEG}]
+        [VP
+          [{$\left\{\begin{array}{c}
+                \mbox{\textsc{[cn]}}\\[-.5ex]
+                {\usebox{\xptree}}
+                \\\hline
+                \mbox{[\textsc{ipnp}h]}\\
+                \mbox{NEG}
+              \end{array}\right\}$}]
+          [V$'$ [{[\textsc{ipnp}h]\\{V\makebox[0em][l]{$^0$}}} [{NEG}][V$^0$]]
+            [XP$^*$]]]]]]
+\end{forest}
+\LINE{0pt}{270}{xpm}{0pt}{90}{nmr}\LINE{0pt}{270}{xpm}{0pt}{90}{xpd}
+\z
+
+In XLE grammars three devices are used for the encoding of negation: (i) the negative morpheme (whether bound or free) can be represented as a member of the \textsc{adjunct} set; (ii) it can encode the [\NEG~$+$] feature value; (iii) it can encode the [\textsc{pol}~\textsc{neg}] feature value.
+\citet{Laczko2015} points out that these devices are not used uniformly or consistently across the XLE grammars of various languages. He makes the following proposal. Type (i) is most appropriate when a language uses a free morpheme for the expression of negation, a negative particle. Type (ii) is best for bound negative morphemes. Type (iii) is most natural for encoding the scope of negation. In this proposed system, he develops an LFG-XLE analysis of Hungarian negative concord items.
+
+In \citegen{Laczko2014a} approach negated constituents also occupy the Spec,VP position, see [\textsc{cn}] in \REF{ex:FinnoUgric:16}. In addition, in the case of clause negation, the negative particle is also assumed to be in Spec,VP when there is no focused constituent there, see [\textsc{ipnp}h]. In his rules, Laczkó assumes that the negative particle has the category \MakeUppercase{neg}, and he uses a special XLE-style phrasal categorial label for negated constituents: XPneg. His XPneg rule is given in (\ref{ex:FinnoUgric:17}). 
+
+
+\ea%17
+    \label{ex:FinnoUgric:17}
+    \phraserule{XPneg}{\rulenode{NEG\\\DOWN $\in$\;(\UP\ADJ)} XP}
+\z
+    On the basis of these assumptions and rules, he adds the following two disjuncts to the disjunction in Spec,VP established so far, handling focused constituents and \textsc{vm}s, shown in \REF{ex:FinnoUgric:8} in \sectref{sec:FinnoUgric:3.1}.\footnote{Based on their prosodic and semantic behaviour, he assumes that both types of negative elements are focused constituents.}
+
+\ea%18
+\label{ex:FinnoUgric:18}
+{\small \{ ... $\mid$\rulenode{XPneg\\(\UP\GF)=\DOWN\\(\UP\FOCUS)=\DOWN}
+$\mid$\rulenode{NEG\\\DOWN$\in$\;(\UP\ADJ)\\(\UP\FOCUS)=\DOWN} \}}
+\z
+
+As this section has shown, LFG provides an inventory of appropriate formal devices for analyzing complex negation phenomena in languages like Hungarian. At the same time, the treatment of these negation phenomena motivates examining the nature of the relevant formal devices carefully.
+
+\section{Copula constructions}
+\label{sec:FinnoUgric:5}
+
+\subsection{Hungarian}
+\label{sec:FinnoUgric:5.1}
+
+The two major general LFG strategies for the treatment of copula constructions (\textsc{cc}s) across languages are represented by \citet{ButtEtAl1999} and \citet{dalrympleetal04copular}. In the former approach, \textsc{cc}s are treated in a uniform manner functionally. The copula is always assumed to be a two-place predicate. It subcategorizes for a subject (\textsc{subj}) argument, which is uncontroversial in any analysis of these constructions, and the other constituent is invariably assigned a special, designated function designed for the second, `postcopular' argument of the predicate: \textsc{predlink}. As opposed to this approach, in \citegen{dalrympleetal04copular} view, the \textsc{subj} \& \textsc{predlink} version is just one of the theoretically available options. In addition, they postulate that the copula can be devoid of a \PRED\ feature (and, consequently, argument structure) and in this use it only serves as a pure carrier of formal verbal features: tense and agreement. Finally, it can also be used as a one-place `raising' predicate, associating the \textsc{xcomp} function with its propositional argument and also assigning a non-thematic \textsc{subj} function. When the postcopular constituent has the \textsc{predlink} function, it is closed in the sense that its subject argument is never realized outside this constituent. The \textsc{xcomp} and the \textsc{predlink} types involve two semantic and functional levels (tiers): the copula selects the relevant constituent as an argument. By contrast, when the copula is a mere formative, the two elements are at the same level (tier): the postcopular constituent is the real predicate and the copula only contributes morpho-syntactic features. In LFG's formal system, they are functional coheads. All this is summarized in \tabref{tab:FinnoUgric:2}.
+
+
+\begin{table}
+\fittable{
+\begin{tabular}{ccc}
+\lsptoprule
+\multicolumn{3}{c}{role of the postcopular constituent}\\\cmidrule(lr){1-3}
+\multicolumn{2}{c}{open} & \multicolumn{1}{c}{closed}\\\cmidrule(lr){1-2}\cmidrule(lr){3-3}
+\multicolumn{1}{c}{(A)} & \multicolumn{1}{c}{(B)} & \multicolumn{1}{c}{(C)}\\
+{main \textsc{pred},}&
+  {\XCOMP\ of} &
+  {\PREDLINK\ of} \\
+{the copula is a formative:} &
+  {the copula main \PRED:} &
+  {the copula main \PRED:}\\
+{functional coheads} &
+  \mbox{`be\arglist{(\UP\XCOMP)}(\UP\SUBJ)'} &
+  \mbox{`be\arglist{(\UP\SUBJ)(\UP\PREDLINK)}'} \\
+{(single-tier)} & {(double-tier)} & {(double-tier)}\\
+\lspbottomrule
+\end{tabular}
+}
+\caption{Three types of copular constructions, \citet{dalrympleetal04copular}}
+\label{tab:FinnoUgric:2}
+\end{table}
+
+As regards the treatment of copula constructions, \citet{Laczko2012} develops the first comprehensive LFG analysis of the following five most important types of \textsc{cc}s in Hungarian: (i) attribution or classification; (ii) identity; (iii) location; (iv) existence; (v) possession.  He subscribes to the view, advocated by \citet{dalrympleetal04copular} and also by \citet{NordlingerSadler2007}, among others, that the best LFG strategy is to examine all \textsc{cc}s individually, and to allow for diversity and systematic variation both in c-structure and in f-structure representations across and even within languages. This means that he rejects \citegen{ButtEtAl1999} and \citegen{attia08} uniform \textsc{predlink} approach at the f-structure level. \tabref{tab:FinnoUgric:3} summarizes the most important aspects of his analysis.\footnote{The following abbreviations are used in \tabref{tab:FinnoUgric:3}: \textsc{cop} = copula, \textsc{attr/class} = attribution/classification, \textsc{pr}3: \textsc{cop} = is the copula present in the present tense and 3\textsuperscript{rd} person paradigmatic slots? \textsc{pr}3: \textsc{neg} = how is negation expressed in \textsc{pr}3? \textsc{vm} = which element (if any) occupies the \textsc{vm} position in neutral sentences? S = \textsc{subj}, \textsc{pl} = \textsc{predlink}, interch = the two arguments' grammatical functions are interchangeable in the 3\textsuperscript{rd} person, spec = specific, def = definite, \textsc{foc} = \textsc{focus}, agr = agreement.}
+
+
+Here we can only highlight the most crucial ingredients of this approach, concentrating on the `copula's function' and `argument structure' columns in the table. In the attribution/classification type the copula has no \PRED\ feature and, thus, no argument structure, cf. column (A) in \tabref{tab:FinnoUgric:2}. The versions of the copula in all the other four \textsc{cc} types are two-place predicates. In the identity and possession types the second argument is assumed to have the \textsc{predlink} function, cf. column (C) in \tabref{tab:FinnoUgric:2}, while in the location and existence \textsc{cc}s it bears the \OBLROLE{loc} function, which is a variant of the closed type of postcopular constituents in column (C) in \tabref{tab:FinnoUgric:2}.  Thus, in \citegen{Laczko2012} analysis the copula has five distinct lexical forms, which encode their respective sets of properties indicated in \tabref{tab:FinnoUgric:3}.
+
+\begin{table}[t]
+\begin{tabularx}{\textwidth}{lcccccl}
+\lsptoprule
+    {\textsc{cc} \textsc{type}} & \multicolumn{2}{c}{\textsc{pr3}}  & {\textsc{copula's~}}  & {\textsc{argument}} &  & {\textsc{other}}\\\cmidrule(lr){2-3}
+     &  {\textsc{cop}} & {\textsc{neg}} &  {\textsc{function}} & {\textsc{structure}} & {\textsc{vm}} & {\textsc{traits}}\\\midrule
+\textsc{attr/class} & - & \textit{nem} & formative & - & \textsc{ap/np} & \textsc{np}: -spec\\
+\textsc{identity} & - & \textit{nem} & predicate & \textsc{<s,} \textsc{pl>} & \textsc{subj} & \textsc{s}: +spec,\\
+& & & & & & interch.\\
+\textsc{location} & + & \textit{nincs} & predicate & \textsc{<s,} \textsc{obl>} & \textsc{obl} & \textsc{s}: +spec\\
+\textsc{existence} & + & \textit{nincs} & predicate & \textsc{<s,} \textsc{(obl)>} & - & \textsc{s}: -spec \\
+& & & & & & \textsc{cop}: \textsc{foc}\\
+\textsc{possession} & + & \textit{nincs} & predicate & \textsc{<s,} \textsc{pl>} & - & \textsc{s}: -def\\
+& & & & & & \textsc{s\&pl} agr.\\
+& & & & & & \textsc{cop}: \textsc{foc}\\
+\lspbottomrule
+\end{tabularx}
+\caption{\citegen{Laczko2012} analysis of Hungarian copula constructions}
+\label{tab:FinnoUgric:3}
+\end{table}
+
+
+    
+\subsection{Inari Saami and Finnish}
+\label{sec:FinnoUgric:5.2}
+
+\citet{Toivonen2007} analyzes subject-verb agreement phenomena in Inari Saami with a brief comparison with the corresponding Finnish phenomena, see \sectref{sec:FinnoUgric:7.1.1}. In her general approach, she also proposes an LMT (Lexical Mapping Theory: \citetv{chapters/Mapping}) analysis of Inari Saami possessive constructions, again with a brief comparison with the Finnish counterparts. The empirical generalizations that she starts with, and which are relevant here, are as follows. (i) The possessed item is the subject. (ii) The possessed item bears nominative case. (iii) The possessor bears locative case. Consider one of her examples in \REF{ex:FinnoUgric:19}, illustrating these facts.
+
+\ea%19
+    \label{ex:FinnoUgric:19}Inari Saami:\\
+    \gll Muste lah tun.\\
+        I.\textsc{loc} are.2\textsc{sg} you.\textsc{nom}.\textsc{sg}\\
+    \glt `I have you.'
+    \z
+Toivonen assumes that the Inari Saami copula in this function is a two-place predicate with a theme (possessum) argument and a location (possessor) argument that receive the [$-r$] and the [$-o$] intrinsic specifications, respectively, and they are mapped onto \textsc{subj} and \textsc{obl}, respectively: see \REF{ex:FinnoUgric:20}.
+
+\ea%20
+    \label{ex:FinnoUgric:20}
+    \begin{tabular}[t]{cccccc}
+      & & theme & location\\
+\textit{leδe} & {\textlangle} & x & y & {\textrangle}\\
+&  &  [$-r$] & [$-o$] & \\
+&  &  {\textbar} & {\textbar} & \\
+&  &  \SUBJ & \OBL & \\
+    \end{tabular}
+\z
+
+Toivonen compares Inari Saami and Finnish possessive constructions. For her comparison from the perspective of agreement, see \sectref{sec:FinnoUgric:7.1.1}. Here we concentrate on the \textsc{gf}s of the arguments of the possessive copulas of the two languages. Compare Toivonen's Inari Saami example in \REF{ex:FinnoUgric:19} above with her corresponding Finnish example in \REF{ex:FinnoUgric:21}.
+
+\ea%21
+    \label{ex:FinnoUgric:21}Finnish:\\
+    \gll Minulla on sinut.\\
+        I.\textsc{ade} is.3\textsc{sg} you.\textsc{acc}.\textsc{sg}\\
+    \glt `I have you.'
+    \z
+She makes the following generalizations about Finnish possession \textsc{cc}s. The possessum is either in nominative case (ordinary noun phrases) or in accusative case, see \REF{ex:FinnoUgric:21}, and it has the \textsc{obj} function. The possessor is an oblique case-marked noun phrase, and it has the \textsc{subj} function.
+
+These two sections have shown that the behaviour of copula constructions in Hungarian, Inari Saami and Finnish exhibits remarkable variation, especially in the case of possession \textsc{cc}s. We can make the following concluding observations. On the one hand, the LFG framework, in this case, too, provides appropriate formal tools for feasible analyses of these construction types. On the other hand, the complexity of these phenomena can be used to argue for particular approaches in the inventory of LFG's alternative formal devices in this particular domain.
+
+\section{Aspects of argument realization}
+\label{sec:FinnoUgric:6}
+\subsection{Finnish}
+\label{sec:FinnoUgric:6.1}
+
+\citet{Pylkkanen1997} develops an event-structure-based linking approach to Finnish causatives. She claims that her theory is minimalistic in two respects. On the one hand, in formalizing the relationship between event participants it minimizes reference to the thematic role properties of these participants (e.g. agent, theme and cause) by referring to events themselves. The basic assumption is that if one eventuality causes another then the participants of the former always rank higher than those of the latter. On the other hand, an adequately developed system of inferring prominence relations obviates the need for argument structure, the level of representation mediating between event structure and grammatical functions. Pylkkänen's system of inferring prominence from lexical semantic representations capitalizes on the following two assumptions proposed by \citet{parsons1990events}: (i) thematic roles are relations between events and individuals; (ii) causation is a relation between events. As a consequence, the thematic hierarchy is treated as applying at the level of individual events and not at the level of predicates. From this it follows that a predicate can have more than one thematic hierarchy: as many thematic hierarchies as events. All participants can be organized into a prominence hierarchy by ranking the individual thematic hierarchies with respect to each other. This ranking is regulated by Parsons' second assumption: the causal relations between events. In essence, if \textsc{e}1 \textsc{causes} \textsc{e2}, then \textsc{e1}\textsubscript{${\Theta}$H} (the thematic hierarchy of \textsc{e1}) is ranked higher than \textsc{e2}\textsubscript{${\Theta}$H} (the thematic hierarchy of \textsc{e2}). Consider Pylkkänen's two hierarchies in \REF{ex:FinnoUgric:22} and \REF{ex:FinnoUgric:23}.
+
+
+\ea%22
+    \label{ex:FinnoUgric:22}
+    \makebox[11em][l]{Thematic Hierarchy:}{agent/experiencer > other > theme}
+    \z
+
+          
+
+\ea%23
+    \label{ex:FinnoUgric:23}
+    \makebox[11em][l]{Event Hierarchy:}{cause(e1,e2) $\rightarrow$ \textsc{e1}\textsubscript{${\Theta}$H} > \textsc{e2}\textsubscript{${\Theta}$H}}
+    \z
+
+          
+
+Then linking constraints provide the mapping between the prominence hierarchy resulting from \REF{ex:FinnoUgric:22} and \REF{ex:FinnoUgric:23} and the following grammatical function hierarchy. 
+
+\ea%24
+    \label{ex:FinnoUgric:24}
+    \SUBJ > \OBJ > \OBJTHETA > \OBL
+    \z
+
+          
+
+
+In order for the linking constraints to be unifiable, Pylkkänen converts Parsons' logical forms into attribute-value matrices. Consider her f-structure and event structure representation of \REF{ex:FinnoUgric:25}, one of her examples, in \REF{ex:FinnoUgric:26}.
+
+
+\ea%25
+    \label{ex:FinnoUgric:25}Finnish:\\
+    \gll Matti kävel-yttä-ä koiraa.\\
+     Matti.\textsc{nom} walk-\textsc{caus-3sg} dog.\textsc{par}   \\
+    \glt `Matti walks the dog.'
+    \z
+
+In the event structure there are ranked participants. \textsc{ind} means `index', which is a `pointer' to an event participant, and \textsc{rank} indicates the prominence of the participant concerned. In the case of \REF{ex:FinnoUgric:25}, the \textsc{rank}1 participant is realized as the subject, while the \textsc{rank}2 and \textsc{rank}3 participants are realized as the object.
+
+\eabox{%26
+    \label{ex:FinnoUgric:26}
+    \avm[style=fstr]{
+      [f-str & [subj & [pred & matti\\case & nom]\\
+        obj [pred & dog\\case & par]]\\
+        eventstr & [e1 & [$\theta$\_rels & [agent & [ind & matti\\ rank & 1]\\
+            theme & [ind & dog\\rank & 3]]]\\
+          e2 & [$\theta$\_rels & [agent [ind & dog\\rank & 3]]\\
+                 sem{\_}type & walk]\\
+        rel & cause(e1,e2)]]}
+}
+
+\subsection{Estonian}
+\label{sec:FinnoUgric:6.2}
+
+\citet{Tamm2006} develops an LFG analysis of the interaction of transitive telic verbs and aspectual case in Estonian. In this language the objects of telic verbs can bear either partitive (\textsc{par}) case or total (\textsc{tot}) case. The choice between partitive and total is regulated by the aspectual features of the sentence, compare Tamm's examples in \REF{ex:FinnoUgric:27} and \REF{ex:FinnoUgric:28}.\footnote{The lexical entries for the Estonian case-markers encoding aspectual features are modeled as semantic (\citealt{buttking05}) and constructive cases (\citealt{NordSadlNLLT}), and they provide the formal tools for Tamm's analysis. On the terminology of Finnic core cases, see \citet{Tamm2011b,Tamm2012c}. On partitives in Finnish, see \citet{VainikkaMaling1996}.}
+
+\ea%27
+    \label{ex:FinnoUgric:27}Estonian:\\*
+    \gll Mari kirjutas raamatu ühe aastaga.\\
+        Mari.\textsc{nom} write.\textsc{pst.}3\textsc{sg} book.\textsc{tot} one.\textsc{gen} year.\textsc{com}\\
+    \glt `Mari wrote a/the book in a year.'
+    \z
+
+\ea%28
+    \label{ex:FinnoUgric:28}Estonian:\\*
+    \gll Mari kirjutas raamatut terve aasta.\\
+Mari.\textsc{nom} write.\textsc{pst.}3\textsc{sg} book.\textsc{par} whole.\textsc{tot} year.\textsc{tot}\\
+\glt `Mari was writing a/the book for a whole year.'
+\z
+Tamm shows that the sentence in \REF{ex:FinnoUgric:27}, with its object in total case, has a perfective interpretation, and the sentence in \REF{ex:FinnoUgric:28}, with its object in partitive case, is imperfective, as is supported by the types of the adjuncts in them: `in a year' vs. `for a year'. In addition, Tamm shows that Vendlerian achievement verbs like \textit{võitma} `defeat' are compatible with objects in partitive case in Estonian, although the sentences they occur in are perfective by default, see her example in \REF{ex:FinnoUgric:29}.
+
+\ea%29
+    \label{ex:FinnoUgric:29}Estonian:\\
+    \gll Mari võitis Jürit.\\
+        Mari.\textsc{nom} defeat.\textsc{pst.}3\textsc{sg} George.\textsc{par}\\
+    \glt `Mary defeated George.'
+    \z
+
+    In her analysis, Tamm introduces the boundedness aspectual feature: \textsc{b} with two values: \textsc{min} and \textsc{max}. She associates this feature both with the lexical forms of the two transitive verb types seen above and with the lexical representations of case markers in the following way. Her basic generalization is that `write'-type verbs are boundable, and `defeat'-type verbs are bounded. In the lexical form of the former boundedness is encoded as an existential constraint, while in the lexical form of the latter it is encoded as a defining equation: the \textsc{b} feature has the \textsc{min} value, see \REF{ex:FinnoUgric:30} and \REF{ex:FinnoUgric:31}, respectively.
+
+
+\ea%30
+    \label{ex:FinnoUgric:30}
+    \makebox[10em][l]{kirjutama \mbox{\textnormal{`\textsc{write}'}}...}{(\UP\textsc{b})}
+    \z
+
+\ea%31
+    \label{ex:FinnoUgric:31}
+    \makebox[10em][l]{võitma \mbox{\textnormal{`\textsc{defeat}'}}...}{(\UP\textsc{b}) = \textsc{min}}
+\z
+
+As regards case, the total case-marker, attached to an object noun phrase, introduces the \textsc{max} value for \textsc{b}, while the partitive case-marker specifies \textsc{b} as ${\neq}$\textsc{max}. These values are encoded with inside-out function application, see \REF{ex:FinnoUgric:32} and \REF{ex:FinnoUgric:33}.
+
+\ea%32
+    \label{ex:FinnoUgric:32}
+    \lexentry{\mbox{\textnormal\textsc{tot}}}{(\UP\CASE) = \textsc{tot}\\
+      ((\OBJ\UP)\;\textsc{b}) = \textsc{max}}
+    \z
+
+\ea%33
+    \label{ex:FinnoUgric:33}
+    \lexentry{\mbox{\textnormal\textsc{par}}}{(\UP\CASE) = \textsc{par}\\
+      ((\OBJ\UP)\;\textsc{b}) $\not = $ \textsc{max}}
+    \z
+In this system, a `write'-type verb requires that the sentence should be marked for boundedness, and its underspecified \textsc{b} feature admits either of the two object cases. For instance, Tamm gives the following lexical representations for the verb and the object in \REF{ex:FinnoUgric:27}.
+
+
+\ea%34
+    \label{ex:FinnoUgric:34}
+    \catlexentry{kirjutas}{V}{
+      (\UP\PRED) = `write\arglist{(\UP\SUBJ)(\UP\OBJ)}'\\
+      (\UP\TENSE) = \PST\\
+      (\UP\PERS) = 3\\
+      (\UP\NUM) = \SG\\
+      (\UP\textsc{b})}
+\z
+
+\ea%35
+    \label{ex:FinnoUgric:35}
+    \catlexentry{raamatu}{N}{
+      (\UP\PRED) = `book'\\
+      (\UP\CASE) = \textsc{tot}\\
+      ((\OBJ\UP) \textsc{b}) = \textsc{max}}
+\z
+On the basis of this, her f-structure representation of \REF{ex:FinnoUgric:27} is as follows.
+
+\ea%36
+    \label{ex:FinnoUgric:36}
+    \avm[style = fstr]{[pred & `write\arglist{subj, obj}'\\
+      b & max\\
+      tns & pst\\
+      num & sg\\
+      pers & 3\\
+      subj & [pred & `Mari'\\case & nom\\...]\\
+      obj & [pred & `book'\\case & tot\\num & sg\\...]]}
+    \z
+Obviously, the f-structure representation of \REF{ex:FinnoUgric:28} would be different from \REF{ex:FinnoUgric:36} in one important respect: the value of \textsc{b} would be ${\neq}$\textsc{max} on the basis of \REF{ex:FinnoUgric:33}.
+
+
+By contrast, the value of the \textsc{b} feature of a `defeat'-type verb is \textsc{min}, which only allows compatibility with an object in partitive case, given that total case encodes the opposite value: \textsc{max}. Tamm offers the following lexical representations for the verb and the object in \REF{ex:FinnoUgric:29}, and she points out that there is no value clash with respect to the \textsc{b} feature.
+
+
+\ea%37
+    \label{ex:FinnoUgric:37}
+    \catlexentry{võitis}{V}{
+      (\UP\PRED)  =  `\textsc{defeat}\arglist{(\UP \textsc{subj}) (\UP \textsc{obj})}'\\
+(\UP \textsc{tns})  =  \textsc{pst}\\
+(\UP \textsc{pers})  =  3\\
+(\UP \textsc{num})  =  \textsc{sg}\\
+(\UP \textsc{b})  =  \textsc{min}}
+\z
+
+\ea%38
+    \label{ex:FinnoUgric:38}
+    \catlexentry{Jürit}{N}{
+(\UP \textsc{pred}) = `\textsc{George}'\\
+(\UP\textsc{case}) = \textsc{par}\\
+((\textsc{obj} \UP) \textsc{b}) ${\neq}$ \textsc{max}}
+\z
+
+
+As another argument-realization topic, \citet{Torn2006} discusses the status of certain non-core arguments and adjuncts of verbal predicates in Estonian. She points out that fundamentally there are two approaches to these constituents. One of them regards non-core arguments as oblique case-marked indirect objects, separating them from adjuncts, while the other lumps the two groups together as adverbials. Torn subscribes to the first approach. 
+
+
+
+By way of illustration, Torn shows that in this language participants of an event that are indirectly affected are realized by noun phrases bearing the same `local' case suffixes as are used to express spatial adverbial dependents: see her examples in \REF{ex:FinnoUgric:39} and \REF{ex:FinnoUgric:40}.
+
+
+\ea%39
+    \label{ex:FinnoUgric:39}Adverbial allative, Estonian:\\
+    \gll Mees istus diivanile.\\
+        man.\textsc{nom} sat sofa.\textsc{all}\\
+    \glt`A man sat onto the sofa.'
+    \z
+\ea%40
+    \label{ex:FinnoUgric:40}Oblique allative, Estonian:\\
+    \gll Ema andis lapsele raha.\\
+        mother.\textsc{nom} gave child.\textsc{all} money.\textsc{par}\\
+    \glt `The mother gave money to the child.'
+    \z
+Torn says that \textit{diivanile} `onto the sofa', a noun phrase in allative case, is an ungoverned adverbial constituent in \REF{ex:FinnoUgric:39}, while \textit{lapsele} `to the child', a noun phrase in allative case here, too, expresses the indirectly affected argument of the ditransitive verb \textit{andma} `give' in \REF{ex:FinnoUgric:40}. In her terminology, \textit{diivanile} in \REF{ex:FinnoUgric:39} is an adverbial modifier, and \textit{lapsele} in \REF{ex:FinnoUgric:40} is an object adverbial.
+
+
+
+Torn offers the following three arguments for distinguishing object adverbials from adverbial modifiers. (i) A verbal predicate selects a particular governed case for its object adverbial and not a semantically compatible set of cases. (ii) An object adverbial constituent can serve as an antecedent in an obligatory control construction. (iii) It is a functional similarity between object adverbials on the one hand, and subjects and objects on the other, that they can be involved in systematic case alternations. Such alternations can never involve adverbial modifiers.
+
+
+Torn adopts LFG's LMT classification of governable grammatical functions. In this setting, she assumes that locative case-marked noun phrases can have either the \textsc{obl} or the \textsc{adjunct} function.
+
+\section{Morpho-syntactic phenomena}
+\label{sec:FinnoUgric:7}
+
+\subsection{Agreement}
+\label{sec:FinnoUgric:7.1}
+
+\subsubsection{Subject-verb agreement in Inari Saami and Finnish}
+\label{sec:FinnoUgric:7.1.1}
+
+\citet{Toivonen2007} examines verbal inflectional morphology in Inari Saami. She develops her analysis by concentrating on the Saami copula \textit{leδe} `to be'. In this language, as in various Northern Uralic languages, the number feature has three possible values: singular, dual and plural. It is another special property of this language that there can be either full agreement or partial agreement between the subject and the verb. Animate and specific subjects trigger the former, see \REF{ex:FinnoUgric:41}, inanimate subjects trigger the latter, see \REF{ex:FinnoUgric:42}.
+
+\ea%41
+    \label{ex:FinnoUgric:41}Inari Saami:\\
+    \gll Meecist lava uábbi já viljá.\\
+        forest.\textsc{loc} are.\textsc{3du} sister.\textsc{nom} and brother.\textsc{nom}\\
+    \glt `In the forest are my sister and brother.'
+    \z
+
+\ea%42
+    \label{ex:FinnoUgric:42}Inari Saami:\\
+    \gll Riddoost láá kyehti keeδgi.\\
+       beach.\textsc{loc} are.\textsc{3pl} two rock\\
+    \glt `On the beach are two rocks.'
+    \z
+Subject noun phrases headed by unspecific human nouns and animal nouns can trigger either full or partial agreement. \REF{ex:FinnoUgric:43} illustrates the unspecific human case.
+
+\ea%43
+    \label{ex:FinnoUgric:43}Inari Saami:\\
+    \gll Táálust lava/láá kyehti ulmuu.\\
+        house.\textsc{loc} are.\textsc{3du/}are.\textsc{3pl} two person\\
+    \glt `There are two people in the house.'
+    \z
+Toivonen presents the paradigms of the copula in this three-way number and dual agreement system as in \tabref{tab:FinnoUgric:4}. She develops an LFG analysis with fully specified and underspecified lexical forms of verbal predicates. Consider her representations of four morphological forms of the copula in (\ref{ex:FinnoUgric:44}--\ref{ex:FinnoUgric:47}).
+
+\begin{table}
+\begin{tabularx}{.5\textwidth}{XXll}
+\lsptoprule
+ &  & {\bfseries full} & {\bfseries partial}\\\midrule
+\textsc{sg} & 1 & lam & lii\\
+& 2 & lah & lii\\
+& 3 & lii & lii\\
+\textsc{du} & 1 & láán & láá\\
+& 2 & leppee & láá\\
+& 3 & lava & láá\\
+\textsc{pl} & 1 & lep & láá\\
+& 2 & leppeδ & láá\\
+& 3 & láá & láá\\
+\lspbottomrule
+\end{tabularx}
+\caption{Agreement paradigms for `to be'}
+\label{tab:FinnoUgric:4}
+\end{table}
+
+\ea%44
+    \label{ex:FinnoUgric:44}
+\catlexentry{lava}{V}{(\UP\PRED) = `\textsc{be}'\\
+(\UP\TENSE) = \PRS\\
+(\UP\MOOD) = \textsc{indicative}\\
+(\UP\SUBJ\NUM) = \textsc{du}\\
+(\UP\SUBJ\PERS) = \textsc{3}\\
+(\UP\SUBJ\textsc{hum}) = {+}}
+    \z
+
+\ea%45
+    \label{ex:FinnoUgric:45}
+\catlexentry{lam}{V}{(\UP\PRED) = `\textsc{be}'\\
+(\UP\textsc{tense)} = \textsc{prs}\\
+(\UP\MOOD) = \textsc{indicative}\\
+(\UP\SUBJ\NUM) = \textsc{sg}\\
+(\UP\SUBJ\PERS) = \textsc{1}\\
+(\UP\SUBJ\textsc{hum}) = {+}}
+    \z
+
+\ea%46
+    \label{ex:FinnoUgric:46}
+\catlexentry{lii}{V}{(\UP\PRED) = `\textsc{be}'\\
+(\UP\TENSE) = \textsc{prs}\\
+(\UP\MOOD) = \textsc{indicative}\\
+(\UP\SUBJ\NUM) = \textsc{sg}}
+    \z
+
+\ea%47
+    \label{ex:FinnoUgric:47}
+\catlexentry{láá}{V}{(\UP\PRED) = `\textsc{be}'\\
+(\UP\TENSE) = \textsc{prs}\\
+(\UP\MOOD) = \textsc{indicative}}
+    \z
+
+Toivonen makes crucial use of the principle of morphological blocking as developed by \citet{Andrews90}. The basic idea is that if a subject noun phrase is compatible with more than one verb form, it will select the variant that exhibits the largest number of its own feature values. This explains, for instance, why human subjects do not freely co-occur with \textit{láá} or why singular subjects cannot co-occur with \textit{láá}. The answer to the first question is that \textit{láá} has no [+human] feature, see \REF{ex:FinnoUgric:47}. The answer to the second question is that there are more specific forms of the copula in that they also encode the [+singular] feature, compare \REF{ex:FinnoUgric:47} with \REF{ex:FinnoUgric:45} and \REF{ex:FinnoUgric:46}.
+
+Toivonen also briefly compares the Inari Saami agreement system with the corresponding Finnish system. She points out that Finnish has no grammatical dual. In addition, Finnish does not exhibit partial agreement. Furthermore, animacy has not been grammaticalized in standard Finnish. It is another significant difference that in Inari Saami, verb agreement is always triggered by grammatical subjects, while in Finnish several independent conditions need to be simultaneously satisfied for agreement to take place. First, in Finnish, as well as in Estonian,\footnote{See \citet{Hiietam2003}, for instance.} only nominative NPs trigger agreement, compare Toivonen's examples in \REF{ex:FinnoUgric:48} and \REF{ex:FinnoUgric:49}. 
+
+\ea%48
+    \label{ex:FinnoUgric:48}Finnish:\\
+    \gll Autot ajavat yleensä kovaa moottoriteillä.\\
+        cars.\textsc{nom} drive.\textsc{3pl} generally hard motorways.\textsc{ade}\\
+    \glt `Cars generally drive fast on the motorways.'
+    \z
+
+\ea%49
+    \label{ex:FinnoUgric:49}Finnish:\\
+    \gll Linja-autoja kulkee nykyisin joka sunnuntai.\\
+       buses.\textsc{par} run.\textsc{3sg} nowadays every Sunday \\
+    \glt`Nowadays, buses run every Sunday.'
+    \z
+In \REF{ex:FinnoUgric:48} the nominative subject triggers agreement, while in \REF{ex:FinnoUgric:49} the subject is in partitive case and the verb takes 3\textsc{sg} default agreement.
+
+A Finnish verb also has default agreement in existential and possessive constructions. \REF{ex:FinnoUgric:50} illustrates the latter type.
+
+\ea%50
+    \label{ex:FinnoUgric:50}Finnish:\\
+    \gll Koulussa on uudet opettajat.\\
+        school.\textsc{ine} is.\textsc{3sg} new.\textsc{nom.pl} teachers.\textsc{nom}\\
+    \glt `The school has new teachers.'
+    \z
+In this example, although the (post-verbal) subject is nominative, it is not in its preverbal canonical position; therefore, here, too, the verb displays 3\textsc{sg} default agreement.
+
+As regards their possessive constructions, Inari Saami and Finnish differ in two significant respects. On the one hand, in Inari Saami possessive constructions pronouns are in nominative case, while in Finnish the corresponding pronouns take accusative case, compare \REF{ex:FinnoUgric:51} and \REF{ex:FinnoUgric:52}. On the other hand, the possessum is always in nominative case in Inari Saami, it has the subject function, and it always triggers agreement, while in Finnish the possessum is either in nominative case (ordinary noun phrases) or in accusative case, and the verb always carries 3\textsc{sg} default agreement, compare \REF{ex:FinnoUgric:53} and \REF{ex:FinnoUgric:54}.
+
+\ea%51
+\label{ex:FinnoUgric:51}Inari Saami:\\
+    \gll Muste lah tun.\\
+        I.\textsc{loc} are.\textsc{2sg} you.\textsc{nom.sg}\\
+    \glt`I have you.'
+    \z
+
+\ea%52
+    \label{ex:FinnoUgric:52} Finnish:\\
+    \gll Minulla on / *olen sinut.\\
+       I.\textsc{ade} is.3\textsc{sg} / is.1\textsc{sg} you.\textsc{acc.sg} \\
+    \glt `I have you.'
+    \z
+
+\ea%53
+    \label{ex:FinnoUgric:53} Inari Saami:\\
+    \gll Muste lava puásui já peenuv.\\
+       I.\textsc{loc} are.\textsc{3du} reindeer.\textsc{nom} and dog.\textsc{nom} \\
+    \glt `I have a reindeer and a dog.'
+    \z
+
+\ea%54
+    \label{ex:FinnoUgric:54} Finnish:\\
+    \gll Minulla on / *olen poro ja koira.\\
+        I.\textsc{ade} is.3\textsc{sg} / is.1\textsc{sg} reindeer.\textsc{nom} and dog.\textsc{nom}\\
+    \glt `I have a reindeer and a dog.'
+    \z
+Toivonen makes the following concluding generalization about Finnish possessive constructions. There is no normal agreement in them, because the possessum is not the subject, and because the subject possessor is not in nominative case. This is why 3\textsc{sg} default agreement is employed.
+
+Toivonen offers a comparative overview of the agreement systems of Inari Saami and Finnish shown in \tabref{tab:FinnoUgric:5}.
+
+
+\begin{table}
+\begin{tabularx}{\textwidth}{Xcc}
+\lsptoprule
+ & {Inari Saami} & {Finnish}\\\midrule
+Partial agreement & {\langscicheckmark} & \\
+Default agreement &  & {\langscicheckmark}\\
+Animacy effects & {\langscicheckmark} & \\
+Agreement in possessive construction & {\langscicheckmark} & \\
+Agreement in existential construction & {\langscicheckmark} & \\
+Possessed nouns in nominative case & {\langscicheckmark} & {\langscicheckmark}\\
+Possessed pronouns in nominative case & {\langscicheckmark} & \\
+\lspbottomrule
+\end{tabularx}
+\caption{Agreement in Inari Saami and Finnish}
+\label{tab:FinnoUgric:5}
+\end{table}
+
+\subsubsection{Aspects of differential object marking in Uralic}
+\label{sec:FinnoUgric:7.1.2}
+
+\citet{CoppockWechsler2010} point out that there is object agreement in Nenets, Enets, Nganasan and Selkup in the Samoyedic family and in Mordvinian (Finno-Volgaic), Hungarian (Ugric), Ostyak and Vogul (both Ob-Ugric) in the Finno-Ugric family. These languages exhibit remarkable variation with respect to the feature specifications of their object agreement. In Hungarian and Samoyedic there are two conjugation paradigms: subjective and objective, and the latter is used in the case of definite and third person objects. In Ob-Ugric languages there is a subjective conjugation and three objective conjugation paradigms, one for each possible number value of the object (singular, dual and plural). In Mordvinian there is genuine agreement for both person and number between the verb and the object. \citet{CoppockWechsler2010} concentrate on Northern and Eastern Ostyak, Hungarian and Samoyedic.\footnote{Also see \citet{CoppockWechsler2012} on Hungarian.}
+
+In Northern Ostyak the verb agrees with its object in number but not in person: see \REF{ex:FinnoUgric:55} and \REF{ex:FinnoUgric:56}. An additional factor is that the object has to be topical, otherwise the subjective conjugation is used.
+
+\ea%55
+    \label{ex:FinnoUgric:55}Northern Ostyak:\\
+    \gll Ma täm kälang wel-sə-l-am.\\
+        I this reindeer kill-\textsc{pst-plObj-1sgSubj}\\
+    \glt `I killed these reindeer.'
+    \z
+
+\ea%56
+    \label{ex:FinnoUgric:56}Northern Ostyak:\\
+    \gll Xǔnśi näng mǔng-iluw xälśa want-lə-l-an?\\
+       when you we-\textsc{acc} where see-\textsc{prs-plObj-2sgSubj}\\
+    \glt `When did you see us where?'
+    \z
+\citet{CoppockWechsler2010} postulate the following diachronic analysis of these facts. 
+
+At the first stage third person pronouns were incorporated (\DOWN\PRED)=\textsc{`pro'} and (\DOWN\NINDEX\PERS)=3 with the three number values (\DOWN\NINDEX\NUM)=\textit{n}. This was combined with the topicality condition: (\DOWNS\textsc{df})=\textsc{topic.}
+
+
+\ea%57
+    \label{ex:FinnoUgric:57}
+\lexentry{V\textit{\textsubscript{aff}}}{(\UP\OBJ) = \DOWN\\
+(\DOWN\PRED) = \textsc{`pro'}\\
+(\DOWNS \textsc{df}) = \textsc{topic}\\
+(\DOWN\NINDEX\PERS) = 3\\
+(\DOWN\NINDEX\NUM) = \textit{n} \quad{\textnormal{where}} \textit{n} ${\in}$ \{\SG, \DU, \PL\}}
+    \z
+
+At the second stage the \PRED\ `pro' was dropped.
+
+\ea%58
+    \label{ex:FinnoUgric:58}
+\lexentry{V\textit{\textsubscript{aff}}}{(\UP\OBJ) = \DOWN\\
+\mbox{\st{\textsc{($\downarrow$\;pred) = `pro'}}}\\
+(\DOWNS \textsc{df}) = \textsc{topic}\\
+(\DOWN\NINDEX\PERS) = 3\\
+(\DOWN\NINDEX\NUM) = \textit{n} \quad{\textnormal{where}} \textit{n} ${\in}$ \{\SG, \DU, \PL\}}
+    \z
+The authors claim that it is reasonable to assume that at this stage person specification was present because Eastern Ostyak still manifests this stage.
+
+At the third stage the person specification was lost in Northern Ostyak, see \REF{ex:FinnoUgric:59}, but this did not happen in Eastern Ostyak.
+
+
+\ea%59
+    \label{ex:FinnoUgric:59}
+\lexentry{V\textit{\textsubscript{aff}}}{(\UP\OBJ) = \DOWN\\
+\mbox{\st{\textsc{($\downarrow$\;pred) = `pro'}}}\\
+(\DOWNS \textsc{df}) = \textsc{topic}\\
+\mbox{\st{\textsc{($\downarrow$\;index\;pers) = 3}}}\\
+(\DOWN\NINDEX\NUM) = \textit{n} \quad{\textnormal{where}} \textit{n} ${\in}$ \{\SG,
+  \DU, \PL\}}
+\z
+As a result, these objective conjugation suffixes became usable with first and second person objects, too.
+
+\citet{CoppockWechsler2010} also show that Hungarian has two conjugations that are conditioned by the definiteness of the object by using the following examples. The general pattern is that definite objects trigger the objective agreement type, see \REF{ex:FinnoUgric:60}, and indefinite objects require the subjective type, see \REF{ex:FinnoUgric:61}.
+
+\ea%60
+    \label{ex:FinnoUgric:60}Hungarian:\\
+    \gll Lát-om a madar-at.\\
+        see-\textsc{prs}.1\textsc{sg.def} the bird-\textsc{acc}\\
+    \glt `I see the bird.'
+    \z
+
+\ea%61
+    \label{ex:FinnoUgric:61}Hungarian:\\
+    \gll Lát-ok egy madar-at.\\
+       see-\textsc{prs.}1\textsc{sg.indf} a bird-\textsc{acc} \\
+    \glt `I see a bird.'
+    \z
+In addition, the objective agreement type is sensitive to the person feature of the object: in the pronominal domain only third person pronouns trigger it, see \REF{ex:FinnoUgric:62}, while first and second person pronouns require the subjective conjugation, see \REF{ex:FinnoUgric:63}. \citet{CoppockWechsler2010} refer to this as the third person restriction in this language.
+
+\ea%62
+    \label{ex:FinnoUgric:62}Hungarian:\\
+    \gll Lát-ják őt/őket.\\
+        see-\textsc{prs}.3\textsc{pl.def} it/them\\
+    \glt `They see it/them.'
+    \z
+
+\ea%63
+    \label{ex:FinnoUgric:63}Hungarian:\\
+    \gll Lát-nak engem/téged/minket.\\
+        see-\textsc{prs.}3\textsc{pl.indf} me/you/us\\
+    \glt `They see me/you/us.'
+    \z
+It is another property of the Hungarian object agreement system that it is not sensitive to the number value of the object.
+
+\citet{CoppockWechsler2010} propose the following diachronic analysis. At the first stage, just like in the case of Northern and Eastern Ostyak, third person pronoun incorporation took place, see \REF{ex:FinnoUgric:57} above. The second stage was also the same: the \PRED\ `pro' was dropped and the topicality condition retained, see \REF{ex:FinnoUgric:58}. This is the present-day Eastern Ostyak system. At the third stage the number constraint was dropped, but the person restriction was retained, see \REF{ex:FinnoUgric:64} and compare it with \REF{ex:FinnoUgric:59} characterizing Northern Ostyak.
+\ea%64
+    \label{ex:FinnoUgric:64}
+\lexentry{V\textit{\textsubscript{aff}}}{(\UP\OBJ) = \DOWN\\
+\mbox{\st{\textsc{($\downarrow$\;pred) = `pro'}}}\\
+(\DOWNS \textsc{df}) = \textsc{topic}\\
+(\DOWN\NINDEX\PERS) = 3\\
+\mbox{\st{\textsc{($\downarrow$\;index\;num) = \textit{n} \quad{\textnormal{where}} \textit{n} ${\in}$ \{\SG, \DU, \PL\}}}}}
+\z
+Finally, at the fourth stage the topicality constraint was reanalyzed as a definiteness constraint, see \REF{ex:FinnoUgric:65}.
+
+
+\ea%65
+    \label{ex:FinnoUgric:65}
+\lexentry{V\textit{\textsubscript{aff}}}{(\UP\OBJ) = \DOWN\\
+\mbox{\st{\textsc{($\downarrow$\;pred) = `pro'}}}\\
+\mbox{\st{\textsc{($\downarrow_\sigma$\;df) = topic}}}~(\UP\OBJ\DEF) =$_c$ $+$\\
+(\DOWN\NINDEX\PERS) = 3\\
+\mbox{\st{\textsc{($\downarrow$\;index\;num) = \textit{n} \quad{\textnormal{where}} \textit{n} ${\in}$ \{\SG, \DU, \PL\}}}}}
+\z
+
+\hspace*{-1mm}\citet{DN} investigate differential object marking (DOM) by exploring syntactic, semantic and informational structural differences between marked and unmarked objects in a wide range of genetically and typologically different languages. As regards Uralic, they concentrate on Tundra Nenets in the Samoyedic subfamily and on Ostyak (Khanty), Vogul (Mansi) and Hungarian in the Finno-Ugric subfamily.\footnote{On aspectual DOM in Estonian, see the discussion of \citet{Tamm2006} in \sectref{sec:FinnoUgric:6.2}.}
+
+\citet{DN} develop a formal theory of information structure and its place in the architecture of LFG. In this theory information structure is closely related to semantic structure. It is a favourable aspect of this approach that it makes possible a simple specification of the informational structural status of an argument by providing a \textsc{df} feature value in its semantic structure. 
+
+In Tundra Nenets there is only a single object function: \textsc{obj}. First and second person (pronominal) objects do not agree with the verb, just like in Hungarian, see \REF{ex:FinnoUgric:63} above. Third person objects optionally agree with the verb. If there is agreement, the object has the \textsc{topic} \textsc{df}, while no such function is associated with it in the absence of agreement. \citet{DN} model this in the following way.
+
+\ea%66
+    \label{ex:FinnoUgric:66}Agreement with third person topical
+    objects:\\[1ex]
+    (\UP\OBJ\PERS) = 3\\
+    ((\UP\OBJ)$_\sigma$ \textsc{df}) = \TOPIC
+    \z
+This specification encodes that the semantic structure contributed by the third person object is associated with the topic role in information structure.
+
+\citet{DN} also distinguish a language type in which there are two object functions: \OBJ\ and \OBJTHETA. They claim that Ostyak belongs to this type, in addition to Mongolian, Chatino and Hindi, among others. The \OBJTHETA\ function in these languages is only available to patient/theme arguments. \citet{DN} make the following empirical generalizations. Although Ostyak has two object functions, they cannot co-occur in a sentence, because this language does not have a double object construction. In the case of verbs such as `give' there are the following two possibilities: either the goal or the theme must have an \textsc{obl} function. When the goal has a dative oblique function, the theme has two object choices. If it is topical, it has the agreeing \textsc{obj} function, and if it is not topical, it has the non-agreeing {\OBJROLE{theme}} function.
+
+\citet{DN} compare the Nenets type and the Ostyak type of DOM in the following way.
+
+\ea%67
+\label{ex:FinnoUgric:67}
+Nenets monotransitives with third person objects:\\[1ex]
+\begin{tabular}{ccc}
+  & \rnode{tp}{patient/theme}  \\[1ex]
+\rnode{t}{topic} && \rnode{nt}{nontopic} \\[1ex]
+  & \rnode{o}{\OBJ} \\[1ex]
+\rnode{a}{agreement} && \rnode{na}{no agreement} 
+\end{tabular}
+\ncline[nodesepA=2pt,nodesepB=2pt,angleA={-90},angleB={90},linewidth=.5pt]{tp}{o}
+\ncline[nodesepA=2pt,nodesepB=2pt,angleA={-90},angleB={90},linewidth=.5pt]{t}{a}
+\ncline[nodesepA=2pt,nodesepB=2pt,angleA={-90},angleB={90},linewidth=.5pt]{nt}{na}
+\ncline[nodesepA=2pt,nodesepB=2pt,angleA={-90},angleB={90},linewidth=.5pt]{o}{a}
+\ncline[nodesepA=2pt,nodesepB=2pt,angleA={-90},angleB={90},linewidth=.5pt]{o}{na}
+\z
+
+\ea%68
+\label{ex:FinnoUgric:68}
+Ostyak monotransitives with patient/theme objects:\\[1ex]
+\begin{tabular}{ccc}
+  & \rnode{tp}{patient/theme}\\[1ex]
+\rnode{t}{topic} && \rnode{nt}{nontopic}\\[1ex]
+\rnode{o}{\OBJ} && \rnode{o2}{\OBJROLE{theme}}\\[1ex]
+\rnode{a}{agreement} && \rnode{na}{no agreement}
+\end{tabular}
+\ncline[nodesepA=2pt,nodesepB=2pt,angleA={-90},angleB={90},linewidth=.5pt]{tp}{o}
+\ncline[nodesepA=2pt,nodesepB=2pt,angleA={-90},angleB={90},linewidth=.5pt]{tp}{o2}
+\ncline[nodesepA=2pt,nodesepB=2pt,angleA={-90},angleB={90},linewidth=.5pt]{t}{o}
+\ncline[nodesepA=2pt,nodesepB=2pt,angleA={-90},angleB={90},linewidth=.5pt]{nt}{o2}
+\ncline[nodesepA=2pt,nodesepB=2pt,angleA={-90},angleB={90},linewidth=.5pt]{o}{a}
+\ncline[nodesepA=2pt,nodesepB=2pt,angleA={-90},angleB={90},linewidth=.5pt]{o2}{na}
+\z
+\citet{DN} also point out that in the Ob-Ugric branch of Finno-Ugric languages Vogul follows the same DOM pattern as Ostyak: object marking is information structure driven: topicalization by means of object agreement. The authors hypothesize that this also held for Proto-Ob-Ugric. There are no attested semantic restrictions on agreeing objects in Ob-Ugric. As shown above, object agreement works differently in Hungarian. First and second person pronouns never trigger agreement, just like in Tundra Nenets, see above. Third person object agreement is not regulated by information structure: it is triggered by definiteness. It is only definite third person objects that trigger agreement irrespective of their discourse function status. 
+
+The authors suggest that earlier Hungarian was closer to Ostyak and Vogul, and in modern Hungarian definiteness marking is an innovation, after the development of the grammatical category of definiteness and the appearance of grammatical articles. Their reconstruction of the relevant linguistic historical processes is as follows. They assume that the Ob-Ugric system of DOM, which is exclusively based on information structure, is the most archaic type, and probably it can be hypothesized for Proto-Eastern-Uralic, i.e. the Proto-Uralic dialects from which the Samoyedic and Ugric languages developed. At a later stage, agreement became reduced to third person topical objects in Samoyedic and Proto-Hungarian as a consequence of the fact that third person was frequently associated with secondary topicality. By contrast, first and second person pronouns occupy the highest position on a scale of topic-worthiness. \citet{DN} suggest that the Samoyedic languages (Nenets, Selkup and Nganasan) and Old Hungarian grammaticalized the tendency that first and second person pronouns are likely primary topics and unlikely secondary topics. Thus, they cannot correspond to the primary object, given that in these languages it tends to be strongly associated with secondary topic. No such restrictions hold for third person objects. Hungarian and (possibly) Selkup represent the next historical stage, at which the grammatical marking of third person topical objects is extended to non-topical definite objects. According to \citet{DN} this change manifests the spreading of grammatical marking to non-topical objects that exhibit topic-worthy features with the concomitant loss of relatedness to information structure.\footnote{Dalrymple \& Nikolaeva make the following footnote comment. `An alternative explanation was recently suggested by \citet{CoppockWechsler2010}, who claim that object agreement in proto-Uralic was initially restricted to third person topical objects. It later spread to all topical objects in Northern Ostyak and Vogul, whereas Samoyedic languages preserve the original situation. This suggestion provides an elegant analysis of feature loss as a mechanism of historical change: Northern Ostyak lost the specification that restricted topical agreement to third person objects (the (\UP\OBJ\PERS)=3 specification for agreeing verbs). However, the causal mechanism of this development remains unclear: it presupposes the spread of marking to unlikely contexts' \citep[201]{DN}.}
+
+This section on DOM has shown how complex these phenomena are in Uralic languages in general and in Finno-Ugric languages in particular. It has also dem\-on\-strated that LFG's well-developed modular architecture provides the necessary and appropriate formal devices to capture both the synchronic differences between languages and the diachronic processes in a principled manner.
+
+\subsection{Evidentiality}
+\label{sec:FinnoUgric:7.2}
+
+\citet{AsudehToivonen2017} propose a modular LFG approach to evidentiality, which is a well-established morpho-syntactic category in a considerable number of languages, for instance, Tariana, Cherokee, Cheyenne, Quechua and Tuyuca. These languages employ fully grammaticalized evidentiality morphology, which encodes the source and reliability of speakers' knowledge. Other languages, e.g. English, do not have such evidentiality marking, and they use alternative means to express sources of evidence or degrees of certainty about evidence (\textit{apparently, I saw that}…, etc.). For the description of grammaticalized evidentiality they use the following f-structure features: [\textsc{direct} ±], [\textsc{visual} ±], [\textsc{reported} ±], which also express semantic content to be captured as modifiers on events in Glue Semantics. In languages like English (with non-grammaticalized evidentiality) predicates like \textit{sound} and \textit{seem} optionally encode evidentiality information for the semantic component of the theory. The authors argue that LFG's modular architecture is especially well-suited to capturing the systematic similarities and differences between grammaticalized and non-grammaticalized ways of expressing evidentiality across languages.
+
+\citet{Szabo2021} points out that in the family of Uralic languages both evidentiality systems can be found. For instance, the Finnic, the Saamic and the Mordvinian languages and Hungarian do not have grammaticalized evidentiality. By contrast, Estonian, Livonian, Mari, Komi, Udmurt as well as the entire Ob-Ugric and Samoyedic branches employ grammaticalized evidentiality.
+
+\citet{Szabo2021} sketches an LFG approach to grammaticalized evidentiality in Udmurt. She shows that there are two past tense paradigms in this language, and the 2\textsuperscript{nd} past is used to express the source of information, among other aspects of morpho-syntax. Therefore, this verb form is multiply ambiguous. \citet[82]{Szabo2021} captures this by proposing that the 2\textsuperscript{nd} past contributes the following attribute-value pair to the f-structure of a sentence.\footnote{Where \textsc{res} = resultative, \textsc{pfv} = perfective, \textsc{hear} = hearsay, \textsc{folk} = folklore, \textsc{mir} = mirative, \textsc{infer} = inferential, \textsc{non-v} = non-volitional.}
+
+\ea%69
+    \label{ex:FinnoUgric:69}
+    \avm[style=fstr]{[\textsc{source} & \textsc{res}\;$\vee$\;\textsc{pfv}\;$\vee$\;\textsc{hear}\;$\vee$\;\textsc{folk}\;$\vee$\;\textsc{mir}\;$\vee$\;\textsc{infer}\;$\vee$\;\textsc{non-v}]}
+    \z
+As \REF{ex:FinnoUgric:69} shows, in this domain the f-structure is multiply ambiguous with all these disjunctive values for \textsc{source}, and the assumption is that it is basically the context that disambiguates.
+
+\citet{Tamm2008} shows that in Estonian partitive case-marking has either epistemic modality or aspectual use. In the former, it encodes incomplete evidence (cf. grammaticalized evidentiality marking), and in the latter, it presents an event as incomplete. The lack of partitive-marking indicates complete evidence and complete event, respectively. In this language both verbs and object arguments can be marked for partitive. Tamm proposes the lexical form in \REF{ex:FinnoUgric:70} for the aspectual partitive case marker on the object, and the lexical forms in \REF{ex:FinnoUgric:71} and \REF{ex:FinnoUgric:72} for the impersonal and personal evidentiality markers on verbs, respectively.
+
+\ea%70
+    \label{ex:FinnoUgric:70}
+(\UP\CASE) = \textsc{partitive}\\
+((\OBJ\UP) \textsc{event)} ${\neq}$ \textsc{complete}
+    \z
+
+\ea%71
+    \label{ex:FinnoUgric:71}
+\lexentry{[-ta-vat]}{(\UP\textsc{form}) = \textsc{partitive} \textsc{evidential}\\
+      (\UP\textsc{mode} \textsc{of} \textsc{communication)} = \textsc{indirect}\\
+      (\UP\textsc{evidence)} \textsc{${\neq}$ complete}\\
+      (\UP\textsc{voice)} = \textsc{impersonal}}
+    \z
+
+\ea%72
+    \label{ex:FinnoUgric:72}
+\lexentry{[-va-t]}{(\UP\textsc{form}) = \textsc{partitive} \textsc{evidential}\\
+      (\UP\textsc{mode} \textsc{of} \textsc{communication)} = \textsc{indirect}\\
+      (\UP\textsc{evidence)} \textsc{${\neq}$ complete}\\
+      (\UP\textsc{voice)} = \textsc{personal}}
+\z
+Tamm sketches a Discourse Representation Theory-based semantic description associated with the f-structure representation.
+
+For further discussions and analyses of evidentiality, see \citet{Szabo2017} on Udmurt, and \citet{Tamm2004a,Tamm2012a} on Estonian. On partitives, also see \citet{Tamm2012b}.
+
+\section{Noun phrase phenomena in Hungarian}
+\label{sec:FinnoUgric:8}
+\subsection{C-structure issues}
+\label{sec:FinnoUgric:8.1}
+
+As we show below, Hungarian noun phrases have been analyzed as either NPs or DPs in LFG approaches. Both views are fully legitimate in this framework, given that the standard LFG inventory of functional categories contains D (in addition to I and C).\footnote{It is not unusual to find alternative categorial analyses of the same construction types in LFG. For instance \citet{bresnan2001lexical} treats finite English sentences that contain no auxiliaries (e.g. \textit{Mary opened the door}) as having the category S, while \citet{dalrymple01} employs an IP approach.} It is a crucial property of possessive noun phrases in this language that the possessor can be expressed in either nominative or dative case, and the two variants occupy distinct syntactic positions. Despite this fact, only one of them can occur in any single possessive noun phrase, that is they are in complementary distribution, as opposed to the possible co-occurrence of \textit{'s} and \textit{of} possessors in English.
+
+\citet[189]{ChisaPayn03} use an NP approach to the representation of Hungarian and English noun phrases, see the structures they assume for \REF{ex:FinnoUgric:73} and \REF{ex:FinnoUgric:75}\footnote{Notice that Hungarian possessive noun phrases belong to the head-marking type.} in \REF{ex:FinnoUgric:74} and \REF{ex:FinnoUgric:76}, respectively.
+
+\ea%73
+    \label{ex:FinnoUgric:73}Hungarian:\\*
+    \gll a király-nak a lány-a\\
+        the king-\textsc{dat} the daughter-\textsc{poss.3sg}\\
+    \glt `the king's daughter'
+    \z
+
+\ea%74
+\label{ex:FinnoUgric:74}
+\begin{forest}
+  [NP
+    [NP
+      [D [a]]
+      [N [királynak]]]
+    [NP
+      [D [a]]
+      [N [lánya]]]]
+\end{forest}
+\z
+
+\ea%75
+    \label{ex:FinnoUgric:75}Hungarian:\\*
+    \gll a király lány-a\\
+       the king.\textsc{nom} daughter-\textsc{poss.3sg} \\
+    \glt `the king's daughter'
+    \z
+
+\ea%76
+\label{ex:FinnoUgric:76}
+\begin{forest}
+  [NP
+    [NP
+      [D [a]]
+      [N [király]]]
+    [N [lánya]]]
+\end{forest}
+\z
+They provide the following justifications for these representations. On the one hand, the dative possessor, see \REF{ex:FinnoUgric:74}, can function as a predeterminer to coordinated NPs as in their example in \REF{ex:FinnoUgric:77}.
+
+\ea%77
+    \label{ex:FinnoUgric:77}Hungarian:\\
+    \gll a király-nak [\textsubscript{NP} [ a fi-a ] és [ a lány-a ]]\\
+        the king-\textsc{dat} {} {} the son-\textsc{poss.3sg} {} and
+        {} the daughter-\textsc{poss.3sg}\\
+    \glt`the king's son and daughter'
+    \z
+On the other hand, the nominative possessor stands in complementary distribution with the definite article, just like the \textit{'s} possessor in English.
+
+The following remarks can be made on this approach. First, the coordination facts can also be captured in a DP analysis in which the dative possessor is in Spec,DP and Chisarik and Payne's NP is a D$'$, where the definite article is the D head and the other constituent is (the head of) an NP.\footnote{See \citegen{Laczko95} DP structure in \REF{ex:FinnoUgric:80} below.} Second, it would need some justification to assume that a word-level functional category (D) is in complementary distribution with a phrasal category (NP).\footnote{It seems to be a further minor complication that the functional category D is used in an unusual way: it does not head and project a DP.} Third, in the case of pronominal nominative possessors there is no complementary distribution with the definite article; moreover, they must co-occur, compare \REF{ex:FinnoUgric:78} and \REF{ex:FinnoUgric:79}.\footnote{\REF{ex:FinnoUgric:78} shows the grammaticality properties of this construction type in standard Hungarian. However, \citet{Szabolcsi1994} documents a dialectal version in which even such non-pronominal nominative possessor constructions follow the pattern exemplified in \REF{ex:FinnoUgric:79}.}
+
+\ea%78
+    \label{ex:FinnoUgric:78}Hungarian:\\
+    \gll (*a) János lány-a\\
+        the John.\textsc{nom} daughter-\textsc{poss.3sg}\\
+    \glt `John's daughter'
+    \z
+
+\ea%79
+    \label{ex:FinnoUgric:79}Hungarian:\\
+    \gll *(az) ő lány-a\\
+        the he.\textsc{nom} daughter-\textsc{poss.3sg}\\
+    \glt `his daughter'
+    \z
+
+Motivated by \citegen{Szabolcsi1994} seminal GB analysis, Laczkó in \citet{Laczko95} and all subsequent work adapts a DP approach.\footnote{Without adopting theory-specific details like moving the nominative possessor from Spec,NP to Spec,DP, where it acquires dative case, as in \citegen{Szabolcsi1994} GB analysis.} The essential aspects of his structural representation of \REF{ex:FinnoUgric:73} and \REF{ex:FinnoUgric:75} would be as in \REF{ex:FinnoUgric:80} and \REF{ex:FinnoUgric:81}, respectively.
+
+
+\ea%80
+\label{ex:FinnoUgric:80}
+\begin{forest}
+  [DP
+    [DP
+      [D$'$
+        [D [a]]
+        [NP [N [királynak]]]]]
+    [D$'$
+      [D [a]]
+      [NP [N [lánya]]]]]
+\end{forest}
+\z
+
+\ea%81
+\label{ex:FinnoUgric:81}
+\begin{forest}
+  [DP
+    [NP
+      [DP
+        [D$'$
+          [D [a]]
+          [NP [N [király]]]]]
+      [N$'$
+        [N [lánya]]]]]
+\end{forest}
+\z
+This approach avoids the complications mentioned in connection with \citegen{ChisaPayn03} NP analysis.
+
+\subsection{Event nominalization}
+\label{sec:FinnoUgric:8.2}
+
+\subsubsection{Argument structure inheritance}
+\label{sec:FinnoUgric:8.2.1}
+
+Following \citet{Grimshaw90} and \citet{Szabolcsi1994}, among others, Laczkó in \citet{Laczko95} and in all relevant subsequent work assumes that complex event nominals (\textsc{cen}s) derived by the \textit{{}-ás/-és} suffix (henceforth: \textsc{ás} suffix) inherit the argument structure of the input verb, as opposed to simple event nouns (\textsc{sen}s) and result nouns (\textsc{res}es). The most important properties of Hungarian \textsc{cen}s are as follows; see also \citet{Laczko00,Laczko01,Laczko2009}.
+
+
+When an \textsc{ás} noun has both a simplex form and a complex form containing a perfectivizing preverb, the latter is always a \textsc{cen} and the former is very often ambiguous: \textsc{cen} vs. \textsc{sen} and/or \textsc{res}. Compare the examples in \REF{ex:FinnoUgric:82}.
+
+
+
+\ea%82
+\label{ex:FinnoUgric:82}Hungarian:\\
+\ea\label{ex:FinnoUgric:82a}
+\gll Anna vizsgáztat-ás-a\\
+     Anne.\textsc{nom} examine-\textsc{ás-poss.3sg}\\
+     \glt `Anne's examination'\\
+\textsc{cen}: Anne = patient\\
+\textsc{sen}: Anne = examiner or examinee
+\ex\label{ex:FinnoUgric:82b}
+\gll Anna le-vizsgáztat\nobreakdash-ás\nobreakdash-a (a professzor által)\\
+Anne.\textsc{nom} \textsc{pfv}{}-examine\nobreakdash-\textsc{ás\nobreakdash-poss.3sg} the professor by\\
+\glt `the examination of Anne (by the professor)'\\
+\textsc{cen:} Anne = patient
+\ex \label{ex:FinnoUgric:82c}
+\gll Anna vizsgá\nobreakdash-ja\\
+Anne.\textsc{nom} exam\textsc{\nobreakdash-poss.3sg}\\
+\glt `Anne's exam'\\
+    \textsc{sen}: Anne = examiner or examinee
+\z
+\z
+(\ref{ex:FinnoUgric:82a}) contains a derived nominal without a perfectivizing preverb, and it can be used as either a \textsc{cen} with an argument structure or as a \textsc{sen} without an argument structure (with only a lexical conceptual structure). In the former use \textit{Anna} is interpreted as the patient argument of the nominal predicate, in the latter use it is interpreted as a participant in an examination situation, whether the examiner or the examinee. By contrast, in \REF{ex:FinnoUgric:82b} the derived nominal contains a perfectivizing preverb, and it can only be analysed as a \textsc{cen} with obligatory argument structure and \textit{Anna} must be interpreted as the patient argument. In \REF{ex:FinnoUgric:82c} the head is an underived noun and it can only be a \textsc{sen}. 
+
+
+The expression of the arguments of the derived nominal predicate is as obligatory as in the case of the input verb.
+
+
+
+\ea%83
+    \label{ex:FinnoUgric:83}Hungarian:\\
+    \gll A vizsgáztat-ás két órá-ig tart-ott.\\
+        the examine-\textsc{ás-poss.3sg} two hour-for last-\textsc{pst.3sg}\\
+    \glt `The examination lasted for two hours.' (\textsc{sen})
+    \z
+
+\ea%84
+    \label{ex:FinnoUgric:84}Hungarian:\\
+    \gll *A le-vizsgáztat-ás két órá-ig tart-ott.\\
+        the \textsc{pfv}{}-examine-\textsc{ás-poss.3sg} two hour-for last-\textsc{pst.3sg}\\
+    \glt `The examination lasted for two hours.' (\textsc{cen})
+    \z
+As \REF{ex:FinnoUgric:83} shows, when no complement is present, an otherwise ambiguous (\textsc{cen{\slash}sen}) nominal must be interpreted as a \textsc{sen}. \REF{ex:FinnoUgric:84} demonstrates that an `only \textsc{cen}' nominal cannot occur without its obligatory internal argument(s). The external argument can be suppressed optionally, see \REF{ex:FinnoUgric:82b} above.
+
+
+
+\textsc{cen}s cannot be pluralized, see \REF{ex:FinnoUgric:85}.
+
+
+
+\ea%85
+    \label{ex:FinnoUgric:85}Hungarian:\\
+    \gll *Anna le-vizsgáztat\nobreakdash-ás\nobreakdash-a-i\\
+        Anne.\textsc{nom} \textsc{pfv}{}-examine\nobreakdash-\textsc{ás\nobreakdash-poss.3sg-pl}\\
+    \glt `*the examinations of Anne' (\textsc{cen})
+    \z
+
+When an adjunct in the DP with a derived nominal head is expressed by a postpositional phrase, this PP has to be `adjectivalized' either by combining it with a formative element, one of the present participial forms of the copula: \textit{való} `being', glossed as \textsc{való}, or by attaching the adjectivizing suffix \textit{{}-i} (glossed as \textsc{aff}) to the postposition. In such cases, the \textsc{való} version is only compatible with the \textsc{cen} reading of an otherwise ambiguous nominal predicate, while the \textit{{}-i} variant retains the ambiguity, cf. \REF{ex:FinnoUgric:86a} and \REF{ex:FinnoUgric:86b}. This is \citegen{Szabolcsi1994} famous \textit{való}{}-test for unambiguously identifying \textsc{cen}s in Hungarian.\footnote{Also see \citet{LaczkoRakosi2007}.}
+
+
+
+\ea%86
+    \label{ex:FinnoUgric:86}Hungarian:\\
+\ea\label{ex:FinnoUgric:86a}
+    \gll az ebéd után való beszélget-és\\
+        the lunch after \textsc{való} converse-\textsc{ás}\\
+        \glt `conversing after lunch' (\textsc{cen})
+\ex\label{ex:FinnoUgric:86b}
+\gll  az ebéd után-i beszélget-és\\
+the lunch after-\textsc{aff} converse-\textsc{ás}\\
+\glt `conversing after lunch' (\textsc{cen})\\
+    `the conversation after lunch' (\textsc{sen})
+    \z\z
+
+The core arguments of \textsc{cen}s can receive a variety of [$-r$] \textsc{gf}s in several LFG approaches to Hungarian, see \sectref{sec:FinnoUgric:8.2.2}. Non-core arguments are typically expressed by case-marked DPs and postpositional phrases, and they are mapped onto \textsc{obl} functions. Adjuncts can also be expressed by case-marked DPs and PPs. In addition, they can be realized by APs, especially when the input verb would take an AdvP for the same kind of modification, e.g. \textit{váratlan-ul} `unexpected-ly' (Adv) vs. \textit{váratlan} `unexpected' (A).  For empirical generalizations about the major (structural and categorial) ways of realizing \textsc{obl} and \textsc{adjunct} functions in \textsc{cen} constructions and LFG analyses, see \citet{Laczko95,Laczko01}.
+
+The Hungarian event nominalization phenomena presented above are relevant for theorizing in generative grammar in general and in LFG in particular for the following reasons. \citegen{Grimshaw90} influential proposal substantially distinguishing \textsc{cen}s from \textsc{sen}s and \textsc{res}es is based on English data, primarily on \textit{{}-tion} nominalization. In this language, however, these derived nouns are genuinely ambiguous and, therefore, it is often difficult to employ Grimshaw's diagnostics, e.g. (non-)pluralizability, to definitely tell the \textsc{cen} and \textsc{sen} uses apart. Due to this fact, Grimshaw's theory has been criticized from a variety theoretical perspectives, see \citet{Laczko00} and the references therein. By contrast, in Hungarian there are clear morphological and syntactic indicators, and the diagnostics can be applied reliably and unambiguously. This situation has motivated some LFG practitioners to investigate event nominalization thoroughly and, among other things, to develop various LMT analyses of argument realization in this domain, see \sectref{sec:FinnoUgric:8.2.2}.
+
+
+\subsubsection{Functional issues}
+\label{sec:FinnoUgric:8.2.2}
+
+A variety of inventories of \textsc{gf}s in Hungarian DPs with \textsc{cen} heads and a consequential variety of LMT analyses have been proposed, see \tabref{tab:FinnoUgric:6}.\footnote{\citet{Charters14} proposes a new \textsc{df} in Hungarian possessive DPs: \textsc{anchor}.}
+
+
+\begin{table}
+\begin{tabularx}{\textwidth}{Xccc}
+\lsptoprule
+& {\citet{Laczko95}} & {\citet{ChisaPayn03}} & {\citet{Laczko2004}}\\\midrule
+DP\textit{\textsubscript{DAT}} & \textsc{poss} & \textsc{subj} & \textsc{subj/poss}\\
+DP\textit{\textsubscript{NOM}} & \textsc{poss} & \textsc{ncomp} & \textsc{subj/poss}\\
+DP\textit{\textsubscript{OBL}}/PP & \textsc{obl} & \textsc{obl} & \textsc{obl}\\
+\lspbottomrule
+\end{tabularx}
+\caption{\textsc{gf}s in Hungarian DPs}
+\label{tab:FinnoUgric:6}
+\end{table}
+
+\citet{Laczko95} uses \textsc{gf}s standardly employed in noun phrases (\textsc{poss} and \textsc{obl}). Assuming that \textsc{poss} is a semantically unrestricted function, he develops an LMT approach in which there is a \textsc{poss} Condition that is the nominal domain counterpart of the \textsc{subj} Condition in the verbal domain. The \textsc{subj} Condition requires that every (verbal) predicator must have a Subject, see \citet{Bresnan:Monotonicity}, for instance. \citegen[85]{Laczko95} \textsc{poss} Condition states: `every event nominal predicator must have a Possessor'.
+
+Rather exceptionally in the generative literature on Hungarian noun phrases, \citet{ChisaPayn03} assume that the two possessor constituents bear distinct \textsc{gf}s, both of which are taken to be semantically unrestricted. The dative realizes the \textsc{subj} function in the nominal domain, while the nominative expresses a new, DP-specific function: \textsc{ncomp}. \textsc{subj} is considered to be discourse-related, while \textsc{ncomp} is not. 
+
+\citet{Laczko2004} assumes that both the dative possessor and the nominative possessor can overtly realize either the \textsc{subj} or the \textsc{poss} \textsc{gf}s, both of which are regarded as semantically unrestricted. Furthermore, the \textsc{subj} argument can also be expressed by an LFG{}-style \textsc{pro}. Given this nature and distribution of these \textsc{gf}s, Laczkó's LMT analysis can adopt the \textsc{subj} Condition from the verbal domain. In addition, his approach can formally handle (anaphoric) control into possessive DPs in Hungarian with the standard LFG mechanism even in the case of \textsc{cen}s derived from transitive verbs, which \citegen{Laczko95} system cannot do. Consider the following examples.
+
+\ea%87
+    \label{ex:FinnoUgric:87}Hungarian:\\
+\ea\label{ex:FinnoUgric:87a}
+    \gll Péter elkezdte a kiabál-ás-t.\\
+        Peter.\textsc{nom} started the shout-\textsc{ás-acc}\\
+    \glt `Peter started the shouting.'
+    \ex\label{ex:FinnoUgric:87b}
+    \gll Péter elkezdte a dal énekl-és-é-t.\\
+    Peter.\textsc{nom} started the song.\textsc{nom} sing-\textsc{ás-poss.3sg-acc}\\
+    \glt `Peter started the singing of the song.'
+\z\z
+In \citegen{Laczko95} system, the f-structure of the DP in \REF{ex:FinnoUgric:87a} contains a \textsc{poss} \textsc{pro}, which is anaphorically controlled by the matrix subject, and in \REF{ex:FinnoUgric:87b} \textit{a dal} `the song' has the \textsc{poss} function, and (in the absence of any other available \textsc{gf} for the agent controllee) Laczkó is forced to assume that control takes place in a different dimension. By contrast, in \citegen{Laczko2004} approach there is a controlled \textsc{pro} \textsc{subj} in both cases, and in \REF{ex:FinnoUgric:87b} \textit{a dal} `the song' has the \textsc{poss} function. \citegen{Laczko2004} \textsc{subj} \& \textsc{poss} theory receives further independent support from \citet{LaczkoRakosi2019}, who argue that this \textsc{gf} inventory is necessary for the adequate LFG handling of certain binding facts in Hungarian DPs. \citet{Laczko2008,Laczko2009a}, in response to \citet{Kenesei2005}, proposes that both \textsc{t} participial constructions and \textsc{cen} constructions should have a dual \textsc{pro} \& suppression analysis for an adequate treatment of binding and control phenomena.
+
+\subsection{Possessives}
+\label{sec:FinnoUgric:8.3}
+
+\subsubsection{Finnish}
+\label{sec:FinnoUgric:8.3.1}
+
+\citet{Toivonen:FinnPoss} develops an analysis of the morpho-syntax of Finnish possessive noun phrases. This language has the widely attested \textsc{poss} pro-drop in the case of first and second person possessors, see a \textsc{1sg} example in \REF{ex:FinnoUgric:88}, and Toivonen's lexical representation of the pronoun and the possessive suffix (glossed as \textsc{poss}) in \REF{ex:FinnoUgric:89} and \REF{ex:FinnoUgric:90}, respectively.
+
+\ea%88
+    \label{ex:FinnoUgric:88}Finnish:\\
+    \gll  {Pekka} näkee (minun) ystävä-ni.\\
+        Pekka sees my friend-\textsc{poss.1sg}\\
+    \glt `Pekka sees my friend.'
+    \z
+
+\ea%89
+    \label{ex:FinnoUgric:89}
+    \makebox[6em][l]{\emph{minun:}}
+         {\avm[style=fstr]{[poss & [pred & `pro'\\pers & 1\\num & sg]]}}
+    \z
+
+\ea%90
+    \label{ex:FinnoUgric:90}
+    \makebox[6em][l]{\emph{-ni:}}
+         {\avm[style=fstr]{[poss & [!(pred! & !`pro')!\\pers & 1\\num & sg]]}}
+    \z
+In the third person there is an interesting split between the possessive pronoun and the possessive suffix when the latter provides the \PRED\ feature (i.e. in the case of pro-drop). The pronoun must not be bound by the matrix subject, while the \textsc{poss}{}-\textsc{pro} must, cf. \REF{ex:FinnoUgric:91} and \REF{ex:FinnoUgric:92}.
+
+\ea%91
+    \label{ex:FinnoUgric:91}Finnish:\\
+    \gll {Pekka} näkee hänen ystävä-nsä.\\
+        Pekka sees his/her friend-\textsc{poss.3sg}\\
+    \glt `Pekka sees his/her\textsubscript{*i/j} friend.'
+    \z
+
+          
+\ea%92
+    \label{ex:FinnoUgric:92}Finnish:\\
+    \gll {Pekka} näkee ystävä-nsä.\\
+        Pekka sees friend-\textsc{poss.3sg}\\
+    \glt `Pekka sees his/her\textsubscript{i/*j} friend.'
+    \z
+Furthermore, the \textsc{3sg.poss} suffix cannot agree with a non-human possessor:
+
+\ea%93
+    \label{ex:FinnoUgric:93}Finnish:\\
+    \gll {sen} {ruokaa(*-nsa)}\\
+        its food-\textsc{poss.3sg}\\
+    \glt`its food'
+    \z
+Toivonen captures these facts by means of the following lexical forms.\footnote{\textsc{sb} stands for obligatorily subject bound.}
+
+\ea%94
+    \label{ex:FinnoUgric:94}
+    \makebox[6em][l]{\textit{hänen:}} \avm[style=fstr]{
+      [poss & [pred & `pro'\\pers & 3\\gend & hum\\num & sg\\sb & $-$]]}
+\z
+
+
+\ea%95
+    \label{ex:FinnoUgric:95}
+\makebox[6em][l]{\textit{pron. -nsA:}} \avm[style=fstr]{
+      [poss & [pred & `pro'\\pers & 3\\sb & $+$]]}
+\z
+
+
+\ea%96
+    \label{ex:FinnoUgric:96}
+    \makebox[6em][l]{\textit{agr. -nsA:}} \avm[style=fstr]{
+      [poss & [pers & 3]], \GEND=$_c$\;\textsc{hum}}
+\z
+
+Toivonen also compares corresponding possessive noun phrase constructions in Estonian and Northern Saami. \citet{Toivonen2001b} provides a historical context for her analysis in \citet{Toivonen:FinnPoss}, and she also discusses dialectal variation in Finnish with respect to these phenomena. Her proposal involves the erosion of features other than \PRED\ `pro', which makes it very similar to \citegen{CoppockWechsler2010} analysis of Ostyak and Hungarian in \sectref{sec:FinnoUgric:7.1.2}.
+
+\subsubsection{Hungarian}
+\label{sec:FinnoUgric:8.3.2}
+
+\citet{Laczko2001} develops an LFG approach to the inflectional phenomena in Hungarian possessive DPs in the spirit of Item and Arrangement morphology.\footnote{By contrast, \citet{Laczko2018} proposes a Word and Paradigm approach, arguing that it has considerable implementational advantages.} Consider the following examples.
+
+\ea%97
+    \label{ex:FinnoUgric:97}Hungarian:\\
+\ea\label{ex:FinnoUgric:97a}
+    \gll a toll-a-i-nk\\
+        the pen-\textsc{poss-pl-1pl}\\
+    \glt`our pens'
+\ex\label{ex:FinnoUgric:97b}
+    \gll a toll-a-i\\
+        the pen-\textsc{poss-pl.3sg}\\
+    \glt`her pens'
+\ex\label{ex:FinnoUgric:97c}
+    \gll a toll-a\\
+      the pen-\textsc{poss.3sg}\\
+    \glt`her pen'
+\ex\label{ex:FinnoUgric:97d}
+    \gll a hajó-i\\
+       the ship-\textsc{poss.pl.3sg}\\
+    \glt`her ships'
+\z\z
+Laczkó postulates the following sets of functional annotations in the
+lexical forms of \textit{{}-a} and \textit{{}-i}, the main point being
+that the same morphological form (morph) can encode fewer or more
+features depending on what other morphs it is combined with, see the
+optional features in \REF{ex:FinnoUgric:98}.
+
+\ea%98
+\label{ex:FinnoUgric:98}
+\ea\label{ex:FinnoUgric:98a}
+\makebox[2em][l]{\textit{-a}}{\begin{tabular*}{20em}[t]{l@{\extracolsep{\fill}}r}
+      (\UP\POSS) & [\ref{ex:FinnoUgric:97a},~\ref{ex:FinnoUgric:97b}]\\
+    (\UP\POSS\PERS) = 3 & [\ref{ex:FinnoUgric:97}]\\
+    (\UP\POSS\NUM) = \SG\\
+    ((\UP\POSS\PRED) = \textsc{`pro')}
+    \end{tabular*}}
+\ex\label{ex:FinnoUgric:98b}
+\makebox[2em][l]{\textit{-i}}{\begin{tabular*}{20em}[t]{l@{\extracolsep{\fill}}r}
+    (\UP\POSS) & [\ref{ex:FinnoUgric:97a}]\\
+    (\UP\NUM)\\
+    (\UP\POSS\PERS) = 3 & [\ref{ex:FinnoUgric:97b}, \ref{ex:FinnoUgric:97d}]\\
+    (\UP\POSS\NUM) = \SG\\
+    ((\UP\POSS\PRED) = \textsc{`pro')}
+    \end{tabular*}}
+\z\z
+
+\section{Further reading}
+\label{sec:FinnoUgric:9}
+
+Limitations of space have prevented us from discussing additional phenomena in Finno-Ugric languages and their analyses. Below we provide references to further works that we recommend to the interested reader.
+
+On predicate-argument relationships in Hungarian, see \citet{Komlosy1992,Komlosy1994} and \citet{Rakosi2008}. On causatives in Hungarian, see \citet{Komlosy2000}. On argument realization alternations in Finnish and Estonian, see \citet{AckermanMoore1999}, in Hungarian, see \citet{Ackerman1992} and \citet{Laczko2013b}. On Uralic conjugation classes and verbs imposing restrictions on argument structure, see \citet{Abondolo1998}, \citet{Nikolaeva2014} and \citet{TammVolkovatoappear}. On argument vs. (thematic) adjunct issues in Hungarian, see \citet{Rakosi2003,Rakosi2006,Rakosi2006a,Rakosi2012}. On the grammaticalization of the Estonian perfective particles, see \citet{Tamm2004b}. On scalar verb classes, aspect and partitive and total case assignment in Estonian, see \citet{Tamm2012c}. On the pragmatics of morphological case in the verbal domain of Finnic languages, see \citet{Tamm2011a}. On Estonian object and adverbial case marking with verbs of motion, see \citet{Tamm2007c}. On case and aspectuality in Estonian, see \citet{Tamm2008,Tamm2012b}. On raising and equi constructions in Estonian, see \citet{Tamm2004a,Tamm2008}. On a variety of analyses of \textit{wh}{}-questions in Hungarian, see \citet{Mycock2004,Mycock2006,Mycock2010,Mycock2013}, \citet{Gazdik2010} and \citet{Laczko14,Laczko2021}. On two Finno-Ugric contributions to the \textsc{comp} debate in LFG,\footnote{For instance, see \citet{DL00} and \citet{Lodrup2012} for \textsc{comp}, and \citet{AMM05} and \citet{patejuk2016reducing} against \textsc{comp}, and the references in these papers.} see \citet{BelyaevKozhemyakinaSerdobolskaya2017} for \textsc{comp} on the basis of Moksha Mordvin phenomena and \citet{Szucs2018} against \textsc{comp} on the basis of Hungarian facts. On `operator raising' in Hungarian, see \citet{Coppock2003} and \citet{Szucs2013,Szucs2014a,Szucs2018a}. On binding and control relations of anaphors in Hungarian, see \citet{Rakosi2009,Rakosi2010}, \citet{LaczkoRakosi2019}, \citet{Szucs2019b} and \citet{LaczkoRakosiSzucs2020}. On reflexivity and binding in Uralic languages, see \citet{Volkova2014,Volkovatoappear}. On participial constructions in Hungarian, see \citet{Komlosy1992,Komlosy1994} and \citet{Laczko95,Laczko2000b,Laczko2005}. On derived and inherent relational nouns in Hungarian, see \citet{Laczko2008b,Laczko2009a}. On elliptical noun phrases in Hungarian, see \citet{Laczko2007}. On modelling (in)definiteness and (typological) variation in Hungarian possessive DPs, see \citet{Laczko17}. On a special system of person and number marking in possessive noun phrases in Northern Ostyak, see \citet{AckermanNikolaeva1997}. On natural and accidental coordination in Finnish noun phrases, see \citet{kingdalrymple04} and \citet{DalrympleNikolaeva2006}. On a lexical analysis of a Hungarian phrasal adjectival derivational suffix, see \citet{Laczko1997}. On extraction from partitive DPs in Hungarian, see \citet{Chisarik2002}.
+
+\section{Conclusion}
+\label{sec:FinnoUgric:10}
+
+In this chapter we have discussed some salient, sometimes competing, LFG analyses of a variety of (morpho-)syntactic phenomena in Finno-Ugric languages, with occasional glimpses at alternative generative approaches, on the one hand, and at some related phenomena in languages belonging to Samoyedic, the other major branch of Uralic languages, on the other hand. We have dealt with clausal c-structure representational issues, verbal modifiers, focused constituents, negation, copula constructions, argument realization, subject-verb agreement, differential object marking, evidentiality and a set of noun phrase phenomena related to event nominalization.
+
+On the basis of the interim conclusions at the end of various sections, we can make the following overall concluding remarks at the end of this chapter. On the one hand, LFG provides an appropriate and suitably flexible formal apparatus for a principled analysis of all the phenomena in all the Finno-Ugric languages discussed here. The range of these phenomena is considerably wide and varied, see above, containing several cases that pose serious challenges for generative grammar at large, for instance, the treatment of complex predicates, negation, copula constructions, discourse functions, agreement and event nominalization. On the other hand, the analysis of some of these phenomena can also contribute to LFG{}-internal theorizing, see, for instance, the choice between LFG treatments of complex predicates involving \textsc{pvc}s and clause negation.
+
+
+\section*{Acknowledgements}
+Work on this chapter was supported by a research grant obtained from the Faculty of Humanities and Social Sciences, Károli Gáspár University of the Reformed Church in Hungary (\emph{Theoretical and Experimental Research in Linguistics}, reg. no. 20736B800). We are grateful to our three anonymous reviewers, who at a later stage identified themselves as Anne Tamm, Ida Toivonen and Péter Sz\H{u}cs. The comments of all our reviewers have greatly contributed to improving both the content and the presentational aspects of this chapter. Our special thanks go to Anne Tamm for generously providing us with a large amount of information about phenomena in several Uralic languages that are comparable to the phenomena whose LFG analyses are discussed in this chapter and for calling our attention to a great number of additional relevant works on Uralic languages. As usual, all remaining errors are our sole responsibility.
+
+\section*{Abbreviations}
+
+Besides the abbreviations from the Leipzig Glossing Conventions, this
+chapter uses the following abbreviations.\medskip
+
+\noindent\begin{tabularx}{.47\textwidth}{lQ}
+\gloss{ade} & adessive case (marker)\\
+\gloss{ära} & Estonian particle\\
+\gloss{ás} & Hungarian event nominalizer suffix\\
+\gloss{ine} & inessive case\\
+\end{tabularx}%
+\noindent\begin{tabularx}{.47\textwidth}{lQ}
+\gloss{par} & partitive case\\
+\gloss{tot} & total case\\
+\gloss{való} & Hungarian adjectivalizing participle\\
+\gloss{vm} & verbal modifier\\
+\end{tabularx}
+
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}
+

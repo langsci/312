@@ -1,0 +1,959 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10185956}
+\title{Negation}
+\author{Oliver Bond\affiliation{University of Surrey}}
+\abstract{Negation is one of the few grammatical features observed in all languages. While typically thought of as a property of predicates, it can be manifested in a wide range of structural positions associated with verbs (typically, {V}, {I} or \NONPROJ[100000]{I} or as a verbal adjunct, represented as {NEG}), but is also observed on other parts of speech (e.g.\ D/N, C, P and CONJ) and is sometimes expressed across two or more nodes within c-structure (e.g.\ \citealt{ButtEtAl1999}, \citealt{AlsharifSadler:09}, \citealt{Laczko14}, \citealt{Bond2016}, \citealt{AlruwailiSadler:2018}).
+
+In the most straightforward cases there is one representation of negation at f-structure, with a binary feature indicating the presence or absence of this value. However, distributional differences between superficially similar negators, and evidence from structures with multiple negative forms within a single clause, suggest that more than one feature may be necessary to account for the syntactic and semantic effects observed in negative contexts. For instance, when a negation scopes over a sub-constituent in c-structure (so-called \textsc{constituent negation} or \textsc{cneg}) which is part of a finite syntactic structure which is also negated (known as \textsc{eventuality negation} or \textsc{eneg}) two representations of negation appear to be required within the same f-structure \citep{przepiorkowski2015two}. The distribution of Negative Concord Items (NCIs), Negative Polarity Items (NPIs) and case-forms licenced by negation also suggests that multiple features must also play an important role in accounting for restrictions on the occurrence of certain forms in antiveridical contexts (\citealt{sellsneg}, \citealt{camilleri-sadler:2017}).}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[11]%%chapternumber
+}{}
+
+\begin{document}
+\maketitle
+\label{chap:Negation}
+
+\section{Introduction} 
+
+No theoretical model of language is complete without a way to represent negation or the range of grammatical effects that it induces in linguistic structures. Superficially, this is necessary because negation is one of the few grammatical categories that is uncontroversially universal in nature. Yet, as we will see, this does not mean that negation is especially uniform across languages: the cross-linguistic manifestations of negation are diverse and the structural consequences associated with the presence of negation are manifold and varied.\footnote{For instance, negation is frequently seen as an important diagnostic tool for discriminating between different lexical categories (e.g.\ \citealt {Stassen1997}) or structures (e.g.\ \citealt {Brown:Sells:16}), where differential behaviour under negation is used to support linguistic argumentation. At the same time, what we intuitively think of as negation is, itself, commonly subject to diagnostics, which attempt to distinguish negatives from affirmatives, or to distinguish different subtypes of the phenomena (e.g.\ \citealt {Jespersen:17}; \citealt{Klima:64}; \citealt{Jackendoff:69}; \citealt{deHaan:97}; \citealt  {Zanuttini:01}; \citealt{Giannakidou:06}; \citealt{przepiorkowski2015two}).} 
+
+For the purposes of the current chapter, I take negation to be the formal manifestation of a semantic operator \emph{¬} that combines with an argument \emph{A} to form a complex semantic expression \emph{¬A}. In propositional logic, negation combines with a propositional argument \emph{P} to form \emph{¬P}. The presence of negation indicates that the conditions under which the proposition \emph{P} is true are not satisfied at reference time.
+
+Consider the proposition \emph{P} given in (\ref{ex:negation:400}):
+\ea
+\label{ex:negation:400}
+\emph{P}: Eva is an experienced astronaut.\\
+\z
+
+The truth conditions for the proposition \emph{P} in (\ref{ex:negation:400}) are not met if Eva is considered to be an inexperienced astronaut, or if she isn't an astronaut at all. In such cases we can say that \emph{P} is false, and express this using negation.\footnote{In this chapter, I discuss only contradictory negation. See \citet {Horn:20} for a recent discussion.} An important logical property of negation, is that if \emph{P} is false, \emph{¬P} must be true. Similarly, if \emph{¬P} is true, \emph{P} must be false. \emph{¬P} can also be paraphrased as “it is not the case that \emph{P}”, as shown for (\ref{ex:negation:400}) in (\ref{ex:negation:402}). The ability to form this paraphrase has been proposed as a rough semantic test for what \citet {Jackendoff:69} calls \emph{sentential negation}.
+
+\ea
+\label{ex:negation:402}
+\emph{¬P}: It is not the case that Eva is an experienced astronaut.\\
+\z
+
+Jackendoff's concept of sentential negation is associated with a wide-scope reading of negation. Negation is maximally wide-scoping when the whole proposition -- including the subject --  is in the scope of negation.\footnote{In strictly semantic terms, the scope of negation describes its operational domain. It is said to be wide, rather than narrow,  when other semantic operations occur \emph{before} negation applies. Negation with propositional scope is also commonly referred to as \textsc{external negation} because the negative operation is external to the proposition.} In practice, in natural languages, the subject is usually an established discourse referent outside the scope of negation (\citealt {keenan76}; \citealt {Givon:79}). Consequently, the negative structures that are typically reported in grammars and general discussions of negation are examples of \textsc{predicate negation}, where negation is an evaluation of the relationship between the subject and the predicate.\footnote{cf. Jespersen's (\citeyear{Jespersen:17}) \textsc{nexal negation}, Klima's (\citeyear{Klima:64}) \textsc{sentence negation}, and Payne's (\citeyear{Payne:85.1}) \textsc{standard negation}.} What sentential negation and predicate negation share in common is that the \emph{main predicate} is within the scope of negation, and the negative operator scopes over other predicate level operators (see \citealt {Payne:85.1}; \citealt {Acquaviva:97}, \citealt {DeClercq:20}). 
+
+Some examples of clauses in which the predicate is negated can be seen in (\ref{ex:negation:301})-(\ref{ex:negation:303}) from Polish, Modern Standard Arabic and Eleme (Niger Congo, Ogonoid; Nigeria). In the Polish example in (\ref{ex:negation:301}) negation is marked with a negative particle \emph{nie} (see \sectref{sec:negation:particles}). In (\ref{ex:negation:302}), from Modern Standard Arabic, negation is expressed by a negative auxiliary \emph{laysuu} (see \sectref{sec:negation:auxiliaries}). In the Eleme example in (\ref{ex:negation:303}), negation is signalled through morphological means, and the affirmative verb form is quite distinct from the form employed in the negative (see \sectref{sec:negation:morphology}). 
+
+\ea Polish (\citealt [324]{przepiorkowski2015two}; own data)
+\label{ex:negation:301}
+\ea
+\gll Janek lubi Marię.\\  
+     Janek.\textsc{nom} likes Maria.\textsc{acc}\\ 
+\glt `Janek likes Maria.'
+\ex
+\gll Janek nie lubi Marii.\\  
+     Janek.\textsc{nom} \textsc{neg} likes Maria.\textsc{gen}\\ 
+\glt `Janek doesn't like Maria.'
+\z\z
+
+\ea Modern Standard Arabic (\citealt [23]{AlsharifSadler:09}; own data)
+\label{ex:negation:302}
+\ea
+\gll al-awlad-u  ya-ktub-uu-n \\
+the-boys-\textsc{nom} \textsc{3m}-study.\textsc{ipfv-3mp-ind}\\ 
+ \glt The boys write/are writing.
+\ex
+\gll al-awlad-u lays-uu ya-ktub-uu-n \\
+ the-boys-\textsc{nom} \textsc{neg-3mp} \textsc{3m}-write.\textsc{ipfv-3mp-ind}\\
+ \glt The boys do not write/are not writing.
+\z\z
+
+\ea Eleme (\citealt [283]{Bond2016}; own data)
+\label{ex:negation:303}
+\ea
+\gll òsáro è-dé-a òfĩ́\\
+Osaro 3\textsc{[sg]}-eat-\textsc{hab} mango\\
+\glt`Osaro (usually) eats mango.’
+\ex
+\gll òsáro è-dé$\sim$dè òfĩ́\\
+Osaro 3\textsc{[sg]-neg}$\sim$eat\textsc{[hab]} mango\\
+\glt`Osaro doesn’t (usually) eat mango.’
+\z\z
+
+As well as having means to negate the main predicate of the clause, languages frequently have negators with distinct behavioural properties that do not have scope over the finite predicate and hence can be said to have low(er) negative scope \citep{DeClercq:20}. Negators of this type are typically bundled together in descriptions as examples of \textsc{constituent negation}. The term `constituent negation' has its origins in the work of \citet{Klima:64}, who formulated a range of now famous tests to distinguish it from negation with scope over the predicate (see \cite{Payne:85.1}, \cite{deHaan:97} and \cite{DeClercq:20} for discussion). An example of constituent negation in English can be seen in (\ref{ex:negation:84}). Here a verbless secondary predication modifying a noun is in the scope of negation, but not the main predicate. Such negators are said to have narrow scope. 
+
+\ea\label{ex:negation:84}
+Dora found a job [not far away].\\
+(cf. Dora found a job that is not far away.)\\
+\z
+
+It is common to find that negators used to negate predicates may also be used in narrow scope negation \citep{DeClercq:20}. The following Hungarian data from \citet [306--7] {Laczko14} illustrate predicate negation (\ref{ex:negation:51a}) and narrow-scope negation over the object referent (\ref{ex:negation:51b}). Small caps indicate focussed elements. In (\ref{ex:negation:51a}) negation scopes over the predicate, or put another way, the truth conditions for the relationship between the predicate and its subject are not met. In (\ref{ex:negation:51b}), narrow scope negation indicates that it is the relationship between the object referent and the rest of the assertion that is relevant.
+
+\ea\label{ex:negation:51} Hungarian \citep[306--307]{Laczko14}
+\ea\label{ex:negation:51a}
+\gll Péter nem hívta fel a barátjá-t. \\
+  Peter.\textsc{nom} not called up the friend.his-\textsc{acc} \\
+\glt‘Peter didn’t call up his friend.’
+\ex\label{ex:negation:51b}
+\gll Péter \textsc{nem} \textsc{a} \textsc{barátjá-t} hívta fel\\
+Peter.\textsc{nom} not the friend.his-\textsc{acc} called up \\
+\glt‘It wasn’t his friend that Peter called up.’
+\z\z
+
+In (\ref{ex:negation:83}) these two strategies are combined within the same clause, providing evidence for the need to be able to simultaneously distinguish these types of negation within formal models (see \sectref{sec:negation:f-structure} for discussion).
+ 
+ \ea\label{ex:negation:83} Hungarian \citep[306--7]{Laczko14}\\
+ \gll Péter \textsc{nem} \textsc{a} \textsc{barátjá-t} nem hívta fel. \\
+ Peter.\textsc{nom} not the friend.his-\textsc{acc} not called up \\
+ \glt‘It wasn’t his friend that Peter didn’t call up.’ 
+ \z
+\noindent
+Cross-linguistically, narrow-scope negation is formally distinguished from wider-scoping predicate negation by a variety of means, including differences in syntax, the use of different negators or prosodic alternations, etc. 
+
+Other examples that are described as constituent negation involve negative quantifiers modifying a noun, as in (\ref{ex:negation:85}). In such cases the negation of the predicate is achieved through a more complex process of logical implication: 
+
+\ea
+\label{ex:negation:85}
+Dora found no [reason to worry].\\
+(cf. Dora didn't find a reason to worry.)
+\z
+
+Informally, we can say of (\ref{ex:negation:85}) that if Dora found no reason to worry, the reasons to worry equal zero, therefore Dora didn't find any (i.e.\ > 0) reason to worry. Quantifiers interact with negation in a number of complex ways and the literature on this topic is extensive (see \citealt {Krifka:95}; \citealt {Swart:09}; \citealt {Penka:10} amongst others). While negation and quantification have been subject to some discussion in the LFG literature (\citealt {Fry:99}; \citealt [291--295; 309--311] {dalrymple01}), I will leave this topic aside.
+
+While syntax and semantics often align, the scope of negation should really be considered to be a semantic phenomenon (see \citealt{Penka:16} for an overview of negation in formal semantics), and must be analysable within the semantic component of grammar in parallel to considering how this is played out in syntax and prosody. In practice, when authors talk about scope, they often treat it as a syntactic phenomenon because of differences in the syntactic domain in which the effects of negation can be observed (see \citealt {Reinhart:79}; \citealt {Szabolcsi:11}). Because of this, the term \textsc{scope} is typically also used to refer to the syntactic domain in which the effects of negation are observed. However, it is useful to untangle these two properties of negative clauses. This is  -- in theory -- easy to do in a model like LFG because syntax and semantics are dealt with in separate, yet parallel modules of grammar. Establishing the extent to which the two are independent is one of the major goals of investigating the syntax-semantics interface.
+
+It should be clear from this brief overview that an adequate discussion of the topic necessitates not only an exploration of the formal devices used to express negation (and the domains in which the effects of negation are observed), but also how this relates to the semantic interpretation of the utterance.
+
+Most analyses of negation in LFG to date have focussed on the syntactic properties of negation constructions by examining the role of negation in c-structure and f-structure, most notably \citet{sellsneg} on Swedish, \citet{AlsharifSadler:09} on Arabic, \citet {przepiorkowski2015two} on Polish and \citet {camilleri-sadler:2017} on Maltese. Despite a growing body of work in this domain (some of which is briefly outlined in \citealt [67--69]{DLM:LFG}), negation has remained focussed on the syntactic properties and effects of negation. A rare exception is \citet {DN} who briefly discuss the semantic contribution of negation within the context of information structure, while \citet{Bond2016} examines issues related to the morphological expression of negation (\sectref{sec:negation:morphology}). 
+
+Negation is manifested using a variety of formal devices which differ according to the extent to which this affects (i) syntactic constituency of negative clauses and (ii) the domains in which operations sensitive to negation occur. In what follows, we first look at the arguments that support possible representations of syntactic components of grammar (\sectref{sec:negation:c-structure}) before exploring the representation of negation in a component of grammar unique to LFG, namely f-structure (\sectref{sec:negation:f-structure}).
+
+\section{Representations of negation as a formative}
+\label{sec:negation:c-structure}
+
+Negation of verbal predicates can be manifested in a wide variety of ways, most commonly by (adverbial) particles (\sectref{sec:negation:particles}), changes in verbal morphology (\sectref{sec:negation:morphology}) or through the use of a negative auxiliary (\sectref{sec:negation:auxiliaries}). A combination of these strategies is also widely attested (\sectref{sec:negation:mapping}).
+
+\subsection{Negative particles}
+\label{sec:negation:particles}
+
+A large body of cross-linguistic work (\citealt {Dahl:79}; \citealt  {Dryer:89}; \citealt  {Payne:85.1}; \citealt  {Miestamo:05}; \citealt  {Dryer13b})  indicates that the most common way in which the world's languages express the negation of propositions about (epistemically unmodified) dynamic events, i.e \textsc{standard negation} (\citealt{Payne:85.1}; \citealt{Miestamo:05}) or `clausal negation in declarative sentences'  \citep {Dryer13b} ) is through the use of a uninflecting negative particle. This is observed in at least 44\% (n=502)  of Dryer's \citeyear {Dryer13b} sample of 1157 languages. Further languages in his sample including a particle as part of a more complex strategy consisting of multiple formatives (n=119), and others still classified as unclear with respect to whether they are particles or uninflecting negative auxiliary verbs (n=73).\footnote{The numbers from the \textit{World Atlas of Language Structures} reported here are those from \citet {Dryer13b}; those presented in the earliest editions were lower due to a programming error.} Given their isomorphic nature, \citet {Bond:13.2} takes the expression of negation through the use of particles to be a property of canonical negation.
+
+In typological work on negation, the term \textsc{particle} is used as a general term for an independent word whose distribution is not better characterised in reference to a larger class of items, and includes negators described as negative adverbs. The syntactic status of negative particles (in this typological sense) has been one of considerable attention within the theoretical syntactic literature (see \citealt {Pollock:89}; \citealt {Haegeman:95}; \citealt {Zanuttini:97}; \citealt{Rowlett:98} among others), including LFG (see \citealt {ButtEtAl1999}; \citealt {przepiorkowski2015two}). This is in part motivated by the fact that the negative particle in English (and similar forms in related languages) are usually described as adverbs. While they frequently share some of the properties of adverbs in the language in which they are found, they also tend to have special syntactic characteristics that make them distinct. These characteristics, such as restrictions on their syntactic position, or the inability to be modified, make them unlike regular phrasal heads (e.g.\ \citealt [141--142] {ButtEtAl1999}). Crucially, these properties differ even among closely related languages, demonstrating that adopting the category `particle' in broadscale typological work presents a convenient opportunity to be vague rather than explicit about the syntactic properties of any given negative formative. For instance, taking a minimalist approach, \citet {Repp:09} argues that while both are described as adverbs in their respective descriptive traditions, German \emph{nicht} and English \emph{not} have different syntactic behaviour. The former is proposed to be a simple adverbial adjoining to the verb phrase (VP) while the latter is a functional head projecting a NegP.  \citet [141--142] {ButtEtAl1999} conclude that \emph{nicht} and \emph{not} both belong to a special category \textsc{neg} that distinguishes them from other adverbs, with the differences in their distribution encoded in c-structure rules.
+
+In many Chomskian treatments of negation in English, \emph{not} is the specifier of NegP, a separate negative projection (see \citealt {Pollock:89}; \citealt {Repp:09}; amongst others). Even if the validity of the NegP approach seems appropriate in some analyses, the existence of such a functional head for all instances of negation would not be consistent with the lexicalist approach to syntax. Negation is commonly expressed through morphological alternations that suggest this is a considerably less useful tool for accounting for negation in languages where the category is expressed through non-concatenative morphology (\sectref{sec:negation:morphology}).
+
+This leads to us to the first problem of determining how negative particles should be represented in the X-bar theory employed to represent c-structure in most LFG work. Given that negation can be associated with almost any part of speech, and a functional projection in LFG is not required for the purposes of movement, is a NegP motivated within a declarative theory of syntax at all?
+
+There are several possibilities with respect to dealing with this issue: first, that a node in constituent structure is required that has the properties of a regular phrasal head (e.g.\ AdvP), second that a special functional head is required (i.e.\ NegP), or third that the negative particle occupies a non-projecting phrase (in the sense of \citealt{Toivonen:NonProj}).    
+
+The first major paper dedicated to tackling negation with the LFG framework is \citet {sellsneg}, who proposes an account of negation in Swedish. Therein, he considers whether a NegP is required to account for the distribution of the negative adverb  \emph{inte}. He reviews the evidence in favour of positioning the Swedish negative adverb \emph{inte} inside or outside the VP, concluding that neither the negation adverb \emph{inte} nor negative quantifiers can appear within the VP. Sells observes that the unmarked position for negation is to the left of VP, though positions higher up in IP and CP are also possible. He concludes that \emph{inte} occupies a special \textsc{neg} node in c-structure, but argues against the view that a NegP is required to account for its syntactic properties.
+
+As with Swedish \emph{inte}, English \emph{not} is usually described as an adverb, but they have different distributions. Since \emph{not} must be preceded by a tensed auxiliary verb when expressing sentential negation, as in (\ref{ex:negation:403}), \citet [61]{dalrymple01} assumes that it is adjoined to the tensed verb in I, as illustrated in (\ref{ex:negation:24}). A similar structure is proposed in \citet{Bresnan-Explaining-Morphosyntactic}.
+
+\ea
+\label{ex:negation:403}
+David is not yawning.\\
+\z
+
+\ea \label{ex:negation:24} English non-projecting negative particle
+  \emph{not} (based on \citealt [61]{dalrymple01})\\
+\begin{forest} 
+[IP
+  [NP
+    [N [David]]]
+  [I$'$
+    [I 
+      [I [is]]
+      [\NONPROJ{Neg} [not]]]
+    [VP 
+      [V [yawning]]]]]   
+\end{forest}
+\z
+While brief, Dalrymple's (\citeyear [61]{dalrymple01}) analysis captures an observation that some negative particles are non-projecting categories that are not heads of phrases, but adjoin to heads. Toivonen (\citeyear {Toivonen:NonProj}) proposes that non-projecting categories have distinct characteristics that make then unlike regular phrases: 
+
+\begin{itemize}
+\item They are independent words which do not project a phrase.
+\item They must adjoin to X\textsuperscript{0} (i.e.\ at the lexical level).
+\item They cannot take complements or modifiers.
+\end{itemize}
+In (\ref{ex:negation:24}), \emph{Neg} is not a NegP, but a non-projecting word adjoined to I. 
+
+A similar analysis of negative particles is proposed by \citet{AlsharifSadler:09} and \citet{Alsharif:PhD}, who examine negation in Modern Standard Arabic (MSA). MSA has three negative particles used with imperfective predicates \emph{laa}, \emph{lam} and \emph{lan}. The particles differ according to the grammatical categories with which they combine. Each occurs with a verbal element as the main predicate: \emph{laa} occurs with the indicative imperfective, \emph{lam} with the jussive imperfective expressing negation in the past, and \emph{lan}  with the subjunctive imperfective, expressing negation in the future \citep [8] {AlsharifSadler:09}. Regardless of combinatorial potential, their default syntactic distribution is  the same -- immediately before the auxiliary -- as illustrated in (\ref{ex:negation:38}).\footnote{I have adjusted the glosses in these examples to correct segmentation issues in the original examples.}
+ 
+\ea\label{ex:negation:38} MSA (\citealt [95] {Benmamoun:funct} cited in \citealt [7-8] {AlsharifSadler:09})
+\ea
+\gll t-tullaab-u laa ya-drus-uu-n\\
+the-students-\textsc{nom} \textsc{neg} \textsc{3m}-study.\textsc{ipfv-3mpl-ind}\\
+\glt `The students do not study/are not studying.'
+\ex
+\gll t-tullaab-u lan ya-dhab-u\\
+the-students-\textsc{nom} \textsc{neg.fut} \textsc{3m}-go.\textsc{ipfv-mpl.sbjv}\\
+\glt `The students will not go.'
+\ex
+\gll t-tullaab-u lam ya-dhab-uu\\
+the-students-\textsc{nom} \textsc{neg.pst}  \textsc{3m}-go.\textsc{ipfv-mpl.juss}\\
+\glt `The students did not go.' 
+\z\z
+
+Given strong adjacency restrictions between the particle and the following auxiliary verb, \citet{AlsharifSadler:09} propose they are non-projecting categories adjoined to I. The c-structure representation for (\ref{ex:negation:39}) (without the time adverbial) is given in (\ref{ex:negation:25}). Syntactically, the particle \emph{laa} occupies a node {\NONPROJ[100000]{I}} that is defined according to that on which it is structurally dependent, {I}. 
+
+\ea\label{ex:negation:39} MSA \citep [7]{AlsharifSadler:09}\\
+\gll Zayd-un laa y-aktub-u  al-yawm-a al-risalat-a\\
+ Zayd-\textsc{nom}  \textsc{neg} \textsc{3m}-write.\textsc{ipfv-3ms.ind} the-day-\textsc{acc} the-letter-\textsc{acc}\\
+\glt Zayd is not writing the letter today.
+\z
+
+\ea \label{ex:negation:25} MSA non-projecting negative particle \emph{laa} \citep [14]{AlsharifSadler:09}
+\begin{forest} 
+[IP
+  [NP
+    [N [Zaydun]]]
+  [I$'$
+    [I 
+      [{\NONPROJ[100000]{I}} [laa]]
+      [I [y-aktub-u]]]
+    [S 
+      [VP 
+      	[NP [al-risalat-a]]]]]]
+\end{forest}
+\z
+
+The lexical entry for \emph{laa} is given in (\ref{ex:negation:33}).
+
+\ea
+\label{ex:negation:33}
+\catlexentry{laa}{\NONPROJ[100000]{I}}{(\UP \textsc{tense past}) ≠ + \\
+  (\UP \textsc{pol}) = \textsc{neg}}\\
+(\citealt [16]{AlsharifSadler:09})
+\z
+It specifies that its f-structure has the polarity value \textsc{neg} , but also that it cannot have the tense value \textsc{past}. Equations of this type can be used to account for the distribution of different negative forms within the same language, as indicated by the lexical entries in (\ref{ex:negation:95}) and (\ref{ex:negation:96}) for \emph{lam} and \emph{lan}.
+
+\ea
+\label{ex:negation:95}
+\catlexentry{lam}{\NONPROJ[100000]{I}}{(\UP \textsc{tense past}) = + \\
+(\UP \textsc{pol}) = \textsc{neg}\\
+(\UP \textsc{mood}) =$_c$ \textsc{juss}}\\
+(\citealt [16]{AlsharifSadler:09})
+\z
+
+\ea
+\label{ex:negation:96}
+\catlexentry{lan}{\NONPROJ[100000]{I}}{(\UP \textsc{tense fut}) = + \\
+(\UP \textsc{pol}) = \textsc{neg}\\
+(\UP \textsc{mood}) =$_c$ \textsc{sbjv}}\\
+(\citealt [16]{AlsharifSadler:09})
+\z
+
+The possibility within LFG to formulate different lexical entries for different negators provides an additional opportunity to account for differences in their behavioural distribution and the features with which they are compatible.
+
+\subsection{Negative verbal morphology}
+\label{sec:negation:morphology}
+Negation is indicated by verbal morphology in at least 36\% of the word's languages \citep {Dryer13b}.\footnote{This is a conservative figure calculated from the addition of two categories in Dryer's sample of 1157 languages: \emph{negative affix} (n = 395) and \emph{variation between negative word and affix} (n =21).} There is a slight preference for prefixation of negative affixes over suffixation \citep {Dryer13b}, which reflects a general cross-linguistic preference for negators to precede the verb \citep{Dryer:89}.
+
+In a lexicalist approach to syntax like LFG, it is notionally straightforward for negation to be expressed morphologically, but there is little consensus about how morphology itself should be modelled. The main issue is that affixes are often presented as having lexical entries that are distinct from their hosts. This suggests that an incremental model of morphology has been used  in which morphosyntactic information gets added incrementally as morphemes are added to a stem (see \citet [158]{camilleri-sadler:2017} on the lexical entries for Polish \emph{nie} discussed in \sectref{sec:negation:multiple-features}). However, there are strong arguments for adopting a realizational approach in accounting for morphology, whereby a word's association with certain morphosyntactic properties licenses morphological operations. Under an approach of this kind, having distinct lexical entries for negative morphemes is highly questionable. 
+
+The first detailed LFG analysis of negation expressed through morphological means is provided in \citet {Bond2016}, who examines the expression of negation through tone and reduplication within Eleme (Niger-Congo, Cross River, Ogonoid) spoken in Rivers State, Nigeria. Like many other languages across Africa, Eleme has a multitude of means for expressing negation, many of which involve negation morphology. Negation in Eleme is distinctive from a cross-linguistic perspective in that in addition to affixation, negation of verbal predicates is also indicated though other morphological means, notably tonal alternations and stem reduplication. Two of the basic alternations, between perfectives and habituals are shown in (\ref{ex:negation:41}) and (\ref{ex:negation:40}).
+
+\largerpage
+Negation of perfectives is realised using a set of prefixes with the shape \mbox{\emph{rV́-}.} The quality of the vowel is dependent on several factors: (i) the person and number of the subject, (ii) vowel harmony with the initial segment of the verbs stem \citep [280] {Bond2016}.\footnote{There is also intra-speaker variation in the realisation of the initial consonant, which varies between an alveolar nasal and alveolar approximant.} The negative prefix is obligatorily realised on Negative Perfective verb forms.\footnote{Perfectivity is a default category in Eleme and is not overtly realised on verb stems by segmental morphology.} It is the only clear exponent of negation in (\ref{ex:negation:41b}). However, in certain discourse contexts, prefixation is accompanied by pre-reduplication of the initial mora of the verb stem -- shown in parentheses in (\ref{ex:negation:41b}). This results in full reduplication of monomoraic stems and partial reduplication of bimoraic stems (see \citealt [281] {Bond2016} for examples).
+
+\ea\label{ex:negation:41}Eleme \citep [281] {Bond2016}
+\ea\label{ex:negation:41a}
+\gll ǹ-sí \\
+1\textsc{sg}-go\\
+\glt`I went.'		
+\ex\label{ex:negation:41b}
+\gll rĩ́-(si)$\sim$sí \\
+\textsc{neg.1sg-(neg)}$\sim$go\\
+\glt`I didn’t go.'
+\z\z
+
+Habitual predicates in Eleme are distinguished by the presence of a Habitual suffix \emph{-a} on the lexical verb stem, as in (\ref{ex:negation:40a}). Negative Habituals are formed through the obligatory pre-reduplication of the first mora of the verb stem, as in (\ref{ex:negation:40b}). The presence of the Habitual suffix \emph{-a} is not attested in Negative Habituals, giving rise to an asymmetric pattern of negation in the sense of \citet {Miestamo:05}. Negative Habituals do not have a negative prefix. In (\ref{ex:negation:40b}), negation is expressed though stem reduplication and tone.
+
+\ea\label{ex:negation:40}Eleme \citep [278]{Bond2016}
+\ea\label{ex:negation:40a}
+\gll ǹ-sí-a\\
+1\textsc{sg}-go-\textsc{hab}\\
+\glt`I (usually) go.'
+\ex\label{ex:negation:40b}
+\gll ǹ-sí$\sim$sì\\
+1\textsc{sg-neg}$\sim$go\\
+\glt`I don't (usually) go.'
+\z\z
+
+ \largerpage
+Some examples of transitive constructions are given in (\ref{ex:negation:88}). 
+
+\ea\label{ex:negation:88}Eleme (\citealt [283]{Bond2016}; own data)
+\ea\label{ex:negation:88a}
+\gll òsáro ré-de$\sim$dé òfĩ́\\
+Osaro \textsc{neg.3sg-(neg)}$\sim$eat\textsc{[hab]} mango\\
+\glt`‘Osaro didn't eat (any) mango.'
+\ex\label{ex:negation:88b}
+\gll òsáro è-dé$\sim$dè òfĩ́\\
+Osaro 3\textsc{[sg]-neg}$\sim$eat\textsc{[pfv]} mango\\
+\glt`Osaro doesn’t (usually) eat mango.’
+\z\z
+
+The examples show that there is no single affix that can be picked out for accounting for negation in Eleme, rather a number of different morphological processes are responsible for deriving negative verb stems (and a distinct theory of morphology is required to account for that because LFG does not yet have its own established native approach). In languages like Eleme, the feature responsible for contributing negation to the f-structure for clauses of this type comes directly from the lexical entry for the verb. Lexical entries for these verb forms are given in (\ref{ex:negation:34}) and (\ref{ex:negation:89}):
+
+\ea
+\label{ex:negation:34}
+\catlexentry{rédedé}{V}{(\UP \textsc{pred}) = \textsc{`eat\arglist{subj,obj}'} \\
+(\UP \textsc{pol}) = \textsc{neg}\\
+(\UP \textsc{asp}) = \textsc{pfv}\\
+(\UP \textsc{subj pers}) = 3\\
+(\UP \textsc{subj num}) = \textsc{sg}}
+\z
+
+\ea
+\label{ex:negation:89}
+\catlexentry{èdédè}{V}{(\UP \textsc{pred}) = \textsc{`eat\arglist{subj,obj}'} \\
+(\UP \textsc{pol}) = \textsc{neg}\\
+(\UP \textsc{asp}) = \textsc{hab}\\
+(\UP \textsc{subj pers}) = 3\\
+(\UP \textsc{subj num}) = \textsc{sg}}
+\z
+The c-structure for (\ref{ex:negation:88b}) is provided in (\ref{ex:negation:32}).
+
+\ea \label{ex:negation:32} {C-structure containing an Eleme Negative Habitual verb \emph{èdédè}}\\
+\begin{forest}
+[IP
+  [NP
+    [N [Osaro]]]
+  [VP
+    [V [èdédè]]
+	  [NP
+    [N [òfĩ́]]]
+	   ]]
+\end{forest}
+\z
+
+The central claim about negative verbs of this kind, whether negation is expressed by affixation, stem modification, reduplication, tone or any other morphological means, is that morphological negators do not occupy a syntactic node distinct from the element of which they are part, and any morphological exponent that can be identified as marking negation should be understood to be a property of a verb form (i.e.\ part of a paradigm) rather than having its own distinct lexical entry.
+
+HPSG analyses of the morphological expression of negation (e.g.\ \citealt{Borsley:Krer:12}, \citealt{Kim:00}, \citealt{Kim:21}) likewise propose that morphological exponence is dealt within the lexical component of grammar and, therefore, individual morphological exponents have no syntactic status distinct from the word of which they are part. \citet {Kim:00} proposes that negation marked by affixation is achieved by a lexical rule (see \citealt{Kim:21} for a summary). The view of morphology proposed in \citet{Bond2016} is a more complex one, chosen to deal with non-concatenative exponents as well as more straightforward instances of affixation. However, the basic underlying assumption is the same; morphology is governed by autonomous, non-syntactic principles \citep{bresnan1995the-lexical}. 
+
+In derivational theories of syntax in which morphology is considered to be a post-syntactic process, there is no divide between the construction of words and sentences. In Distributed Morphology (DM), for instance, words are formed through syntactic operations like Merge and Move. Negative affixes -- like other affixes expressing inflectional information -- are realisations of abstract morphemes that are merged with roots. No such motivation for morphological operations needs to be justified within a lexicalist theory like LFG. There are two main approaches to accounting for reduplication in DM (see \citealt{Frampton:09}, \citealt{Haugen:11} for discussion). Reduplication is proposed either to result from a readjustment operation on some stem triggered by a (typically null) affix, or through the insertion of a special type of affix which is inserted into a syntactic node in order to discharge some morphosyntactic feature(s), but which receives its own phonological content, distinct from its base. Recent proposals concerning the analysis of tone expressing grammatical categories can be found in \citet {Rolle:18} and \citet {Pak:19}. See \citet {Chung:07} on negation and suppletive forms in DM. A combination of these approaches would be required to account for morphologically complex expressions of negation like those seen here.
+
+\largerpage
+\subsection{Negative auxiliaries}
+\label{sec:negation:auxiliaries}
+Negative auxiliaries are widely attested in the world's languages. Alongside the negative particles discussed in \sectref{sec:negation:particles}, MSA also has a negative auxiliary \emph{laysa} employed in negative imperfectives. 
+
+\citet{AlsharifSadler:09} argue that \emph{laysa} is a fully projecting I, taking a range of complements. Unlike the particles discussed in \sectref{sec:negation:particles}, it is not subject to verb-adjacency restrictions, as illustrated in (\ref{ex:negation:26}).\footnote{The gloss in (\ref{ex:negation:26b}) has been corrected from the original source to show that number on the negative auxiliary is defective when it precedes the subject \citep [7]{AlsharifSadler:09}.} If the negative auxiliary verb is preceded by its subject, it agrees with it in gender and number. If the subject follows the auxiliary, number agreement is defective, and a default singular form is used.
+
+\ea\label{ex:negation:26}MSA \citep [23]{AlsharifSadler:09}
+\ea\label{ex:negation:26a}
+\gll al-awlad-u lays-uu ya-ktub-uun \\
+ the-boys-\textsc{nom} \textsc{neg-3mp} \textsc{3m}-write.\textsc{ipfv-3mp-ind}\\
+ \glt The boys do not write/are not writing.
+\ex\label{ex:negation:26b}
+\gll  lays-a al-awlad-u ya-ktub-uun\\
+\textsc{neg-3ms} the-boys-\textsc{nom} \textsc{3m}-write.\textsc{ipfv-3mp-ind}\\
+\glt The boys do not write/are not writing.
+\z\z
+The corresponding c-structures for the examples in (\ref{ex:negation:26}) are given in (\ref{ex:negation:35}) and (\ref{ex:negation:91}). 
+
+\ea\label{ex:negation:35} {MSA negative auxiliary \emph{laysa} in S-AUX order \citep [23]{AlsharifSadler:09}}\\
+\begin{forest} 
+[IP
+  [NP
+    [N [al-awlad-u]]]
+  [I$'$
+    [I 
+      [I [lays-uu]]
+      [S 
+       [VP 
+      	[V [ya-ktub-uun]]]]]]]
+\end{forest}
+\z
+
+\ea\label{ex:negation:91} {MSA negative auxiliary \emph{laysa} in AUX-S order \citep [23]{AlsharifSadler:09}}\\
+\begin{forest} 
+[IP
+ [I$'$ [I [laysa]]
+  [S
+    [NP  [al-awlad-u]] 
+     [VP 
+      [V [ya-ktub-uun]]
+	     ]
+	    ]]]
+\end{forest}
+\z
+
+The differences between the behaviour of the negative particles (see discussion in \sectref{sec:negation:particles}) and the negative auxiliary in MSA are captured by differences in their lexical entries. The lexical entry for \emph{laysa} is provided in (\ref{ex:negation:36}).
+
+\ea\label{ex:negation:36}
+\catlexentry{laysa}{I}{(\UP \textsc{tense past}) = $-$ \\
+(\UP \textsc{tense fut}) = $-$\\
+(\UP \textsc{pol}) = \textsc{neg}\\
+(\UP \textsc{subj pers}) = 3\\
+(\UP \textsc{subj gend}) = \textsc{masc} \\
+V $\in$ \textsc{cat}(\UP) ~$\Rightarrow$~ (\UP\textsc{asp}) =$_c$ \textsc{prog}}\\
+\citep [24]{AlsharifSadler:09}
+\z
+
+\citet[87]{DN} propose that English \emph{didn't} also occupies the I node in c-structure (cf. \emph{not} as a non-projecting head adjoined to I in \sectref{sec:negation:particles}).
+
+
+\section{Representations of negation as a feature}
+\label{sec:negation:f-structure}
+
+Negation is usually thought of as a property of a predicate, closely associated with verbal elements within the clause. Within f-structure representations, negation is typically represented in one of three distinct ways: as a feature-value pair (\sectref{sec:negation:single-feature}), as an adjunct with a negative value (\sectref{sec:negation:adjunct}), or by recognising that negation may be represented by multiple features within the same f-structure (\sectref{sec:negation:multiple-features}).
+
+\subsection{Single feature-value pair}
+\label{sec:negation:single-feature}
+\largerpage
+The majority of LFG analyses of negation treat negation as a value of predicate-level feature {\sc pol}(arity). Like other attributes in the f-structure such as [{\sc tense}] and [{\sc asp}], the [{\sc pol}] specification has more than one possible value, either represented as a binary feature (i.e.\ =\ ±{\sc pol} or ±{\sc neg}), or a feature with multiple values, e.g.\ [{\sc aff}] and [{\sc neg}]. The former approach is used by \citet{King95}, \citet{Nino1997}, \citet{ButtEtAl1999}, \citet [183] {bresnan2001lexical} and  \citet[87]{DN} , while \citet{AlsharifSadler:09} and \citet{Bond2016} employ the multiple value approach (i.e.\ \textsc{pol: neg}). \citet [12, 149] {falk2001lexical} uses \textsc{neg}+ and \textsc{pol: neg} within the same book.
+
+In each case, it is always possible to identify an inherently negative element; this element always contributes the specification [{\sc pol $-$}],  [{\sc neg +}] or   [{\sc pol neg}] to f\nobreakdashes-structure. 
+They are all used to represent exactly the same thing, using different notation systems. In the lexical entries so far, I have used the attribute {\sc pol}, with the value {\sc neg}, to account for sentential negation.
+
+In the illustrations of the different proposals that follow, I use the representation system proposed in the original analysis.
+
+Let's start by considering the English example in (\ref{ex:negation:42}) from \citet [87]{DN}, with the f\nobreakdashes-structure in (\ref{ex:negation:43}). 
+
+\ea
+\label{ex:negation:42}
+John didn't love Rosa.
+\z
+
+\ea\label{ex:negation:43}\evnup{\avm[style=fstr]{
+ [pol & $-$\\
+  pred & `love\arglist{subj, obj}'\\
+  subj & [ pred & `John']\\
+  obj & [ pred & `Rosa']]}}
+\z
+
+Here, the only representation of negation in the f-structure is with the feature \textsc{pol}  \citep [87]{DN}. The `$-$' specification indicates that it does not have affirmative polarity.
+
+\subsection{Adjunct value}
+\label{sec:negation:adjunct}
+
+In contrast to introducing negation through a binary feature (e.g.\ \textsc{neg}), in some LFG analyses, negation is introduced as an appropriate element of the \textsc{adj}(unct) feature, as illustrated in (\ref{ex:negation:49}) for (\ref{ex:negation:404}), discussed in \citet [323--324] {przepiorkowski2015two}.\footnote{\citet {przepiorkowski2015two} state that, within PARGRAM, the majority of XLE implementations of negation to date take this approach, but this is not reflected in the LFG literature, in which verbal negation is nearly always represented by a feature in works that predate their paper (e.g.\ \citealt{sellsneg}, \citealt{AlsharifSadler:09}).}
+ 
+\ea
+\label{ex:negation:404}
+John doesn't like Mary.
+\z
+ 
+\ea \label{ex:negation:49} \evnup{\avm[style=fstr]{
+  [ pred & `like\arglist{subj, obj}'\\
+  subj & [ pred & `John']\\
+  obj & [ pred & `Rosa']\\
+  adj & \{ [ pred & `not'\\adj-type & neg] \} ]}}
+\z
+Here, the \textsc{adj}(unct)-\textsc{type} feature enables the syntactic properties of negative adjuncts to be distinguished from other adjuncts.\footnote{An anonymous reviewer points out that there are added complications associated with this model in accounting for the presence of \emph{do} in English negatives if \emph{not} is added as an adjunct.} One rationale for adopting this approach is that it makes it easy to represent multiple negation (via multiple negative elements of the \textsc{adj} set). This is the approach taken by \citet {Laczko14} in his account of negation in Hungarian, where both predicate negation and narrow-scope negation are treated as adjuncts because they can co-occur, as in (\ref{ex:negation:87}) repeated from (\ref{ex:negation:83}).
+ 
+ \ea Hungarian \citep [307] {Laczko14}\label{ex:negation:87}\\
+ \gll Péter \textsc{nem} \textsc{a} \textsc{barátjá-t} nem hívta fel. \\
+ Peter.\textsc{nom} not the friend.his-\textsc{acc} not called up \\
+ \glt‘It wasn’t his friend that Peter didn’t call up.’
+ \z
+ 
+Importantly, both instances of \emph{nem} occur in the same clause, although not in the same f-structure (cf. the bi-clausal translation in English). The simplified f-structure in (\ref{ex:negation:82}), representing (\ref{ex:negation:87}), is consistent with the essence of Laczko's (\citeyear {Laczko14})  analysis of similar sentences.\footnote{Laczko's (\citeyear {Laczko14}) formalisations are somewhat idiosyncratic in that his f-structure representations deviate from those typically seen in the LFG literature. While he does not actually provide an f-structure containing two instances of \emph{nem}, there is much more analysis included in the paper than can be discussed here, and readers are directed to his paper for an extensive discussion of negation in Hungarian.}
+
+\ea \label{ex:negation:82} \evnup{\avm[style=fstr]{
+    [pred & `call.up\arglist{subj, obj}'\\
+      subj & [ pred & `Peter'\\case & nom]\\
+      obj & [ pred & `his friend'\\case & acc\\
+        adj & \{ [pred & `not'\\adj-type & neg ] \} ]\\
+      adj & \{ [pred & `not'\\adj-type & neg ] \} ]}}
+\z
+
+One of the major issues with this approach concerns how to limit the number of instances of the adjunct with clauses.  \citet{przepiorkowski2015two} report that in a later presentation, \citet{Laczko2015} revises his account, suggesting that two binary features may be necessary to account for the negation in Hungarian. He proposes distinguishing between ±\textsc{pol} and ±\textsc{neg}, where each is a different feature (rather than different ways of notating the same feature).
+
+\subsection{Multiple feature-value pairs}
+\label{sec:negation:multiple-features}
+
+Building on the observations made by \citet{Laczko2015} for Hungarian, \citet{przepiorkowski2015two} propose that two different types of binary-valued attributes are required to account for negation in Polish. This distinction is motivated by (i) the distinctive behaviour of two sets of negative constructions in which the negator \emph{nie} exhibits different degrees of syntactic independence, and (ii) the possibility that two instances of negation can occur within the same clause. This leads them to propose two distinct features known as \textsc{eventuality negation} (\textsc{eneg}) and \textsc{constituent negation} (\textsc{cneg}). 
+
+While typically represented orthographically as a separate word, manifestations of \emph{nie} can be broadly distinguished as `bound' and `independent'. Bound \emph{nie} has a strong adjacency requirement with its host, and is described as a prefix that forms a prosodic unit with the stem to which it attaches (\citealt {Kupsc:Przepiorkowski:02}; \citealt [324]{przepiorkowski2015two}). Negation expressed by prefixal \emph{nie} cannot scope over co-ordinands, demonstrating that its semantic effects are bounded. It triggers a range of syntactic effects: first, it requires that otherwise accusative arguments of the element that is negated occur in the genitive case (the so-called `genitive of negation'), seen in (\ref{ex:negation:1}), and second, it licences a syntactic domain in which negative indefinites occur, shown in (\ref{ex:negation:2}). 
+
+\ea Polish \citep [324]{przepiorkowski2015two}
+\ea\label{ex:negation:1}
+\gll Janek nie lubi Marii.\\  
+     Janek.\textsc{nom} \textsc{neg} likes Maria.\textsc{gen}\\ 
+\glt `Janek doesn't like Maria.'
+\ex\label{ex:negation:2}
+\gll Nikt nie lubi nikogo.\\  
+     nobody.\textsc{nw.nom} \textsc{neg} likes nobody.\textsc{nw.gen}\\ 
+\glt `Nobody likes anybody.'
+\z\z
+
+Bound \emph{nie} is associated with eventuality negation, so called because it is used to negate eventualities (i.e.\ events and states). The syntactic properties associated with \textsc{eneg} are observed when \emph{nie} is realised on verbs, adjectives and deadjectival adverbs, and it is for this reason that they favour the adoption of the term eventuality negation over sentential negation or predicate negation (\citet [324--326]{przepiorkowski2015two} for discussion of this). Negative indefinite pronouns (see \sectref{sec:negation:pronouns}) are also licensed by the preposition \emph{bez} `without', leading \citet [326]{przepiorkowski2015two} to suggest that this also introduces a value for the \textsc{eneg} feature.
+
+In contrast to the bound realisation, independent \emph{nie} may be separated from the constituent over which it scopes \citep [329]{przepiorkowski2015two}, indicating that it is not a morphological exponent of negation. This structural difference is reflected in a number of associated effects. Unlike the bound negator, it can scope over co-ordinands, and it does not licence negative case alternations or negative indefinites, as shown by the ungrammaticality either of the genitive object \emph{Marii}  or an negative indefinite pronoun object, in (\ref{ex:negation:3}).
+\ea
+\label{ex:negation:3}Polish \citep [326]{przepiorkowski2015two}\\
+\gll Nie Janek lubi Marię \textbackslash{} *Marii \textbackslash{}  *nikogo (lecz Tomek).\\  
+     \textsc{neg}  Janek.\textsc{nom} likes Maria.\textsc{acc} {}  { Maria.\textsc{gen}} {}  { nobody.\textsc{nw.acc/gen}} but Tomek.\textsc{nom}\\ 
+\glt `It is not Janek that likes Maria (but Tomek).'
+\z
+
+Crucially, the two different types of negation are sometimes attested in superficially similar environments, as seen with infinitival clauses. In (\ref{ex:negation:4}), in which the infinitival clause, but not the head of the main predicate is within the scope of negation, the genitive of negation is not permitted. This is an example of \textsc{cneg}. In (\ref{ex:negation:5}), where the negated infinitival clause functions as the post-verbal subject, only genitive case is permitted: this is an example of \textsc{eneg}. Similar effects are observed with the licensing of negative indefinites \citep [327]{przepiorkowski2015two}.
+
+\ea Polish  \citep [326]{przepiorkowski2015two}\\
+\label{ex:negation:4}
+\gll Ma skakać, a nie pisać wiersze \textbackslash{} *wierszy.\\  
+    has jump.\textsc{inf} and \textsc{neg} write.\textsc{inf}  {poems.\textsc{acc}} {}  { poems.\textsc{gen}}\\ 
+\glt `He is to jump, and not to write poems.' [of a sportsman]
+\z
+
+\ea 
+\label{ex:negation:5}Polish \citep [327]{przepiorkowski2015two}\\
+\gll Poetyckim marzeniem Karpowicza było: nie pisać wierszy  \textbackslash{} *wiersze.\\  
+    poetic.\textsc{ins} dream.\textsc{ins} Karpowicz.\textsc{gen}  was \textsc{neg} write.\textsc{inf} {poems.\textsc{gen}} {}  { poems.\textsc{acc}}\\ 
+\glt `The poetic dream of Karpowicz was not to write poems.'
+\z
+
+Building on these observations, \citet [158]{camilleri-sadler:2017} propose the following (basic) lexical entries for the two types of negation, in order to provide an explicit characterisation of their differences:
+
+\ea
+\label{ex:negation:15}
+nie:\hspace{3 mm}\textsc{eneg} \hspace{3 mm}(\UP \textsc{eneg}) = +\\
+\citep [158]{camilleri-sadler:2017}
+\z
+
+\ea
+\label{ex:negation:16}
+nie:\hspace{3 mm}\textsc{cneg} \hspace{3 mm}(\UP \textsc{cneg}) = +\\
+\citep [158]{camilleri-sadler:2017}
+\z
+
+In their formalisation, the lexical entries are identical other than the feature they introduce. However, since \emph{nie} is a prefix when introducing the \textsc{eneg} value, and is therefore part of the morphology of the verb, this should not be considered to have a lexical entry that is distinct from that of the verb form of which it is part (cf. Bond's \citeyear {Bond2016} analysis of negative verbs forms in Eleme, discussed in \sectref{sec:negation:morphology}). A minimal lexical entry for \emph{niepisác} is provided in (\ref{ex:negation:76}). 
+
+\ea
+\label{ex:negation:76}
+\catlexentry{niepisác}{V}{(\UP\PRED) = \textsc{`write\arglist{subj, obj}'}\\(\UP \textsc{eneg}) = +}
+\z
+
+These two different features are required to account for the fact that both types of negation may occur in the same clause, as shown in (\ref{ex:negation:6}) (cf. `The Catholic Church not cannot...'). \citet [327]{przepiorkowski2015two} do not distinguish the two types of negation in their glossing.
+
+\ea Polish \citep [327]{przepiorkowski2015two}\\
+\label{ex:negation:6}
+\gll Kościół katolicki nie nie portrafi, ale nie chce.\\  
+    church.\textsc{nom} catholic.\textsc{nom} \textsc{neg}  \textsc{neg} can but \textsc{eneg} want\\ 
+\glt `It's not that the Catholic Church cannot, but rather that it doesn't want to.'
+\z
+\citet [327]{przepiorkowski2015two} propose the following f-structure to account for the first part of (\ref{ex:negation:6}):
+
+\ea \label{ex:negation:46} \evnup{\avm[style=fstr]{
+    [ eneg & +\\
+      cneg & +\\
+      pred & `can\arglist{subj, xcomp'}\\
+      subj & [pred `Catholic Church']\\
+      xcomp & [ ... ]]}}
+\z   
+
+Other scholars have also observed that more than one negation may be required within a clause (e.g.\ \citealt {ButtEtAl1999}, \citealt {sellsneg}, \citealt {Laczko14}). We now explore this subject in \sectref{sec:negation:mapping} in relation to bipartite negation, and in \sectref{sec:negation:domains} in relation to antiveridical contexts.
+
+
+\section{Multipartite negation}
+\label{sec:negation:mapping}
+
+In many languages, negation is reflected in the formal properties of multiple elements with the clause. For instance, Standard (Written) French usually requires the use of preverbal \emph{ne} and post-verbal \emph{pas} in the formation of negative clauses.\footnote{This is not true of colloquial varieties of French, in which \emph{pas} is usually used without \emph{ne}.} In a very brief analysis, \citet [142--143]{ButtEtAl1999} propose that both elements should be represented in f-structure, with the initial component \emph{ne} contributing a \textsc{neg} feature, and \emph{pas} contributing a related feature \textsc{neg-form}, as illustrated for (\ref{ex:negation:59}) in (\ref{ex:negation:60}) from \citet [67]{DLM:LFG}. 
+
+\ea French (adapted from \citealt [143]{ButtEtAl1999}, following \citealt [67]{DLM:LFG})\\
+\label{ex:negation:59} 
+\gll David n' a pas mangé de soupe.\\
+David \textsc{neg} have \textsc{postneg} eaten of soup\\
+\glt `David did not eat any soup.'
+\z
+
+\ea \label{ex:negation:60} \evnup{\avm[style=fstr]{
+    [ neg & +\\
+      neg-form & pas\\
+      pred & `eat\arglist{subj, obj}'\\
+      subj & [ pred & `David']\\
+      obj & [ pred & `soup']]}}
+\z   
+In the analysis of \citet [142--143]{ButtEtAl1999}, the marker providing  the \textsc{neg} + feature at f-structure may only appear if the \textsc{neg-form} feature, contributed by the other negative particle, is present. 
+
+Their proposal aims to capture the view that (i) two distinct manifestations of negation are required to negate a clause, (ii) that there is an asymmetry between the roles of the negators in terms of their featural specification, and (iii) that the presence of \emph{ne} is dependent on the presence of some other negative formative. This helps to account for the distribution of \emph{ne} in clauses like (\ref{ex:negation:61}), where it co-occurs with the adverb \emph{jamais} ‘never’.\footnote{However, \emph{jamais} only has this interpretation within the context of negation, meaning `ever' in non-negative contexts. If their analysis is correct,  a separate lexical entry must exist for \emph{jamais} when it is not negative, or this proposal requires revision in some other way.} However, their analysis does not deal with the use of \emph{pas} as the only negator of a clause, as typically found in spoken French varieties. In such cases, \emph{pas} must either be treated as separate negative item that contributes a \textsc{neg} feature without \emph {ne}, or a more serious revision to this analysis is required.
+
+\ea French (adapted from \citealt [143]{ButtEtAl1999})\\
+\label{ex:negation:61} 
+\gll David ne mange jamais de soupe.\\
+David \textsc{neg} eat \textsc{postneg.never} of soup\\
+\glt `David never eats soup.'
+\z  
+
+Working with HPSG, \citet{Kim:00,Kim:21} takes a different approach to analysing the distribution of \emph{ne} and \emph{pas} in spoken French, proposing that \emph{ne-pas} are part of a single lexical entry, and in this sense parallel the type lexical entry for \emph{not} in English.
+
+Expression of negation by multiple negative formatives is extremely common in the Niger-Congo languages of Africa. For instance, this is the case in Ewe (Niger-Congo, Kwa; Ghana), where negation is simultaneously expressed by a negative particle \emph{mé} that precedes the VP and a post-VP particle \emph{o}, that follows objects and adverbial elements within the VP, as illustrated in (\ref{ex:negation:52}).\footnote{Although \citet {Collins:et:al:18} adopt an orthographic convention in which \emph{mé} is written as a prefix, their description, taken together with discussion in \citet[64--69]{Ameka:91} and \citet [64--69] {Aboh:10}, suggests that  \emph{mé} occupies a node in syntax distinct from its host. \citet [64--69] {Ameka:91} notes that \emph{mé} usually encliticises to the verb.} Both \textsc{neg1} and \textsc{neg2} are obligatory.\footnote{This is unlike typical examples of negative concord, in which so called \emph{n}-words are licensed only in the presence of sentential negation, and can be the answer to a sentence fragment question (see Section \ref{sec:negation:pronouns}). Most fragment answers obligatorily require the presence of \emph{o}, but this is because it occurs together with an NPI, not an \emph{n}-word \citep[350--354] {Collins:et:al:18}.}
+
+\ea\label{ex:negation:52} Ewe \citep[333--334, 361]{Collins:et:al:18}
+\ea
+\gll Kofi mé-ɖu nú o\\
+Kofi \textsc{neg1}-eat thing \textsc{neg2}\\
+\glt `Kofi didn’t eat.' 
+\ex
+\gll nye-mé-ƒo nu kplé Kofí o \\
+\textsc{1sg-neg1}-hit mouth with Kofi \textsc{neg2}\\
+\glt `I didn’t speak with Kofi.' 
+\ex
+\gll Kofí mé-wɔ-a é-ƒé aƒéme-dɔ́ gbeɖé o \\
+Kofi \textsc{neg1-}do-\textsc{hab} \textsc{3sg-poss} home-work ever \textsc{neg2}\\
+\glt `Kofi never does his homework.' 
+\z\z
+
+When an auxiliary is present, it hosts the negative marker, as in (\ref{ex:negation:54}) with the future auxiliary \emph{-á} and in (\ref{ex:negation:55}) with the `not yet' auxiliary \emph{kpɔ́}:
+ 
+\newpage
+\ea\label{ex:negation:54} Ewe \citep [360]{Collins:et:al:18}\\
+\gll nye-mé-á yi China gbeɖé o\\
+\textsc{1sg-neg1-fut} go China ever \textsc{neg2}\\
+\glt ‘I will never go to China.’
+\z
+
+\ea
+\label{ex:negation:55} Ewe \citep [50]{Ameka:91}\footnote{The glosses have been adjusted slightly to reflect the conventions in \citet {Collins:et:al:18}, but the text line remains unchanged.}\\
+\gll nye-mé kpɔ́ wɔ dɔ lá o\\
+\textsc{1sg-neg} \textsc{mod} do work \textsc{def} \textsc{neg2}\\
+\glt ‘I have not had the opportunity to do the work’
+\z
+
+\citet {Collins:et:al:18} analyse sentences such as those in (\ref{ex:negation:52}) as having a structure in which \textsc{neg1} and \textsc{neg2} are not part of the same inflectional phrase. In their analysis, \textsc{neg2} occupies a syntactic position outside the TP (this would be an IP in a typical LFG analysis), in the specifier position of a C (see \citealt [293]{Collins:et:al:18} for the structure). The c-structure in (\ref{ex:negation:53}) reflects the principal aspects of their descriptive analysis, although the \textsc{neg1} particle \emph{mé} is analysed as adjoined to I (rather than as the specifier of T), in a similar way to the analysis from \citet {AlsharifSadler:09} discussed in \sectref{sec:negation:particles}. Assuming that \emph{o} takes an IP complement, \textsc{neg2} is rendered here as C (rather than in the specifier position of an empty C).
+
+\ea \label{ex:negation:53} {Ewe bipartite negation based on \citet [293]{Collins:et:al:18}}
+\begin{forest} 
+  [CP
+    [IP 
+        	[DP
+	   [N [Kofi]]]
+	[I$'$ 
+	   [I
+	   	[{\NONPROJ[100000]{I}}  [mé]]
+		[I  [ɖu]]
+	   ]
+	   [VP   
+	   	   [DP
+	     		[N [nú]]]]
+	   ]]
+      [C [\phantom{xxxxx}o\phantom{xxxxx}]]	   
+	   ]
+\end{forest}
+\z
+
+As with French, the question arises as to whether these two manifestations of negation should be represented in f-structure by multiple features, or whether a single feature is sufficient. I propose that it is the latter that is true; despite having multiple attestations within the clause, only one f-structural representation of negation is required, as illustrated by the f\nobreakdashes-structure in (\ref{ex:negation:58}).\footnote{Cf. the representation of clitic doubling in \citet [79--81]{dalrymple01}.} 
+
+This corresponds to the f-structure in (\ref{ex:negation:58}). 
+
+\ea \label{ex:negation:58} \evnup{\avm[style=fstr]{
+    [ eneg & +\\
+      compform & neg\\
+      pred & `eat\arglist{subj, obj}'\\
+      subj & [ pred & `Kofi']\\
+      obj & [ pred & `thing'] ]}}
+\z   
+Crucially, both negative elements are obligatory, but, in the analysis I propose for Ewe in (\ref{ex:negation:58}), the negative particles constrain a single attribute-value pair. This type of analysis is commonly encountered when dealing with features in LFG -- for instance when featural specifications of a \GF\ (e.g.\ \SUBJ) are specified by both the predicate and its subject noun phrase (see \citealt[100--104]{dalrymple01} for an introduction). Because it is possible and indeed common for two f-structure descriptions to constrain the same attribute value pairs, it should not be particularly strange that negation can also behave in this way.  In other languages, where the value of the \textsc{pol} feature must be contributed by a single form, and where multiple contributions are consequently disallowed, then an instantiated symbol can be used as the value of the \textsc{pol} attribute. See \sectref{sec:negation:pronouns} for an example of the usage of this symbol.
+
+In order to ensure that both elements are present in a well formed negative sentence, a constraining equation needs to be specified to impose an additional requirement on the minimal solution obtained from the defining equations in the f-description. A complete analysis of these structures requires that the presence of \emph{o} is constrained (since it is obligatory here). Without a very detailed examination of the Ewe negation system, it is difficult to say exactly what type of constraint might be most appropriate. However analyses of other languages with bipartite negation have involved the addition of a special feature in f-structure, \textsc{neg-form}, which must be contributed by the second negative formative (see \sectref{sec:negation:single-feature}).
+
+\section{Negative Sensitive Items}
+\label{sec:negation:domains}
+
+Much of the theoretical literature on the syntax of negation examines the distribution of so-called Negative Sensitive Items (NSIs), that is, words whose distribution is sensitive to the presence of negation within a clause. Here we consider three types of sensitivity. The first, which I will refer to as Polarity Sensitive Cases (PSCs) is discussed in \sectref{sec:negation:case}. Two further main types of NSIs are distinguished in the literature: Negative Concord Items (NCIs),  introduced in \sectref{sec:negation:pronouns}, and Negative Polarity Items (NPIs), discussed in \sectref{sec:negation:npis}.
+
+\subsection{Polarity Sensitive Case}
+\label{sec:negation:case}
+
+Polarity Sensitive Cases are observed when the case-marking of an argument is sensitive to the polarity of its clause. The most well-known example of this is seen in the genitive of negation in Slavic languages (e.g.\ \citealt{Neidle1988}, \citealt{Brown:99}). The basic contrast in case assignment is illustrated by (\ref{ex:negation:200}) and (\ref{ex:negation:201}) from \citet{PatejukPrzepiorkowski2014a} using Polish examples from the Polish National Corpus.
+
+\ea\label{ex:negation:200} Polish \citep [431] {PatejukPrzepiorkowski2014a}\\
+\gll Poczytam książkę.\\
+read.\textsc{1sg} book.\textsc{acc}\\
+\glt ‘I’ll read a book.’ 
+\z
+
+\ea
+\label{ex:negation:201} Polish \citep [431] {PatejukPrzepiorkowski2014a}\\
+\gll Nie poczytają książki czy gazety.\\
+read.\textsc{3pl} \textsc{neg} book.\textsc{gen} or newspaper.\textsc{gen}\\
+\glt‘They won’t read a book or a newspaper.’ 
+\z
+\citet{PatejukPrzepiorkowski2014a} propose that structural case assignment generalisations of this type could be formalised using constraints placed in the lexical entries of verbs that follow this pattern.
+
+The \textsc{strcase} constraint in (\ref{ex:negation:202}) indicates that verbs that follow structural case assignment rules follow different disjunctive constraints, labelled as \textsc{affirmative} and \textsc{negative}. Note that in Patejuk and Przepiórkowski’s (\citeyear{PatejukPrzepiorkowski2014a}) analysis, negation is assumed to be a  binary feature represented by the attribute \textsc{neg} in f-structure.
+
+\ea
+\label{ex:negation:202} 
+ \textsc{strcase} ≡ [\textsc{affirmative} ∨ \textsc{negative}]\\
+ \z
+ 
+ 
+\ea
+\label{ex:negation:203} 
+\textsc{affirmative} ≡ [¬(\UP \textsc{neg}) ∧ (\UP \textsc{obj case}) =\textsubscript{c}  \textsc{acc}] 
+ \z
+ 
+\ea
+\label{ex:negation:204} 
+\textsc{negative} ≡ [(\UP  \textsc{neg}) =\textsubscript{c}  + ∧ (\UP \textsc {obj case}) =\textsubscript{c} \textsc{gen}] 
+ \z
+
+The \textsc{affirmative} constraint in (\ref{ex:negation:203}) ensures that when there is no negation in the f-structure of the head (¬(\UP  \textsc{neg})) , the object is marked for accusative case: (\UP  \textsc{obj case}) =\textsubscript{c}  \textsc{acc}. The \textsc{negative} constraint in (\ref{ex:negation:204}) ensures that when the f-structure of the head is negative ((\UP  \textsc{neg}) =\textsubscript{c} +), the object is marked for genitive case: (\UP  \textsc{obj case}) =\textsubscript{c}  \textsc{gen}. 
+
+\citet{PatejukPrzepiorkowski2014a} demonstrate that while such constraints can account for simple cases of structural case assignment, case assignment in constructions with control or raising verbs combining with (open) infinitival arguments (i.e.\ \textsc{xcomp}s) do not follow these constraints. Consider (\ref{ex:negation:205}). In this example, the verb \emph{chcesz} ‘want’ takes an infinitival complement whose subject is controlled by the subject of the higher verb.
+
+The verb subcategorising for the object (i.e.\ the infinitival verb \emph{poczytać} ‘read’) is not negative, yet the genitive of negation is still required because \emph{chcesz} ‘want’ is negative. Negation is present in (\ref{ex:negation:205}), but it is ‘non-local’ to the infinitival clause of the verb subcategorising for the object.
+
+\ea\label{ex:negation:205} Polish \citep [432] {PatejukPrzepiorkowski2014a}\\
+\gll Nie chcesz poczytać Kodeksu.\\
+\textsc{neg} want.\textsc{2sg} read.\textsc{inf} Code.\textsc{gen}\\
+\glt ‘You don’t want to read the Code.’
+\z
+
+While the genitive of negation is possible when negation is non-local, they observe that there appears to be some variation as to whether the lower object should occur in the accusative or in the genitive, citing semantic and structural or linear distance factors as potentially important. 
+
+For instance, in (\ref{ex:negation:206}), the object is marked for accusative case (\emph{książkę} ‘book’), even though there is (non-local) verbal negation present higher in the structure of the sentence (at the main verb \emph{chce} ‘wants’). This illustrates that the presence of negation in a higher clause is not sufficient to ensure that the genitive of negation occurs. 
+
+\ea\label{ex:negation:206} Polish \citep [432] {PatejukPrzepiorkowski2014a} \\
+\gll Mama nie chce iść poczytać książkę.\\
+mum \textsc{neg} want.\textsc{3sg} go.\textsc{inf} read.\textsc{inf} book.\textsc{acc} \\
+\glt ‘Mum doesn’t want to go and read a book.’
+\z
+
+To account for this difference in case-marking, they propose that the constraints in (\ref{ex:negation:202})--(\ref{ex:negation:204}) could be rewritten as (\ref{ex:negation:207})--(\ref{ex:negation:209}).
+
+\ea
+\label{ex:negation:207} 
+\textsc{strcase} ≡ [\textsc{affirmative} ∨ \textsc{negative}]\\
+\z
+ 
+\ea
+\label{ex:negation:208} 
+\textsc{affirmative} ≡ [¬(\UP \textsc{neg}) ∧ (\UP \textsc{obj case}) =\textsubscript{c}  \textsc{acc}] 
+ \z
+ 
+\ea
+\label{ex:negation:209} 
+\textsc{negative} ≡ [((\textsc{xcomp*} \UP)  \textsc{neg}) =\textsubscript{c}  + ∧ (\UP \textsc {obj case}) =\textsubscript{c} \textsc{gen}] 
+ \z
+
+The constraint in (\ref{ex:negation:208}) states that accusative case is necessary whenever there is no local negation, while (\ref{ex:negation:209}) indicates that genitive case is possible whenever sentential negation is available somewhere in the verb chain, locally or non-locally. Specifically, this is achieved by using an inside-out path ((\textsc{xcomp*} \UP) \textsc{neg}) =\textsubscript{c} + which makes it possible to reach into any number of successive higher predicates subcategorising for an infinitival complement (i.e.\ an \textsc{xcomp}), and check if any of these predicates is negated.
+
+
+\subsection{Negative Concord Items}
+\label{sec:negation:pronouns}
+
+In many languages negation may be expressed through the use of negative indefinite pronouns such as English \emph{nothing} and Polish \emph{nikt} `nobody'. \citet{Haspelmath:97} argues that there are three main subtypes of construction involving negative indefinite pronouns. First, in some languages there are negative indefinites that always co-occur with verbal negation, e.g.\ the Polish \emph{ni-} series, as in (\ref{ex:negation:92}).
+
+\ea\label{ex:negation:92} Polish \citep [194] {Haspelmath:97}
+\ea	 
+\gll Nikt nie przyszedł.  \\
+nobody	\textsc{neg} come.\textsc{pst.3sg}	\\			
+\glt `Nobody came.’ 
+\ex
+\gll  Nie	 widziałam 	nikogo.	\\
+\textsc{neg}	saw		nobody\\
+\glt `I saw nobody.’
+\z\z
+The second type of negative indefinites do not usually co-occur with verbal negation, e.g.\ the Standard British English \emph{no-}series: \emph{Nobody came} and \emph{I saw nobody}. If they do co-occur, they are rejected by speakers, or are interpreted as having a `double negative' reading cf. \emph{Nobody didn’t come} (=\emph{Everybody came}).\footnote{Negative indefinites in the \emph{no-}series in some other varieties of English do not behave in this manner, and thus they belong to one of the other types.}
+
+His third type of negative indefinites sometimes co-occur with verbal negation and sometimes do not, e.g.\ the Spanish \emph{n-}series, exemplified in (\ref{ex:negation:93}).\footnote{The fact that the languages used to exemplify these types all come from European languages indicates the prevalence of indefinite pronouns in this area. It is largely unknown to what extent indefinite pronouns might be restricted by areal or genetic factors.} 
+
+\ea\label{ex:negation:93} Spanish \citep [201] {Haspelmath:97}
+\ea 
+\gll 	Nadie		vino.	\\													
+nobody		came		\\															
+\glt `Nobody came.’
+\ex
+\gll 	No	vi			a			nadie.\\
+\textsc{neg}	I.saw 	\textsc{acc}	nobody\\
+\glt`I saw nobody.’
+\z\z
+
+The role that a negative pronoun plays in negating a clause depends on its ability to appear independently of another negation strategy. Negative pronouns like those in Polish which do not appear without an expression of negation are Negative Concord Items (NCIs), sometimes known as \emph{n}-words. By definition, NCIs never occur outside of negative contexts, and when they combine with other expressions of negation, they contribute to a single semantic negation (\cite{Labov1972}). NCIs must combine with sentential negation as in (\ref{ex:negation:2}) and (\ref{ex:negation:92}) with Polish \emph{nikt} `nobody'. NCIs are important tools for investigating the domains in which negation has structural affects. The following definition, based on \citet [328] {Giannakidou:06}, is adopted by \citet [150] {camilleri-sadler:2017}:
+
+\ea
+\label{ex:negation:74} 
+An \emph{n-}word or NCI is understood to be an expression \emph{α} that can be used in structures containing sentential negation or another \emph{α} -expression to yield a reading equivalent to one logical negation, and which can provide a negative fragment answer.
+\z
+
+Because NCIs in Polish always occur with another negator, the lexical entries for \emph{n-}words such as \emph{nikt} ‘nobody.\textsc{nom}’ and \emph{nikogo} ‘nobody.\textsc{acc/gen}’ must include a constraining equation that ensures their f-structure is specified for eventuality negation (\citealt [331]{przepiorkowski2015two}):  
+
+\ea\label{ex:negation:450} 
+\catlexentry{nikt}{N}{(\UP \textsc{case}) = \textsc{nom}\\
+((\XCOMP* \textsc{gf}+ \UP) \textsc{eneg}) =\textsubscript{c}  +}
+ \z
+
+\ea\label{ex:negation:451} 
+\catlexentry{nikogo}{N}{(\UP \textsc{case}) $\in$ \{\textsc{acc, gen}\}\\
+((\XCOMP* \textsc{gf}+ \UP) \textsc{eneg}) =\textsubscript{c}  +}
+ \z
+ 
+There is much more to say about how differences in the distribution of NCIs cross-linguistically could be modelled in LFG, but I leave this aside as a topic for further investigation.
+
+\subsection{Negative Polarity Items}
+\label{sec:negation:npis}
+
+Negative Polarity Items (NPIs) are a set of elements that, while not inherently negative, are licensed within a set of restricted contexts including negative ones. Examples from English include the indefinite quantifier \emph{any} and the adverb \emph{yet}, as illustrated in (\ref{ex:negation:66}).
+
+\ea\label{ex:negation:66} 
+\ea Isaac wouldn't give her any/*Isaac would give her any.
+\ex Eva hasn't finished yet/*Eva has finished yet.
+\z\z
+
+Since NPIs are also observed in a range of other syntactic contexts, such as comparatives, modal and conditional contexts and polar interrogatives, as in (\ref{ex:negation:67}), they are not inherently negative, and the term, attributed to \citet {Baker:70}  by \citet{Haspelmath:97}, is somewhat misleading.
+
+\ea\label{ex:negation:67} 
+\ea Would Isaac give her any?
+\ex Has Eva finished yet?
+\z\z
+
+However, assuming that all items described as NPIs can be minimally licensed in negative contexts, they can be further divided into two main types, that may exist within one and the same language:
+
+\begin{itemize}
+\item Weak Negative Polarity Items: NPIs that exhibit a range of non-negative contexts of use. These are sometimes referred to as \textsc{Affected Polarity Items} (\textsc{api}) \citep {Giannakidou:98}.
+\item Strong Negative Polarity Items: NPIs that are only licensed in antiveridical contexts \citep{Giannakidou:98}, i.e.\ sentential negation and `\emph{without}' clauses (cf. eventuality negation).
+\end{itemize}
+For Weak Polarity Items, such as those in (\ref{ex:negation:66}) and (\ref{ex:negation:67}), negation is a sufficient, but not necessary condition for the licensing. For Strong Negative Polarity items, the context must be antiveridical (see \citealt{Zwarts:95} and \citealt{Giannakidou:98}).
+
+Consider the technical definition in (\ref{ex:negation:64}) from \citet{Giannakidou:02}, who treats veridicality as a propositional operator:
+\ea\label{ex:negation:64} 
+A propositional operator F is veridical iff Fp entails p: Fp \RIGHT p; otherwise F is nonveridical.
+Additionally, a nonveridical operator F is antiveridical iff Fp entails not p: Fp \RIGHT ¬p.
+\z
+
+A veridical context is one in which the semantic or grammatical assertion about the truth of an utterance is made. The presence of a veridicality entails that the truth conditions for the underlying proposition are met, while non-veridical expressions do not entail that the truth-conditions for the underlying proposition have been met. Though (\ref{ex:negation:63a}) is veridical, with or without the auxiliary, (\ref{ex:negation:63b}-\ref{ex:negation:63c}) are both nonveridical. 
+
+\ea\label{ex:negation:63}
+\ea\label{ex:negation:63a} I (do) like her.
+\ex\label{ex:negation:63b} I might like her.
+\ex\label{ex:negation:63c} I don't like her.
+\z\z
+
+Nonveridical operators are antiveridical if (and only if) the truth conditions for the underlying proposition are not met, as in (\ref{ex:negation:63}c). Strong NPIs are sensitive to such environments. 
+
+These differences in behaviour raise important questions about how best to account for the distribution of NSIs and in which structures of grammar -- essentially -- to what extent can and should the distribution of NCIs and NPIs be accounted for through c-structure and f-structure representations. Problems of this kind have been addressed by \citet{sellsneg} in relation to Swedish, and \citet{camilleri-sadler:2017} with respect to Maltese.
+
+\citet{camilleri-sadler:2017} examine the relationship between sentential negation in Maltese and the set of negative sensitive items (\textsc{NSI}s). They demonstrate that the \emph{n}-series of negative indefinites in Maltese exhibit mixed behaviour with respect to the environments in which they occur \citep [154--156] {camilleri-sadler:2017}. The majority of items can occur in a range of non-veridical contexts, and are not limited to antiveridical ones, exemplifying properties consistent with being classified as weak NPIs. However two NSIs show a more limited distribution: the determiner \emph{ebda} is strictly limited to antiveridical contexts (and thus is a Strong NPI), while \emph{ħadd} is largely restricted outside of antiveridical contexts, showing less categorical behaviour.
+
+In finite verbal predicates in Maltese, negation is expressed through the use of the particle \emph{ma} together with a verbal form inflected with the suffix \emph{-x}, as illustrated in (\ref{ex:negation:8}) and (\ref{ex:negation:9}).\footnote{I have adjusted the glosses in these examples so that \emph{-x} is glossed as \textsc{nvm} rather than \textsc{neg}, to reflect the final analysis proposed by \citet {camilleri-sadler:2017}. .}
+
+\ea\label{ex:negation:8}Maltese \citep [147]{camilleri-sadler:2017}\\
+\gll Ma qraj-t-x il-ktieb.\\  
+    \textsc{neg} read.\textsc{pfv-1sg-nvm} \textsc{def}-book\\ 
+\glt `I didn't read the book.'
+\z
+
+\ea\label{ex:negation:9} Maltese  \citep [147]{camilleri-sadler:2017}\\
+\gll Ma n-iekol-x ħafna.\\  
+    \textsc{neg} 1-eat.\textsc{ipfv.sg-nvm} a.lot\\ 
+\glt `I don't eat a lot.'
+\z
+
+Imperfectives can also be negated using a different strategy otherwise associated with non-verbal predicates and non-finite forms. In (\ref{ex:negation:10}) , \emph{m(a)-} is prefixed to a form identical to a nominative pronominal, which, like the verbs in (\ref{ex:negation:8})  and (\ref{ex:negation:9}), is suffixed with \emph{-x}. This pronominal may occur in a default third person singular masculine form, or vary according to the features of the subject, as shown here.
+
+\ea\label{ex:negation:10}Maltese \citep [148]{camilleri-sadler:2017}\\
+\gll Mhux \~ minix n-iekol ħafna.\\  
+    \textsc{neg.3sgm.nvm} \~ \textsc{neg.1sg.nvm} 1-eat.\textsc{ipfv.sg} a.lot\\ 
+\glt `I am not eating a lot.'
+\z
+
+Although the formation of negative indicative clauses of the type in (\ref{ex:negation:8}) and (\ref{ex:negation:9}) involves both the particle \emph{ma} and the suffix \emph{-x}, verb forms only inflected with \emph{-x}  cannot license a domain in which items from the \emph{n}-series or any \textsc{NSI} are permitted. Rather, such items are in complementary distribution with \emph{-x}.  \citet [150]{camilleri-sadler:2017} consequently propose that \emph{ma} expresses eventuality negation (\textsc{eneg}), that introduces a syntactic requirement for a further element, which they call a non-veridical marker (\textsc{nvm}). In examples like (\ref{ex:negation:8}) and (\ref{ex:negation:9}), the presence of \emph{-x} on the verb satisfies this requirement, while in examples like (\ref{ex:negation:68}) it is satisfied by the presence of an NCI, such as \emph{xejn} 'nothing'.
+
+\ea\label{ex:negation:68}Maltese \citep [159]{camilleri-sadler:2017}\\
+\gll Ma qraj-t xejn.\\  
+    \textsc{neg} read.\textsc{pfv-1sg} nothing\\ 
+\glt `I read nothing.'
+\z
+
+Examples such as (\ref{ex:negation:73}) indicated that the NCI satisfying this requirement need not be local, and can be deeply embedded.
+
+\ea\label{ex:negation:73}Maltese \citep [153]{camilleri-sadler:2017}\\
+\gll Ma smaj-t li qal-u li qal-t-i-l-hom li gèand-hom j-i-xtr-u xejn.\\
+\textsc{neg} hear.\textsc{pfv-1sg} \textsc{comp} say.\textsc{pfv.3-pl} \textsc{comp}  say.\textsc{pfv.3sgf-epent.vwl-dat-3pl} \textsc{comp}  have-\textsc{3pl.gen}  \textsc{3-frm.vwl}-buy.\textsc{ipfv-pl} nothing\\
+\glt `I didn’t hear that they said she told them they have to buy anything.'
+\z
+
+This is prohibited if the embedded clause containing the negative indefinite is itself marked with \emph{ma}. \citet {camilleri-sadler:2017} propose the following lexical entries to account for this:
+
+\ea
+\label{ex:negation:70}
+\catlexentry{xejn}{N}{(\UP \textsc{nvm}) = +} \\
+\citep [159]{camilleri-sadler:2017}
+\z
+
+\ea
+\label{ex:negation:14}
+\lexentry{-x}{(\UP \textsc{nvm}) = +\\
+¬(\UP \{\textsc{xcomp|comp|adj}\}* \textsc{gf}\textsuperscript{+} \textsc{nvm}) = +\\
+¬(\RIGHT \textsc{eneg})}\\
+\citep [160]{camilleri-sadler:2017}
+\z
+  
+The entry for \emph{xejn} in (\ref{ex:negation:70}) ensures that its f-structure has the \textsc{nvm} value +. The entry for \emph{-x} -- which should really be understood to be part of the lexical entry for the verb form of which it is part -- does a similar thing. It ensures that its f-structure instantiates the \textsc{nvm} feature with the value +. But the second line of (\ref{ex:negation:14}) further stipulates that this form is incompatible with any \XCOMP, \COMP, \ADJ\ or grammatical function with \textsc{nvm}+ (e.g.\ \emph{xejn}), except embedded clauses which are themselves marked for sentential negation.  
+
+The entry for \emph{ma} in (\ref{ex:negation:13}) contributes the \textsc{eneg} feature with the value +. The underscore following the + marks the feature as `instantiated'. This means it is required to be uniquely contributed, so expressed only once in the f-structure. It also places the requirement that an element \textsc{nvm} is present, but this may be non-local or local. The path definition for \GF\ is given in (\ref{ex:negation:72}). 
+ 
+\ea
+\label{ex:negation:13}
+\catlexentry{ma}{\textsc{eneg}}{(\UP \textsc{eneg}) = +\_ \\
+\{ (\UP \offp{\{\XCOMP|\COMP|\ADJ\}*}{¬(\RIGHT \textsc{eneg})} \textsc{gf}\textsuperscript{+} \textsc{nvm}) | (\UP \textsc{nvm}) \} =\textsubscript{c} +}\\
+\citep [160]{camilleri-sadler:2017}
+\z
+  
+\ea
+\label{ex:negation:72}
+\textsc{gf} ≡ \{ \SUBJ\ | \OBJ\ | \OBJTHETA\ | \OBL\ | \POSS\ | \offp{\ADJ}{¬(\RIGHT \textsc{tense})} $\in$ \}
+
+\z 
+
+Camilleri \& Sadler's (\citeyear {camilleri-sadler:2017}) observation that some formal elements that at first sight look like negator (e.g.\ \emph{-x}) may actually be better described as non-veridical markers is an important development not only in terms of descriptive linguistics, but also in the context of how co-occurrence of different elements in negative construction can be constrained.
+\normalsize
+
+\section{Conclusion} 
+\label{sec:negation:conclusion}
+
+Negation is found in every language, yet can be manifested in a vast number of ways and forms that can occur in practically every position in c-structure. While Chomskian models of syntax usually adopt an approach in which negators head their own functional projection NegP, with LFG, negators occupy the structural position that most closely accounts for their distribution. This allows for an approach in which cross-linguistic variation in the distribution and category of negative word forms is captured using existing means for determining and modelling constituency. Indeed, in many languages negators exhibit properties of non-projecting heads, indicating that adopting a single functional phrase type fails to capture the variation encountered across languages.
+
+While a range of approaches have been proposed to model the featural properties of negation, recent research into modelling negation with LFG suggests that two different f-structure features are required to account for the distribution of negative forms and the syntactic and semantic domains that they license. These are known as \textsc{eneg}, or eventuality negation, and \textsc{cneg} or constituent negation. The presence of \textsc{eneg} is typically associated with a broader range of syntactic and semantic effects than \textsc{cneg}. The pragmatic distribution is also different, with \textsc{cneg} notably employed in cases where there is a negated proposition. 
+
+While they typically occur independently of one another, a formal analysis of negation requires the availability of both features for negation, such that both may simultaneously be present in f-structure. The distribution of Negative Concord Items (NCIs), Negative Polarity Items (NPIs) and case-forms licensed by negation also suggests that multiple features must also play an important role in accounting for restrictions on the occurrence of certain forms in antiveridical contexts.
+
+As a lexicalist model of grammar, many facets of the distribution of negative formatives are accounted for by their lexical entry. This is most clearly observed when the presence of one negator places a stipulation on the occurrence of another, or some other marker of non-veridicality.
+
+
+\section*{Acknowledgements}
+
+I am grateful to Mary Dalrymple and the three anonymous reviewers for very helpful feedback on earlier versions of this chapter, and to Dávid Győrfi for discussion of Hungarian and Polish.
+
+\section*{Abbreviations}
+
+Besides the abbreviations from the Leipzig Glossing Conventions, this
+chapter uses the following abbreviations.\medskip
+
+\noindent\begin{tabularx}{.45\textwidth}{lQ}
+\textsc{aff}  & affirmative \\
+\textsc{api}  & Affected Polarity Item \\
+\textsc{cneg} & constituent negation \\
+\textsc{eneg} & eventuality negation \\
+\textsc{epent.vwl} & epenthetic vowel \\
+\textsc{frm.vwl} & form vowel \\
+\textsc{hab} & habitual \\
+\textsc{juss} & jussive \\
+\textsc{mod} & modal \\
+MSA & Modern Standard Arabic \\
+NCI & Negative Concord Item \\
+\textsc{neg1} & first negative formative in multipartite expression of negation \\
+\end{tabularx}~~\begin{tabularx}{.45\textwidth}{lQ}
+\textsc{neg2} & second negative formative in multipartite expression of negation \\
+NegP & negation phrase \\
+NPI & Negative Polarity Item \\
+NSI & Negative Sensitive Item \\
+\textsc{nvm} & non-veridical marker \\
+\textsc{nw} & n-word \\
+\textsc{pol} & polarity \\
+\textsc{postneg} & post verbal negator \\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\end{tabularx}
+
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}

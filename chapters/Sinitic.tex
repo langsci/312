@@ -1,0 +1,1062 @@
+\documentclass[output=paper,chinesefont,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10186026}
+\title{LFG and Sinitic languages}
+\author{Olivia S.-C. Lam\affiliation{University of Hong Kong}  and One-Soon Her\affiliation{Tunghai University \& National Chengchi University}  and Jing Chen\affiliation{The Hong Kong Polytechnic University}  and Sophia Y.-M. Lee\affiliation{The Hong Kong Polytechnic University}}
+\abstract{The assumptions of LFG have been applied to the research on a number of grammatical phenomena in Chinese languages. In this chapter, we present an overview of some of the studies devoted to investigating the syntactic patterns of two varieties of Chinese: Mandarin and Cantonese. This chapter includes a discussion on the expression and identification of grammatical functions, \emph{ba}, \emph{bei} and related constructions, the dative alternation, compounds (VO compounds and resultative compounds), the locative inversion, and classifiers and measure words. The chapter concludes with a brief overview of the applications of LFG in Chinese language processing.}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[43]%%chapternumber
+}{}
+
+\begin{document}
+\maketitle
+\label{chap:Sinitic}
+
+%\setcounter{tocdepth}{5}\tableofcontents
+
+\section{Introduction: Chinese or Sinitic Languages}
+\label{sec:Sinitic:1}
+
+LFG is a lexicon-driven, unification-based linguistic theory aiming to account for both variations and universals found in human languages. The well-known parsimony of morpho-syntactic markings in Chinese poses an interesting challenge to the theory, but at the same time provides an opportunity to showcase the explanatory adequacy of LFG. The term `Chinese' is commonly replaced by `Sinitic languages' or `Chinese languages' in the linguistics literature. These two terms refer to a family of varieties which are genetically related but are, very often, not mutually intelligible \citep{Handel2015,HuangShi2016}. \citet{WurmLiu1987} list 10 varieties under `Chinese' in the \textit{Language Atlas of China}, while the \textit{Ethnologue} lists 16 \citep{Simons2020}. The more prominent varieties are traditionally known as \textit{fangyan} {\cn 方言} (literally `regional speech' or `dialect'), and are classified into 7 groups: Mandarin, Xiang, Gan, Wu, Yue, Hakka and Min. Drawing data from both Mandarin and Cantonese (a Yue dialect), we will be using the term `Chinese' to loosely refer to the Sinitic family, and reserve the terms `Mandarin' and `Cantonese' for these two individual varieties.
+
+LFG has been adopted to study Chinese since 1985. Earlier studies, such as \citet{Huang1985,Huang1986,Huang1987,Huang1988,Huang1989a,Huang1989b,Huang1990} and \citet{HuangMangione1985}, pre\-sent LFG accounts of a wide range of grammatical structures in Mandarin Chinese, including the internal structure of NPs, the subcategorized topic, and lexical discontinuity. \citet{Her1990} investigates the grammatical functions in Mandarin, while \citet{Tan1991} focuses on the subject in Mandarin. \citet{BodomoLuke2003}, the monograph resulting from the first LFG Workshop dedicated to the analysis of Chinese languages in 2001, contains studies on Mandarin, Cantonese, and other Sinitic languages.
+
+It is important to note that, although this chapter focuses on Cantonese and Mandarin, LFG has in fact been successfully applied to a wide range of varieties in China. For instance, \citet{Huang1991} provides an account of adjectival reduplication in Taiwan Southern Min. Studies on Zhuang, a Tai-Kadai language spoken in southern China, include \citet{Pan2010}, \citet{Bodomo2011}, and \citet{BurusphatQin2012}.
+
+There is also a well-established collection of LFG literature written in Chinese, with most of them providing an introduction to the framework. These include \citet{Huang1988,Huang1989a}, \citet{AFu1990a,AFu1990b}, \citet{Fu1993}, \citet{Feng2004}, \citet{GaoFang2009} and \citet{Wei2014}.
+
+In the following sections, we first outline the prominent grammatical properties of Chinese from an LFG perspective (\sectref{sec:Sinitic:2}). \sectref{sec:Sinitic:3} discusses the encoding of grammatical functions in Chinese, while Sections~\ref{sec:Sinitic:4.1}--\ref{sec:Sinitic:4.8}  provide an overview of the major grammatical phenomena which have been analyzed in LFG. \sectref{sec:Sinitic:5} concludes the chapter by highlighting LFG analyses which have contributed to the understanding of Sinitic languages, and how the studies on Sinitic languages have contributed to the development of LFG.
+
+\section{Grammatical properties: An LFG Perspective}
+\label{sec:Sinitic:2}
+
+This section introduces important grammatical features of Chinese from an LFG perspective, including the morpho-syntactic encoding of grammatical functions (\sectref{sec:Sinitic:2.1}); the classifier system (\sectref{sec:Sinitic:2.2}); and the canonical word order and the role of information structure (\sectref{sec:Sinitic:2.3}). For more in-depth and recent discussions on issues in Chinese linguistics, see \citet{HuangLiLi2009}, \citet{WangSun2015}, \citet{HuangShi2016}, and \citet{HuangLinChenHsu2022}, among others.
+
+\subsection{Morpho-syntactic encoding}
+\label{sec:Sinitic:2.1}
+
+Chinese has been described in the literature as being `morphologically impoverished' (e.g.\ \citealt{Packard2000,HsiehHongHuang2022}). This, however, does not mean that there is no morpho-syntactic encoding. In \REF{ex:Sinitic:1}, \TENSE\ is not encoded on the verb, but in \REF{ex:Sinitic:2}, aspect is.\footnote{Tones are omitted unless they are relevant to the discussion.}\footnote{Examples in Cantonese are romanized using the scheme developed by \citet{LSHK2002}.}
+
+\ea%1
+\ea    \label{ex:Sinitic:1}Cantonese\\
+    \gll Zoengsaam    kam~jat/ gam~jat/ ting~jat  faangung.\\
+        Zoengsaam  yesterday/ today/ tomorrow  work \\
+    \glt `Zoengsaam went to work yesterday/ is going to work today/ will go to work tomorrow.'
+    \ex Mandarin\\
+    \gll Zhangsan  zuotian/ jintian/ mingtian shangban.\\
+    Zhangsan   yesterday/ today/ tomorrow   work.\\
+    \glt `Zhangsan went to work yesterday/ goes to work today/will go to work tomorrow.'
+    \z\z
+
+    \ea%2
+    \label{ex:Sinitic:2}
+    \ea Cantonese\\
+    \gll Zoengsaam  tai-zo/ -gan/ -gwo bun  syu. \\
+Zoengsaam  read-\PFV/ -\PROG/ -\textsc{exp}  {\CLF}  book\\
+    \glt `Zoengsaam has read/is reading/read the book.'
+    \ex Mandarin\\ \gll Zhangsan   du-le/     zhengzai du/           du-guo      (yi)    ben   shu. \\
+  Zhangsan   du-\PRF/ \textsc{zai} read/ read-\textsc{exp}  (\NUM)  {\CLF}   book.\\
+    \glt `Zhangsan has read/is reading/read a book.'\footnote{The marker \textit{-gwo}, and the Mandarin equivalent \textit{-guo}, express the `experiential aspect' in Chinese.}
+    \z\z
+
+There is no person, number or gender agreement between a verb and its arguments.
+
+\ea%3
+    \label{ex:Sinitic:3} Cantonese
+\ea    \gll Zoengsaam  gin-dou  keoidei.\\
+        Zoengsaam  see-\textsc{dou}  3\textsc{pl} \\
+    \glt`Zoengsaam saw them.'\glt
+\ex    \gll ngo  gin-dou  Zoengsaam.\\
+        I  see-\textsc{dou}  Zoengsaam \\
+    \glt`I saw Zoengsaam.'
+    \z\z
+
+    \noindent Note that the changes in person and number do not affect the verb forms in \REF{ex:Sinitic:3}. Note also that -\textit{dou} ({\cn 到}; -\textit{dao} in Mandarin) is not a tense marker – it marks accomplishment and is part of a verb-result compound.
+
+There is no case-marking in Chinese. Pronouns are not case-marked, either:
+
+\ea%4
+    \label{ex:Sinitic:4} Cantonese
+\ea    \gll ngo  gin-dou  keoi.\\
+       \textsc{1sg}  see-\textsc{dou}  \textsc{3sg} \\
+    \glt `I saw him/her.'
+\ex    \gll keoi   gin-dou  ngo.\\
+         \textsc{3sg}   see-\textsc{dou}  \textsc{1sg} \\
+    \glt `S/he saw me.'
+    \z\z
+
+\subsection{Number-marking, classifiers and the expression of quantities}
+\label{sec:Sinitic:2.2}
+
+Most nouns are not number-marked. The only marker which codes number in Mandarin is the plural marker \textit{-men} \citep{HsiehHongHuang2022}. Yet, even for human nouns, a bare noun is unspecified for number, allowing both a singular and a plural reading, as exemplified in \REF{ex:Sinitic:5}.
+
+\ea%5
+    \label{ex:Sinitic:5} Mandarin\\
+   \gll Gebi    de   xuesheng   hen   chao.\\
+         next.door   \textsc{de}  student   very  noisy\\
+    \glt `The student(s) next door is/are very noisy.'
+    \z
+
+    Classifiers are a significant feature of the Chinese languages. As number is not explicitly encoded in Chinese, nouns can only be enumerated when they are individuated by classifiers in the [\textsc{num \CLF\ n}] structure. Some scholars believe that classifiers `serve to profile an essential or inherent feature of the head noun...and contribute no additional meaning to the head noun' (\citealt{Her2012a}; see also \citealt{ChengSybesma1999}). Others (e.g.\ \citealt{HuangAhrens2003,ChenAhrensHuang2022}), however, argue that classifiers make a crucial contribution to the meaning through coercion.
+
+\ea%6
+    \label{ex:Sinitic:6} Mandarin
+\ea    \gll san  ben  shu\\
+         three  {\CLF}  book\\
+    \glt`three (volumes/copies of) books'
+\ex    \gll san  xiang  shu\\
+         three   {\CLF}  book\\
+    \glt `3 boxes of books'
+    \z\z
+
+    Cantonese, among other varieties of Chinese and unlike Mandarin, allows the omission of the numeral one. Whether `one' is expressed depends on the information structure and the grammatical function of the noun. The structure [\CLF~\textsc{n}] receives a definite, or contextually retrievable, interpretation when it serves as the \SUBJ, but when it is an \OBJ, either a definite or an indefinite reading is possible:
+
+\ea%7
+    \label{ex:Sinitic:7} Cantonese
+    \ea {[\textsc{clf n}] as \SUBJ}\\
+    (Context: What happened to the book?)\\
+    \gll [bun  syu]  laan-zo.\\
+         {\db}{\CLF}  book  damage-\PFV\\
+    \glt `The book is damaged.'
+    \ex {[\textsc{clf n}] as \OBJ}
+    \ea With a definite reading\\
+    (Context: Where is the book?)\\
+    \gll ngo  m  gin-zo    [bun  syu].\\
+         \textsc{1sg}   not  see-{\PFV}   {\db}{\CLF}  book\\
+    \glt `I have lost the book.'
+    \ex With an indefinite reading\\
+    \gll ngo  kam~jat    maai-zo  [bun  syu].\\
+        \textsc{1sg}   yesterday  buy-{\PFV}  {\db}{\CLF}  book\\
+    \glt`I bought a book yesterday.'
+    \z\z\z
+
+\subsection{Canonical word order}
+\label{sec:Sinitic:2.3}
+
+Different views can be found in the literature regarding the canonical word order in Chinese languages. While there is a long tradition of analyzing Chinese as having a canonical SVO word order (e.g.\ \citealt{Light1979,Mei1980,SunGivon1985,Dryer2005}), there are also arguments for treating the SOV order as the canonical word order (see, for instance, \citealt{Tai1973,LiThompson1974}). The empirical and theoretical arguments for both the SVO and SOV accounts can be found in \citet{Liu2022} and \citet{XuDong2022} respectively. In some Wu varieties, it has also been observed that the SOV or OSV orders occur more frequently than the SVO order, especially in cases where {\OBJ} expresses the patient role \citep{Yue2003}.
+
+Despite the ongoing debate on the canonical word order, it is generally accepted that word order variations in Chinese can be accounted for in terms of information structure \citep{Shyu2016}. Chinese has been well-established as a topic-prominent language since \citet{LiThompson1976}. Constituents bearing almost any grammatical function can be easily placed in the sentence-initial position as long as they are topics. \citet{Kroeger04} provides a clear overview on the grammatical functions which can be topicalized in Chinese, including the possessor \citep{XuLangendoen1985}. Identifying grammatical functions in Chinese is thus far from being straight-forward – grammatical functions may be expressed in various syntactic positions depending on the discourse context, and they are not morphologically encoded. The {\OBJ} \textit{pingguo} can appear in the canonical object position \REF{ex:Sinitic:8a}, sentence-initially if it is topical \REF{ex:Sinitic:8b}, and between the \SUBJ and the V, where the marker \textit{ba} is optional:\footnote{Whether the marker \textit{ba} is required depends on the semantic features of the displaced NP. A displaced human NP must be marked:
+\ea \gll Ta   *(ba)   laoshi    tuidao    le.\\
+3{\SG.\M}    {\db\db}\textsc{ba}  teacher    push.over  \PFV\\
+\glt `He pushed over the teacher.' \citep[1622]{YangBergen2007}
+\z
+}
+
+\ea%8
+    \label{ex:Sinitic:8}Mandarin
+\ea\label{ex:Sinitic:8a}
+    \gll ta  chi  le  [pingguo].\\
+         \textsc{3sg}   eat  {\PFV}  {\db}apple\\
+    \glt`S/he ate the apple/apples.'
+\ex\label{ex:Sinitic:8b}
+    \gll [pingguo]   ta  chi  le.\\
+         {\db}apple   \textsc{3sg}   eat  \PFV\\
+         \glt `S/he ate the apple/apples.'
+\ex\label{ex:Sinitic:8c}
+\gll ta   (ba)  [pingguo]   chi   le.\\
+\textsc{3sg}   {\db}\textsc{ba}  {\db}apple    eat  \PFV\\
+\glt`He ate the apple/apples.' \citep[1622]{YangBergen2007}
+\z\z
+
+Other word order variations are found in Chinese. These will be discussed in \sectref{sec:Sinitic:4.1}.  
+
+  Chinese is also well-known for having `Chinese-style topics' \citep{Chafe1976}, or `dangling topics'. These topics are unique in that they are not subcategorized for by the predicate in the comment \citep{PanHu2008}. In \REF{ex:Sinitic:9}, the predicate in the comment is \textit{lai} `come', which is intransitive and only subcategorizes for a subject, \textit{xiaofangdui} `fire-brigade'. The topic [\textit{nei chang huo}] `that fire' is not related to the predicate-argument structure of \textit{lai} `come', and is thus considered  a `dangling' topic.
+
+\ea%9
+    \label{ex:Sinitic:9}Mandarin\\
+    \gll [nei   chang   huo],   xingkui    xiaofangdui  lai  de  kuai.\\
+         {\db}that  {\CLF}  fire    fortunately  fire-brigade  come  \textsc{de}  quick\\
+         \glt `As for that fire, fortunately the fire-brigade came quickly.'\\
+         \hspace*{\fill}\citep{LiThompson1976}
+    \z
+
+    It is also possible and entirely natural to have more than one topic at the beginning of a sentence in Chinese, i.e. `topic-chain constructions':
+
+\ea%10
+    \label{ex:Sinitic:10}Mandarin\\
+    \gll [zhei   jian  shi],     (Zhangsan),  ta  mei  you  cuo.\\
+        {\db}this  {\CLF}  matter    {\db}Zhangsan  {3\SG}  not  have  fault\\
+    \glt `Regarding this matter, Zhangsan is not at fault.'\\
+         \hspace*{\fill} (\citealt{Her1990}; glosses modified)
+    \z
+
+  We provide a more detailed discussion on the {\TOPIC} as a grammatical function in \sectref{sec:Sinitic:3}. 
+
+\section{Grammatical functions and word order variations in Chinese}
+\label{sec:Sinitic:3}
+
+We provide a synopsis of the state-of-the-art LFG research on Chinese in this section  and Sections~\ref{sec:Sinitic:4.1}--\ref{sec:Sinitic:4.8}. We begin with the fundamental issue of encoding grammatical functions in Chinese.
+
+Identifying grammatical functions in Chinese can be challenging due to the lack of morphological encoding of grammatical functions, and to the fact that Chinese has relatively free word order. We offer an overview of the grammatical functions in Mandarin (\sectref{sec:Sinitic:3.1.1}), and in Cantonese (\sectref{sec:Sinitic:3.1.2}).
+
+\subsection{Mandarin}
+\label{sec:Sinitic:3.1.1}
+
+Almost all early LFG studies on Chinese have included a classification of grammatical functions. Interestingly, although there are no obligatory morphological encodings of {\GF}s, there is general consensus as to the grammatical functions which can be identified for Chinese. \citet{Huang1989a,Huang1993a}, adopting the assumptions of classical LFG \citep{bresnan82,bresnan1989locative}, shows that {\GF}s in Mandarin can be identified by their unambiguous syntactic positions at the surface level, and can be classified into four types based on two features: [{\pm}$r$estricted] and [{\pm}$o$bjective]. \citet{Her1990,Her2008} presents an expanded set of {\GF}s in Mandarin, and recognizes \SUBJ, {\OBJ}, \OBJ2, {\OBLTHETA} (oblique function which includes subtypes \OBLROLE{theme} (theme), \OBLROLE{goal} (goal), \OBLROLE{ben} (beneficiary), \OBLROLE{loc} (location), and \COMP\ (complement function that includes subtypes \XCOMP, \textsc{scomp}, and \textsc{ncomp}) as subcategorizable {\GF}s, while {\TOPIC}, {\ADJ}unct (adjunct function that has two subtypes \ADJ\ and \XADJ), and \POSS\ are identified as non-subcategorizable, as shown in \figref{fig:Sinitic:1}.   It should be noted that, in the current LFG literature, the restricted object function \OBJTHETA\ has replaced \OBJ2, while grammatical function labels such as \textsc{scomp} and \textsc{ncomp}, which make reference to c-structure categories, are no longer adopted.
+
+\begin{figure}
+  \begin{forest}
+ forked edges,
+ [GRAMMATICAL FUNCTIONS
+   [Subcategorizable
+     [{Semantically\\ unrestricted} [\SUBJ\\\OBJ,tier=bottom edge=->]]
+     [{Semantically\\restricted} [\OBLTHETA\\\OBJ2\\\COMP,tier=bottom edge=->]]]
+   [Non-subcategorizable [\POSS\\\TOPIC\\\gloss{adjuncts},tier=bottom edge=->]]]
+ \end{forest}
+\caption{Classification of grammatical functions in Mandarin \citep{Her1990,Her2008}}
+\label{fig:Sinitic:1}
+\end{figure}
+
+  The syntactic encoding of {\GF}s is via both the c-structure and the predicate argument structure (AS). Take the lexical verb \textit{da} `hit', for example: it has a predicate argument structure of \arglist{agent, theme}, and subcategorizes for \arglist{\SUBJ, {\OBJ}}, where the linking between the argument roles and the grammatical functions is constrained by the Lexical Mapping Theory (LMT; \citealt{bresnan1989locative}).
+
+\ea%11
+    \label{ex:Sinitic:11}Mandarin\\
+    \gll Lisi  da  Zhangsan. \\
+         Lisi  hit  Zhangsan\\
+         \glt `Lisi hit Zhangsan.'\\[1ex]
+         \begin{tabular}{ccc@{~$\longleftarrow$~}l}
+           \textit{da} & {\textlangle\textsc{agent}} & {\textsc{patient}\textrangle}  & predicate argument structure\\
+             & $\downarrow$ & $\downarrow$ & Lexical Mapping Theory\\
+ \PRED & {\textlangle\SUBJ} & {\textsc{obj}\textrangle}  & semantic form\\
+         \end{tabular}\\*
+         \begin{forest}
+           [S [{NP\\(\UP\SUBJ)=\rnode{s}{\DOWN}} [N [Lisi]]]
+             [VP [V [da]]
+                 [{NP\\(\UP\OBJ)=\rnode{o}{\DOWN}} [N [Zhangsan]]]]]
+         \end{forest}
+         \raisebox{-2em}{\begin{tabular}{l}
+           annotated c-structure\\
+           \rnode{GFs}{{\GF}s encoded}
+         \end{tabular}}
+\ncline[nodesep=3pt,angleA={180},angleB={0},linewidth=.5pt]{->}{GFs}{s}
+\ncline[nodesep=3pt,angleA={180},angleB={0},linewidth=.5pt]{->}{GFs}{o}
+         \z
+
+The treatment of {\TOPIC} above touches on a fundamental issue related to the universal properties of {\GF}s. Recall that Chinese is a topic-prominent language (see, for instance, \citet{Tsai2022}, for a discussion on the syntactic approaches to the phenomenon, and \citet{Tao2022}, among others, for a discussion on the functional approaches). Thematic {\TOPIC}s may be `preposed', while non-thematic {\TOPIC}s may remain \textit{in situ}. A set of frequently used constructions known as `Pseudo-transitive constructions' \citep{ChangHuangChen1988} pose challenges to the grammatical status of {\TOPIC}, and this has been treated in detail in \citet{Huang1989b}. In these constructions, an NP which is clearly an argument of the verb may only occur in the pre-verbal {\TOPIC} position or some \OBLROLE\ positions, but never in the postverbal {\OBJ} position. The following two examples are from \citet{Huang1989b}.
+
+\ea%12
+    \label{ex:Sinitic:12}Mandarin
+\ea    \gll zeijian shi,   ni  zuozhu.\\
+         this   matter 2\textsc{sg} make.master\\
+         \glt `You'll take charge of this matter.' 
+         \ex \gll *2\textsc{sg}  zuozhu      zeijian  shi.\\
+         you make.master this   matter\\
+    \z\z
+
+\ea%13
+    \label{ex:Sinitic:13}Mandarin
+\ea    \gll yuyanxue,  ta  nashou. \\
+         linguistics 3\textsc{sg}  take.hand\\
+    \glt `S/he is good at linguistics.'
+\ex    \gll *ta   nashou   yuyanxue.\\
+         3\textsc{sg}  take.hand  linguistics\\
+    \z\z
+
+\citet{Huang1989b} has made the following observations: (i) the topical NPs have clearly subcategorizable semantic roles; (ii) these constructions involve a large set of compound verbs,  including some V+N compounds which are practically all disyllabic in Chinese, and all of the quadrisyllabic compounds, and (iii)  {\TOPIC}s can be regarded as being subcategorized \citep{bresnan1982control-complementation}. Based on these three observations, Huang shows that the most efficient account is to treat the topical NPs as subcategorized {\TOPIC}s. \citet{Mo1990} has proposed a new grammatical function \textsc{stopic} (\textsc{s} for `subcategorized') to differentiate them from the non-thematic {\TOPIC}s.
+
+According to \citet{Huang1989b}, the subcategorizable {\TOPIC} achieves parsimony in terms of lexical encoding and mapping to c-structure, but this would introduce complexities to the LMT. \citet{Her1991,Her2010}, based on the same LMT considerations, argues that {\TOPIC}s should be regarded as strictly non-subcategorizable. To deal with the fact that pseudo-transitive verbs do not allow the stipulated {\OBJ}s to be realized in the canonical {\OBJ} position, a feature-value pair [\FRAME~+] is assigned to those verbs. The [\FRAME~+] feature can only be obtained by way of unification with the {\TOPIC}. The annotated PSR in \REF{ex:Sinitic:14b} specifies that {\TOPIC} receives the feature [\FRAME~+] and it must be associated with some {\GF} in the f-structure to fulfill the Extended Coherence Condition.
+
+\ea%14
+\label{ex:Sinitic:14}
+\citet{Her2010}:
+\ea\label{ex:Sinitic:14a} \catlexentry{nashou}{V}{(\UP\PRED) = \textsc{`be-good-at\arglist{{\SUBJ} {\OBJ}}'}  \\
+                         (\UP\OBJ\FRAME) =$_c$ +} 
+\ex\label{ex:Sinitic:14b} \phraserule{S$'$}{\rulenode{NP\\(\UP\TOPIC)=\DOWN\\(\UP\FRAME)=$+$}
+  \rulenode{S\\\UP=\DOWN}}
+\z\z
+
+\noindent It is important to note that neither account explicates how it will account for the NPs occurring in other non-{\OBJ} positions, such as in \REF{ex:Sinitic:15}.
+
+\ea%15
+    \label{ex:Sinitic:15}Mandarin\\
+    \gll [[Mali  zui  nashou] de  kemu] shi  shuxue.\\
+         {\db\db}Mary  most   take.hand    \textsc{de} subject  be   math\\
+    \glt `The subject that Mary is best at is math.'
+    \z
+
+\noindent In \REF{ex:Sinitic:15}, a gap in the relative clause is linked to the head noun, and is then linked to the complement of the verb \textit{shi} `be'. In \citegen{Huang1989b} account, the subcategorized {\SUBJ} will have to be linked to other {\GF}s following the same mechanisms for control and complementation \citep{bresnan1982control-complementation}. See \citet{Her2010} for a different account. In both cases, however, there is neither a clear solution to the entailed complexities for LMT, nor an answer to the question of why such a high-level solution is needed for what seems to be a parochial fact limited to a set of predicates in a specific language.
+
+  In sum, the pseudo-transitive verbs in Mandarin, where the {\OBJ}-like arguments can only occur in the {\TOPIC} position, pose a great challenge to the theory of {\GF}-encoding in LFG. The two existing proposals (\citealt{Huang1989b} and \citealt{Her2010}) both have their strengths and weaknesses. The fact that the set of verbs involved are some of the verbs currently undergoing changes in transitivity \citep{JiangHuang2022} suggests that the ultimate solution may involve a theory which takes historical changes involving {\GF}s into consideration.
+
+\subsection{Cantonese}
+\label{sec:Sinitic:3.1.2}
+
+In contrast to the issue-driven discussion on {\GF}s in Mandarin in the last section, this section will provide a survey on {\SUBJ} \citep{Lee2003}, {\OBJ} \citep{Lam2008}, and the complement \citep{BodomoLee2003,Lee2002} in Cantonese.
+
+\subsubsection{Subject in Cantonese}
+\label{sec:Sinitic:3.1.2.1}
+
+\citet{Lee2003} shows that two syntactic properties are of particular relevance in the identification of the subject in Cantonese. The first is the binding of the reflexive pronoun \textit{zigei} `self' to the subject \textit{Mary} within the same clause, or to the subject \textit{John} in the clause containing the local clause. This, following \citet{Tan1991}, clearly distinguishes the subject from the topic, both of which can be found preverbally.
+
+\ea%16
+    \label{ex:Sinitic:16}Cantonese\\
+    \gll John\textsubscript{i}  zi1   Mary\textsubscript{j}  sik6-zo2  keoi5-zi6gei2\textsubscript{i/j}  haap6 faan6.\\
+         John   know  Mary  eat-{\PFV}  3\SG-self    {\CLF}  rice\\
+    \glt `John knows that Mary ate his/her lunch box.' \citep[30]{Lee2003}
+    \z
+
+  The second distinctive property of the subject is that the possessor of the subject can be easily relativized with the gap strategy \REF{ex:Sinitic:17a}, but the possessor of the object cannot be relativized in the same way \REF{ex:Sinitic:17b}:
+
+\ea%17
+    \label{ex:Sinitic:17} Cantonese\\
+    \ea\label{ex:Sinitic:17a}
+    \gll [ \_ sing4zik1]  ji5ging1   gung1bou3-zo2  ge3  hok6saang1\\
+        {} {} grades         already   announce-{\PFV}   {\REL}  students \\
+    \glt `the students whose grades have been announced.' \citep[37]{Lee2003}
+    \ex \label{ex:Sinitic:17b}
+    \gll *hok6haau6 ji5ging1 gung1bou3-zo2 [ \_ sing4zik1] ge3 hok6saang1\\
+         school    already  announce-{\PFV}  {} {} grades   {\REL} students\\
+    \glt (Intended meaning: `the student whose grades have been announced by the school') \citep[38]{Lee2003}
+    \z\z
+
+  \citet{LukeBodomoNancarrow2001} discuss the Subject Condition in Cantonese. As with Sinitic languages in general, Cantonese allows pro-drop even without agreement morphology or case-marking. This poses a challenge to the identification of grammatical functions at f-structure. \citet{LukeBodomoNancarrow2001} show that apparently `subjectless' sentences, in fact, do have a subject, but discourse-pragmatic criteria, such as the speech context, must be taken into consideration in order to retrieve the subject.  See also \citet{Liao2010} for a discussion on the pro-drop patterns in Mandarin Chinese, and for an analysis within LFG.
+
+\subsubsection{Object in Cantonese}
+\label{sec:Sinitic:3.1.2.2}
+
+\citet{Lam2008} investigates the syntax of objects in Cantonese, in particular, their syntactic behaviours in double object constructions (DOCs). Without morphological marking, the structural position of each object becomes an important clue in the identification of the different object functions – in \REF{ex:Sinitic:18}, the recipient-object is found immediately postverbally, with the theme-object following it:
+
+\newpage
+\ea%18
+    \label{ex:Sinitic:18} Cantonese
+    \ea Recipient-NP < Theme-NP\\
+    \gll ngo  gaau  siupangjau  zungman.\\
+         {1\SG}  teach  children  Chinese\\
+    \glt `I teach children Chinese.'
+    \ex  *Theme-NP < Recipient-NP\\
+    \gll *ngo  gaau  zungman  siupangjau.\\
+         {1\SG}  teach  Chinese   children\\
+    \glt `I teach children Chinese.'
+    \z\z
+
+This, however, is not the canonical order of objects for the verb GIVE – it is the theme-object that must be immediately postverbal.
+
+\ea%19
+    \label{ex:Sinitic:19} Cantonese
+    \ea Theme-NP < Recipient-NP\\
+    \gll ngo      bei-zo    bun  syu  ngo  gaaze.\\
+         {1\SG} give-{\PFV}  {\CLF}  book   {1\SG}   elder.sister\\
+    \glt `I gave the book to my elder sister.'
+    \ex  *Recipient-NP < Theme-NP\\
+    \gll *ngo     bei-zo          ngo5      gaaze    bun  syu.\\
+        {1\SG}   give-{\PFV}   {1\SG}     elder.sister   {\CLF}    book\\
+    \z\z
+
+A related question is – which one of these objects is the unrestricted object {\OBJ}, and which is the restricted one {\OBJTHETA}?  In LFG, the object in a DOC which grammatically patterns with the monotransitive object is {\OBJ}, while the one which does not is {\OBJTHETA}. Passivization is often seen as \textit{the} diagnostic for unrestricted objecthood, but in Cantonese, as in Mandarin Chinese, passivization is often constrained - the passive is associated with a meaning of adversity. As a result, not all verbs, even monotransitive ones, can be involved in passivization \REF{ex:Sinitic:20}. It is therefore not a very helpful test for the unrestricted object. We shall return to a discussion of passivization in \sectref{sec:Sinitic:4.1}.
+
+\ea%20
+    \label{ex:Sinitic:20}Mandarin
+\ea    \gll Zhangsan  gei  ren  du-si    le.\\
+         Zhangsan  give  people   poison-die  \textsc{prt}\\
+    \glt`Zhangsan was poisoned to death by people.'
+\ex    \gll *Zhangsan   gei  ren  yi-hao    le.\\
+         Zhangsan  give  people   cure    \textsc{prt}\\
+    \glt`Zhangsan was cured by people.' \citep[257]{Lefebvre2011}
+    \z\z
+
+  Patterns of relativization and pro-drop show that it is the theme-object which behaves like the monotransitive object. \citet{Lam2008} thus concludes that the theme-object is the unrestricted object in Cantonese, while the recipient-object is the restricted object.
+
+\subsubsection{Complement in Cantonese}
+\label{sec:Sinitic:3.1.2.3}
+
+\citet{Lee2002} and \citet{BodomoLee2003} show that  Cantonese verbs such as \textit{zidou} `think' may take either a \COMP\ \REF{ex:Sinitic:21a} or an {\OBJ} \REF{ex:Sinitic:21b}, while other verbs subcategorize for only a \COMP\ \REF{ex:Sinitic:22a} but not an {\OBJ} \REF{ex:Sinitic:22b}:
+
+\ea%21
+    \label{ex:Sinitic:21}Cantonese
+    \ea\label{ex:Sinitic:21a}
+    \gll ngo  zi~dou  \textsubscript{S}[keoi  hai  hou  jan].\\
+         {1\SG}  know   {\db\db}{3\SG}  be  good  person\\
+    \glt`I know that s/he is a good person.'
+    \ex\label{ex:Sinitic:21b}
+    \gll ngo  zi~dou  \textsubscript{DP}[li  gin  si].\\
+         {1\SG}  know       {\db\db\db\db}this  {\CLF}  matter\\
+    \glt`I know (about) this.'
+    \z\z
+
+\ea%22
+    \label{ex:Sinitic:22}Cantonese
+    \ea\label{ex:Sinitic:22a}
+    \gll ngo  hei~mong  \textsubscript{S}[keoi  hai  hou  jan].\\
+         {1\SG}  hope       {\db\db}{3\SG}  be  good person\\
+    \glt `I hope that s/he is a good person.'
+    \ex\label{ex:Sinitic:22b}
+    \gll *ngo  hei~mong  \textsubscript{DP}[keoi].\\
+         {1\SG}  hope         {\db\db\db\db}{3\SG}\\
+    \glt [`I hope him/her.']
+    \z\z
+    They therefore argue that Cantonese is a `mixed language', along the lines of \citet{DL00}.
+
+\section{\textit{Ba}, \textit{Bei}, and Related Constructions}
+\label{sec:Sinitic:4.1}
+
+\subsection{Mandarin}
+\label{sec:Sinitic:4.1.1}
+
+The Mandarin \textit{bei} construction is considered to be the equivalent of the English \textit{by} passive in the literature. The discussion of the \textit{bei} passive is frequently compared to the \textit{ba} construction, as they share almost identical surface structures. Note that in \REF{ex:Sinitic:23}, the agent \textit{gemi} `fans' is optional, much like the \textit{by}-agent phrase in English. A \textit{bei} construction with the agent phrase is known as the `long' passive, while a \textit{bei} construction with the agent phrase omitted is the `short' passive \citep{HuangLiLi2009,HuangShi2016}.
+
+\ea%23
+    \label{ex:Sinitic:23}Mandarin\\
+    \gll Amei  bei  (gemi)  weizhu.\\
+         Amei   \textsc{bei}    {\db}fans  encircle\\
+    \glt `Amei was encircled (by the fans).'
+    \z
+
+\ea%24
+    \label{ex:Sinitic:24}Mandarin\\
+    \gll gemi  ba  *(Amei)  weizhu.\\
+         fans  \textsc{ba}   {\db\db}Amei       encircle\\
+    \glt `The fans encircled Amei.'
+    \z
+
+\noindent Several important and controversial issues have been raised over the passive analysis of the \textit{bei} construction. The first is whether \textit{bei} is a preposition like the English \textit{by} \citep{huang82,Li1990,lithompson,Lu1980,McCawley1992,Tsao1996} or a verb \citep{Bender2000,Feng1995,Her1989,Her2009,Hsueh1989,Huang1999}. The current dominant view of \textit{bei} as higher verb is heralded by \citegen{HuangMangione1985} formal semantic account, and was first adopted in LFG syntactic studies (e.g.\ \citealt{HuangMangione1985,Bender2000}).
+
+  The second issue is whether there is one or two passive constructions. The dominant GB analysis treats the passive in Mandarin as having `split' into two different constructions: the agentless short passive versus the long passive with an overt agent. This is motivated by the observation that the long passive allows a much wider range of syntactic behaviours than the short passive. Yet \citet{Her2009} shows, with corpus data from Sinica Corpus \citep{ChenEtAl1996}, that the short passive in fact exhibits the same range of syntactic behaviours, and argues that the two should receive exactly the same analysis, with the only difference being whether the agent is overt or covert. The evidence is presented below. First, \citet{Her2009} shows that short passives \REF{ex:Sinitic:26}, just like long passives \REF{ex:Sinitic:25}, allows long-distance gaps:
+
+\ea%25
+    \label{ex:Sinitic:25}Mandarin\\
+    \gll bei  ta  qitu    nuyi      de  ziyou  renmin.\\
+         \textsc{bei}  {3\SG}  attempt  enslave  \textsc{de}   free  people\\
+    \glt `the free people who were ``attempted-to-enslave'' by him'
+    \z
+
+\newpage
+\ea%26
+    \label{ex:Sinitic:26}Mandarin\\
+\ea    \gll gongsi-de        wanglu  bei  qitu    ruqin.\\
+         company-{\POSS}    network   \textsc{bei}   attempt  hack\\
+         \glt`The company network has been ``attempted-to-hack''.'
+\ex \gll ziliao    bei  shefa    kaobei  le.\\
+document  \textsc{bei}  manage  copy  \PRF\\
+\glt`The documents have been ``managed-to-copy''.'
+    \z\z
+
+  Second, the claims in the literature that a long passive, but not a short passive, allows a resumptive pronoun to fill a gap are also incorrect, as in \REF{ex:Sinitic:27} and \REF{ex:Sinitic:28}.
+
+\ea%27
+    \label{ex:Sinitic:27}Mandarin\\
+    \gll Zhangsan\textsubscript{i} bei  wo  piping-le  ta\textsubscript{i} yidun.\\
+         John           \textsc{bei}  {1\SG}  criticize-{\PFV}   {3\SG}  once\\
+    \glt `John was criticized once by me.'
+    \z
+
+\ea%28
+    \label{ex:Sinitic:28}Mandarin\\
+    \gll ta  ba\textsubscript{i} pa  bei   renwei   ta\textsubscript{i} wufa  guanjiao     haizi.\\
+      {3\SG}  father   afraid  \textsc{bei} consider  {3\SG}  fail   discipline   children\\
+    \glt`His father was afraid to be considered that he failed to discipline his children.'
+    \z
+
+  Third, the split view claims that the pronominal particle \textit{suo} is allowed in the long passive only, as in \REF{ex:Sinitic:29}, and not the short passive. The corpus example in \REF{ex:Sinitic:30} shows that \textit{suo} can be found in the short passive as well:
+
+\ea%29
+    \label{ex:Sinitic:29}Mandarin\\
+    \gll ni  hui  bei  ren  suo   chixiao.\\
+        {2\SG}  will  \textsc{bei}  person  \textsc{suo}  sneer\\
+    \glt`I'm afraid your recent behavior toward him will be sneered at.'
+    \z
+
+\ea%30
+    \label{ex:Sinitic:30}Mandarin\\
+    \gll ni  nanmian  bu  bei  suo  pian.\\
+        {2\SG}  unavoidably  not  \textsc{bei}  \textsc{suo}  trick\\
+    \glt`Unavoidably you would be tricked.'
+    \z
+
+  Finally, the split view claims that only the long passive allows an adverbial PP, as in \REF{ex:Sinitic:31}, but not in the short passive. This is again shown to be wrong by the corpus example in \REF{ex:Sinitic:32}.
+
+\ea%31
+    \label{ex:Sinitic:31}Mandarin\\
+    \gll Zhangsan bei   Lisi  zai  xuexiao  pian-zou  le.\\
+         John         \textsc{bei}  Lee   at    school    abduct     \PFV\\
+    \glt`John was abducted at school by Lee.'
+    \z
+
+\ea%32
+    \label{ex:Sinitic:32}Mandarin\\
+    \gll yi  zhi  laoshu  bei   zai   jiujing   zhong  jinpao-le  yi    nian.\\
+         one  {\CLF}   mouse  \textsc{bei}  at    alcohol  inside  soak-{\PFV}  one  year\\
+    \glt`A mouse has been soaked in alcohol for a year.'
+    \z
+
+    The analysis proposed by \citet{Her2009} has \textit{bei} as a three-place predicate requiring three theta roles, which are mapped to {\SUBJ}, {\OBJ}, and \XCOMP, with a meaning that approximates \REF{ex:Sinitic:33}. The lexical entry, including its lexical category, lexical form, and the control relations, is shown in \REF{ex:Sinitic:34}. Note that the operation that links theta roles with {\GF}s is $\gamma$; thus $\gamma(\widehat{\mbox{θ}})$ in \REF{ex:Sinitic:34} refers to the {\GF} linked to the logical subject. (\UP\OBJ) = (\UP\XCOMP $\gamma(\widehat{\mbox{θ}})$) thus means that {\OBJ} controls the {\GF} in \XCOMP\ that is linked to the $\widehat{\mbox{θ}}$. The f-structure of a typical \textit{bei} sentence is illustrated in \REF{ex:Sinitic:35}.
+
+\ea%33
+    \label{ex:Sinitic:33}
+    \textit{bei} \arglistit{x y z}: \textit{x} is (adversely) affected by \textit{y} in a way that \textit{z} describes
+    \z
+
+\ea%34
+    \label{ex:Sinitic:34}
+\catlexentry{bei}{V}{(\UP\PRED)  =  {\textsc`{bei}\arglist{\SUBJ \OBJ \XCOMP}'}\\
+     (\UP\SUBJ)  =  (\UP\XCOMP\TOPIC)\\
+     (\UP\OBJ)  =  (\UP\XCOMP $\gamma(\widehat{\mbox{θ}})$)\\
+     $\neg$(\UP\OBJ)  $\Rightarrow$   (\UP\OBJ\PRED) = {\textsc `pro'}}
+    \z
+
+\ea%35
+    \label{ex:Sinitic:35}Mandarin\\
+    \gll  na  jian  fangzi  bei  (Lisi)  chai-le.\\
+         that   {\CLF}   house  \textsc{bei}  {\db}Lee   demolish-{\PFV}\\
+         \glt `That house got demolished (by Lee).'\\[1ex]
+         \avm[style=fstr]{[pred & `bei\arglist{\SUBJ \OBJ \XCOMP}\\
+             subj & \rnode{h}{[pred & `house']}\\\smallskip
+             obj & [pred & `Lee']/[pred `pro']\\
+             xcomp & [topic & \rnode{t}{\strut}\\
+               pred & `demolished\arglist{\SUBJ}'\\
+               subj & \rnode{s}{\strut}]]}
+         \psset{offsetB=-2pt}
+         \ncangles[armA=3,linearc=.2,nodesepA=-2pt,angle={0},nodesepB=0pt,linewidth=.5pt]{h}{t}
+         \psset{offsetB=2pt}
+         \ncangles[linestyle=dashed,dash=1.5pt,armA=4.25,linearc=.2,nodesep=0pt,angle={0},linewidth=.5pt]{s}{t}
+    \z
+
+  In \REF{ex:Sinitic:35}, (\UP\OBJ), which is either an overt agent \textit{Lee} or a covert pronoun, is responsible for adversely affecting (\UP\SUBJ), the house, in a way described by \mbox{(\UP\XCOMP)}, i.e., the house is demolished. Note that (\UP\SUBJ) controls the {\TOPIC} in \XCOMP, which is anaphorically linked to {\SUBJ}, indicated by the dotted line. The matrix {\SUBJ}, the house, is also the {\SUBJ} of the embedded clause, which is passive in nature. A non-canonical example is given in \REF{ex:Sinitic:36}, with both c-structure and f-structure illustrated.
+
+\ea%36
+    \label{ex:Sinitic:36}Mandarin\\
+    \gll  juzi  bei  (ta)  bo-le    pi.\\
+         orange  \textsc{bei}   {\db}{3\SG}  peel-{\PFV}   peel\\
+    \glt`The orange has its peel peeled off (by him).\\[1ex]
+    \ea c-structure:\\
+    \begin{forest}
+      [IP [NP [juzi]]
+          [VP [V [bei]]
+            [(NP) [ta]]
+            [VP [V [bo-le]]
+              [NP [pi]]]]]
+        \end{forest}
+    \ex f-structure:\\
+             \avm[style=fstr]{[pred & `bei\arglist{\SUBJ \OBJ \XCOMP}'\\
+             subj & \rnode{s1}{[pred & `orange']}\\\smallskip
+             obj & \rnode{o1}{[3sg]/[pred `pro']}\\
+             xcomp & [topic & \rnode{t}{\strut}\\
+               pred & `peel\arglist{\SUBJ \OBJ}'\\
+               subj & \rnode{s2}{\strut}\\
+               obj & \rnode{o2}{[pred & `peel']}]]}
+         \psset{offsetB=-1.5pt}
+         \ncangles[armA=3,linearc=.2,nodesep=-2pt,angle={0},linewidth=.5pt]{s1}{t}
+         \psset{offsetA=-1.5pt}
+         \ncangles[linestyle=dashed,dash=1.5pt,armA=4.4,linearc=.2,nodesep=-2pt,angle={0},linewidth=.5pt]{t}{o2}
+         \ncangles[armA=1.5,linearc=.2,nodesep=-2pt,angle={0},linewidth=.5pt]{o1}{s2}
+         \z\z
+
+In \REF{ex:Sinitic:36}, (\UP\OBJ), which is again either overt or covert, is responsible for adversely affecting (\UP\SUBJ), the orange, in a way described by (\UP\XCOMP), i.e., the orange has its peel peeled off. Note that (\UP\SUBJ) controls the {\TOPIC} in {\XCOMP}, and (\UP\OBJ) controls the {\SUBJ} in {\XCOMP}. Within the {\XCOMP}, {\TOPIC} is anaphorically linked to {\OBJ}.
+
+Based on this account, \citet{Her2009} contends that the \textit{bei} construction is the passive counterpart of the \textit{ba} construction, not the canonical active sentence. Thus, \textit{ba} is likewise a three-place predicate, as in \REF{ex:Sinitic:37}, and its lexical entry is shown in \REF{ex:Sinitic:38}. The example in \REF{ex:Sinitic:39} is therefore the active counterpart of the passive \REF{ex:Sinitic:36}. See also \citet{Bender2000} for an LFG analysis of the \textit{ba} construction in Mandarin.
+
+\ea%37
+    \label{ex:Sinitic:37}
+    \textit{ba} \arglistit{x y z}: \textit{x} affected \textit{y} in a way that \textit{z} describes
+    \z
+
+\ea%38
+    \label{ex:Sinitic:38}
+    \catlexentry{ba}{V}{(\UP\PRED)  =  \textsc{`{ba}\arglist{\SUBJ \OBJ \XCOMP}'}\\
+  (\UP\OBJ)   =   (\UP\XCOMP\TOPIC)\\
+  (\UP\SUBJ)   =   (\UP\XCOMP $\gamma(\widehat{\mbox{θ}})$)}
+    \z
+
+ \ea%39
+    \label{ex:Sinitic:39}Mandarin\\
+    \gll ta  ba   juzi  bo-le    pi.\\
+         {3\SG}  \textsc{ba}   orange   peel-{\PFV}   peel\\
+    \glt`He peeled the peel off the orange.'
+    \ea c-structure:\\
+    \begin{forest}[IP [NP [ta]]
+        [VP [V [ba]]
+          [NP [juzi]]
+          [VP [V [bo-le]]
+            [NP [pi]]]]]
+    \end{forest}
+    \ex f-structure:\\
+             \avm[style=fstr]{[pred & `bei\arglist{(\UP\SUBJ),(\UP\OBJ),(\UP\XCOMP)}\\
+             subj & \rnode{s1}{[pred & `orange']}\\\smallskip
+             obj & \rnode{o1}{[3sg]}\\
+             xcomp & [topic & \rnode{t}{\strut}\\
+               pred & `peel\arglist{\SUBJ \OBJ}'\\
+               subj & \rnode{s2}{\strut}\\
+               obj & \rnode{o2}{[pred & `peel']}]]}
+         \psset{offsetB=-1.5pt}
+         \ncangles[armA=3,linearc=.2,nodesep=-2pt,angle={0},linewidth=.5pt]{s1}{t}
+         \psset{offsetA=-1.5pt}
+         \ncangles[linestyle=dashed,dash=1.5pt,armA=4.5,linearc=.2,nodesep=-2pt,angle={0},linewidth=.5pt]{t}{o2}
+         \ncangles[armA=4,linearc=.2,nodesep=-2pt,angle={0},linewidth=.5pt]{o1}{s2}
+         \z\z
+
+In \REF{ex:Sinitic:39}, (\UP\SUBJ), \textit{he}, is responsible for affecting (\UP\OBJ), the orange, in a way described by (\UP\XCOMP), i.e., \textit{he peeled the peel off the orange}. Note that (\UP\SUBJ) controls the {\SUBJ} in {\XCOMP}, and (\UP\OBJ) controls the {\TOPIC} in {\XCOMP}, which is in turn anaphorically linked to {\OBJ}.
+
+  In summary, \textit{ba} and \textit{bei} are both treated as three-place predicates. While the former involves a causer as {\SUBJ}, an affectee as {\OBJ}, and an active proposition describing the caused event as {\XCOMP}, the latter involves an affectee as {\SUBJ}, a causer as {\OBJ}, and a passive proposition describing the caused event as {\XCOMP}. Thus, in this sense the \textit{bei} construction is the passive counterpart of the \textit{ba} constructive.
+
+See also \citet{Yang2020} for a discussion of the impersonal BEI-passive in Mandarin.
+
+\subsection{Cantonese}
+\label{sec:Sinitic:4.1.2}
+
+A discussion on aspects of the passive structure in Cantonese is offered in \citet{Chow2019}. While Cantonese shares a phonologically similar passive morpheme \textit{bei} with Mandarin, the two counterparts differing only in tones, one clear morphosyntactic difference is that the NP following \textit{bei} in Mandarin is optional \REF{ex:Sinitic:40a}, while that in Cantonese is obligatory \REF{ex:Sinitic:40b}. In other words, the `short' passive discussed in the previous section is not allowed in Cantonese. Even in agentless passives, the NP \textit{jan} `person' must follow \textit{bei}.
+
+\ea%40
+    \label{ex:Sinitic:40}
+    \ea\label{ex:Sinitic:40a} Mandarin\\
+    \gll Zhangsan  bei  (Lisi)   daa-le.\\
+         Zhangsan   \textsc{bei}   {\db}Lisi   hit-{\PFV}\\
+    \glt`Zhangsan has been hit (by Lisi).'
+    \ex\label{ex:Sinitic:40b}Cantonese\\
+    \gll Siuming  bei  *(jan)  daa.\\
+         Siuming   {\PASS}  {\db\db}people   hit\\
+    \glt`Siu Ming was beaten up.'
+    \z\z
+
+\noindent  Based on this, \citet{Chow2019} argues that passivization in Cantonese involves the subject being linked to an oblique object, a non-core argument (\citealt{bresnan1982the-passive}; \citealt[232]{Chow2019}). It is also shown that, unlike \citegen{Kit1998} and \citegen{Her2009} analyses for the Mandarin \textit{bei}, the Cantonese \textit{bei} is a `non-argument taking and a non-predicative' coverb \citep[186]{Chow2019}, which contributes a (\UP\VOICE)=\PASS\ feature to f-structure.
+
+  Similar to \citet{Her2009}, \citet{Chow2019} acknowledges that the matrix subject in a passive structure is linked to the topic role. Indeed, the same propositional content may be expressed by an active, a `direct' or canonical passive \REF{ex:Sinitic:41a}, or a `indirect' passive \REF{ex:Sinitic:42b} structure, depending on the information structure to be expressed. In an canonical passive structure, the entire theme-NP is topical – it is expressed as the subject. In an `indirect' passive structure, however, it is the possessor of the theme-NP which is topical – the possessor is linked to the subject.
+
+\ea%41
+    \label{ex:Sinitic:41} Cantonese
+    \ea\label{ex:Sinitic:41a} The `direct' or canonical passive \\
+    \gll [Can~saang  gaa  ce]  bei  tungsi         zong-laan        zo.\\
+         {\db}Mr.~Chan  {\CLF}   car   {\PASS}  colleague   crash-broken  \PFV\\
+    \glt`Mr. Chan's car has been crashed by his colleague.'
+    \ex\label{ex:Sinitic:41b}The `indirect' passive\\
+    \gll [Can~saang]  bei  tungsi        zong-laan      zo  [gaa  ce].\\
+         {\db}Mr.~Chan   {\PASS}  colleague  crash-broken  {\PFV}    {\db}{\CLF}   car\\
+    \glt`Mr. Chan had his car crashed by his colleague.'
+    \z\z
+
+Semantically, the subject must be adversely affected in order for an indirect passive to be acceptable. \citet{Chow2018,Chow2019} proposes that, for the indirect passive structure \textsc{[np1 bei2 np2 v np3]} to be licensed, an additional malefactive role, which must be topical, is introduced into the structure. Due to the limits of space, we shall leave the discussion here and ask interested readers to refer to these studies.
+
+\section{Dative alternation}
+\label{sec:Sinitic:4.2}
+
+Dative alternations, as well as ditransitive constructions, have been extensively discussed in the Chinese linguistics literature. In addition to the word order variations and the introduction of an applied object common in other languages (e.g.\ \citealt{Bresnan07predicting}), the challenges in analyzing the Mandarin dative alternative involve the position and the grammatical status of the lexical form \textit{gei} `give' (e.g.\ \citealt{Chao1968,Zhu1982}). The discussion in this section focuses on Mandarin only, as the dative alternation is not attested in Cantonese \citep{Lam2008}.
+
+\ea%42
+    \label{ex:Sinitic:42}
+    Ditransitive constructions with \textit{gei} in Mandarin (\ref{ex:Sinitic:42a}, \ref{ex:Sinitic:42c} \& \ref{ex:Sinitic:42d} are from \citealt{HuangAhrens1999})
+\ea\label{ex:Sinitic:42a} {\SUBJ} \textit{gei}  \textsc{io v do}
+\ex\label{ex:Sinitic:42b} {\SUBJ} \textsc{do} \textsc{v} (\textit{gei)} \textsc{io}
+\ex\label{ex:Sinitic:42c} {\SUBJ} \textsc{v} (\textit{gei}) \textsc{io} \textsc{do}
+\ex\label{ex:Sinitic:42d} {\SUBJ} \textsc{v} \textsc{do} \textit{gei} \textsc{io}
+\z\z
+
+The pattern in \REF{ex:Sinitic:42d} will be treated as the semantically most transparent word order for \textit{gei} `give.to'. It should, however, be noted that it is not clear whether a clearly favoured canonical word order is available \citep{YaoLiu2010}. In a ditransitive construction, \textit{gei} introduces the \textsc{io} as the goal towards which a theme \textsc{do} moves. In the literature, there are several different views regarding the grammatical status of \textit{gei}: \textit{gei} is (i) a verb, producing a serial verb construction with the other verb in the construction; (ii) a co-verb/preposition, marking the \textsc{io} in the construction. The verb/preposition debate is familiar in the Chinese linguistics literature, and has been applied to several other lexical items with similar distributions. Either account is generally adequate in describing the patterns in \REF{ex:Sinitic:42a} and \REF{ex:Sinitic:42d}. The patterns in \REF{ex:Sinitic:42b} and \REF{ex:Sinitic:42c}, where \textit{gei} is optional and the optionality depends on the V, has generated interesting debates specific to the ditransitive construction (e.g.\ \citealt{Chao1968,lithompson,ChengHuang1988}). \citet{HuangAhrens1999} observe that verbs without an inherent meaning of transfer (e.g.\ \textit{ti} `to kick', \textit{bian} `to knit'), typically require the presence of \textit{gei}, while \textit{gei} in structures with verbs with an inherent meaning of transfer may be optional (e.g.\ \textit{song} `to give as a gift, to send', \textit{zhu} `to lend', \textit{mai} `to sell,' and \textit{gei} `to give'). This suggests that the \textit{gei} immediately after the verb is a stem that introduces an applicative goal role to the argument structure of the verb. This account has been incorporated into \citegen{Huang1993a} LMT of Mandarin. The compounding account has also been adopted by several Construction Grammar-based accounts (e.g.\ \citealt{Ahrens1995,Zhang1999,Liu2006}). \citet{Huang1993a} argues that the postverbal \textit{gei} is a part of the complex predicate which involves a morpholexical rule introducing an additional goal role into the argument structure. The study also observes that there is a significant contrast between the English and Chinese dative constructions --- the theme can become {\SUBJ} in a passive construction in Mandarin, but not the goal.
+
+\ea%43
+    \label{ex:Sinitic:43}
+    \ea Mary gave John a book.
+    \ex John was given a book by Mary.
+    \ex A book was given to Mary by John.
+    \z\z
+
+\ea%44
+    \label{ex:Sinitic:44}Mandarin (adapted from \citet[example~22]{Huang1993a})
+\ea    \gll Zhangsan  ti-*(gei)  Lisi  yi  ge  qiu.\\
+         Zhangsan    kick-\textsc{gei}  Lisi  one  {\CLF}    ball\\
+    \glt`Zhangsan kicked a ball to Lisi.'
+\ex    \gll *Lisi  (bei Zhangsan)  ti-gei-le    yi  ge  qiu.\\
+         Lisi    {\db}\textsc{bei} Zhangsan    kick-GEI-{\PFV}  one  {\CLF}    ball\\
+\ex    \gll nei   ge  qiu   (bei Zhangsan)  ti-gei-le    Lisi.\\
+         that   {\CLF}  ball    {\db}\textsc{bei} Zhangsan    kick-GEI-{\PFV}  Lisi\\
+    \glt `That ball was kicked to Lisi (by Zhangsan).'
+    \z\z
+
+  In sum, this account of V-\textit{gei} compounding, adding an applicative GOAL role, illustrates the lower accessibility of the goal role on the Thematic Hierarchy, and predicts that the goal role cannot be linked to {\SUBJ} in a Mandarin passive structure.
+
+See also \citet{Her2006a} for an alternative analysis of the Mandarin dative alternation.
+
+\section{Compounds}
+\label{sec:Sinitic:4.3}
+
+Compounding is a productive morpholexical process in Chinese \citep{HsiehHongHuang2022}. Mandarin is known to have at least the following types of compounds that can introduce new predicate-argument structures: (i) subject-verb (SV) compounds; (ii) verb-object (VO) compounds; (iii) verb-resultative (VR) compounds; and, (iv) verb-verb (VV) compounds. In this section, the LFG treatments of resultative compounds and VO compounds are presented in Sections~\ref{sec:Sinitic:4.3.1}-\ref{sec:Sinitic:4.3.1.1} and \sectref{sec:Sinitic:4.3.2}, respectively.
+
+\subsection{Early LFG studies on Mandarin compounds}
+\label{sec:Sinitic:4.3.1}
+
+\citet{Chao1968} has observed that a number of distinctive grammatical features of Chinese are related to the prevalence of compounds: (i)  V+N compounds tend not to take another object directly; (ii) the noun in the compound is often separable even though it is a sub-lexical unit (called `ionization' in \citealt{Chao1968}); (iii) separable compounds allow certain degrees of internal modification, and in some cases, an object may appear in non-canonical positions. The earliest published studies in the LFG literature on Mandarin, \citet{Huang1985,Huang1986,Huang1988,Huang1990} for example, have aimed to account for these separable compounds and their non-canonical object positions.
+
+\citet{Huang1990} provides an account for VO compounds in Mandarin. One example that is of particular interest is the idiom chunk \textit{chi cu} `be jealous of', consisting of the lexical verb \textit{chi} `eat' and the noun \textit{cu} `vinegar'. The chunk is a non-compositional compound, as the overall meaning is only available if both the V and the N are found in the sentence. What is interesting, and yet challenging, is the fact that the V and the N in the compound can be separated, by \textit{de} in the following example:
+
+\ea%45
+    \label{ex:Sinitic:45} Mandarin\\
+    \gll Sanbai  conglai bu chi  Yunniang de cu.\\
+         Sanbai  ever     {\NEG} eat  Yunniang  \textsc{de} vinegar\\
+    \glt`Sanbai is never jealous of Yunniang.'
+    \z
+
+\citet{Huang1990} proposes an account for separable compounds in terms of lexical discontinuity – both the verb and the separable noun contribute information to the overall interpretation. The subscript marks the use of this form as a component of an idiom.  Note that \PRED\ is associated with the noun, and the constraining equation ensures that the non-compositional meaning will only be available if the form \textit{chi} also occurs in the sentence.
+
+\ea%46
+\label{ex:Sinitic:46}
+\ea \catlexentry{chi\textsubscript{2}}{V}{(\UP\textsc{vmorf}) = \textsc{chi}}
+\ex \catlexentry{cu\textsubscript{2}}{N}{(\UP\PRED)=`\textsc{be.jealous\arglist{\SUBJ \OBL}'}\\(\UP\textsc{vmorf}) =$_c$ \textsc{chi}\\(\UP\textsc{cl}) = \textsc{de}}
+    \z\z
+
+\citet{Huang1990} further shows that this proposal successfully accounts for various constructions in which the compound occurs, including topicalization. This example illustrates how complex structures can be captured with simple lexical rules.
+
+\subsection{VO compounds in Cantonese}
+\label{sec:Sinitic:4.3.1.1}
+
+VO compounds are found in Cantonese, too. As discussed in the previous section and as observed in \citet{BodomoYuChe2017}, among others, the challenge with analyzing VO compounds is that they seem to be lexical in that their meanings are often non-compositional and depend on the co-occurrence of a V and some specific N; but, at the same time, they seem to be phrasal in that other constituents can clearly be inserted in between the V and the N:
+
+\ea%47
+    \label{ex:Sinitic:47} Cantonese
+\ea    \gll jau-seoi\\
+         swim-water\\
+    \glt`swim'
+\ex    \gll ngo  jau-zo    zan     seoi.\\
+         {1\SG}   swim-{\PFV}   for.a.while   water\\
+    \glt `I have swum for a while.' \citep[389, ex.~18]{BodomoYuChe2017}
+    \z\z
+
+\citet{BodomoYuChe2017} treat \textit{seoi} `water' as a syntactic object, whose form is obligatorily required to give the target meaning (hence the \textsc{form} feature in {\OBJ} below), but it is not subcategorized for by the PRED, as the VO compound \textit{jau-seoi} `swim' requires only an agent argument at a-structure and \textit{seoi} `water' is athematic in the compound \citep[389]{BodomoYuChe2017}:
+
+\ea%48
+    \label{ex:Sinitic:48}
+    \avm[style=fstr]{[pred & `swim\arglist{\SUBJ \OBJ}\\
+        subj & [pred & `pro'\\num & sg\\pers & 1]\\
+        asp & pfv\\
+        obj & [form & seoi]\\
+        adj & \{[pred & `zan']\}]}
+    \z
+
+\citet{BodomoYuChe2017} apply this analysis to Mandarin VO compounds, too. \citet{CheBodomo2018} discuss Mandarin VO compounds, as well as idioms, and adopt a complex predicate analysis for VO compounds.
+
+A complex predicate approach has also been proposed to analyze serial verb constructions, which are common in Chinese. See \citet{BodomoLamYu2003} for a syntactic and semantic account of Cantonese serial verb constructions involving the benefactive role.
+
+\subsection{Resultative compounds}
+\label{sec:Sinitic:4.3.2}
+
+Chinese resultative compounds involve the concatenation of two verbs, and the merge of their predicate argument structures. They are called resultative compounds (VR) because the first verb denotes an action, and the second verb typically refers to the result caused. Previous studies have found that both verbs contribute to the argument structure of the compound. \citet{Li1990} proposes a structure-based account that allows most possible predicate-argument structures, but fails to select the correct reading among other possibilities. \citet{HuangLin1992} assume that VV compounds in Mandarin represent composite event structures and the complex predicate formation can be resolved with morpholexical mapping based on prototypical argument templates. \citet{Li1995} proposes another account based on the causative hierarchy. \citet{Her2004,Her2007a} offers an LFG account by incorporating unified mapping principles of LMT.
+
+  Her's (\citeyear{Her2004,Her2007a}) account focuses on cases where the first V has either one or two arguments, while the second V has only one argument. In addition, it is assumed that the VR compounds have two arguments. Hence, there are cases in which each verb contributes an argument, or the more complicated cases where the argument from the second verb can be merged with either the first or the second argument of a transitive verb, such as \textit{niu} `to wring' in \REF{ex:Sinitic:50}. The two argument merging scenarios are given in \REF{ex:Sinitic:49}.
+
+\ea%49
+\label{ex:Sinitic:49} V-V Resultative Compounding\\
+\begin{tabular}{ll}
+  V$_1$\arglistit{x y} + V$_2$\arglistit{z} $\rightarrow$
+  & (i) \arglistit{x y-z}\\
+  & (ii)\arglistit{x-z y}
+\end{tabular}
+    \z
+
+  Given that the resultative compound is transitive, thus a two-place predicate, the single role of V\textsubscript{2} must join one of the two roles of V\textsubscript{1} and form a composite role. Logically, two possibilities are obtained as shown in \REF{ex:Sinitic:49}, but three patterns of argument-function linking are observed, as in \REF{ex:Sinitic:50}-\REF{ex:Sinitic:52}. Note also that a causative reading is also obtained, except in \REF{ex:Sinitic:51}.
+
+\ea%50
+    \label{ex:Sinitic:50} Mandarin; causative\\
+    \gll Lisi  niu-gan-le     maojin.\\
+         Lee   wring-dry-{\PFV}   towel\\
+         \glt `Lee wrung the towel dry.'\\[1ex]
+         \begin{tabular}{cc}
+           \textlangle\textit{x}\hspace*{.5ex} & \textit{y}\makebox[0em][l]{\textit{-z}\textrangle}\\
+           $\downarrow$ & $\downarrow$\\
+           \SUBJ & \OBJ\\
+           Lee & towel\\
+         \end{tabular}      
+    \z
+
+\ea%51
+    \label{ex:Sinitic:51} Mandarin; non-causative\\
+    \gll Zhangsan  chi-yan-le    zhe  zhong  dongxi.\\
+         John        eat-tired.of-{\PFV}   this   kind  stuff\\
+    \glt `John got tired of eating this kind of stuff.'\\[1ex]
+         \begin{tabular}{c@{\quad}c}
+           \textlangle\textit{x}\makebox[.5em][l]{\textit{-z}} & \textit{y}\makebox[0em][l]{\textrangle}\\
+            $\downarrow$ & $\downarrow$\\
+            \SUBJ & \OBJ\\
+            John & stuff\\
+         \end{tabular}      
+             \z
+
+\ea%52
+    \label{ex:Sinitic:52}Mandarin; causative\\
+    \gll zhe  zhong  dongxi  hui  chi-si    ni.\\
+         this   kind  stuff  will   eat-dead   {2\SG}\\
+    \glt Eating this kind of stuff will make you dead.'\\[1ex]
+         \begin{tabular}{c@{\quad}c}
+           \textlangle{\textit{\rnode{x}{x}}}\makebox[.5em][l]{\textit{-z}} & {\textit{\rnode{y}{y}}}\makebox[0em][l]{\textrangle}\\[3ex]
+            \rnode{s}{\SUBJ} & \rnode{o}{\OBJ}\\
+            stuff & you\\
+         \end{tabular}
+\ncline[nodesep=2pt,linewidth=.5pt]{->}{x}{o}        
+\ncline[nodesep=2pt,linewidth=.5pt]{->}{y}{s}        
+         \z
+
+\noindent \citegen{Her2007a} resultative compound rules are given below in \REF{ex:Sinitic:53}.
+
+\ea%53
+\label{ex:Sinitic:53}V-V Resultative Compounding\\
+    V\textsubscript{caus}\arglistit{x y} + V\textsubscript{res}\arglistit{z} $\rightarrow$
+    V\textsubscript{caus}V\textsubscript{res}\arglistit{$\alpha~\beta$}, where \arglistit{$\alpha~\beta$}$^*$ =\\[1ex]
+\begin{tabular}{ll}
+  (i) \arglistit{x y-\,\st{z}}\\
+  (ii) \arglistit{x\mbox{\textnormal{[caus]}} \st{y}\,-z\mbox{\textnormal{[af]}}}\\
+  (iii) \arglistit{x-\,\st{z} y} \\
+  (iv) \arglistit{\st{x}\,-z\mbox{\textnormal{[af]}} y\mbox{\textnormal{[caus]}}}\\
+\end{tabular}\\[1ex]
+*Unsuppressed \textit{z} and the other unsuppressed role receive [af] and [caus], respectively
+\z
+
+With these rules, and a modified version of LMT, all possible interpretations of resultative compounds with V\arglistit{x y} and V\arglistit{x} combinations can be accounted for. See \citet{Her2007a} for details.
+
+\section{Lexical Mapping Theory and locative inversion}
+\label{sec:Sinitic:4.4}
+
+LFG crucially observes radical lexicalism \citep{Karttunen89}, and views grammatical operations as the projection and unification of mentally represented lexical information \citep{bresnan82}. Word order variations and alternations are not accounted for by transformational rules, but by the projection and unification of the mental representation of information from conceptual structure to c-structure. See \citetv{chapters/CoreConcepts} and \citetv{chapters/Intro} for a discussion on the architecture of LFG.
+
+The introduction of Lexical Mapping Theory (LMT) to LFG to derive lexicalized argument structures in terms of {\GF}s is crucial in allowing the theory to account for concept-driven lexicalization. It also provides an elegant way to account for word order and other typological variations. LMT formulates rules to capture how conceptualized event structures are lexicalized as argument structures to mediate mapping to functional structures \citep{bresnan1989locative,Alsina:PhD}. \citet{Huang1993a} proposes an adapted LMT for Mandarin, adopting previous assumptions that the mapping is determined by the thematic hierarchy, and the theory of intrinsic and default classification of grammatical functions. The adaptations are proposed, taking into consideration both the theoretical concerns to incorporate \citegen{Dowty1991} Proto-role properties, and the need to capture several atypical argument realization patterns in Mandarin. These patterns include the NP realization of extent/dimension \REF{ex:Sinitic:54a}, and the use of time/location NPs instead of pleonastic pronouns in the subject position in presentative constructions \REF{ex:Sinitic:54b}.
+
+\ea%54
+    \label{ex:Sinitic:54} Mandarin
+    \ea\label{ex:Sinitic:54a}
+    \gll Ta  ti-le     wo  {yi}   {jiao}.\\
+         3{\SG}  kick-{\PFV}  1{\SG}  one  foot\\
+    \glt `S/he kicked me once'
+    \ex\label{ex:Sinitic:54b}
+    \gll Qiangshang  gua-le    ji   fu   hua.\\
+         wall.top  hang-{\PFV}  several {\CLF}  painting\\
+    \glt`There are several paintings on the wall.'
+    \z\z
+
+    Huang also provides evidence to show that the GOAL role is below the THEME role on the thematic hierarchy in lexicalized compounds, idiom chunks and ditransitive verbs. The thematic hierarchy for Mandarin is thus revised, as shown in \REF{ex:Sinitic:55}. The intrinsic and default classification of grammatical functions \REF{ex:Sinitic:57a} are slightly modified to simplify feature assignments, and to accommodate the locative inversion construction in Mandarin.
+
+\ea%55
+    \label{ex:Sinitic:55} Thematic hierarchy for Mandarin Chinese \citep{Huang1993a}\\
+    ag > ben/mal > instr > th/pat > exp/goal > loc/dom
+    \z
+
+\citet{HuangHer1998} and \citet{Her2010} propose a simplified LMT. This proposal keeps the universal thematic hierarchy, with the assumption that morpholexical operations can replace the Subject Condition. Note that the two proposals take different approaches to accommodate the Mandarin Chinese data. \citet{Huang1993a} has revised the thematic hierarchy, but has kept intrinsic and default classification of grammatical functions, while \citet{Her2010} has kept the thematic hierarchy \REF{ex:Sinitic:56}, but has adjusted the criteria for the {\pm}$r$(estricted) and {\pm}$o$(bjective) specifications. The different proposals aim to account for several important generalizations in Chinese, some of which will be discussed below.
+
+\ea%56
+    \label{ex:Sinitic:56} Thematic Hierarchy for Mandarin Chinese \citep{Her2010}\\
+    {ag} > {ben} > {go}/{exp} > {inst} > {pt}/{th} > {loc}
+    \z
+
+  In terms of the classifications, the [$-$] values, considered less marked than the [+] values, are thus given a higher position on the hierarchy. \citet{Her2010} also assumes that [$-r$] (unrestricted) is less marked than [$-o$] (non-object-like), given that [$-r$] {\GF}s are not restricted to specific argument roles, \citet{Huang1993a} does not make the same assumption.
+
+\ea%57
+    \label{ex:Sinitic:57} Markedness Hierarchy of Grammatical Functions:
+    \ea\label{ex:Sinitic:57a}
+    \SUBJ([$-r$, $-o$]) $>$ \OBJ([$-r$, $+o$]) / \OBLTHETA([$+r$, $-o$]) $>$ \OBJTHETA([$+r$, $+o$]) ~ \citep{Huang1993b}
+    \ex\label{ex:Sinitic:57b}
+    \SUBJ([$-r$, $-o$]) $>$ \OBJ([$-r$, $+o$]) $>$ \OBLTHETA([$+r$, $-o$]) $>$ \OBJTHETA([$+r$, $+o$]) ~ \citep{Her2010}
+    \z\z
+
+\noindent See also \citet{Fu1993} and \citet{Pan1997} for introductions to LMT published in Chinese journals.
+
+\hspace*{-.1pt}Locative inversion is heavily influenced by considerations at information structure (\citealt{Bresnan89}; \citealt[209]{dalrymple01}). It is also known as the presentative or existential construction. \citet{Gu1992,Gu1997} assumes that most verbs which may participate in the locative inversion in Mandarin are derived from transitive verbs. \citet{Pan1996,Pan1997} argues that it is necessary to distinguish two types of locative inversion, based on the presence of the aspectual markers -\textit{le} \PFV\ or -\textit{zhe} \DUR\ on the verb. \citet{HuangEtAl1999} shows that the range of different meanings associated with the locative inversion and the presentative sentences can be accounted for by considering the interaction of constructional and lexical meanings. \citet{CuiYuan2020} suggest that existential sentences exhibit features of ergativity.
+
+   The challenge that the locative inversion presents to LFG, especially to LMT, is how it is possible to map the locative role, ranked low on the thematic hierarchy, to the most prominent grammatical function {\SUBJ}. \citet{bresnan1989locative}, based on data from Chiche\^wa, propose a special default rule for the presentational focus construction. The rule assumes that the locative phrase bears the focus feature and ensures that a locative [$-r$] argument appears. \citet{Bresnan:Architecture} extends the account to English. \citet{HuangHer1998}, however, shows that the proposal cannot account for the locative inversion in Mandarin, especially in constructions involving three-place predicates, such as \textit{fang `}put':
+
+\ea%58
+    \label{ex:Sinitic:58}Mandarin
+    \ea\label{ex:Sinitic:58a}
+    \gll Lisi  fang-qian     zai zhuo-shang.\\
+         Lisi    place-money at   table-top\\
+    \glt`Lisi placed some money on the table.'
+    \ex\label{ex:Sinitic:58b}
+    \gll qian  (Lisi)  fang  zai  zhuo-shang.\\
+         money  {\db}Lisi   placed  at  table-top\\
+    \glt`Money was placed on the table by Lisi.'
+    \ex\label{ex:Sinitic:58c}
+    \gll zhuo-shang   (Lisi)   fang-le    qian.\\
+         table-top   {\db}Lisi  place-{\PFV}  money\\
+    \glt`On the table was placed some money.'
+    \z\z
+
+\noindent Crucially, both \REF{ex:Sinitic:58b} and \REF{ex:Sinitic:58c} are treated as locative inversion structures. There is, however, evidence suggesting that \REF{ex:Sinitic:58b}, in fact, involves topicalization, but not locative inversion. First, \textit{qian} `money' is not a locative phrase. Second, the verb in \REF{ex:Sinitic:58b} does not require the presence of the aspectual markers -\textit{zhe} \DUR\ or \textit{-le} \PRF, unlike the verb in well-accepted Mandarin locative inversion structures. The preposed NP in \REF{ex:Sinitic:58b} can therefore be treated as a regular topicalized phrase, without further stipulations. See also \citet{Lui2020} for a discussion of the locative inversion in Cantonese.
+
+\section{Classifiers and measure words}
+\label{sec:Sinitic:4.6}
+
+Mandarin is a textbook example of a numeral classifier language. As a lexical category, numeral classifiers have two subcategories, namely sortal classifiers (C), \textit{aka} classifiers; and mensural classifiers (M), \textit{aka} measure words \citep{HuangShi2016}. See \REF{ex:Sinitic:59} and \REF{ex:Sinitic:60} for examples of Cs and Ms, respectively \citep{Her2012b}.
+
+\ea%59
+    \label{ex:Sinitic:59}Mandarin
+\ea    \gll san  gen  xiangjiao \\
+         3  {\CLF}  banana\\
+    \glt`3 bananas'
+\ex    \gll yibai  ben  shu\\
+         100  {\CLF}  book\\
+    \glt`100 books'
+\ex    \gll shi  pi  ma\\
+         10  {\CLF}  horse\\
+    \glt`10 horses'
+    \z\z
+
+\ea%60
+    \label{ex:Sinitic:60}Mandarin
+\ea    \gll san  da            xiangjiao\\
+         3 \textsc{m}-dozen  banana\\
+    \glt `3 dozens of bananas'
+\ex    \gll yibai  xiang  shu\\
+         100  \textsc{m}-box  book\\
+    \glt `100 boxes of books'
+\ex    \gll shi  qun        ma\\
+         10  \textsc{m}-herd    horse\\
+    \glt `ten herds of horses'
+    \z\z
+
+\noindent C and M consistently appear after a numeral (Num) and before a noun (N) and are mutually exclusive in this position, as only one C/M can be used. It is a near consensus in the Chinese linguistics literature to assign the same phrasal structure to them. The syntactic position is typically called the classifier position. See \citet{JiangJenksJi2022} for a summary of syntactic approaches, and \citet{ChenAhrensHuang2022} for a summary of semantic approaches to the Chinese classifier system.
+
+  Cs and Ms, however, do exhibit some differences (\citealt{Chao1968,Her2017}; see also \citealt{Huang2005} for an ontological account). In terms of modification, the adjective, whether it is found before or after a C, modifies the head N. \REF{ex:Sinitic:61a} and \REF{ex:Sinitic:61b} therefore have the same meaning. An adjective in a nominal structure with an M, however, modifies the immediately following element. Thus, in \REF{ex:Sinitic:62a}, \textit{da} `big' modifies \textit{xiang} `box', yielding the meaning `one big box of apples', while in \REF{ex:Sinitic:62b}, \textit{da} `big' modifies \textit{pingguo,} yielding the meaning `one box of big apples' \citep{Her2012b}:
+
+\ea%61
+    \label{ex:Sinitic:61} Mandarin sortal classifiers 
+\ea\label{ex:Sinitic:61a} \gll yi   da  ke  pingguo\\
+         1   big {\CLF}   apple\\
+\ex\label{ex:Sinitic:61b} \gll yi  ke da     pingguo\\
+         1   {\CLF} big  apple\\
+    \glt`one big apple'
+    \z\z
+
+\ea%62
+    \label{ex:Sinitic:62} Mandarin mensural classifiers 
+\ea\label{ex:Sinitic:62a} \gll yi   da  xiang   pingguo\\
+1   big \textsc{m}-box apple\\
+\glt`one big box of apples'
+\ex\label{ex:Sinitic:62b} \gll yi   xiang   da   pingguo\\
+         1    \textsc{m}-box big  apple\\
+    \glt`one box of big apples'
+    \z\z
+
+Another difference between Cs and Ms is that the former has the fixed numeral value of precisely \textit{1}, while Ms can be of any value, numerical or non-numerical, except \textit{1}, as shown in \REF{ex:Sinitic:63}. In (\ref{ex:Sinitic:63}), K is a C or M, and k is the mathematical value of K. 
+
+\ea%63
+\label{ex:Sinitic:63}C/M distinction in mathematical values\\\
+[Num \b{K} N] = [NUM{\texttimes}$k$N], where K=C \mbox{\textit{iff}} $k=1$, otherwise K=M.
+\z
+
+  The LFG account offered in \citet{Her2012b} assigns a left-branching c-structure to C/M, as in \REF{ex:Sinitic:64}, consistent with the traditional approach but contra the dominant right-branching structure preferred in recent derivational syntax. See \citet{Her2017} and \citet{HerTsai2020} for arguments from typological as well as Mandarin-internal perspectives. Sample lexical entries of N, Num, C, and M are given in \REF{ex:Sinitic:65}.
+
+\ea%64
+    \label{ex:Sinitic:64}
+    Unified left-branching c-structure of the classifier construction\\
+  \begin{forest}
+    for tree={calign=fixed edge angles},
+     delay={where content={}{shape=coordinate,
+     for current and siblings={anchor=north}}{}}
+     [[[{Num\\\textit{san}\\3},tier=word]
+        [{C/M\\\textit{ben/xiang}\\C/M-box},tier=word]]
+       [{N\\\textit{shu}\\book},tier=word]]
+    \end{forest}
+    \z
+\ea%65
+    \label{ex:Sinitic:65}
+    Sample lexical entries
+    \ea\label{ex:Sinitic:65a} \catlexentry{shu}{N}{(\UP\PRED)=\textsc{`book'}\\
+      (\UP\textsc{profilable})=\{\textsc{ben{\cn 本},ce{\cn 冊}}\}}
+    \ex\label{ex:Sinitic:65b} \catlexentry{san}{Num}{(\UP\textsc{card})=3}
+    \ex\label{ex:Sinitic:65c} \catlexentry{ben}{C/M}{(\UP\textsc{profiled})=\textsc{ben}{\cn 本}}
+    \ex\label{ex:Sinitic:65d} \catlexentry{xiang}{C/M}{(\UP\PRED)=\textsc{`box'}}
+    \z\z
+
+  Cs and Ms are two subcategories of a single lexical category C/M. Their differences are located in f-structure. {\CLF} in \REF{ex:Sinitic:65c} has no PRED, but M in \REF{ex:Sinitic:65d} does; C, however, has a feature \textsc{profiled}, whose value is the essential property each {\CLF} serves to profile, or highlight. A noun can only have one or more of its essential features profiled and may thus co-occur with more than one C, though one at a time as a formal requirement. In \REF{ex:Sinitic:65a}, for example, \textit{shu} `book' normally takes the {\CLF} \textit{ben}, but \textit{ce} is also an option, accounted for by the feature \textsc{profilable}, which takes a set, \{BEN, CE\}, as its value. The relevant annotated phrase structure rules are given in \REF{ex:Sinitic:66}.
+
+\ea%66
+\label{ex:Sinitic:66}Annotated phrase structure rules for the classifier construction
+\ea  \phraserule{NP}{...
+  \rulenode{C/MP\\(\DOWN\PRED) $\Rightarrow$ (\UP\textsc{quantifier})=\DOWN\\
+    $\neg$(\DOWN\PRED) $\Rightarrow$ \{\UP=\DOWN, (\DOWN\textsc{profiled}) $\in_c$ (\UP\textsc{profilable})\}}
+  ... \rulenode{N\\\UP=\DOWN}}
+\ex  \phraserule{C/MP}{...\rulenode{Num\\\UP=\DOWN}...
+  \rulenode{C/M\\\UP=\DOWN\\((\UP\textsc{card})=1)}}
+\z\z
+
+  The notation `A$\Rightarrow$B' in \REF{ex:Sinitic:66} means `if A, then B'. Thus, in a C/MP, if it has \PRED, indicating it is an M, then the information goes in a \textsc{quantifier} function; if it does not have \PRED, indicating it is a C, then it serves as a co-head with N and its \textsc{profiled} value must be a member of N's \textsc{profilable} set of values. The c-structure and f-structure of two nominal phrases with a {\CLF} and an M are given in \REF{ex:Sinitic:67} and \REF{ex:Sinitic:68}, respectively.
+
+\ea%67
+    \label{ex:Sinitic:67}Mandarin\\
+    \gll zhongzhong-de   san  da  ben     hou  shu\\
+          heavy-\textsc{de}         3     big {\CLF} thick  book\\
+          \glt`three heavy big thick books'\\[1ex]
+    \begin{forest}
+     for tree={calign=fixed edge angles},
+     delay={where content={}{shape=coordinate,
+     for current and siblings={anchor=north}}{}}
+     [[{CMP\\{\UP=\DOWN}}
+         [MOD [{zhongzhongde\\heavy}]]
+         [[Num [{san\\three}]]
+           [[MOD [{da\\big}]]
+             [CM [{\textbf{ben}\\\textbf{C}}]]]]]
+       [{NP\\\UP=\DOWN}, [MOD [{hou\\thick}]]
+                        [N [{shu\\book}]]]]
+    \end{forest}
+     \avm[style=fstr]{[pred & book\\
+        \textbf{\textsc{profiled}} & \textbf{\textsc{ben {\cn 本}}}\\
+        profilable & \{\textsc{ben {\cn 本}}, \textsc{ce {\cn 冊}}\}\\
+        card & 3\\
+        adjuncts & \{[``heavy'']\\[``big'']\\[``thick'']\}]}
+          \z
+
+\ea%68
+    \label{ex:Sinitic:68}Mandarin\\
+    \gll zhongzhong-de  san  da  xiang  hou  shu\\
+         heavy-\textsc{de}           3      big   \textsc{m}-box  thick  book\\
+    \glt `three heavy big boxes of thick books'\\[1ex]
+    \begin{forest}
+     for tree={calign=fixed edge angles},
+     delay={where content={}{shape=coordinate,
+     for current and siblings={anchor=north}}{}}
+     [[{CMP\\{(\UP\textsc{quantifier})=\DOWN}}
+         [MOD [{zhongzhongde\\heavy}]]
+         [[Num [{san\\three}]]
+           [[MOD [{da\\big}]]
+             [CM [{\textbf{xiang}\\\textbf{M-box}}]]]]]
+       [{NP\\\UP=\DOWN}, [MOD [{hou\\thick}]]
+                        [N [{shu\\book}]]]]
+    \end{forest}
+    \avm[style=fstr]{[pred & book\\
+        adjuncts & \{[``thick'']\}\\
+        profilable & \{\textsc{ben {\cn 本}}, \textsc{ce {\cn 冊}}\}\\
+        card & 3\\
+        quantifier & [pred & `box'\\card & 3\\
+        adjuncts & \{[``heavy'']\\[``big'']~~~~~~\}]]}
+   \z
+
+   The parallel architecture of c-structure and f-structure allows Cs and Ms to belong to one syntactic category and \REF{ex:Sinitic:67} and \REF{ex:Sinitic:68} thus share the same c-structure, while their differences are captured in the f-structure, where a {\CLF} serves as a co-head of the nominal construction and an M serves as the head of a quantifier phrase.
+
+  See \citet{Borjarsetal18} for a different proposal for the c- and f-structures of Mandarin noun phrases containing classifiers and measure words, and \citet{HuangAhrens2000} for a discussion on kind and event classifiers in Mandarin.
+
+\section{Other properties and phenomena}
+\label{sec:Sinitic:4.7}
+
+A number of other properties and phenomena are prominent in Chinese as well, and studies of these are available in the very large body of LFG literature on the analysis of Chinese. However, due to constraints of space and scope, we cannot discuss all of these in detail in this chapter. This section will hopefully serve as a pointer to some of these works. The syntax of Mandarin questions has been investigated in \citet{ShiuHuang1989} and \citet{Huang1993b}. Relativization and topicalization phenomena in Mandarin have been studied in \citet{Huang1992}, where the author proposes a functional uncertainty analysis \citep{kaplzaen89}. \citet{Huang1988} analyses `possessive subjects' in Mandarin, while \citet{Huang1990} offers an LFG account of possessive-object constructions in Mandarin, showing how these display lexical discontinuity. \citet{Chief1996} explores an LFG account of Mandarin reflexive verbs. \citet{Dong2016} provides an LFG analysis of pronominal binding in Mandarin. \citet{Lam2020} investigates anaphoric and functional control in Mandarin. \citet{Che2014} is a study of particles in Mandarin.
+
+\section{NLP applications of LFG in Chinese}
+\label{sec:Sinitic:4.8}
+
+LFG has played an important role in the development of Chinese NLP. Joan Bresnan, Ronald Kaplan, Lauri Karttunen and Annie Zaenen visited Taiwan at the dawn of Chinese computational linguistics in 1989 and made lasting impact \citep{Bresnan89}. One of the immediate outcomes was the Information-based Case Grammar (ICG, \citealt{Chen1990}), the first comprehensive grammar of Chinese that incorporated features of both LFG and HPSG. \citet{HerHiginbothamPentheroudakis1991} and \citet{Her1995} describe a rule-based commercial machine translation system for English-Chinese, where parsing, transfer and generation are all based on LFG. This system was later acquired by Apptek (\url{https://www.apptek.com/}) and expanded to include multiple language pairs and many other NLP applications. \citet{Kit1992,Kit1993a,Kit1993b} and \citet{KitWebster1992} are also among the earliest studies applying LFG assumptions to parse Chinese. \citet{WebsterKit1995} describe the use of a `Chinese-Lexical Functional Grammar (C-LFG)' parser to analyze simple sentences from texts. \citet{Sun2001} outlines the computational implementation of LFG in Chinese. \citet{Fang-King-GEAF07} provide an LFG grammar of Mandarin for machine use. \citet{GuoWangGenabith2008} describes LFG-based generation for Chinese, while \citet{burke-etal-2004-treebank} and \citet{Guo:09} describe LFG-based Chinese treebanks. \citet{ChiefHuangChenTsaiChang2000} present a corpus-based approach to the analysis of synonyms in Chinese. \citet{JiangEtAl2019} annotate Chinese light verb constructions according to the paradigm of PARSEME, a platform built based on LFG and other theoretical frameworks.
+
+\section{Conclusion: LFG and Chinese Linguistics}
+\label{sec:Sinitic:5}
+
+The assumptions of LFG have been applied to the research on a number of grammatical phenomena in Chinese languages since \citet{Huang1985}. A number of LFG-based studies on Chinese have made a significant impact to Chinese linguistics. \citet{HuangMangione1985}, one of the earliest LFG papers on Chinese, has inspired \citegen{Huang1988} treatment of, and a long debate on, the status of V1 and V2 in the Mandarin resultative verb construction. Interestingly, the V2-as-matrix-verb analysis, initially proposed by \citet{HuangMangione1985}, is gradually emerging as a possible consensus. Similarly, the functional uncertainty of LFG allows a transparent account of Mandarin long-distance dependencies without abstract levels and movements \citep{Huang1992}. \citet{Huang1993a} first introduced the concept of applicatives to Mandarin, and initiated many interesting discussions in Chinese linguistics in the past 20 years. LFG studies \citep{Huang1989b,Tan1991,Her1991} on the {\TOPIC} and {\SUBJ} functions in Chinese have contributed to the ongoing topic/subject debate in Chinese. LFG studies have also provided crucial insights to the understanding of the \textit{ba} and \textit{bei} constructions in Chinese (e.g.\ \citealt{Her1989,Bender2000,Her2009}), especially in terms of treating \textit{ba} and \textit{bei} as the main predicate. The seeming dilemma of Chinese compounds displaying lexical non-compositionality and phrasal compositionality (e.g.\ the separable compounds) can be straight-forwardly dealt with by adopting the assumptions of LFG. This is perhaps one of the topics receiving the most attention in the LFG literature on Chinese, including but not limited to \citet{Huang1990}, \citet{HuangLin1992}, \citet{Her1996,Her1997}, and \citet{BodomoYuChe2017}.
+
+  Accounts of Chinese languages have contributed to the development of the LFG framework, too. \citet{ShiuHuang1989} was one of the first LFG accounts on sentential clitics (e.g.\ Mandarin question particles). \citet{Huang1992,Huang1993b} applies the concept of functional uncertainty to account for Mandarin data. \citet{Her2006b} introduces the concepts of interaction and optimality to LMT. \citet{Her2012a,Her2012b} provides a full account of the classifier system. Finally, \citet{BodomoLuke2001} and colleagues' work on Cantonese and Zhuang have added to the typological diversity of LFG research.
+
+\section*{Acknowledgments}
+
+We thank our reviewers for their constructive comments, which have helped improve the chapter in many ways. All remaining errors are our own.
+
+\section*{Abbreviations}
+
+Besides the abbreviations from the Leipzig Glossing Conventions, this
+chapter uses the following abbreviations.\medskip
+
+\noindent\begin{tabularx}{.45\textwidth}{lQ}
+\textsc{exp} & 		experiential \\
+\textsc{m} &		measure word\\
+\quad
+\end{tabularx}
+\begin{tabularx}{.45\textwidth}{lQ}
+\textsc{prt} &		particle\\
+\textsc{zai} &		marker meaning `now' or `at the moment'\\
+\end{tabularx}
+
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}

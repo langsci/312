@@ -1,0 +1,487 @@
+% %%%%%%%%% lang sci press commands
+
+\newcommand*{\orcid}{}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\makeatother
+
+\newcommand{\togglepaper}[1][0]{
+   \bibliography{../localbibliography}
+   \papernote{\scriptsize\normalfont
+     \theauthor.
+     \titleTemp.
+     To appear in:
+     Dalrymple, Mary (ed.).
+     Handbook of Lexical Functional Grammar.
+     Berlin: Language Science Press. [preliminary page numbering]
+   }
+   \pagenumbering{roman}
+   \setcounter{chapter}{#1}
+   \addtocounter{chapter}{-1}
+}
+
+\DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+\DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf}
+\DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\mathtt}
+\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+\DeclareOldFontCommand{\it}{\normalfont\itshape}{\mathit}
+\makeatletter
+\DeclareOldFontCommand{\sc}{\normalfont\scshape}{\@nomath\sc}
+\makeatother
+
+% Bug fix, 3 April 2021
+\SetupAffiliations{output in groups = false,
+                   separator between two = {\bigskip\\},
+                   separator between multiple = {\bigskip\\},
+                   separator between final two = {\bigskip\\}
+                   }
+
+% commands for all chapters
+\setmathfont{LibertinusMath-Additions.otf}[range="22B8]
+
+% punctuation between a sequence of years in a citation
+% OLD: \renewcommand{\compcitedelim}{\multicitedelim}
+\renewcommand{\compcitedelim}{\addcomma\space}
+
+% \citegen with no parentheses around year
+\providecommand{\citegenalt}[2][]{\citeauthor{#2}'s \citeyear*[#1]{#2}}
+
+% avms with plain font, using langsci-avm package
+\avmdefinestyle{plain}{attributes=\normalfont,values=\normalfont,types=\normalfont,extraskip=0.2em}
+% avms with attributes and values in small caps, using langsci-avm package
+\avmdefinestyle{fstr}{attributes=\scshape,values=\scshape,extraskip=0.2em}
+% avms with attributes in small caps, values in plain font (from peter sells)
+\avmdefinestyle{fstr-ps}{attributes=\scshape,values=\normalfont,extraskip=0.2em}
+
+% reference to previous or following examples, from Stefan
+%(\mex{1}) is like \next, referring to the next example
+%(\mex{0}) is like \last, referring to the previous example, etc
+\makeatletter
+\newcommand{\mex}[1]{\the\numexpr\c@equation+#1\relax}
+\makeatother
+
+% do not add xspace before these
+\xspaceaddexceptions{1234=|*\}\restrict\,}
+
+% Several chapters use evnup -- this is verbatim from lingmacros.sty
+\makeatletter
+\def\evnup{\@ifnextchar[{\@evnup}{\@evnup[0pt]}}
+\def\@evnup[#1]#2{\setbox1=\hbox{#2}%
+\dimen1=\ht1 \advance\dimen1 by -.5\baselineskip%
+\advance\dimen1 by -#1%
+\leavevmode\lower\dimen1\box1}
+\makeatother
+
+% Centered entries in tables.  Requires array package.
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+% Reference to multiple figures, requested by Victoria Rosen
+\newcommand{\figsref}[2]{Figures~\ref{#1}~and~\ref{#2}}
+\newcommand{\figsrefthree}[3]{Figures~\ref{#1},~\ref{#2}~and~\ref{#3}}
+\newcommand{\figsreffour}[4]{Figures~\ref{#1},~\ref{#2},~\ref{#3}~and~\ref{#4}}
+\newcommand{\figsreffive}[5]{Figures~\ref{#1},~\ref{#2},~\ref{#3},~\ref{#4}~and~\ref{#5}}
+
+% Semitic chapter:
+\providecommand{\textchi}{χ}
+
+% Prosody chapter
+\makeatletter
+\providecommand{\leftleadsto}{%
+  \mathrel{\mathpalette\reflect@squig\relax}%
+}
+\newcommand{\reflect@squig}[2]{%
+  \reflectbox{$\m@th#1$$\leadsto$}%
+}
+\makeatother
+\newcommand\myrotaL[1]{\mathrel{\rotatebox[origin=c]{#1}{$\leadsto$}}}
+\newcommand\Prosleftarrow{\myrotaL{-135}}
+\newcommand\myrotaR[1]{\mathrel{\rotatebox[origin=c]{#1}{$\leftleadsto$}}}
+\newcommand\Prosrightarrow{\myrotaR{135}}
+
+% Core Concepts chapter
+\newcommand{\anterm}[2]{#1\\#2}
+\newcommand{\annode}[2]{#1\\#2}
+
+% HPSG chapter
+\newcommand{\HPSGphon}[1]{〈#1〉}
+% for defining RSRL relations:
+\newcommand{\HPSGsfl}{\enskip\ensuremath{\stackrel{\forall{}}{\Longleftarrow{}}}\enskip}
+% AVM commands, valid only inside \avm{}
+\avmdefinecommand {phon}[phon] { attributes=\itshape } % define a new \phon command
+% Forest Set-up
+\forestset
+  {notin label above/.style={edge label={node[midway,sloped,above,inner sep=0pt]{\strut$\ni$}}},
+    notin label below/.style={edge label={node[midway,sloped,below,inner sep=0pt]{\strut$\ni$}}},
+  }
+
+% Dependency chapter
+\newcommand{\ua}{\ensuremath{\uparrow}}
+\newcommand{\da}{\ensuremath{\downarrow}}
+\forestset{
+  dg edges/.style={for tree={parent anchor=south, child anchor=north,align=center,base=bottom},
+                 where n children=0{tier=word,edge=dotted,calign with current edge}{}
+                },
+dg transfer/.style={edge path={\noexpand\path[\forestoption{edge}, rounded corners=3pt]
+    % the line downwards
+    (!u.parent anchor)-- +($(0,-l)-(0,4pt)$)-- +($(12pt,-l)-(0,4pt)$)
+    % the horizontal line
+    ($(!p.north west)+(0,l)-(0,20pt)$)--($(.north east)+(0,l)-(0,20pt)$)\forestoption{edge label};},!p.edge'={}},
+% for Tesniere-style junctions
+dg junction/.style={no edge, tikz+={\draw (!p.east)--(!.west) (.east)--(!n.west);}    }
+}
+
+
+% Glossary
+\makeatletter % does not work with \newcommand
+\def\namedlabel#1#2{\begingroup
+   \def\@currentlabel{#2}%
+   \phantomsection\label{#1}\endgroup
+}
+\makeatother
+
+
+\renewcommand{\textopeno}{ɔ}
+\providecommand{\textepsilon}{ɛ}
+
+\renewcommand{\textbari}{ɨ}
+\renewcommand{\textbaru}{ʉ}
+\newcommand{\acutetextbari}{í̵}
+\renewcommand{\textlyoghlig}{ɮ}
+\renewcommand{\textdyoghlig}{ʤ}
+\renewcommand{\textschwa}{ə}
+\renewcommand{\textprimstress}{ˈ}
+\newcommand{\texteng}{ŋ}
+\renewcommand{\textbeltl}{ɬ}
+\newcommand{\textramshorns}{ɤ}
+
+\newbool{bookcompile}
+\booltrue{bookcompile}
+\newcommand{\bookorchapter}[2]{\ifbool{bookcompile}{#1}{#2}}
+
+
+
+
+\renewcommand{\textsci}{ɪ}
+\renewcommand{\textturnscripta}{ɒ}
+
+\renewcommand{\textscripta}{ɑ}
+\renewcommand{\textteshlig}{ʧ}
+\providecommand{\textupsilon}{υ}
+\renewcommand{\textyogh}{ʒ}
+\newcommand{\textpolhook}{̨}
+
+\renewcommand{\sectref}[1]{Section~\ref{#1}}
+
+%\KOMAoptions{chapterprefix=true}
+
+\renewcommand{\textturnv}{ʌ}
+\renewcommand{\textrevepsilon}{ɜ}
+\renewcommand{\textsecstress}{ˌ}
+\renewcommand{\textscriptv}{ʋ}
+\renewcommand{\textglotstop}{ʔ}
+\renewcommand{\textrevglotstop}{ʕ}
+%\newcommand{\textcrh}{ħ}
+\renewcommand{\textesh}{ʃ}
+
+% label for submitted and published chapters
+\newcommand{\submitted}{{\color{red}Final version submitted to Language Science Press.}}
+\newcommand{\published}{{\color{red}Final version published by
+    Language Science Press, available at \url{https://langsci-press.org/catalog/book/312}.}}
+
+% Treebank definitions
+\definecolor{tomato}{rgb}{0.9,0,0}
+\definecolor{kelly}{rgb}{0,0.65,0}
+
+% Minimalism chapter
+\newcommand\tr[1]{$<$\textcolor{gray}{#1}$>$}
+\newcommand\gapline{\lower.1ex\hbox to 1.2em{\bf \ \hrulefill\ }}
+\newcommand\cnom{{\llap{[}}Case:Nom{\rlap{]}}}
+\newcommand\cacc{{\llap{[}}Case:Acc{\rlap{]}}}
+\newcommand\tpres{{\llap{[}}Tns:Pres{\rlap{]}}}
+\newcommand\fstackwe{{\llap{[}}Tns:Pres{\rlap{]}}\\{\llap{[}}Pers:1{\rlap{]}}\\{\llap{[}}Num:Pl{\rlap{]}}}
+\newcommand\fstackone{{\llap{[}}Tns:Past{\rlap{]}}\\{\llap{[}}Pers:\ {\rlap{]}}\\{\llap{[}}Num:\ {\rlap{]}}}
+\newcommand\fstacktwo{{\llap{[}}Pers:3{\rlap{]}}\\{\llap{[}}Num:Pl{\rlap{]}}\\{\llap{[}}Case:\ {\rlap{]}}}
+\newcommand\fstackthr{{\llap{[}}Tns:Past{\rlap{]}}\\{\llap{[}}Pers:3{\rlap{]}}\\{\llap{[}}Num:Pl{\rlap{]}}} 
+\newcommand\fstackfou{{\llap{[}}Pers:3{\rlap{]}}\\{\llap{[}}Num:Pl{\rlap{]}}\\{\llap{[}}Case:Nom{\rlap{]}}}
+\newcommand\fstackonefill{{\llap{[}}Tns:Past{\rlap{]}}\\{\llap{[}}Pers:3{\rlap{]}}\\%
+  {\llap{[}}Num:Pl{\rlap{]}}}
+\newcommand\fstackoneint%
+    {{\llap{[}}{\bf Tns:Past}{\rlap{]}}\\{\llap{[}}Pers:\ {\rlap{]}}\\{\llap{[}}Num:\ {\rlap{]}}}
+\newcommand\fstacktwoint%
+    {{\llap{[}}{\bf Pers:3}{\rlap{]}}\\{\llap{[}}{\bf Num:Pl}{\rlap{]}}\\{\llap{[}}Case:\ {\rlap{]}}}
+\newcommand\fstackthrchk%
+    {{\llap{[}}{\bf Tns:Past}{\rlap{]}}\\{\llap{[}}{Pers:3}{\rlap{]}}\\%
+      {\llap{[}}Num:Pl{\rlap{]}}} 
+\newcommand\fstackfouchk%
+    {{\llap{[}}{\bf Pers:3}{\rlap{]}}\\{\llap{[}}{\bf Num:Pl}{\rlap{]}}\\%
+      {\llap{[}}Case:Nom{\rlap{]}}}
+\newcommand\uinfl{{\llap{[}}Infl:\ \ {\rlap{]}}}
+\newcommand\inflpass{{\llap{[}}Infl:Pass{\rlap{]}}}
+\newcommand\fepp{{\llap{[}}EPP{\rlap{]}}}
+\newcommand\sepp{{\llap{[}}\st{EPP}{\rlap{]}}}
+\newcommand\rdash{\rlap{\hbox to 24em{\hfill (dashed lines represent
+      information flow)}}}
+
+
+% Computational chapter
+\usepackage{./packages/kaplan}
+\renewcommand{\red}{\color{lsLightWine}}
+
+% Sinitic
+\newcommand{\FRAME}{\textsc{frame}\xspace}
+\newcommand{\arglistit}[1]{{\textlangle}\textit{#1}{\textrangle}}
+
+%WestGermanic
+\newcommand{\streep}[1]{\mbox{\rule{1pt}{0pt}\rule[.5ex]{#1}{.5pt}\rule{-1pt}{0pt}\rule{-#1}{0pt}}}
+
+\newcommand{\hspaceThis}[1]{\hphantom{#1}}
+
+
+\newcommand{\FIG}{\textsc{figure}}
+\newcommand{\GR}{\textsc{ground}}
+
+%%%%% Morphology
+% Single quote
+\newcommand{\asquote}[1]{`{#1}'} % Single quotes
+\newcommand{\atrns}[1]{\asquote{#1}} % Translation
+\newcommand{\attrns}[1]{(\asquote{#1})} % Translation
+\newcommand{\ascare}[1]{\asquote{#1}} % Scare quotes
+\newcommand{\aqterm}[1]{\asquote{#1}} % Quoted terms
+% Double quote
+\newcommand{\adquote}[1]{``{#1}''} % Double quotes
+\newcommand{\aquoot}[1]{\adquote{#1}} % Quotes
+% Italics
+\newcommand{\aword}[1]{\textit{#1}}  % mention of word
+\newcommand{\aterm}[1]{\textit{#1}}
+% Small caps
+\newcommand{\amg}[1]{{\textsc{\MakeLowercase{#1}}}}
+\newcommand{\ali}[1]{\MakeLowercase{\textsc{#1}}}
+\newcommand{\feat}[1]{{\textsc{#1}}}
+\newcommand{\val}[1]{\textsc{#1}}
+\newcommand{\pred}[1]{\textsc{#1}}
+\newcommand{\predvall}[1]{\textsc{#1}}
+% Misc commands
+\newcommand{\exrr}[2][]{(\ref{ex:#2}{#1})}
+\newcommand{\csn}[3][t]{\begin{tabular}[#1]{@{\strut}c@{\strut}}#2\\#3\end{tabular}}
+\newcommand{\sem}[2][]{\ensuremath{\left\llbracket \mbox{#2} \right\rrbracket^{#1}}}
+\newcommand{\apf}[2][\ensuremath{\sigma}]{\ensuremath{\langle}#2,#1\ensuremath{\rangle}}
+\newcommand{\formula}[2][t]{\ensuremath{\begin{array}[#1]{@{\strut}l@{\strut}}#2%
+                                         \end{array}}}
+\newcommand{\Down}{$\downarrow$}
+\newcommand{\Up}{$\uparrow$}
+\newcommand{\updown}{$\uparrow=\downarrow$}
+\newcommand{\upsigb}{\mbox{\ensuremath{\uparrow\hspace{-0.35em}_\sigma}}}
+\newcommand{\lrfg}{L\textsubscript{R}FG} 
+\newcommand{\dmroot}{\ensuremath{\sqrt{\hspace{1em}}}}
+\newcommand{\amother}{\mbox{\ensuremath{\hat{\raisebox{-.25ex}{\ensuremath{\ast}}}}}}
+\newcommand{\expone}{\ensuremath{\xrightarrow{\nu}}}
+\newcommand{\sig}{\mbox{$_\sigma\,$}}
+\newcommand{\aset}[1]{\{#1\}}
+\newcommand{\linimp}{\mbox{\ensuremath{\,\multimap\,}}}
+\newcommand{\fsfunc}{\ensuremath{\Phi}\hspace*{-.15em}}
+\newcommand{\cons}[1]{\ensuremath{\mbox{\textbf{\textup{#1}}}}}
+\newcommand{\amic}[1][]{\cons{MostInformative$_c$}{#1}}
+\newcommand{\amif}[1][]{\cons{MostInformative$_f$}{#1}}
+\newcommand{\amis}[1][]{\cons{MostInformative$_s$}{#1}}
+\newcommand{\amsp}[1][]{\cons{MostSpecific}{#1}}
+
+%Glue
+\newcommand{\glues}{Glue Semantics} % macro for consistency
+\newcommand{\glue}{Glue} % macro for consistency
+\newcommand{\lfgglue}{LFG$+$Glue} 
+\newcommand{\scare}[1]{`{#1}'} % Scare quotes
+\newcommand{\word}[1]{\textit{#1}}  % mention of word
+\newcommand{\dquote}[1]{``{#1}''} % Double quotes
+\newcommand{\high}[1]{\textit{#1}} % highlight (italicize)
+\newcommand{\laml}{{L}} 
+% Left interpretation double bracket
+\newcommand{\Lsem}{\ensuremath{\left\llbracket}} 
+% Right interpretation double bracket
+\newcommand{\Rsem}{\ensuremath{\right\rrbracket}} 
+\newcommand{\nohigh}[1]{{#1}} % nohighlight (regular font)
+% Linear implication elimination
+\newcommand{\linimpE}{\mbox{\small\ensuremath{\multimap_{\mathcal{E}}}}}
+% Linear implication introduction, plain
+\newcommand{\linimpI}{\mbox{\small\ensuremath{\multimap_{\mathcal{I}}}}}
+% Linear implication introduction, with flag
+\newcommand{\linimpIi}[1]{\mbox{\small\ensuremath{\multimap_{{\mathcal{I}},#1}}}}
+% Linear universal elimination
+\newcommand{\forallE}{\mbox{\small\ensuremath{\forall_{{\mathcal{E}}}}}}
+% Tensor elimination
+\newcommand{\tensorEij}[2]{\mbox{\small\ensuremath{\otimes_{{\mathcal{E}},#1,#2}}}}
+% CG forward slash
+\newcommand{\fs}{\ensuremath{/}} 
+% s-structure mapping, no space after                                     
+\newcommand{\sigb}{\mbox{$_\sigma$}}
+% uparrow with s-structure mapping, with small space after  
+\newcommand{\upsig}{\mbox{\ensuremath{\uparrow\hspace{-0.35em}_\sigma\,}}}
+\newcommand{\fsa}[1]{\textit{#1}}
+\newcommand{\sqz}[1]{#1}
+% Angled brackets (types, etc.)
+\newcommand{\bracket}[1]{\ensuremath{\left\langle\mbox{\textit{#1}}\right\rangle}}
+% glue logic string term
+\newcommand{\gterm}[1]{\ensuremath{\mbox{\textup{\textit{#1}}}}}
+% abstract grammatical formative
+\newcommand{\gform}[1]{\ensuremath{\mbox{\textsc{\textup{#1}}}}}
+% let
+\newcommand{\llet}[3]{\ensuremath{\mbox{\textsf{let}}~{#1}~\mbox{\textsf{be}}~{#2}~\mbox{\textsf{in}}~{#3}}}
+% Word-adorned proof steps
+\providecommand{\vformula}[2]{%
+  \begin{array}[b]{l}
+    \mbox{\textbf{\textit{#1}}}\\%[-0.5ex]
+    \formula{#2}
+  \end{array}
+}
+
+%TAG
+\newcommand{\fm}[1]{\textsc{#1}}
+\newcommand{\struc}[1]{{#1-struc\-ture}}
+\newcommand{\func}[1]{\mbox{#1-function}}
+\newcommand{\fstruc}{\struc{f}}
+\newcommand{\cstruc}{\struc{c}}
+\newcommand{\sstruc}{\struc{s}}
+\newcommand{\astruc}{\struc{a}}
+\newcommand{\nodelabels}[2]{\rlap{\ensuremath{^{#1}_{#2}}}}
+\newcommand{\footnode}{\rlap{\ensuremath{^{*}}}}
+\newcommand{\nafootnode}{\rlap{\ensuremath{^{*}_{\nalabel}}}}
+\newcommand{\nanode}{\rlap{\ensuremath{_{\nalabel}}}}
+\newcommand{\AdjConstrText}[1]{\textnormal{\small #1}}
+\newcommand{\nalabel}{\AdjConstrText{NA}}
+
+%Case
+\newcommand{\MID}{\textsc{mid}{}\xspace}
+
+%font commands added April 2023 for Control and Case chapters
+\def\textthorn{þ}
+\def\texteth{ð}
+\def\textinvscr{ʁ}
+\def\textcrh{ħ}
+\def\textgamma{ɣ}
+
+% Coordination
+\newcommand{\CONJ}{\textsc{conj}{}\xspace}
+\newcommand*{\phtm}[1]{\setbox0=\hbox{#1}\hspace{\wd0}}
+\newcommand{\ggl}{\hfill(Google)}
+\newcommand{\nkjp}{\hfill(NKJP)}
+
+% LDDs
+\newcommand{\ubd}{\attr{ubd}\xspace}
+% \newcommand{\disattr}[1]{\blue \attr{#1}}  % on topic/focus path
+% \newcommand{\proattr}[1]{\green\attr{#1}}  % On Q/Relpro path
+\newcommand{\disattr}[1]{\color{lsMidBlue}\attr{#1}}  % on topic/focus path
+\newcommand{\proattr}[1]{\color{lsMidGreen}\attr{#1}}  % On Q/Relpro path
+\newcommand{\eestring}{\mbox{$e$}\xspace}
+\providecommand{\disj}[1]{\{\attr{#1}\}}
+\providecommand{\estring}{\mb{\epsilon}}
+\providecommand{\termcomp}[1]{\attr{\backslash {#1}}}
+\newcommand{\templatecall}[2]{{\small @}(\attr{#1}\ \attr{#2})}
+\newcommand{\xlgf}[1]{(\leftarrow\ \attr{#1})} 
+\newcommand{\xrgf}[1]{(\rightarrow\ \attr{#1})}
+\newcommand{\rval}[2]{\annobox {\xrgf{#1}\teq\attr{#2}}}
+\newcommand{\memb}[1]{\annobox {\downarrow\, \in \xugf{#1}}}
+\newcommand{\lgf}[1]{\annobox {\xlgf{#1}}}
+\newcommand{\rgf}[1]{\annobox {\xrgf{#1}}}
+\newcommand{\rvalc}[2]{\annobox {\xrgf{#1}\teqc\attr{#2}}}
+\newcommand{\xgfu}[1]{(\attr{#1}\uparrow)}
+\newcommand{\gfu}[1]{\annobox {\xgfu{#1}}}
+\newcommand{\nmemb}[3]{\annobox {{#1}\, \in \ngf{#2}{#3}}}
+\newcommand{\dgf}[1]{\annobox {\xdgf{#1}}}
+\newcommand{\predsfraise}[3]{\annobox {\xugf{pred}\teq\semformraise{#1}{#2}{#3}}}
+\newcommand{\semformraise}[3]{\annobox {\textrm{`}\hspace{-.05em}\attr{#1}\langle\attr{#2}\rangle{\attr{#3}}\textrm{'}}}
+\newcommand{\teqc}{\hspace{-.1667em}=_c\hspace{-.1667em}} 
+\newcommand{\lval}[2]{\annobox {\xlgf{#1}\teq\attr{#2}}}
+\newcommand{\xgfd}[1]{(\attr{#1}\downarrow)}
+\newcommand{\gfd}[1]{\annobox {\xgfd{#1}}}
+\newcommand{\gap}{\rule{.75em}{.5pt}\ }
+\newcommand{\gapp}{\rule{.75em}{.5pt}$_p$\ }
+
+% Mapping
+% Avoid having to write 'argument structure' a million times
+\newcommand{\argstruc}{argument structure}
+\newcommand{\Argstruc}{Argument structure}
+\newcommand{\emptybracks}{\ensuremath{[\;\;]}}
+\newcommand{\emptycurlybracks}{\ensuremath{\{\;\;\}}}
+% Drawing lines in structures
+\newcommand{\strucconnect}[6]{%
+\draw[-stealth] (#1) to[out=#5, in=#6] node[pos=#3, above]{#4} (#2);%
+}
+\newcommand{\strucconnectdashed}[6]{%
+\draw[-stealth, dashed] (#1) to[out=#5, in=#6] node[pos=#3, above]{#4} (#2);%
+}
+% Attributes for s-structures in the style of lfg-abbrevs.sty
+\newcommand{\ARGnum}[1]{\textsc{arg}\textsubscript{#1}}
+% Drawing mapping lines
+\newcommand{\maplink}[2]{%
+\begin{tikzpicture}[baseline=(A.base)]
+\node(A){#1\strut};
+\node[below = 3ex of A](B){\pbox{\textwidth}{#2}};
+\draw ([yshift=-1ex]A.base)--(B);
+% \draw (A)--(B);
+\end{tikzpicture}}
+% long line for extra features
+\newcommand{\longmaplink}[2]{%
+\begin{tikzpicture}[baseline=(A.base)]
+\node(A){#1\strut};
+\node[below = 3ex of A](B){\pbox{\textwidth}{#2}};
+\draw ([yshift=2.5ex]A.base)--(B);
+% \draw (A)--(B);
+\end{tikzpicture}%
+}
+% For drawing upward
+\newcommand{\maplinkup}[2]{%
+\begin{tikzpicture}[baseline=(A.base)]
+\node(A){#1};
+\node[above = 3ex of A, anchor=base](B){#2};
+\draw (A)--(B);
+\end{tikzpicture}}
+% Above with arrow going down (for argument adding processes)
+\newcommand{\argumentadd}[2]{%
+\begin{tikzpicture}[baseline=(A.base)]
+\node(A){#1};
+\node[above = 3ex of A, anchor=base](B){#2};
+\draw[latex-] ([yshift=2ex]A.base)--([yshift=-1ex]B.center);
+\end{tikzpicture}}
+% Going up to the left
+\newcommand{\maplinkupleft}[2]{%
+\begin{tikzpicture}[baseline=(A.base)]
+\node(A){#1};
+\node[above left = 3ex of A, anchor=base](B){#2};
+\draw (A)--(B);
+\end{tikzpicture}}
+% Going up to the right
+\newcommand{\maplinkupright}[2]{%
+\begin{tikzpicture}[baseline=(A.base)]
+\node(A){#1};
+\node[above right = 3ex of A, anchor=base](B){#2};
+\draw (A)--(B);
+\end{tikzpicture}}
+% Argument fusion
+\newenvironment{tikzsentence}{\begin{tikzpicture}[baseline=0pt, 
+  anchor=base, outer sep=0pt, ampersand replacement=\&
+   ]}{\end{tikzpicture}}
+\newcommand{\Subnode}[2]{\subnode[inner sep=1pt]{#1}{#2\strut}}
+\newcommand{\connectbelow}[3]{\draw[inner sep=0pt] ([yshift=0.5ex]#1.south) -- ++ (south:#3ex)
+  -| ([yshift=0.5ex]#2.south);}
+\newcommand{\connectabove}[3]{\draw[inner sep=0pt] ([yshift=0ex]#1.north) -- ++ (north:#3ex)
+  -| ([yshift=0ex]#2.north);}
+  
+\newcommand{\ASNode}[2]{\tikz[remember picture,baseline=(#1.base)] \node [anchor=base] (#1) {#2};}
+
+% Austronesian
+\newcommand{\LV}{\textsc{lv}\xspace}
+\newcommand{\IV}{\textsc{iv}\xspace}
+\newcommand{\DV}{\textsc{dv}\xspace}
+\newcommand{\PV}{\textsc{pv}\xspace}
+\newcommand{\AV}{\textsc{av}\xspace}
+\newcommand{\UV}{\textsc{uv}\xspace}
+
+\apptocmd{\appendix}
+         {\bookmarksetup{startatroot}}
+         {}
+         {%
+           \AtEndDocument{\typeout{langscibook Warning:}
+                          \typeout{It was not possible to set option 'staratroot'}
+                          \typeout{for appendix in the backmatter.}}
+         }

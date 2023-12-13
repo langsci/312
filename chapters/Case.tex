@@ -1,0 +1,2416 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10185944}
+\title{Case}
+\author{Miriam Butt\affiliation{University of Konstanz}}
+\abstract{This chapter surveys work on case within LFG, beginning with some of   the earliest studies in \citet{bresnan82}. The chapter then moves on to cover   the interaction of Mapping Theory with case marking, Optimality Theoretic   approaches to case and the ideas articulated by Constructive Case. It closes   with an outlook on more recent analyses. While these recent analyses are   couched within current LFG and are applicable to a wider range of phenomena,   they echo the basic insights of some of the earliest approaches to case in   that they essentially take a lexical semantic view of case, but go beyond the   lexicon and use LFG's projection architecture to chart the complex interaction between   lexical, structural and semantic/pragmatic factors exhibited by case markers   crosslinguistically, including core case markers.  Examples in this chapter   are drawn mainly from Australian, Scandinavian, and South Asian languages.}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[7]%%chapternumber
+   \boolfalse{bookcompile}
+}{}
+
+\begin{document}
+\maketitle
+\label{chap:Case}
+
+\section{Introduction}
+
+In LFG there is no one theory of case and so this chapter goes through a variety
+of approaches.  While the approaches differ formally 
+and focus on  a diverse set of phenomena, they are unified by the same
+underlying sense of how  case should be analyzed. Case marking is seen as being closely
+connected to the identification of grammatical relations (henceforth grammatical
+functions or \textsc{gf}s), but also to the realization of lexical semantic information,
+such as experiencer or causer/causee semantics, instruments, goals, locations,
+etc. Like any piece of morphological or syntactic information, case is
+seen as contributing  to the overall morphosyntactic and semantic
+analysis of a clause.  That is, case marking is taken to provide important
+information about \textsc{gf} status (e.g., \SUBJ vs.~\OBJ vs.~\OBJTHETA or \OBLTHETA) and
+about the lexical semantics of the arguments of a predicate.  This can go so far
+as taking the form of `Constructive Case' whereby the case marking is
+responsible for the `creation' or introduction of a particular \textsc{gf} into the
+syntax (\sectref{sec:constr}).  For example, the ergative might come with the information that a \SUBJ
+must exist in the clause and thus contribute a \SUBJ feature to the f-structure
+analysis. 
+
+The chapter begins with a look at the earliest treatments of case in LFG in
+\sectref{sec:early}, which developed the basic insights informing later
+work.  Case marking is modeled as a combination of syntactic and lexical
+semantic information and  plays a role in the mapping from semantic
+arguments to \textsc{gf}s. This is discussed in \sectref{sec:linking}, with
+\sectref{sec:sem} laying out the effects of case at the clausal semantic level,
+i.e.~in terms of telicity or partitivity  and 
+modality.  Case also appears to have pragmatic impact in that it can express
+information structural meaning and can be governed by information structural
+concerns. 
+
+With the rise of Optimality Theory \citep{PrinceSmolensky1993}, influential work
+by Aissen as well as Woolford sought to account for Differential Case Marking
+(DCM) and other distributions of case via an Optimality Theory (OT) approach
+\citep{Aissen1999,Aissen2003,Woolford2001}.  LFG took an early interest in the
+possibilities of OT \citep{bresnan00opt} and as discussed in \sectref{sec:ot}, this included  
+experimenting with OT for analyses of case. 
+
+Some of the material in this chapter has already been presented in
+\citet{Butt2006} and \citet{Butt2008}, particularly the description of Constructive
+Case and the mapping between semantic arguments and \textsc{gf}s.  However, this
+contribution provides a deeper look at case in early LFG and at case within
+approaches inspired by OT. It also updates the discussion with respect to new
+proposals for mapping/linking and ties the various facets of case marking together in a
+sketch for an overall comprehensive approach in
+\sectref{sec:all}.  \sectref{sec:sum}
+summarizes.
+
+\section{Early LFG}
+\label{sec:early}
+
+Some of the earliest LFG work included papers that were specifically devoted to
+case.  This section discusses the contributions by \citet{Neidle1982,Andrews82} and
+\citet{mohanan1982} on a diverse range  of languages, namely Russian,
+Icelandic and Malayalam, respectively.
+
+\subsection{Russian}
+
+\citet{Neidle1982} looked at patterns of case agreement in Russian complements
+and secondary predicates.  In essence, Neidle's overall approach to case
+did not differ much from what would have been standard assumptions at
+the time in that Neidle divides case into two broad categories:
+1) {\em structurally predictable} case; 2) {\em lexically required} case and
+exceptions.  This bipartite distinction still underlies most of the assumptions
+and theorizing on case in standard GB/Minimalist approaches,
+e.g., see \citet{Butt2006,Bobaljik-Wurmbrand2008} for overviews, and is currently framed as an
+opposition between  dependent vs.~inherent case, e.g.,  \citet{baker-bobaljik17}. 
+
+A special feature of Neidle's approach is the adoption of Jakobson's feature
+decompositional approach to case \citep{Jakobson1936}.  Neidle also briefly touches on the issue of
+genitive objects in Russian, which are introduced structurally in the presence
+of negation and more generally when the object is non-quantized.  In the latter
+case, the genitive may be part of a Differential Case Marking (DCM) pattern by which the genitive is used
+for non-quantized objects and the accusative for quantized objects, e.g., in
+verbs such as `demand' \citep[400]{Neidle1982}.  Genitive case is sometimes also
+required by the inherent lexical semantics of the verb (e.g., `wish').
+
+Neidle
+does not quite integrate the quantizedness semantics into her account and
+instead opts for a simple  distinction between
+structural and inherent case. Structural case is assigned via
+f(unctional)-structure annotations on c(onstituent)-structure rules.  For example,
+the annotations on an object \OBJ and an indirect object (termed \OBJ2 in
+early LFG) might look as
+in (\ref{ex:Russ-struc}), where the Jakob\-so\-nian-inspired featural decomposition ($-,-,+$) corresponds
+to accusative whereas the ($+,-,+$) corresponds to a dative.
+
+\ea \label{ex:Russ-struc} 
+\phraserule{VP}{\rulenode{V\\\UP=\DOWN}
+  \rulenode{NP\\(\UP \OBJ)=\DOWN \\ (\DOWN \CASE)=($-,-,+$) }
+  \rulenode{NP\\(\UP \OBJ2)=\DOWN \\ (\DOWN \CASE)=($+,-,+$)}} 
+\z
+The structural case assignment is matched up with the functional information gleaned
+from the  morphological case marking on nouns, pronouns, adjectives, etc.  That
+is, if a phrase structure rule as in (\ref{ex:Russ-struc}) calls for an
+accusative object, then whatever noun or pronoun this NP is instantiated by
+needs to have accusative morphology.  Given this approach to
+structural case, the lexical entries for verbs generally contain no information
+about case:  as shown in (\ref{ex:Russ-lex1}), verbs specify the type and number
+of the {\GF}s that are expected
+(as per basic LFG theory), but do not contain additional information about
+case.\footnote{The lexical entry in (\ref{ex:Russ-lex1}) has been adapted from
+  the original with respect to how a verb stem is represented.  The  \%   indicates a variable that can be
+  filled by some value \citep{xledoc}. In the lexical entry in (\ref{ex:Russ-lex1}), this might
+    be the verb `kill', for example.}
+
+  \ea \label{ex:Russ-lex1}
+\catlexentry{\rm \%vstem}{V}{\feqs {(\UP\PRED)=`{\rm \%vstem}\arglist{(\UP \SUBJ),(\UP \OBJ)}'} }\\
+  \z
+  
+% \ea \label{ex:Russ-lex1}
+% \begin{tabular}{lll}
+% \%verb-stem &  V  & `{\%verb-stem}\arglist{(\UP \SUBJ),(\UP \OBJ)}' \\
+% \end{tabular}
+% \z
+
+On the other hand, a specification for case marking is added  to those verbal
+entries where the case marking patterns are identifiable as being due to the
+semantics of the verbs (e.g., `wish').  This is illustrated in
+(\ref{ex:Russ-lex2}), where the  case information corresponds to a
+genitive.\footnote{The explanation of Neidle's approach here is
+  designed to provide  the essence of her ideas, not the particulars.  As
+  such the lexical entry is simplified and as part of this simplification, the
+  verb stem has been given in English.  The overall analysis Neidle proposes for
+  Russian is complex in its details and the interested reader is referred to the
+  original paper both for more information as to the feature decomposition
+  approach to case and the details of the complex interaction between
+  morphology, c-structure and the lexicon that she maps out. However, as
+  Neidle's paper is one of the earliest papers on LFG and the theory has
+  developed since, particularly with respect to approaches to morphology,
+  attempting to provide more details as to her approach as part of this chapter (as some reviewers have
+  suggested) would lead us too far afield into a comparison of early vs.~current
+  LFG.}\ 
+
+\ea \label{ex:Russ-lex2}
+\catlexentry{wish}{V}{\feqs {(\UP\PRED)=`wish\arglist{(\UP \SUBJ),(\UP \OBJ)}' \\
+ (\UP \OBJ \CASE) = ($-,+,+$) }}
+\z
+
+% \ea \label{ex:Russ-lex2}
+% \begin{tabular}{lll}
+% wish &  V  & `wish\arglist{(\UP \SUBJ),(\UP \OBJ)}' \\
+% & & (\UP \OBJ \CASE) = ($-,+,+$) 
+% \end{tabular}
+% \z
+
+Effects of the genitive of negation are  handled at the
+c-structural level, with the rule introducing the negation also introducing
+information that triggers genitive case on the object.  The overall approach is
+thus one in which there is a complex interaction between c-structural,
+morphological and lexical information.  While Neidle's particular approach in
+terms of the Jakobsonian-inspired featural decomposition of case was
+not taken up in LFG, the basic approach to modeling the interplay between
+lexical semantics, phrase structure and morphological information continues to
+inform   LFG. 
+
+\subsection{Icelandic}
+
+As exemplified by Neidle's approach, there has never been an assumption within
+LFG that case should be associated
+strictly with one \GF \mbox{(or vice versa)} or that agreement and case should be
+inextricably bound up with one another.  This is because of the very early
+recognition within LFG that in addition to non-accusative objects such as those
+found in Russian: 1) non-nominative subjects also exist in the world's
+languages and thus need to be accounted for;  2) agreement does not necessarily
+track subject status. This was famously established in the early days of LFG
+with respect to Icelandic \citep{Andrews76:VP,ZMT85:Case}. In both of the
+examples   in (\ref{ex:ice-dat}) (based on  \citealt[462--463]{Andrews82}) the
+dative argument can be shown to be a subject via a battery of subject tests such
+as reflexivization, control, subject-verb inversion, extraction
+from complement clauses and subject ellipsis.  The example in
+(\ref{ex:ice-dat2}) additionally shows that agreement is not an indicator of
+subjecthood in Icelandic since the third singular verb does not agree with the first person
+singular subject.  
+\begin{exe}
+  \ex \label{ex:ice-dat} Icelandic 
+ \begin{xlist}
+\ex[]{  \label{ex:ice-dat1}
+\gll
+{Barn-inu} {batna{\dh}i} {veik-in.} \\
+{child-\DEF.\DAT} {recovered.from.3\SG}  {disease-\DEF.\NOM} \\
+\glt `The child recovered from the disease.' }
+\ex[]{ \label{ex:ice-dat2}
+\gll
+{M\'{e}r} {er} {kalt.} \\
+{I.\DAT} {be.3\SG} {cold} \\
+\glt `I am cold.' }
+\end{xlist}
+\end{exe}
+\citet{Andrews82} also discusses instances of non-accusative
+objects\footnote{Also see \citet{Svenonius2002} for a more recent in-depth analysis
+  of non-accusative object marking.}\ and notes that nominative objects are the
+rule in dative subject examples as in (\ref{ex:ice-dat1}).  These and other
+considerations lead Andrews to provide a rich and detailed analysis of the case marking
+patterns in Icelandic as part of a longer paper on Icelandic syntax.
+
+The overall approach to case is similar to that taken by Neid\-le, though the
+formalization is quite different.  Like Neid\-le, \citet{Andrews82} invokes
+Jakobson on case, but does not adopt a feature decomposition approach.  Rather,
+he builds on Jakobson's idea that the nominative should be analyzed as a
+default, unmarked (almost non-case) in Indo-European.  As a consequence, Andrews
+develops an account by which nominative is assigned as a default case as part of
+the syntax (c-structure rules) if no other case has been specified.  Accusative
+is assigned to objects as a default as well, but only in a structure where there
+is a nominative subject. All other case marking is specified as part of the
+lexicon.
+
+%Jakobson sees nominative as the absence of case -- this actually works very
+%well for SALs. 
+
+Andrews specifically notes that the choice of non-default case marking is not
+arbitrary, but can be tied to semantic generalizations such as
+experiencer/perception semantics, the semantics of verbs of lacking and wanting,
+etc.~\citep[463]{Andrews82}.  Essentially, non-nominative subjects all seem to
+mark non-agentivity of one sort or another. However, despite a sense of
+systematicity underlying the connection between semantics and case marking,
+Andrews decides that because there is no invariant meaning one can assign to a
+case, a strategy of encoding non-nominative subject (and
+non-accusative object) case as part of the lexicon should be followed: ``case selection is
+basically lexical and idiosyncratic, but subject to regularities keyed to the
+semantics of the matrix verb''  \citep[464]{Andrews82}.  As in Neidle's
+approach, further structurally motivated instances of non-default case marking
+are allowed.  This is exemplified by structural genitives in Russian, and in
+Icelandic non-default case occurs in some instances of passivization.  Other case
+marking that goes beyond the core patterns is dealt with via lexically (or
+otherwise) stipulated information.
+
+Interestingly, Andrews' basic approach foreshadows  the notion of {\em Dependent Case}
+\citep{Marantz1991,baker15}. This sees the central problem of case theory as
+deciding on how to apportion structural case between two core argument
+participants, with the case marking of one being dependent on the structure of
+the other. So, if a subject is ergative, there are mechanisms in place which
+ensure that the object is nominative/absolutive. This is similar (but not identical) to
+Andrews' treatment of nominative objects in the presence of dative subjects and
+accusative objects in the presence of nominative subjects. 
+
+\subsection{Malayalam}
+
+A different approach to case is taken by \citet{mohanan1982}.  Working on
+Malayalam, Mohanan  entertains an approach pioneered by the Sanskrit grammarian
+P\={a}\d{n}ini \citep{boehtlingk39} and taken up by \citet{ostler79}. This holds
+that the distribution of case can be expressed in terms of generalizations
+referring directly to thematic/semantic roles. However, Mohanan shows that it is
+also 
+necessary to assume a structural level at which {\GF}s are encoded in order to be
+able to properly account for the distribution of case in Malayalam. That is, the
+level of {\GF}s (f-structure) must mediate between the overt expression of case and
+the lexical semantics of verbs. In line with Andrews' findings for Icelandic,
+Mohanan establishes a systematic relationship between lexical semantics and
+case, but not a  one-to-one relationship. In a precursor to Mapping Theory (\sectref{sec:linking}), Mohanan proposes the principles 
+in (\ref{mal-case-int}).\footnote{These have been simplified  slightly with respect to
+  the dative for ease of exposition.} 
+
+%\newpage
+
+\begin{exe}
+  \ex \label{mal-case-int}  {\bf Principles of Case Interpretation} \begin{xlist}
+    \ex Intrepret accusative case as the direct object (\OBJ).
+    % \ex Interpret dative 2 case as the indirect object (OBJ2)
+    %MB: note that this seems to be an older dative case, which is
+    %interesting...
+    %MB: in the original, the next line only pertains to dative 1 case 
+\ex Interpret dative case as either the indirect object ({\OBJ2})  or the subject
+(\SUBJ).
+\ex Interpret nominative case as either the subject (\SUBJ) or the direct
+object (\OBJ) if the NP is [$-$animate]; otherwise interpret nominative case as
+the subject (\SUBJ). 
+\end{xlist}
+\end{exe}
+
+There are several things to note about these  principles.  For one, they
+assume that case marking plays a central role in the determination of {\GF}s
+(rather than constituting features that must be spelled out, checked off or
+interpreted, as in GB/Minimalist approaches, for instance).  For
+another, the animacy condition in (\ref{mal-case-int}c) constitutes an indirect
+analysis of the DCM phenomenon found in Malayalam whereby animate objects must
+be marked with the accusative.
+
+The Principles of Case Interpretation are encoded in the grammar via
+f-struc\-tur\-al annotations on c-structure rules which ensure that indirect objects
+are dative, subjects are either nominative or dative and objects either
+accusative or nominative.  Mohanan is able to capture this space of possibilities
+elegantly by also working with Jakobson's case features. While the alternation
+between nominative and accusative objects is taken to be governed by animacy
+(via well-formedness checking at f-structure), no general principles for the
+appearance of dative vs.~nominative subjects are built into the system.  Rather,
+like Neidle and Andrews, Mohanan  steers the licensing of dative subjects
+via lexical stipulation in the verb's entry, as shown in (\ref{mal-exp-verb}),
+taken from Mohanan (\citeyear[545]{mohanan1982}).  He classifies both `sleep'
+and `be hungry' as intransitive experiencer verbs. The nominative case on the
+subject of the 
+verb `sleep' is taken to follow from the general Principles of Case
+Interpretation in conjunction with the functional annotations on the c-structure
+rules.  On the other hand, the verb `be hungry' is lexically stipulated to have
+a dative subject.  The choice of dative vs.~nominative subjects is thus
+steered  via the presence or absence of information found in  the lexical entries.
+
+
+\begin{exe}
+  \ex \label{mal-exp-verb} 
+  \begin{xlist}
+\ex \catlexentry{ura{\ng\ng}}{V}{(\UP\PRED)=`sleep\arglist{{\begin{tabular}[t]{@{}c@{}}{\strut(\UP \SUBJ)}\\{\strut \textsc experiencer}\end{tabular}}}'}\\
+\ex  \catlexentry{wi\={s}akk}{V}{\feqs {(\UP\PRED)=`be hungry\arglist{{\begin{tabular}[t]{@{}c@{}}{\strut(\UP \SUBJ)}\\{\strut \textsc experiencer}\end{tabular}}}}}
+\end{xlist}
+\end{exe}
+
+Mohanan generally assumes that a verb's lexical entry expresses
+both the thematic roles it takes and the grammatical relations that these
+correspond to, as shown in (\ref{mal-exp-verb}) and  (\ref{mal-verb}). 
+This is in line with early LFG approaches to predicate-argument
+structure, which assumed a close connection between thematic roles and
+{\GF}s but did not yet articulate that relationship in any detail (cf.~the
+contributions in \citealt{buttking2005}).   The articulation of this relationship came
+with the advent of linking (\sectref{sec:linking}). 
+
+\ea \label{mal-verb}
+\catlexentry{t̪inn}{V}{\feqs {(\UP\PRED)=`eat\arglist{{\begin{tabular}[t]{@{}c@{}}{\strut(\UP \SUBJ)}\\{\strut \textsc agent}\end{tabular}},{\begin{tabular}[t]{@{}c@{}}{\strut(\UP \OBJ)}\\{\strut \textsc patient}\end{tabular}}}'}}
+\z
+
+LFG's work on the  linking or {\em mapping} between thematic roles and {\GF}s in the
+1980s and 1990s also entailed a closer look at the lexical semantics of verbs
+and verb classes, with detailed work such as that by
+\citet{jackendoff1990semantic}  and \citet{levin93} 
+providing inspiration. As such, the conclusions
+arrrived at by Mohanan that the case patterns in Malayalam are too irregular to
+be governed by general principles deserve a second look from today's perspective. Consider, for example, the contrasts in (\ref{ex:mal-exp1}) and
+(\ref{ex:mal-exp2}), taken from Mohanan (\citeyear[540--541]{mohanan1982}).\footnote{The
+  glosses in these Malayalam examples provide slightly more detail than in the
+  original.}  Mohanan considers the verbs  to ``\ldots presumably have the same
+thematic roles''  \citep[540]{mohanan1982}, namely to all have experiencer
+arguments.  However, the `became' in (\ref{ex:mal-exp1}a) is rather more indicative
+of an undergoer/patient so this is more likely to be an unaccusative, rather
+than an experiencer verb.  This difference in lexical semantics is likely to
+govern the difference in subject case so that experiencer semantics is expressed
+via 
+a dative subject while unaccusatives simply receive a nominative subject by default. 
+
+\begin{exe}
+  \ex \label{ex:mal-exp1} Malayalam
+  \begin{xlist}
+    \ex[]{
+    \gll
+    {awa\d{l}} {ta\d{l}arn̪n̪u.} \\
+  {she.\NOM}  {was tired} \\
+    \glt `She became tired.' }
+    \ex[]{
+       \gll
+    {awa\d{l}-kk{\textschwa}}  {wi\={s}an̪n̪u.} \\
+    {she-\DAT}   {hungered} \\
+    \glt `She was hungry.' }
+  \end{xlist}
+\end{exe}
+
+Similarly, the contrast between (\ref{ex:mal-exp2}a) and (\ref{ex:mal-exp2}b)
+can potentially be explained by  (\ref{ex:mal-exp2}b) involving a metaphorical
+location (`happiness came to me'), which lends itself to dative subjects, as
+argued for by a.o.~\citet{landau10} and suggested by Localist approaches to case
+and argument structure, e.g.~\citet{gruber65,jackendoff1990semantic}. 
+
+\begin{exe}
+  \ex Malayalam \label{ex:mal-exp2}
+  \begin{xlist}
+    \ex[]{
+    \gll
+    {\={n}aan} {san̪t̪oo\d{s}iccu.} \\
+  {I.\NOM}  {was happy} \\
+    \glt `I was happy.' }
+    \ex[]{
+       \gll
+    {eni-kk{\textschwa}}  {san̪t̪oo\d{s}am} {wan̪n̪u.} \\
+    {I-\DAT}   {happiness} {came}\\
+    \glt `I was happy.' }
+  \end{xlist}
+\end{exe}
+Contrasts such as in (\ref{ex:mal-exp2}) are standardly and systematically found in South Asian
+languages and they thus deserve a better explanation than being relegated to
+lexical stipulation.  The same applies to contrasts as in (\ref{ex:mal-modal}),
+from Mohanan (\citeyear[542]{mohanan1982}), where a difference in modality is
+expressed solely in terms of a difference in case marking on the subject.
+
+
+\begin{exe}
+  \ex \label{ex:mal-modal} Malayalam
+  \begin{xlist}
+    \ex[]{
+    \gll
+    {ku\d{t}\d{t}i} {aanaye} {\d{n}u\d{l}\d{l}-a\d{n}am.} \\
+    {child.\NOM} {elephant.\ACC} {pinch-{\sc mod}} \\
+    \glt `The child must pinch the elephant.' }
+    \ex[]{
+       \gll
+    {ku\d{t}\d{t}i-kk{\textschwa}} {aanaye} {\d{n}u\d{l}\d{l}-a\d{n}am.} \\
+    {child-\DAT}  {elephant.\ACC} {pinch-{\sc mod}} \\
+    \glt `The child wants to pinch the elephant.'}
+  \end{xlist}
+  \end{exe}
+  Mohanan again resorts to lexical stipulation to model the two different
+  readings (permission vs.~promise), but given that these types of contrasts are
+  also widely found in other South Asian languages
+  \citep{buttahmed11,bhattetal11}, again a more principled analysis is in order  (see \sectref{sec:all}).
+  %, see  \sectref{sec:all}.
+
+% So here also we have default assignment
+%-- nom-subj, acc+Anim or nom -obj and dat i.obj.  Then things like experiencer
+%subjects via lexical statements because there is some irregularity, eg. feel pain
+%vs. happy (540-541) -- but this might be like the difference Andrews tentatively
+%identified for Icelandic between physiological and psychological. Interesting
+%DCM with modals -- should take examples from here for case book (541).
+
+
+
+
+\section{Mapping Theory}
+\label{sec:linking}
+
+Over time, the understanding of case and its relationship with predicate arguments
+deepened and LFG developed a dedicated \textit{Mapping Theory} to model and explain the
+systematicity found across a typologically diverse set of languages.  
+A subset of the semantics associated with case has thus by now  been covered by this
+ more principled account of the relationship between lexical semantics and
+ {\GF}s.  This section briefly charts the development of Mapping Theory from 
+ early ideas and formulations to today's standard instantiation, focusing particularly on
+the role of case.  The reader is referred to \citetv{chapters/Mapping} for a fuller discussion of Mapping Theory and more recent developments. 
+
+\subsection{Association Principles with case}
+
+It is perhaps no accident that the beginnings of LFG's Mapping Theory were first
+articulated with respect to Icelandic \citep{ZMT85:Case} --- a language with
+robust case marking that attracted intense linguistic interest in the 1980s
+because of its demonstrated use of non-nominative subjects \citep{Andrews76:VP}.
+\citet{ZMT85:Case} present a detailed study of the interaction between Icelandic
+case and {\GF}s, which bears similarities to the approaches sketched in the previous
+section.  However, the Icelandic Association Principles formulated by
+\citet{ZMT85:Case} in (\ref{ice-principle}) contrast with Mohanan's principles
+for Malayalam. Where
+Mohanan linked case directly to {\GF}s, \citet{ZMT85:Case} postulate a complex
+interrelationship between case, thematic roles and {\GF}s. Another feature of
+the principles is that they include  universal as well as language-specific
+postulations, as can be seen via a comparison of Icelandic and German, for which
+\citet{ZMT85:Case} provide a comparative analysis. 
+
+%Zaenen and Maling (1983:176,182), Zaenen, Maling and Thr\'{a}insson
+%(1985:467,479) 
+
+\ea \label{ice-principle}
+{\bf Icelandic Association Principles}
+
+\begin{enumerate}
+
+\item {\sc agents} are linked to {\sc subj}. (Universal)
+
+\item Casemarked {\sc themes} are assigned to the lowest available
+{\sc gf}.  (Language Specific)
+
+\item If there is only one thematic role, it is assigned to {\sc subj}; if there are two, they are assigned to {\sc subj} and {\sc obj}; if there are three, they are assigned to {\sc subj}, {\sc obj}, {\sc 2obj}.\footnote{This corresponds to OBJ$_{\theta}$ within later LFG approaches.} This principle applies after principle 2 and after the assignment of restricted {\sc gf}s. (Universal)
+
+\item Default Case-Marking:  the highest available {\sc gf} is
+assigned {\sc nom} case, the next highest {\sc acc}. (Universal)
+
+\end{enumerate}
+\z
+
+% German Association Principles also in the ZMT article
+
+\ea \label{ger-principle}
+{\bf German Association Principles}
+
+\begin{enumerate}
+
+\item {\sc agents} are linked to {\sc subj}. (Universal)
+
+\item Casemarked {\sc thematic roles} are assigned to
+ {\sc 2obj}.  (Language Specific)
+
+\item If there is only one thematic role, it is assigned to {\sc
+ subj}; if there are two, they are assigned to {\sc subj} and {\sc
+ obj}; if there are three, they are assigned to {\sc subj}, {\sc obj},
+ {\sc 2obj}. This principle applies after principle 2 and after the
+assignment of restricted {\sc gf}s. (Universal)
+
+\item Default Case-Marking:  the highest available {\sc gf} is
+ assigned {\sc nom} case, the next highest {\sc acc}. (Universal)
+
+\end{enumerate}
+\z
+Like the 1982 approaches of Neidle, Mohanan and Andrews, \citet{ZMT85:Case} rely
+on a mix of universal and structurally determined case assignment (default
+nominative on subjects and accusative on objects), language-specific rules and
+lexically stipulated case marking patterns.  However, \citet{ZMT85:Case} differ
+significantly from
+Andrews' approach to Icelandic in that they include thematic roles in the
+statement of generalizations and associate case as one of several features with
+a given \GF. Andrews, on the other hand, argued for the use of a ``composite
+function''  in which \GF and case information are welded together to provide
+differentiation among {\GF}s.  So for example,  one could have a {\SUBJ \DAT}
+vs.~a  {\SUBJ \ACC} or {\OBJ \ACC}.  These 
+composite functions were licensed by a complex interplay between f-structure
+annotations and lexical specifications.  Over time, Zaenen et al.'s technically simpler but
+architecturally more complex approach was adopted as the standard way of thinking
+about Icelandic case marking patterns within LFG. 
+
+\subsection{Argument structure}
+
+We here illustrate Zaenen et al.'s system by way of the  example in
+(\ref{ex:wish-gen}) \citep[470]{ZMT85:Case}.  The Icelandic verb {\em
+  \'{o}ska} `to wish' is ditransitive, but the goal argument (`her' in
+\ref{ex:wish-gen}) is optional.  
+
+\ea \label{ex:wish-gen} Icelandic \\
+\gll {{\textthorn}\'{u}} {hefur}  {\'{o}ska{\dh}} {(henni)} {{\textthorn}ess} \\
+{you} {have} {wished}  {her.\DAT} {this.\GEN} \\
+\glt `You have wished this on/for her.' 
+\z 
+%ZMT 471
+The genitive and dative on the theme and goal arguments, respectively, are encoded as part of
+the lexical entry of the verb, as shown in (\ref{link-wish-ice}).  Note that
+this lexical entry differs from those encountered in the 1982 papers in that
+Zaenen et al.~(\citeyear[465]{ZMT85:Case}) ``postulate a level of representation
+at which the valency of a verb is determined and its arguments can be
+distinguished in terms of thematic roles.''  The encoding of the number and type
+of arguments of a verb via a separate level of argument structure was due to a  forceful demonstration by \citet{Rappaport83} with
+respect to derived nominals that argument structure needed to be posited as an
+independent 
+level of representation.\footnote{See \citet{chomsky1970remarks} for similar
+  conclusions with respect to nominalizations, which led to a general understanding of argument structure as a separate level of
+representation, currently often realized as vP in Minimalist approaches to syntax.}
+
+\ea \label{link-wish-ice}
+\begin{tabular}[t]{lc@{}ccc@{}c}
+{\em \'{o}ska}: & $<$ & agent & theme & (goal) & $>$ \\
+&&& [+gen] & [+dat] \\
+a. && {\sc subj} & {\sc 2obj} & {\sc obj} \\
+%a. & {\sc subj} & {\sc obj}$_{\theta}$ & {\sc obj} \\
+b. && {\sc subj} & {\sc obj} \\
+&& [+nom] \\
+\end{tabular}
+\z
+The thematic roles in the verb's argument structure are linked to {\GF}s via
+the Association Principles in (\ref{ice-principle}).  The agent is linked to
+\SUBJ and receives nominative case via the universal principles in 1~and 4. 
+When the goal argument is present, the case marked theme is assigned to the
+lowest available {\GF} (Principle 2, language-specific), which is the secondary
+object. That leaves the goal argument to be assigned to the \OBJ, since by
+Principle 3 (universal) if there are three thematic roles, they need to be
+assigned to \SUBJ, \OBJ and {\sc 2obj}.  In this case  \SUBJ and {\sc 2obj} have already
+been assigned, leaving only \OBJ. 
+
+When the goal argument is not present, the agent is again linked to
+\SUBJ and receives nominative case via the universal principles in 1~and 4.
+But this time the genitive case marked theme is assigned to \OBJ as the lowest
+available {\GF}, as shown in (\ref{link-wish-ice}b).  The status of \OBJ is
+significant as it is this argument that can be realized as a subject under
+passivization. The lexically determined case marking is also significant, as
+these cases tend to be retained in constructions like the passive, as shown in
+(\ref{ex:wish-pass}) \citep[471]{ZMT85:Case}.
+
+
+\begin{exe}
+  \ex \label{ex:wish-pass} Icelandic 
+  \begin{xlist}
+    \ex[]{
+    \gll  {{\textthorn}ess} {var}  {\'{o}ska{\dh}} {(*henni)} \\
+        {this.\GEN} {was} {wished}  {her.\DAT} \\
+        \glt `This was wished.'}
+         \ex[]{
+           \gll
+           {Henni}  {var}  {\'{o}ska{\dh}} {{\textthorn}ess} \\
+         {her.\DAT} {was} {wished}  {this.\GEN} \\
+        \glt `She was wished this.' }
+      \end{xlist}
+    \end{exe}
+    
+
+
+    Today's standard Mapping Theory relates {\GF}s to thematic roles via two
+    abstract linking features, [$\pm o$](bjective) and [$\pm r$](estrictive), by
+    which both thematic roles and {\GF}s can be classified
+    \citep{bresnanzaenen90,bresnan2001lexical,Butt2006}.  Additionally, a number of
+    principles govern the association of {\GF}s and thematic roles.  These
+    principles were worked out on the basis of a wide range of data, including
+    Bantu, Germanic and Romance. LFG's Mapping Theory can account for a wide
+    range of argument changing operations such as locative inversion,
+    causativization, passives (argument deletion) or applicatives (argument
+    addition), e.g.~see
+    \citet{levin87,AlsinaMchombo:Appl,bresnan1989locative,BresMosh90,alsinajoshi91}.
+
+
+    Based on his work
+    with Romance languages (mainly Catalan), \citet{alsina1996the-role} proposed
+    an alternative version of Mapping Theory and in recent years, Kibort has worked out
+    a revised version, which abstracts away from the use of thematic roles,
+    instead working with abstract argument positions and a complex interplay
+    between syntax and semantics \citep{Kibort2007,kibort13,kibort14,KM15}.  This
+      chapter does not delve further into the details of linking as the role of
+      case in most versions of linking has stayed much as it was in Zaenen et
+      al.'s analysis of Icelandic: an extra piece of information that helps
+      determine the mapping between {\GF}s and thematic roles and that needs to be
+      accounted for as part of the mapping between argument structure and
+      {{\GF}}s. See \citet{Butt2006} and \citetv{chapters/Mapping}
+    for  overview discussions. 
+
+    However, we will include a discussion of \citet{schaetzle18} in 
+    \sectref{sec:sem}, as she works with Kibort's revised version of linking, and
+    develops an event-based theory of linking for an analysis of the
+    historical rise and spread of dative subjects in Icelandic (yes --- again
+    Icelandic!). 
+
+
+\subsection{Quirky case}
+
+%can't figure out who first used the term quirky. Seems to be around in early
+%80s papers by Lori Levin.
+
+Before moving away from the early LFG approaches to case and linking, this
+section takes a look at a significant concept that also resulted from
+the concentrated work on Icelandic:  {\em lexically inherent} or {\em quirky
+  case}.  The data from Icelandic and other languages support a distinction between at
+least two types of case assignment/licensing.  In the papers discussed so far,
+this was thought of as a distinction between 
+structurally assigned  and  ``lexically inherent'' case.  The latter also came
+to be known as ``quirky case''. 
+
+
+However, the anchoring of case marking information in lexical entries together
+with the term ``quirky'' suggests a random lawlessness that must be
+idiosyncratically stipulated as part of lexical entries.
+This view on non-default case has become widely accepted within
+ linguistics, but lacks empirical support. 
+As already noted by \citet{Andrews82} for Icelandic, for example,  and confirmed
+by the data and analyses in 
+Zaenen et al.'s paper, the correlation between thematic role and case marking in
+Icelandic is
+actually quite regular in that the ``quirky''  cases are
+generally regularly associated with a given thematic role.  There seem to be only very few
+instances of truly idiosyncratic case marking that do not follow from general
+semantic principles.
+
+\citet{vanvalin91} explicitly revisited the Zaenen et
+al.~paper and made this point, working out an alternative analysis
+within Role and Reference Grammar (RRG).
+% This basic point has also  been confirmed by more recent work on
+% Icelandic, e.g.~\citet{maling02} and \citet{Svenonius2002}.  In particular, 
+% Svenonius  works with an {\em event-based} take on case marking so that case
+% alternations are taken to be tied to differences in how an event is
+% structured. Examples contrast  `ballistic motion' with change of state verbs.
+% The former features dative objects in examples like `shoot the bullet, throw
+% the harpoon', the latter encompasses accusative objects in examples such as 
+% `shoot the bird', `harpoon the whale'. 
+\citet{vanvalin91}   takes an event-based approach, working with
+differences between Vendlerian states, activities, achievements and accomplishments in
+combination with a macro-role approach to the arguments of a predicate. The
+paper mainly focuses on dative arguments, whereby dative case is assigned to
+those arguments which cannot be assigned a macro-role (either actor or
+undergoer).  Dative arguments thus constitute the `elsewhere' case  and do not
+need to be lexically encoded/stipulated.  Van Valin
+does not explicitly address the other types of non-default case marking. 
+
+Although Van Valin frees dative marked arguments from being lexically
+stipulated, he also essentially works with a bipartite system:  case marking
+which is determined systematically via reference to macro-roles vs.~case marking
+that is idiosyncratic.  However, the empirical evidence supports a tripartite,
+rather than a bipartite approach to case:  1) structural case (e.g.,
+nominative/accusative), 2) semantically conditioned case; 3) idiosyncratic
+case. Despite the empirical evidence for a tripartite view, this approach
+constitutes an exception rather than the rule in the literature.  Versions of a tripartite view of
+case marking have been argued for by \citet{donohue2004} and \citet{wool:06}, for
+example. Within LFG this view was
+first clearly articulated by \citet{buttking05}, see \sectref{sec:all}. 
+
+\section{Constructive case}
+\label{sec:constr}
+
+In this section we turn to a very different type of case marking, namely a
+phenomenon that has come to be known as  {\em case stacking}, illustrated in  (\ref{ex:stack}). Within LFG, 
+\citet{nordlinger1998constructive,nordlinger2000} took on this phenomenon
+with respect to 
+Australian languages and proposed a strongly lexicalist analysis in which the
+case markers themselves contribute information about the {\GF}s of a clause.
+
+%\newpage
+
+\ea \label{ex:stack}  Martuthunira \citep[60]{dench1995} \\
+\gll {Ngayu} {nhawu-lha} {ngurnu} {tharnta-a} {mirtily-marta-a} {thara-ngka-marta-a.}\\
+{I.\NOM} {saw-{\sc pst}} {that.\ACC} {euro-\ACC}  {joey-{\sc prop}-\ACC}  {pouch-{\sc
+    loc}-{\sc prop}-\ACC} 
+\\
+\glt `I saw the euro with a joey in (its) pouch.' 
+  \z
+In  (\ref{ex:stack}) the main predicate is `see', which takes a nominative
+subject (`I') and an accusative object, `euro' (a type of kangaroo).
+The clause also contains two modifying NPs, `joey' (a baby kangaroo) and
+`pouch'.   The accusative on these nouns signifies that they modify the \OBJ
+`euro', the proprietive shows that these are part of a possessive or
+accompanying relation to another word and the locative on `pouch' signals that
+this is the location of the joey.  The f-structure in (\ref{euro-fstr})
+shows these dependency relations among the NPs. 
+
+
+
+\eabox{ \label{euro-fstr}
+\avm[style=fstr]{
+[ pred & `see\arglist{\SUBJ,\OBJ}' \\
+   subj & [pred  & `pro'  \\
+                    num & sg \\
+                    pers & 1 \\
+                    case & nom ]\\ \\
+                    
+   obj & [ pred & `euro' \\
+                     pers & 3 \\
+                    num &  sg \\
+                    case &  acc \\
+        {\sc adjunct} & \{ [ pred & `joey'  \\
+                     pers & 3 \\
+                    num &  sg \\
+                    case &  prop \\
+
+   {\sc adjunct} & \{ [ pred & `pouch'  \\
+                     pers & 3 \\
+                    num &  sg \\
+                    case &  loc ] \\
+\} ]\\
+\} \\
+] \\
+tense & pst \\
+mood & indicative 
+
+]\\
+}
+}
+
+None of this case marking by itself is out of the ordinary. What is special is the ability
+of languages like   Martuthunira to stack  cases on top of one another.  In a
+language like Martuthunira that  has  fairly free word order, this stacked
+marking of dependents unambiguously indicates  which elements belong to which
+other elements syntactically (see \citealt{butt2000} for some discussion). 
+
+The individual case markers could be dealt with straightforwardly by a mix of
+structural and lexically inherent case, as had been done in the past.  However,
+the case stacking is a different matter.  It is not particularly feasible to
+stipulate all possible case stacking patterns in the lexical entries of the
+verbs.  This kind of ``anticipatory'' case marking would lead to an unwanted proliferation
+of disjunctions in the verbal lexicon.
+Given that Martuthunira  has  fairly free word order, trying to write rules
+in the syntax that would anticipate all possible patterns of case stacking would
+result in an   unwieldy and uninsightful treatment of the phenomenon. 
+
+
+Instead, 
+Nordlinger's solution is to see case morphology as being {\em constructive} in
+the sense that a case marker comes with information as to what type of {\GF}
+it is expecting to mark.  Formally, this is accomplished via {\em inside-out
+  functional designation} \citep{dalrymple1993,dalrymple01}, as illustrated in
+  the (sub)lexical entries for the case markers in (\ref{aussie-case-entries}).  The first
+  line in each of the entries is standard:  each case
+marker specifies that the attribute {\sc case} is assigned a certain
+value (ergative, accusative, etc.).  This ensures that whatever
+constituent carries the case marker will be analyzed as ergative, or
+accusative, or locative, etc. 
+
+The second line in each entry has the \UP behind the {\GF} rather than in front of
+it, signaling inside-out functional designation (\bookorchapter{\citetv[\sectref{sec:CoreConcepts:IOFU}]{chapters/CoreConcepts}}{\citetv[§3.2.4]{chapters/CoreConcepts}}). This has the effect of
+adding a constraint on the type of {\GF} the case marker can be associated with.
+In (\ref{aussie-case-entries}) the effect is that the ergative is constrained
+to appear within a \SUBJ, the accusative within an \OBJ,
+etc.\footnote{\citet{Andrews1996} also takes on case stacking and also uses LFG's
+  inside-out functionality. However, his focus is on the interaction between
+  morphology and syntax, rather than on case per se.} 
+
+\ea \label{aussie-case-entries}
+\begin{tabular}[t]{lll}
+a. &  {\sc ergative}: &  (\UP \CASE) = \ERG \\
+& & ({\sc subj} \UP) \\ [2ex]
+
+b. &   {\sc accusative}: &  (\UP \CASE) =  \ACC \\
+& & (\OBJ \UP) \\ [2ex]
+
+c. &  {\sc locative}: &  (\UP \CASE) =  \LOC \\
+& & ({\sc adjunct} \UP) \\  [2ex]
+
+b. &  {\sc proprietive}: &  (\UP \CASE) =  {\sc prop} \\
+& & ({\sc adjunct} \UP) \\ 
+\end{tabular}
+\z
+Nordlinger works on the Australian language Wambaya and deve\-lops an analysis of
+the complex interaction between morphology and syntax that characterizes case
+stacking.  Reproducing the entire ana\-lysis including an explanation of Wambaya
+morphosyntax goes far beyond the limited space
+available in a handbook article: this section therefore stays with the
+Martuthunira example for purposes of illustrating the general idea behind
+constructive case.
+
+For the sake of concreteness, this section assumes 
+a view of the morphology-syntax interface in which sublexical items are produced by
+rules which are analogous to phrase structure rules.  This is the approach
+generally adopted in the ParGram grammar development world \citep{ButtEtAl1999}
+and as such is useful for a concrete illustration.  Note, however, that current LFG
+literature differs  on assumptions as to the morphology-syntax interface.
+The  illustration here adopts the general architecture articulated in
+\citet{dalrymple15}. 
+
+% The basic workings of this system are most easily illustrated with respect to
+% the data in (\ref{big-dog-ex}) from Wambaya, which does not contain case
+% stacking, but which does contain modification and a case marked discontinuous
+% constituent: `big dog'.   The partial  f-structures built up by the information
+% from only `dog' and `big' are shown in (\ref{fstr-dog}) and
+% (\ref{fstr-big}), respectively.   Both the
+% ergative `dog' and the `big' specify that they are parts of the
+% subject.  The `dog' serves as the head of the phrase and the `big' as
+% an adjunct which modifies it.
+
+% \ea \label{big-dog-ex}
+% \gll
+% {galalarrinyi-ni} {gini-ng-a}  {dawu} {bugayini-ni} \\
+% {dog.{\sc i-erg}}  {\sc 3sg.masc.a-1.o-nfut} {bite}  {big.{\sc i-erg}} \\
+% \glt `The big dog bit me.' \hfill Wambaya
+% \z
+
+% \ea \label{fstr-dog}
+% \avm[style=fstr]{
+% [ subj  & [                  pred & `dog'  \\
+%                               case & erg \\
+%                      ] \\  ]
+% }
+% \z
+
+% \ea \label{fstr-big}
+% \avm[style=fstr]{
+%   [ subj  & [ 
+%                              case & erg \\
+                            
+% adjunct & \{
+%                             [  pred & `big'  ]\\
+%    \} \\ 
+% ] \\
+%  ]
+% }
+% \z
+
+
+% These two sub f-structures can be unified when the information flows together
+% via the c-structure as a routine part of the clausal analysis within the LFG
+% formalism. The result of the unification is shown in (\ref{fstr-big-dog}): the
+% two f-structures in (\ref{fstr-dog}) and (\ref{fstr-big}) can be unified because
+% they contain no clashing information and are both specified for  \SUBJ \CASE
+% \ERG.
+
+% \ea \label{fstr-big-dog}
+% \avm[style=fstr]{
+% [ subj & [                  case &  erg \\
+%                                pred & `dog'  \\
+% adjunct & \{    [ pred & `big' ] \\
+%                       \} \\
+%                            ] \\
+% ]
+% }
+% \z
+
+To begin with, let us consider the
+partial f-structure resulting from just the information on `pouch' shown in
+(\ref{fstr-pouch}).  The stacked case marking on this noun not only provides
+information on the case of the noun (the innermost case morphology), it also
+``anticipates'' the larger structure it will be embedded in.  The {\PRED}s of
+that larger structure will be filled in as part of the overall  annotated c-structural
+analysis, with the partial f-structures corresponding to each of the nouns (and
+the verb) unifying into the full f-structure in  (\ref{euro-fstr}). 
+
+\eabox{ \label{fstr-pouch}
+\avm[style=fstr]{
+[ obj & [                  case &  acc \\
+                               
+adjunct & \{    [ case & prop  \\
+adjunct & \{  [  case & loc  \\
+pred & `pouch' \\
+num & sg \\
+pers & 3 ]\} ]
+\} \\
+       ]]
+}
+}
+
+Recall that the inside-out function designation only serves as a
+constraint on  f-structure. That, is the information found on `pouch'
+postulates  that there should be an \OBJ into which it can be embedded.   This
+condition will only be fulfilled if 
+such an \OBJ ends up  being introduced somewhere so the actual 
+introduction of the \OBJ thus needs to come from some other part of the syntax
+or lexicon. 
+
+For purposes of illustration, 
+let us assume a (simplified) phrase structure rule for clauses as in (\ref{cstr-aussie}),
+which reflects the tendency in Australian languages for a (finite) verb to be in
+second position and models the general free word order for Australian
+languages. We can thus have one {\GF} or an adjunct introduced by the \textsc{xp} before
+the verb and any {\GF} or adjuncts after the verb.  Note that 
+``{\sc gfs-adj}'' is
+a template that is expandable as in
+(\ref{gfs}).  Similarly, \textsc{xp}s could be expanded to a number of different phrase
+structure categories, including \textsc{np}s. 
+
+
+\ea \label{cstr-aussie} 
+\phraserule{S}{\rulenode{XP\\ {\sc @gfs-adj}}
+  \rulenode{V\\\UP =\DOWN}
+  \rulenode{XP*\\ {\sc @gfs-adj}}}
+      \z
+
+      
+% \ea \label{cstr-aussie} 
+% \phraserule{S}{\rulenode{XP\\ \{ (\UP {\GF}) = \DOWN $|$ \\ \DOWN $\in$  (\UP  {\sc adjunct})\}}
+%   \rulenode{V\\\UP =\DOWN}
+%   \rulenode{XP*\\ \{ (\UP {\GF}) = \DOWN $|$ \\ \DOWN $\in$  (\UP  {\sc adjunct})\}}}
+%       \z
+
+      % \ea \label{{\GF}s}
+      % {\GF} = \{ \SUBJ  $|$ \OBJ  $|$ \OBL  $|$ \OBJTHETA \}
+      %\{ (\UP \SUBJ) = \DOWN $|$  (\UP \OBJ) = \DOWN  $|$  (\UP \OBL) = \DOWN \\
+    %  \hspace{7ex}
+    %  $|$   (\UP \OBJTHETA) = \DOWN  $|$  \DOWN $\in$  (\UP  {\sc adjunct})\}
+      
+    %  \z
+
+        \ea \label{gfs}
+        {\sc gf-adjs} =    \{ (\UP \SUBJ) = \DOWN $|$  (\UP \OBJ) = \DOWN  $|$  (\UP \OBLTHETA) = \DOWN \\
+      \hspace{9ex}
+      $|$   (\UP \OBJTHETA) = \DOWN  $|$  \DOWN $\in$  (\UP  {\sc adjunct})\}
+            %\{ \SUBJ  $|$ \OBJ  $|$ \OBL  $|$ \OBJTHETA \}
+   
+      \z
+      Since most of the action takes place in the morphological component in
+      Martuthunira, let us take a look at a possible sublexical structure (for a discussion of sublexical structure and sublexical rules, see \bookorchapter{\citetv[\ref{sect:integrity}]{chapters/CoreConcepts}}{\citetv[§2.2]{chapters/CoreConcepts}}). In
+      (\ref{ninfl-aussie}) the N expands into a set of sublexical categories,
+      marked with a + for ease of exposition. In our example, we have a noun
+      stem that can combine with a case marker, yielding a sublexical N (+N).
+      This can combine with further case markers, as shown in
+      (\ref{ninfl-aussie}), finally yielding an N.\footnote{Of course, the
+        possible space of combinations in the morphological component must be
+        constrained and this can be done quite simply by writing suitable
+        sublexical rules, but describing all the details here would take us too
+        far afield.}
+
+  \ea \label{ninfl-aussie}
+    \begin{footnotesize}
+     \begin{forest}
+[N
+[+N\\{{\sc gfs-adj}}
+[+N\\{{\sc gfs-adj}}
+   [+Nstem\\{\UP= \DOWN} [thara]]
+   [+Case\\{(\UP \CASE \LOC) = \DOWN}\\{({\sc adjunct} \UP)}  [ngka]]]
+    [+Case\\{(\UP \CASE \sc prop) = \DOWN}\\{({\sc adjunct} \UP)}  [marta]]]
+  [+Case\\{(\UP \CASE \ACC) = \DOWN}\\{(\OBJ \UP)}  [a]]
+  ]
+\end{forest}
+ \end{footnotesize}
+
+
+\z
+The inside-out functional designation on \textit{ngka}, for example, requires
+that this be part of an {\sc adjunct}.  This is only a constraint and as such
+does not ``construct'' the {\sc adjunct} per se.  However, taken together with
+the space of possibilties licensed by the functional annotations on the mother
++N node, the inside-out designation has the effect of selecting exactly the {\sc
+  adjunct} among the space of possibilities provided by the expansion of {\sc
+  gfs-adj} in (\ref{gfs}) and thus, in effect, serving to ``construct'' this \GF
+by way of the sublexical specification on the case marker.
+
+The same formal effect is found with the accusative marker --- here the
+governing \GF is constrained to be an \OBJ and this
+causes the \OBJ option to be selected from the set of possibilities in
+(\ref{gfs}), but this time they are selected from the functional annotations on
+the \textsc{xp} in rule (\ref{cstr-aussie}), which is instantiated by an \textsc{np} and expands
+into the N in (\ref{ninfl-aussie}).  
+
+Overall, taking together the functional annotations in the phrase structural and
+the sublexical space within the N  leads us to the f-structure in
+(\ref{fstr-pouch}).  This partial f-structure can then be unified
+straightforwardly with
+information coming from other parts of the clause via the standard unification
+mechanism in LFG.   For example, the unification of (\ref{fstr-pouch}) with the partial
+f-structure corresponding to the word \textit{mirtily-marta-a} `joey-{\sc
+  prop-acc}' shown in (\ref{fstr-joey}) results in the unified
+f-structure in (\ref{fstr-pouch-joey}).   This unification takes place with
+respect to the information coming from the other words in the clause as well,
+ resulting in the final f-structural analysis in (\ref{euro-fstr}).  
+
+
+\eabox{ \label{fstr-joey}
+\avm[style=fstr]{
+[ obj & [                  case &  acc \\
+                               
+adjunct & \{    [case & prop  \\
+pred & `joey' \\
+num & sg \\
+pers & 3 ]\} 
+       ]]
+}
+}
+
+\eabox{ \label{fstr-pouch-joey}
+\avm[style=fstr]{
+[ obj & [                  case &  acc \\
+                               
+adjunct & \{   [ case & prop  \\
+         pred & `joey' \\
+       num & sg \\
+     pers & 3 \\
+adjunct & \{  [  case & loc  \\
+pred & `pouch' \\
+num & sg \\
+pers & 3 ]\} ]
+\} \\
+       ]]
+}
+}
+
+Nordlinger's constructive case idea thus establishes case marking as carrying
+important information for the overall clausal analysis and invests case markers
+with (sub)lexically contributed information.  Because the \GF specifications on
+the case markers clearly signal which parts of the clause belong together,
+effects of free word order are accounted for
+automatically.  For example, the discontinuous constituents, 
+as illustrated in the Wambaya example in (\ref{big-dog-ex}), 
+can be treated very naturally.  As sketched above for
+Martuthunira, each word in the clause produces a partial f-structure.  These
+partial f-structures are then unified with others to produce the overall
+analysis, with the particular position in the clause or adjacency not mattering for the
+f-structural analysis.  What matters is the compatibility of the information
+coming from the various bits and pieces of the clause, which means that
+discontinunous constituents which are each marked as ergative will end up being
+unifed under the same {\GF} at f-structure, in this case the ergative subject. 
+
+\ea \label{big-dog-ex} Wambaya \citep[96]{nordlinger1998constructive}\\
+\gll
+{galalarrinyi-ni} {gini-ng-a}  {dawu} {bugayini-ni} \\
+ {dog.{\sc i-erg}}  {\sc 3sg.m.a-1.o-nfut} {bite}  {big.{\sc i-erg}} \\
+ \glt `The big dog bit me.' 
+ \z
+
+ \citet{buttking91,buttking05} take a similarly constructive approach to case 
+ in addressing the case marking and free word order patterns of Urdu and they
+ combine this with a theory of linking. This is discussed in \sectref{sec:all}.  Before moving on to this and some further aspects governing the
+ distribution of case from an LFG perspective, we however first delve into the insights
+ offered by an adoption of Optimality Theory into LFG.
+ 
+
+\section{Optimality-Theoretic approaches}
+\label{sec:ot}
+
+Optimality Theory (OT) was originally formulated with respect to phonological
+phenomena \citep{PrinceSmolensky1993,kager99}, but quickly found its way into
+syntactic work \citep{Grimshaw97} and analyses of case patterns
+\citep{legetal00}.  OT assumes an architecture by which several input candidates
+are generated by a given grammar.  These input candidates are subject to a series
+of ranked constraints and result in just one of the candidates being picked as
+the most ``optimal'', i.e.~as the resulting surface string.  This version of OT
+is essentially focused on production, but a {\em bidirectional} version of OT,
+which could take both the production and the comprehension perspective into
+account, has been formulated as well \citep{Blutner00,dekker-rooy2000}.
+Constraints are assumed to be universally applicable across all languages, but
+the rankings of the constraints may differ, giving rise to language-particular
+patterns (see \citetv{chapters/OT} for an overview).
+
+
+\citet{bresnan00opt} introduced a version of OT that is compatible with LFG,
+arguing for the merits of this approach.  Within OT-LFG, the input to an
+evaluation by OT constraints is assumed to be f-structure and c-structure
+pairings and the task of the OT constraints is to pick out the most optimal
+pairing.  Work on case within OT-LFG has generally built on Bresnan's blueprint
+as well as the notions introduced by bidirectional OT.
+
+%The first paper to tackle case marking with OT was by  \citet{legendreetal93}.
+%This formulated   a typological account of ``core'' case marking on subjects and
+%objects, predicting nominative-accusative vs.~ergative-absolutive
+%systems. Despite the wide typological scope of the paper, the insights with
+%respect to case did not go beyond general existing assumptions within GB/MP and
+%it was work
+
+
+\subsection{Harmonic Alignment and DCM}
+
+OT-LFG work on case also made crucial use of the ideas in Aissen's seminal OT
+papers  \citep{Aissen1999,Aissen2003}, in which she proposes
+a series of  typologically motivated ``Harmonic Alignment Scales'' to account
+for DCM.
+%These observations as to harmonic alignment  serve as  constraints on the
+%input-output relations  postulated by OT \citep{Aissen1999,Aissen2003}.
+For example, Aissen works with Silverstein's famous person and animacy hierarchy
+with respect to split ergativity \citep{Silverstein}.  She distills his and
+other insights found in the literature into three {\em universal prominence
+  scales} shown in (\ref{prom-scale}). These scales are applied to DCM, for
+example, with respect to differential subject marking of the type illustrated in
+(\ref{ex:dsm}) for Punjabi.  In Punjabi third person subjects, but not first or
+second person subjects, may be overtly marked with ergative case.
+
+\begin{exe}
+  \ex \label{ex:dsm}
+Punjabi
+  \begin{xlist}
+    \ex[]{
+      \gll {m\~{\textepsilon}} {b{\textscripta}kra} {vec\textsuperscript{h}-i-a} \\
+{\textsc{pron.1.sg.f/m}} {goat.\textsc{m.sg.nom}}  {sell-\textsc{pst-m.sg}} \\
+\glt `I (male or female) sold the goat.'   }
+ \ex[]{
+      \gll {o=ne}   {b{\textscripta}kra} {vec\textsuperscript{h}-i-a} \\
+      {\textsc{pron.3.sg.f/m=erg}} {goat.\textsc{m.sg.nom}} {sell-\textsc{pst-m.sg}} \\
+\glt `He/She sold the goat.'  }
+\end{xlist}
+\end{exe} 
+
+
+\ea \label{prom-scale}
+\begin{tabular}[t]{ll}
+Thematic Role Scale: & Agent $>$ Patient  \\
+Relational Scale: & Subject $>$ Non-subject  \\
+Person Scale: & Local Person (1st\&2nd) $>$  3rd Person \\
+\end{tabular}
+\z
+The three separate preference scales interact across languages. Within OT  this
+interaction is modeled via the concept of {\em Harmonic Alignment}
+\citep{PrinceSmolensky1993}, by which each element of a scale is associated with
+an element of another scale, going from right to left.  The Harmonic Alignment
+of just the Relational and the Person scale in (\ref{prom-scale}) is shown in
+the second column in (\ref{harm-prom}) \citep[681]{Aissen1999}.  The third
+column in (\ref{harm-prom}) shows the OT constraints derived from the Harmonic
+Alignment of the two scales.  The constraints are arrrived at by interpreting
+the ranked elements in the Harmonic Alignment as situations which should be
+avoided, whereby lower ranked elements are the ones to be avoided more strongly
+than a higher ranked element. So in column 2 
+the `x $\succ$ y'
+means `x is less marked/more harmonic than  y', and in column 3 the `x $\gg$ y'
+means that the x constraint is ranked higher, i.e., is stronger, than
+the y constraint.
+
+
+\eabox{  \label{harm-prom}\tabcolsep .5em
+{\small
+
+\begin{tabular}{|l|l|l|}
+\hline
+Scales & Harmonic Alignment & Constraint Alignment \\
+\hline
+Local $>$ 3 & Su/Local $\succ$ Su/3 & *Su/3 $\gg$ *Su/Local \\
+Su $>$ Non-Su & Non-Su/3 $\succ$ Non-Su/Local & *Non-Su/Local $\gg$
+*Non-Su/3 \\
+\hline
+%\caption{Alignment of Person and grammatical relation (encapsulated)}
+\end{tabular}
+}
+}
+
+Constraints within OT are understood to interact with a notion of
+markedness, with constraints conspiring to work towards unmarked situations and
+against marked situations.  The Harmonic Aligment scales above state that 1st
+and 2nd person subjects are less marked than  3rd person subjects and that 
+3rd person non-subjects are less marked than 1st or 2nd person
+non-subjects (as per typological observations).  Under the assumption that overt
+case is used to flag those NPs which are marked in some way, these scales and
+the constraints derived from them correctly predict that ergative case is more
+likely to occur on 3rd person subjects (the more marked situation), rather than
+on 1st person subjects. And this is indeed what is observed in Punjabi
+(\ref{ex:dsm}) and crosslinguistically.
+
+Aissen derives another set of constraints targeting the realization of case on
+objects, and these are provided in (\ref{obj-scales}).  She uses these  constraints
+to provide an analysis of well-known Differential Object Marking (DOM)
+phenomena, such as the definiteness and specificity
+effects discussed for 
+Turkish by \citet{enc1991}; see also \citet{Butt2006} for an overview discussion. 
+
+  \ea \label{obj-scales}
+\begin{tabular}[t]{ll}
+Relational Scale: & Subject $>$ Non-subject  \\
+Animacy Scale: & Human  $>$ Animate $>$ Inanimate \\
+Definiteness Scale: & Pronoun $>$ Proper Name $>$ Definite $>$ \\
+& Indefinite Specific $>$ Nonspecific \\
+\end{tabular}
+\z
+Again, these relational scales are based on crosslinguistic observations.  We
+have already seen  animacy playing a role in Malayalam case assignment (\sectref{sec:early}).  This feature, along with others, also plays a role in
+Indo-Aryan case marking, as illustrated via the specificity alternation (see
+\ref{ex:wo-switch} for an example).
+%in (\ref{ex:dom}) found in Urdu/Hindi \citet{butt93}.
+
+% \begin{exe}
+%   \ex \label{ex:dom}
+%   \begin{xlist}
+%     \ex[]{
+%       \gll {{\textscripta}dnan=ne} {ro\d{t}i}
+%       {p{\textscripta}k{\textscripta}-yi} \\
+%       {Adnan=Erg} {bread.F.Sg.Nom} {cook-Perf.F.Sg} \\
+%       \glt `Adnan made the/a/some bread.' \hfill Urdu}
+%       \ex[]{
+%       \gll  {{\textscripta}dnan=ne} {ro\d{t}i=ko}
+%       {p{\textscripta}k{\textscripta}-yi} \\
+%       {Adnan=Erg} {bread.F.Sg=Acc} {cook-Perf.F.Sg} \\
+%       \glt `Adnan made a particular/the bread.' \hfill Urdu}
+%   \end{xlist}
+% \end{exe}
+
+
+
+ \subsection{OT-LFG and case}
+      
+Working broadly within OT-LFG, \citet{deo-sharma06} take on the interaction
+between verb agreement and ``core'' case marking (ergative, accusative and
+nominative) on subjects and objects
+ in a range of Indo-Aryan languages. The
+patterns are complex, but Deo and Sharma identify a set of generally applicable
+constraints whose variable ranking accounts for the  patterns they find
+across Indo-Aryan and with respect to dialectal variation.  In this, they build
+on Aissen's work, which is geared mostly towards accounting for the overt
+morphological realization of case, and combine this with arguments and proposals
+by \citet{Woolford2001}, who focuses more on the abstract realization of case. 
+
+
+%Rajesh:  emerges from Deo+Sharma that subjects lose marking, i.e, one
+%tries to make them unmarked, whereas objects gain marking, i.e., try
+%to mark them.  So, effort at getting marked objects in opposition to
+%unmarked subjects.  Can perhaps put this in once Deo+Sharma is
+%published. 
+
+
+\citet{Asudeh01} contributes to discussions on OT and case by taking on the
+question of how optionality should be dealt with within OT.  This is an
+interesting problem as OT assumes there should be exactly one optimal
+candidate, not two or more. Asudeh focuses on data from Marathi as compiled by
+\citet{Joshi93}, who shows that certain verb classes (mostly involving datives)
+allow for variable linking.  In (\ref{ex:mar-find}), for example, either one of
+the arguments could be linked to \SUBJ, and the other is then linked to
+\OBJ.
+
+\ea \label{ex:mar-find}
+Marathi\\
+\gll {sumaa-laa} {ek} {pustak} {milaale} \\
+{Suma-\DAT} {one} {book.\NOM} {got} \\
+\glt `Suma got a book.'
+\z
+In order to account for this type of undisputed optionality in linking
+possibilities in Marathi, Asudeh makes use of the stochastic version of OT
+\citep{Boersma2000}, which allows for the ranking of constraints on a
+continuous rather than a discrete scale and thus provides a way of allowing for
+optionality. Building on Joshi's original analysis, Asudeh  works with
+Proto-Roles (see \sectref{sec:sem}) to steer case assignment and takes up bidirectional OT in the discussion of OT approaches
+to optionality and, by extension, ambiguity.
+
+\citet{Lee-CSLI,lee01-diss} focuses on word order freezing problems in two languages
+that otherwise allow  fairly free scrambling of major constituents: Hindi and
+Korean.  For example, in Hindi subjects and objects can in principle occur in
+any order, as illustrated by (\ref{ex:wo-switch}), in which the object is overtly marked
+as accusative, expressing specificity on the object.  
+
+\begin{exe}
+  \ex \label{ex:wo-switch}
+Hindi
+  \begin{xlist}
+    \ex[]{
+    \gll  {p{\textscripta}tt\textsuperscript{h}{\textscripta}r} {bot{\textscripta}l=ko} {to\d{d}-e-g-a} \\
+{stone.\textsc{nom}} {bottle=\textsc{acc}}  {break.\textsc{3.sg-fut-m.sg}}  \\
+        \glt `The stone will break the (particular) bottle.' }
+         \ex[]{
+           \gll  {bot{\textscripta}l=ko} {p{\textscripta}tt\textsuperscript{h}{\textscripta}r} {to\d{d}-e-g-a} \\
+           {bottle=\textsc{acc}} {stone.\textsc{nom}} {break.\textsc{3.sg-fut-m.sg}}\\ 
+        \glt `The stone will break the (particular) bottle.' }
+      \end{xlist}
+    \end{exe}
+However, when
+both arguments have the same case marking the clause-initial argument must be interpreted as
+the subject, as illustrated in (\ref{ex:wo-freeze}).  This situation occurs when the object is also
+nominative (and thus non-specific in this Hindi DOM phenomenon) and if all else
+is equal, e.g., both arguments are equally non-animate as in
+(\ref{ex:wo-freeze}). 
+
+  \begin{exe}
+  \ex \label{ex:wo-freeze}
+  Hindi
+  \begin{xlist}
+    \ex[]{
+    \gll  {p{\textscripta}tt\textsuperscript{h}{\textscripta}r} {bot{\textscripta}l} {to\d{d}-e-g-a} \\
+{stone.\textsc{nom}} {bottle.\textsc{nom}} {break.\textsc{3.sg-fut-m.sg}} \\
+        \glt `The stone will break a/the bottle.'  }
+         \ex[]{
+           \gll  {bot{\textscripta}l} {p{\textscripta}tt\textsuperscript{h}{\textscripta}r} {to\d{d}-e-g-a} \\
+{bottle.\textsc{nom}} {stone.\textsc{nom}} {break.\textsc{3.sg-fut-m.sg}}\\
+        \glt `The bottle will break a/the stone.' }
+      \end{xlist}
+    \end{exe}
+ Lee works with notions of markedness in conjunction with bidirectional OT
+    constraints to model phenomena such as these.  The idea is that constraints
+    from both the production and the comprehension side conspire together to
+    allow for only clause-initial subjects in situations like
+    (\ref{ex:wo-freeze}) and that this working together of constraints makes
+    visible the fact that unmarked word order in Hindi and Korean is SOV
+    (``emergence of the unmarked''). 
+
+ Word order in Hindi and Korean has been shown to be
+ associated with information structural effects and Lee's work accordingly
+ includes a larger treatment of word order in terms of information structure.
+ Lee proposes OT constraints which model the interaction of case marking,
+ word order and discourse functions (e.g., topic and focus). 
+
+ % The emergence of the unmarked SOV word order becomes evident In situations like
+%  (\ref{ex:wo-freeze}) when both the production and the comprehension directions
+%  are taken into account, as shown in (\ref{prod-comp}).  The idea is that while
+%  the production direction in principle allows for both options, in the
+%  comprehension direction, the constraint system works out so that only one of
+%  the options is actually good.  This is due to a low ranked (and thus easily
+%  violated) constraint which prefers subjects to be aligned with the left edge of
+%  the clause.  Given that  subjects are also 
+% generally preferred to be aligned with animate referents as per the univeral prominence scale
+% in (\ref{obj-scales}), in situations when this is not so, as in
+% (\ref{ex:wo-freeze}), other constraints come into play, which pick out only one
+% optimal candidate (indicated by the hand), thus effectively legislating against
+% objects in clause initial position. 
+
+% \begin{tabular}[t]{lcccl} \label{prod-comp} 
+% {\bf Production} & & & & {\bf Comprehension} \\
+% \Optimal & \SUBJ & \OBJ & &  \rotate[f]{\Optimal} \\
+% & $|$ & $|$ \\ 
+% & {stone.Nom} & {bottle.Nom} & breaks \\ 
+% & $|$ & $|$ \\ 
+% \Optimal & \OBJ & \SUBJ \\
+% \end{tabular} \\ [1ex]
+
+ Like Lee, \citet{DN} identify information structure as playing a central role in
+ case marking phenomena. Unlike Lee, \citet{DN} see the notion of topicality
+ being directly linked to case marking and the innovation of case marking.
+ \citet{DN} take on DOM in a large swathe of languages and argue that the OT
+ approaches to case pioneered by Aissen do not go deep enough and that
+ information structural concerns must be taken to play a central role.  They
+ develop an alternative LFG analysis which uses LFG's projection architecture to
+ model a complex interaction between c-structure, f-structure,
+ i(nformation)-structure and semantic interpretation.  The semantic component is
+ modeled via glue semantics, see \citetv{chapters/Glue}.  \citet{DN} analyze a
+ large variety of DOM in very different languages from this clausal semantic
+ perspective on case.  In more recent work, \citet{donohue20} analyzes the case
+ marking system of Fore, a Papuan language, by building on OT-LFG, Aissen's
+ prominence scales and the bidirectional OT approach to case pioneered by
+ \citet{Lee-CSLI,lee01-diss}. The account focuses on instances of word order
+ freezing and, more generally, on the strategies for case disambiguation  found in Fore.
+
+ %Claims that the special thing is a tenary distinction in animacy scale (human,
+ %animate, inanimate), but I've seen such things elsewhere.  Maybe just not in
+ %OT...  anyway, adding that in doesn't add to the discussion, but distracts. 
+ 
+
+
+\section{Clausal vs. lexical perspectives}
+\label{sec:sem}
+
+LFG's original approach to linking,  argument alternations and valency
+changing relations such as passives, applicatives or causatives was formulated
+to apply entirely within the lexicon, in keeping with LFG's primarily lexical
+perspective on syntax, cf.~\citetv{chapters/Mapping} and \sectref{sec:linking} of this chapter. \citet{MohananT1994,Butt1995} and \citet{alsina1996the-role}  established
+that this lexical version of linking could not account for argument structure
+phenemona found with syntactically formed complex predicates.  As a consequence, 
+linking within LFG is no longer confined to apply  within the
+lexicon.
+
+In addition to this basic insight into the domain of linking, there is 
+another dimension to the lexical vs.~clausal divide which is relevant for an
+understanding of case.  Case is classically understood as marking the
+relationship between a head and its dependents \citep{blake-case}. This
+relationship can be
+expressed entirely lexically. But, as we have already seen, case 
+expresses much more than specifying how a dependent is related to a
+head/predicate. \sectref{sec:ot} on OT  showed that case
+regularly marks degrees of agentivity, animacy and referentiality across a wide
+range of languages.  \citet{DN} furthermore conclusively demonstrate that
+information structure plays a large role in the development and structure of
+case systems, and we saw in the examples from Malayalam in (\ref{ex:mal-modal})
+that case can be used to express modality.  These semantic reflexes of case
+marking necessarily need to be taken into account, with \citet{DN} rightly
+criticizing the existing OT accounts for being inherently too limited to
+provide a full account of the empirically attested patterns.
+
+One underlying reason for this limitation is that while the OT accounts make
+reference to semantic concepts, they are primarily concerned with accounting for
+a structural relationship between the two core arguments of a clause (generally
+the \SUBJ and \OBJ) and the alternations found in case marking on these two core
+arguments. An approach to case which allows for the systematic expression of
+semantic dimensions in conjunction with structural considerations has been
+articulated clearly by \citet{buttking03-case, buttking05} and has been
+recently extended in \citet{schaetzle18} and \citet{beck-butt2021}.  
+As discussed in \sectref{sec:all}, this approach is quite complex and builds
+on a number of important semantic insights and formal ingredients.  These are
+presented  as part of this section. 
+
+
+\subsection{Proto-roles}
+
+Classic LFG's Mapping Theory works with thematic roles such as {\em agent, patient},
+{\em goal}, etc.  The use of such thematic role labels has repeatedly been shown
+to be problematic, with \citet{Grimshaw90} advocating for an approach that
+  separates out arguments slots from semantic content and \citet{Dowty1991}
+ instead proposing to see predicate arguments as a collection of semantic
+ entailments from which prototypical Agent vs.~Patient roles
+ can be defined.    \citet{vanvalin91} and \citet{VanValin1997} propose a similar approach
+ whereby the Macro-Roles Actor vs.~Undergoer are defined on the basis 
+of event-based properties (e.g., activities vs.~results). 
+  % which can be stated about them with respect to the event they occur in.
+ 
+Taking these observations and proposals on board,  Kibort has  formulated a new version of LFG's Mapping
+Theory in a series of papers \citep{Kibort2007,kibort13,kibort14,KM15}. This revised version adopts Grimshaw's
+idea of separating out argument slots from semantic content, but  does not
+incorporate a notion of Proto-Roles. However, the idea of   
+Proto-Roles has been adopted within LFG in a variety of other work,  e.g.,
+\citet{alsina1996the-role}, \citet{Asudeh01} and perhaps most significantly, by 
+\citet{zaenen93}.
+
+Zaenen shows how Dowty's collection of Proto-Agent
+vs.~Proto-Patient semantic entailments as shown in (\ref{proto-roles}) can be mapped onto LFG's
+existing Mapping Theory, which uses the features  [$\pm o,r$] to relate
+{\GF}s and thematic roles (see \citetv{chapters/Mapping}). Zaenen's principles are shown in
+(\ref{zaenen-maps}). These principles interact with other principles of LFG's
+Mapping Theory  to ensure
+that [$-o$] marked participants are  realized either as \SUBJ  or an \OBL, [$+o$]
+marked participants are linked to  an \OBJ or an \OBJTHETA, etc. 
+
+
+% Similarly, the factors governing argument alternations such as in
+% (\ref{ex:cook-alt}) assume that the relevant information governing the
+% alternation is encoded within the lexical semantics of the verb
+% \citep{bresnan2001lexical,BresnanEtAl2016}, with the (circumscribed) degress of freedom
+% allowed by the linking from thematic roles to {{\GF}}s explaining the alternation.
+
+
+%  \begin{exe}
+%    \ex \label{ex:cook-alt}
+%    \begin{xlist}
+% \ex  The father cooked dinner for the children.
+% \ex  The father cooked the children dinner.
+% \end{xlist}
+% \end{exe}
+
+
+% In other cases, it seems clear that there is a semantic dimension that governs
+% the alternation, as in the well-known examples in (\ref{ex:cia-teach}) and
+% (\ref{ex:load}) (the latter is known as the spray-load alternation), see
+% \citet{Butt2006} for an overview discussion), where the degree of affectedness of
+% the object appears to play a role.  The alternation in  (\ref{ex:urdu-caus}) provides an
+% example with actual case marking: the accusative causee (\ref{ex:urdu-caus}a) is
+% interpreted to be affected by the tasting, but the instrumental causee in
+% (\ref{ex:urdu-caus}b) alternation in examples as in (\ref{ex:urdu-caus}).
+ 
+
+  
+%  \begin{exe}
+%   \ex \label{ex:cia-teach}
+%   \begin{xlist}
+%     \ex The CIA taught Urdu to the agents (but they didn't learn any).
+%     \ex  The CIA taught the agents Urdu (*but they didn't learn any).
+%       \end{xlist}
+%     \end{exe}
+
+%    \begin{exe}
+%   \ex \label{ex:load}
+%   \begin{xlist} 
+% \ex The women loaded the boxes into the truck.
+% \ex The women loaded the truck with the boxes.
+%       \end{xlist}
+%     \end{exe}
+    
+%  \begin{exe}
+%   \ex \label{ex:urdu-caus}
+%   \begin{xlist}
+%     \ex[]{
+%     \gll  {{\textscripta}nj{\textupsilon}m=ne}
+%    {s{\textscripta}dd{\textscripta}f=ko} {masala}
+%    {c{\textscripta}k\textsuperscript{h}-va-ya}   \\
+%  {Anjum.F=Erg} {Saddaf.F=Acc} {spice.M.Nom} 
+%  {taste-Caus-Perf.M.Sg}  \\
+%  \glt `Anjum had Saddaf taste the seasoning.' \hfill Urdu}
+
+%      \ex[]{
+%            \gll  {{\textscripta}nj{\textupsilon}m=ne}  {s{\textscripta}dd{\textscripta}f=se}  {masala} 
+%    {c{\textscripta}k\textsuperscript{h}-va-ya}    \\
+%  {Anjum.F=Erg} {Saddaf.F=Inst} {spice.M.Nom} {taste-Caus-Perf.M.Sg}  \\
+%  \glt `Anjum had the seasoning tasted by Saddaf.' \hfill Urdu}
+%     \end{xlist}
+%     \end{exe}
+
+
+
+% This pretheoretical notion of affectedness can be formalized and accounted for
+% in a variety of ways, for example via Jackendoff's (\citeyear{jackendoff1990semantic})
+% Action Tier in his Lexical-Semantic Decomposition approach to argument
+% structure, which \citet{Butt1993} pioneered for adoption within LFG.
+
+% Another approach is to adopt some notion of Proto-Roles by which a
+% proto-typical Actor/Agent is differentiated from a prototypical
+% Undergoer/Patient along the lines of Van Valin's
+% (\citeyear{vanvalin91,vanvalin97}) Macro-Roles or  Dowty's
+% (\citeyear{Dowty1991}) Proto-Roles.
+
+% (within LFG, e.g.~\citealt{Butt:Merger,alsinajoshi91}).
+
+
+ \ea \label{proto-roles}   {\bf Proto-Role
+    Entailments}
+\begin{itemize}
+\item[]  \hspace{-5ex}  {\bf Proto-Agent Properties}
+
+ \item[a.]  volitional involvement in the event or state \\ (Ex.: Kim in {\em
+   Kim is ignoring Sandy.})
+
+ \item[b.] sentience (and/or perception) \\ (Ex.: Kim in {\em Kim 
+   sees/fears Sandy.}) 
+
+ \item[c.]  causing an event or change of state in another  participant \\
+(Ex.: loneliness in {\em Loneliness causes unhappiness.}) 
+
+ \item[d.] movement (relative to the position of another  participant) \\
+(Ex.: tumbleweed in {\em The tumbleweed passed the rock.})
+
+ \item[e.] (exists independently of the event named by the  verb)\\
+(Ex.: Kim in {\em Kim needs a new car.})  
+
+\vspace{3ex}
+
+ \item[]  \hspace{-5ex}  {\bf Proto-Patient Properties}
+
+ \item[a.]  undergoes change of state \\
+(Ex.: cake in {\em Kim baked a cake.}, error in {\em Kim erased the error.})
+
+ \item[b.] incremental theme \\
+(Ex.: apple in {\em Kim ate the apple.}) 
+
+ \item[c.] causally affected by another participant \\
+(Ex.: Sandy in {\em Kim kicked Sandy.}) 
+
+ \item[d.] stationary relative to movement of another  participant \\
+(Ex.: rock in {\em The tumbleweed passed the rock.}) 
+
+ \item[e.] (does not exist independently of the event, or not at  all)\\
+(Ex.: house in {\em Kim built a house.}) 
+
+\end{itemize}
+\z
+
+
+
+
+\ea \label{zaenen-maps}
+{\bf Association of Features with Participants} (Zaenen 1993:150,152)
+
+\begin{enumerate}
+
+\item If a participant has more patient properties than agent
+properties, it is marked [$-r$]. 
+
+\item If a participant has more agent properties than patient
+properties it is marked [$-o$]. 
+
+%Assumption: 
+\item If a participant has an equal number of properties,
+it is marked [$-r$]. 
+
+%Stipulation:
+\item  If a participant has neither agent nor patient
+properties, it is marked [$-o$]. 
+
+%\item {\bf Typological Principle:} In languages in which {\sc subj}
+%(and {\sc obj}?) is encoded through case-marking and agreement (and
+%not via word order) lexically case marked participants are always +r. 
+
+
+\end{enumerate}
+\z
+Neither Kibort nor Zaenen deals with case marking per se.  Zaenen applies her
+formalism to Dutch, which does not exhibit case.  Kibort works with Slavic
+languages and Icelandic, which do have case, but she treats case as a piece of
+information which informs the linking, rather than as a phenomenon that needs to
+be explained.  In contrast, \citet{schaetzle18} explicitly works on case and 
+combines Kibort's revised linking theory with Zae\-nen's
+integration of Proto-Roles for her analysis of the diachronic trajectory of
+Icelandic dative subjects, see \sectref{sec:all}.
+
+
+% Croft and Van Valin both event based, but in different ways
+
+
+\subsection{Clausal semantics}
+
+The idea of Proto-Roles can in principle be applied within the lexicon to refer
+to the lexical semantics of the predicate. However, properties such as
+undergoing a change of state, being an incremental theme or attaining an
+endpoint along a path have by now been firmly established as resulting out of an
+interaction of the semantics of the Proto-Patient argument with the semantics of
+the event described by the verb (e.g., \citealt{krifka92,verkuyl93}).  The
+quantizedness of the Proto-Patient argument has been shown to be crucial in
+determining the telicity of an event; more recently the effect is referred to in
+terms of scalarity \citep{hayetal99,kennedy-levin08}.  The DCM alternation in
+(\ref{ex:finnish}) provides a representative example of this phenomenon in
+Finnish (also recall the Russian genitive alternation with respect to
+quantizedness discussed by Neidle, \sectref{sec:early}) When `bear' is
+accusative, it definitely undergoes a change of state (dies) and the entire
+event is telic. In contrast, when one wishes to express that the intended
+endpoint of the action was not achieved, `bear'  appears in the partitive. 
+
+\begin{exe}
+  \ex \label{ex:finnish}
+Finnish
+  \begin{xlist}
+    \ex[]{
+      \gll   {Ammu-i-n} {karhu-n} \\
+{shoot-\textsc{pst-1sg}} {bear-\ACC} \\
+\glt `I shot the/a bear.'  \citep[267]{kiparsky98}  }
+
+\ex[]{
+      \gll {Ammu-i-n} {karhu-a} \\
+{shoot-\textsc{pst-1sg}}  {bear-\textsc{part}} \\
+\glt `I shot at the/a bear (bear is not dead).' 
+\citep[267]{kiparsky98}   }
+\end{xlist}
+\end{exe}
+
+
+\citet{ramchand97} discusses the Finnish data along with Scottish Gaelic
+alternations as in (\ref{ex:sgaelic}) and (\ref{ex:sgaelic-want}).  She analyzes
+the differences in terms of boundedness.  The alternation in (\ref{ex:sgaelic})
+is essentially parallel to the Finnish example in (\ref{ex:finnish}).  The alternation in
+(\ref{ex:sgaelic-want}) presents an interestingly different situation, but one
+that can also be analyzed in terms of boundedness: it 
+expresses the difference between wanting
+something (unbounded) and getting it (bounded).
+
+\begin{exe}
+  \ex \label{ex:sgaelic}
+Scottish Gaelic
+  \begin{xlist}
+    \ex[]{
+      \gll {tha} {Calum} {air} {na}  {craobhan}  {a} {ghearradh} \\
+{be.\textsc{prs}} {Calum} {\ASP} {the} {trees.{\sc dir}}  {\textsc{oagr}} {cut.{\sc vn}} \\
+\glt `Calum has cut the trees.'  }
+
+\ex[]{
+      \gll {tha} {Calum}  {a'}  {ghearradh} {nan} {craobhan} \\
+{be.prs} {Calum} {\ASP} {cut.{\sc vn}} {the} {trees.\GEN}  \\
+\glt `Calum is cutting the trees  (no tree has \\ necessarily been cut yet).'   }
+\end{xlist}
+\end{exe}
+
+\begin{exe}
+  \ex \label{ex:sgaelic-want}
+Scottish Gaelic
+  \begin{xlist}
+    \ex[]{
+      \gll  {tha} {mi} {air}  {am} {ball} {iarraidh} \\
+{be.prs} {I} {\ASP} {the} {ball.{\sc dir}} {want.{\sc vn}} \\
+ \glt `I have acquired the ball.'  }
+
+ \ex[]{
+   \gll
+   {tha} {mi} {ag} {iarraidh} {a'bhuill} \\
+{be.prs} {I} {\ASP} {want.{\sc vn}} {the ball.\GEN} \\
+ \glt `I want the ball.' }
+\end{xlist}
+\end{exe}
+\citet{ramchand08} extends and refines her analysis so that events are seen as
+being built up out of a tripartite structure consisting of  an init(iation) subevent, a
+proc(ess) subevent and a res(ult) subevent.  This tripartite structure contrasts with the more common
+bipartite approach found in the majority of event-based approaches to linking.
+For example, \citet{jackendoff1990semantic} assumes a basic {\sc cause}-{\sc
+  become} (init-res) relationship and makes provisions for activity verbs (proc), but does not combine
+all  three subevent types into one tripartite template (see \citealt{levin-hovav05} for an overview),
+%where there is generally either a {\sc cause}-{\sc become} (init-res) relationship or a process ({\bf do}) in
+%RRG, for example), but not all three in one template.
+Ramchand demonstrates that
+her system works for a number of varied phenomena across languages and it has
+been adopted within LFG by  \citet{schaetzle18} and \citet{beck-butt2021}, as
+discussed in the next section. 
+
+%Could also use examples from Peter's Icelandic stuff in here, 
+%Could do the modal DCM here, or put it in the next section.
+
+
+\newpage
+\section{A comprehensive theory}
+\label{sec:all}
+\largerpage[2]
+
+This section first introduces an overall framework for case as developed by Butt and
+King in various papers (\sectref{sec:types}) and then goes on to look at the
+relationship between case and the theory of linking developed by
+\citet{schaetzle18} and \citet{beck-butt2021} in \sectref{sec:new-link}.
+
+
+\subsection{Types of case}
+  \label{sec:types}
+
+  \citet{buttking03-case,buttking05} develop a theory of case that allows for
+  four basic types: 1) structural case; 2) default case; 3) semantic case; 4)
+  idiosyncratic case.  This categorization differs significantly
+  from other theories of case and is explained in some detail
+  via examples in the next subsections.  Notably, Butt and King's notion of
+  semantic case is often conflated with idiosyncratic case in other theories and
+  referred to as just one category of quirky/inherent case.  Butt and King, on
+  the other hand, argue that the two types need to be separated out for an
+  effective understanding of case systems.  Butt and King also define structural case as
+   being that type of case which is only due to purely structural factors.  The
+  most common type of case marking in their system is that of semantic case,
+  which exhibits a mix of systematic semantic and structural factors.
+  Crucially, Butt and King center their analysis around an explanation of case
+  alternations (including \textsc{dcm}) and consequently dub their theory
+  \textit{Differential Case Theory} or \textsc{dct}. 
+Butt and King illustrate their analyses mainly with respect to Urdu, but also
+  include data from Georgian.
+
+\subsubsection{Semantic case: Mix of structure and semantics}
+
+Urdu has a complex system of case marking.  Most of the case marking involves a
+mixture of structural and semantic factors as illustrated by the core examples
+in (\ref{ex:urdu-basic}) and (\ref{ex:erg-vol}).  Overt case marking  generally
+takes the form of case clitics (see \citet{buttahmed11} for a history of the
+development of case marking in Urdu) and the absence of any case marking is glossed as
+nominative \citep{MohananT1994}.   The ergative is required with (di)transitive
+agentive verbs when the verb morphology is perfective, see (\ref{ex:urdu-basic}a)
+vs.~(\ref{ex:urdu-basic}b). The accusative {\em ko} and the null nominative engage in
+\textsc{dom}, with the accusative expressing specificity \citep{butt93}
+and generally required on animate
+objects, see (\ref{ex:urdu-basic}a,b)
+vs.~(\ref{ex:urdu-basic}c).\footnote{Agreement in Urdu/Hindi works as follows. 
+  The verb will only agree with a nominative (unmarked) argument.  If the \SUBJ
+  is unmarked, the verb agrees with this (\ref{ex:urdu-basic}b), else the verb agrees with \OBJ if that
+  is unmarked (\ref{ex:urdu-basic}a).  If neither the \SUBJ or the \OBJ is available for agreement,
+  the verb defaults to a masculine singular form, as in
+  (\ref{ex:urdu-basic}c). See \citet{MohananT1994} for a comprehensive discussion
+and \citet{Butt2014} and references therein for information about verb agreement beyond
+the simple clause.}
+\clearpage
+
+\begin{exe}
+  \ex \label{ex:urdu-basic}
+Urdu
+  \begin{xlist}
+    \ex[]{
+      \gll
+{nadya=ne} {ga\d{r}i} {c{\textscripta}la-yi} {h{\textepsilon}} \\
+{Nadya.\textsc{f.sg}=\ERG}  {car.\textsc{f.sg.nom}} {drive-\textsc{pfv.f.sg}} {be.\textsc{prs.3.sg}} \\
+\glt `Nadya has driven a car.'  }
+
+
+  \ex[]{
+      \gll
+{nadya} {ga\d{r}i}  {c{\textscripta}la-ti} {h{\textepsilon}} \\
+{Nadya.\textsc{f.sg.nom}} {car.\textsc{f.sg.nom}}  {drive-\textsc{ipfv.f.sg}} {be.\textsc{prs.3.sg}} \\
+\glt `Nadya drives a car.'  }
+
+ \ex[]{
+      \gll
+{nadya=ne} {ga\d{r}i=ko} {c{\textscripta}la-ya} {h{\textepsilon}} \\
+{Nadya.\textsc{f.sg}=\ERG} {car.\textsc{f.sg}=\ACC}  {drive-\textsc{pfv.m.sg}}  {be.\textsc{prs.3.sg}}  \\
+\glt `Nadya has driven the car.'  }
+
+\end{xlist}
+\end{exe}
+The Urdu ergative and accusative are structural in that they can only appear on
+subjects and objects, respectively.  However, they are also semantically
+constrained in that they express object
+referentiality and animacy (accusative) and subject agentivity. The latter is illustrated by
+(\ref{ex:erg-vol}) where the presence of the ergative case on an unergative verb
+yields an
+`on purpose' reading that is absent when the subject is nominative. 
+
+
+
+\begin{exe}
+  \ex \label{ex:erg-vol}
+Urdu
+  \begin{xlist}
+    \ex[]{
+      \gll {ram} {k\textsuperscript{h}\~{a}s-a} \\
+{Ram.\textsc{m.sg.nom}} {cough-\textsc{pfv.m.sg}} \\
+\glt `Ram coughed.'   \citep[264]{tuiteetal85}  }
+
+ \ex[]{
+      \gll
+{ram=ne} {k\textsuperscript{h}\~{a}s-a} \\
+{Ram.\textsc{m.sg}=\ERG} {cough-\textsc{pfv.m.sg}} \\
+\glt `Ram coughed (on purpose).'  \citep[264]{tuiteetal85}  }
+\end{xlist}
+\end{exe}
+Most case markers in Urdu exhibit this mix of structural and semantic properties
+and fall under the category of semantic case in \textsc{dct}.
+
+
+Butt and King model semantic case via an essentially lexical semantic approach to case in
+that they associate the relevant information directly with the case marker, specifying both
+the \GF the case marker is compatible with and any attendant semantic
+information.  This is illustrated for the accusative in (\ref{ko-entry}).
+
+
+\ea \label{ko-entry}
+\begin{tabular}[t]{ll}
+ko  & (\UP \CASE) =  acc\\
+      & (\OBJ \UP) \\
+      & (\UP  {\sc specificity}) = +\\
+      \end{tabular}
+ \z 
+
+
+ 
+% \ea \label{erg-dat}
+% \begin{tabular}[t]{lll}
+% ne &   b. &  ko \\
+%   (\UP {\sc case}) $=$ {\sc erg} &  & [ (\UP{\sc case}) $=$ {\sc acc} \\
+%  ({\sc subj}\UP) &  & ({\sc obj}\UP) \\ 
+%   \hspace{.3cm} [ (\UP {\sc sem-prop control}) = {\sc int} &  &
+%  (\UP{\sc sem-prop specific})  $= +$ \\ 
+%  \hspace{.7cm} $\vee$ & & \hspace{.7cm} $\vee$  \\ 
+% \hspace{.3cm} (({\sc subj} \UP) {\sc obj})& & (\UP{\sc case}) $=$ {\sc dat} \\
+% \hspace{.3cm} (({\sc subj} \UP) {\sc vform}) $=$ {\sc perf} ] & &
+% ({\sc obj}$_{go}$\UP) $\vee$ ({\sc subj}$_{exp}$\UP) \\ 
+% &&  (\UP {\sc sem-prop control}) ] \\ 
+% \end{tabular} 
+% \z 
+
+Butt and King's approach uses inside-out functional designation like
+Nordlinger's Constructive Case approach (\sectref{sec:constr}) and bears similarities to that approach
+in that case markers are taken to contribute to the overall analysis of the
+clause with information that goes beyond just the statement of what type of case
+is involved.\footnote{\citet{buttking03-case,buttking05} build on
+  initial proposals by \citet{buttking91}, foreshadowing
+   Nordlinger's (\citeyear{nordlinger1998constructive}) ideas on
+    Constructive Case.}\ However, the approach goes beyond Constructive Case in providing
+  a more complete view on the interaction between the lexical semantics of a
+  verb, case semantics and structural case requirements. 
+
+
+
+\subsubsection{Structural case}
+Examples of structural case tend to be restricted.  In Urdu, 
+an example of a purely structural case is the genitive in NPs, such as in
+(\ref{ex:urdu-gen}), taken from \citet{boegelbutt2012}.
+
+
+\ea \label{ex:urdu-gen}
+Urdu\\
+\gll {pak\i stan=ki} {h\textupsilon kum{\textscripta}t} \\
+{Pakistan=\textsc{gen.f.sg}} {government.\textsc{f.sg}} \\
+\glt `The government of Pakistan'
+\z
+Genitive within NPs is assigned on purely structural grounds -- there are no
+particular semantics associated with it.  As in the early LFG approaches
+(\sectref{sec:early}) this type of case is therefore assigned only on the basis of c-structure configuration, by means of f-structure
+annotations on the appropriate c-structure nodes.  An example, based on
+\citet{boegelbutt2012}, is provided in (\ref{cstr-urdu-gen}).
+
+\ea \label{cstr-urdu-gen}
+\begin{forest}
+[NP
+[KPposs\\{(\UP\POSS)= \DOWN}
+[NP\\{\UP= \DOWN}
+  [N \\{\UP= \DOWN}
+      [pak\i stan]]]
+      [Kposs\\{(\DOWN \CASE) = \GEN}
+       [ki]]]
+  [NP\\{\UP= \DOWN}
+    [N\\{\UP= \DOWN}
+    [h\textupsilon kum{\textscripta}t]]]
+    ]
+\end{forest}
+\z
+
+% %the below gets too complicated as one could also make the point that the
+% %genitive is also semantic, since it basically expresses possession.  would be
+% %too difficult to get into the non-semantics of the genitive, since it is mainly
+% %just a linker, but too difficult to explain here
+% It is worth making the point that there is actually a further distinction that
+% needs to be made with respect to structural case.  In languages such as
+% English,  cases are associated with certain syntactic positions.  For example,
+% the object in English is generally immediately postverbal and this position is
+%   accusative.   This situation could be thought of as representing positional
+%   case, whereas structural case is more general in that it is determined by a
+%   given syntactic configuration.  As the example in (\ref{ex:gen-scramble})
+%   shows, the Urdu adnominal genitive is not positional in the English sense, as
+%   genitives can scramble just like any other major constituent in the
+%   clause. 
+
+% \ea \label{ex:gen-scramble}
+% \gll  {gari} {nadya=ne} {{\textupsilon}s=ki}  {bazar=m\~{e}}
+%   {dek\textsuperscript{h}-i} \\
+% {car.\textsc{f.sg.nom}} {Nadya.\textsc{f.sg}=\ERG}  {Pron.3.Sg.Obl=\textsc{gen.f.sg}} 
+%   {market.M.Sg=in} {see-\textsc{perf.f.sg}} \\
+% \glt `His/her car, Nadya saw in the market.'   \\ \citep{boegelbutt2012} \hfill Urdu
+% \z 
+
+
+
+\subsubsection{Reassessment of quirky case}
+
+Butt and King's category of semantic case separates out those case marking patterns which
+are associated with systematic semantic import from truly idiosyncratic case
+marking that needs to be stipulated (mostly as part of lexical entries). The
+dative is a prime example for a type of  case that is often analyzed as an
+instance of quirky/inherent/idiosyncratic case despite the fact that it is
+demonstrably and very systematically associated  with a certain semantic import
+(cf.~the discussions in \sectref{sec:early} and \sectref{sec:linking} above). 
+
+In Urdu the dative is also realized by the clitic {\em ko}.  In its function as
+a dative, the {\em ko} can appear on indirect goal objects as in
+(\ref{ex:urdu-goal}) and on experiencer subjects, as shown in
+(\ref{ex:urdu-exp1}).
+
+
+\ea \label{ex:urdu-goal}
+Urdu\\
+\gll {nadya=ne}  {b{\i}lli=ko}  {dud} {di-ya} {h{\textepsilon}} \\
+{Nadya.\textsc{f}=\ERG}  {cat.\textsc{f.sg}=\DAT} {milk.\textsc{m.nom}}  {give-\textsc{pfv.m.sg}} 
+{be.\textsc{prs.3.sg}} \\
+\glt `Nadya has given milk to the cat.'
+\z
+
+\ea \label{ex:urdu-exp1}
+Urdu\\
+\gll {nadya=ko} {\d{d}{\textscripta}r}  {l{\textscripta}g-a} \\
+{Nadya.\textsc{f.sg}=\DAT} {fear.\textsc{m.sg.nom}} {be attached-\textsc{pfv.m.sg}}\\
+\glt `Nadya was afraid.' (lit.~Fear is attached to Nadya.)
+\z 
+The dative alternates systematically with the ergative to express a contrast in
+agentivity, with the dative signaling reduced agency, generally giving rise to
+experiencer semantics as in (\ref{ex:urdu-exp1}) and (\ref{ex:urdu-exp2}a), but
+also to deontic modality as in (\ref{ex:urdu-must}a).
+
+\begin{exe}
+  \ex \label{ex:urdu-exp2}
+Urdu
+  \begin{xlist}
+    \ex[]{
+      \gll
+{nadya=ko} {k{\textscripta}hani} {yad} {a-yi} \\
+{Nadya.\textsc{f.sg}=\DAT} {story.\textsc{f.sg.nom}}  {memory} {come-\textsc{pfv.f.sg}} \\
+ \glt `Nadya remembered the story.'   }
+
+  \ex[]{
+\gll  {nadya=ne} {k{\textscripta}hani} {yad}  {k-i} \\
+ {Nadya.\textsc{f.sg}=\ERG} {story.\textsc{f.sg.nom}}  {memory}  {do-\textsc{pfv.f.sg}} \\
+\glt `Nadya remembered the story (actively).'  }
+    \end{xlist}
+    \end{exe}
+
+\begin{exe}
+  \ex \label{ex:urdu-must}
+Urdu
+  \begin{xlist}
+   \ex[]{
+      \gll  {nadya=ko} {zu} {ja-na} {h{\textepsilon}} \\
+{Nadya.\textsc{f.sg}=\DAT} {zoo.\textsc{m.sg.obl}} {go-\textsc{inf.m.sg}} {be.\textsc{prs.3.sg}} \\
+\glt `Nadya has/wants to go to the zoo.'  }
+
+    \ex[]{
+      \gll
+{nadya=ne}  {zu}  {ja-na} {h{\textepsilon}} \\
+{Nadya.\textsc{f.sg}=\ERG} {zoo.\textsc{m.sg.obl}} {go-\textsc{inf.m.sg}} {be.\textsc{prs.3.sg}} \\
+\glt `Nadya wants to go to the zoo.'  }
+  \end{xlist}
+    \end{exe}
+The systematic dative-ergative alternation as well as the tie in to modality
+indicates that these case patterns are not exclusively due to the lexically specified inherent
+semantics of a verb, but that the information associated with the case marker is
+making a significant contribution to the overall semantics of the clause.
+Generally, the dative marks goal arguments, whether these be recipients 
+(\ref{ex:urdu-goal}) or experiencers (\ref{ex:urdu-exp1}).  
+In a very systematic alternation with the ergative, the dative 
+signals reduced agentivity.  The dative and its attendant signaling of reduced agency is
+pressed into service in the expression of modality in Urdu more generally, see
+\citet{bhattetal11} for an overview of modals in Urdu/Hindi.  The Urdu dative
+{\em ko} is thus also analyzed as an instance of semantic case in \textsc{dct}. 
+
+\subsubsection{Idiosyncratic case}
+
+Idiosyncratic case is the type of case where no systematic generalizations,
+either of a structural or of a semantic kind, can be found. This is what
+distinguishes idiosyncratic case from both semantic and structural case.
+Instances of idiosyncratic case are typically due to diachronic developments
+that render the original reason for the case marking opaque, or which result in
+morphophonological changes that cause the case markers themselves to change and to
+be reclassified.
+
+An example of truly idiosyncratic marking in Urdu is shown in (\ref{ex:urdu-la}).
+Recall that Urdu requires the ergative on subjects of agentive transitive
+perfect verbs.  However, while the verb `bring' in (\ref{ex:urdu-la}) falls into
+this category, its subject is nominative.
+
+\ea \label{ex:urdu-la}
+\gll {nadya} {k{\i}tab}  {la-yi} \\
+{Nadya.\textsc{f.sg.nom}} {book.\textsc{f.sg.nom}} {bring-\textsc{pfv.f.sg}} \\
+\glt `Nadya brought a book.'
+\z
+There are no other straightforwardly agentive transitive verbs which behave like
+this, so this
+exceptional and idiosyncratic nominative case must be stipulated as
+part of the lexical entry of  {\em la} `bring'.   Another exceptional verb is
+\textit{bol} `speak', which is unergative and should therefore allow for an
+ergative subject in the perfective, but does not. 
+
+
+
+\subsubsection{Default case}
+
+Finally, Butt and King also provide for default case marking.  Default case
+marking occurs when an NP is not already specified for a case feature via some
+part of the grammar (lexicon, syntax).  In languages which require all NPs to be
+case marked, such NPs receive a default case. 
+In Urdu the default case is the phonologically null
+nominative, which can only appear on subjects and objects.  Default case can be
+assured via well-formedness statements in the functional annotations on the
+NP node at 
+c-structure, as shown in (\ref{urdu-default}).
+
+
+\ea \label{urdu-default} 
+\begin{enumerate}
+\item Well-formedness principle: NP: (\UP\CASE)
+\item Default: (\UP\SUBJ\CASE)={\sc nom}
+ \label{defaultnom}
+\item Default: (\UP\OBJ\CASE)={\sc nom}
+  \end{enumerate}
+  \z 
+
+  These rules constrain every NP to be associated with a case feature and to
+  make sure that subjects and objects are assigned nominative case in the
+  absence of any other specification.  Basically the
+  annotations check if there is a case feature realized.  If not, then
+  nominative is assigned by default. This type of if-then realization of
+  functional annotations is slightly more complex than illustrated in (\ref{urdu-default}),
+  which is kept simple for purposes of illustration.  A full implementation can
+  be found in the Urdu ParGram grammar \citep{buttking02,boegeletal09}.
+
+ 
+\subsection{Event-based linking}
+\label{sec:new-link}
+\largerpage
+
+The theory in \sectref{sec:types} as to the types of case that must be
+accounted for does not make reference to linking. However, a theory of linking
+is clearly also needed as it determines how the event semantics of a verb plays
+out in terms of syntactic valency and case marking.  We saw in \sectref{sec:sem} that an {\em event-based} approach is necessary for  an understanding
+of \textsc{dcm} patterns (e.g., for telicity or boundedness/scalarity more generally).
+An event-based approach is also what underlies the generally accepted ideas behind Dowty's Proto-Roles or Van
+Valin's Macro-Roles, as the prototypical Agent/Patient properties are defined in terms of how
+the participant is related to the event being described (change of state
+is being effected,  one participant is stationary with respect to another
+participant, etc.).
+
+Event-based approaches to linking are common (e.g.,
+\citealt{jackendoff1990semantic,VanValin1997,rappaport-levin98, croft2012}, see
+\citet{levin-hovav05} for an overview), but are employed within LFG only in a
+subset of linking approaches. This occurs either indirectly via the
+incorporation of a notion of Proto-Roles, or explicitly in adaptations of
+Jackendoff's Lexical-Conceptual Structures, as done by \citet{Butt1995}.
+
+Kibort's revised version of Mapping Theory improves on the classic version of
+mapping within
+LFG by separating out argument slots from semantic content and
+formulating new mapping principles that make reference to semantics
+\citep{kibort14}.  However, semantic principles are made use of only
+occasionally and relatively indirectly.
+
+\citet{schaetzle18} bases herself on
+Kibort's revised Mapping Theory but brings in semantic information explicitly on
+several dimensions.  Importantly, she adopts Ramchand's (\citeyear{ramchand08})
+tripartite division of events into three types of subevents: init(iation),
+proc(ess), res(ult).  This event semantic dimension is used to derive Proto-Role
+properties and these in turn are used to determine the linking between argument
+slots and {\GF}s.  Sch\"{a}tzle also integrates a Figure/Ground dimension. This
+is intended to do justice to the information-structural effects found with
+respect to case.  However, she does not need the full-fledged representation
+of information-structure developed by \citet{DN}, instead adopting   the basic
+Figure/Ground distinction first developed by \citet{talmy78}.
+
+Sch\"{a}tzle's basic system is illustrated below with respect to the Icelandic
+example in (\ref{link:finna-find}), which is taken from \citet{beck-butt2021} and
+represents a revised version of the original in \citet{schaetzle18}.
+
+
+
+\ea \label{link:finna-find}
+\gll {Gunnar} {fann} {seint} {hrossin} {um} {daginn}\\
+{Gunnar.{\NOM}} {find.{\textsc{pst}.3\SG}} {late}
+{horse.\textsc{pl.def.}{\ACC}} {during} {day.\textsc{def}.{\ACC}}\\
+\glt `Gunnar found the horses late during the day.'\\ \strut \hfill (IcePaHC, 1400.GUNNAR.NAR-SAG,.281)
+\z
+
+\hspace{1.5cm}
+\begin{tikzpicture}[baseline]
+\matrix (a) [matrix of nodes, column sep=0.1cm, row sep=0.0cm,  row 2/.style={text height=0.2cm}, row 9/.style={text height=0.2cm}]{
+& init & proc & res & rh \\
+&&{}&&\\
+ \textit{find} &$<$& x$_{\_Gunnar}$ & x$_{\_horses}$ &&$>$ \\[2ex]
+ && {\FIG} & {\GR}& &\\[2ex]
+ && P-A:***, P-P:* & P-P:**&&\\
+ &&\SUBJ & \OBJ &&\\
+ && \textcolor{lsMidBlue}{nominative} & \textcolor{lsMidBlue}{accusative} & &\\
+ };
+ \foreach \i/\j in {1-2/3-3, 1-3/3-3, 1-4/3-4, 3-3/4-3, 3-4/4-4}
+    \draw (a-\i.south) -- (a-\j.north);
+ \foreach \i/\j in {4-3/5-3, 4-4/5-4}
+    \draw[dashed] (a-\i.south) -- (a-\j.north);
+\end{tikzpicture}
+\vspace{1ex}
+
+The main predicate here is \textit{finna} `find', which expresses a dynamic
+event. The event consists of an initiation of the event, a process during which
+the event takes place and a result.  The initiator of the event is `Gunnar' so
+this role is linked to the init subevent.  The initiator is also the participant
+involved in the event as it unfolds, so is also linked to the proc subevent.
+The `horses' argument is linked to the result subevent as finding the horses
+represents the successful culmination of the event.  As a sentient initiator
+that is also the Figure of the clause, Gunnar thus picks up three Proto-Agent
+(P-A) properties (sentience, init, Figure).  As an undergoer of a process,
+Gunnar receives one Proto-Patient (P-P) property (the occurrence and number of
+Proto-Role properties is indicated via the number of of `*' on the features P-A
+and P-P).  The `horses' argument is the Ground and the resultee and as such picks up two
+Proto-Patient properties and no Proto-Agent properties.  The participant with
+the most Proto-Agent properties is linked to the \SUBJ, leaving the horses to be
+linked to \OBJ.  The case marking on the \SUBJ and \OBJ in this case is an
+instance of default case: the subject is nominative and the object is accusative
+in the absence of any other specification.
+
+\citet{schaetzle18} is primarily concerned with investigating the diachronic
+increase in the occurrence of dative subjects in Icelandic.   Using
+corpus linguistic methodology, she pinpoints the lexicalization of former
+middles as experiencer verbs as a major reason for the increased use of dative
+subjects in Icelandic.  One of the verbs that has undergone such lexicalization
+is the verb \textit{finna} `find', featured in (\ref{link:finna-find}). This
+was reanalyzed as a stative experiencer and raising predicate via middle
+formation with the middle morpheme \textit{-st} in the history of Icelandic and
+came to mean  `find, feel, think, seem'.
+
+\citet{schaetzle18} shows how this process of reanalysis can be understood as a
+form of locative inversion.  There are several steps to this posited diachronic
+change.  First, consider the linking configuration for the middle version of the
+example in (\ref{link:finna-find}), as shown in (\ref{link:finnast-loc}). 
+Under middle formation, \textit{finna} becomes \mbox{\textit{finna-st}}, meaning `be
+found, meet', and the initiation subevent is absent for the purposes of
+linking. The middle predication essentially describes a result, which is that there 
+are found horses.
+
+
+\ea  \label{link:finnast-loc} 
+The horses were found at the lake.
+\z 
+
+\hspace{1.1cm}
+\begin{tikzpicture}[baseline]
+\matrix (a) [matrix of nodes, column sep=0.1cm, row sep=0.0cm,  row 2/.style={text height=0.2cm}, row 9/.style={text height=0.2cm}]{
+& init & proc & res & rh (loc)\\
+&&{}&&&\\
+ \textit{find$_{middle}$} &$<$&& x$_{\_horses}$ & x$_{\_lake}$ &$>$ \\[2ex]
+ && & {\FIG} & {\GR}&\\[2ex]
+ &&  & P-A:*, P-P:* &  P-P:*&\\
+ &&  & \SUBJ & \OBL&\\
+ &&  & \textcolor{lsMidBlue}{nominative} & \textcolor{lsMidBlue}{dative} &\\
+ };
+ \foreach \i/\j in {1-4/3-4, 1-5/3-5, 3-4/4-4, 3-5/4-5}
+    \draw (a-\i.south) -- (a-\j.north);
+ \foreach \i/\j in {4-4/5-4, 4-5/5-5}
+    \draw[dashed] (a-\i.south) -- (a-\j.north);
+\end{tikzpicture} 
+
+Sch\"{a}tzle also adopts Ramchand's 
+(\citeyear{ramchand08})  notion of a {\em rh(eme)}.  A rheme serves
+as a complement slot that modifies the core predication.  In
+(\ref{link:finnast-loc})  this rheme slot is occupied by the locative `at the
+lake'.  Rhemes are generally not compatible with the Figure role: they provide a
+Ground argument.  So in (\ref{link:finnast-loc})  `horses' acts as the Figure,
+picking up one Proto-Agent property.  This argument is linked to the result subevent,
+which yields one Proto-Patient property.  The horses thus have more Proto-Agent
+properties (one) than the lake (none) and so the horses are linked to \SUBJ.  The rheme is
+also a locative and this configuration yields a linking to \OBL.  The \SUBJ is
+nominative per default, and the \OBL is marked with the Icelandic spatial
+dative.
+%\footnote{A reviewer asks why the location must necessarily be an
+% \OBL. From what we have seen, this functions as a core argument.  Delving
+%  further into the \OBL vs.~\textsc{adjunct} debate would take us too far afield
+ % here.  We also refer the interested reader to  \citet{ZaenenCrouch2009} on this
+%  topic more generally.}
+
+%linked to {\OBL} as a  dative location (see `on one side of the lake' in \ref{ex:finnast-ship}).   
+
+%CB: sure it is an OBL because annotated as adverbial NP in the ship examples,
+%there are also examples which have a pp with a preposition + dative
+
+The  configuration in (\ref{link:finnast-loc}) in fact very closely resembles
+that of a straightforwardly stative predication, which is also one possible
+interpretation of the middle form of `find'.  In this case it means something
+along the lines of `be situated/located'.  Sch\"{a}tzle posits that in this
+case the original result participant  is interpreted as the holder of a
+state.  The holder of a state is linked to the init subevent in Ramchand's system.  As shown
+in (\ref{link:finnast-find-state}), there is no change in the overall linking
+configuration and the attendent case marking, but there is a change in the
+interpretation of the event semantics: (\ref{link:finnast-find-state}) shows a
+stative predication rather than the result part of a dynamic event. 
+
+
+\ea  \label{link:finnast-find-state}
+The horses were (located/situated) at the lake.
+\z
+
+\hspace{1.1cm}
+\begin{tikzpicture}[baseline]
+\matrix (a) [matrix of nodes, column sep=0.1cm, row sep=0.0cm,  row 2/.style={text height=0.2cm}, row 9/.style={text height=0.2cm}]{
+& & init (holder) & rh &\\
+&&{}&&\\
+ \textit{find$_{middle}$ (stative)} &$<$& x$_{\_horses}$ & x$_{\_lake}$ &$>$ \\[2ex]
+ &&  {\FIG} & {\GR}&\\[2ex]
+ &&   P-A:*, P-P:* &  P-P:*&\\
+ &&   \SUBJ & \OBL&\\
+ &&   \textcolor{lsMidBlue}{nominative} & \textcolor{lsMidBlue}{dative} &\\
+ };
+ \foreach \i/\j in {1-3/3-3, 1-4/3-4, 3-3/4-3, 3-4/4-4}
+    \draw (a-\i.south) -- (a-\j.north);
+ \foreach \i/\j in {4-3/5-3, 4-4/5-4}
+    \draw[dashed] (a-\i.south) -- (a-\j.north);
+\end{tikzpicture} 
+\vspace{1ex}
+
+Sch\"{a}tzle postulates that over time, this type of stative predication via
+middle formation led to
+lexicalized experiencer predicates as in  (\ref{link:finnast-exp}), where
+\textit{finna} means  `feel'.  These experiencer predicates
+feature a dative \SUBJ synchronically and Sch\"{a}tzle proposes that the dative
+\SUBJ is the result of a flip in the linking relation that occurred when the
+Ground argument is sentient, as shown in the linking configurations in
+(\ref{link:finnast-exp}).  The first configuration corresponds to a literal
+locative reading of `The night was found at him.' and shows the same
+relations as in (\ref{link:finnast-find-state}), just with a sentient
+Ground.  But this small difference results in an equal distribution of
+Proto-Role properties across the two event participants.  This taken together
+with a crosslinguistic preference for sentient participants to be interpreted as
+a Figure rather than as a Ground leads to an unstable linking configuration.  
+
+
+\ea \label{link:finnast-exp}
+\gll {og} {fannst} {honum} {nótt.}\\
+{and} {feel.{\PST.\MID.3\SG}}  {he.{\DAT}} {night.{\NOM}}\\
+\glt `and he felt the night.' \\  (IcePaHC, 1861.ORRUSTA.NAR-FIC,.1670) 
+\z
+
+\hspace{1.1cm}
+\begin{tikzpicture}[baseline]
+\matrix (a) [matrix of nodes, column sep=0.1cm, row sep=0.0cm,  row 2/.style={text height=0.2cm}, row 9/.style={text height=0.2cm}]{
+& & init (holder) & rh &\\
+&&{}&&\\
+ \textit{find$_{middle}$} &$<$& x$_{\_night}$ & x$_{\_he}$ &$>$ \\[2ex]
+ &&  {\FIG} & {\GR}&\\[2ex]
+ &&   P-A:*, P-P:* &  P-A:*,P-P:*&\\
+ &&   \SUBJ & \OBL&\\
+ &&   \textcolor{lsMidBlue}{nominative} & \textcolor{lsMidBlue}{dative} &\\
+ };
+ \foreach \i/\j in {1-3/3-3, 1-4/3-4, 3-3/4-3, 3-4/4-4}
+    \draw (a-\i.south) -- (a-\j.north);
+ \foreach \i/\j in {4-3/5-3, 4-4/5-4}
+    \draw[dashed] (a-\i.south) -- (a-\j.north);
+\end{tikzpicture} 
+
+\hspace{1.1cm}
+\begin{tikzpicture}[baseline]
+\matrix (a) [matrix of nodes, column sep=0.1cm, row sep=0.0cm,  row 2/.style={text height=0.2cm}, row 9/.style={text height=0.2cm}]{
+& & init (holder) & rh &\\
+&&{}&&\\
+ \textit{feel} &$<$& x$_{\_he}$ & x$_{\_night}$ &$>$ \\[2ex]
+ &&  {\FIG} & {\GR}&\\[2ex]
+ &&   P-A:**, P-P:* &  P-P:*&\\
+ &&   \SUBJ & \OBJ&\\
+ &&   \textcolor{lsMidBlue}{dative} & \textcolor{lsMidBlue}{nominative} &\\
+ };
+ \foreach \i/\j in {1-3/3-3, 1-4/3-4, 3-3/4-3, 3-4/4-4}
+    \draw (a-\i.south) -- (a-\j.north);
+ \foreach \i/\j in {4-3/5-3, 4-4/5-4}
+    \draw[dashed] (a-\i.south) -- (a-\j.north);
+\end{tikzpicture} 
+
+
+This unstable linking configuration can be resolved by flipping the
+{Figure{\slash}Ground} relations and associating the sentient argument with the holder of
+the state, as shown in the lower linking configuration. With this simple configurational
+change, the sentient argument now picks up two Proto-Agent
+properties (Figure and sentience), and one Proto-Patient property as a holder of
+a state.  The other argument receives only one Proto-Patient property as the
+Ground.  The overall effect is that the sentient argument is now linked to \SUBJ, the other (non-spatial)
+argument to \OBJ.  The originally spatial dative marking is retained on the newly minted
+\SUBJ and feeds into a general pattern of dative marked experiencer subjects in
+the language. 
+
+
+% Over time, the stative experiencer predicate \textit{finnast} is also increasingly used as a raising predicate denoting epistemic judgements \citep{schaetzle18}, see \ref{ex:finnast-raising}. 
+
+% \exg.  Mér fannst {\th}a{\dh} vera fri{\dh}ur náttúrunar.\\
+% I.{\DAT} seem.{\PST.\MID.3\SG} that.{\NOM} be.{\sc inf} peace.{\NOM} nature.the.{\GEN}\\
+% `That seemed to me to be the peace of nature.' \\ \strut \hfill (IcePaHC, 1920.ARIN.REL-SER,.639)\label{ex:finnast-raising}
+
+% We follow \citet{schaetzle18} in assuming that this usage of \textit{finnast} is historically derived via secondary predication, as was exemplified in \ref{ex:finnast-sec}, which provides for the necessary semantic bleaching (see \citealp{barron01}). In the context of secondary predication, the requirement to have a physically perceivable stimulus gradually recedes since the basis for the perceiver's judgment might be indirect or abstract, relating to the knowledge or cognition of the perceiver/experiencer. Thus, once secondary predication is possible with the stative experiencer version of \textit{finnast}, it can also increasingly denote epistemic judgements.
+
+\citet{beck-butt2021} use the same analysis of locative inversion to account for
+patterns of dative subjects in Indo-Aryan.  Their approach also provides an
+account for the Marathi optional dative subjects discussed by \citet{Asudeh01} and in \sectref{sec:ot} of this chapter. In Beck and Butt's account the observed optionality is
+attributed to an unstable linking configuration of the type shown in the upper
+part of (\ref{link:finnast-exp}).  This leads to an optionality that is slowly
+resolved over time in favor of a dative subject constellation as shown
+in the lower part of  (\ref{link:finnast-exp}).  \citet{Deo2003} shows that this
+is the change that is indeed happening in Marathi, verb class by verb class,
+verb by verb. 
+
+Overall, 
+in this event-based approach to linking, case is matched with certain linking
+configurations.  For example, in Icelandic and Marathi, the holder of a state as
+in the lower linking configuration in (\ref{link:finnast-exp}) must systematically
+be associated with a dative and this expresses experiencer semantics.
+
+
+% \ea Indra was afraid. 
+
+%  \hspace{1.1cm}
+% \begin{tikzpicture}[baseline]
+% \matrix (a) [matrix of nodes, column sep=0.1cm, row sep=0.0cm,  row 2/.style={text height=0.2cm}]{
+% &  & rh & init (holder)  &  &\\
+% &{}&&&&\\
+%  \textit{be.attach} &\arglist{& x$_{\_fear}$ & x$_{\_Indra}$ & &} \\ [2ex]
+% && {\GR} & {\FIG} &&\\[2ex]
+% &&   P-P:* & P-A:**, P-P:* &&\\
+% &&    {\OBJ}&  {\SUBJ}&&\\
+%  & &  \textcolor{lsMidBlue}{nominative} & \textcolor{lsMidBlue}{dative} \\
+% };
+%  \foreach \i/\j in {1-3/3-3,  1-4/3-4,  3-3/4-3, 3-4/4-4}
+%     \draw (a-\i.south) -- (a-\j.north);
+%  \foreach \i/\j in {4-3/5-3, 4-4/5-4}
+%     \draw[dashed] (a-\i.south) -- (a-\j.north);
+% \end{tikzpicture}
+% \z
+
+
+
+\section{Summary}
+\label{sec:sum}
+
+This chapter has surveyed LFG work on case from some of the earliest LFG papers 
+to some of the most recent developments. The LFG perspective, particularly
+with respect to Icelandic, was
+instrumental in establishing a basic division between structural and lexically
+specified case, where the latter also came to be known as `quirky' case.  Later
+work put the relationship between predicate arguments and {\GF} on a more
+systematic footing via the formulation of Mapping Theory.  Case was always
+relevant for Mapping, but not integrated into the theory itself.  The
+event-based linking developed by \citet{schaetzle18} and \citet{beck-butt2021} offers a more natural way of integrating case information,
+while also building on Kibort's
+revised Mapping Theory and allowing for an integration of Proto-Role properties.  The integration of such
+Proto-Role properties into accounts of case and linking has been experimented
+with in a number of ways within LFG over the years, especially in terms of work
+done within OT-LFG.
+
+Butt and King formulate a theory of case, which distinguishes between four types
+of case: 1) structural, 2) default, 3) semantically generalizable and 4)
+idiosyncratic.  Their notion of semantic case centrally applies to core
+arguments of a verb and includes accounts of Differential Case Marking, including
+modality. Case markers are considered to have their own lexical entries and to
+be associated with syntactic and semantic information which  contributes to
+the overall syntactic and semantics analysis of the clause.  This is in line
+with  Nordlinger's idea of Constructive Case, which can additionally account for
+case stacking. 
+
+This chapter has not included a comparison of LFG with other theories. In terms
+of linking, LFG employs a distinct version, but the essence of, and the insights
+behind, linking have very much in common with other theories of the interface
+between lexical semantics and syntax.  The same
+is true for the OT-LFG approaches to case, which build directly on mainstream OT
+insights and proposals.  However, as far as I am aware, the idea of Constructive
+Case and the four-way distinction between different types of case  is unique to
+LFG. 
+
+\section*{Abbreviations}
+
+Besides the abbreviations from the Leipzig Glossing Conventions, this
+chapter uses the following abbreviations.\medskip
+
+\noindent\begin{tabularx}{.45\textwidth}{lQ}
+{\sc a} & agent\\
+{\sc asp}  &  aspectual marker\\
+{\sc dir}  &  directional\\
+{\sc I} & class I\\
+{\MID} & middle\\
+{\sc mod} & modal\\
+\end{tabularx}
+\noindent\begin{tabularx}{.45\textwidth}{lQ}
+{\sc o} & object\\
+{\sc oagr} & object agreement\\
+{\sc part} & partitive\\
+{\sc pron} & pronoun\\
+{\sc prop} & proprietive\\
+{\sc vn} & verbal noun
+\end{tabularx}
+ 
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}
+

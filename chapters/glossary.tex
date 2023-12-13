@@ -1,0 +1,498 @@
+\documentclass[output=paper,colorlinks,citecolor=brown]{langscibook}
+\ChapterDOI{10.5281/zenodo.10186056}
+\title{Glossary}
+\author{Mary Dalrymple\affiliation{University of Oxford}}
+\abstract{\noabstract}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[22]%%chapternumber
+}{}
+
+
+\begin{document}
+\maketitle
+\label{chap:glossary}
+
+\setkomafont{labelinglabel}{\textsc}
+\begin{labeling}{xxxx}
+\sloppy
+
+\item[\UP\ (`up')] In an annotation on a daughter category in a \ref{gloss:psr}, the f-structure corresponding to the mother node. See \citetv[\ref{sect:intro:annotated}]{chapters/Intro}.
+
+\item[\DOWN\ (`down')] In an annotation on a daughter category in a \ref{gloss:psr}, the f-structure corresponding to the daughter node on which the \DOWN\ annotation appears. See \citetv[\ref{sect:intro:annotated}]{chapters/Intro}.
+
+\item[\MSTAR] In an annotation on a daughter node in a \ref{gloss:psr}, the mother node in the \ref{gloss:cstr} tree. See \citetv[\ref{sect:intro:annotated}]{chapters/Intro}.
+
+\item[\STAR] In an annotation on a daughter node in a \ref{gloss:psr}, the daughter node on which the \STAR\ annotation appears. See \citetv[\ref{sect:intro:annotated}]{chapters/Intro}.
+
+\item[\LSTAR] In an annotation on a daughter node in a \ref{gloss:psr}, the immediate left sister of the daughter node on which the annotation appears. See \citetv[\ref{sec:CoreConcepts:Locality}]{chapters/CoreConcepts}.
+
+\item[\RSTAR] In an annotation on a daughter node in a \ref{gloss:psr}, the immediate right sister of the daughter node on which the annotation appears. See \citetv[\ref{sec:CoreConcepts:Locality}]{chapters/CoreConcepts}.
+
+\item[{$\leftarrow$}] In an \ref{gloss:OffPathConstraint}, the f-structure immediately containing the feature on which the annotation appears. See \citetv[\ref{sect:constequ}]{chapters/CoreConcepts}.
+
+\item[{$\rightarrow$}] In an \ref{gloss:OffPathConstraint}, the f-structure value of the feature on which the annotation appears. See \citetv[\ref{sect:constequ}]{chapters/CoreConcepts}.
+
+\item[{$>_f$}] See \ref{gloss:Fprecedence}.
+
+\item[$=_c$] See \ref{gloss:ConstrainingEquation}.
+
+\item[$\multimap$] See \ref{gloss:LinearImplication}.
+
+\item[$\wedge$] See \ref{gloss:Conjunction}.
+ 
+\item[$\mid$] See \ref{gloss:Disjunction}.
+
+\item[$\vee$] See \ref{gloss:Disjunction}.
+ 
+\item[/] At the end of the list of daughters in a \ref{gloss:psr}: see \ref{gloss:Ignore}.
+
+\item[\restrict{}] Following an f-structure reference: see \ref{gloss:Restrict}.
+
+\item[\_] After a symbol: see \ref{gloss:Instantiatedsymbol}.
+
+\item[,~~(comma)] Between daughter categories in a \ref{gloss:psr}: see \ref{gloss:IDLP}.  Between sequences of categories enclosed by square brackets in a \ref{gloss:psr}: see \ref{gloss:Shuffle}.
+
+\item[$\phi$ projection\namedlabel{gloss:phi}{$\phi$ projection}] The $\phi$ projection is a \ref{gloss:projection} function from nodes of the \ref{gloss:cstr} to their corresponding \ref{gloss:fstrs}.
+
+\item[$^{-1}$] See \ref{gloss:Inversecorrfun}.
+
+\item[$\epsilon$] The empty string.
+
+\item[X$^0$\namedlabel{gloss:xzero}{X$^0$}] In \ref{gloss:Xbar}, a zero-level or lexical category, usually a single word.  For example, the noun \emph{horse} is of category N$^0$, and can appear as the head of a phrase of category NP.
+
+\item[X$'$] In \ref{gloss:Xbar}, a single bar level category, projected from the X head.
+
+\item[\NONPROJ{X}] See \ref{gloss:Nonproj}.
+
+\item[A-structure\namedlabel{gloss:astr}{A-structure}] The linguistic representation of the information in \ref{gloss:argstr}.
+
+\item[\ADJ\namedlabel{gloss:adj}{\ADJ}] The adjunct grammatical function.  At \ref{gloss:fstr}, a feature whose value is a set of f-structures.
+
+\item[Adjunct control\namedlabel{gloss:adjunct}{adjunct}] A construction in which a \ref{gloss:control} relation holds between an argument in the matrix clause and an unexpressed argument in an adverbial subordinate clause.  See \citetv{chapters/Control}.
+  
+\item[Anaphoric control\namedlabel{gloss:anaphcontrol}{anaphoric control}\namedlabel{gloss:Anaphcontrol}{Anaphoric control}] A \ref{gloss:control} construction in which an argument of a matrix clause is required to corefer with the subject of a closed clause such as \COMP.  See \citetv{chapters/Control}.  
+
+\item[Annotated phrase structure rule] A \ref{gloss:psr} in which the daughter categories are annotated with constraints on the functional structures and other levels of representation to which they correspond.  See \citetv[\ref{sect:intro:annotated}]{chapters/Intro}.
+
+\item[Argument structure\namedlabel{gloss:Argstr}{Argument
+    structure}\namedlabel{gloss:argstr}{argument structure}] A level
+  of linguistic structure which represents the aspects of meaning that
+  are relevant for determining the syntactic role of the argument of a
+  predicate. Its representation is referred to as \ref{gloss:astr}.  See \citetv{chapters/Mapping} and, for a historical perspective,
+  \citetv[\ref{sec:Historical:arg-gf}]{chapters/Historical}.
+
+\item[Atomic values] Feature values which have no internal structure, as opposed to complex values such as \ref{gloss:fstrs} or \ref{gloss:semanticforms}.
+
+\item[Attribute] See \ref{gloss:Feature}.
+
+\item[Attribute-value matrix] See \ref{gloss:AVM}.
+
+\item[Attribute-value structure\namedlabel{gloss:avm}{attribute-value structure}\namedlabel{gloss:avms}{attribute-value structures}\namedlabel{gloss:AVM}{Attribute-value structure}] A structure containing attributes (features) and values, usually represented graphically as a list in which each line contains an attribute followed by its value, with the entire list enclosed in square brackets. \ref{gloss:Fstr} is generally represented as an attribute-value structure.
+
+\item[Backward control\namedlabel{gloss:backward}{backward}] A \ref{gloss:control} construction in which the controller appears overtly in the embedded clause and the controlled argument is in the matrix clause.  See \citetv{chapters/Control}.
+
+\item[Backward raising] A construction which shares all the distributional properties of a \ref{gloss:raising} construction except that the embedded subject appears in the embedded clause and not in the matrix clause. See \citetv{chapters/Control}.
+
+\item[C] See \ref{gloss:CP}.
+
+\item[C-command\namedlabel{gloss:ccommand}{c-command}] A relation between nodes of the \ref{gloss:cstr} tree.  Several slightly different definitions of c-command have been proposed, but a commonly accepted one states that a node $n1$ c-commands a node $n2$ if and only if all of the nodes which dominate node $n1$ also dominate node $n2$.
+
+\item[C-precedence\namedlabel{gloss:cprec}{c-precedence}] The left-to-right precedence relation holding between nodes of the \ref{gloss:cstr} tree.  See \citetv[\ref{sect:fprec}]{chapters/CoreConcepts} and \citetv[\ref{sec:Anaphora:2.3}]{chapters/Anaphora}.
+
+\item[C-structure] See \ref{gloss:Cstr}.
+
+\item[CAT predicate] A predicate relating a \ref{gloss:fstr} to the category labels of the \ref{gloss:cstr} nodes that correspond to it via the \ref{gloss:inverse} of the \ref{gloss:phi}.  CAT takes two arguments: an f-structure, and a set of constituent structure category labels. The CAT specification requires that at least one of the c-structure nodes corresponding to the specified f-structure has one of the labels in the set.  For instance, assume that an f-structure $f$ is related via the inverse $\phi$ correspondence to c-structure nodes labeled NP, N$'$, and N; in this case, all of the following predicates hold: CAT($f$,~\{NP,\;N$'$,\;N\}); CAT($f$,~\{NP\}); CAT($f$,~\{NP,\;AP\}). The CAT predicate is interpreted distributively and thus may help in describing unlike category coordination: if $f$ is a set of f-structures representing a coordination, each f-structure in $f$ must correspond to at least one node with a label in the set.  For example, the specification CAT($f$,~\{AP,\;PP\}) allows $f$ to correspond to a conjunction of APs, a conjunction of PPs, or a conjunction of unlike categories composed of APs and PPs. See \citetv{chapters/Coordination}.  A related definition is sometimes assumed: in \citetv{chapters/Intro}, \citetv{chapters/Negation}, and \citetv{chapters/Semitic}, CAT is a function over f-structures, returning the set of labels of the c-structure nodes to which the f-structure corresponds.  According to this definition, if $f$ is related to c-structure nodes with categories NP, N$'$, and N, CAT($f$)=\{NP,\;N$'$,\;N\}.   
+
+\item[clause-type\namedlabel{gloss:cltype}{\textsc{clause-type}}] Feature whose value is the type of the clause.  Typical values are \textsc{decl} for declarative, \textsc{imp} for imperative, and \textsc{int} for interrogative.  Sometimes as \textsc{cltype}.
+
+\item[cltype] See \ref{gloss:cltype}.
+
+\item[Codescription\namedlabel{gloss:Codescription}{Codescription}\namedlabel{gloss:codescription}{codescription}] The simultaneous description of more than one level of linguistic structure, as opposed to \ref{gloss:descrbyanalysis}. See \citetv[\ref{sect:intro:addlevels}]{chapters/Intro}.
+
+\item[(F-structure) Co-head\namedlabel{gloss:Cohead}{(F-structure) co-head}] At \ref{gloss:cstr}, an \ref{gloss:xzero} node is an f-structure co-head with another \ref{gloss:xzero} node if both nodes correspond to the same \ref{gloss:fstr}.
+
+\item[Coherence\namedlabel{gloss:Coherence}{Coherence}] The requirement that an f-structure may not contain \ref{gloss:GGFs} that are not selected by the predicate (the \ref{gloss:semanticform} value of the \ref{gloss:PRED} feature).  See \citetv[\ref{sec:CoreConcepts:Coherence}]{chapters/CoreConcepts}.
+
+\item[\COMP\namedlabel{gloss:comp}{\COMP}] A grammatical function typically associated with sentential complements.
+
+\item[Comp,X] In \ref{gloss:cstr}, the complement of X; that is, the non-head daughter of X$'$ which is sister to the head, X$^0$.  See \ref{gloss:Xbar}.
+
+\item[compform] Feature whose value is the form of the complementizer, for example \textsc{that} or \textsc{whether} for English.  Sometimes as \textsc{comp-form}, especially in the \ref{gloss:PARGRAM} grammars.
+
+\item[Completeness] The requirement that all \ref{gloss:GGFs} required by the predicate (the \ref{gloss:semanticform} value of the \ref{gloss:PRED} feature) must be present.  See \citetv[\ref{sec:CoreConcepts:Completeness}]{chapters/CoreConcepts}.
+
+\item[Complex category] A \ref{gloss:cstr} category consisting of a category label (such as I, NP, or V$'$) and a set of features or parameters.  For example, VP[fin] is a complex category, with category VP and parameter `fin' for finite.  See \citetv[\ref{sec:historical:mixed}]{chapters/Historical}, and for an implementational perspective, \citetv[\ref{sec:ImpApp:Devices}]{chapters/ImplementationsApplications}.
+
+\item[Complex predicate] A construction in which there is a mismatch in the number of predicates at \ref{gloss:fstr} and the number of forms at \ref{gloss:cstr} which express them.  See \citetv{chapters/ComplexPreds}.
+
+\item[concat] Built-in template in \ref{gloss:XLE} taking two or more arguments.  All arguments except the last one are concatenated, and the result is the final argument.  For example, in \mbox{@(CONCAT look `- up \%FN)} the first argument is `look', the second argument is `-' (which must be explicitly quoted with the back quote in XLE), the third argument is `up', and \%FN would be `look-up'.
+
+\item[\CONCORD] Feature whose value is an f-structure containing certain agreement features, typically including the features \GEND, \NUM, and \CASE\ and their values.  See \citetv[\ref{sec:indexconcord}]{chapters/Agreement}.
+
+\item[Configurational language] See \ref{gloss:Config}.
+
+\item[Configurationality\namedlabel{gloss:Config}{Configurationality}] A language type in which grammatical functions are often or always associated with particular \ref{gloss:cstr} positions.  Also see \ref{gloss:Nonconfig}.
+
+\item[conj\namedlabel{gloss:conj}{\textsc{conj}}] Feature whose value is the form of the conjunction in a coordinate phrase, for example \textsc{and} or \textsc{or} in English. Sometimes represented as \textsc{conjform} or \textsc{conjtype}.
+
+\item[conjform] See \ref{gloss:conj}.
+
+\item[conjtype] See \ref{gloss:conj}.
+
+\item[Conjunction\namedlabel{gloss:Conjunction}{Conjunction} of functional descriptions] Conjunction of \ref{gloss:fdescrs} is usually implicit, but is sometimes represented as $\wedge$.
+
+\item[(Principle of) Conservation\namedlabel{gloss:Conservation}{Conservation}] A general constraint on linguistic derivations that requires a bounded relationship between the amount of information (the sizes) of every pair of corresponding structures.  This is a sufficient condition for the \ref{gloss:decidability} of many important computational problems.  See \citetv{chapters/Computational}.
+
+\item[Consistency\namedlabel{gloss:Consistency}{Consistency}] The requirement for a feature to have exactly one value, and not more than one.  See \citetv[\ref{sect:uniqueness}]{chapters/CoreConcepts}.
+
+\item[Constituent structure\namedlabel{gloss:Cstr}{Constituent structure}\namedlabel{gloss:cstr}{constituent structure}\namedlabel{gloss:cstrs}{constituent structures}] The linguistic level representing word order and phrasal constituency, represented as a phrase structure tree.  See \citetv[\ref{sect:intro:c-structure}]{chapters/Intro} and \citetv{chapters/Cstr}; for a historical perspective, see \citetv[\ref{sec:Historical:syn-change}]{chapters/Historical}.
+
+\item[Constrained lexical sharing] A restricted theory of \ref{gloss:lexsharing}.  See \citetv[\ref{sec:Historical:lex-share}]{chapters/Historical}.
+
+\item[Constraining equation\namedlabel{gloss:ConstrainingEquation}{Constraining equation}\namedlabel{gloss:constrainingequations}{constraining equations}] An equation that must hold of the minimal f-structure solution to all of the defining equations in a \ref{gloss:fdescr}.  Constraining equations are distinguished from \ref{gloss:definingequations} by the presence of a subscript $c$ on the equals sign: $=_c$. See \citetv[\ref{sect:constequ}]{chapters/CoreConcepts}.
+
+\item[Constructive case] The view that case specifications on an argument determine its grammatical role. Formally, constructive case specifications are encoded by means of \ref{gloss:InsideOutFU}.  See \citetv{chapters/Case}.
+
+\item[Control\namedlabel{gloss:Control}{Control}\namedlabel{gloss:control}{control}] a) Structures in which an overt argument in one clause is partially or fully co-referential with and determined by an expressed argument in another clause, most commonly but not necessarily a higher clause.  There are various sub-types: \ref{gloss:adjunct}, \ref{gloss:backward}, \ref{gloss:exhaustive}, \ref{gloss:implicit}, \ref{gloss:partial}, \ref{gloss:split} control. b) The mechanisms by which such structures are analysed, namely \ref{gloss:fcontrol}, \ref{gloss:anaphcontrol}, \ref{gloss:quasi-anaphoric} control. See \citetv{chapters/Control}.
+  
+\item[Copy raising] A construction in which the subject argument of an embedded predicate is realized as the grammatical subject of the matrix verb, and its place in the embedded clause is occupied by a pronominal copy, as in English \emph{Sarah$_i$ seems like she$_i$ is asleep}. See \citetv{chapters/Control}.
+  
+\item[Correspondence function] A function which relates components of one level of linguistic structure to components of another level. For example, the \ref{gloss:phi} is a correspondence function relating nodes of the \ref{gloss:cstr} to \ref{gloss:fstrs}.
+
+\item[CP\namedlabel{gloss:CP}{CP}] Originally `complementizer phrase', a \ref{gloss:cstr} category.  Now used for a phrase that consists of a full clause and possibly additional material such as a complementizer or a displaced phrase.
+
+\item[D] Determiner. See \ref{gloss:DP}.
+
+\item[Decidability theorems for LFG\namedlabel{gloss:decidability}{decidability}] Decidability can be relevant for parsing, generation, or other properties of linguistic systems.  For example, if the \ref{gloss:parsing} problem for a linguistic system is decidable, it is possible to determine for any given sentence whether it is licensed (admitted) by a particular grammar of that system in a finite number of computational steps. If it is not always possible to make that determination, the parsing problem for that system is not decidable.  The parsing problem for LFG has been shown to be decidable under certain constraints: the \ref{gloss:NBD} of earlier formulations has now been replaced by the linguistically more appropriate \ref{gloss:PAC}. See \citetv{chapters/Computational}.
+
+\item[Defining equation\namedlabel{gloss:DefiningEquation}{Defining Equation}\namedlabel{gloss:definingequations}{defining equations}] An equation requiring an f-structure to contain a feature with a particular value.  See \citetv[\ref{sect:intro:definingequations}]{chapters/Intro} and \citetv[\ref{sec:CoreConcepts:Defining}]{chapters/CoreConcepts}.  Also see \ref{gloss:ConstrainingEquation}.
+
+\item[Description by analysis\namedlabel{gloss:descrbyanalysis}{description by analysis}] The description of one level of linguistic structure on the basis of properties of another level, as opposed to \ref{gloss:codescription}. See \citetv[\ref{sect:intro:addlevels}]{chapters/Intro}.
+
+\item[Differential object marking] Non-uniform grammatical marking of objects. See \citet{chapters/InformationStructure} and \citet{chapters/FinnoUgric}.
+
+\item[Direct Syntactic Encoding, Principle of] A principle stating that syntactic rules may not alter grammatical functions, originally proposed by \citet{kaplanbresnan82}.  For example, according to the Principle of Direct Syntactic Encoding, passivization cannot be treated as a syntactic operation that converts an active clause into a passive clause by converting the object into a subject.
+
+\item[dis\namedlabel{gloss:dis}{\textsc{dis}}] A grammatical function for displaced phrases, for example the displaced or fronted object in an example like \emph{Who did you meet?}.  Sometimes as \textsc{op} or \textsc{udf}.  Also see \ref{gloss:Overlay}, and \citetv{chapters/LDDs} for discussion of an alternative analysis in terms of \ref{gloss:istr}.
+
+\item[Discourse configurationality] A language type in which discourse functions are often or always associated with particular constituent structure positions. See \citet{chapters/InformationStructure}, \citet{chapters/Historical}, and \citet{chapters/FinnoUgric}.
+
+\item[Disjunction\namedlabel{gloss:Disjunction}{Disjunction}\namedlabel{gloss:disjunction}{disjunction}] A disjunction over \ref{gloss:fdescrs} or over sequences of categories on the right-hand side of a \ref{gloss:psr} is generally enclosed in curly brackets, with the options separated by a vertical line: `A or B or C' is represented as \{A$\mid$B$\mid$C\}.  Sometimes $\vee$ is used instead of the vertical line: \{A$\vee$B$\vee$C\}.  If the scope of the disjunction is clear, the curly brackets are sometimes omitted.
+
+\item[Distributive/nondistributive feature\namedlabel{gloss:DistFeature}{Distributive/nondistributive feature}] If the value of a distributive feature is specified for a set of attribute-value structures, each structure in the set is required to have the specified value for that feature.  If the value of a nondistributive feature is specified for a set of attribute-value structures, the set of f-structures as a whole has the specified value for the feature.  The distributive/nondistributive distinction is relevant only when specifying the value of a feature for a set of attribute-value structures.  See \citetv{chapters/Agreement}.
+
+\item[DP\namedlabel{gloss:DP}{DP}] Determiner phrase (a \ref{gloss:cstr} category).
+
+\item[Economy of Expression] A principle of competition among different potential \ref{gloss:cstr} analyses for a sentence which allows only the smallest constituent structure analyses, and rules out larger structures.
+
+\item[Endocentricity] A principle of phrasal organization which requires phrases of a particular phrasal category to contain a head of the same category. It is a central principle of \ref{gloss:Xbar}.  For growth of endocentric structure in historical change, see \citetv[\ref{subsect:growth}]{chapters/Historical}.
+
+\item[Equi] A label for the class of \ref{gloss:control} verbs in which the controlling argument has a semantic role with respect to both the matrix and the embedded predicate. This class is traditionally contrasted with \ref{gloss:raising} verbs, in which the shared argument has a semantic role only in the embedded clause. See \citetv{chapters/Control}.
+  
+\item[Evidentiality] The linguistic marking of the nature of evidence for a given statement. See \citet{chapters/FinnoUgric}.
+
+\item[Exhaustive control\namedlabel{gloss:exhaustive}{exhaustive}\namedlabel{gloss:Exhaustive}{Exhaustive control}] \ref{gloss:Control} constructions in which the embedded argument is coreferential with the controlling argument. See \citetv{chapters/Control}.  Also see \ref{gloss:Partial}.
+
+\item[Existential constraint] A requirement for the presence of a feature in the minimal f-structure solution to all of the defining equations in a \ref{gloss:fdescr}, but with no constraints on the value of that feature.  For example, the requirement for a clause to be tensed can be enforced by the existential constraint ($f$\;\TENSE), which requires the f-structure $f$ for the clause to contain the \TENSE\ feature, without specifying a particular value for \TENSE.
+
+\item[Exocentric category\namedlabel{gloss:exocentric}{exocentric}] A phrasal category which does not contain a head in the sense of \ref{gloss:Xbar}, but can be headed in the sense of the mapping from \ref{gloss:cstr} to \ref{gloss:fstr} by a node of any category with annotation \UP=\DOWN. LFG assumes at least one exocentric category, the clausal category \ref{gloss:S}.  See \citetv[\ref{sect:xbar}]{chapters/CoreConcepts}.
+
+\item[Extended Coherence Condition] An extension of the \ref{gloss:Coherence} condition which requires f-structures with non-argument roles such as \ref{gloss:dis}, \ref{gloss:focus}, or \ref{gloss:topic} to be integrated into the f-structure by functionally or anaphorically binding an argument. See \citetv{chapters/LDDs}.
+
+\item[Extended Head] See \ref{gloss:Cohead}.
+
+\item[F-command] There are several definitions of f-command.  According to a commonly assumed definition, an f-structure $f1$ f-commands an f-structure $f2$ if $f1$ does not contain $f2$, and there is some f-structure $g$ which immediately contains $f1$ and also contains $f2$.  F-command is analogous to the \ref{gloss:ccommand} relation on constituent structure nodes.
+
+\item[F-description] See \ref{gloss:Fdescr}.
+
+\item[F-precedence] See \ref{gloss:Fprecedence}.
+
+\item[F-structure] See \ref{gloss:Fstr}.
+
+\item[Feature\namedlabel{gloss:Feature}{Feature}] An attribute which has a value in an attribute-value structure.  For example, the f-structure \mbox{[\TENSE~\PST{}]} has the feature/attribute \TENSE\ with value \PST.
+
+\item[\FOCUS\namedlabel{gloss:focus}{\FOCUS}] The new information contributed by a sentence, or the portion of a sentence which contributes the new information.  At \ref{gloss:fstr} or \ref{gloss:istr}, the value of the \textsc{focus} feature is the linguistic material associated with the focus role.  See \citetv{chapters/InformationStructure}.
+
+\item[form] Feature whose value is the form of a particular word.  For example, weather verbs in English (such as \emph{rain} or \emph{snow}) require their subject to have the form \emph{it}.  To allow this requirement to be enforced, one of the lexical entries for \emph{it} has the feature \textsc{form} with value \textsc{it}, and accordingly the verb \emph{rain} requires its subject to include the feature \textsc{form} with value \textsc{it}.
+
+\item[Fragmentability of language] A principle stating that incomplete fragments of utterances are able to be assigned partial syntactic and semantic analyses on the basis of their lexical and phrasal properties.
+
+\item[Function-Argument Biuniqueness] A principle of alignment between the semantic roles and grammatical functions of a predicate, stating that no grammatical function can be associated with more than one semantic role, and no semantic role can be associated with more than one grammatical function.
+
+\item[Functional category] A phrase structure category generally associated with closed-class function words.  Commonly assumed functional categories are D/\ref{gloss:DP}, C/\ref{gloss:CP}, and I/\ref{gloss:IP}.  For the emergence of functional categories in historical change, see \citetv[\ref{subsect:growth}]{chapters/Historical}.
+
+\item[Functional control\namedlabel{gloss:fcontrol}{functional control}\namedlabel{gloss:fcontrolled}{functionally controlled}] A \ref{gloss:control} construction in which an argument of a matrix clause is also the subject of an \ref{gloss:open} such as \XCOMP\ or \XADJ.  See \citetv{chapters/Control}.  
+
+\item[Functional description\namedlabel{gloss:Fdescr}{Functional description}\namedlabel{gloss:fdescr}{functional description}\namedlabel{gloss:fdescrs}{functional descriptions}] A set of \ref{gloss:definingequations} and \ref{gloss:constrainingequations} describing a set of linguistic structures and the relations among them.  See \citetv[\ref{sect:intro:definingequations}]{chapters/Intro} and \citetv[\ref{sec:CoreConcepts:Defining}]{chapters/CoreConcepts}.
+
+\item[Functional precedence\namedlabel{gloss:Fprecedence}{Functional precedence}] A precedence relation holding between f-structures, defined in terms of the \ref{gloss:cprec} relation at \ref{gloss:cstr}.  See \citetv[\ref{sect:fprec}]{chapters/CoreConcepts}.
+
+\item[Functional structure\namedlabel{gloss:Fstr}{Functional structure}\namedlabel{gloss:fstrs}{functional structures}\namedlabel{gloss:fstr}{functional structure}] The linguistic level representing grammatical functions such as subject and object, and grammatical features such as voice, person, number, and case.  See \citetv[\ref{sect:intro:fstr}]{chapters/Intro}.
+
+\item[Functional uncertainty\namedlabel{gloss:fu}{functional uncertainty}] A type of constraint on the relation between two \ref{gloss:avms} which is stated in terms of a \ref{gloss:regex} over a sequence of features.  See \citetv[\ref{sect:fu}]{chapters/CoreConcepts} and \citetv{chapters/LDDs}.  Also see \ref{gloss:InsideOutFU}.
+
+\item[Generation\namedlabel{gloss:generation}{generation}\namedlabel{gloss:Generation}{Generation}] In LFG, the problem of finding the set of sentences that the grammar assigns to a particular \ref{gloss:fstr}, if the f-structure is \ref{gloss:realized} by the grammar.  Also see \ref{gloss:Realization}.
+
+\item[gf] Metavariable representing any grammatical function.
+
+\item[$\widehat{\mbox{\textsc{gf}}}$] The grammatical function borne by the thematically most prominent argument.  See \citetv{chapters/GFs}.
+
+\item[ggf] Metavariable representing any \ref{gloss:GGF}.
+
+\item[Glue\namedlabel{gloss:glue}{glue}] A theory of the syntax-semantics interface which expresses constraints on the combination of meanings via statements in a resource logic, \ref{gloss:LinearLogic}. See \citetv{chapters/Glue}.
+
+\item[Governable grammatical functions\namedlabel{gloss:GGF}{governable grammatical function}\namedlabel{gloss:GGFs}{governable grammatical functions}] Governable grammatical functions are those which can be subcategorized, or required, by a predicate.  The governable grammatical functions that are usually assumed are \ref{gloss:subj}, \ref{gloss:obj}, \ref{gloss:objtheta}, \ref{gloss:comp}, \ref{gloss:xcomp}, and \ref{gloss:obltheta}.
+
+\item[Grammar Writer's Workbench\namedlabel{gloss:GWW}{Grammar Writer's Workbench}] A computational grammar development platform for LFG, developed in the 1980s and 1990s at the Xerox Palo Alto Research Center.  See \citetv[\ref{sec:ImpApp:XLE}]{chapters/ImplementationsApplications}.
+
+\item[Grammatical Function Hierarchy\namedlabel{gloss:gfh}{grammatical function hierarchy}] An ordering of grammatical functions, with \ref{gloss:subj} at the top of the hierarchy, followed by \ref{gloss:obj} and \ref{gloss:obltheta}.  See \citetv{chapters/GFs}.
+
+\item[GWW] See \ref{gloss:GWW}.
+
+\item[I] See \ref{gloss:IP}.
+
+\item[ID/LP rule\namedlabel{gloss:IDLP}{ID/LP rule}] A \ref{gloss:psr} in which precedence relations are specified separately from mother-daughter relations: an ID (Immediate Dominance) rule specifies the permissible daughters of a mother node, and an LP (Linear Precedence) rule specifies the permissible order among the daughters.  In an ID rule, the daughters are separated by commas.
+
+\item[`Ignore' operator (/)\namedlabel{gloss:Ignore}{`Ignore' operator}] In a \ref{gloss:psr}, the Ignore operator is written as a forward slash at the end of the rule, and is followed by the Ignore category sequence.  Such a rule licenses any number of instances of the Ignored category sequence, interspersed at any position among the specified daughter nodes.  For example, the rule `\textphraserule{VP}{[V NP]/AdvP}' (VP dominates V and NP, ignoring AdvP) is a shorthand for `\textphraserule{VP}{AdvP* V AdvP* NP AdvP*}' (using the \ref{gloss:Kleene} `*'), allowing VP to dominate any sequence of categories containing V and NP, and also any number of AdvPs in any position.
+
+\item[Implicit control\namedlabel{gloss:implicit}{implicit}] Structures in which a missing argument is inferred from the extrasentential context rather than being determined within the clause by a controlling argument. See \citetv{chapters/Control}.
+  
+\item[index] Feature whose value is an f-structure containing the \textsc{index} feature bundle, typically including the features \PERS, \NUM, and \GEND\ and their values.  See \citetv[\ref{sec:indexconcord}]{chapters/Agreement}.
+
+\item[Information structure\namedlabel{gloss:istr}{information structure}] The linguistic level representing how linguistic information is structured for presentation in a particular context, distinguishing old from new information, focused from background information, and other distinctions.  See \citetv{chapters/InformationStructure} and, for historical change, \citetv[\ref{sec:Historical:positional}]{chapters/Historical}.
+
+\item[Inside-out functional uncertainty\namedlabel{gloss:InsideOutFU}{Inside-Out Functional Uncertainty}] A type of constraint on the relation between two \ref{gloss:avms}, stated in terms of a \ref{gloss:regex}, and specified in terms of the position of the more embedded of the two attribute-value structures.  See \citetv[\ref{sect:fu}]{chapters/CoreConcepts}.
+
+\item[Instantiated symbol\namedlabel{gloss:Instantiatedsymbol}{Instantiated symbol}] A feature value which can be instantiated only once.  A well-formed functional description may not contain more than one equation specifying an instantiated value. Notationally, an instantiated symbol ends with an underscore: X\_.
+
+\item[int] Interrogative.  Sometimes as \textsc{inter}.
+
+\item[Inverse correspondence function\namedlabel{gloss:inverse}{inverse}\namedlabel{gloss:Inversecorrfun}{Inverse correspondence function}] The inverse of a function $\alpha$, written $\alpha^{-1}$, reverses the argument and result of $\alpha$.  For example, the \ref{gloss:phi} is a function from c-structure nodes to f-structures, and the inverse $\phi^{-1}$ \ref{gloss:projection} is a relation between f-structures and the c-structure nodes to which they correspond.
+
+\item[IP\namedlabel{gloss:IP}{IP}] Originally `inflection(al) phrase', a \ref{gloss:cstr} category.  Now used for a clausal constituent.  Also see \ref{gloss:CP}.
+
+\item[Kleene star (*)\namedlabel{gloss:Kleene}{Kleene star}] In a \ref{gloss:regex}, an operator that allows repetition of a string zero or more times.
+
+\item[KP] `Case phrase', consisting of a nominal phrase with a case clitic (a \ref{gloss:cstr} category. See \citetv[\ref{sect:xbar}]{chapters/CoreConcepts}.
+
+\item[LDD] See \ref{gloss:UBD}.
+
+\item[Lexemic Index (LI)\namedlabel{gloss:lexemicindex}{lexemic index}] A unique identifier associated with a morphological root in the lexicon.  See \citetv{chapters/Morphology}.
+
+\item[Lexemic entry] An entry in the lexicon specifying the form of a root morpheme, any non-predictable morphological alternations, the syntactic, semantic, and other information associated with the root, and a \ref{gloss:lexemicindex} for the root.  See \citetv{chapters/Morphology}.
+
+\item[Lexical (redundancy) rules] Rules stating generalizations over classes of lexical items.
+
+\item[Lexical Integrity Principle\namedlabel{gloss:LexInt}{Lexical Integrity Principle}] The principle that the properties of words are established in the lexicon, and cannot be modified in the course of syntactic derivation.  See \citetv[\ref{sect:integrity}]{chapters/CoreConcepts} and \citetv{chapters/Morphology}.
+
+\item[Lexical Mapping Theory\namedlabel{gloss:LMT}{Lexical Mapping Theory}] A version of \ref{gloss:Mapping} which assumes that the relation between argument roles and grammatical functions is established in the lexicon.  See \citetv{chapters/Mapping}.
+
+\item[Lexical Sharing\namedlabel{gloss:lexsharing}{lexical sharing}] The view that a single word can be dominated by more than one node in the \ref{gloss:Cstr} tree.  See \citetv[\ref{sec:CoreConcepts:LexSharing}]{chapters/CoreConcepts} and, for a historical perspective, \citetv[\ref{sec:Historical:lex-share}]{chapters/Historical}.
+
+\item[Lexicalist Hypothesis] See \ref{gloss:LexInt}.
+
+\item[LFG-DOP] A hybrid grammatical model combining LFG and Data-Oriented Parsing.  See \citetv{chapters/GrammarInduction}.
+
+\item[Linear implication\namedlabel{gloss:LinearImplication}{Linear implication}] A \ref{gloss:linearlogic} connective similar to implication, written as $\multimap$. See \citetv{chapters/Glue}.
+
+\item[Linear logic\namedlabel{gloss:LinearLogic}{Linear logic}\namedlabel{gloss:linearlogic}{linear logic}] A resource logic in which each premise is a resource which can be used only once.  See \citetv{chapters/Glue}.
+
+\item[Linking rules] See \ref{gloss:LMT}.
+
+\item[LMT] See \ref{gloss:LMT}.
+
+\item[Local name] A name used to refer to a particular f-structure in a \ref{gloss:fdescr}.  The reference of the local name is restricted to the functional description in which it appears.  A local name begins with a percent sign, \%.  See \citetv[\ref{sec:CoreConcepts:localname}]{chapters/CoreConcepts}.
+
+\item[Logical subject\namedlabel{gloss:LogSubj}{Logical subject}] The most prominent argument of a predicate at \ref{gloss:argstr}.
+
+\item[Long-distance dependency] See \ref{gloss:UBD}.
+
+\item[Macro]  A macro is used in capturing generalizations across \ref{gloss:psrs}.  It associates a name with a sequence of annotated \ref{gloss:cstr} categories.  As with \ref{gloss:templates}, a call to a macro is preceded by an `at' sign, @.
+
+\item[Mapping Theory\namedlabel{gloss:Mapping}{Mapping Theory}] The theory of the relation between \ref{gloss:argstr} and \ref{gloss:fstr} roles.  See \citetv{chapters/Mapping} and, for a historical perspective, \citetv[\ref{sec:Historical:arg-gf}]{chapters/Historical}.
+
+\item[Maximal projection] In \ref{gloss:Xbar}, the XP level.  LFG often assumes a two-level version of \ref{gloss:Xbar} in which XP = X$''$.
+
+\item[Meaning constructor\namedlabel{gloss:constructor}{meaning constructor}] In the \ref{gloss:glue} theory of the syntax-semantics interface, a complex expression with two parts: one part expresses a linguistic meaning, and the other part is an expression of \ref{gloss:linearlogic} expressing how the meaning combines with other meanings in semantic composition. See \citetv{chapters/Glue}.
+
+\item[Minimal Complete Nucleus] Relative to a designated f-structure $f$, the smallest f-structure which properly contains both $f$ and a \ref{gloss:PRED} feature.  The minimal complete nucleus is often assumed to be relevant for specification of anaphoric binding constraints: see \citetv{chapters/Anaphora}.
+
+\item[Minimal Finite Domain] Relative to a designated f-structure $f$, the smallest f-structure which properly contains both $f$ and a feature specifying a value for the \textsc{tense} feature.  The minimal finite domain is often assumed to be relevant for specification of anaphoric binding constraints: see \citetv{chapters/Anaphora}.
+
+\item[Morphological Blocking Principle] A principle stating that the existence of a more specified form blocks the use of a less specified form.  See \citetv{chapters/Morphology} and \citetv{chapters/OT}.
+
+\item[N] Noun. See \ref{gloss:NP}.
+
+\item[Negative existential constraint] A constraint forbidding the appearance of a feature in an attribute-value structure.  For example, the constraint $\neg(f~\TENSE)$ prevents the f-structure $f$ from having an attribute \TENSE with any value.
+
+\parpic[r]{\scalebox{.6}{\parbox{6em}{\centering Disallowed:\\\begin{forest}[{} [CP [$\vdots$ [CP [...]]]]]\end{forest}}}}\item[Nonbranching Dominance Constraint\namedlabel{gloss:NBD}{Nonbranching Dominance Constraint}] A constraint disallowing \ref{gloss:cstr} trees in which two nodes of the same category dominate the same terminal substring, as in the illustration. This constraint is sufficient to ensure \ref{gloss:decidability} of LFG parsing, but is not sufficient to ensure decidability of LFG generation.  The stronger principles of Conservation and Proper Anchoring guarantee decidability of both computational problems.  See \citetv{chapters/Computational}.
+\end{labeling}\begin{labeling}{xxxx} % needed to prevent alignment bug with parpic
+ 
+\item[Non-configurationality\namedlabel{gloss:Nonconfig}{Non-configurationality}] Refers to a language type in which grammatical functions are not associated with particular \ref{gloss:cstr} positions, but can often be identified via agreement and/or casemarking.  Also see \ref{gloss:Config}.
+
+\item[Nondistributive feature] See \ref{gloss:DistFeature}.
+
+\item[Non-projecting word\namedlabel{gloss:Nonproj}{Non-projecting word}] A word that does not project a larger phrase and so cannot have a phrase structure complement or specifier.  Non-projecting words of category X are annotated with a circumflex, as \NONPROJ{X}.  See \citetv[\ref{sect:xbar}]{chapters/CoreConcepts}.
+
+\item[Nonthematic argument\namedlabel{gloss:nonthematicarguments}{nonthematic arguments}] An argument that is not assigned a semantic role.  In English, the pleonastic/`dummy' subject \emph{it} of a weather verb like \emph{snow} is a nonthematic argument, as is the raised argument of a raising verb like \emph{seem}.
+
+\item[NP\namedlabel{gloss:NP}{NP}] Noun phrase (a \ref{gloss:cstr} category).
+
+\item[nsem\namedlabel{gloss:nsem}{\textsc{nsem}}] Feature whose value is a bundle of syntactically relevant semantic features of nouns and noun phrases.  Used in \ref{gloss:PARGRAM} grammars.  The value of this feature is an f-structure with features \textsc{common, number-type, proper, time}.
+
+\item[nsyn\namedlabel{gloss:nsyn}{\textsc{nsyn}}] Feature whose value is a bundle of syntactic features of nouns and noun phrases.  Used in \ref{gloss:PARGRAM} grammars.  The value of this feature is an f-structure with features \textsc{common, pronoun, proper}.
+
+\item[ntype] Feature whose value is an f-structure containing the set of syntactic and semantic features of nouns and noun phrases.  Used in \ref{gloss:PARGRAM} grammars. The value of this feature is an f-structure with two features, \ref{gloss:nsyn} and \ref{gloss:nsem}.
+
+\item[{${\pm}o$}] `Objective' (object-like) feature cross-classifying grammatical functions.  The objective grammatical functions \OBJ, \OBJ2, \OBJTHETA\ are $+o$, and the non-objective grammatical functions \SUBJ, \OBLTHETA\ are $-o$.  Used in \ref{gloss:Mapping} (see \citetv{chapters/Mapping}).
+
+\item[\OBJ\namedlabel{gloss:obj}{\OBJ}] The grammatical function borne by (primary) objects.
+
+\item[\OBJTHETA\namedlabel{gloss:objtheta}{\OBJTHETA}] The grammatical function borne by thematically restricted objects.
+
+\item[\OBJ2\namedlabel{gloss:obj2}{\OBJ2}] The grammatical function borne by secondary objects.
+
+\item[\OBLROLE{agent}\namedlabel{gloss:oblagent}{\OBLROLE{agent}}] The grammatical function borne by \ref{gloss:obliqueargument} agent phrases.
+
+\item[Oblique argument\namedlabel{gloss:obliqueargument}{oblique}] An argument of a predicate which is marked by an adposition or by casemarking marking a particular semantic role.  See \citetv[\ref{sect:gfs:obl}]{chapters/GFs}.
+
+\item[\OBLTHETA\namedlabel{gloss:obltheta}{\OBLTHETA}\namedlabel{gloss:obliquetheta}{oblique}] The family of \ref{gloss:obliqueargument} grammatical functions associated with particular semantic roles: for example, \ref{gloss:oblagent}.
+
+\item[OCR] Optical character recognition: converting an image of text into the corresponding text.
+
+\item[Off-path constraint\namedlabel{gloss:OffPathConstraint}{off-path constraint}] A constraint on a feature which specifies required properties of the f-structure containing the feature, or of the f-structure value of the feature.  See \citetv[\ref{sect:constequ}]{chapters/CoreConcepts} and \citetv{chapters/LDDs}.
+
+\item[op] See \ref{gloss:dis}.
+
+\item[Open grammatical function\namedlabel{gloss:open}{open grammatical function}] Grammatical function corresponding to a phrase which does not contain an internal \ref{gloss:subj}, and whose subject is \ref{gloss:fcontrolled} by an external argument.  The open grammatical functions that are usually assumed are \ref{gloss:xcomp} and \ref{gloss:xadj}.  See \citetv{chapters/Control}.
+
+\item[OT-LFG] Optimality Theoretic LFG, a hybrid grammatical model combining LFG and Optimality Theory. See \citetv{chapters/OT} and, for a perspective from historical change, \citetv[\ref{sec:Historical:var}]{chapters/Historical}.
+
+\item[Overlay function \namedlabel{gloss:overlay}{overlay function}\namedlabel{gloss:Overlay}{Overlay function}] A secondary grammatical function which may be borne by an argument.  Overlay grammatical functions are sometimes associated with discourse functions such as \ref{gloss:focus} or \ref{gloss:topic}.
+
+\item[P] Preposition or postposition. See \ref{gloss:PP}.
+
+\item[ParGram\namedlabel{gloss:PARGRAM}{ParGram}] A consortium of grammar development efforts by industrial and academic institutions, with the aim of producing computational LFG grammars for a typologically diverse set of languages, written under a commonly-agreed set of linguistic assumptions.  ParGram grammars are written using the \ref{gloss:XLE} grammar development platform.  See \citetv[\ref{sec:pargram}]{chapters/ImplementationsApplications}.
+
+\item[Parsing\namedlabel{gloss:parsing}{parsing}\namedlabel{gloss:Parsing}{Parsing}] In LFG, the problem of finding the set of \ref{gloss:fstrs} that the grammar assigns to a particular sentence, if the sentence is \ref{gloss:recognized} by the grammar.  Also see \ref{gloss:Generation}.
+
+\item[Partial control\namedlabel{gloss:partial}{partial}\namedlabel{gloss:Partial}{Partial control}] \ref{gloss:Control} constructions in which the reference of the controlled argument includes but is not restricted to the controlling argument. See \citetv{chapters/Control}.  Also see \ref{gloss:Exhaustive}.
+  
+\item[passive] Feature encoding voice. When this feature appears, its value is $+$ if its clause is passive, and either $-$ or absent if its clause is not passive.  A common alternative is to encode voice via a \textsc{voice} feature with values such as \textsc{active} or \textsc{passive}.
+
+\item[pcase] Feature encoding the grammatical function borne by a prepositional phrase, as required by the preposition.  For example, the English preposition \emph{to} is associated with the \ref{gloss:obliquetheta} goal function, so it would contribute a \textsc{pcase} feature with value \OBLROLE{goal}.
+
+\item[Phrase structure rule\namedlabel{gloss:psr}{phrase structure rule}\namedlabel{gloss:psrs}{phrase structure rules}] A rule specifying well-formed phrase structure configurations involving a mother node and its daughters.  In LFG, the right-hand side of a phrase structure rule is a \ref{gloss:regex}.  See \citetv[\ref{sect:intro:c-structure}]{chapters/Intro}.
+
+\item[pivot] (grammatical function) A grammatical function which plays a role in connecting its clause to other clauses.  \textsc{pivot} is often assumed to be an \ref{gloss:overlay}.
+
+\item[poss] (grammatical function) The grammatical function borne by possessors in a nominal phrase.
+
+\item[PP\namedlabel{gloss:PP}{PP}] Prepositional or postpositional phrase (a \ref{gloss:cstr} category).
+
+\item[pred\namedlabel{gloss:PRED}{\textsc{pred}}] The f-structure feature whose value is a \ref{gloss:semanticform}. See \citetv[\ref{sect:pred}]{chapters/CoreConcepts}.
+
+\item[predlink] (grammatical function) The grammatical function of a predicative complement.  The English verb \emph{be} is sometimes analyzed as taking as its arguments a \ref{gloss:subj} and a \textsc{predlink}.
+
+\item[Priority union (/)] An operation that combines two \ref{gloss:avms}, with one of the structures having a distinguished status: the priority union of $f$ with $g$, where $f$ is the distinguished structure, is written as $f/g$.  The features of the resulting structure are the union of the features in $f$ and $g$, and the value of each feature $a$ in the resulting structure is the value of $a$ in $f$ if it exists, and otherwise the value of $a$ in $g$ (in cases of conflict, the distinguished structure `wins').  Unlike \ref{gloss:unification}, priority union does not fail.
+
+\item[Projection architecture] Levels of linguistic representation and the relations among them.  See \citetv[\ref{sect:intro:addlevels}]{chapters/Intro}.
+
+\item[Projection\namedlabel{gloss:projection}{projection} function] A projection function relates components of one level of structure to components of another level.  For example, the \ref{gloss:phi} is a function relating c-structure nodes to their corresponding f-structures.
+
+\item[Proper Anchoring Condition\namedlabel{gloss:PAC}{Proper Anchoring Condition}] A specific, easily computable condition on strings, \ref{gloss:cstrs}, and \ref{gloss:fstrs} that guarantees that they satisfy the bounding requirement of \ref{gloss:Conservation}. See \citetv{chapters/Computational}.
+
+\item[Proto-Role argument classification] A classification of roles at \ref{gloss:argstr} which distinguishes roles in terms of their agent-like or patient-like properties.  See \citetv{chapters/Mapping}.
+
+\item[Quasi-anaphoric control\namedlabel{gloss:quasi-anaphoric}{quasi-anaphoric}] A \ref{gloss:control} construction in which an argument of the matrix clause co-refers with the subject of the embedded clause but where the connection is defined in semantic rather than syntactic terms. See \citetv{chapters/Control}.  Also see \ref{gloss:Anaphcontrol}. 
+  
+\item[{${\pm}r$}\namedlabel{gloss:r}{$\underline{+}r$}] (mapping feature) `Restricted' feature cross-classifying grammatical functions.  The (thematically) unrestricted grammatical functions \SUBJ, \OBJ are $-r$, and the restricted grammatical functions \OBJTHETA, \OBLTHETA are $+r$.  Used in some versions of \ref{gloss:Mapping} (see \citetv{chapters/Mapping}).
+
+\item[Raising\namedlabel{gloss:raising}{raising}] A construction in which the subject argument of an embedded predicate is realized as the grammatical subject or object of a matrix predicate, but does not receive a semantic role from the higher predicate. The term is still widely used as a descriptive label even when, as in LFG, the argument in question is not thought to have undergone a syntactic movement process. See \citetv{chapters/Control}.
+  
+\item[Realization\namedlabel{gloss:realized}{realized}\namedlabel{gloss:Realization}{Realization}] In LFG, the problem of determining whether there exists at least one sentence that is assigned to a given f-structure by a given LFG grammar.  Also see \ref{gloss:Generation}.
+
+\item[Recognition\namedlabel{gloss:recognized}{recognized}] The problem of determining whether a given sentence belongs to the language of a grammar.  Also see \ref{gloss:Parsing}.
+
+\item[Re-entrancy] See \ref{gloss:StructureSharing}.
+
+\item[Regular expression\namedlabel{gloss:regex}{regular expression}] An expression that allows the combination of \ref{gloss:regpreds} via disjunction, conjunction, or negation.  A regular expression describes a \emph{regular language}.  The right-hand side of a \ref{gloss:psr} in LFG is a regular expression; see \citetv[\ref{sect:intro:c-structure}]{chapters/Intro}.  Regular expressions are also used in the encoding of \ref{gloss:fu}.
+
+\item[Regular predicate\namedlabel{gloss:regpreds}{regular predicates}] An expression that can include \ref{gloss:disjunction}, optionality (via parentheses), and unbounded repetition (via the \ref{gloss:Kleene}).  In LFG, regular predicates can also include operators such as the \ref{gloss:Ignore} and the \ref{gloss:Shuffle}.
+
+\item[Restricted grammatical functions (\OBJTHETA, \OBLTHETA)] See \ref{gloss:r}.
+
+\item[Restriction (\restrict{})\namedlabel{gloss:Restrict}{Restriction}] In a \ref{gloss:fdescr}, the Restriction operator is written as an f-structure reference, followed by a backslash, followed by one or more features: for example, $f\restrict{\SUBJ}$ refers to the f-structure $f$ with the attribute \SUBJ\ and its value restricted out.  The f-structure $f\restrict{\SUBJ}$ has all of the features and values of the f-structure $f$ except for the feature \SUBJ\ and its value, which may then be specified differently from the value of \SUBJ\ in $f$.
+
+\item[Resumption\namedlabel{gloss:Resumption}{Resumption}] A construction involving an \ref{gloss:ubd} containing a \ref{gloss:resumptivepro}.
+
+\item[Resumptive pronoun\namedlabel{gloss:resumptivepro}{resumptive pronoun}] A pronoun which participates in an \ref{gloss:ubd} and is bound by an \ref{gloss:overlay}.  See \citetv{chapters/Semitic}.
+
+\item[S\namedlabel{gloss:S}{S}] The clausal category S is \ref{gloss:exocentric}, meaning that it has no head.  See \citetv[\ref{sec:CoreConcepts:S}]{chapters/CoreConcepts}.
+
+\item[Semantic form\namedlabel{gloss:semanticform}{semantic form}\namedlabel{gloss:semanticforms}{semantic forms}] Value of the \ref{gloss:PRED} feature at \ref{gloss:fstr}, encoding syntactic predicate-argument structure.  A semantic form consists of the name of the predicate and its arguments, with \ref{gloss:thematicarguments} enclosed in angled brackets, and \ref{gloss:nonthematicarguments} outside the angled brackets. A semantic form is instantiated to a unique value on each occasion of use of the word or construction which contributes it.  See \citetv[\ref{sect:pred}]{chapters/CoreConcepts}.
+
+\item[`Shuffle' operator (,)\namedlabel{gloss:Shuffle}{`Shuffle' operator}] In a \ref{gloss:psr}, the `shuffle' operator indicates that two sequences of daughters can be interspersed.  Each sequence is enclosed by square brackets, and the two sequences are separated by a comma.  For example, the rule \mbox{`\textphraserule{S}{[XP1 XP2], [XP3 XP4]}'} licenses any order of the four daughters XP1, XP2, XP3, XP4 as long as XP1 precedes XP2, and XP3 precedes XP4.  See \ref{gloss:IDLP}.
+
+\item[Spec,XP] In \ref{gloss:cstr}, the specifier of XP; that is, the non-head daughter of XP which is sister to the head X$'$.  Also see \ref{gloss:Xbar}.
+
+\item[Split control\namedlabel{gloss:split}{split}] A \ref{gloss:control} construction in which two different matrix arguments taken together provide the antecedent for the unexpressed subject argument of an embedded clause. See \citetv{chapters/Control}.
+  
+\item[Structure sharing\namedlabel{gloss:StructureSharing}{Structure sharing}] The situation when two features in an \ref{gloss:avm} share the same value. See \citetv[\ref{sect:intro:sharing}]{chapters/Intro}.
+
+\item[Structure-Function Mapping] A general term for the mapping between structure (in LFG, usually \ref{gloss:cstr}) and syntactic function (in LFG, usually \ref{gloss:fstr}).
+
+\item[\SUBJ\namedlabel{gloss:subj}{\SUBJ}] The grammatical function borne by subjects.
+
+\item[Subject Condition] The requirement for clausal functional structures to contain a \ref{gloss:subj}.  See \citetv[\ref{sect:gfs:subj}]{chapters/GFs}.
+
+\item[Subject, logical] See \ref{gloss:LogSubj}.
+
+\item[Subsumption] An f-structure $f$ subsumes an f-structure $g$ ($f \sqsubseteq g$) if all of $f$'s features and values are also in $g$.  Notably, $g$ may contain additional features that are not present in  $f$.  For example, if $f$ is the structure $\left[\begin{array}{@{}ll@{}}a & b\\c & d\end{array}\right]$ and $f$ subsumes $g$, then $g$ contains the feature $a$ with value $b$ and the feature $c$ with value $d$, and may also contain additional features and values.
+
+\item[Template\namedlabel{gloss:template}{template}\namedlabel{gloss:templates}{templates}] A template associates a name with a set of constraints, and allows that name to be used to represent those constraints.  See \citetv[\ref{sec:CoreConcepts:templates}]{chapters/CoreConcepts}.
+
+\item[Thematic argument\namedlabel{gloss:thematicarguments}{thematic arguments}] An argument of a predicate which is associated with a semantic role.
+
+\item[\TOPIC\namedlabel{gloss:topic}{\TOPIC}] (grammatical function) A grammatical function associated with the information structure role of topic.  When it is assumed, \TOPIC\ is usually analyzed as an \ref{gloss:overlay}.
+
+\item[UD (Universal Dependencies)] A system for annotating grammatical functional dependencies.  See \citetv{chapters/Dependency}.
+
+\item[udf] See \ref{gloss:dis}.
+
+\item[Unbounded dependency\namedlabel{gloss:UBD}{Unbounded dependency}\namedlabel{gloss:ubd}{unbounded dependency}] A potentially unbounded relation between a displaced constituent and the position normally associated with its syntactic role.  See \citetv{chapters/LDDs}.
+
+\item[Unification ($\sqcup$)\namedlabel{gloss:unification}{unification}] An operation that combines two \ref{gloss:avms}.  If the structures are compatible, the resulting structure contains all of the structure from both of the input attribute-value structures.  If the structures are not compatible, unification fails. There is a straightforward relation between unification and conjunction of descriptions: if f-structure $f1$ satisfies a description $d1$, and $f2$ satisfies a description $d2$, then if $d1$ and $d2$ are consistent, $f1 \sqcup f2$ satisfies $d1 \cup d2$.
+
+\item[Uniqueness] See \ref{gloss:Consistency}.
+
+\item[V] Verb. See \ref{gloss:VP}.
+
+\item[Verbal modifiers (VMS)] A categorially heterogeneous group of constituents that must occupy the immediately preverbal position in neutral sentences in some Finno-Ugric languages. See \citet{chapters/FinnoUgric}.
+
+\item[\VFORM] Feature whose value specifies the form of a verb, for example \textsc{ppart} for past participle.  Also see \ref{gloss:vtype}.
+
+\item[VP\namedlabel{gloss:VP}{VP}] Verb phrase (a \ref{gloss:cstr} category).
+
+\item[\VTYPE\namedlabel{gloss:vtype}{\VTYPE}] Feature whose value specifies verb type.  Typical values are \textsc{fin} for finite, \textsc{inf} for infinitive, and \textsc{pst.ptcp} for past participle.
+
+\parpic[r]{\scalebox{.6}{\begin{forest}[XP [{YP\\(Specifier of XP)}][X$'$ [X$^0$] [{ZP\\(Complement of XP)}]]]\end{forest}}}\item[X-bar theory\namedlabel{gloss:Xbar}{X-bar theory}] A theory of the organization of \ref{gloss:cstr}.  Many LFG analyses assume the version of X-bar theory that is depicted in the figure, ignoring linear order (that is, the specifier may precede or follow the X$'$ head, and the complement may precede or follow the X head.  See \citetv[\ref{sect:xbar}]{chapters/CoreConcepts}.
+\end{labeling}\begin{labeling}{xxxx} % needed to prevent alignment bug with parpic
+
+\item[\XADJ\namedlabel{gloss:xadj}{\XADJ}]The \ref{gloss:open} borne by adjunct phrases.
+
+\item[\XCOMP\namedlabel{gloss:xcomp}{\XCOMP}] The \ref{gloss:open} borne by complement phrases.
+
+\item[xcomp-pred] (grammatical function) A grammatical function for a non-verbal \ref{gloss:open}. Used in \ref{gloss:PARGRAM}.
+
+\item[XLE\namedlabel{gloss:XLE}{XLE}] A computational grammar development platform for LFG, developed at the Xerox Palo Alto Research Center.  See \citetv[\ref{sec:ImpApp:XLE}]{chapters/ImplementationsApplications}.
+
+\end{labeling}
+
+\end{document}

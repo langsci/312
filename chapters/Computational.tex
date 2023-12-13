@@ -1,0 +1,1385 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10185982}
+\title{Formal and computational properties of LFG}
+\author{Ronald M. Kaplan\affiliation{Stanford University} and Jürgen Wedekind\affiliation{University of Copenhagen}}
+\abstract{This chapter first reviews the basic architectural concepts that underlie the formal theory of Lexical-Functional Grammar.  The LFG formalism provides a simple set of devices for describing the common properties of all human languages and the particular properties of individual languages.  It postulates two levels of syntactic representation for a sentence, a constituent structure and a functional structure.  These are related by a piecewise correspondence that permits the abstract functional structure to be described in terms of configurations of constituent structure phrases.  We then survey the mathematical and computational properties of this simple framework.  We demonstrate that the recognition/parsing, realization/generation, emptiness, and other more specific decision problems are unsolvable for grammars in the unrestricted LFG formalism. A first set of restrictions guarantees decidability of recognition, realization, and other problems for grammars that are still suitable for linguistic description, but the solutions to these problems in the worst case are computationally impractical. The class of LFG grammars that meet an additional set of restrictions is equivalent to the class of mildly context-sensitive grammars, and the recognition and realization problems for grammars in this class are thus not only decidable but tractable as well.}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[23]%%chapternumber
+}{}
+
+\begin{document}
+\maketitle
+\label{chap:Computational}
+
+
+\clearpage
+\section{Introduction}
+
+The basic features of the LFG formalism are quite simple and have remained remarkably stable since they were first introduced by \citet{kaplanbresnan82}.\footnote{Jürgen Wedekind passed away just as work on this chapter was coming to an end.  Jürgen was a master of the LFG formalism, with deep insights into its mathematical and computational properties and how they relate to important principles of linguistic analysis. His early passing is a great loss to the LFG community. He will also be missed as a close friend and collaborator. RMK} An LFG grammar assigns to each sentence in its language at least one constituent structure (c-structure) and at least one functional structure (f-structure).  The c-structure is a phrase-structure tree that represents the order of words and their grouping into phrases.  The f-structure is a hierarchical attribute-value matrix that represents the underlying grammatical relations that are expressed by configurations of c-structure nodes.  The c-structure is determined in the traditional way by the rules of a context-free grammar. The f-structure is a minimal model for  the functional description (f-description) that is constructed from annotations associated with the categories of  rules that license the nodes of the c-structure. The f-description is obtained by instantiating those annotations on the assumption that there is a piece-wise correspondence $\phi$ between the nodes of the c-structure and the units of a satisfying f-structure.
+\renewcommand*{\thefootnote}{\arabic{footnote}}
+\setcounter{footnote}{0}
+
+This simple correspondence architecture still lies at the core of LFG theory even as it has been extended and refined to provide more insightful accounts of long distance dependencies \citep{kaplzaen89}, coordination \citep{KaplanMaxwell1988:Coord}, and other syntactic phenomena. In this chapter we focus on the mathematical and computational properties of the basic formalism.  As is well known, its expressive power goes far beyond the capabilities of the context-free c-structure grammar. This is because the annotations may associate information that originates from different (and possibly arbitrarily distant) nodes with the same f-structure unit.  The result is that such a unit must satisfy requirements that  come from words in the string or nodes in the tree that do not stand in a local mother-daughter relationship.  A string with an otherwise well-formed c-structure is excluded from the language if such context-sensitive f-structure requirements are inconsistent.  We know that some degree of context sensitivity is needed for recognizing and parsing natural languages \citep{BKPZ:Dutch, CulyBambara1985, Shieber1985}, but the basic LFG formalism may allow for more expressive power than is actually required.
+
+Indeed, \citet{kaplanbresnan82} used a reduction from the Turing machine halting problem to show that the recognition/parsing problem is undecidable for unrestricted LFG grammars (see also \citealt{john:88:book}). This is the computationally important problem of determining whether or not a given string belongs to the language of the grammar and is assigned at least one c-structure and corresponding f-structure. \citet{Wedekind2014} proved the undecidability of the realization problem, also of practical significance.
+This is the problem of determining whether the language contains at least one string to which an arbitrary given f-structure is assigned.  Wedekind's undecidability proof used a reduction from the emptiness problem for the intersection of context-free languages. He also used that reduction to show the undecidability of the emptiness problem for unrestricted LFGs \citep{Wedekind99}.  This is the problem of determining whether or not there are any strings at all in the language of a given LFG grammar.  The emptiness problem for LFGs was previously shown to be undecidable by reductions from Hilbert's Tenth Problem \citep{Roach1983} and Post's Correspondence \mbox{Problem~\citep{Nishino1991}}.  
+
+We revisit these undecidability results in Section~\ref{Undecidability}.  We provide alternative proofs within a single, conceptually simple, framework.  In Appendix A we use this framework to show that other more specific decision problems are also unsolvable.
+
+We  consider in Section~\ref{decidable} some formal conditions that are sufficient to guarantee decidability of the recognition and realization problems.  \citet{kaplanbresnan82}  showed that recognition is decidable if c-structures with non-branching dominance (NBD) chains and/or unlimited empty nodes are excluded, and they argued that this is a reasonable restriction for LFG grammars that describe natural languages. This parsing-oriented limitation does not reduce the complexity of generation \citep{Wedekind2014}, but an unrelated restriction has been shown to ensure the decidability of that problem \citep{WedekindKaplan:Gen}. This raises the question whether there is a single, linguistically plausible, condition that applies indifferently to both parsing and generation.  We  introduce in Section~\ref{decidable} such a uniform condition, proper anchoring, but we also demonstrate that this particular condition is not strong enough to guarantee that these problems can be solved with practical efficiency.  In the worst case recognition and generation may take an amount of time  that is exponential in the length of an input sentence or f-structure.
+ 
+This leads us to examine in Section~\ref{Tractable} a stronger set of restrictions that not only guarantee decidability of recognition and realization as well as emptiness but also ensure that those problems can be solved in polynomial time. This follows from the fact that LFG grammars that meet these additional restrictions are mildly context-sensitive in their expressive power and thus also have the known mathematical and computational properties of that class of formal grammars.  
+
+\section{Basic LFG formalism}\label{Basic}
+
+We show in Figure~\ref{Fig1} the c-structure and f-structure that the annotated c-structure rules in \xref{Gramsee} and lexical entries in \xref{Lexsee} would assign to the sentence \sent{He sees the girl}.
+
+\ea\label{Gramsee}
+\hsp{-1em}
+\small\parbox[t]{15em}{
+\begin{tabular}[t]{l}
+S \rarrow \rcat{NP\\\assign{subj}} \rcat{VP\\\trivial\\\ugf {tense}}\vspace{.4em}\\
+NP \rarrow \rcat{(Det)\\\trivial} \rcat{N\\\trivial}\vspace{.4em}\\
+VP  \rarrow \rcat{V\\\trivial} \rcat{NP\\\assign{obj}}
+\end{tabular}
+}
+\z
+
+\defaultlexentrydimen=1.6em
+\defaultcatdimen=1.1em
+\ea\label{Lexsee}
+\parbox[t]{18.4em}{
+\catlexentry {he}N{\predsfna{pro}\\\uval {agr pers}3\\\uval{agr num}{sg}}\vspace{.4em}\\
+\catlexentry {sees}V{\predsfa{see}{subj obj}\\\uval {tense}{pres}\\\uval{subj agr pers}3\\\uval{subj agr  num}{sg}}
+}
+\parbox[t]{0em}{
+\catlexentry{the}{Det}{\uval{spec}{def}}\vspace{.4em}\\
+\catlexentry{girl}N{\predsfna{girl}\\\uval {agr pers}3\\\uval{agr num}{sg}\\\ugf{spec}
+}}
+\z
+\defaultlexentrydimen=4em
+\defaultcatdimen=1em
+The correspondence function $\phi$ is indicated by the arrows between the c-struc\-ture nodes and the f-structure units and also, redundantly, by the columns of node identifiers $root, n_1, n_2,...$ attached to the f-structure units.  We see even in this simple example that the function $\phi$ is typically many-to-one (heads and coheads of grammatical constituents are mapped into the same f-structure) but is not onto (the \attr {agr}/agreement f-structure units are not the image of any node).   The function $\phi$ may also be partial, if nodes necessary for c-structure well-formedness have no f-structure significance.
+
+The phrasal categories of this c-structure obviously meet the node admissibility conditions of the annotated rewriting rules \xref{Gramsee}. 
+\begin{figure}[tb]
+\hsp{-.5em}\begin{tabular}[t]{l}{\hsp{1.5em}\rnode{m2}{}\hsp{-1.5em}
+\small\begin{forest}
+[\treenodesub S{root}{} [\treenodesub{NP}n1 [\treenodesub Nn3 [\term{He}]]]
+    [\treenodesub{VP}n2 [\treenodesub Vn4 [\term{sees}]]
+           [\treenodesub{NP}n5 [\treenodesub{Det}n6 [\term{the}]]
+                  [\treenodesub Nn7 [\term{girl}]]]]]
+\end{forest}
+
+\vspace{-1ex}\begin{tabular}[t]{c}
+%phantom because otherwise the lines have to be redrawn
+\hsp{1em}\raisebox{-.7em}{\small\mb{\phi\phantom{:\mathscr N \rightarrow \mathscr F}}}\hsp{-1em}\\[3ex]
+\rnode{mroot}{}\\[7em]
+\rnode{m5}{}
+\end{tabular}
+\hspace{2em}\small\raisebox{-6em}
+{\avm[style=fstr]
+{\nodecol{{root}\\n_2\\n_4}\hsp{.5em}[ subj & \nodecol{n_1\\n_3}
+           [\rnode{f1}{}pred & \semformna {pro}\\
+              agr & [pers & 3\\
+                        num & sg]]\\
+ \rnode{froot}{}tense & pres\\
+ pred & \semforma {see}{subj obj}\\
+%  pred & \attr{\semforma {see}{\ngf{\phin4}{subj} \ngf{\phin4}{obj}}}\\
+  obj & \nodecol{n_5\\n_6\\\rnode{f7}{n_7}}[pred & \semformna {girl}\\
+            spec & def\\
+            agr &[ pers & 3\\
+                     num & sg]]
+]}}}
+%
+%We want the phi lines here to have the same dots and arrows as in the later figure.  I don't know how to approximate that, since this is in a different drawing system pst-node.  If I put "dashed" here, the segments are too big and heavy.  I tried dotted there, but the dots were too faint. So we have to experiment, perhaps take a week to convert this to tikz.
+\ncarc[nodesepA=.2em,nodesepB=0em,arcangle=20,linestyle=dotted]{-}{troot}{mroot}
+\ncarc[nodesep=.2em,nodesepB=0em,arcangle=20,linestyle=dotted]{-}{tn2}{mroot}
+\ncarc[nodesep=.2em,nodesepB=0em,arcangle=23,linestyle=dotted]{-}{tn4}{mroot}
+\ncarc[nodesepA=0em,nodesepB=.7em,arcangle=15,linestyle=dotted]{->}{mroot}{froot}
+\ncarc[nodesep=.2em,nodesepB=0em,arcangle=-18,linestyle=dotted]{-}{tn5}{m5}
+\ncarc[nodesep=.2em,nodesepB=0em,arcangle=-35,linestyle=dotted]{-}{tn7}{m5}
+\ncarc[nodesep=.2em,nodesepB=0em,arcangle=-30,linestyle=dotted]{-}{tn6}{m5}
+\ncarc[nodesep=.2em,nodesepA=0pt,arcangle=-30,linestyle=dotted]{->}{m5}{f7}
+\ncarc[nodesepA=.2em,nodesepB=0em,arcangle=40,linestyle=dotted]{-}{tn1}{m2}
+\ncarc[nodesep=.2em,nodesepB=0em,arcangle=50,linestyle=dotted]{-}{tn3}{m2}
+\ncarc[nodesep=.2em,nodesepA=0em,nodesepB=.7em,arcangleA=40,arcangleB=27,linestyle=dotted]{->}{m2}{f1}
+\end{tabular}
+\caption{Illustration of the basic LFG architecture: A c-structure $c$ and f-structure $f$ related by the correspondence function $\phi$ from the nodes of $c$ to the units of $f$.  The f-structure units are indexed by the nodes to which they correspond.}
+\label{Fig1}
+\end{figure}
+%
+%
+Lexical entries are interpreted also as annotated rewriting rules that relate the lexical categories of the c-structure to the words of the sentence.  The entry for \sent{the}, for example, is interpreted as the rule
+
+\ea\label{the}
+Det \rarrow \rcat {\term{the}\\\uval{spec}{def}}
+\z
+
+\noindent and the normal node admissibility conditions also license the proper lexical expansions for the tree.
+
+The description that the f-structure must satisfy is constructed from the annotations associated with the daughter categories of the rules that license particular nodes in the c-structure.  Each side of an equation designates an element of a corresponding f-structure, and the equation is satisfied if both sides designate the same element.  The metavariable \down in an annotation designator instantiates to the f-structure corresponding to the node that matches the associated rule category ($n_1$ for  \down in the annotation \assign {subj} attached to the NP in the S rule), and the metavariable \up denotes the f-structure corresponding to the mother of that node (the node $root$ for that rule).   To be precise, if $*$ instantiates to the matching node and \mb{M(*)} instantiates to its mother, then \down and \up are abbreviations for \mb{\phi(*)} and \mb{\phi(M(*))} respectively. The metavariable instantiations are easy to read from the \emph{annotated c-structure} in Figure~\ref{annocs}.  This is a phrase-structure tree whose nodes are labeled with the category-annotation pairs that appear in grammar rules and lexical entries.
+
+\begin{figure}[tb]
+{\hsp{-2em}\small\begin{forest}
+[\treenodesub S{root}{}, for tree={s sep=-1em, l=1ex, inner sep=.5}
+ [{\treenodesuba {NP}n1{\assign{subj}}} [\treenodesuba Nn3\trivial
+                                                                                               [\terma{He}{\predsfna{pro}\\
+                                                                                                                \uval {agr pers}3\\
+                                                                                                                \uval{agr num}{sg}}]]]
+    [\treenodesuba{VP}n2{\trivial\\\ugf{tense}}, s sep =-2em
+           [\treenodesuba Vn4\trivial [\terma{sees}{\ \ \predsfa{see}{subj obj}\ \ \\
+                                                                                  \uval {tense}{pres}\\
+                                                                                   \uval{subj agr pers}3\\
+                                                                                   \uval{subj agr num}{sg}}]]
+           [\treenodesuba{NP}n5{\assign{obj}} [\treenodesuba{Det}n6\trivial [\terma{the}{\ \ \ \uval{spec}{def}\ \ \ }]]
+                  [\treenodesuba Nn7\trivial [\terma {girl}{\predsfna{girl}\\\uval {agr pers}3\\\uval{agr num}{sg}\\\ugf{spec}}]]]]
+ ]
+\end{forest}
+}
+\caption{Annotated c-structure for \sent{He sees the girl} with the rules in \xref{Gramsee} and lexicon in \xref{Lexsee}.}
+\label{annocs}
+\end{figure}
+
+
+\sloppy
+The first NP is identified as $n_1$ and its mother is ${root}$, so the annotation \assign{subj} instantiates directly to \nassign {\phi(root)}{subj}{\phin1}.  Since a parenthesized designator denotes the element reached by traversing a path of attributes from a starting f-structure, the f-structure in Figure~\ref{Fig1} satisfies this equation because  \phin1\ is the \attr{subj} of $\phi(root)$ under the illustrated $\phi$ correspondence.  The full f-description for this annotated c-structure is the conjunction of instantiated equations collected from all of its nodes, shown in \xref{instfd}.  
+
+\ea\label{instfd}
+ \parbox[t]{15em}{ %19em
+ \nassign {\phi(root)}{subj}{\phin1}\\
+ \ntrivial {\phi(root)} {\phin2}\\
+ \ngf{\phi(root)} {tense}\\
+ \ntrivial {\phin1} {\phin3}\\
+%he
+ \nval{\phin3}{pred}{\semformna{pro}}\\
+\nval{\phin3}{agr pers}3\\
+\nval{\phin3}{agr num}{sg}\\
+ \ntrivial {\phin2} {\phin4}\\
+ %sees
+ %\nval{\phin4}{pred}{\semforma{see}{\ngf {\phin4}{subj}\ \ngf{\phin4}{obj}}}\\
+  \nval{\phin4}{pred}{\semforma{see}{subj obj}}\\
+ \nval{\phin4}{pred}{pres}
+}
+\parbox[t]{0em}{
+\nval{\phin4}{subj agr pers}{3}\\
+\nval{\phin4}{subj agr num}{sg}\\
+ \nassign {\phin2}{obj}{\phin5}\\
+ \ntrivial {\phin5} {\phin6}\\
+ \ntrivial {\phin5} {\phin7}\\
+ \nval{\phin6}{spec}{def}\\
+ \nval{\phin7}{pred}{\semformna{girl}}\\
+ \nval{\phin7}{agr pers}3\\
+ \nval{\phin7}{agr num}{sg}\\
+ \ngf{\phin7}{spec}}
+\z
+
+\sloppy\noindent We can test each equation separately to verify that the f-structure in Figure~\ref{Fig1} meets all the specifications in \xref{instfd}.  The equation \nval{\phin4}{subj agr num}{sg} is satisfied, for example, because $\phi$ maps $n_4$ to the outermost f-structure, and that f-structure has a path from \attr{subj} through \attr{agr} to \attr{num}, ending in the atomic value \attr{sg}.  That value is consistent with the requirement that the equation \nval{\phin3}{agr num}{sg} imposes on the f-structure of $n_3$. In contrast, this grammar would assign no f-structure to the string
+\sent{They sees the girl}\/ because the f-description for its c-structure would require its subject f-structure to have inconsistent values for \attr{agr num}, a violation of the \emph{Uniqueness Condition} of \citet{kaplanbresnan82}.  The correspondence $\phi$ and the instantiated metavariables ensure that the properties of the subject NP are consistent with the verb's agreement specification even though they do not appear together in a local mother-daughter configuration.
+
+The f-structure in this configuration also meets the additional well-formedness conditions of LFG theory.  We see that it is a \emph{minimal} model of the f-description in the sense that at least one equation or combination of equations will no longer be satisfied if any attribute or value is removed (for example \nval{\phin6}{spec}{def} fails without the \attr{spec} feature of the \attr{obj}).\footnote{Strictly speaking, a minimal model of the f-description includes not only the attributes and values of the f-structure but also the association of those elements with the nodes of the c-structure as instantiated via the $\phi$ correspondence, as depicted in Figure~\ref{Fig1}. Technically, what we usually regard as the f-structure is the restriction of such a model to just those attributes and values.}  Conversely, a structure with any features beyond those already present, say if the \attr{subj} is extended with \attr{tense past}, is not minimal, because the f-description is still satisfied when that feature is removed.  The minimal model is unique\footnote{As a notational convenience, the LFG formalism allows for primitive annotations to be embedded in disjunctive formulas that then might have several solutions.  There is an obvious transformation of the grammar that converts disjunctions of annotations within a rule to an equivalent set of alternative rules with annotations that are no longer disjunctive.  The minimal models are unique for the annotated c-structures assigned by the rules of such a transformed grammar.} for a given annotated c-structure and  contains all and only the linguistically relevant features that are expressed by the words of a sentence.  
+
+The minimal model is important in LFG theory for another reason.  It is the basis for the distinction between \emph{defining annotations} and \emph{constraining annotations}. The defining annotations are the simple equalities between two designators whose instantiations determine the attributes and values of the minimal model.  That f-structure must then also satisfy the instantiations in the f-description of any constraining annotations. The grammar in \xref{Gramsee} contains two constraining annotations, the positive existential constraints \ugf{tense} and \ugf{spec}.  The instantiation \ngf{\phi(root)}{tense} is satisfied because the conjunction of defining equations in the f-description specify a particular value (\attr{pres}) for the attribute \attr{tense} in the f-structure corresponding to the S node.  This constraint excludes strings whose main verb is a participle instead of a tensed form (e.g.\ \emph{*He seeing the girl}) without depending on participles setting up a uniqueness clash by also adding a \attr{tense} feature with an otherwise unnecessary and uninformative value (e.g.\ \attr{none}).  Similarly the instantiation \ngf{\phin7}{spec} excludes singular common nouns that have no specifier (e.g.\ \emph{*He sees girl}). The formalism also allows for constraints that test the minimal model for the absence of a feature, e.g.\ \negexist{\ugf{obj}}; for the presence or absence of a specific attribute value, e.g.\ \eqc{\ugf{voice}}{passive} or \negeq{\ugf{voice}}{active}; for the identity of two f-structures, e.g.\ \eqc {\ugf {subj}}{\ugf{obj}}; and for any value other than a specific one, e.g.\ \negeq{\ugf{subj num}}{sg}.  Constraining annotations help to avoid clutter in the f-structure by assigning syntactic significance to the presence or absence of unmarked or default features and also by capturing the difference between constituents that provide values for features  and constituents that check those values. See \citet{kaplan18} for a fuller discussion of underspecified values in LFG.
+
+The quoted values of the \attr{pred} attributes in Figure~\ref{Fig1} carry the subcategorization restrictions of the predicates they represent, and they characterize the essential interaction between syntax and semantics while staying agnostic about the details of any particular underlying semantic theory. The semantic form \semforma{see}{subj obj} contains a list of grammatical-function designators that the predicate subcategorizes for.  The \emph{Completeness Condition} requires that all listed functions appear locally in the minimal f-structure, and the \emph{Coherence Condition} precludes the local appearance of any governable functions (\attr{comp}, \attr{obl}, \attr{xcomp}...) not included in the list. The semantic form also indicates that \attr {see} is the semantic relation and, by virtue of their order in the list, that  \attr {subj} and \attr {obj} respectively map to the first and second arguments of that relation. Semantic forms do not require special treatment in our formal analysis because they can be interpreted as succinct abbreviations for collections of other annotations. Thus the positive and negative constraints \mbox{(\ref{sforma}a-b)} express the subcategorization requirements of \semforma{see}{subj obj}.   The semantic relation and the mapping of functions to arguments can be coded with distinguished attributes \attr {rel}, \attr{arg1}, \attr{arg2} as in~\mbox{(\ref{sforma}c-d)}.\footnote{\citet{HalvorsenKaplan1988} introduced a separate semantic projection, $\sigma$, as an alternative to distinguished attributes in formulating these essential properties of the syntax-semantics interface. In that more explicit arrangement $\sigma$ would be a qualifier on the (\ref{sforma}c-d) designators.  In Glue Semantics they are elaborated in collections of linear logic premises \citep{dalrympleetal93,Dalrymple:Glue}.}
+
+\ea\label{sforma}
+\ea\label{ex:computational:completeness} Completeness:\ \  \ugf {subj} \hsp{1em} \ugf {obj}
+\ex\label{ex:computational:coherence} Coherence:\ \   \negexist{\ugf{comp}} \ \   \negexist{\ugf{obl}} \ \   \negexist{\ugf{xcomp}} ...
+\ex\label{ex:computational:relation} Semantic relation:\ \   \uval{rel} {see}
+\ex\label{ex:computational:argmapping} Argument mapping:\ \  \feqs{\uucopy {arg1}{subj}\\\uucopy{arg2}{obj}}
+\ex\label{ex:computational:instantiation} Instantiation:\ \  \uval{pred source} {\mbox{\small $*$}}
+\z\z
+
+\noindent Semantic forms are instantiated in LFG theory to mark the difference between syntactically-implied semantic coreference (as in constructions of functional control) and unrelated repetitions of similar expressions. Equation \xref{ex:computational:instantiation} records as the value of the additional distinguished attribute \attr{source} the daughter node at which a particular \PRED is introduced.  This makes each occurrence unique, and also supports a precedence order that can be used in regulating long distance dependencies (see \citetv{chapters/LDDs}).
+
+\section{Technical preliminaries}
+In preparation for the mathematical analysis in the following sections we now introduce more precise specifications of the LFG derivation machinery.
+
+The annotated c-structure is often described as the result of a special derivation process for an LFG grammar $G$ that treats categories and annotations separately.  But it is helpful for formal reasoning to regard it as a normal derivation of the \textit{annotated c-structure grammar} for $G$, an ordinary context-free grammar with a systematically modified set of rules.  Suppose $X$:$A$ is an annotated category in the right side of a rule in the traditional LFG grammar format.  Then for every rule expanding $X$ the annotated grammar contains a version in which the left side is also decorated with those particular annotations.  For example, because NP in \xref{Gramsee} is annotated in S with the \attr{subj} assignment and in VP with the \attr{obj} assignment, the NP rule is replaced by the rules in \xref{annoNP}.
+
+\ea\label{annoNP}\small
+\rcat{NP\\\assign {subj}} \hsp{-1em}\rarrow\  \rcat{(Det)\\\trivial} \rcat{N\\\trivial} \\[1em]
+\rcat{NP\\\assign {obj}} \hsp{-1.1em}\rarrow\  \rcat{(Det)\\\trivial} \rcat{N\\\trivial}
+\z
+
+\noindent With this reformulation the normal category matching of context-free derivations allows us to make direct use of all established properties (decidability, closure, pumping) of context-free grammars and their derivations.  The traditional LFG c-structure in Figure~\ref{Fig1} is obviously just the annotation-free projection of the annotated c-structure in Figure~\ref{annocs}.
+
+For every annotated c-structure there is an instantiated f-description that defines a function $\phi$ mapping its nodes to their corresponding minimal-model f-structure units, if the f-description is satisfiable.    There is also a function \Yield that maps its nodes to the substrings of the sentence that they dominate.  The set of $G$'s derivations is then characterized by the relation \mb{\Delta_G} defined in \xref{delta}.
+
+\ea\label{delta} 
+\mb{\Delta_G(s, c, f)} iff $c$ is an annotated c-structure of $G$, $s$ is the terminal string of $c$, and $f$ is the minimal model for the satisfiable f-description instantiated from $c$.
+\z
+
+ \noindent Note that an annotated c-structure $c$ uniquely determines both the string $s$ and f-structure $f$ in a derivation triple.  Moreover, without further stipulation we know that the length of the string $|s|$ and the number of units $|f|$ in the f-structure are both bounded by (functions of ) $|c|$, the number of nodes in the c-structure.    That is, there are grammar-dependent functions \mb{\cev{b}_G} and \mb{\vec{b}_G} such that
+  
+  \ea\label{scfbounds}
+ For all \mb{(s,c,f) \in \Delta_G, |s|\leq \cev{b}_G(|c|) \mbox { and } |f|\leq \vec{b}_G(|c|)}.
+ \z
+The function  \mb{\cev{b}_G} depends on the number of daughters in the longest c-structure rule and \mb{\vec{b}_G} depends on the most complicated annotated category.
+ 
+The language, f-structure, parsing, and generating projections of $\Delta_G$ are defined in \xref{deltaprojs}.
+
+\ea\label{deltaprojs}
+\mb{L(G)=\set{s \mid \Delta_G(s,c,f) \mbox{ for some $c$ and $f$}}} = the language of $G$\\
+\mb{F(G)=\set{f \mid \Delta_G(s,c,f) \mbox{ for some  $s$ and $c$}}} = the f-structures of $G$\\
+ \mb{\ParG s = \set{f  \mid \Delta_G(s, c, f) \mbox{ for some $c$}} \subseteq F(G)}\\
+ \mb{\GenG f = \set{s \mid \Delta_G(s, c, f) \mbox{ for some $c$}} \subseteq L(G)}
+\z
+\noindent A parser for an LFG grammar $G$ provides for any given string $s$ the set of f-structures (if any) that are related to it by the grammar, and a generator provides all the strings that the grammar relates to a given f-structure (if any).
+
+These projections allow for succinct statements of the emptiness, recognition, and realization decision problems \xref{probs}.
+
+\ea\label{probs}
+Emptiness:  is $L(G)$ empty? (equivalently, are $F(G)$ or $\Delta_G$ empty?)\\
+Recognition: for any string $s$ is \ParG s empty?\\
+Realization:  for any f-structure $f$ is \GenG f empty?
+\z
+
+\noindent We show in the next section that the emptiness, recognition, and realization problems are all undecidable for unrestricted LFG grammars.  This implies immediately that the parsing and generation are also unsolvable. Our demonstrations involve simple phrase-structure rules with elementary defining annotations as exemplified in \xref{typical}. 
+
+\ea\label{typical}
+\begin{tabular}[t]{ll}
+\nval{\up/\down}{subj num}{sg} & assign an atomic value\\ 
+\assign{subj} & assign a function to a daughter f-structure\\ 
+\ducopy{obj}{subj} &  daughter-mother control\\  
+\fcontrol{xcomp}{subj}{subj} & traditional functional control  
+\end{tabular}
+\z
+
+\noindent Annotations of these types are not exceptional, they are commonly found in linguistic grammars.
+
+
+\section{Undecidable problems}\label{Undecidability}
+
+A standard method for showing that a formal problem of interest is undecidable is the  reduction technique. A problem $P$ is said to be  \textit{reducible} to problem $P'$ if for any instance of $P$ an instance of $P'$ can be constructed such that solving the instance of $P'$ will solve the instance of $P$ as well. Thus, if $P$ reduces to $P'$ and $P$ is undecidable, then  $P'$ must also be undecidable. As noted, this general strategy has been applied with reductions from different source problems (Turing machine halting, Hilbert's Tenth, Post Correspondence, emptiness of context-free intersection) to address the LFG emptiness, recognition, and realization problems.  Here we present a single reduction-source framework, based on the emptiness problem of context-free intersection, that recapitulates these previous results.  
+
+\subsection{The emptiness problem}\label{emptinessproblem}
+The emptiness problem for context-free intersection is the problem of determining whether or not the languages generated by two given context-free grammars \mbox{$G_1$} and \mbox{$G_2$}  have an empty intersection (\mb{L(G_1)\cap L(G_2)=\emptyset}).  This problem is known to be undecidable. The reduction of this emptiness problem to questions of the LFG formalism depends on the ability to construct for every context-free grammar $G$ an LFG grammar whose f-structures contain encodings of all and only the strings of \mbox{$L(G)$}. We show in (\ref{encodinga}) one way in which a string \term{pqr} can be encoded in the attributes and values of an f-structure, as a \attr h(ead)-\attr t(ail) list representation. 
+
+\ea\label{encodinga}\evnup{\small
+\avm[values={}]{
+[h & \term p\\
+ t & [h & \term q\\
+        t & [h & \term r]
+                ]]
+ }}
+\z
+
+Without loss of generality, let  $G$ be an arbitrary context-free grammar in Chomsky Normal Form, that is, a context-free grammar with only binary branching rules of the form \mb{A \rightarrow B\  C} for nonterminal expansions and unary rules \mb{A \rightarrow a} for terminals. The schematic rules in \xref{firstrestlong} provide a template for an LFG grammar \String{G} that creates head-tail encodings (\ref{encodinga}) for the strings of \mbox{$L(G)$}.
+
+\ea\label{firstrestlong}
+a.\ \ {\small  $A$ \rarrow \rcat{$B$\\\assign l\\\ducopy bb} 
+                                       \hsp{-.75em} \rcat{$C$\\\assign r\\\ducopy ee\\\uucopy {l e}{r b}}}
+\hsp{2em}
+b.\ \ {\small  $A$ \rarrow \rcat{$a$\\\uval {b h}{$a$}\\
+                  \fcontrol bte}}
+\z
+
+\noindent The annotations on the binary rules (\ref{firstrestlong}a)  transmit the string encodings from their daughter f-structures to their mother f-structure. The attributes  \attr l(eft) and \attr r(ight) are the scaffolding needed to concatenate the encodings from the daughters by linking the end of the left-daughter encoding to the beginning of the right. Rules of the form (\ref{firstrestlong}b) create for each terminal the one-element head-tail encoding of their right side, with \attr b and \attr e attributes marking its beginning and end. Control equations such as \ducopy bb and \uucopy {b t} e are the essential ingredient in this and other string-encoding formulations: Crucially, they allow terminal-string information to propagate transparently through all intermediate nodes to the f-structure of the root. Figure~\ref{fig-string-emptiness} shows the annotated c-structure and a graphical f-structure representation for a derivation containing a head-tail encoding of a single string.
+
+\begin{figure}[tb]
+\scalebox{.95}{\mbox{\hspace{-5.0mm} \parbox{14cm}{%\vspace{5.0mm}
+\begin{tabular}{l}
+\hspace{50mm}{\small  $\phi$}\vspace{-4mm}\\
+{\small
+\renewcommand{\annotationsize}{\tiny}
+\begin{tabular}{l@{\hspace{-10.5em}}l}
+\raisebox{11em}
+{\begin{forest} 
+for tree={s sep=-2mm, inner sep=-0, l sep=3mm, l=0}
+[\treenodesub S{root}{}
+ [\treenodesuba {PQ}n1{[-.5ex]\assign l\\[-1ex]\ducopy bb}
+   [\treenodesuba Pn3{[-.5ex]\assign l\\[-1ex]\ducopy bb}
+         [\treenode{\term p}{[-1ex]\nvaln\up{b h}{\rm p}\\[-1ex]\uucopy{b t}e},tier=word]]
+   [\treenodesuba Qn4{[-.5ex]\assign r\\[-1ex]\ducopy ee\\[-1ex]\uucopy {l e}{r b}}  [\treenode{\term q}{[-1ex]\nval\up{b h}{\rm{q}}\\[-1ex]\uucopy{b t}e},tier=word]]]
+ [\treenodesuba Rn2{[-.5ex]\assign r\\[-1ex]\ducopy ee\\[-1ex]\uucopy {l e}{r b}}
+      [\treenode{\term r}{[-1ex]\nvaln \up{b h}{\rm r}\\[-1ex]\uucopy{b t}e},tier=word]]]
+\end{forest}}
+\renewcommand{\annotationsize}{}
+
+&
+\hsp{.7em}\begin{tikzpicture}[xscale=0.85,yscale=0.85]
+%fill opacity=.4,draw opacity=1]
+\draw[very thick,-{Latex[scale=0.5]}] (0.05,0) -- (2.95,0); 
+%\draw[->] (0.07,0) -- (2.93,0); 
+\draw[very thick,-{Latex[scale=0.5]}] (3.05,0) -- (5.95,0); 
+\draw[thin,-{Latex[scale=0.5]}]  (6.05,0) -- (8.95,0); 
+% \draw[<-]              (0,0.1) arc (160:90:1.4cm);
+%bottom arrows
+%left
+\draw[thin,-{Latex[scale=0.5]}] (1.44,1.0) to [controls=+(180:1) and +(90:0.3)] (0.0,0.06);
+\draw[thin,-{Latex[scale=0.5]}] (1.56,1.0) to [controls=+(0:1) and +(90:0.3)] (3,0.06);
+%middle
+\draw[thin,-{Latex[scale=0.5]}] (4.44, 1.0) to  [controls=+(180:1) and +(90:0.3)] (3.0,0.06);
+\draw[thin,-{Latex[scale=0.5]}] (4.56,1.0) to [controls=+(0:1) and +(90:0.3)] (6,0.06);
+%right
+\draw[thin,-{Latex[scale=0.5]}] (7.44, 1.0) to [controls=+(180:1) and +(90:0.3)] (6.0,0.06);
+\draw[thin,-{Latex[scale=0.5]}] (7.56,1.0) to [controls=+(0:1) and +(90:0.3)] (9,0.06);
+%middle arrows
+\draw[thin,-{Latex[scale=0.5]}]  (2.94,2.0) to [controls=+(180:2.0) and +(90:1)] (0,0.06);
+\draw[thin,-{Latex[scale=0.5]}]  (3.06,2.0) to [controls=+(0:2.0) and +(90:1)] (6,0.06);
+\draw[thin,-{Latex[scale=0.5]}] (3,2.0) -- (1.55,1.03); 
+\draw[thin,-{Latex[scale=0.5]}] (3,2.0) -- (4.45,1.03); 
+%top arrows
+\draw[thin,-{Latex[scale=0.5]}]   (4.44,3.0)  to [controls=+(180:3) and +(90:1.5)] (0,0.06);
+\draw[thin,-{Latex[scale=0.5]}]   (4.56,3.0) to [controls=+(0:3) and +(90:1.5)] (9,0.06);
+\draw[thin,-{Latex[scale=0.5]}] (4.5,3.0) -- (3.05,2.03); 
+\draw[thin,-{Latex[scale=0.5]}] (4.5,3.0) -- (7.45,1.03); 
+%\draw[->] (4.57,2.23) to [controls=(270:0.5) and +(90:0.5)] (6,0.07);
+%\draw[<-] (6,0.07)  to [controls=+(90:1) and +(320:0.5)] (4.54,2.23);
+%labels BE top
+\node  (n11) at (3.5,2.60) {\attr l};
+\node  (n12) at (5.5,2.60) {\attr r};
+\node (n1) at (2.0,2.80) {\attr b};
+\node (n2) at (7.0,2.80) {\attr e};
+%labels BE middle
+\node  (n13) at (2,1.60) {\attr l};
+\node  (n14) at (4,1.60) {\attr r};
+\node (n3) at (1.5,2.00) {\attr b};
+\node (n4) at (4.5,2.00) {\attr e};
+%labels BE bottom
+\node (n5) at (0.7,1.07) {\attr b};
+\node (n6) at (2.3,1.07) {\attr e};
+\node (n7) at (3.7,1.07) {\attr b};
+\node (n8) at (5.3,1.07) {\attr e};
+\node (n9) at (6.7,1.07) {\attr b};
+\node (n10) at (8.3,1.07) {\attr e};
+%labels M
+%\node (n11) at (5.32,1.85) {\attr m};
+%\node (n12) at (3.23,1.1) {\attr m};
+%labels T
+\node (n13) at (1.5,0.20) {\attr t};
+\node (n14) at (4.5,0.20) {\attr t};
+\node (n15) at (7.5,0.20) {\attr t};
+%terminal arrows
+\draw[very thick,-{Latex[scale=0.5]}]  (0.0,-0.03) -- (0.0,-0.9); 
+\draw[very thick,-{Latex[scale=0.5]}]  (3.0,-0.03) -- (3.0,-0.9); 
+\draw[very thick,-{Latex[scale=0.5]}]  (6.0,-0.03) -- (6.0,-0.9); 
+%labels F
+\node (n16) at (0.21,-0.4) {\attr h};
+\node (n17) at (3.21,-0.4) {\attr h};
+\node (n18) at (6.21,-0.4) {\attr h};
+%labels terminals
+\node (n19) at (0.0,-1.15) {\term p};
+\node (n20) at (3.0,-1.1) {\term q};
+\node (n21) at (6.0,-1.1) {\term r};
+%root for CL paper
+%\node (n22) at (4.5,2.5) {\footnotesize \it root};
+
+\filldraw [black] 
+%sizemarking
+(0.0,0.0) circle (1.5pt)
+(3.0,0.0) circle (1.5pt)
+(6.0,0.0) circle (1.5pt)
+(9.0,0.0) circle (1.5pt)
+(1.50,1.0) circle (1.5pt)
+(4.50,1.0) circle (1.5pt)
+(7.50,1.0) circle (1.5pt)
+(3.0,2.0) circle (1.5pt)
+(4.5,3.0) circle (1.5pt)
+;
+
+%projection
+\draw[very thin,dashed,-{Latex[scale=0.5]}] (-1.9,3.1)  .. controls (1.0,2.75) and (2.0,3.2)  .. (4.46,3.04);  %root
+\draw[very thin,dashed,-{Latex[scale=0.5]}] (-.85,2.31)  .. controls (4.8,2.6) and (6.5,2.5)  .. (7.49,1.06);  %C
+\draw[very thin,dashed,-{Latex[scale=0.5]}] (-4.14,0.76)  .. controls (-2.3,1.55) and (0.0,0.2)   .. (1.45,0.97); %A
+\draw[very thin,dashed,-{Latex[scale=0.5]}] (-2.55,0.71)  .. controls (3.3,0.4) and (3.0,0.2)   .. (4.45,0.97); %B
+\draw[very thin,dashed,-{Latex[scale=0.5]}] (-3.2,2.28)  .. controls (-2.73,1.55) and (2.0,1.70)   .. (2.94,1.983); %AB
+\end{tikzpicture}
+\end{tabular}
+\vspace{-1.2mm}
+}
+\end{tabular}}
+}}
+\caption{An annotated c-structure and  f-structure derived with head-tail string encoding rules of the form in~(\ref{firstrestlong}). Thick lines show the string encoding, thin lines show the construction scaffolding. The $\phi$ correspondence is depicted with dashed lines.}
+\label{fig-string-emptiness}
+\vspace{0.0mm}
+\end{figure}
+
+Now suppose that   \mbox{$G_1$} and \mbox{$G_2$} are arbitrary context-free grammars in Chomsky Normal Form and assume without loss of generality that their nonterminals are disjoint and that the strings of each language end with a marker \# distinct from all other terminals. We construct a new LFG grammar $G$ by combining the rules of \String{G_1} and \String{G_2} with root categories S$_1$ and S$_2$ respectively
+and introducing a new root category S with start rule \xref{emptiness}.
+
+\ea\label{emptiness}
+\small\rcat S \rarrow  \rcat{S$_1$\\ \ducopy bb}  \rcat{S$_2$\\ \ducopy bb}
+\z
+
+\noindent By construction of the string grammars and the \attr b annotations of the start rule, only the string encodings of the two derived f-structures can interact. Because the string encodings are compatible only if the derived strings are identical, the LFG language \mbox{$L(G)$}  contains all and only strings \mbox{$ss$} for  \mb{s \in L(G_1)\cap L(G_2)}.
+The emptiness of context-free intersection is undecidable so the question whether \mbox{$L(G)$} is empty must also be undecidable.
+
+\subsection{The recognition problem}
+We prove that the LFG recognition problem is undecidable by exhibiting one particular string that belongs to \mbox{$L(G)$} only if \mb{L(G_1) \cap L(G_2) \neq \emptyset}. We modify the string grammars for \mbox{$G_1$} and \mbox{$G_2$}   by treating each terminal $a$ other than \# as a nonterminal category and adding for each of them a trivial rule 
+
+\ea\label{stringterm2}
+$a$ \rarrow\ \estring
+\z
+
+\noindent The effect is that only the string \# belongs to the language of each of the modified string grammars, but that single string is assigned all and only the f-structures that respectively encode the original context-free languages.   Again with the starting rule \xref{emptiness} the concatenation \#\# belongs to the language of the modified grammar if and only if \mb{L(G_1) \cap L(G_2) \neq \emptyset},  that is, if and only if \ParG{\#\#} is not empty.
+
+Empty nodes are disfavored in some modern versions of LFG, particularly when long-distance dependencies are characterized by functional uncertainty rather than traces \citep{kaplzaen89, Dalrympleetal2015}. But the undecidability of recognition can also be demonstrated with grammars \String{G_1} and \String {G_2} redefined so as to produce the same head-tail string encodings from nonbranching dominance chains without the benefit of empty nodes.
+
+For each binary rule \mb{A \rarrow B\  C} the string encoding grammars will now contain a nonbranching rule of the form (\ref{nbdnonterm}a).  This immediately derives only the left daughter $B$ but pushes the right-daughter category $C$ on a simulated stack for expansion lower in the derivation. Since $B$ is the left daughter of $A$, the encodings of their terminal strings have a shared \attr {b}(eginning). 
+
+\ea\label{nbdnonterm}
+\hsp{-.25em}a.\ \,{\small $A$ \rarrow \hsp{-.5em}\rcat{$B$\\ \dval {stk cat} {$C$}\\
+	                                                \ducopy {stk nxt}{stk}\\
+    		                                        \ducopy bb}}
+\hsp{-.5em}
+b.\ \,{\small $A$ \rarrow \hsp{-.5em}\rcat{$C$\\ \uval {stk cat}{$C$}  \\ 
+       	                                                                  \udcopy{stk nxt}{stk}\\
+	                                                                  \udcopy{b t}b\\
+	                                                                  	\uval {b h}{$a$}}
+	                                                }
+\hsp{-.5em}
+c.\ \,{\small $A$ \rarrow\hsp{-.5em}\rcat{\#\\  
+	                                                 \uval {b h}{\#}\\
+	                                                }}
+\z
+
+\noindent  Corresponding to each terminal rule \mb{A \rightarrow a}, for \mb{a\neq\#}, there  is a collection of rules of the form 
+(\ref{nbdnonterm}b), one for each right-daughter category $C$ whose expansion may have been deferred until it reemerges at the top of the stack. The annotations pop that category from the stack while adding the terminal $a$ to the front of the head-tail encoding of the terminal string under $C$. Finally,  for each unary rule \mb{A \rarrow \#} the string grammar contains a rule of the form (\ref{nbdnonterm}c) to terminate the NBD derivations and install \# as the final item of every string encoding. Because \# is the distinguished end-of-string marker, these preterminals never appear as left daughters of binary rules and are thus always the last categories to be removed from the stack.  As before, if NBD string grammars \String{G_1} and \String{G_2} are combined into an LFG grammar $G$ with rule \xref{emptiness}, then \mb{\ParG{\#\#} \neq \emptyset} if and only if \mb{L(G_1) \cap L(G_2) \neq \emptyset}. 
+
+The complexity of recognition arises from the fact that, in order to assign f-structures to the strings of infinite languages, annotated c-structure grammars must include rules for recursive subderivations (rule sequences that derive a node labeled with an annotated category $A$ from an $A$-labeled dominating node), and such recursive subderivations must be allowed to stack one above another.  The string grammars in our undecidability proofs show that recursive subderivations can assign to a single string (\#) a set of f-structures each encoding one of the strings of an infinite context-free language. Unlike the f-structures that correspond to the sentences of natural languages, those f-structures are determined only by the annotations on nonterminal categories without regard to any lexical information carried by the input string or even its length (there is no function of \mbox{$|s|$} that bounds the sizes of $c$ and $f$ in all derivation triples).   
+
+\subsection{The realization problem}\label{undecidablerealization}
+We turn now to the realization problem. Also using a reduction from the emptiness of context-free intersection, \citet{Wedekind2014} proved that realization is undecidable for unrestricted LFG grammars if there are cyclic paths in the input f-structure.\footnote{\citet{WedekindKaplan:Gen} established that the realization problem is decidable if the input f-structure $f$ contains no cycles.  For an acyclic f-structure the string-set \GenG f can be described by a context-free grammar, and the emptiness problem for context-free grammars is decidable.} Whereas the emptiness and recognition demonstrations are based on head-tail string encodings, Wedekind's proof is formulated in terms of an alternative way of encoding the strings of a language, a descending  chain of attributes as illustrated in \xref{encodingb}.  
+
+\ea\label{encodingb}
+\evnup{\small\avm[attributes={},pic,picname=achain]{
+[ \attr b & [\term p &\  [\term q \ [\term r &  \node {End} {[\ \ ]}]]]\\
+  \attr e  & \node e { }]}}
+   \tikz[remember picture,overlay]
+        \draw (achain-e.east) to [bend angle=15,bend right] (achain-End.south west);
+\z
+
+\noindent The beginning of the encoding for string \term{pqr} is still accessible as the value of the \attr b attribute, but now the end is identified by the reentrant value of the top-level \attr e attribute. Grammars that encode context-free languages in this way are created by replacing the annotations on the terminal rules~(\ref{firstrestlong}b) with functional control annotations as in (\ref{genstringrules}).
+
+\ea\label{genstringrules}
+\small  $A$ \rarrow\hsp{-.6em} \rcat{$a$\\\fcontrol b{$a$}e}
+\z
+
+\noindent The scaffolding illustrated in Figure~\ref{fig-string-emptiness} is unchanged but the  \attr h attributes at the bottom are removed and the sequence of \attr t attributes is replaced by the sequence of terminal-attributes.
+
+The essence of Wedekind's \citeyearpar{Wedekind2014} proof is then captured by combining attribute-chain string-encoding grammars for arbitrary context-free grammars \mbox{$G_1$} and \mbox{$G_2$} into an LFG grammar $G$ with start rule \xref{gen}.
+
+\ea\label{gen}
+\small S \rarrow     \rcat{S$_1$\\ \assign l \\\ducopy bb \\ \ducopy e{e$_1$}}
+                              \rcat{S$_2$\\ \assign r \\\ducopy bb \\ \ducopy e{e$_2$}}
+                              %\hsp{.5em}
+                              \rcat{\#\\ \ucycle{e$_1$ e$_1$}\\
+                             \mb{\displaystyle \bigwedge_{\mbox{$x$ an attribute}}\hsp{-2.2em}\uucopy{e$_2$ e$_1$} {e$_2$ e$_1$ $x$}\hsp{2em}}}
+\z
+
+\noindent \sloppy In the absence of atomic values there can be no atom-value clashes to exclude mismatching combinations, and the language \mb{L(G)} therefore contains all strings \mb{s_1s_2\#} for \mb{s_1\in L(G_1)} and \mb{s_2\in L(G_2)}.  However, strings belonging to the intersection of \mb{L(G_1)} and \mb{L(G_2)} are distinguished by the fact that the end points \mb{\attr e_1} and \mb{\attr e_2}  of their descending attribute-chain encodings are the same.  In that case \ncopy{\phi(root)}{e$_1$}{\phi(root)}{e$_2$} and the annotations on the terminal \# entail by simple substitutions that \ncycle {\phi(root)}{$x$} for all attributes $x$. Thus all and only strings \mb{ss\#} for \mb{s \in L(G_1) \cap L(G_2)}
+receive the one-element cyclic f-structure $f$ in \xref{input-f}.
+
+\ea\label{input-f}
+ \raisebox{-12.7mm}{\hspace{-5.1mm}
+\begin{tabular}{c@{\hspace{-3mm}}c}
+\tikzset{every loop/.style={min distance=13mm}}
+\begin{tikzpicture}[->,>=stealth',] 
+\node [circle,inner sep=0pt,minimum size=.15cm] {} 
+edge [in=30,out=60,loop] node [pos=0.56,above] {\small \attr b} ()
+edge [in=75,out=105,loop]  node [pos=0.6,above] {\small \hspace{-0mm}\attr{e$_2$}}  ()
+edge [in=120,out=150,loop] node [pos=0.45,above] {\small \hspace{-0mm}\attr {e$_1$}}  ()
+edge [in=165,out=195,loop] node [pos=0.65,left] {\mbox{\raisebox{3mm}\small \attr e}} ()
+edge [in=210,out=240,loop] node [pos=0.55,below] {\hspace{-1mm} \small \attr l} ()
+edge [in=255,out=285,loop] node [pos=0.6,below] {\hspace{-.25mm} \small \attr r} ();
+%edge [in=300,out=330,loop] node [pos=0.45,below] {\hspace{1mm}{\small \attr e}} ();
+\begin{scope}[-]
+\draw[thin,densely dotted] [rotate=284] (6.7mm,1.0mm) arc (1:100:6.8mm);
+\end{scope}
+\end{tikzpicture}
+&
+\raisebox{12mm}{\small cycles for all  terminals}
+\end{tabular}}
+\z
+\vspace{-2ex}
+                             
+\noindent  The realization problem is undecidable because \mb{\GenG f\neq\emptyset} if and only if \mb{L(G_1) \cap L(G_2) \neq \emptyset}. This shares with the recognition proof the property that infinitely many annotated c-structures of arbitrary size may have to be inspected to determine whether there is at least one that is related to a single input of a fixed size (a cyclic f-structure in this case).\footnote{Cyclic
+f-structures have been proposed in the analysis of complex adjunction and coordination constructions \citep{ zwei:88,fangsells07,hau:nik:12,prz:pat:12b} and thus cannot be excluded from the LFG formalism.  More to the point, example (\ref{XY}b) in the Appendix A shows that it is undecidable whether an arbitrary LFG grammar produces cyclic f-structures.}
+
+The undecidability results we have demonstrated here, together with other simple reductions from the emptiness problem of context-free intersection, can be used to show that other properties of the unrestricted LFG formalism are also undecidable.  The following is a partial list of these undecidable questions.
+\ea\label{otherundecidableprobs}
+\ea Generation from underspecified f-structures:  Is there a sentence that realizes an f-structure with more features than a given one? \citep{Wedekind99}
+\ex Ambiguity-preserving generation: Is there a single string that realizes two different f-structures? \citep{wedekind-kaplan-1996-ambiguity}
+\ex Finite versus infinite ambiguity: Is any string in the language infinitely ambiguous? \citep{Jaeger2005}
+\ex Ranking in Optimality-theoretic LFG: Can an optimal derivation always be identified? \citep{Kuhn-CSLI-book}
+\ex Economy of Expression:  Can the smallest c-structure for a given f-structure be identified?\footnote{This follows from the fact that realization is undecidable in the general case (as just sketched):  if it cannot be decided whether there are any c-structures at all for an f-structure input, then the smallest such structure cannot be determined.}
+\z
+\z
+\noindent Appendix A includes simple proofs showing that a number of more specific questions are also undecidable.  Additional restrictions are clearly necessary to provide a linguistic formalism that is  mathematically manageable.
+
+
+\section{Conservation and decidability}\label{decidable}
+
+%RMK2:  I didn't add a Dymetman footnote, have to look again and figure out how to word it.  Maybe after the second review.
+%RMK:  Are Dymetman's notions of "finitely enuerable generation and parsing" and "inherently finitely reversible" essentially precursors of Conservation?  Where would a citation go?
+%From JW's email: n Marc’s paper there is some intuition at the end. What he calls “moderate” (page 28, right column) reflects our Lemma (the mutual size bounds). And in the left column he describes somehow the s-groundedness for generation (but as a property of grammars and not derivations). Thus it might be worth citing the paper.
+%JW1 A footnote at (22) saying that Dymetman (1991) considers this as a property of grammars.
+The recognition and realization problems are undecidable for unrestricted LFG grammars because there is no finite number of (size-bounded) annotated c-structures whose inspection is sufficient to determine whether there is a valid derivation for a given input string/f-structure.  As a consequence, there is no systematic relationship between the length of a string and the sizes of its f-structure parses or the size of an f-structure and the lengths of its generated strings.  Moreover, a grammar can assign infinitely many f-structures to a single string  and infinitely many strings to a single f-structure.  These properties seem implausible for language as a medium of communication.
+
+From a broader perspective, these excesses can be cast in terms of the ``grammatical mapping problem'', the problem of characterizing in an explanatory and computable way the relation $\Gamma$ between the sentences of a language and representations of their meanings (presumably logical formulas that can be interpreted in a representation of the world) \citep{kaplanbresnan82,kaplan1987three}.  If $s$ is a sentence of a language and $m$ represents one of its meanings (that is, \mb{(s,m)\in\Gamma}), then pretheoretically we expect the derivational machinery that translates between $s$ and $m$ to be information-conserving in the following sense.
+
+\ea\label{conservation}
+{\em Principle of Conservation}\\
+            For all \mb{(s,m)\in\Gamma}, $|m|$ is bounded by $|s|$ and $|s|$ is bounded by $|m|$.
+ \z
+
+\noindent The size of the meaning representation can be defined in any reasonable way.  The crucial claim is that the derivational machinery does not by itself add or subtract, in either direction, arbitrary amounts of information.  The additional linguistically appealing property of bidirectional finite ambiguity follows as an immediate corollary. 
+
+\ea\label{finite}
+{\em Finite Ambiguity}  \\
+If $\Gamma$ is conservative, then each sentence expresses only a finite number of meanings and each meaning  is expressed by only a finite number of sentences. 
+\z
+
+In LFG-based approaches the grammatical mapping $\Gamma$ is typically conceptualized as the composition of the grammar-defined syntactic derivations $\Delta_G$ and the semantic derivations $\Sigma$ that map primarily between syntactic f-structures and corresponding representations of meaning.\footnote{This is not to discount the influence of linguistic features that may be formalized in other projections within the LFG correspondence architecture. The bounding requirements of the Conservation Principle would  also govern mappings that include those other projections.}
+
+\ea\label{gamma}
+       \mb{(s,m) \in \Gamma_G} iff \mb{(f,m)\in \Sigma} and \mb{(s,c,f) \in \Delta_G \mbox { for some c-structure } c}.
+\z
+
+\noindent An end-to-end mapping \mb{(s,m)\in\Gamma_G} is conservative if the semantic derivation \mb{(f,m)\in \Sigma} has grammar-dependent bounds in both directions and is thus information-conserving, and $s$ and $f$ of the triple \mb{(s,c,f)\in\Delta_G} are also co-bounded (the syntactic derivation is also conservative).  Recalling that $|s|$ and $|f|$ are both bounded by $|c|$ in any derivation triple \xref{scfbounds}, it follows that
+
+%RMK:  "Definition"  
+\ea\label{cbounds}
+     An LFG syntactic derivation \mb{(s,c,f)\in\Delta_G} is \textit{conservative} if also  $|c|$ is bounded by both $|s|$ and $|f|$.
+\z
+
+\noindent The syntactic recognition/parsing and realization/generation problems are solvable if only conservative derivations are defined to be linguistically relevant, in accordance with principle \xref{conservation}. In each direction only a finite number of size-limited annotated c-structures must be enumerated and inspected to determine whether a derivation belongs to $\Delta_G$.\footnote{However, the emptiness problem remains undecidable even if attention is confined only to conservative derivations.  All derivations for the grammars constructed with rules \xref{firstrestlong} and \xref{emptiness} are conservative in the sense of \xref{cbounds}. Emptiness requires consideration of all possible string or f-structure inputs, not just particular ones that are presented for parsing or generation. By the same token, it is undecidable whether all derivations for a given grammar are conservative.}
+
+With respect to $\Sigma$, Glue Semantics \citep{dalrympleetal93,Dalrymple:Glue} determines a meaning representation $m$ for a string by a  linear-logic deduction applied to a collection of premises associated with an  f-structure $f$ assigned to that string. The resource-sensitive nature of linear logic suggests that $m$ will naturally be bounded by $|f|$, but that has not yet been clearly established. It is also unknown whether or under what additional conditions the f-structures that correspond to a given meaning representation $m$ are bounded by $|m|$.\footnote{Generation from an f-structure not bounded by $|m|$ can be reduced to the undecidable problem of generating from an arbitrarily underspecified f-structure \citep{Wedekind99}.}  With the expectation that those issues will be resolved in future research, we return here to our focus on $\Delta_G$, the syntactic component of $\Gamma_G$.
+
+\citet{kaplanbresnan82} were the first to show the undecidability of the recognition problem for unrestricted LFG grammars and the first to address it by imposing an information-conserving constraint on the derivations in $\Delta_G$.  Their constraint restricts the derivations of the annotated c-structure grammar so as to limit the distribution of empty nodes and nonbranching dominance  chains.\footnote{The NBD constraint in LFG was a specific and early example of a family of what have become known generically as \textit{Off-line Parsability} conditions.  A number of variants of Off-line Parsability have been proposed for other grammatical frameworks.  See \cite{Jaeger2005} for a survey.}  The effect is to include as NBD-valid c-structures only those where every recursive subderivation contains at least one pair of terminal-dominating sisters. This specifically excludes the derivations that our demonstrations of recognition undecidability rely on.  All NBD-valid derivations are conservative in the parsing direction, since the annotated c-structure is bounded  by the length of the string, and the recognition and parsing problems are therefore solvable.  
+
+By a symmetrical argument, syntactic derivations will be conservative in the generation direction if they are restricted so that the size of the annotated c-structure is bounded as a function of the size of the f-structure.  Unfortunately, the NBD condition is not sufficient to pick out just those information-conserving derivations and thus to ensure also that the realization and generation problems are decidable (cf.\ \citet{Wedekind2014, wed:kap:20}). The attribute-chain string-encoding grammars and the combining start rule \xref{gen} used in the undecidability proof for realization are $\epsilon$-free, and it is only (nonrecursive) terminal rules that do not branch.  A condition stronger than the NBD restriction is needed to guarantee that generation is conservative and thus decidable.
+
+It has also been noted, on the other hand, that the original NBD condition may be too strong.  It disallows recursive nonbranching dominance chains in every context, even when an errant subderivation is a component of a discontinuous constituent supported intuitively by an element elsewhere in the string. For example, \citet{Johnson1986} observed that it proscribes the straightforward analysis of the Dutch double infinitive construction as provided by the grammar of \citet{BKPZ:Dutch} and illustrated in \xref{dutchex}. 
+
+\ea\label{dutchex}
+      \begin{tabular}[t]{@{}lllllllll}
+                 (dat) & hij & het &  boek & heeft & kunnen & lezen\\
+                  (that)&  he& the &book& has &able& read
+       \end{tabular}\\
+                  `(that) he has been able to read the book'
+\z
+
+\noindent Recursive applications of the nonbranching  VP rule~(\ref{VPXCOMP}) would be required to match the level of the \attr{obj} `het boek' with the level of its governing predicate % \citep{KaplanWedekind2020:Zipper}.
+in the discontinuous, extended-head configuration.\footnote{Johnson's particular example does not violate the very early refinement of the constraint wherein functional annotations are also taken into account in determining whether a category is recursive. This was introduced soon after the original formulation and later described by \citet{kaplanmaxwell96} and \cite{dalrymple01}. But this slightly weaker version would still disallow the intended analyses of sentences with more intransitive verbs and deeper \attr{xcomp} embeddings as in\\[1ex]
+%~(\ref{dutchex2}).
+%\ea\label{dutchex2}
+%\gll (dat) hij het boek moet hebben kunnen lezen\\
+%     (that) he the book must have able read\\
+%\glt `(that) he must have been able to read the book'
+\hsp{2em}  
+      \begin{tabular}[t]{@{}lllllllll}
+                 (dat) & hij & het &  boek &moet &  haben & kunnen & lezen\\
+                  (that)&  he& the & book & must & have &able& read
+       \end{tabular}\\
+\hsp{2em} `(that) he must have been able to read the book'
+%\z
+}
+
+\ea\label{VPXCOMP}
+\small  VP \rarrow \rcat{VP\\\assign {xcomp}}
+ \z
+
+We address these shortcomings of Kaplan and Bresnan's NBD restriction by introducing an alternative way of identifying a subclass of conservative derivations that is better attuned to the natural flow of linguistic information. It takes into account the architectural correspondence between c-structures and f-structures to impose a new bound on the size of generation c-structures while relaxing the bound in the parsing direction.  Our new condition makes use of the following definitions.
+
+Let $c$ be an annotated c-structure and let $n$ and $n'$ be two distinct nodes in $c$ with $n$ dominating $n'$. The \textit{subderivation from $n$  to  $n'$}, denoted by $c^n_{n'}$, is the derivation that we obtain from $c$ by removing from the subderivation rooted by $n$ the subtree under $n'$. Two subderivations $c^n_{n'}$  and $c^{\check{n}}_{\check{n}'}$ are said to be \textit{stacked} if the bottom node of one dominates the top node of the other. A subderivation $c^n_{n'}$ is \textit{recursive} if $n$ and $n'$ are both labeled with the same annotated category.
+
+The admissibility of recursive subderivations is then defined in terms of f-structure and string anchors.
+
+\def\ehead{\mb{\phiinv\hsp{-.2em} \circ \hsp{-.1em}\phi}\xspace}
+\ea\label{Anchordef}%\textbf{Definition: String and f-structure anchors}\\
+Let $c$ be an annotated c-structure  with terminal string $s$ and f-structure $f$.   
+We say that a recursive subderivation $c^n_{n'}$ is
+\ea\label{fanchor} \textit{f-anchored in} $f_k$ if there is a node $\bar{n}$ of $c^n_{n'}$ such that  \mb{\phi(\bar{n})=f_k} and
+\ex\label{sanchor} \textit{s-anchored in} $s_j$ if there is a node $\bar{n}$ of $c^n_{n'}$ such that  $\bar{n}$ or a node in \mb{\ehead(\bar{n})} dominates $s_j$.
+\z\z
+We refer to $f_k$ and $s_j$ as the f- and s-anchors of $c^n_{n'}$. The subclass of properly anchored derivations is then defined as follows.
+
+\ea\label{conservecs}%\textbf{Definition:  Conservative c-structure}\\
+A derivation \mb{(s,c,f)\in\Delta_G}   is \textit{properly anchored} iff 
+\ea\label{anchored}every recursive subderivation \mb{c^n_{n'}} of $c$  is f- and s-anchored and
+\ex\label{distinct} the f-anchors of any two recursive subderivations in a stack are distinct, and so are their s-anchors.
+\z\z
+
+\noindent If  \mb{(s,c,f)} is a properly anchored derivation, then every recursive subderivation is anchored in both a 
+functional unit of the f-structure and an element of the string \xref{anchored}. Moreover,  requirement \xref{distinct} ensures that the anchoring for stacked recursive subderivations is one-to-one. The anchoring of stacked recursive subderivations of such a c-structure is illustrated in Figure \ref{resource}.
+
+\begin{figure}[tb]
+ \mbox{\hspace{17.0mm} \parbox{14cm}{\vspace{0mm}
+
+\begin{tikzpicture}[xscale=0.45,yscale=0.35]
+    
+   \fill[gray!20!white] (-5.75,0) -- (0.3,10.08) -- (0.3,7.08) --  (-3.95,0) -- cycle;
+       \fill[gray!20!white] (6.35,0) -- (4.55,0.0) -- (0.3,7.08) -- (0.3,10.08) -- cycle;
+
+ 
+    \fill[gray!20!white] (-3.09,0) --  (0.0,5.08) -- (0.0,2.08) -- (-1.25,0) -- cycle;
+        \fill[gray!20!white] (3.09,0) --  (0.0,5.08) -- (0.0,2.08) -- (1.25,0) -- cycle;
+%        \fill[gray!20!white] (2.1,0) -- (3.6,0.0) -- (0.6,5.0) -- (0.6,2.5) -- cycle;
+ 
+%left in tree
+\phantom{\draw[very thin] (-5.73,-3.4) -- (-5.25,-1.8);}
+
+%right in tree
+
+
+%right subderivation
+\draw[very thin] (-5.75,0) -- (0.3,10.08);
+\draw[very thin] (6.35,0) -- (0.3,10.08);
+
+%right in right
+\draw[very thin] (-3.95,0) -- (0.3,7.08);
+\draw[very thin] (4.55,0) -- (0.3,7.08);
+
+%right in right
+\draw[very thin] (-3.09,0) -- (0.0,5.08);
+\draw[very thin] (3.09,0) -- (0.0,5.08);
+
+\draw[very thin] (-1.25,0) -- (0.0,2.08);
+\draw[very thin] (1.25,0) -- (0.0,2.08);
+
+%right in right
+%\draw[very thin] (-0.9,0) -- (0.6,2.5);
+%\draw[very thin] (2.1,0) -- (0.6,2.5);
+
+%test extension
+%\draw[very thin] (4.75,1.6) -- (4.95,-3,4);
+%outside tree
+\draw[very thin] (-7.25,0) -- (0,12.08);
+\draw[very thin] (7.25,0) -- (0,12.08);
+\draw[very thin] (-7.25,0) -- (7.25,0);
+
+\filldraw [black] 
+%sizemarking
+(0.3,10.08) circle (1.5pt)
+(0.3,7.08) circle (1.5pt)
+(0,5.08) circle (1.5pt)
+(0,2.08) circle (1.5pt)
+%old
+(-6.5,0) circle (1.5pt)
+(-2.0,7.3) circle (1.5pt)
+%(0.75,8.33) circle (1.5pt)
+%(0.75,5.83) circle (1.5pt)
+(1.7,6.2) circle (1.5pt)
+(-2.17,0.0) circle (1.5pt)
+(1.0,2.2) circle (1.5pt)
+%(0.6,5.0) circle (1.5pt)
+%(0.6,2.5) circle (1.5pt)
+%(0.5,3.8) circle (1.5pt)
+%(-1.7,0.0) circle (1.5pt)
+%(1.4,2.2) circle (1.5pt)
+;
+%\filldraw [black] (-3.5,5) circle (1.75pt)
+%(3.25,5) circle (1.75pt)
+%(-3.5,1.6) circle (1.75pt)
+%(1.5,1.6) circle (1.75pt)
+%(5.0,1.6) circle (1.75pt)
+
+%(-0.875,5.0) circle (1.75pt);
+
+\draw[densely dotted] (0,12.08) -- (0.05,11.5) -- (0.3,10.8);
+\draw[densely dotted] (0.05,11.5) -- (-0.5,9.8) -- (-2.0, 7.3);
+ \draw[densely dotted]  (-2.0, 7.3) -- (-3.5,5.0) --  (-5.0,3.0) -- (-5.5,1.3) -- (-6.5,0.0);
+ \draw[densely dotted]  (0.3,10.08) -- (0.15,9.33) -- (0.5, 8.5) -- (0.3, 7.8);
+  \draw[densely dotted]  (0.5, 8.5) -- (0.95, 7.4) -- (1.7,6.2);
+    \draw[densely dotted]  (0.3, 7.08) --  (0.35,6.3) -- (0,5.8);
+%\draw[densely dotted] (0.9,6.7) -- (0.75,5.83) -- (0.8,5.43) -- (0.6,5.0) -- (0.7,4.5) -- (0.5,3.8) -- (0.8, 3.1) -- (0.6,2.5);
+\draw[densely dotted] (-0.15,4.03) -- (-1.2,1.6) -- (-2.17,0.0);
+ \draw[densely dotted]  (0.0,5.08) -- (-0.15,4.03) -- (0.2, 3.5) -- (0.0, 2.8);
+\draw[densely dotted] (0.2, 3.5) -- (1.0,2.2);
+\draw[densely dotted] (10.435,5.52) --  (10.435,5.0) ;
+\draw[densely dotted] (12.505,3.47) --  (12.505,3.99) ;
+%\draw[densely dotted] (-0.5,8.5) -- (2.9,6.5) -- (3.25,5.0);
+%\draw[densely dotted] (3.25,5) -- (3.4,4.25) -- (3.3,3.5) -- (2.2,2.8) -- (1.50,1.6);
+%\draw[densely dotted] (-3.5,5) -- (-3.3,3.5) --(-3.8,2.3) -- (-3.5,1.6);
+%\draw[densely dotted] (3.3,3.5) -- (4.65,2.3) -- (5.0,1.6);
+%\draw[densely dotted] (-1.7,7.5) -- (-1.1,6.5) -- (-0.875,5.0);
+
+
+%node labels
+\node (h) at (0.3,10.48) {\scriptsize {A}};
+\node (i) at (0.3,7.48) {\scriptsize {A}};
+\node (j) at (0,5.48) {\scriptsize {B}};
+\node (k) at (0,2.48) {\scriptsize {B}};
+%old
+\node (a) at (-6.5,-0.5) {\scriptsize {$s_i$}};
+\node (b) at (-2.17,-0.5) {\scriptsize {$s_j$}};
+\node (c) at (-4.85,-0.4) {\scriptsize {$\epsilon$}};
+\node (d) at (5.45,-0.4) {\scriptsize {$\epsilon$}};
+\node (e) at (10.12,5.93) {\scriptsize {$f_k$}};
+\node (f) at (12.22,3.45) {\scriptsize {$f_l$}};
+\node (g) at (8.9,4.5) {\scriptsize {$
+\left[
+\begin{array}{c}
+\hspace{0mm}\vspace{25mm}\\
+\end{array}
+\right.$}};
+\node (h) at (10.45,5.99) {\footnotesize $\lceil$};
+\node (i) at (12.52,3.0) {\footnotesize $\lfloor$};
+
+%g mapping
+% \draw[thin,-{Latex[scale=0.5]}] (1.38,1.64)  .. controls (0,2.4) and (-1,2.4) .. (-3.4,4.9);
+\draw[thin,-{Latex[scale=0.5]}] (-1.9,7.34)  .. controls (2.7,9.8) and (7.1,6.5) .. (9.90,6.0);
+\draw[thin,-{Latex[scale=0.5]}] (1.8,6.22)  .. controls (4.0,6.7)  .. (9.90,5.85);
+\draw[thin,-{Latex[scale=0.5]}] (1.1,2.23)  .. controls (6.0,4.3) and (8.0,4.0) .. (12.03,3.45);
+% \draw[thick,-{Latex[scale=zoom0.5]}] (-2.75,1.74) .. controls (-2.0,2.0)  and (1,4.4) .. (3.14,4.97);
+ 
+\end{tikzpicture}
+\vspace*{-7.0mm}
+}
+\vspace*{-0mm}}
+\caption{A c-structure with two stacked subderivations, highlighted  in gray. The subderivations are f- and s-anchored at \mbox{$f_k$}, \mbox{$s_i$} and \mbox{$f_l$}, \mbox{$s_j$}, respectively, with \mbox{$k\neq l$} and \mbox{$i\neq j$}. The upper subderivation is discontinously string-anchored because none of its internal nodes dominates a terminal (it derives the empty string $\epsilon$) while the lower subderivation is continuously string-anchored.}
+ \label{resource}
+\vspace*{0.0mm}
+ \end{figure}
+
+If $N$ is the set of annotated nonterminal categories for a grammar $G$, any subderivation $c^n_{n'}$ with a path length equal to $|N|$ must be recursive.  The annotated c-structures of properly anchored derivations are thus bounded by the respective sizes of their corresponding strings and f-structures, as stated in the following lemma.
+
+\ea\label{lemma}
+{The depth of the c-structure $c$ of all properly anchored derivations \mb{(s,c,f) \in \Delta_G} is bounded by \mb{|N|(|s|+1)} and \mb{|N|( |f|+1)}, respectively, for a string of length $|s|$ and an f-structure of $\,|f|$ units.
+}
+\z
+
+\noindent Lemma  \xref{lemma} implies that the properly anchored derivations for an unrestricted LFG grammar are conservative, and that the recognition and realization problems are therefore decidable if unanchored derivations are excluded from linguistic consideration.
+This is because only a finite number of size-bounded annotated c-structures need to be inspected in order to solve these problems.
+
+The conditions for proper anchoring include derivations that the NBD condition does not admit and exclude derivations that NBD classifies as valid. NBD and proper anchoring, however, do agree on the status of derivations for the schematic grammars in~\xref{same}. 
+
+ \ea\label{same}\small\begin{tabular}[t]{@{\hsp{.2em}}l@{\ \ \ }l@{\hsp{.4em}}l@{\hsp{1em}}r@{}}
+
+{\normalsize a.} &  S \rarrow \hsp{-.5em} \rcat{S\\ \assign {gf}} \hsp{-.6em}\rcat{a\\ \predsfa p {gf}} & S \rarrow \rcat{a\\\predsfna  a}          
+                                       & \begin{tabular}[t]{r@{}}NBD-valid\\anchored\end{tabular}\\[5ex]
+                                       
+{\normalsize  b.} &  S \rarrow \hsp{-.5em} \rcat{S\\ \assign {gf}\\ \predsfa p {gf}}  & S \rarrow \rcat{a\\\predsfna  a}    
+                                       & \begin{tabular}[t]{r@{}}NBD-invalid\\shared s-anchor\end{tabular}
+ \end{tabular}
+ \z                                      
+
+\noindent  The recursive subderivations for (\ref{same}a) are branching and they are thus both valid and properly string-anchored.  Each subderivation is also f-anchored to a distinct unit in its f-structure's \attr {gf} hierarchy. If \attr{gf} is a governable grammatical function, then the f-structures of all derivations are complete and coherent and correspond to the \emph{lexical} meanings carried by the repetitively longer strings.  The grammar (\ref{same}b) provides the same set of complete and coherent f-structures but associates all of them to the single one-element string. That string is infinitely ambiguous and there is no bound on the size of the constructional meaning representations determined by the recursive subderivations.  These linguistically implausible subderivations are nonbranching and their string anchors cannot be distinct \xref{distinct}.  They are appropriately excluded as neither NBD-valid nor properly anchored. 
+
+In \xref{less} we show grammars that provide  branching derivations for every string in the set \set{a^n \mid n > 1}, and every derivation is thus NBD-valid but properly anchored only with respect to strings. The recursive subderivations of these grammars are excluded because they do not meet the f-anchoring conditions of \xref{conservecs}.
+
+\ea\label{less}\small\begin{tabular}[t]{@{\hsp{.2em}}l@{}l@{\hsp{3.7em}}l@{\hsp{1.4em}}r@{}}
+{\normalsize a.\ \ } &  S \rarrow\  \rcat{S} \rcat{a} & S \rarrow\ \rcat{a}      
+                                       & NBD-valid, no f-anchor\\[3ex]
+% Height bounded excludes 
+{\normalsize b.\ \ } &  S \rarrow \rcat{S\\\trivial} \rcat{a}  & S \rarrow \rcat{a\\\predsfna  a}        
+                                       & NBD-valid, shared f-anchor
+\end{tabular}
+\z
+
+\noindent The subderivations of (\ref{less}a) have no f-anchors \xref{fanchor} while the f-anchors for the subderivations of (\ref{less}b) are not pairwise distinct \xref{distinct}. The effect of the proper anchoring conditions for these configurations is consistent with other exclusionary proposals, in particular, the Different-Words version of Economy of Expression \citep{Dalrympleetal2015}. 
+
+As a final point of comparison, we note that the branching requirement of the NBD condition is essentially a special case of the string-anchor conditions \xref{conservecs} when recursive subderivations are stacked. The string anchors for valid derivations must be dominated by nodes contained within each particular subderivation. In contrast, \xref{sanchor} admits stacked recursive subderivations whose distinct anchors may be dominated by nodes elsewhere in the c-structure.  The  linguistically significant relationship is captured in the composition \ehead.  It requires only that the dominating node is an extended (co-)head of a node in a recursive subderivation, a component of the same discontinuous constituent \citep{zaenen-kaplan1995,BresnanEtAl2016}.  The situation is schematized by the grammar~\xref{more}.
+
+\ea\label{more}\small
+\begin{tabular}[t]{@{\ \ \ }l@{\hsp{2.3em}}l@{\hsp{-3.2em}}r@{}}
+      S \rarrow \rcat{A\\\trivial}  \rcat{P\\\trivial} & & NBD-invalid, anchored\\[3.5ex]
+      A \rarrow \rcat{A\\\assign {gf}} & P \rarrow \rcat{P\\ \assign {gf}} \rcat{p\\ \predsfa p {gf}}\\[3.5ex]
+      A \rarrow \rcat{a\\\predsfna  a}  &  P \rarrow \rcat{p \\ \predsfa p {gf}}
+ \end{tabular}
+\z
+                                 
+\noindent  The highest A and P nodes each dominate a separate stack of recursive subderivations. The subderivations of the P stack contain their distinct p string anchors, but the A stack is a nonbranching (invalid) chain over the single terminal.  Because of the parallel \attr {gf} function assignments, the P nodes serve as extended heads for the A nodes of the A--P discontinuous constituents, and the p terminals can thus act as distinct s-anchors for the A subderivations.\footnote{This arrangement of parallel function assignments gives rise to the so-called ``zipper'' configuration discussed below and by \citet{maxwellkaplan96} and \citet{KaplanWedekind2020:Zipper}.}  The number of A subderivations in each properly anchored derivation is thus bounded by the length of the p substring, and only those finitely-many derivations are made available for further filtering by the Completeness and Coherence subcategorization conditions.  Derivations of this type are the basis for a natural account of the discontinuous constituents in Johnson's \citeyearpar{Johnson1986}  Dutch double infinitive examples.\footnote{\label{multiplestacks}Note also that the same verbs could be reused as anchors for a different stack of recursive subderivations, for example, in the hypothetical case that the language allows an elaboration of this construction with a ditransitive lower verb and a dislocated \attr{obl} NP. This is because pairwise distinctness \xref{distinct} applies on a per-stack basis.}
+
+The proper anchoring condition  \xref{conservecs} establishes a manageable relationship between strings and f-structures by virtue of the mediating role that recursive c-structures play in the LFG syntactic architecture.  This relationship is information-conserving in the sense of \xref{conservation} and \xref{cbounds}. It crucially depends on the $\phi$ correspondence and the linguistically motivated notion of extended heads to correlate the depth of c-structure recursion with the sizes of strings and f-structures, as indicated by Lemma  \xref{lemma}.  The set of properly anchored derivations for a given string or f-structure is finitely enumerable. It follows that recognition and realization are decidable for that restricted subset of derivations and so are other input-specific problems as listed in \xref{otherundecidableprobs} and in Appendix A. It is possible, for example, to identify the most economical (properly anchored) derivation for a given f-structure because there are only a finite number of candidates whose c-structures must be compared. Proper anchoring, however, is not sufficient to ensure decidability of the emptiness problem (the demonstration in Section~\ref{emptinessproblem} involves only properly anchored derivations), and other questions that require consideration of all possible string and f-structure inputs also remain undecidable.
+
+
+\section{Intractability of parsing and generation}\label{intractability}
+
+The recognition/parsing,  realization/generation, and other problems are decidable for the conservative, properly-anchored derivations of arbitrary LFG grammars.  But the fact that the number of derivations for a given input is finite does not mean that it is small, and indeed the computational cost of solving these problems may be very high. We show in this section that recognition and realization are intractable in the worst case, that is, for arbitrary grammars they cannot be solved in a number of processing steps polynomial in the size of a given input. Their intractability is demonstrated by the usual technique of reducing these problems to another problem that is already known to be intractable. The technique requires that the reduction itself is computable in polynomial time so that we know that the reduction procedure does not hide the complexity of the problems of interest.
+
+The 3-SAT problem is the problem in the \textsf{NP}-complete complexity class often used for polynomial-time reductions that establish the intractability of other problems. This is the problem of determining the satisfiability of a Boolean formula in conjunctive normal form where each of the conjoined clauses is a disjunction of three literals. That is, each formula is a conjunction of the form  \mb{C_1\land..\land C_n}, each clause $C_j$ is a disjunction of the form \mb{l_{j_1}\lor l_{j_2} \lor l_{j_3}}, and each literal \mb{l_{j_i}} is a propositional variable $p_k$ or a negated variable \mbox{$\lnot{p_k}$}.  The question is whether there is at least one way of assigning truth values to the variables that makes all the clauses be true. The three-clause formula in~\xref{CNFex} is a simple problem that is satisfiable under several assignments among which is the one in \xref{CNFexass}.
+
+\ea
+\ea\label{CNFex}\mb{\small   (p_1 \vee p_2 \vee p_3) \wedge (\neg p_1 \vee \neg p_2 \vee p_3)  \wedge (\neg p_1 \vee p_2 \vee \neg p_3)} 
+\ex\label{CNFexass} \mbox{$p_1$=\attr{true}}, \mbox{$p_2$=\attr{false}}, \mbox{$p_3$=\attr{false}}
+\z
+\z
+
+We show that the recognition problem is intractable by providing a small LFG grammar $G$ such that the set of f-structures \mb{\ParG s\neq\emptyset} if and only if the string $s$ is an encoding of a satisfiable Boolean problem in conjunctive normal form. A formula is presented as a sequence of substrings one corresponding to each clause.  The substring for the $i^{th}$ clause begins with the letter c followed by the string of digits \mb{d_1..\,d_j} that represents the integer $i$.  This is followed by substrings that identify the literals that make up that clause.  Every occurrence of a positive literal $p_k$ is encoded as the character $+$ followed by the digits representing the integer $k$, and every occurrence of a negative literal \mb{\lnot p_k} is represented as the character  $-$ followed by the digits for $k$.  According to this scheme the formula \xref{CNFex} is presented as the string of characters \xref{recogencoding}.\footnote{We would of course see longer digit strings, not just singletons, for problems with ten or more clauses or variables.}
+
+
+\ea\label{recogencoding}
+c1 $+$1$+$2$+$3\ \ \ \ c2 $-$1$-$2$+$3\ \ \ \ c3 $-$1$+$2$-$3
+\z 
+
+There is a simple information-conserving LFG grammar $G$ that maps a string representing any satisfiable Boolean problem into f-structures that recapitulate the problem and make explicit the truth-value assignments that solve it. The linear order of clause and literal substrings is recast into descending chains of digit attributes in the f-structure. The sequences for the signed propositional variables of all literals are attached at the bottom of the attribute chain of their containing clause, and the grouping of literals within clauses is thus maintained.  The lower \attr {prob}(lem) substructure shown in \xref{recsolution}\footnote{The clause and propositional variable subscripts $c$ and $p$ are provided just for readability; they are not actually part of the formal structure.} corresponds to the problem string \xref{recogencoding}.
+
+\ea\label{recsolution}
+\evnup{\footnotesize
+\avm[style=fstr]{[sol& [$1_p$ & \rnode{1S}{[val & true]}\vspace{2pt}\\
+                   $2_p$ & \rnode{2S}{[val & false]}\vspace{2pt}\\
+                   $3_p$ & \rnode{3S}{[val & false]}]\vspace{2ex}\\
+         prob & [$1_c$ & [$+$ &[ $1_p$ & \rnode{1}{[val & true]}\vspace{2pt}\\
+                                   $2_p$ & [val & true]\vspace{2pt}\\
+                                  $3_p$ & [val & true]]]\\
+          $2_c$ & [$+$ & [$3_p$ & [val & true]]\\
+                         $-$  & [$1_p$ & [val & false]\\
+                                     $2_p$ & \rnode{2}{[val false]}]]\\
+          $3_c$ & [$+$ & [$2_p$ & [val & true]]\\
+                         $-$  & [$1_p$ & [val & false]\\
+                                    $3_p$ & \rnode{3}{[val false]}]]
+             ] ] }             
+}
+\ncangles[armA=2.3,linearc=.2,nodesepA=-1pt,angleA=0,nodesepB=1pt,angleB=0,linewidth=.8pt,linestyle=dotted]{1S}{1}
+\ncangles[armA=2.45,linearc=.2,nodesepA=1pt,angleA=0,nodesepB=1pt,angleB=0,linewidth=.8pt,linestyle=dotted]{2S}{2}
+\ncangles[armA=2.8,linearc=.2,nodesepA=1pt,angleA=0,nodesepB=1pt,angleB=0,linewidth=.8pt,linestyle=dotted]{3S}{3}
+\z
+
+\noindent  The upper \attr {sol}(ution) substructure corresponds to the truth-value assignment \xref{CNFexass} that makes all clauses be true. 
+
+Let S$_{\mbox{\scriptsize\rm num}}$ be the root category of a descending attribute-chain grammar for the regular language Digit\kplus of arbitrarily long digit sequences, with the scaffolding attributes \attr b and \attr e giving access to the top and bottom of the descending chains (as in \xref{encodingb} above).  Then the rules in \xref{genericrecognition} provide a c-structure and an f-structure for the string encoding of every well-formed and satisfiable Boolean formula. In particular, the f-structure for one of the derivations for string \xref{recogencoding} appears as \xref{recsolution} when the innocuous scaffolding attributes are not displayed. 
+
+\ea\label{genericrecognition}
+\ea\label{recstart}\small
+    S \rarrow \rcat{\phantom{\kplus}Clause\kplus\\\udcopy {prob} b\\\udcopy{sol}{sol}}\\[.5em]
+
+    
+\ex \label{recclause}\small
+      Clause \rarrow \  c \  \hsp{-1em}\rcat{Snum\\\udcopy bb\\\ducopy e{ce}}
+                                                     \hsp{.5em}
+                                                     \rcat{Lit\kstar\\\assign {ce}}
+                                                     \hsp{-.9em}
+                                                     \rcat{Lit\\\assign{ce}\\
+                                                                   \udcopy {sol}{$+$}\\
+                                                                   \udcopy {sol}{$-$}}
+                                                     \hsp{-.9em}
+                                                     \rcat{Lit\kstar\\\assign{ce}}\\[.5em]
+
+\ex\label{reclit}\small
+   Lit \rarrow      \{\ \rcat{$+$}\hsp{-.75em}\rcat{Snum\\\udcopy {$+$}b\\\dval {e val} {true}}
+                                     \hsp{-1.3em}  | \ 
+                                     \rcat{$-$}\hsp{-.75em}\rcat{Snum\\\udcopy{$-$} b\\\dval {e val} {false}}\hsp{-.5em}\}
+\z\z
+
+\noindent The start rule \xref{recstart} recognizes the conjunction of arbitrarily many clause constituents.\footnote{For succinctness and clarity we use LFG's traditional Kleene \mbox{$^+$ and *} notations to specify repeating category sequences rather than their right-recursive equivalents.  For example, the single rule \xref{recstart} is equivalent to the two rules
+\def\annotations{\tiny}
+    \mbox{S $\rightarrow$ \hsp{-.3em}\rcat{Clause\\[-.6ex]\udcopy{prob} b\\[-.5ex]\udcopy{sol}{sol}}\hsp{-1.em}}
+  and
+ \  \mbox{S $\rightarrow$ \hsp{-.3em}\rcat{Clause\\[-.6ex]\udcopy{prob}b\\[-.6ex]\udcopy{sol}{sol}}\hsp{-1.2ex}\rcat{S\\[-.5ex]\trivial}\hsp{-1em}}.\def\annotationsize{}}  Every clause consists of one or more literals, and every literal consists of a positive or negative marking followed by the identifier of its propositional variable.  The \udcopy {prob} b annotation promotes all the clause attribute chains to the problem substructure. The additional clause-ending scaffolding attribute \attr {ce} makes it possible to connect the positive and negative literals to the bottom of their containing-clause chains. The truth-value assignments in \xref{reclit} attach the value \attr {true} at the bottom of the variable chains of positive literals and \attr {false} at the bottom of negative literals, thereby encoding the truth-value assignments that make each literal be true. Finally, just one of the true literals is selected to make the clause true, and the \attr {sol} annotations incorporate the variable and truth-assignment of that literal (whether it happens to be positive or negative) into the global solution. 
+
+A derivation in $G$ will succeed only if the literals chosen locally and independently for each clause result in \attr{sol} truth-value assignments that are globally consistent. If a problem is unsatisfiable, then the f-description for every c-structure derivation will be inconsistent.  Thus for a string $s$ encoding an arbitrary Boolean problem, the set \mb{\ParG s \neq\emptyset} if and only if that problem is satisfiable for at least one consistent set of truth-value assignments.\footnote{\citet{Berwick1982} provided the first \textsf{NP}-completeness proof for the LFG recognition problem and Stanley Peters (p.c. 1982) offered a different argument.  The demonstration here uses far less of the LFG machinery than those earlier proofs and generalizes to problems with arbitrary numbers of clauses and variables.}
+
+With this abstract formal grammar it is easy to see the potential source of computational complexity for LFG recognition. For each literal of every clause, rule \xref{recclause} produces an alternative annotated c-structure that makes a different contribution to \attr{sol}. The number of properly anchored derivations that must be inspected for global consistency thus grows in the worst case as an exponential in the number of clauses. For example, there will be $3^n$ derivations to consider in the case of a 3-SAT problem with $n$ clauses each of which has three literals. Linguistic grammars will also have this exponential complexity profile if their fixed number of rules describe morphosyntactic agreement dependencies that range over the full length of the input string. We can also see, schematically, a configuration that is sufficient to guarantee tractability while still allowing for input strings of arbitrary length.  Suppose there is a constant $k$ that limits the number of clauses that a single S can expand to, as in \xref{boundedrecognition}, but with a new starting category S$'$ that allows for the concatenation of an arbitrary number of $k$-limited S's.
+
+\ea\label{boundedrecognition}\small
+ S$'$ \rarrow \ S\kplus \hsp{3em} S \rarrow \hsp{-1em} \rcat{\phantom{$^{\,\leq \,k}$}Clause$^{\,\leq \,k}$\\\udcopy {prob}b\\\udcopy {sol}{sol}}
+\z
+
+\noindent Crucially, there are no annotations on S$'$ to link the f-structures of the S nodes, and thus there can be no interaction among the truth assignments of the embedded clauses. The worst case complexity for a string of $n$ 3-literal clauses is proportional to \mb{\frac nk \cdot 3^k}. This is exponential in the grammar-dependent constant $k$ but polynomial in the length of the input. This foreshadows the tractability of $k$-bounded  LFG grammars that we discuss in the next section.
+
+For recognition the Boolean problem string and f-structure are organized so that the signed propositional variables are grouped within clauses, and the grammar checks for consistency of variable truth values in the global \attr{sol} structure.  For the reduction of the LFG realization problem to Boolean satisfiability, the string and corresponding f-structure are transposed so that a Boolean problem is presented with its clauses grouped within its propositional variables.  We again provide a small LFG grammar $G'$ now with the property that the string set \mb{\textit{Gen}_{G'}(f)\neq\emptyset} if and only $f$ is the encoding of a satisfiable Boolean problem.\footnote{See \citet{WedekindKaplan2021} for a fuller discussion of the technical issues particularly concerning the realization problem.}  The transposed string presentation and equivalent f-structure for problem \xref{CNFex} are shown in \xref{genericprob}.
+
+\ea\label{genericprob}
+\ea p1 $+$1$-$2$-$3  \hsp{.5em} p2 $+$1$-$2$+$3  \hsp{.5em}  p3 $+$1$+$2$-$3
+\vspace{2ex}
+\ex \evnup{\footnotesize \avm{
+       [ $1_p$ & [$+$ & \ [$1_c$ & \  \ ]\vspace{4pt}\\
+                         $-$ & \ [$2_c$ & \\
+                                      $3_c$ & ]]\vspace{7pt}\\
+         $2_p$ & [$+$ & \ [$1_c$ & \\
+                                      $3_c$ &]\vspace{4pt}\\
+                         $-$ & \ [$2_c$ & ]]\vspace{7pt}\\
+         $3_p$ & [$+$ & \ [$1_c$ & \\
+                                      $2_c$ &] \vspace{4pt}\\
+                         $-$ &  \ [$3_c$ & ]]
+               ] } }      
+\z\z
+
+ \noindent The string indicates that variable 1 occurs in a positive literal in the first clause but in negative literals in the second and third clauses. The linear order of variables and clauses in the string is reflected in the f-structure's descending attribute chains. The clause identifiers are grouped according to the signed propositional variables of the literals that they contain. 
+ 
+ The LFG grammar $G'$ in \xref{probgram} establishes the relationship between the equivalent string and  f-structure expressions of any well-formed Boolean formula, whether satisfiable or not.
+ 
+\ea\label{probgram}\small 
+
+\ea\label{genstart}    S \rarrow \hsp{-.5em}\rcat{\phantom{\kplus}Var\kplus\\\udcopy {prob}b\\\udcopy{sol}{sol}}
+    \hsp{.3em}
+\ex\label{genvar}    Var \rarrow \  \rcat{p}\hsp{-1.2em} \rcat{Snum\\\udcopy bb\\\ducopy e{ve}} \hsp{-1.5em}
+                                                         \{\ \rcat{$+$}\hsp{-.75em}\rcat{Snum\\\udcopy  {ve $+$}b} 
+                                                              \hsp{-1em} | \ 
+                                                              \rcat{$-$}\hsp{-.75em}\rcat{Snum\\\udcopy {ve $-$}b}\hsp{-1em}
+                                                          \}{\Large\kplus}                                   
+\z\z
+
+\noindent A sentence consists of a sequence of proposition-variable substrings each of which begins with a variable identifier followed by any number of digit substrings representing the clauses in which that variable appears.  Each clause is prefixed with $+$ and $-$ to indicate whether the variable appears in a positive or negative literal. The annotations promote the variable's descending digit-chain to the top and attach the clause identifiers under the $+$ or $-$ attributes at the bottom of each variable chain, according to whether the clause is positively or negatively marked.  This produces the f-structure displayed in (\ref{genericprob}b) (again with omission of the scaffolding attributes \attr {b/e} and now \attr{ve}). If $f$ is an input f-structure for realization that expresses an arbitrary Boolean problem in this way, then the set \mb{\textit{Gen}_{G'}(f)} includes a string of the form (\ref{genericprob}a).
+
+Both the input f-structure and the grammar must be elaborated so that LFG realization distinguishes between satisfiable and unsatisfiable Boolean problems.  Along with the encoding of a particular problem the f-structure must specify the necessary and sufficient conditions for a solution, namely, that every clause is true under at least one consistent assignment of truth values to the variables. The input f-structure represents this requirement by attaching a value \attr {true} at the bottom of every clause identifier in the top-level \attr {sol} substructure and wherever the clause appears in the problem encoding under \attr{prob}. F-structure \xref{gensolfs} is the elaboration of (\ref{genericprob}b) with this additional information.
+
+\ea\label{gensolfs}
+\evnup{\footnotesize\avm{
+       [sol & \rnode{sol}{[1$_c$ & [val true]\\2$_c$&[val true]\\3$_c$&[val true]]}\\
+        \  &     \\
+      prob & [ 1$_p$ & [$+$ & \ [1$_c$ & \,[val true] ]\ \ \ \vspace{4pt}\\
+                      $-$  & \ [2$_c$ &  [val true] \\
+                                   3$_c$ &  [val true] ]\  ]\vspace{7pt}\\
+         2$_p$ & [$+$ & \ [1$_c$ & [val true] \\
+                                      3$_c$ & [val true] ]\ \ \ \vspace{4pt}\\
+                         $-$ & \ [2$_c$ & [val true]  ]\ \ ]\vspace{7pt}\\
+         3$_p$ & [$+$  & \ [1$_c$ & [val true]\\
+                                       2$_c$ & [val true] ]\ \ \ \vspace{4pt}\\
+                        $-$ &  \ [3$_c$ & \,[val true] ]\hsp{.37em}\rnode{bot}{}]
+               ]]}}
+\ncangle[armB=0,linearc=.2,nodesepA=1pt,angleA=0,nodesepB=2pt,angleB=180,linewidth=.8pt,linestyle=dotted]{sol}{bot}
+\z
+
+\noindent In this depiction the dotted line shows that the clause identifiers and their truth values in the solution are equated to all of their occurrences in the problem-statement substructure.
+
+F-structure \xref{gensolfs} is correctly assigned to the satisfiable problem string (\ref{genericprob}a) if the single Var expansion rule above is replaced by the alternatives in \xref{genericgen}.
+
+\ea\label{genericgen}
+\ea\label{genP1} \small    Var \rarrow \  \rcat{p}\hsp{-1em} \rcat{Snum\\\udcopy bb\\\ducopy e{ve}}
+                                                         \{\ \rcat{$+$}\hsp{-.75em}\rcat{Snum\\\udcopy  {ve $+$}b\\\udcopy{sol}b\\\dval {e val}{true}} 
+                                                              \hsp{-1em}
+                                                              | \ 
+                                                              \rcat{$-$}\hsp{-.75em}\rcat{Snum\\\udcopy {ve $-$}b\\\udcopy{sol}b}\hsp{-1em}
+                                                          \}{\Large\kplus}\\[.3em]
+                                     
+ \ex\label{genP2}  \small  Var \rarrow \  \rcat{p}\hsp{-1em} \rcat{Snum\\\udcopy bb\\\ducopy e{ve}}
+                                                      \{\ \rcat{$+$}\hsp{-.75em}\rcat{Snum\\\udcopy  {ve $+$}b\\\udcopy{sol}b} 
+                                                          \hsp{-1em}
+                                                         | \ 
+                                                          \rcat{$-$}\hsp{-.75em}\rcat{Snum\\\udcopy {ve $-$}b\\\udcopy{sol}b\\\dval {e val}{true}}\hsp{-1em}
+                                                      \}\Large\kplus
+\z\z
+
+\noindent The \attr {sol} annotations in both versions lift all the clause identifiers, whether positive or negative, to the top-level. The rules differ in that \xref{genP1} also attaches the value \attr {true} only at the bottom of every positive-clause chain while \xref{genP2} attaches \attr {true} only to the bottom of every negative clause.  Thus for every variable there is a choice in every derivation between the two expansions, corresponding to a guess of consistent truth-value assignments for every variable.
+
+If a problem is satisfiable, then each clause will be assigned \attr {true} under at least one variable, that value will be carried with the clause identifier into the \attr {sol} structure, and it will propagate by equality to all of the other (positive or negative) occurrences of that clause.  The result will be an f-structure configured as in \xref{gensolfs}, and the string corresponding to the problem substructure will be a realization of that f-structure.
+
+Grammar $G'$ will also derive annotated c-structures and f-structures for a string that represents an unsatisfiable problem, but each of those f-structures will be missing a required truth value for at least one of the clauses.  For the trivially unsatisfiable problem \mb{p_1 \land \neg p_1} the input $f$ for realization is the f-structure (\ref{unsatisfiable}a) and (\ref{unsatisfiable}b) is its corresponding string expression.
+
+\ea\label{unsatisfiable}
+a. \ \   \evnup{\footnotesize\avm{
+               [sol & \rnode{sol}{[$1_c$ & [val true]\\$2_c$ & [val true]]}\\
+                \  &     \\
+               prob & [  $1_p$ & [$+$ & \ [$1_c$  & \,[val true] ]\ \vspace{4pt}\\
+                                $-$ & \ [$2_c$ &  \,[val true]] \hsp{.37em}\rnode{bot}{}]
+               ]]}}
+\ncangle[armB=0,linearc=.2,nodesepA=1pt,angleA=0,nodesepB=2pt,angleB=180,linewidth=.8pt,linestyle=dotted]{sol}{bot}
+\hsp{3em} b. \ \  p1 $+$1$-$2
+\z
+
+\noindent With just one variable there is only one choice between the alternative Var expansion rules, giving rise to two derivations. Assigning \attr {true} to the positive literal produces f-structure (\ref{badfs}a) and (\ref{badfs}b) results if the negative literal is selected. Neither of these is complete for all the attributes and values of (\ref{unsatisfiable}a) and thus string (\ref{unsatisfiable}b) (and any other string that corresponds to the problem substructure) does not belong to \mb{\textit{Gen}_{G'}(f)}.
+
+\ea\label{badfs}
+\!\!\!a. \  \evnup{\footnotesize\avm{
+               [sol & \rnode{solc}{[$1_c$ & [val true]\\
+                                               $2_c$ & \hsp{3.2em}]}\\
+                \  &     \\
+               prob & [  $1_p$ & [$+$ & \ [$1_c$  & [val true ]]\vspace{4pt}\\
+                                $-$  & \ [$2_c$   & \phantom{\attr{[val true]}} ] \hsp{.4em}\rnode{botc}{}\ ]
+               ]]}}
+\ncangle[armB=0,linearc=.2,nodesepA=1pt,angleA=0,nodesepB=2pt,angleB=180,linewidth=.8pt,linestyle=dotted]{solc}{botc}
+\hsp{1.5em}
+b. \          \evnup{\footnotesize \avm{
+               [sol & \rnode{solb}{[$1_c$ & \\ $2_c$ & [val true]]}\\
+                \  &     \\
+              prob & [   $1_p$ & [$+$ & \ [$1_c$  & \phantom{\attr{[val true]}}\hsp{.2em} ]\ \vspace{4pt}\\
+                                $-$ & \  [$2_c$ &  \,[val true]] \hsp{.37em}\rnode{botb}{}]
+               ]]}}
+\ncangle[armB=0,linearc=.2,nodesepA=1pt,angleA=0,nodesepB=2pt,angleB=180,linewidth=.8pt,linestyle=dotted]{solb}{botb}
+\z
+
+ Any Boolean satisfiability problem can thus be reduced to the realization problem for the simple LFG grammar $G'$ if the problem is translated to an input f-structure that encodes the problem and the requirement of truth for all clauses.  A derivation for $G'$ will map a string to that f-structure if and only if the Boolean problem is satisfiable.  As for recognition, realization is intractable because the number of derivations whose f-structures must be compared to the input is exponential in the size of the problem, in this case the number of variables it contains.
+
+
+
+\section{$k$-Bounded LFG grammars and tractability }\label{Tractable}
+
+These intractability results for the conservative, properly anchored derivations of arbitrary grammars raise the question whether there are other formal restrictions that will guarantee that the computationally important problems of recognition and realization can be solved in polynomial time. \cite{SekiEtAl1993} first established the connection between a much more restricted subclass of LFG grammars and Linear Context-Free Rewriting Systems (LCFRS), formal systems that can describe only mildly context-sensitive dependencies and for which the recognition problem is tractable \citep{Kallmeyer2010b}.   The Seki et al.\ \emph{finite-copying grammars} permit rules with the very limited functional annotations in (\ref{finitecopying}a) provided that all their derivations also satisfy the bounding condition (\ref{finitecopying}b).
+
+\ea\label{finitecopying}
+\ea \label{Seki-notation} Each category on the right-side of a rule can be annotated with at most one function assignment of the form \assign f and any number of atom-value assignments only of the form \uval av.
+
+\ex \label{Seki-bound} There is a constant $k$ such that no more than $k$ nodes map to the same f-structure element $f$ in any derivation.  That is, \mb{|\phiinv(f)| \leq k} for every $f$.\footnote{This condition can also be expressed in terms of an extended-head formulation: \mb{|\ehead(n)|\leq k} for every  c-structure node $n$. The parameter $k$ may also be regarded as a formal characterization of the linguistic notion \textit{degree of discontinuity} \citep{Chomsky1953}.}
+\z
+\z
+
+\noindent Structure sharing in finite-copying grammars can only be achieved through instantiated function-assigning annotations. This specific type of structure sharing is occasionally referred to as ``zipper'' unification. That is, if two distinct nodes $n_1$ and $n_2$  map to the same f-structure in a derivation, then there must always be a node \mbox{$\hat{n}$} dominating these nodes such that the sequences of function-assigning annotations on the paths from \mbox{$\hat{n}$} to  $n_1$ and  $n_2$, respectively, must be identical, that is, form a ``zipper''. 
+
+The bounding condition~\xref{Seki-bound}  limits the number of non-local dependencies that can arise through structure sharing and thus proscribes c-structure recursions that give rise to zippers of size greater than the constant $k$. Indeed, Seki et al.\ have shown that the recognition problem is \textsf{NP}-complete for grammars that meet the notational restrictions \xref{Seki-notation} but do not satisfy the bounding condition~\xref{Seki-bound}. Thus the bounding condition is crucial for tractable performance even with the severe notational restrictions of the finite-copying formalism. 
+
+ Grammars with these limited annotations are expressive enough to specify the kinds of derivations depicted in Figure~\ref{zip}. The derivation on the left is produced by the simple recursive rules in \xref{SS} while the one on the right is derived with the grammar \xref{SAAA}.
+
+\begin{figure}[tb]\vspace{28mm} % This sets the top of the graph relative to the page
+{\small\begin{tabular}[c]{cc@{\hspace{1.5mm}}c}
+%
+& \hspace{-3mm}$\phi$\hspace{.75mm}%\rnode[vref=-10pt]{phiS}{}
+     \hspace{6mm}\hspace{1.5mm}$\phi$\\[-2.5mm]  %phi's
+& \scriptsize\hspace{-3.5mm}\rnode{phiS}{\hspace{1pt}$f$}\hspace{2mm}\rnode{phiABC}{\hspace{-1pt}$f$} \\[-35mm]  %f's
+%
+&\hspace{-3.5mm}\rnode{top}{}\\[8mm]
+&\hspace{-4mm}\small$H$\ \ \ \ \,\\[-15mm]
+\begin{forest}
+[S [{\rnode{11}S} [{\rnode{21}S} [{\rnode{31}S} [a]]
+              [{S} [a]]
+         ]
+         [S [S [a]]
+              [S [a]]
+         ] 
+      ]
+    [{\rnode{12}S} [S [S [a]]
+                               [S [a]] 
+                          ]
+                          [{\rnode{22}S} [S [a]]
+                                                [{\rnode{32}S} [a]]
+                           ]
+]
+]
+\end{forest}
+\ncline[nodesep=2pt,linestyle=dotted]{11}{12}
+\ncline[nodesep=2pt,linestyle=dotted]{21}{22}
+\ncline[nodesep=2pt,linestyle=dotted]{31}{32}
+
+&&
+\begin{forest}
+[S [{\rnode{a1}A }  [{\rnode{a2}A }    [{\rnode{a3}A }   [a, tier=word   ]]
+                  [a , tier=word  ]]
+           [a ,tier=word  ]
+     ]
+     [A   [A    [A [a   ,tier=word]]
+                  [a  ,tier=word ]]
+           [a  ,tier=word ]
+     ]
+     [{\rnode{c1}A}   [{\rnode{c2}A}     [{\rnode{c3}A}  [a  ,tier=word ]]
+                  [a  ,tier=word ]]
+           [a  ,tier=word ]
+     ]
+]\end{forest}
+\ncline[nodesep=1pt,linestyle=dotted]{a1}{c1}
+\ncline[nodesep=1pt,linestyle=dotted]{a2}{c2}
+\ncline[nodesep=1pt,linestyle=dotted]{a3}{c3}
+\\[2mm]
+\mb{\small |\phi^{-1}(f)|=2^H}& &\mb{\small |\phi^{-1}(f)|=3}
+\\[-19mm]
+&\hspace{-3.5mm}\rnode{bot}{}
+
+\\[17mm]
+a. C-structure for grammar (\ref{SS}) &&b. C-structure for grammar (\ref{SAAA})
+\ncarc[arcangle=-20]{->}{32}{phiS}
+%
+\ncarc[arcangle=20]{->}{a3}{phiABC}
+\ncline{->}{top}{bot}
+
+\end{tabular}
+}
+\caption{Zipper nodes in depth-balanced c-structures}
+\label{zip}
+\end{figure}
+
+\ea
+\ea\label{SS}\small S \rarrow \rcat{S\\\assign l} \rcat{S\\\assign{l}}    \hsp{5em}     S \rarrow \rcat{a\\\uval l{\#}}
+\ex\label{SAAA}
+\vspace{1em}
+\small S \rarrow \rcat{A\\\assign l} \hsp{-.6em} \rcat{A\\\assign l} \hsp{-.6em}  \rcat{A\\\assign l}  \hsp{1.4em}     A \rarrow \rcat{A\\\assign l}\hsp{-1.25em} \rcat{a} \hsp{1.2em} A \rarrow \rcat{a\\\uval l{\#}}
+\z\z
+
+\noindent
+These grammars  both meet the finite-copying notational restrictions \xref{Seki-notation}, and the derivations of both grammars have nodes that share structure in the zipper configurations indicated by the dotted lines. But the difference in these structure-sharing configurations corresponds to a difference in computational complexity.  For all derivations of grammar (\ref{SS}) the number of nodes in the set  \mb{\phiinv(f)}  is an  exponential in the height $H$ of those nodes, as indicated in Figure~\ref{zip}a.  In contrast, for all derivations of grammar (\ref{SAAA})  the number of nodes in a structure-sharing set is bounded by a constant (3 in this case) that is independent of their height (Figure~\ref{zip}b).  Grammar (\ref{SAAA}) but not (\ref{SS}) meets the finite-boundedness property \xref{Seki-bound}, and this is a decidable property for all derivations of such notationally restricted grammars. Note that the string and f-structure sizes are correlated in the derivations of both grammars. They are thus not distinguished by the conditions of proper anchoring.
+
+The restrictions \xref{Seki-notation} are obviously too severe for linguistic description. The notation disallows, for example,  the trivial \trivial\ annotations that mark the heads and coheads in the functional domain of a predicate, the \fcontrol{xcomp}{subj}{obj} equations of functional control, and all other ways of relating the f-structures of different nodes.  They also exclude multi-attribute value specifications, such as \uval{subj\ num}{sg}, that encode agreement requirements, and any direct specification of feature values on daughter nodes, as in \dval {case}{nom}.
+
+ \cite{wed:kap:20} take the \cite{SekiEtAl1993} finite-copying grammars as the starting point for developing a subclass of LFG grammars that are more suitable for linguistic description but are similarly limited in their expressive power. The \textit{$k$-bounded} LFG grammars of Wedekind and Kaplan allow the richer set of annotations in \xref{annotations}.
+
+\ea\label{annotations}
+\begin{tabular}[t]{ll}
+Basic annotations\\
+\trivial &  (co)head identifier\\
+\assign f & function assignment\\
+\nval {\mbox{\up/\down}} {a b c $\cdots$} v & general atom-value assignments\\[1ex]
+
+Reentrancies\\
+\uucopy fh & local-topic link\\
+\ducopy gh & daughter-mother control\\
+\ddcopy gh & daughter sharing\\
+\dupromote g & promotion\\  
+\ucycle f  & mother cycle\\
+\dcycle g & daughter cycle\\
+\fcontrol fgh & functional control
+\end{tabular}
+\z
+
+\noindent  The annotations in this enlarged set include those that are commonly used in natural language grammars and that remain compatible with theoretical conventions such as the Principle of Functional Locality \citep{kaplanbresnan82}.  In $k$-bounded grammars these more flexible annotations are accompanied with additional conditions that also limit the number of non-local dependences that can arise through structure sharing.  The $k$-bounded LFG grammars thus enjoy the same mathematical and computational properties that Seki et.\ al identified:  They characterize only mildly context sensitive languages for which recognition is tractable. The additional conditions that a $k$-bounded grammar $G$ must meet are listed in~(\ref{conditions}).
+
+\ea\label{conditions}
+\ea Each right-side category is annotated with at most one function assignment \assign f, and (co)head identifiers \trivial\ and function assignments always appear in complementary distribution (to keep separate the properties of heads and their complements).
+
+ \ex\label{conditions-height} The  \textit{functional domains} of $G$ (the collections of \trivial-annotated nodes that map to the same f-structure) are bounded by a grammar- dependent constant $h$ (so $G$ can be converted to an equivalent grammar \Gminus that is free of \trivial annotations). 
+
+\ex\label{conditions-bounded} The derivations of the grammar formed by removing all reentrancies from \Gminus are bounded by a grammar-dependent constant $k$, as in (\ref{finitecopying}b). (\cite{wed:kap:20} call this the \textit{reentrancy-free kernel} of $G$.) 
+
+\ex \label{conditions-nonconstructive} Reentrancies are nonconstructive.
+\z\z
+
+ 
+Nonconstructivity is an implicit property of derivations in broad coverage LFG grammars that has been mentioned (but not well formalize) in the LFG literature as a requirement for functional uncertainty and off-path constraints \citep{xledoc, zaenen-kaplan1995} \citep[page 133]{DKMZ:FormalIssues}. The reentrancies of a grammar are nonconstructive if they cannot extend the $\phi$ mapping from c-structure nodes to f-structure units beyond the correspondences established by simple function assignments (the zipper-forming annotations of finite-copying grammars).
+
+The difference between constructive and nonconstructive reentrancies is illustrated in Figure~\ref{constructive}.
+  \begin{figure}[t]
+  \hsp{-28.0mm} \parbox{10cm}{\vspace{-7mm}
+\vspace{8mm}\hsp{8mm} \begin{tabular}{c@{\hspace{10mm}}c@{}}
+ \renewcommand{\annotationsize}{\footnotesize}
+ \footnotesize
+ \begin{forest}
+ [\treenodesub{S}n1, name=root1,  for tree={s sep=1mm, l=8.8mm, inner sep=1}
+        [\red \treenodesuba{NP}n2{\assign {obj}}
+                  [\phantom{thethe man}, roof]]
+        [\treenodesuba{VP}n3{\udcopy{obj}{subj}}
+            [\treenodesuba {VP}n4{\udcopy{subj}{subj}}
+                [\red \treenodesuba{X}n5{\assign{subj}}
+                        [\phantom{thethe man}, roof]]]]]
+ \end{forest}
+ 
+ &
+ 
+ \footnotesize
+  \begin{forest}
+ [\treenodesub{S}n1, name=root1,  for tree={s sep=1mm, l=8.8mm, inner sep=1}
+        [\red \treenodesuba{NP}n2{\assign {obj}}
+                  [\phantom{thethe man}, roof]]
+        [\treenodesuba{VP}n3{\udcopy{obj}{subj}}
+            [\treenodesuba {VP}n4{\udcopy{subj}{subj}}
+                [\red \treenodesuba{X}n5{\uval{subj agr}v}
+                        [\phantom{thethe man}, roof]]]]]
+ \end{forest}
+ \\
+ \renewcommand{\annotationsize}{}
+ 
+ Constructive & Nonconstructive\\[2mm]
+\footnotesize \mb{\phi(n_2)= \phi(n_5)} &\footnotesize\nval {\phi(n_2)}{obj agr}{v}
+\end{tabular}}
+\vspace{0mm}
+\caption{Constructive and nonconstructive reentrancies.}
+\vspace{-2mm}
+\label{constructive}
+\end{figure}
+On the left side the reentrancies are constructive because they cause the nodes \mbox{$n_2$} and  \mbox{$n_5$} to map to the same f-structure element. If reentrancies are nonconstructive, as in the derivation on the right side, they do not introduce node-to-f-structure mappings that are not entailed by function assignments alone, and thus they do not affect the bounds that function assignments establish on the $\phiinv$ node classes. Nonconstructive reentrancies only propagate the limited atom-value information that the grammar attaches to individual nodes and not the unregulated amount of information that might be associated recursively with entire subtrees.
+
+ \cite{wed:kap:20} have shown that the nonconstructivity condition \xref{conditions-nonconstructive} is decidable if the \mb{\phiinv} node classes of a grammar are $k$-bounded and if any two-attribute functional control annotations can be reduced to shorter ones (e.g.\ shrinking \fcontrol {xcomp}{subj}{obj} to \ducopy {subj}{obj} when conjoined with \assign {xcomp}). While it is undecidable in general whether every functional control annotation can be shortened (see example (\ref{XY}c) in Appendix A), they can always be reduced to daughter-mother controls in derivations that meet the requirements of the Coherence Condition.  \cite{wed:kap:20} provide a formal specification of nonconstructivity, this expected consequence of Coherence, and other technical requirements that are sufficient to decide whether an arbitrary LFG grammar belongs to the $k$-bounded subclass and therefore describes only mildly context-sensitive languages.
+
+\cite{wed:kap:20} also prove that for any LFG grammar $G$ with the properties defined in \xref{annotations} and \xref{conditions} there is a linear context free rewriting system that accepts all and only the strings in $L(G)$ and allows recovery of the f-structures that $G$ assigns to each such string.  The tractability of LCFRS recognition thus establishes for $k$-bounded LFG grammars that recognition of individual input strings can be accomplished in time polynomial in their length.  Here we sketch a simpler demonstration that is framed entirely within the LFG formalism. This is based on a line of argument that \cite{Lang92recognitioncan} and others have developed for the recognition problem of context-free grammars.
+
+On this approach to context-free recognition the solution is partitioned into two phases.  Given an input string $s$ and an arbitrary context-free grammar $G$ with $|G|$ rules, the first step is to specialize $G$ to a context-free grammar $G_s$ with the property that \mb{s\in L(G)} if and only if  \mb{L(G_s)\neq\emptyset}.   The second step then is to determine whether or not the language $L(G_s)$ is empty.  In the context-free case the procedure for specializing $G$ to $s$ and the size of the resulting grammar are both polynomial in the length of the input, and for context-free grammars the emptiness problem is bounded by a polynomial in grammar size.  It follows on this particular argument (among many others) that context-free recognition is bounded by a polynomial in $|s|$. 
+
+This two-part strategy immediately carries over to LFG recognition.  The specialization of an arbitrary LFG grammar $G$ to a given input $s$ can be extracted from the chart data structures provided by any number of context-free parsing algorithms modified to keep track of the annotations of matching c-structure categories (equivalently, to operate unmodified on left-side annotated rules as in \xref{annoNP} above).  This is a polynomial process that results in an annotated LFG grammar $G_s$ of size also polynomial in $|s|$ that assigns to $s$ all and only the f-structures that $G$ assigns to $s$.  In particular, \mb{\ParG s=\emptyset} if and only if \mb{\textit{Par}_{G_s}(s)=\emptyset}, and this is equivalent to the question whether \mb{L(G_s)=\emptyset}.
+
+
+We noted above that the emptiness problem for arbitrary LFG grammars remains undecidable even if only properly anchored derivations are taken into account. However, if $G$ belongs to the subclass of $k$-bounded grammars then so does $G_s$, and the emptiness problem for arbitrary $k$-bounded grammars is not only decidable but solvable with worst-case complexity that is polynomial in grammar size. A proof of this property is outlined in Appendix B. Thus, following the context-free argument, for any input string $s$ and $k$-bounded LFG grammar $G$, in time polynomial in $|s|$ it can be determined whether \mb{s \in L(G)}.
+
+\cite{WedekindKaplan:Gen} applied a similar two-phase strategy to prove that the realization problem is decidable for an arbitrary LFG grammar $G$ and an arbitrary acyclic input f-structure $f$ (see also \citet{kaplan-wedekind-2000-coling}). They specialized $G$ to a grammar $G_f$ with the property that the string-set \mb{\GenG f=\emptyset} if and only if \mb{L(G_f)=\emptyset}. The grammar $G_f$ is context-free and its emptiness is therefore decidable. In the general case the specialization phase is not tractable and the resulting $G_f$ may be exponentially larger than $G$.   If $G$ is $k$-bounded, however, the consistency and completeness of all LFG derivations for any $f$, even cyclic ones, can be simulated with an annotation-free polynomial expansion of the categories and rules of $G$.  
+
+Thus the recognition and realization problems for $k$-bounded grammars can be solved in polynomial time: for arbitrary inputs it can be determined whether the sets \ParG s and \GenG f are empty.  But the $k$-bounded restrictions are not sufficient to guarantee that those sets contain only a finite number of elements.  The context-free grammar $G_f$, for example, can describe a language with arbitrarily long strings, if $G$ allows for unlimited morphological markers in subtrees with nodes that are not in the domain of the $\phi$ projection.  And the f-structures for a given string can also be arbitrarily large, if the grammar permits stacked recursive subderivations.  If useless rules are removed from $G_f$ and if annotations are carried along in the grammar $G^*_s$ as described in Appendix B, then the generation algorithm for context free grammars can be used to enumerate the elements of \GenG f and  \ParG s, one after the other and each in linear time.  But obviously the generation and parsing enumerations will never terminate in the face of infinite ambiguity. The derivations for a $k$-bounded grammar are not necessarily conservative in the sense of \xref{cbounds}, even though the emptiness tests for recognition and realization have tractable solutions.
+
+The proper-anchoring/conservation and $k$-bounded restrictions target different sources of mathematical and computational complexity.  Proper anchoring limits the height of recursive subderivations in a stack but imposes no constraint on the number of stacks in a single derivation. The $k$-bounded restrictions limit the degree of discontinuity but say nothing to relate the sizes of strings and f-structures. The combination of constraints provides for conservative, finitely-ambiguous, derivations with tractable recognition and realization.  We have suggested above that conservation is a plausible pretheoretic property of natural communication, and we have also argued that the $k$-bounded patterns of information flow are compatible with other linguistic principles \citep{KaplanWedekind2019, wed:kap:20}.  The $k$-bounded restrictions \mbox{(\ref{annotations}-\ref{conditions})} and the proper anchoring condition \xref{conservecs} are different ways of moderating the excessive mathematical and computational power of the basic LFG formalism while preserving in different ways its suitability for linguistic description.  
+
+
+\section{Summary}
+
+Lexical-Functional Grammar is equipped with a simple architecture that formalizes a piecewise correspondence between structures of different types, the phrase-structure trees of the constituent structure and the attribute-value matrices of the functional structure.  We have shown that f-structure encodings of the strings of arbitrary context-free grammars can be produced by straightforward application of the formalism's most primitive annotations.  From that it follows that recognition/parsing, realization/generation, and other mathematical and computational questions are easily proved to be undecidable.
+
+One source of this excessive power, at least for the recognition and realization problems, is the fact that an unrestricted grammar may establish no systematic relationship between the sizes of input strings and the sizes of corresponding f-structures.  This is inconsistent with the Principle of Conservation \xref{conservation} that we suggest is a pretheoretic property of language as a medium of communication: the derivational machinery that maps in both directions between strings and their f-structures does not add or subtract arbitrary amounts of information.  Problems that relate to specific inputs, including recognition/parsing and realization/generation, become decidable if unconservative derivations are excluded from consideration.
+
+The annotated c-structure is the generative component of the LFG formalism and serves as the intermediary between strings and f-structures. Thus we have proposed a condition on recursive c-structure subderivations that ensures that strings and f-structures stand in a conservative relationship.  A derivation is properly anchored if each recursive subderivation is anchored in elements of both the string and f-structure and recursive subderivations in a stack do not share the same anchors.  For parsing this condition improves on the original prohibition of derivations with nonbranching dominance chains but applies to the generation problem as well.
+
+The proper anchoring condition is strong enough to ensure decidability but we show that it is not strong enough to guarantee tractability.  Tractability for recognition and realization is the computationally important property of the $k$-bounded LFG grammars and derivations. These grammars are in the class of mildly context-sensitive grammars, even though their derivations are not necessarily conservative.   The subclass of LFG grammars and derivations that meet the conditions of both proper anchoring and $k$-boundedness has attractive mathematical and computational properties and may serve as a better foundation for a formal theory of natural language syntax.
+
+
+\section*{Appendix A:  Other undecidable questions}
+
+In Section \ref{Undecidability} we used the descending attribute-chain string encoding \xref{encodingb} for arbitrary Chomsky Normal Form context-free grammars to prove the undecidability of the realization problem. We apply that same encoding here to show that several more specific properties are undecidable for unrestricted LFG grammars. The start rule \xref{tool} follows the pattern laid out earlier in \xref{gen}.  It denotes the ends of the $S_1$ and $S_2$ substrings as $E_1$ and $E_2$ respectively and includes a place-holder $P$ for grammatical fragments that we will use to encode other decision problems.  As noted before, there are no atomic values and therefore no atom-value clashes in the attribute-chain string encodings, and the set of derivations can only be filtered by properties spelled out in $P$.
+
+\ea\label{tool}
+\small\rcat S \rarrow 
+                              \rcat{S$_1$\\ \assign l\\ \ducopy bb \\ \ducopy e{e$_1$}}
+                              \rcat{S$_2$\\ \assign r\\ \ducopy bb \\ \ducopy e{e$_2$}}
+                              \hsp{1em}
+                              \rcat{$P$}
+ \z
+
+\noindent If any realization of $P$ expresses a particular property that is satisfied only if $F(G)$ contains f-structures with equal \attr{E$_1$} and \attr{E$_2$} values, then that property must be undecidable.  
+
+As a first example, the alternative annotations on the terminal \#  in \xref{eqc} shows that it is undecidable whether a minimal model satisfies either defining or constraining equalities between two f-structure units.
+
+\ea\label{eqc}
+\small S \rarrow     \rcat{S$_1$\\ \assign l\\ \ducopy bb \\ \ducopy e{e$_1$}}
+                              \rcat{S$_2$\\ \assign r\\ \ducopy bb \\ \ducopy e{e$_2$}}
+                              \rcat{\#\\ \bigset{
+                                                         \uucopy {e$_1$}{e$_2$}\\
+                                                         \eqc {\ugf {e$_1$}} {\ugf {e$_2$}}\\
+                                                         \negeq {\ugf {e$_1$}} {\ugf {e$_2$}}
+                                                         }
+                                      }
+\z
+
+\noindent  The function assignments on X and Y in \xref{eqdaughters} show that it is  in general undecidable whether there are derivations with nodes that $\phi$ maps to the same f-structure. 
+
+\ea\label{eqdaughters}
+\small S \rarrow    \rcat{S$_1$\\ \assign l \\ \ducopy bb \\ \ducopy e{e$_1$}}
+                              \rcat{S$_2$\\ \assign r \\ \ducopy bb \\ \ducopy e{e$_2$}}
+                              \rcat{X\\ \assign {e$_1$}\\
+                                            \uucopy {e$_1$}{e$_2$}}
+                              \rcat{Y\\ \assign {e$_2$}}
+\z
+\noindent It follows from this that any other property that depends on nodes mapping to the same f-structure is also undecidable.  
+
+Thus, expanding the nonterminals X and Y with the rules (\ref{XY}a) shows that the satisfiability of existential constraints or constraints between atomic values is undecidable and, as a consequence, that Completeness and Coherence are also undecidable.  The annotations (\ref{XY}b) establish that it is undecidable whether an arbitrary LFG grammar gives rise to cyclic f-structures, and (\ref{XY}c) shows that functional control annotations cannot decidably be reduced to combinations of function assignments and daughter-mother controls.
+
+\ea\label{XY}
+\begin{tabular}[t]{@{\hspace{.5em}}ll@{\hspace{3em}}l}
+a. &  \small X \rarrow  \rcat{$x$\\ \uval fv}
+    &  \small Y \rarrow \rcat{$y$\\
+                                           \bigset{ \ugf f\\
+                                                        \negexist {\ugf f}\\
+                                                        \eqc{\ugf f} v\\
+                                                        \negeq {\ugf f} v }}
+              \vspace{1.5ex}\\
+b. &  \small X \rarrow  \rcat{$x$\\ \fcontrol fgh}
+    &  \small Y \rarrow  \rcat{$y$\\ \uucopy fh}\vspace{1.5ex}\\
+c. &  \small X \rarrow   \rcat{$x$\\ \fcontrol fgh}
+    &  \small Y \rarrow   \rcat{$y$\\ \assign f}
+\end{tabular}
+\z
+
+
+\section* {Appendix B:  Emptiness of $k$-bounded LFG grammars}
+
+We sketch here the proof that the complexity of the emptiness problem for an arbitrary $k$-bounded LFG grammar $G$ is polynomial in $|G|$, the size of its rule set.  The argument makes use of the three grammar transformations listed in \xref{transformations}.  Each of these can be carried out in polynomial time, as indicated below, and each guarantees that $G$ and the transformed grammar $G'$ are \textit{co-empty}, that is, that the set of derivations \mb{\Delta_G=\emptyset} if and only \mb{ \Delta_{G'}=\emptyset}.   
+
+\ea\label{transformations}
+\ea\label{trivialremoval} \trivial removal:  For any $k$-bounded LFG grammar $G$ there is a co-empty \trivial-free $k$-bounded grammar \Gminus.
+\ex\label{zipperremoval}
+    Zipper removal:  For any \trivial-free $k$-bound LFG grammar $G$ there is a co-empty 1-bounded (zipper-free) LFG grammar $G^z$.\footnote{Unlike the transformations that are often used in proofs of other formal-language properties, zipper removal does not preserve the language $L(G)$: the grammars $G$ and $G'$ generally are not weakly equivalent.} 
+\ex\label{annotationremoval}
+   Annotation removal:  For any 1-bounded LFG grammar $G$ there is a co-empty annotation-free grammar $G^a$, and $G^a$ is context-free.
+\z\z
+
+\noindent Applying these transformations in sequence to an arbitrary $k$-bounded LFG grammar $G$ results in a co-empty context free grammar \mb{G^*\!=\Gminus{^{,z,a}}} whose size $|G^*|$ is a polynomial function of $|G|$. The string-set \mb{L(G)=\emptyset} if and only if the context free language \mb{L(G^*)=\emptyset}, and this can be determined by the well-known emptiness algorithm for context free grammars, which is polynomial in the size of the grammar. 
+
+\def\Vbar{\mbox{$\overline{\textrm{V}}$}\xspace}
+\def\VPbar{\mbox{$\overline{\textrm{VP}}$}\xspace}
+
+For \xref{trivialremoval}, the \trivial annotations in an arbitrary $k$-bounded grammar $G$ are eliminated by replacing each \trivial-annotated category in one rule with the right-side of each of the rules that expand that category. Let $R$ be the smallest set that includes the rules of $G$ and is closed under the convention \xref{trivR}. In this template $\delta$, $\theta$, and $\psi$ are strings of annotated categories, and $\alpha$ may be a set of annotations with \up substituted for \down.
+
+\ea\label{trivR}
+If $R$ contains rules of the form\\
+\hsp{2em} A \rarrow \mb{\delta\  \rcat{B\\[-1ex]\trivial\\[-1ex]$\alpha$}\hsp{-.3em}\theta}
+                       \hsp{.75em}and\hsp{.75em}
+                 B \rarrow $\psi$\\
+then $R$ also contains the rule A \rarrow \mb{\delta\ \rcat{$\psi$\\[-1ex]$\alpha$}\hsp{-.3em}\theta}
+\z
+
+\noindent The \trivial-free grammar \Gminus is constructed by removing from $R$ any rules with \trivial annotations. Note that a replacement sequence can never be longer than the limit on the number of nodes in a functional domain, the parameter $h$ of condition \xref{conditions-height}.  As a consequence, the growth of the grammar is bounded by a polynomial in $|G|$. Moreover, the resulting grammar \Gminus accepts exactly the same strings as $G$ and assigns them the same f-structures, although with c-structures that are not as deep.
+
+For \xref{zipperremoval}, the rules of a zipper-free 1-bounded grammar are created from sets of up to $k$ rules of a \trivial-free $k$-bounded grammar $G$. The zipper daughters, occurrences of right-side categories with the same function assignments, are replaced with a single new daughter labeled by the concatenation (notated with $\cdot$) of the labels of the zipper daughters and annotated with the union of the zipper-daughter annotations. Let $R$ now be the smallest set that includes the rules of a \trivial-free grammar $G$ and is closed under the following:
+
+
+\ea\label{zipR}
+\ea\label{zipRk} If \mb{\textrm{A}_1 \rarrow \delta_1,\  ...,\  \textrm{A}_j \rarrow \delta_j}  \ \    \mb{(1\leq j\leq k}) \ \ are rules in $R$,\\[1ex]
+ \hsp{1em}then $R$ also contains the rule \mb{\textrm{A}_1\cdot ... \cdot \textrm{A}_j \rarrow \delta_1\  ...\  \delta_j}\vspace{1ex}
+ 
+\ex\label{zipR1}  If $R$ contains a rule of the form\\
+\hsp{2em}  A \rarrow  \mb{\ \delta\  \rcat{B$_1$\\[-.5ex]\assign f\\[-1ex]$\alpha_1$} \theta\ \  \rcat{B$_2$\\[-.5ex]\assign f\\[-1ex]$\alpha_2$} \psi}\\
+\hsp{1em}then $R$ also contains the rule
+                  A \rarrow  \mb{\rcat{\mb{\textrm{B}_1\cdot\textrm{B}_2}\\[-.5ex]\assign f\\[-1ex] $\alpha_1\ \ \alpha_2$}\hsp{-.3em}\delta\ \  \theta\  \ \psi}
+\z \z
+
+\noindent The zipper-free grammar $G^z$ is then created by removing from $R$ any rule with multiple assignments for the same function or with annotations that are locally unsatisfiable. Local (within-rule) satisfiability of a rule with $n$ daughters is tested by instantiating all metavariables with distinct constants \mb{b_0,b_1,...,b_n} that stand for a putative mother node and its daughters.  $b_0$ is substitute for \up in all annotations and $b_i$ is substituted for \down in the annotations of the $i^{th}$ daughter.  The local f-description thus created is then solved using standard deductive-closure techniques.
+
+The size of a zipper-free grammar $G^z$ is exponential in $k$ but polynomial in $|G|$, because there are at most $|G|^k$ rule combinations that must be considered. For every derivation in $G$ of a string $s$ with discontinuous subtrees for a particular grammatical function there is a corresponding derivation in $G^z$ that assigns the same f-structure to a string $s^z$.  The two strings contain the same words but not necessarily in the same order:  the words are permuted so that the words of discontinuous subtrees for $s$ are contiguous in $s^z$. 
+
+\def\decor#1{\\[-.75ex]\footnotesize\avm{[#1]}\vspace{.5ex}}
+
+The annotation-removal transformation \xref{annotationremoval} is based on the fact that atomic values in a 1-bounded grammar can only propagate between mothers and daughters within a single subtree. This is because, by definition, there are no nodes $n$ and $n'$ in separate subtrees with \mb{\phi(n)=\phi(n')}. Atomic values in sister subtrees may have different values for a particular feature, but that can only result in an overall unsatisfiable f-description if annotation chains relative to a common mother put them in contact.  Chains of atom-value annotations carried by the categories of a 1-bounded LFG derivation can be simulated by an elaborated set of refined c-structure categories in a corresponding annotation-free derivation.  An annotation-free derivation is context-free and will fail if and only if the f-description for the 1-bounded LFG derivation is unsatisfiable.
+
+The \trivial-free and zipper-free rules in \xref{hewalks} provide the derivation (\ref{refined}a) for the sentence \sent{He walks.}
+
+\ea\label{hewalks}\small
+S \rarrow \rcat{NP\\\assign {subj}\\\dval {case}{nom}}\hsp{-.5em} \rcat {\term{walks}\\\predsfa {walk}{subj}\\\uval {tense}{pres}\\\uval {subj num}{sg}}
+\hsp{3em}
+NP \rarrow \rcat{\term{he}\\\predsfna{pro}\\\uval{gend}m\\\uval{num}{sg}\\\uval{case}{nom}}
+\z
+
+\noindent The f-description is satisfiable because the case assigned to the subject NP matches the case of \sent {he}, and the subject's number, entailed by the combination \assign {subj} and \uval {subj num}{sg}, also matches the number of \sent{he}. The connection between the S and NP feature annotations is simulated by the refined NP category in (\ref{refined}b).
+
+\ea\label{refined}
+a. \hsp{-.5em}{\small
+\begin{forest}
+[\treenodesub S{root}{} [\treenodesub{NP}n1 [\treenodesub {\term{he}}n3 ]]
+    [\treenodesub{\term{walks}}n2 ]
+]
+\end{forest}}
+\hsp{1em}
+\evnup{\small
+\avm[style=fstr]{
+   {\nodecol{\\\\{root}}\hsp{.5em}[ subj & \nodecol{\\n_1}\hsp{-.3em}
+           [\rnode{f1}{}pred & \semformna {pro}\\
+                              gend & m\\
+                              num&sg\\
+                              case & nom]\\
+  pred & \semforma {walk}{subj}\\
+  \rnode{froot}{}tense & pres
+]
+}}}
+\hsp{2em}
+b.\hsp{-1.25em}
+{\small\begin{forest}
+[\treenode{S'}{[-1ex]\scriptsize$\emptyset$\,\,}[\treenode S{\footnotesize\avm{[\sval {pred}{\semforma{walk}{subj}}\\\sval{tense} {pres}\hsp{2.7em}]}} , for tree={s sep=-.1em,  inner sep=.5}
+    [\treenode{NP}{\footnotesize\avm{[\sval {pred}{\semformna{pro}}\\\sval{gend}m\ \ \ \ \ \\\sval{num} {sg}\ \ \ \ \ \\\sval {case}{nom}]}} [\treenode{he}{[-1ex]\scriptsize$\emptyset$}]]
+    [\treenode{walks}{[-1ex]\scriptsize$\emptyset$}]
+]]
+\end{forest}}
+\z
+
+
+\noindent Starting from a new category S', tree (\ref{refined}b) is the context free derivation provided by the category-refined, annotation-free rules in \xref{annofree}.
+\ea\label{annofree}\small
+\rcat{S'\\[-1ex]\scriptsize$\emptyset$\,\,} \hsp{-.2em}\rarrow \rcat{S\decor{\sval{pred}{\semforma{walk}{subj}}\\\sval{tense}{pres}\hsp{2.7em}}}\\[1ex]
+\hspace*{-2em}\rcat{S\decor{\sval{pred}{\semforma{walk}{subj}}\\\sval{tense}{pres}\hsp{2.7em}}} 
+\hsp{-.9em} \rarrow \rcat{NP\decor{\sval{pred}{\semformna{pro}}
+                                                       \\\sval{gend}m
+                                                       \\\sval{num}{sg}
+                                                       \\\sval {case}{nom}}} \!\rcat{walks\\[-1ex]\scriptsize$\emptyset$} \hsp{1.8em}
+\rcat{NP\decor{\sval{pred}{\semformna{pro}}
+                                                       \\\sval{gend}m
+                                                       \\\sval{num}{sg}
+                                                       \\\sval {case}{nom}}}\hsp{-.5em}\rarrow \ \ \rcat{he\\[-1ex]\scriptsize$\emptyset$}\hsp{-1em}
+\z
+
+\noindent Note that the c-structure derivation for the string \sent{Him walks} would have an unsatisfiable f-description. The corresponding category mismatch excludes a derivation with refined categories.
+
+\def\cm#1#2{$#1$:$#2$\xspace}
+For an arbitrary 1-bounded grammar $G$ the co-empty annotation-free grammar $G^a$ produces derivation trees whose nodes are labeled with refined categories of this form.  A refined category is a pair \cm cm consisting of a c-structure category label $c$ of $G$ together with a refinement matrix $m$ of atom-value feature specifiers \sval{p q r ...}v.  The feature specifiers simulate in a $G^a$ derivation the possible interactions of atomic values in the f-description of a corresponding $G$ derivation, as illustrated.  Importantly, \cite{wed:kap:20} show that a finite set of specifiers is sufficient to simulate all possible atom-value interactions.  These are the specifiers containing no more than $\mathscr l$ of $G$'s attributes, where $\mathscr l$ is the number of attributes in the longest atom-value assignment in $G$.
+
+Let $N$ be the smallest set of refined categories and let $R$ be the smallest set of refined rules, rules with refined-category labels, that are closed under the following conditions (see \cite{wed:kap:20} for additional technical details).
+
+\ea\label{refinedconditions}
+\ea\label{rc1} If S is the start symbol of $G$ and $S'$ is a category distinct from other $G$ categories, $N$ contains S:$\emptyset$ and S':$\emptyset$ and $R$ contains \mbox{S':$\emptyset$\rarrow S:$\emptyset$}.
+
+\ex\label{rc2} If $term$ is a terminal symbol of $G$, $N$ contains  \cm {term}\emptyset. 
+
+\ex\label{rc3} If $r$ is a refinement of a rule $A_0$ \rarrow \rcat{$A_1$\\[-1ex]$\alpha_1$}\hsp{-.5em}... \rcat{$A_n$\\[-1ex]$\alpha_n$} \hsp{-.7em} of $G$ with a sequence of refined categories
+\mbox{\cm {A_0}{m_0}, ..., \cm {A_n}{m_n}} in $N$, then $R$ contains $r$ and $N$ contains the refined categories of $r$.
+\z\z
+
+\noindent The refinement of a rule $A_0$ \rarrow \rcat{$A_1$\\[-1ex]$\alpha_1$}\hsp{-.5em}... \rcat{$A_n$\\[-1ex]$\alpha_n$} \hsp{-.7em} of $G$ with a sequence of refined categories \mbox{\cm {A_0}{m_0}, ..., \cm {A_n}{m_n}} is produced by instantiating the \up and \down metavariables with distinct mother-daughter constants \mb{b_0,b_1,...,b_n}, as above, but also including in the local f-description atom-value equations instantiated from the feature-specifier matrices.  The additional equations are created by substituting $b_i$ for all of the asterisks in each $m_i$. A refined rule $r$ is constructed if this augmented f-description is satisfiable.  Each category $A_i$ in the original $G$ rule (including the mother category) is replaced by a refined category \cm{A_i}{m'_i} where the feature specifiers of $m'_i$ are formed by substituting * for $b_i$ in each length-limited atom-value equation \nval{b_i}{p q r...}v that the f-description entails. The newly refined categories are added to $N$. 
+
+The annotation-free grammar $G^a$ is then constructed in the following way.  S':$\emptyset$ is its starting category, its terminals categories are of the form \sent{term}:$\emptyset$ for each terminal \sent{term} of $G$, and its context-free rules are constructed from the refined rules in $R$ by using standard context-free algorithms to eliminate useless rules, those that cannot participate in successful derivations, and then removing their functional annotations. The context-free derivations in $G^a$ correspond to all and only the c-structures of $G$ with satisfiable f-descriptions.  Because the feature specifiers in a refined category are limited in length by the grammar parameter $\mathscr l$, $|G^a|$ is only polynomially larger than $|G|$ and its emptiness can be determined in polynomial time. We also note that if the annotations are not removed from the useful rules of $R$, the set of f-structures for a grammar with those still-annotated rules will be exactly the f-structures of $G$.  
+ 
+\section*{Acknowledgments}
+
+This chapter has benefited from helpful comments and suggestions from John Maxwell, Mary Dalrymple, and three anonymous reviewers.
+
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}

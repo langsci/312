@@ -1,0 +1,1087 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10185942}
+\title{Agreement}
+\author{Dag Haug\affiliation{University of Oslo}}
+\abstract{This chapter surveys the treatment of agreement in LFG. We   show how theories of agreement can be classified by how they use   symmetry and feature sharing in their treatments and how LFG usually   opts for a symmetric but not feature sharing account. Other topics   include the \NINDEX/\CONCORD distinction, how non-f-structure such as   linear order and information structure impacts on agreement,   long-distance agreement and Wechsler's Agreement Marking Principle.}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[6]%%chapternumber
+}{}
+
+\begin{document}
+\maketitle
+\label{chap:Agreement}
+
+\section{Introduction}
+
+\emph{Agreement} is the linguistic phenomenon whereby a set of features
+is realized morphologically on two different syntactic tokens, as we see in (\ref{ex:Agreement:1}).
+
+\ea\label{ex:Agreement:1} The boy loves the girl.  \z Both the word \textit{boy} and the
+word \textit{loves} realize a singular number feature.\footnote{We are
+relying here on an inferential, realizational view of morphology
+whereby \textit{boy} is morphologically singular even if there is no
+singular morpheme.} However, this feature is only meaningful on
+\textit{boy}, where it indicates that that the noun phrase refers to a
+single boy; \textit{loves} merely agrees, in this case with its
+subject. Agreement is therefore a directed phenomenon: the
+\textit{controller} (`boy') has a set of meaningful features and the
+\textit{target} (`loves') agrees with these.
+
+``Meaningful'' must be taken with a grain of salt. We can also have
+agreement in purely syntactic features such as \textsc{case} or in
+features that are inherent in the controller but do not carry any
+obvious meaning, such as \textsc{gender}. But even in such cases, we
+observe directionality. Consider (\ref{ex:rosaspinosa}) from Latin.
+
+\ea\label{ex:rosaspinosa} Latin\\
+\gll rosa spinosa floruit\\
+rose:\textsc{nom;f;sg} thorny:\textsc{nom;f;sg} bloomed:\textsc{pst;3sg}\\
+\glt `The thorny rose bloomed.'
+\z
+%
+The nominative case feature that is realized on \textit{rosa} and
+\textit{spinosa} is only meaningful on \textit{rosa} because it
+indicates the grammatical function (subject) of the noun phrase. By
+contrast the grammatical function (adjunct) of \textit{spinosa} is
+given by the fact that its case agrees with that of its head, rather
+than by a specific case feature: if the NP was in object position
+instead, the case of \textit{rosa} would change because the
+grammatical function of the noun phrase would change; and the case of
+the adjective \textit{spinosa} would also change, despite its
+grammatical function as adjunct remaining the same. Finally, the
+feminine gender feature in (\ref{ex:rosaspinosa}) is an inherent, purely formal
+property of the controller: it does not provide any information about
+the syntactic function or the meaning of the noun phrase headed by
+\textit{rosa}, but is a non-variable feature of \textit{rosa} which is
+part of the information conveyed by the lexeme. By contrast, the
+adjective \textit{spinosa} inflects for this feature and can assume
+other gender features, depending on the inherent gender of its
+controller.
+
+There are three main areas where languages display agreement phenomena. First, there is agreement in predicate-argument structures, where one or more arguments typically act as controllers and the predicate is the target. Second, we observe agreement inside NPs, where typically the head noun controls agreement on targets like determiners, quantifiers, adjectives and other modifiers. Third, we have “anaphoric agreement” between anaphors and antecedents. The latter type of agreement has attracted little attention in LFG work and will consequently largely be ignored here, except that it is relevant as a diachronic source of predicate-argument agreement.
+
+In \sectref{sec:symmetry}, we show how theories of agreement can be classified by how they use symmetry and feature sharing in their treatments. In \sectref{sec:indexconcord} we discuss the \textsc{index}/\textsc{concord} distinction that is drawn in much LFG work on agreement. While agreement is generally treated at f-structure in LFG, \sectref{sec:outsidef} discusses how linear order and information structure impacts on agreement. \sectref{sec:diachrony} discusses the diachrony of agreement markers. \sectref{sec:domains} discusses long-distance agreement, a phenomenon which suggests there may be a role for feature sharing in agreement to preserve syntactic locality. Finally, \sectref{sec:agreementmarking} discusses Wechsler's Agreement Marking Principle, which is a challenge to symmetric accounts of agreement. 
+
+\section{Agreement in unification grammars} \label{sec:symmetry}
+The basic treatment of agreement in unification-based grammars is very
+straightforward as we simply need to make sure that the relevant
+features of the controller and the target unify. This is usually done
+by specifying functional descriptions that put the features in the
+same position in the functional structure, namely that of the
+controller. The specifications of (\ref{ex:rosaspinosa}) are shown in (\ref{ex:f-descriptions}) and
+yield the f-structure in (\ref{ex:bloomingrosef}). Only relevant features are shown.
+
+\ea\label{ex:f-descriptions}
+\lexentry{rosa}{(\UP\ \textsc{pred}) = \textsc{`rose'} \\
+                 (\UP\ \textsc{num}) = \textsc{sg} \\
+                 (\UP\ \textsc{case}) = \textsc{nom} \\
+                 (\UP\ \textsc{gend}) = \textsc{fem}} \\
+\lexentry{floruit}{(\UP\ \textsc{pred}) = \textsc{`bloom$<$subj$>$'} \\
+                (\UP\ \textsc{subj num}) = \textsc{sg} \\
+                (\UP\ \textsc{subj case}) = \textsc{nom} \\
+                (\UP\ \textsc{subj pers}) = \textsc{3}} \\
+\lexentry{spinosa}{(\UP\ \textsc{pred}) = \textsc{`thorny'} \\
+                ((\textsc{adj} $\in$ \UP) \textsc{num}) = \textsc{sg} \\
+                ((\textsc{adj} $\in$ \UP) \textsc{case}) = \textsc{nom} \\
+                ((\textsc{adj} $\in$ \UP) \textsc{gend}) = \textsc{fem}}
+\z
+%
+\eabox{\label{ex:bloomingrosef}
+{\avm[style=fstr]{
+  [pred & `bloom\arglist{subj}'\\
+    subj & [pred & `rose'\\
+      num & sg\\
+      case & nom\\
+      gend & fem\\
+      pers & 3\\
+      adj & \{ [ pred & `thorny' ] \} ] ] }}
+}
+%
+In this approach to agreement, there is \emph{symmetry} between the
+controller and target features in that it does not matter whether a
+feature value originates from a functional description associated with
+the controller or the target or both. However, agreement features are
+\emph{not} shared (in the technical sense of structure sharing in
+f-structures), but only represented in a single position in the
+f-structure, that of the controller, reflecting the directedness of
+agreement. It is this symmetric, yet not feature-sharing approach to agreement that gives the standard LFG analysis its specific flavor, different from analyses that are often found in the
+derivational tradition starting from \citet{Pollock:89} and in HPSG \citep[chapter~2]{pollard1994head-driven}.
+
+In current derivational approaches, controller features are
+inter\-pret\-able and target features are un\-inter\-pret\-able. The Agree
+mechanism matches un\-inter\-pret\-able features to their interpretable
+counterparts and deletes them. If uninterpretable features remain, the
+derivation crashes. Hence all target features must be available on the
+controller. But in Latin, which is a pro-drop language, this forces us
+to postulate several null subjects differing only in their
+interpretable \textsc{pers} and \textsc{num} values, merely to check
+off the matching uninterpretable features on the verb. The same point
+is made by \citet{Barlow:PhD} and \citet[64]{pollard1994head-driven}. Pollard and
+Sag give the Polish examples in (\ref{pro-dropagreement}), where the verb would be assumed to agree with a
+null subject.
+
+\ea\label{pro-dropagreement}Polish\\
+\begin{tabular}[t]{lll}
+  kocha\l{}em & kocha\l{}e\'{s} & kocha\l \\
+  I.{\M} loved & you.{\M} loved & he loved \\
+  kocha\l{}am & kocha\l{}a\'{s} & kocha\l{}a\\
+  I.{\F} loved & you.{\F} loved & she loved \\
+\end{tabular}
+\z
+%
+To maintain an asymmetric view of agreement, we are essentially forced
+to assume that the examples in (\ref{pro-dropagreement}) involve a multiplicity of
+phonetically null pronominals, one for each distinct form of the
+verb.
+
+By contrast, on the standard LFG analysis, target features can themselves
+provide information. Going back to the Latin example from
+(\ref{ex:rosaspinosa}), we would get the f-structure in (\ref{ex:bloomingrosepro}) if the
+subject is pro-dropped to give the simple sentence \textit{floruit} `It blooms'.
+
+\eabox{\label{ex:bloomingrosepro}
+{\avm[style=fstr]{
+    [pred & `bloom\arglist{subj}'\\
+    subj & [ pred & `pro'\\
+      num & sg\\
+      case & nom\\
+      pers & 3 ]]}}
+}
+%
+This f-structure arises directly from the f-descriptions of
+\textit{floruit} in (\ref{ex:f-descriptions}) plus an optional
+description (\UP\SUBJ\PRED) = \textsc{`pro'} associated with the
+verb. The \textsc{num, case} and \textsc{pers} features are specified
+by the target (the verb) directly, with no need for matching features
+on the null subject, so that we do not need to multiply covert
+elements.  Few LFG practitioners have therefore adopted an asymmetric
+mechanism for matching target and controller features, although the
+LFG framework offers such a mechanism in the form of constraining
+equations. Nevertheless, we will see in \sectref{sec:indexconcord}
+that some theories of feature indeterminacy and coordination actually
+require the use of constraining equations, at least to deal with
+feature resolution. More substantially, \citet{Wechsler:Mixed} has
+argued that absence of controller features has grammatical
+effects. This requires a deeper commitment to asymmetry. We discuss
+his proposal in \sectref{sec:agreementmarking}.
+
+While it contrasts with Minimalism in that target and controller
+features are taken to be symmetric, the standard LFG treatment also
+differs from an approach that is often seen in HPSG based on
+structure sharing of the agreement features between the target and the
+controller. In an LFG setting, we could get such an analysis e.g. by
+embedding agreement features in a feature \textsc{agr} to be structure
+shared between the target and the controller. This would yield the
+f-structure in (\ref{ex:bloomingrosef:shared}) instead of (\ref{ex:bloomingrosef}), if we assume
+that both predicate-argument agreement and NP-internal agreement
+involve structure sharing.
+
+\eabox{\label{ex:bloomingrosef:shared}
+{\avm[style=fstr]{
+    [ pred & `bloom\arglist{subj}'\\
+      agr & \rnode{t1}{\strut}\\
+      subj & [ pred & `rose'\\
+        agr & \rnode{c}{[num & sg\\
+                         case & nom\\
+                         gend & fem\\
+                         pers & 3]}\smallskip\\
+        adj & \{ [ pred & `thorny'\\
+                agr & \rnode{t2}{\strut} ] \} ] ] }
+     \CURVE[2]{-2pt}{0}{c}{0pt}{0}{t2}
+     \CURVE[2]{-2pt}{0}{c}{0pt}{0}{t1}}
+}
+Within the HPSG tradition, \textcite{Kathol:Agreement} argues for such
+an approach. His main argument is that in many cases, target and
+controller morphology is arguably ``the same'' (such as the
+-\textit{a} ending in \textit{ros-a} and \textit{spinos-a}). This is
+particularly common in noun phrase-internal agreement, but
+occasionally happens also in predicate-argument agreement, cf. (\ref{swahili}).
+
+\ea\label{swahili}Swahili (\citealt[ex. 14]{Kathol:Agreement}, originally from \citealt[171]{Welmers1973})
+\ea\label{swahili1}
+\gll\textbf{Ki}kapu \textbf{ki}kubwa \textbf{ki}moja \textbf{ki}lianguka.\\
+basket large one fell\\
+\glt`One large basket fell.'
+\ex\label{swahili2}
+\gll\textbf{Vi}kapu \textbf{vi}kubwa \textbf{vi}tatu \textbf{vi}lianguka.\\
+baskets large three fell\\
+\glt`Three large baskets fell.'
+\z\z
+%
+In such cases, although the morphology is the same, it has to
+contribute different functional descriptions in the various positions, because the agreement
+construction is built into the equations. By contrast, if we assume
+structure sharing, the mapping from morphology to functional
+descriptions becomes uniform: \textit{-a} in Latin and
+\textit{ki-} in Swahili always contribute their features to the
+\textsc{agr} feature structure of the item where they are realized,
+and agreement will be captured by requiring structure sharing of
+\textsc{agr} structure in the appropriate configurations.
+
+We can assume that all agreement works in this way, but since
+morphological identity of target and controller features is much more
+common in noun phrase-internal agreement, it is possible to assume
+feature sharing only here and not in predicate-argument agreement. This is
+illustrated in (\ref{ex:bloomingrosef:halfshared}).
+
+\eabox{\label{ex:bloomingrosef:halfshared}
+\avm[style=fstr]{
+    [ pred & `bloom\arglist{subj}'\\
+      subj & [ pred & `rose'\\
+        agr & \rnode{c}{[num & sg\\
+                         case & nom\\
+                         gend & fem\\
+                         pers & 3]}\smallskip\\
+        adj & \{ [ pred & `thorny'\\
+                agr & \rnode{t2}{\strut} ] \} ] ] }
+     \CURVE[1.8]{-2pt}{0}{c}{0pt}{0}{t2}
+} The \textsc{agr} feature bundle is structure shared inside the NP
+but not between the verb and the NP. This is the option taken in much
+HPSG work, e.g. \citet{pollard1994head-driven} and
+\citet{WechslerZlatic:Agreement2003}. It is natural to connect this
+difference to the \textsc{index/concord} distinction that we discuss
+in \sectref{sec:indexconcord}: on that view, the \textsc{agr}
+feature of (\ref{ex:bloomingrosef:halfshared}) will be split in two feature bundles,
+\textsc{concord} (typically relevant for NP-internal agreement) and
+\textsc{index} (typically between predicates and arguments) and we can
+assume that only \textsc{concord} agreement involves structure
+sharing.\footnote{Note that \citet[145]{WechslerZlatic:Agreement2003}
+say that ``subject-verb agreement\dots is modeled in terms of
+structure-sharing'', although it is clear from
+\citet[21]{WechslerZlatic:Agreement2003} that they do not assume the
+verb bears its own person and number features. I assume that
+``structure sharing'' is used loosely here in the sense of cospecification of
+features.}
+
+Kathol's argument is essentially an architectural argument about how
+to best capture the morphology-syntax interface. It has not been
+picked up in the LFG tradition. The most explicit work on the topic,
+\textcite[Chapter 12]{DLM:LFG} assumes the traditional
+LFG approach and consequently postulates complex so-called m-features
+(morphological features that are to be mapped to functional
+descriptions). That is, a first person plural form of the verb is
+associated with the m-feature in (\ref{ex:Agreement:11}).
+
+\ea\label{ex:Agreement:11} \textsc{m-agr}:$\langle$\textsc{agr(su):\{pers:1, num:pl\}}$\rangle$
+\z
+%
+The form, then, carries information not just about the features it
+contributes (first person and plural number) but also \emph{where} it
+contributes those features (in this case, to the subject). Therefore,
+there cannot be a uniform representation of -\textit{a} in
+\textit{ros-a} and \textit{spinos-a} (or \textit{ki-} and \textit{vi-}
+in \ref{swahili}), since they contribute the same
+feature to \emph{different} locations. In a structure sharing account
+we \emph{can} have a uniform representation (of the relevant morphemes
+or paradigmatic inferences, depending on your view of morphology),
+where e.g. \textit{-a} is simply associated with nominative,
+singular, feminine features and the feature sharing that forces
+agreement stems from the relevant agreement construction. But as
+(\ref{ex:Agreement:11}) shows, we do not \emph{need} structure sharing: we can capture
+the same facts without it, but at the cost of a (slight) complication
+of the morphology-syntax interface.
+
+\hspace*{-2pt}In addition to the architectural issue, the structure sharing approach
+also makes different empirical predictions in some cases, because the
+same syntactic position can be simultaneously target and controller for
+two different agreement processes involving the same feature and hence
+give rise to so-called long distance agreement. We return to this in
+\sectref{sec:domains}.
+
+To sum up, the standard LFG treatment is symmetric but not feature-sharing: it
+is based on features contributed by defining equations from
+(potentially) several sources (the controller and one or more targets)
+to a single syntactic position. While there has been little pressure to
+change this except for special constructions, the complexities of
+agreement phenomena cross-linguistically has led to expansions in many
+different directions.
+
+\section{\textsc{index, concord} and coordination}\label{sec:indexconcord} 
+%
+It is possible for nominal controllers to trigger different values for
+the same feature on different targets, as in the Serbo-Croatian example (\ref{ex:indexconcord}) from \citet[5]{WechslerZlatic:Agreement2003}.
+
+\ea\label{ex:indexconcord}Serbo-Croatian\\
+\gll Ta dobra deca su došla.\\
+that:\textsc{f;sg} good:\textsc{f;sg} children:(\textsc{f;sg}) \textsc{aux;3pl} come:\textsc{prf;ptcp;n;pl}\\
+\glt `Those good children came.'
+\z
+Here the noun \textit{deca} `children' triggers feminine singular
+agreement on the determiner and the adjective, but neuter plural
+agreement on the predicate.\footnote{Note, though, that the feminine singular and the neuter plural are syncretic in Serbo-Croatian. See \textcite{Alsina:Two,Alsina:Third} and \textcite{Wechsler:Wrong} for discussion.}  Such examples require that we postulate
+two different bundles of agreement features, generally called
+\textsc{index} and \textsc{concord}
+\citep{pollard1994head-driven,Kathol:Agreement,WechslerZlatic:Agreement2003}. Both
+\textsc{index} and \textsc{concord} are syntactic features, modelled
+at f-structure in LFG, but the intuition is that \textsc{index}
+features are more closely related to semantics and are the ones that are
+related to the reference of a noun phrase, typically \textsc{gender,
+  person} and \textsc{number} (but not \textsc{case}). By contrast, \textsc{concord} features
+are more closely related to morphological class and typically include
+\textsc{gender, number} and \textsc{case} (but not \textsc{person}). According to
+\textcite{Wechsler:Mixed} this division reflects the historical origin
+of the morphology on the agreement targets, which typically comes from
+incorporated pronouns in the case of \textsc{index} agreement, but
+from nominal classifiers (and other sources) in the case of
+\textsc{concord} agreement. \textsc{concord} and \textsc{index} are
+also different in that \textsc{concord} agreement is generally found
+inside NPs whereas \textsc{index} features are typically relevant to
+predicate-argument agreement.
+
+Since \textsc{gender} and \textsc{number}
+are present both in \textsc{index} and \textsc{concord}, they may take
+different values in those contexts and that is what happens in
+(\ref{ex:indexconcord}). The f-structure for \textit{ta dobra deca} in
+this example is shown in (\ref{ex:tadobradeca}).
+
+\eabox{\label{ex:tadobradeca}
+{\avm[style=fstr]{
+    [concord & [ gend & fem \\
+                 num & sg \\
+                 case & nom ] \\
+     index & [ gend & neut \\
+                 num & pl\\
+                 pers & 3 ]]}}
+}
+%
+It is worth pointing out that although \textsc{index} is in some sense
+“closer” to the semantics than \textsc{concord}, both are syntactic
+features, represented at f-structure. In addition to these two kinds
+of agreement it is necessary to postulate a third, semantic/pragmatic
+kind of agreement. This is particularly common in pronoun-antecedent
+agreement. For example, the Serbian/Croatian diminutive noun
+\textit{devoj\v{c}e} `girl' may be referred to with a neuter pronoun
+(reflecting its \textsc{index gend} feature), or with a feminine
+pronoun, reflecting the meaning of its anteceedent.
+
+Much work in LFG uses representations like (\ref{ex:bloomingrosef}) as
+a simplification when the \textsc{index/concord} distinction is not
+relevant, but actual work on agreement has generally assumed the
+distinction. However, \textcite{Alsina:Two,Alsina:Third} argued
+against having two sets of syntactic agreement features. For
+counterarguments defending the \textsc{index/concord} distinction, see
+\textcite{Wechsler:Wrong} and \textcite{Hristov:LFG13}.
+
+While some words like \textit{deca} appear to be lexically specified
+with dif\-ferent \textsc{index} and \textsc{concord} features, another
+important motivation for the distinction comes from different
+behaviour in coordinate structures. Consider (\ref{ex:Agreement:14}) from \citet[36]{belyaev-etal2015}
+
+\ea\label{ex:Agreement:14}
+This/*These man and woman are/*is eating sushi.
+\z
+The coordinate noun phrase in (\ref{ex:Agreement:14}) consists of two singular
+nouns. The determiner must agree in singular number with each of these
+nouns, whereas the predicate must agree in plural number with the
+coordination as a whole. This indicates that \textsc{concord num},
+relevant for NP-internal agreement, is singular, but \textsc{index
+  num}, relevant for predicate agreement, is plural.
+
+To derive this \textsc{concord/index} distinction in number,
+\textcite{kingdalrymple04} proposed that \textsc{index} features are
+nondistributive, i.e. they are features not just of the individual
+conjuncts but also of the conjunction as a whole, based on rules of
+feature resolution; whereas \textsc{concord} features are
+distributive, i.e. properties of the individual conjuncts but not of
+the conjunction as a whole. That is, a conjunction of two singular NPs
+such as \textit{man and woman} cannot trigger a plural determiner
+(\textit{*These man and woman}) because the determiner agrees in
+\textsc{concord}.  However, it does trigger plural number agreement on the
+verb (if it is the subject) because the conjunction as a whole has a
+\textsc{num pl} feature in the \textsc{index}, different from the
+singular feature of the two conjuncts, as shown in (\ref{ex:Agreement:15}).
+
+\eabox{\label{ex:Agreement:15}
+\avm[style=fstr]{
+  [ index & [num & pl]\\
+    \{ [ pred & `woman'\\
+      concord & [num & sg]\\
+      index & [num & sg ]] & 
+     [ pred & `woman'\\
+      concord & [num & sg]\\
+      index & [num & sg ]] \} ]}
+  }
+This raises the question of how the features of a coordination are
+related to those of the conjuncts. The distinction between
+distributive and nondistributive features was originally introduced by
+\citet{DalrympleKaplan2000} who used set-valued features to model both
+indeterminacy and feature resolution in coordination. For example, the
+\textsc{person} feature is treated in terms of sets over the atomic
+markers $S$ (for ``speaker'') and $H$ (for ``hearer''). In a language
+like English or Spanish, with no exclusive/inclusive distinction in
+the first person plural, sets over these atoms are interpreted as in (\ref{ex:Agreement:16}).\footnote{The system of \citet{DalrympleKaplan2000} can also capture the first person exclusive as $\{S\}$ in languages where this is needed.}
+
+\ea\label{ex:Agreement:16}
+\begin{tabular}[t]{rl}
+  $\{S,H\}$ & first person \\
+  $\{H\}$ &  second person \\
+  $\{\}$ &  third person \\
+\end{tabular}
+\z
+On this interpretation, feature resolution corresponds to set union
+and can be encoded in the phrase structure rule for coordination as in
+(\ref{ex:Agreement:17}).
+
+\ea\label{ex:Agreement:17}
+\phraserule{NP}{
+  \rulenode{NP\\\UP=\DOWN\\(\DOWN\ \textsc{person}) $\subseteq$ (\UP\ \textsc{person})}
+  CONJ
+  \rulenode{NP\\\UP=\DOWN\\(\DOWN\ \textsc{person}) $\subseteq$ (\UP\ \textsc{person})}}
+\z
+Because the values in (\ref{ex:Agreement:16}) are ordered by set inclusion we get a
+hierarchy effect in resolution, where second and third person resolves
+to second person, and first and second/third person resolves to first
+person.
+
+It is worth pointing out that this requires the target features to be
+stated with a constraining equation as in the sample first person
+entry in (\ref{ex:Agreement:18}).
+
+\ea\label{ex:Agreement:18}
+(\UP\ \textsc{person}) $=_c \{S,H\}$
+\z
+If the target features were stated constructively, as in the standard
+approach, a first person verb would be compatible with the
+coordination of two second person forms, because the first person from would set the \textsc{person} feature to $\{S,H\}$ and each conjunct would simply check that $\{H\}$ is a subset of that. In other words, the set-based approach requires us to give up the symmetric approach to agreement and would therefore run into similar problems with e.g. pro-drop as other asymmetric approaches to agreement, as discussed above.
+
+Alternative accounts of feature resolution that are based on ordinary
+feature structures rather than sets seem at first sight not to require
+constraining equations. In particular, \citet{DKS:Indeterminacy}
+suggests using ordinary LFG features to encode what would be set
+membership in the analysis of \citet{DalrympleKaplan2000} and to deal with
+feature indeterminacy that way. \citet{Sadler:Underspecification}
+extends that approach to coordination. For example, in a language like
+Icelandic, where any coordination of nouns with different genders
+resolve to neuter gender, the set-based approach would assume values
+as in (\ref{ex:Agreement:19}).
+
+\ea\label{ex:Agreement:19}
+\begin{tabular}[t]{rl}
+  $\{M,F\}$ & neuter gender \\
+  $\{M\}$ &  masculine gender \\
+  $\{F\}$ &  feminine gender \\
+\end{tabular}
+\z
+This can be translated into standard feature structures by decomposing
+gender into two features, \textsc{m} and \textsc{f}, as follows.
+
+\ea
+\ea neuter gender: \avm[style=fstr]{[m & $-$\\f & $-$]}
+\ex masculine gender: \avm[style=fstr]{[m & $+$\\f & $-$]}
+\ex feminine gender: \avm[style=fstr]{[m & $-$\\f & $+$]}
+\z \z The resolution rule will then specify that for each gender feature, if all
+the conjuncts are $+$, the set is also assigned $+$; otherwise the set
+is assigned $-$. However, as it turns out, stating this resolution
+rule explicitly requires the use of constraining equations, namely an
+implicational constraint.\footnote{See \citet[640]{DLM:LFG} for a
+formalisation of the required resolution rule.} Still, the situation
+is different from the set-based solution in that the equations on both
+the target and on the controller conjuncts are constructive. It is
+only the resolution rule that makes use of constraining equations,
+suggesting that even in a declarative theory like LFG, feature
+resolution requires a procedural approach:\footnote{The use of constraining equations in LFG in general has been taken to be a ``dynamic residue that resists a purely declarative analysis'' \citep[44]{blackburn1995a-specification}.} first, we construct the
+conjuncts and then we can compute the features of the coordination.
+On the other hand, the agreement mechanism itself does not require
+constraining equations, and since the target features are still
+specified constructively we do not run into problems with pro-drop.
+
+
+
+%\section{Decomposition of agreement features}\label{sec:decomposition}
+%Coordination:
+%Sadler 1999, Kuhn and Sadler 1997, Dalrymple and Hristov 1997
+%King and Dalrymple 2004, Belyaev et al. 2015.
+%Decomposition:
+%Dalrymple and Kaplan 2000, Vincent and Börjars 2007, Otoguro 2015, Sadler 2011, Arka 2011, 2012, Dalrymple 2012
+
+\section{Factors outside the f-structure}\label{sec:outsidef}
+While agreement is generally determined in terms of f-structure
+relations, it is widely acknowledged that other factors are also
+relevant, in particular linear order/c-structure and information
+structure.
+
+\subsection{Linear order}
+That linear order can be relevant for agreement is shown by so-called
+single conjunct agreement. (\ref{ex:Agreement:21}--\ref{ex:brazilian}) show some examples from \citet{KuhnSadler:LFG07}.
+
+\ea\label{ex:Agreement:21} Czech\\
+\gll Na rohožce seděla kočka a pes.\\
+on mat was.sitting:\textsc{f;sg} cat:\textsc{f;sg} and dog:\textsc{m;sg}\\
+\glt `The cat and the dog were sitting on the mat.'
+\z
+\ea\label{ex:brazilian} Portuguese\\
+\gll os [mitos e lendas] brasileiras\\
+the:\textsc{m;pl} \phantom{[}myth:\textsc{m;pl} and legend:\textsc{f;pl} Brazilian:\textsc{f;pl} \\
+\glt `the Brazilian myths and legends'
+\z
+In (\ref{ex:Agreement:21}), from Czech, the predicate \textit{seděla} agrees only with the closest
+subject conjunct, \textit{kočka}. In (\ref{ex:brazilian}), from Portuguese, the determiner agrees with
+its closest conjunct, the first one, whereas the postposed adjective
+agrees with the second conjunct, which again is the closest
+one. Examples such as (\ref{ex:brazilian}) show that we cannot simply pick out a
+single distinguished conjunct and make that available for agreement:
+what is relevant is the distance between the target and the
+controller.
+
+\citet{KuhnSadler:LFG07} discuss earlier approaches to single conjunct
+agreement and propose a solution based on dividing features into not
+only the standard distributive/nondistributive classification, but
+also to distinguish left-peripheral, right-peripheral and
+proximity-based features. \citet{DH:Agr} dispense with the need for
+dividing features this way and instead provide definitions of new
+f-structure path descriptions. For example, $f_{(L)}$ is defined as in (\ref{ex:Agreement:23}).
+
+\ea\label{ex:Agreement:23}
+\begin{tabular}[t]{lllc}
+  $f_{(L)}$ & $\equiv$ & $f$ & $\in^*$ \\
+           &          &     & $\neg [ (\leftarrow\ \in) \prec_f\ \rightarrow] $
+\end{tabular}
+\z Here, $\in^*$ picks out an arbitrarily embedded member of the set
+(to account for nested coordination); the Kleene star also allows zero
+levels of embedding, which would make $f_{(L)}$ refer simply to
+$f$. However, in case we pick a set member, it must be the leftmost
+member of $f$. This is accomplished by the off-path constraint $\neg [
+  (\leftarrow\ \in) \prec_f\ \rightarrow] $, which says that at any
+point in the path of (potentially nested) coordinations, there must
+not be other conjuncts ($\leftarrow\ \in$) that f-precede ($\prec_f$)
+the one we pick ($\rightarrow$). Hence, if $f$ is
+not a set, $f_{(L)}$ equals $f$, but if $f$ \emph{is} a set, $f_{(L)}$
+can be either the whole set $f$ or its leftmost member. This allows
+modelling of optional left conjunct agreement. We can also capture
+obligatory left conjunct agreement by defining $f_{L}$ just like
+$f_{(L)}$ except it can never refer to a set. (So $f_{L}$ always picks
+the leftmost member of $f$.)  Similarly we can define $f_{R}$ and
+$f_{(R)}$ by reversing the f-precedence relation and finally $f_C$
+(closest conjunct) as $f_{L}$ if \DOWN\ f-precedes $f_{L}$ and $f_{R}$
+if $f_{R}$ f-precedes \DOWN. This solution makes it possible to
+describe (optional or obligatory) single conjunct agreement
+irrespective of whether the relevant agreement feature(s) are
+distributive or not; and it does so without altering the LFG
+formalism.
+
+Consider the f-structure for (\ref{ex:brazilian}).
+
+\eabox{
+\avm[style=fstr]{
+  [ \{ [pred & `myth'\\
+        concord & [num & pl \\ gend & m]] &
+       [pred & `legend'\\
+         concord & [num & pl \\ gend & f]] \} & {} \smallskip\\
+       adj ~ \{ [ pred & `Brazilian' ] & {}\} ]}
+}
+This f-structure satisfies the following functional description of
+\textit{brasileiras}.
+
+\ea\begin{tabular}[t]{l}
+  (({\ADJ}\ \UP)$_C$ \textsc{concord num}) = {\PL} \\
+  (({\ADJ}\ \UP)$_C$ \textsc{concord gend}) = {\F} \\
+\end{tabular}
+\z
+({\ADJ}~\UP) refers in the normal way to the f-structure of
+the head, and the subscript $C$ then makes sure we select the closest
+conjunct; if ({\ADJ}~\UP) was not a set, the subscript $C$ would simply have no effect.
+
+\subsection{Information structure}
+Besides c-structure/linear order, information structure is also
+relevant for agreement processes in many languages, as discussed by
+\citet{DN}. In their architecture, discourse functions are
+modelled as features at s-structure and can be accessed from the
+f-structure through the $\sigma$-projection. \citet[123]{DN}
+provide the specification in (\ref{ex:Agreement:26}) of the third person singular
+topical oblique agreement marker in Itelmen.
+
+\ea\label{ex:Agreement:26}\begin{tabular}[t]{lll}
+  (\UP\ \textsc{obl pers}) = 3 \\
+  (\UP\ \textsc{obl num}) = \textsc{sg} \\
+  ((\UP\ \textsc{obl})$_\sigma$\ \textsc{df}) = \textsc{topic}
+\end{tabular}
+\z
+More complicated patterns are also possible. Object agreement in
+Itelmen is only optionally an indicator of the topicality of the
+object, but it does indicate that there is no oblique topic. This is
+captured by the description in (\ref{ex:Agreement:27}) of the first person singular
+object agreement marker.
+
+\ea\label{ex:Agreement:27}\begin{tabular}[t]{lll}
+  (\UP\ \textsc{obj pers}) = 1 \\
+  (\UP\ \textsc{obj num}) = \textsc{sg} \\
+  $\neg$[((\UP\ \textsc{obl})$_\sigma$\ \textsc{df}) = \textsc{topic}] \\
+  (((\UP\ \textsc{obj})$_\sigma$\ \textsc{df}) = \textsc{topic})
+\end{tabular}
+\z
+In addition to precedence and information structure role, LFG analyses
+have shown that agreement can be sensitive to other factors such as
+adjacency (direct precedence) and various prominence hierarchies based
+on person and grammatical functions. \citet{BroadwellEtAl11} and
+\citet{belyaev2013-agr} analyse such patterns in Kaqchikel and Dargwa
+respectively and show how they be captured with LFG augmented with
+Optimality Theory (OT).
+
+\section{Diachrony: grammatical and anaphoric agreement}\label{sec:diachrony}
+It is a long-standing observation from comparative linguistics
+\citep{Bopp:Vergleichende} that agreement markers in
+predicate-argument structures (i.e. \textsc{index} agreement) arise
+from incorporated pronouns. That is, we have an evolution from
+anaphoric agreement with a dislocated noun phrase (\emph{The man, he
+came}) to grammatical agreement (\emph{The man he-came}). As pointed out
+by \citet{BM87}, LFG is well placed to capture this
+development because (unlike what happens in many other formal
+frameworks), pronouns and agreement markers are very similar, yet also
+distinct in a way which generates clear predictions about differences
+between anaphoric and grammatical agreement. In particular,
+incorporated pronouns always introduce a semantic form (\textsc{pred
+  `pro'}), while agreement markers do not introduce a semantic form or
+do so only optionally (if the language allows pro-drop). Otherwise,
+both agreement markers and incorporated pronouns introduce the
+relevant agreement features. \citet{BM87} argue that in
+Chichewa, subject agreement is grammatical and obligatory whereas
+object agreement is anaphoric and optional. They represent subject
+markers (SM) and object markers (OM) with the lexical entries in
+(\ref{ex:Agreement:28}).\footnote{We adopt the convention of treating sublexical units
+  such as the subject and object marker as if they were nodes in a
+  syntactic tree, with \DOWN\ designating their own f-structure and
+  \UP\ that of the lexical item they attach to, as is done also in the
+  presentation in \citet{BresnanEtAl2016}.}
+
+\ea\label{ex:Agreement:28}
+\begin{tabular}[t]{ll}
+  SM- & (\UP\ \textsc{subj}) = \DOWN \\
+     & (\DOWN\ \textsc{index}) = $\alpha$ \\
+     & ((\DOWN\ \textsc{pred}) = `pro') \\\hline
+  OM- & (\UP\ \textsc{obj}) = \DOWN \\
+     & (\DOWN\ \textsc{index}) = $\alpha$ \\
+     & (\DOWN\ \textsc{pred}) = `pro' \\
+\end{tabular}
+\z
+From a diachronic point of view, the subject marker and the object
+marker reflect different points on a grammaticalization path from
+pronouns to agreement morphology: the object marker has lost its
+c-structure independence, but is still in all respects a pronoun at
+f-structure, contributing its own \textsc{pred} value. The subject
+marker has evolved one step further in that the \textsc{pred} value
+contribution has become optional. There is a clear connection between
+the formal representations at the two stages, and the relation between
+them fits well with the intuitive notion of “bleaching” or “loss of
+content” in grammaticalization processes.
+
+At the same time, the subtle difference between the two
+representations, along with some other independent properties of
+Chichewa, suffice to predict a number of differences between subject
+and object agreement.  First, because the Chichewa
+sentence structure consists of a subject NP, a head-initial VP and a
+topic NP (in any order), the NP object must appear directly after the verb
+(i.e. inside the VP) whenever there is no object marker. When there is an object marker, however, that marker is the actual object, whereas the apparent NP object is an anaphorically linked topic, which can therefore appear anywhere in the clause.
+
+Second, because the object marker is a light (i.e.\ incorporated)
+anaphoric pronoun, it blocks the use of the independent pronoun in
+this function, with the effect that the independent object pronoun is
+reserved for cases of focus and contrastive topics.\footnote{Though as
+a reviewer remarks, this blocking effect is not formalized in
+\citet{BM87}.} No such effect is found with the subject marker. Third,
+objects can be questioned in situ but only when there is no object
+marker.  All these predictions are borne out in Chichewa.
+
+\hspace*{-.5mm}In sum, the LFG framework makes it possible to understand fundamental
+differences between grammatical agreement with governed functions and
+anaphoric agreement with discourse functions, while at the same time
+providing a plausible diachronic pathway from the latter to the
+former, in line with what we observe in language change. Notice that
+the analysis relies crucially on treating the subject marker as
+ambiguous between a true pronoun (with a \textsc{pred `pro'} feature)
+and an agreement marker (without it). This holds for LFG analyses of
+pro-drop generally. \textcite{Toivonen:FinnPoss} provides motivation
+for this kind of “lexical split” analysis by pointing to the case of
+Finnish possessives, where the agreement marker and the suffixal
+pronoun differ in other features as well.  For more on the LFG
+analysis of pro-drop, see \citetv{chapters/Incorporation}.
+
+
+
+
+\section{A role for feature sharing? -- Agreement domains}\label{sec:domains}
+In line with the general philosophy of LFG, the formalism itself does
+not in any way constrain how agreement domains are defined. We could
+easily write constraints that would enforce purely linear agreement
+(e.g.\ agree with closest NP irrespective of grammatical function) or
+agreement across unbounded domains (e.g.\ agree with \textsc{comp*
+  subj}). An advantage of this is that LFG has no problems capturing
+surprising agreement relations such as those found in Archi, where
+agreement targets include a mixed bag of a number of first person
+forms, some adverbial elements, an emphatic particle and one
+postposition, which all agree with the absolutive element in their clause. (\ref{ex:Agreement:29})
+shows how the lexical entry for the first person dative pronoun looks
+according to \citet{sadler16}, assuming the absolutive argument
+bears the grammatical function \textsc{piv}.
+
+\ea\label{ex:Agreement:29}
+\lexentry{d-ez}{
+   (\UP\ \textsc{pred}) = `\textsc{pro}'  \\
+   (\UP\ \textsc{num}) = \textsc{sg}  \\
+   (\UP\ \textsc{pers}) = \textsc{1}  \\
+   (\UP\ \textsc{case}) = \textsc{dat}  \\
+   ((\textsc{PathOut} \UP) \textsc{piv gend}) = \textsc{ii} \\
+   ((\textsc{PathOut} \UP) \textsc{piv num}) = \textsc{sg}}
+\z
+That is, the first person dative pronoun agrees with a \textsc{piv}
+argument that is found by first going up \textsc{PathOut}, which is
+defined as $\{\textsc{subj}|\textsc{obj}|\textsc{obl}|\textsc{obl
+  obj}\}$. (\ref{ex:Agreement:30}) shows an example where a first person pronoun
+embedded in PP (\textsc{obl obj}) agrees with the absolutive.
+
+\ea\label{ex:Agreement:30} Archi\\
+\gll d-ez χir d-e<r>qˁa-r-ši d-i \\
+\textsc{ii.sg}-\textsc{1sg.dat} behind \textsc{ii.sg}-<\textsc{ipfv}>go-\textsc{ipfv}-\textsc{cvb} \textsc{ii.sg}-be.\textsc{pres} \\
+\glt `She goes after me.'
+\z
+%
+The first person dative pronoun bears the noun class \textsc{ii}
+(essentially human feminine) marker \textit{d-} because it agrees with
+the absolutive argument \textit{she} (only expressed through agreement
+on the verb), irrespective of the gender of the speaker. The equation
+((\textsc{obl obj} \UP) \textsc{piv gend}) = \textsc{ii} captures
+that. But the use of inside-out functional uncertainties may be
+problematic in cases where it does not refer uniquely because of
+structure sharing. More work is needed on this kind of complex
+agreement paths.
+
+The approach of \citet{sadler16} can in principle be extended with
+paths that cross clausal boundaries (so-called long distance
+agreement). However, the fact that we \emph{can} write such equations does not mean
+that we \emph{should}. Locality of grammatical processes remains an important
+theoretical concern in LFG even if it is not hardwired into the
+formalism. \citet{haug-nikitina2015} argue that several cases of
+so-called long distance agreement can be given a local treatment if
+the agreement process is assumed to be structure-sharing. Their main
+example concerns the so-called ``dominant participle'' construction in
+Latin,\footnote{\citet{haug-nikitina2015} also argue that the same analysis may work for long distance agreement in Tsez, Passamaquoddy and Innu-Aimûn, which has been widely discussed in the generative literature \citep{Branigan:Altruism,Bruening:PhD,Polinsky2001:Agreement}.} where a noun and a participle form a non-finite clause which is
+headed by the participle but bears the agreement features of the noun.
+
+\newpage
+\ea\label{subjectdom2} Latin\\
+\gll ne eum Lentulus et Cethegus {\dots} deprehensi terrerent\\
+lest him:{\ACC} L.:\textsc{nom;m} and C.:\textsc{nom;m} {} captured:\textsc{nom;m;pl} frighten:\textsc{impf;subj;3pl}\\
+\glt`lest the capture of Lentulus and Cethegus should frighten him' (Sall., Cat 48.4)
+\z
+According to the analysis in \citet{haug-nikitina2015},
+\textit{Lentulus et Cethegus\dots de\-pre\-hensi} (`that Lentulus and
+Cethegus were captured') is a clause which acts as the subject of the
+matrix verb \textit{terrerent}. Yet unlike other clausal subjects in
+Latin, it does not trigger default third person singular agreement on the
+predicate. Instead, the matrix verb is plural, meaning that it either
+agrees with the embedded subject \textit{Lentulus et Cethegus}, or the
+plural feature of the embedded subject has somehow been transferred
+to the predicate \textit{deprehensi}. \textit{Deprehensi} does bear
+morphological plural marking, but on the standard, non-feature sharing
+approach to agreement this feature would only be active in the 
+subject (controller) position. If instead we suppose that features
+in this kind of agreement are active in both the target and the
+controller, the target may in turn serve as the controller for another
+agreement process with the matrix verb as the target. This yields the
+f-structure in (\ref{ex:Agreement:32}).
+
+\eabox{\label{ex:Agreement:32}
+\avm[style=fstr]{
+  [ pred & `frighten\arglist{subj,obj}'\\
+    obj & [ pred & `pro']\\
+    subj & [ pred & `be.captured\arglist{subj}'\\
+             agr & \rnode{t1}{\strut}\\
+             subj & [ pred & `L.-and-C.'\\
+               agr & \rnode{t2}{\strut} ] ]]}
+\CURVE[3]{0pt}{0}{t2}{0pt}{0}{t1}
+}
+Structure sharing agreement between \textit{Lentulus et Cethegus} and
+\textit{deprehensi} makes the agreement features available in the f-structure
+which is \textsc{subj agr} relative to the matrix verb, so that there
+can be normal predicate--subject agreement in the matrix clause. In
+principle, that agreement could also be structure sharing, but as the
+apparent long-distance agreement can only be positively demonstrated
+in participial clauses, \citet{haug-nikitina2015} remain agnostic
+on the matter. However, a similar feature-sharing account of agreement
+was extended to finite verb agreement by
+\citet{AV:LFG14,AlsinaVigo17}. Interestingly, their arguments for
+adopting structure sharing are different: in some cases, such as
+copular inversion in Catalan and raising constructions in Icelandic,
+the controller cannot be specified lexically, but is determined by OT
+constraints over the global f-structure. This, they hold, argues for a
+view that targets and controllers lexically specify features of their
+own \textsc{agr} and then OT constraints decide which \textsc{agr} structures should be linked to each other. Finally, a feature sharing approach to agreement is also adopted by \citet{Sadler:NomMod} to account for an adjectival construction in Modern Standard Arabic where the target adjective agrees with two distinct controllers.
+
+\section{A challenge to symmetry: The Agreement Marking Principle}\label{sec:agreementmarking}
+\citet{Wechsler:Mixed} proposes the principle in (\ref{ex:Agreement:33}), called the \textit{Agreement Marking Principle}.
+
+\ea\label{ex:Agreement:33}\label{ex:AgreementMarking}
+Agreement is driven by a syntactic feature of the controller, if
+the controller has such a feature. If the controller lacks such a
+feature, then the target agreement inflection is semantically
+interpreted as characterizing the controller denotation.
+\z
+With this principle, Wechsler seeks to explain so-called mixed
+agreement, i.e.\ cases where a polite plural pronoun triggers plural
+agreement on the verb, but singular agreement on some other target,
+e.g.\ a predicative adjective as in (\ref{ex:Agreement:34}) from French.
+
+\ea\label{ex:Agreement:34} French\\
+\gll Vous \^etes loyal.\\
+you.\textsc{pl} are.\textsc{2pl} loyal.\textsc{m.sg}\\
+\glt `You (singular, formal, male) are loyal.'
+\z
+This pattern follows from the Agreement Marking Principle on the
+assumption that \textit{vous} bears an \textsc{index num pl} feature
+that is able control \textsc{index} agreement on the verb, but
+\emph{no} \textsc{concord num} feature, which leaves the predicative
+adjective without an agreement controller, thereby licensing semantic
+agreement. Moreover, the Agreement Marking Principle gives us an
+\emph{explanation} of the so-called “polite plural generalization”,
+that there are no languages\footnote{See \textcite[Section
+    2.1]{Wechsler:Mixed} for the typological data.}  with the opposite
+pattern, i.e. where the polite plural pronoun triggers plural
+agreement on the adjective but allows singular agreement on the verb,
+or more generally, following Wechsler, on any target that has the
+\textsc{person} feature. This polite plural generalization follows
+because pronouns by necessity have \textsc{index} features and any
+\textsc{person} target must be an \textsc{index} target.
+
+Formalizing the Agreement Marking Principle requires use of
+constraining equations. Wechsler's analysis of the French feminine
+definite article \textit{la} is given in (\ref{ex:Agreement:35}), where
+\textbf{female}(\UPS) is a simplified representation for the
+relevant semantic resource that will ensure that the referent is
+interpreted as female.
+
+\ea\label{ex:Agreement:35}\begin{tabular}{ll}
+  \textit{la} & (\UP\ \textsc{gend})$=_c$ \textsc{f} $\lor$ [\textbf{female}(\UPS) $\land \neg$\,(\UP\ \textsc{gend})]
+\end{tabular}
+\z
+%
+The idea is that when \textit{la} combines with a noun that is
+lexically specified as feminine gender, such as \textit{sentinelle}
+`sentry', the feminine feature is \emph{not} semantically interpreted;
+but when it combines with a noun that does not have a gender feature,
+such as \textit{professeur}, it \emph{will} be interpreted semantically.
+However, this entails a move away from the traditional symmetric approach to
+agreement in LFG to the asymmetric approach associated with
+derivational syntax.
+
+As pointed out by Wechsler, the Agreement Marking Principle is not in
+itself a descriptive generalization, since the presence versus absence
+of a given agreement feature on the controller NP is not always directly
+observable, but rather depends upon the grammatical analysis of the
+NP. However, the radically symmetric nature of the standard LFG
+analysis allows for cases where there is \emph{no controller} NP at all. This
+is what we saw in the standard analysis of \textit{floruit} in
+(\ref{ex:bloomingrosepro}). The lexical entry of the verb on the standard analysis will be as in (\ref{ex:Agreement:36}).
+
+\ea\label{ex:Agreement:36}
+\lexentry{floruit}{(\UP\ \textsc{pred}) = \textsc{`bloom$<$subj$>$'} \\
+                (\UP\ \textsc{subj case}) = \textsc{nom} \\
+                (\UP\ \textsc{subj num}) = \textsc{sg} \\
+                (\UP\ \textsc{subj pers}) = \textsc{3} \\
+                ((\UP\ \textsc{subj pred}) = \textsc{`pro'})}
+\z
+On the traditional LFG analysis, which also underlies the diachronic analysis of
+anaphoric agreement discussed in \sectref{sec:diachrony}, there
+simply \emph{is} no controller: it is constructed by the target. If we
+change (\ref{ex:Agreement:36}) to interpret the number and person agreement along the
+lines of the Agreement Marking Principle, we get (\ref{ex:Agreement:37}), where
+\textbf{\textsc{non-participant}}(\UPS) is shorthand for some semantic
+resource that ensures the subject referent is distinct from the
+discourse participants (speaker or hearer).
+
+\eabox{\label{ex:Agreement:37}
+\lexentry{floruit}{(\UP\ \textsc{pred}) = \textsc{`bloom\arglist{subj}'} \\
+(\UP\SUBJ\CASE) = \textsc{nom} \\
+(\UP\SUBJ\PERS)$=_c$ \textsc{3} $\lor$ [\textbf{non-participant}(\UPS) $\land \neg$\,(\UP\SUBJ\PERS)]\\
+(\UP\SUBJ\NUM)$=_c$ \textsc{sg} $\lor$ [\textbf{non-participant}(\UPS) $\land \neg$\,(\UP\SUBJ\NUM)] \\
+((\UP\SUBJ\PRED) = \textsc{`pro'})}
+}%
+If we want to maintain the Agreement Marking Principle there are a
+number of ways we can go.  First, we can take (\ref{ex:Agreement:37}) at face value and
+assume that since there is no controller, the agreement features are
+interpreted semantically. This would yield the prediction that in
+pro-drop structures, agreement features are always semantically
+interpreted, which is a strong and quite probably false
+assumption.\footnote{In fact, a reviewer offers a counterexample from Spanish, where second person plural forms can be used for very elevated addressees in a very formal register and crucially the interpretation does not change whether the subject is expressed by means of
+the pronoun \textit{vos} or is null:
+
+\ea Spanish\\
+\gll (Vos) sois muy bondadoso.\\
+you.\textsc{pl} are.\textsc{2.pl} very kind.\textsc{m.sg}\\
+\glt `You (singular, formal, male) are very kind'
+\z
+} Second, we can exploit the fact that the LFG formalism
+cannot faithfully express the Agreement Marking Principle as
+formulated in (\ref{ex:AgreementMarking}). (\ref{ex:AgreementMarking})
+says that agreement in some feature is syntactic, ``if the controller
+has such a feature''. However, the LFG formalism offers no way of
+checking where a feature originates. Constraining equations check
+whether some feature is present in the minimal solution to the
+f-description, irrespective of where they originate. Therefore, we can
+add the constructive equations (\UP\ \textsc{subj person}) = 3 and
+(\UP\ \textsc{subj num}) = \textsc{sg} to the optional part of
+(\ref{ex:Agreement:37}). This preserves the formalization of the Agreement Marking
+Principle, but arguably not its spirit, since the same lexical item
+provides both target and controller features. Finally, we could
+envisage a c-structure controller (with the appropriate features) in
+pro-drop structures, although this seems at odds with all standard
+assumptions of LFG.
+
+In sum, it is not clear how to best integrate the Agreement Marking
+Principle in LFG. More generally, symmetry between target and
+controller features does important work in LFG's traditional theory of agreement
+and it requires substantial work to alter this fundamental setup.
+
+
+\section{Agreement and semantics}
+A general question which has not received much attention in the LFG
+literature concerns how f-structure agreement features relate to the
+semantic content that they (sometimes) encode. In the standard LFG
+architecture, levels of linguistic description as found in the
+projection architecture are related by codescription, where
+linguistic items simultaneously describe different structures,
+including syntax and semantics. For example, the lexical entry for a
+singular noun might look like (\ref{ex:Agreement:38}), where $1(x)$ is a cardinality
+test on the referent.
+
+
+\ea\label{ex:Agreement:38}
+\lexentry{horse}{(\UP\ \textsc{pred}) = \textsc{`horse'} \\
+(\UP\ \textsc{index num}) = \textsc{sg} \\
+(\UP\ \textsc{concord num}) = \textsc{sg} \\
+$\lambda x.\IT{horse}^*(x) \land 1(x): v \multimap r$}
+\z
+This lexical entry simultaneously specifies syntactic singular number
+(in the form of f-structure features) and semantic singular number
+(simplified as a cardinality check on $x$). On the alternative, so-called
+“description-by-analysis” approach \citep{halvorsen83}, semantics is
+not cospecified together with syntax, but is instead read off the
+constructed f-structure.
+
+Although codescription is the standard, \citet{andrews2008} points to
+two problems for this approach, both having to do with agreement. The
+first and most obvious problem is that in lexical entries like (\ref{ex:Agreement:38}),
+there is no necessary connection between the syntactic and semantic
+singular number features: yet outside the limited class of
+\textit{pluralia tantum} these are closely connected in a way we would
+predict more clearly if we simply had semantics read the f-structure
+features. There is to my knowledge no theory of how this connection
+would work in a codescription approach, but it seems conceivable that
+the morphology-syntax interface developed in \textcite[Chapter
+  12]{DLM:LFG} could also take care of the interface
+with semantics and restrict the mappings in a principled way.
+
+The second problem for codescription, according to
+\citet{andrews2008}, is that it creates the need to decide which of
+the various lexical entries introducing a given feature-value
+occurrence is the one that is introducing the semantic
+constructor. This again relates to the question of symmetry or not
+between target and controller features. Andrews considers an Italian example with possible pro-drop (\ref{ex:Agreement:39}).
+
+\ea\label{ex:Agreement:39} Italian\\
+\gll(le ragazze) vengono\\
+\phantom{(}the.\textsc{fem.pl} girls.\textsc{fem.pl} come.\textsc{3pl}\\
+\glt`The girls/they are coming.'
+\z
+If the subject is present, we presumably want the noun to introduce
+the plural meaning constructor and the verb not to, but if the subject
+is omitted, then the verb presumably provides the
+constructor. However, we already need to make sure that the
+\textsc{pred} feature of the subject is instantiated only once, so it
+is not clear that this is a deep problem, although as Andrews points
+out, it does open the door to some stipulation.
+
+NP-internal agreement raises more tricky problems. As discussed by
+\citet{belyaev-etal2015}, there are languages where a plural head noun can
+take two coordinated singular adjectives as modifiers, as in (\ref{resolvingAgreement})
+from Russian.
+
+\ea\label{resolvingAgreement}Russian\\
+\gll 
+krasnyj i belyj flagi\\
+red.\textsc{sg} and white.\textsc{sg} flag.\textsc{pl} \\
+\glt`(the) red and (the) white flags' [2 flags total: one red, one white]
+\z
+\citet{belyaev-etal2015} call this pattern “resolving agreement”. On their
+analysis, it has the f-structure in (\ref{ex:Agreement:41}).\footnote{See \citet{belyaev-etal2015} for the details of how this f-structure arises. In short, the relevant rule for adjective coordination creates two incomplete (\textsc{pred}-less) NPs, to which each adjective contributes their \textsc{concord} features, including singular number. The \textsc{pred} feature originating in the noun is distributive and gets copied into each conjunct.} Notice that this treats \textsc{concord} as non-distributive; according to \citet{belyaev-etal2015} the distributivity of \textsc{concord} is subject to variation across languages, and even across different constructions within particular languages.
+
+\eabox{\label{ex:Agreement:41}
+\avm[style=fstr]{
+  [ concord ~ [num & pl] & {}\\
+    index ~  [num & pl] & {} \\
+    conj ~ and & {}\\
+    \{ [ pred & `flag'\\
+         concord & [num & sg]\\
+         adj & \{ [pred & `white'] \} ] &
+       [ pred & `flag'\\
+         concord & [num & sg]\\
+         adj & \{ [pred & `red'] \} ] \} & {} ]}
+}
+\citet{belyaev-etal2015} do not offer an explicit semantics in their account,
+but it is clear that we will have to interpret agreement features from
+the target (the adjectives) one way or another. Notice that the
+analysis does not provide an \textsc{index num sg} feature on the
+conjuncts and it would not be trivial to get that. So on a description
+by analysis approach, we need to interpret the \textsc{concord num sg}
+features of the conjuncts, although \textsc{concord} features are
+normally understood as meaningless. The (\textsc{index}) \textsc{num
+  pl} feature of the whole noun phrase would be superfluous but not
+harmful, just like in other cases of group formation from two singular
+nouns.
+
+On a codescription approach, we cannot directly exploit the fact that there are
+two singular flags in the f-structure in (\ref{ex:Agreement:41}). Instead it seems
+likely that the lexical entry of the singular adjectives themselves
+will introduce singular number constraints. The special phrase
+structure rule for resolving agreement might also play a role in
+constraining when an adjective's number feature is interpreted, to avoid
+problems of interpreting adjective number features when they agree
+with e.g. a \textit{plurale tantum}.
+
+We cannot address this issue in further detail here, but we can
+conclude that in one way or another, the morphological singular
+feature that occurs on the adjectives in (\ref{resolvingAgreement}) will have
+to be interpreted. Although details remain unclear, this supports the
+general symmetric approach to agreement in LFG.
+
+\section{Summary}
+We have seen that the standard treatment of agreement in LFG relies heavily on
+unification: the controller and the target co-specify a piece of
+functional structure. There is therefore symmetry between controller
+and target features, as both contribute grammatical information on an
+equal footing. On the other hand, the piece of functional structure
+that is co-specified is usually found only in the syntactic position of the
+controller (except when feature sharing is assumed), accounting for the directed nature of agreement. To
+account for certain phenomena in coordination and with special lexical
+items, it has proven necessary to operate with two such positions
+(f-structure features), \textsc{index} and
+\textsc{concord}. While the phenomenon of agreement is thus handled at
+f-structure, the projection architecture makes it possible to model
+interactions with other aspects of grammatical structure, notably
+c-structure and information structure, as has proven necessary for
+several phenomena.
+
+The symmetric but not feature sharing theory of agreement has proven
+successful for example in accounting for the diachrony of agreement
+marking. Nevertheless, there are some constructions that seem to
+suggest modifications of the basic framework: long distance agreement
+across clause boundaries can be analyzed as local agreement if we
+allow structure sharing at least for (some) instances of
+\textsc{concord} agreement, whereas Wechsler's Agreement Marking
+Principle suggests that target and controller features are not
+symmetric. On the other hand, the semantic contribution that target
+features sometimes make seem to support the traditional, symmetric
+analysis.
+
+
+\section*{Acknowledgements}
+I thank Mary Dalrymple and the three reviewers for very helpful feedback on earlier versions of this chapter.
+
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+
+\end{document}

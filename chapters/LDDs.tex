@@ -1,0 +1,1805 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10185954}
+\title{Unbounded dependencies}
+\author{Ronald M. Kaplan\affiliation{Stanford University}}
+\abstract{The basic grammatical representations and formal operations of Lexical Functional Grammar are designed to take advantage of the fact that most syntactic dependencies apply to nearby elements of the string, constituent structure, or functional structure. As is well known, languages also exhibit phenomena with syntactic relations that hold over wider and potentially unbounded domains.   The earliest LFG approaches to such unbounded dependencies were modeled after the phrase structure solutions of other frameworks. But it is now generally recognized that the functional configurations enshrined in f-structure support the simplest descriptions and explanations of the ways that such dependencies interact with the local organization of clauses and sentences.  This chapter surveys many of the theoretical, empirical, and technical issues that have been discussed in the LFG literature and in the linguistic literature more broadly.   Modern LFG accounts of unbounded dependencies make use of functional uncertainty with off-path annotations, carefully defined technical devices that integrate well with other aspects of the LFG formalism.
+}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[12]%%chapternumber
+}{}
+
+
+\begin{document}
+\maketitle
+\label{chap:LDDs}
+
+\section{Introduction}\label{sec:ldds:intro}
+
+Grammatical representations and the operations defined on them are designed to take advantage of the fact that most syntactic dependencies (such as agreement, government, and control) are local. Typically, they can be defined on string-adjacent elements or on elements that can be made tree-adjacent with hierarchical structures of modest and definite depth. It is also well known, however, that languages exhibit some phenomena that require the capability to describe syntactic relations that hold over wider domains.  With such unbounded dependencies, a grammatical function assigned within an embedded clause is correlated with a configuration of items that appear elsewhere in the sentence and perhaps far away from the other words and phrases that make up that clause.  Constructions with different patterns of unbounded dependencies have posed descriptive and explanatory challenges to most grammatical theories.  This is because the correlations can be sensitive in intricate ways not only to internal properties of the clause and properties of the external configuration, but also to syntactic properties of the intervening material.
+
+There is a substantial literature that aims to identify principles that apply broadly, if not universally, to condition the appearance of unbounded dependencies and also to identify the dimensions of variability across constructions and languages.  This chapter surveys just some of the major descriptive and theoretical challenges that these dependencies have presented and sketches how they have been, or in some cases might be, addressed with the tools and techniques of Lexical Functional Grammar.  \sectref{topicalization} sets the stage for this discussion with some simple examples of the topicalization construction.  These show that a phrase at the front of a sentence is interpreted as an argument of a distant predicate and its syntactic features are governed by that predicate.  \citet{kaplanbresnan82} proposed an LFG account of unbounded dependencies based on the categories and dominance relations of c-structure.  \sectref{formalizations} outlines that original proposal but then summarizes the considerations that led \citet{kaplzaen89} to conclude that these dependencies are better described in functional terms, as instances of ``functional uncertainty''.  Functional uncertainty is a straightforward extension to the notation of functional descriptions and has now become the standard mechanism for characterizing unbounded dependencies in LFG grammars.
+
+English constituent questions (\sectref{constituentquestions}) are slightly more complicated than topicalizations because of the additional requirement that an interrogative pronoun exists at an uncertain position inside the initial question phrase.  In traditional treatments the topicalized and question phrases correspond to the values of distinguished f-structure attributes, \TOPIC and \FOCUS respectively, that serve as signals for the discourse entailments of these constructions. It has been argued that those entailments properly belong to a separate component of grammar, Information Structure (\citetv{chapters/InformationStructure}), and this suggests (\sectref{discoursefunctions}) removing such grammaticized discourse functions from f-structure in favor of explicit mappings to i-structure made possible by LFG's Correspondence Architecture.
+
+The English \textit{tough} construction (\sectref{tough}) is of interest because its unbounded dependency is introduced by an annotation in a lexical entry rather than a c-structure rule, and also because the shared f-structure element is governed by predicates in two different clauses.  This may lead to a connectivity problem wherein a sentence is grammatical even though the two clauses assign incompatible values to some features, \CASE in particular.  This section outlines several solutions to that problem.  Connectivity is also a potential issue for relative clauses, since as in \textit{tough} constructions the relativized NP appears to play a role in two clauses.  Relative clauses have the additional complexity, like constituent questions, that an initial topic phrase must contain a relative pronoun at some uncertain position.  Relative clauses are discussed in \sectref{relativeclauses}.
+
+\sectref{constraints} covers a collection of constraints that may be layered on top of the basic constructions previously described. For some constructions in some languages the form of a clause may change if a dependency passes through it. Some clauses and some configurations are impervious to unbounded dependencies, forming what are traditionally known as islands. And there are also linear order constraints that seem to tie the functionally-specified unbounded dependencies more closely to the sequence of words in the sentence.  The last section discusses possible LFG accounts for parasitic gaps and other multiple gap constructions, a dependency pattern that is unexpected and problematic for almost every grammatical theory. 
+
+
+\section{Topicalization:  A simple unbounded dependency}\label{topicalization}
+
+Typical examples of {unbounded dependencies} are topicalization, constituent questions, and relative clauses in English and other languages. What is important in these constructions is that an element in a matrix clause bears a grammatical function governed by the verb in a clause that may be arbitrarily far away in the sentence. This is exemplified by the topicalization in \xref{topic}.
+
+\ea \label{topic}
+Mary, John claimed that Bill said that Henry called.
+\z
+
+\noindent In \xref{topic}, \textit{Mary} is understood as the object of \textit{called} but it occurs outside the embedded clause that contains that verbal predicate. Hence local functional equations are not able to describe the dependency nor can it be inferred from the local c-structure hierarchy.   Without further specification the embedded f-structure will be incomplete.  Of course the grammar can include a local functional dependency with a long sequence of attributes to share information between the higher and lower clauses in this particular sentence. But the hallmark of dependencies of this type is that they tend to be unbounded in the sense that the embedding structure can be arbitrarily deep, as the following variant of \xref{topic} suggests:
+
+\ea\label{topic2}
+Mary, John claimed that Bill said that Henry expected to call.\\ 
+\z
+
+There is little morphological marking on the elements of English topicalization. But in other languages it is very clear that the external item must have the markings that go along with the clause-internal grammatical function to which it is assigned. The following German example is an illustration of such a correlation:
+
+\ea \label{comp3}German \citep{Berman2003}\\
+\gll Den Peter glaube ich hat die Maria eingeladen\\  
+     the.{\ACC} Peter believe I has the Maria invited \\
+\glt `Peter, I think that Maria has invited.'\\
+\z
+
+\noindent Here \textit{den Peter} is in the accusative because \textit{einladen} `invite' takes an accusative object. Case marking is not the only connectivity effect. Reflexivization constraints also register the external element as fulfilling a function in the embedded f-structure, as shown in the following Icelandic example:
+
+%I sin anteckningsbok tror jag han skrev upp varenda bok han läste 
+
+\ea \label{refl4}Icelandic\\
+\gll {Sjálfum sér} held ég ekki að Jón geðjist.\\  
+     Himself think I not that John likes.  \\
+\glt `I don't think that John likes himself.'\\
+\z
+
+%RMK: Add a starred example with Hann ?
+\noindent In Icelandic, elements that are coreferent with the subject of their clause need to take a reflexive form (\textit{sjálfum} in this example) that is distinct from a nonreflexive pronoun (\textit{hann}). This requirement must be satisfied even when the subject is realized outside of the clause.
+
+\hspace*{-4.2pt}As a first approximation, the obvious way to handle such interactions is through the kind of structure sharing that is used in LFG descriptions of raising constructions (\citetv{chapters/Control}). There it is also the case that an f-structure element plays two roles, e.g. subject of a lower clause and object of a higher one. What is different in the case of unbounded dependencies is the fact that the inventory of possible f-structure paths between higher and lower elements cannot in principle be characterized by finite sequences of intermediate functions.
+
+\section{LFG formalizations}\label{formalizations} 
+
+LFG has two types of syntactic representations and it is not clear \emph{a priori} whether unbounded dependencies should be modeled in the c-structure or in the f-struc\-ture.
+
+\subsection{Early approach based on c-structure}\label{early}
+
+In \citet{kaplanbresnan82} unbounded dependencies were modeled via the c-structure spine as in many other frameworks of that period. The representation for sentence \xref{topic} is shown in \figref{tree2}.\footnote{The nodes in this c-structure are labeled with modern X$'$ categories instead of the traditional categories found in earlier LFG papers \citep[e.g.][]{kaplanbresnan82,kaplzaen89}.  But I depart from common X$'$ assumptions in showing c-structures that are not cluttered with nodes that are nonbranching, nonmajor, nonlexical, and functionally transparent (annotated with \UP=\DOWN).  Other categories (like C$'$ and VP$'$) can appear as macro arguments, phantom categories, or metacategories in c-structure grammar specifications \citep{kaplanmaxwell96,xledoc} and thus can still be used to express generalizations over the context-free rules that describe well-formed c-structures. In that regard they have the same explanatory value as the names and arguments of the f-structure templates discussed by \citet{dalrymple2004linguistic}. These reduced c-structures are compatible with Bresnan's \citeyearpar{bresnan2001lexical} notion of economy and with Lovestrand \& Lowe's \citeyearpar{lovestrand-lowe2017} theory of minimal phrase structure.}
+
+%
+\begin{figure}[tb]
+\hsp{-1em}
+\scalebox{.9}{\small
+\begin{forest} 
+for tree={s sep=.3em, inner sep=.4}
+ [CP [{\rnode{ddown}{$\Downarrow$}\ \rnode{ttop}{NP}\phantom{$\Downarrow$\ }}
+       [N  [Mary]]]
+    [IP [NP [N [John]]]
+          [VP [V [claimed]]
+                 [CP [C [that]]
+                        [IP [NP [N [Bill]]]
+                              [VP [V [said]]
+                                    [CP [C [that]]
+                                           [IP [NP [N [Henry]]]
+                                                 [VP [V[called]]
+                                                        [{\phantom{\ $\Downarrow$}\rnode{tbot}{NP}\ \rnode{dup}{$\Uparrow$}} [e]]]
+                                       ]]]]]]]]
+ \end{forest}                                                 
+%
+\hsp{-6em}
+\raisebox{-4em}{\evnup{\avm[style=fstr]{[topic & \rnode{ftop}
+                                 {[pred & \semformna{Mary}]}\smallskip\\
+      pred & \semforma{claim}{{subj} {comp}}\\
+      subj & [pred & \semformna{John}]\\
+      comp & [pred & \semforma{say}{{subj} {comp}}\\
+              subj & [pred &\semformna{Bill}]\\
+              comp & [pred & \semforma {call}{{subj} {obj}}\\
+                           subj & [pred &\semformna {Henry}]\\
+                           obj & \rnode{fbot}{~~}]]]
+}}}
+\nccurve[nodesepA=.2em,nodesepB=0em,angleA=-120,angleB=-95,ncurvA=.6, ncurvB=1.1,linestyle=dotted]{-}{ddown}{dup}
+\ncarc[nodesepA=.2em,nodesepB=0em,arcangleA=33,arcangleB=45, linewidth=.5pt,arrowscale=2]{->}{ttop}{ftop}
+\ncarc[nodesepA=.2em,nodesepB=0em,arcangleA=-15,arcangleB=-15,linewidth=.5pt,arrowscale=2]{->}{tbot}{fbot}
+\ncangles[armA=3.25,linearc=.2,nodesepA=2pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{ftop}{fbot}
+}\vspace{2em}
+\caption{Long-distance relation in c-structure induces f-structure sharing for sentence \xref{topic}, following \citet{kaplanbresnan82}.}
+\label{tree2}
+\end{figure}
+In this formulation the linkage between the clause-external item and its clause-internal function is specified by the c-structure rules in \xref{rules}. This analysis depends on the fact that the \OBJ function is assigned to an NP under VP \xref{VPrule} and that any NP can expand to an empty ``trace'' node, indicated by e in \xref{NPrule}. 
+
+\ea \label{rules}
+\ea\label{Sbarrule}
+\phraserule{CP}{
+                 \rulenode{NP\\\assign{\TOPIC}\\\DOWN=\,\Downarrow}
+                 \rulenode{C$'$\\\UP=\DOWN}}
+  
+\ex\label{NPrule}\phraserule{NP} {\rulenode{e\\\UP=\,\Uparrow}}
+
+\ex\label{VPrule}
+         \phraserule{VP} {\rulenode{V\\\UP=\DOWN}  \rulenode{NP\\(\UP\OBJ)=\DOWN}}
+\z\z
+
+\noindent The double arrows $\Uparrow$ and $\Downarrow$ are metavariables, like \UP and \DOWN, that denote the f-structures corresponding to c-structure nodes in particular configurations. In the annotations on a daughter category in a given rule, \UP refers to the f-structure corresponding to the mother node, and \DOWN refers to the f-structure corresponding to the daughter.  In contrast, the double arrows (called ``bounded-domination metavariables'')  match nodes that are separated in the c-structure but are related through a longer dominance path. Thus the NP in front is a sister of a clause that contains the trace node, and the dominance path between the nodes is allowed because it does not contain other nodes that encode so-called island constraints (see \sectref{islands}). The dotted line in \figref{tree2} connects the two c-structure nodes with matching double arrows. The c-structure-to-f-structure correspondence then induces the sharing relationship depicted in the f-structure. The \TOPIC function records the special significance of the external constituent as a placeholder for subsequent interpretation by other components of grammar, but it is not here involved in establishing the syntactic connection; \sectref{discoursefunctions} revisits the grammatical status of the discourse attributes \TOPIC and \FOCUS.
+
+\largerpage
+In this example the nodes that are linked by the double-arrows are both labeled by the same c-structure category NP, but this is not a necessary property of the topicalization construction.   Indeed, \citet{kaplanbresnan82} noted that in some cases instead the nodes are required to have categories that mismatch, as illustrated in \xref{mismatch}.   Examples (\ref{mismatch}a-b) show that a CP complement can appear within a clause immediately after \textit{think} but not after \textit{think of}. In contrast, a CP complement in topicalized position is acceptable only when it is linked to the canonical NP position after \textit{of} (\ref{mismatch}c-d).  
+
+\ea \label{mismatch}
+        \begin{xlist}
+            \ex[]{He didn't think that he might be wrong.}
+            \ex[*]{He didn't think of that he might be wrong.} 
+            \ex[*]{That he might be wrong he didn't think.}\label{mismatchc}
+            \ex[]{That he might be wrong he didn't think of.}\label{mismatchd}
+        \end{xlist}
+\z
+
+\noindent In the face of examples such as these, \citet{kaplanbresnan82} embellished their node-linking notation to enable a more intricate relationships of nodes and categories. 
+
+It became apparent through subsequent research, however, that constraints on unbounded dependencies are generally more sensitive to functional rather than to c-structure properties. \citet{kaplzaen89} point out that in Icelandic, for example, binding into \textsc{comp}s is possible but binding into adjunct clauses is restricted, even when these two types of embeddings have similar c-structures. They consider the following sentences: 
+
+\ea\label{icegood}Icelandic
+\ea\label{iceadj}
+\gll Jón var að þvo g\'olfið eftir að María hafði skrifað br\'efið.\\  
+     John was at wash floor.the after that Maria had written letter.the\\
+\glt `John was washing the floor after Maria had written the letter.'\\[1em]
+
+\ex\label{icecomp}
+\gll þu vonaðist til að hann fengi b\'il. \\  
+     You hoped for that he will.get car\\
+\glt `You hoped that he would get a car.'\\
+\z\z
+
+\noindent They argue that both embedded clauses are introduced with a PP that is the c-structure sister of the main verb, but the f-structures for these sentences are different. In the first example the embedded clause is not an argument of the main verb whereas in the second one it is.  This difference correlates with the binding contrast illustrated in \xref{icecontrast}.
+
+\ea\label{icecontrast}Icelandic
+\ea \label{iceadj2}
+\gll *\hsp{.05em}Þessi bréf var Jón að þvo g\'olfið eftir að María hafði skrifað.\\  
+     \phantom{*\hsp{.05em}}this letter was John at wash floor.the after that Maria had written\\
+\glt `This letter, John was washing the floor after Maria had written.'\\[1em]
+\ex\label{icecomp2}
+\gll Hvaða bíl vonaðist þ\'u til að hann fengi. \\  
+     Which car hoped you for that he will.get\\
+\glt `Which car did you hope that he would get?'\\
+\z\z
+
+These Icelandic contrasts and the English examples \xref{mismatch} together suggest that the constraints on unbounded dependencies cannot easily be stated in terms of c-structure categories and configurations.  In both cases a more natural account can be formulated in terms of functional properties, the difference between arguments and adjuncts, in the Icelandic case, and the restriction against the \COMP function with the predicate \textit{think} in the English case.
+
+In general, unbounded dependencies are acceptable only if they assign clause internal functions that satisfy the subcategorization requirements of the embedded predicates.  The topicalization example \xref{topic} is grammatical because the predicate \textit{call} subcategorizes for the function \OBJ; the putative topicalization (\ref{subcat}c) is ungrammatical because \textit{arrive} is intransitive.
+
+\ea\label{subcat}
+\ea [ ]{I think  Henry will call Mary.}
+\ex [*]{I think Henry will arrive Mary.}
+\ex [*]{Mary I think Henry will arrive.}
+\z\z
+
+\noindent  The fact that subcategorization in LFG is defined at the level of f-structure via the Completeness and Coherence Conditions provided strong motivation for investigating a functional approach to unbounded dependencies.   
+
+Additional motivation comes from the fact that unbounded dependencies resemble more local dependencies in the way that they interact with coordinate structures.  Sentence \xref{coorda} is grammatical because \textit{dedicate} subcategorizes for both an \OBJ and an oblique function \OBLTHETA while \xref{coordx} is unacceptable because \textit{bake} does not subcategorize for \OBLTHETA.  Grammatical functions in LFG distribute to all of the conjuncts of a coordination set (\citealt{bresnan-etal1985,KaplanMaxwell1988:Coord,DalrympleKaplan2000}, \citetv{chapters/Coordination}), and thus the coordination \xref{coordb} fails Coherence just as in the uncoordinated case.  The topicalization \xref{coordc} is also ungrammatical, and the simplest explanation is that the within-clause function of the external phrase is distributed in the ordinary way across both predicates.
+
+\ea\label{coordination}
+\ea []{John dedicated a pie to Bill.}\label{coorda} 
+\ex [*]{John baked a pie to Bill.}\label{coordx} 
+\ex [*]{John dedicated and baked a pie to Bill.}\label{coordb}
+\ex [*]{To Bill, John dedicated and baked a pie.}\label{coordc} 
+\z\z
+
+\subsection{Uncertainty of function assignments}
+
+Based on these considerations, \citet{kaplzaen89} developed an approach that refers mainly to f-structure notions to characterize the nature of unbounded dependencies. The f-structure sharing induced by the domination metavariables for the particular example in \figref{tree2} can be specified directly by the f-description annotation in the alternative rule \xref{rule3S}. This is true even if a c-structure rule such as \xref{NPrule} is not used to provide a trace NP.  Instead, a traceless c-structure configuration is licensed by the alternative  VP rule \xref{rule3VP}, independently needed for the analysis of clauses with intransitive verbs.
+
+\ea \label{rule3}
+\ea\label{rule3S}
+\phraserule{CP}{
+  \rulenode{NP\\\assign{\TOPIC}\\  \assign{comp comp obj}}
+  \rulenode{C$'$\\\UP=\DOWN}}
+\ex\label{rule3VP}
+\phraserule{VP}{\rulenode{V\\\UP=\DOWN} }
+\z\z
+
+\noindent The grammatical functions on the longer path in \xref{rule3S} match the blue attributes in the f-structure in \figref{tree2fu} and thus establish the intended link for sentence \xref{topic}.
+%
+\begin{figure}[tb]
+\hsp{-2em}
+\scalebox{.9}{\small
+\begin{forest} 
+for tree={s sep=.3em, inner sep=.4}
+ [CP [\rnode{ttop}{NP}
+       [N [Mary]]]
+    [IP [NP[N  [John]]]
+          [VP [V [claimed]]
+                 [CP [C [that]]
+                        [IP [NP [N [Bill]]]
+                              [VP [V [said]]
+                                    [CP [C [that]]
+                                           [IP [NP [N [Henry]]]
+                                                 [VP [V[called]]
+                                                 ]
+                                       ]]]]]]]]
+ \end{forest}                                                 
+%
+\hsp{-5em}
+\raisebox{-4em}{\evnup{\avm[style=fstr]{[topic & \rnode{ftop}
+                                 {[pred & \semformna{Mary}]}\smallskip\\
+      pred & \semforma{claim}{{subj} {comp}}\\
+      subj & [pred & \semformna{John}]\\
+      \disattr{comp} & [pred & \semforma{say}{{subj} {comp}}\\
+              subj & [pred & \semformna{Bill}]\\
+              \disattr{comp} & [pred & \semforma {call}{{subj} {obj}}\\
+                           subj & [pred &\semformna {Henry}]\\
+                           \disattr{obj} & \rnode{fbot}{~~}]]]
+}}}
+\ncarc[nodesepA=.2em,nodesepB=0em,arcangleA=30,arcangleB=45, linewidth=.5pt,arrowscale=2]{->}{ttop}{ftop}
+\ncangles[armA=3.25,linearc=.2,nodesepA=2pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{ftop}{fbot}
+}
+\caption{Unbounded relation for sentence \xref{topic} defined directly in f-structure via the path of blue attributes \citep[after][]{kaplzaen89}. }
+\label{tree2fu}
+\end{figure}
+
+
+For the dependency in sentence \xref{topic2}, however, a longer equation with an additional \XCOMP is required, and it is not clear at the position of the topic NP which of the two equations should be chosen to fit the f-structure embeddings of the following clause. In fact, since there is no bound in principle on the depth of an unbounded dependency, there would be infinitely many equations to choose from to account for all possible linkages to the within-clause function of the external NP.
+
+\citet{kaplzaen89} addressed the unbounded uncertainty of the within-clause function assignment by extending the notation and interpretation of LFG's functional descriptions. \citet{kaplanbresnan82} introduced the basic format and satisfaction condition for function-application expressions of single attributes in \xref{fudefa} and for notational convenience provided the left-associative extension to a path of attributes in \xref{fudefb}, with \xref{fudefd} defining the base case of an empty string. Condition \xref{fuset} is satisfied by members of a set of f-structure elements, and the later addition \xref{distribute} is the foundation for LFG's distributive theory of coordination, as illustrated in \xref{coordination} above.
+
+
+\ea\label{satisfaction}Satisfaction conditions for attributes\\*
+\ea\label{fudefa}
+   \mb{(f\ a)=v} iff $f$ is an f-structure, $a$ is an attribute and \mb{\langle a, v\rangle \in f}.
+\ex\label{fudefb}
+   \mb{(f\ a\sigma)=v} iff $a\sigma$ is a string of attributes and \mb{((f\  a)\  \sigma)=v}.
+\ex\label{fudefd}
+   \mb{(f\ \eestring)=v} iff \mb{f=v}  (\eestring denotes the empty string).
+%*
+\sn\vspace{1ex}\hspace*{-1.8em} Satisfaction conditions for sets
+ \ex\label{fuset}
+   \mb{v \in f} iff $f$ is a set and $v$ belongs to $f$.%\\
+%   \hsp{3em} Notational equivalent:  \mb{(f\in)=v} iff \mb{v \in f} for  ``attribute'' $\in$.
+  \ex\label{distribute} \mb{(f\ a)=v} iff $f$ is a set and
+       \hsp{2em}\begin{tabular}[t]{l@{\hsp{1em}}l@{}}
+              \mb{(g\ a)=v}  for all \mb{g\in f} & if $a$ is a distributive attribute\\
+              \mb{\langle a, v\rangle \in f} &  if $a$ is a nondistributive attribute.
+         \end{tabular} 
+\z\z
+ 
+\noindent   \citet{kaplzaen89} first generalized from the single-string specification \xref{fudefb} to sets of attribute strings as in  \xref{fudefc}.
+
+
+\ea\label{fudef}Functional uncertainty\\*
+\ea\label{fudefc}
+   If \attr{Paths} is a set of attribute strings,\\*
+      \hsp{1em} \mb{(f\ \attr{Paths})=v} iff \mb{((f\ a)\ \textit{Suff}\,(a,\attr{Paths}))=v}, where\\
+    \hsp{2.5em}\mb{\textit{Suff}\,(a,\attr{Paths})=\set{\sigma \mid  a\sigma\in \attr{Paths}}}.\\
+                             \hsp{3.5em} (the suffixes of strings in \attr{Paths} that begin with attribute $a$)
+\ex\label{fumemb} \mb{(f\in)=v} iff \mb{v \in f} for the special ``attribute'' $\in$.
+\z\z
+
+\noindent The uncertainty about which paths might result in complete and coherent within-clause function assignments is represented under this formulation by the choice between alternative strings in such a path language. A language containing at least the strings \attr{comp comp obj} and \attr{comp comp xcomp obj}, for example, would account for both topicalization sentences \xxref{topic}{topic2}. According to \xref{fumemb}, if the special attribute $\in$ on a path coincides with a set of f-structures, the path can continue through any one of the set's freely chosen elements.
+  
+A finite enumeration of path-strings is in essence only a succinct way of specifying a finite disjunction; it would not yet express the unbounded nature of these dependencies.  But \citet{kaplzaen89} went further and allowed path-sets to be regular languages containing possibly an infinite number of strings. Such languages can be specified as regular expressions that appear in the annotations in rules and lexical entries.  Rule \xref{rule5componly} extends the particular annotation in rule \xref{rule3} to account not only for examples \xxref{topic}{topic2} but also for topicalizations with \COMP embeddings of arbitrary depth.
+
+\ea \label{rule5componly}
+\phraserule{CP}{
+  \rulenode{NP\\ \assign{topic}\\
+                           \assign{comp\kstar obj}}
+  \rulenode{C$'$\\\UP=\DOWN}}
+\z
+
+\noindent  Each of the infinitely many paths in this uncertainty language begins with some number of {\COMP}s, what Kaplan and Zaenen called the ``body'', and finally ends in \OBJ (the ``bottom'').  Rule \xref{rule5} covers a larger set of English topicalization patterns by relaxing the category of the external phrase and enlarging the set of paths in the uncertainty language.\footnote{In movement-based frameworks the clause-external c-structure phrase in topicalization and other constructions is often referred to as the ``filler'' of the dependency and the string position of a putative trace node is known as the ``gap".  That conventional terminology translates to the LFG functional account with the proviso that the filler refers not to the external phrase but to its corresponding f-structure, and the gap is the within-clause function assignment of that f-structure. The canonical string position for the gap function (or the position of the empty node in a trace-based analysis) is often marked by an underscore, just as a reader's guide to the intended interpretation.} 
+
+
+\ea\label{rule5}
+\phraserule{CP}{
+  \rulenode{XP\\ \assign{topic}\\
+                           \assign{TopicPaths}}
+  \rulenode{C$'$\\\UP=\DOWN}}\\[.5ex]
+          \small \hsp{8em} where \attr{TopicPaths} is \disj{\COMP, \XCOMP, \ADJ\ (\in)}\kstar [\GF--{\COMP}]
+\z
+
+\noindent As discussed by Kaplan and Zaenen, CP is a possible realization for the generic XP category in this rule and thus provides the c-structures for the topicalized complements of \textit{think} in \xxref{mismatchc}{mismatchd}.   The relative-difference \attr{[gf--comp]} at the bottom of every uncertainty path disallows \COMP but includes  \OBJ, \SUBJ, \OBLTHETA, \ADJ, and every other function.  The short, bottom-only path-string \COMP is thus not available for the inadmissible example \xref{mismatchc}. Adding \XCOMP to the body of this expression allows for the bottom function to be embedded under a mixture of tensed and infinitival complements.  Given \xref{fumemb}, the \ADJ and $\in$ options provide an analysis for the English sentences \xref{untensedadj} \citep[examples from][]{dalrymple01}; presumably \ADJ would not appear in the language of Icelandic paths.
+
+\ea\label{untensedadj}
+ \ea {Julius teaches his class in this room.}\\
+ \ex {This room Julius teaches his class in.}\\
+\ex{In this room Julius teaches his class.}
+\z\z
+
+\noindent Further extensions and restrictions on the \attr{TopicPaths} and other path language are discussed in later sections. 
+
+Functional uncertainty has become the primary technical device for describing unbounded dependencies in LFG. Uncertainty languages can be defined by the primitive regular-expression operators of concatenation, union (curly braces), optionality (parentheses), and Kleene-star and Kleene-plus repetition. Indeed, since the regular languages are closed under intersection and complementation, a collection of attribute paths can be specified by any Boolean combination of the same regular predicates that are allowed in the right sides of LFG c-structure rules \citep[see][]{kaplanmaxwell96,xledoc}.  This includes the relative difference  operator \attr{[gf--comp]} above and its equivalent but more succinct term-complement predicate \termcomp{comp}. Path languages that describe a wide range of constructions in different languages can thus be expressed as the composition of separate, simpler formulas that encode independent linguistic generalizations, as illustrated in later sections. Also of importance, it has been shown that the satisfiability of functional descriptions remains decidable when the LFG formalism is extended with regular path languages \citep[e.g.][]{KaplanMaxwell1988:Uncertainty,backofen-1993-decidability}.
+
+%In the park I think John plays ball on Tuesdays.\\
+%On Tuesdays I think John plays ball in the park.\\
+%c.f I think John plays ball in the park on Tuesdays.
+
+
+%For  English topicalization the uncertainty equation is introduced as an annotation attached to the NP (more generally, an XP) in the  CP c-structure rule \xref{rule3S}.  That equation is responsible for assigning the within-clause function, with or without the assistance of an empty trace node.  The f-structure corresponding to the external constituent is also assigned the discourse function \TOPIC in the matrix clause, to mark the interpretive significance of the construction, but that assignment seems to have no other syntactic consequences.
+
+%Topicalization is the relatively simple case of a single functional uncertainty that assigns the external f-structure to a (syntactic) grammatical function in only one clause.  In this section we consider constituent questions, the English \textit{tough} construction, and relative clauses. These classical unbounded dependency constructions involve more complex interactions: Constituent questions are analyzed with two uncertainties, the English \textit{tough} construction involves function assignments in two clauses, and relative clauses incorporate both double uncertainties and double assignments. 
+
+\section{Constituent questions}\label{constituentquestions}
+
+Constituent questions in English resemble topicalization in that the f-structure of a clause-external phrase is assigned a grammatical function at some level inside its sister clause. The possibilities for the dependency path between the filler and its within-clause function are similar,  but there is an additional requirement that the filler either must be an interrogative (\textit{wh}) pronoun or must contain one.   The examples of indirect questions in \xref{cquestions} illustrate some of the possibilities.
+
+\newpage
+\ea\label{cquestions} I wonder ...
+\ea []{who John thinks Henry will call.}\label{cquestions1}
+\ex []{which lawyer John thinks Henry will call.}\label{cquestions2} 
+\ex []{whose friend John thinks Henry will call.}
+\ex []{whose lawyer's friend John thinks Henry will call.}\label{cquestionsd} 
+\ex []{from whom John thinks Mary will get a call.}
+\ex []{when John will call Mary.}
+%\ex when John thinks mother would like to get the flowers.
+\ex [*]{this lawyer John thinks Henry will call.}
+\ex [*]{he John thinks Henry will call.}
+\z\z
+
+ 
+\citet{kaplanbresnan82} proposed the attribute \FOCUS (distinct from the topicalization attribute \TOPIC) as a placeholder for the communicative entailments of the question construction, and a separate attribute \attr q to place the interrogative pronoun in a canonical position for later interpretation.  An f-structure configuration with these attributes for the embedded question in \xref{cquestions2} is shown in \xref{cqfs}.
+
+\ea\label{cqfs}
+\evnup{\small\avm[style=fstr]{
+      [\FOCUS & \{\rnode{ftop}
+        {[pred & \semformna{lawyer}\\
+        num & pl\\
+         \proattr{spec} & \rnode{pron}{ [pred & \semformna{which}\\
+                      prontype & wh]}
+         ]}\ \ \}\ \\
+      q & \rnode{q}{ }\\   
+      pred & \semforma{think}{{subj} {comp}}\\
+      subj & [pred & \semformna{John}]\\
+     \disattr{comp} & [pred & \semforma{call}{{subj} {obj}}\\
+                               tense & future\\
+                               subj & \semformna{Henry}\\
+                               \disattr{obj}& \rnode{fbot}{~~}]]
+}}
+\ncangles[armA=1,linearc=.2,nodesepA=2pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{ftop}{fbot}
+\ncangles[armA=1,linearc=.2,nodesepA=0pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{pron}{q}
+\z
+
+\noindent \FOCUS is represented here as taking a set of f-structures as its value. It can thus hold the contributions of additional English question words that might appear in situ \xref{englishinsitu} or the multiple question words in initial position that other languages might allow \xref{hungarian}.
+
+\ea\label{focusset}
+\ea\label{englishinsitu}
+I wonder who John thinks would like to get what.
+
+\ex\label{hungarian}
+ Hungarian \citep[from][]{Mycock07}\\
+ \gll Ki      ki-t     ki-nek    mutat-ott be?\\
+        who-{\NOM}    who-{\ACC} who-{\DAT} introduce\attr{-past-def.3sg} \attr{vm}\\
+\glt `Who introduced who to who?'
+\z\z
+
+
+The f-structure \xref{cqfs} for the embedded question \xref{cquestions2} is assigned by rule \xref{whpath}. The \attr{FocusPaths} uncertainty resolves to the blue attribute sequence that relates the entire filler f-structure to its within-clause (non-\COMP) function, as for topicalization.  The green path, taken from \attr{WhPaths}, establishes \attr q as an element inside the filler.  The intersection with \attr{WhPro} further ensures that \attr q is an interrogative pronoun:   given the off-path  $=_c$ constraint, the f-structure at the end of any \attr{WhPaths} string is acceptable only if it also includes the feature \mbox{\attr{[prontype wh]}}.  Off-path annotations are discussed in \sectref{marking} and defined there in \xref{offpaths}.
+
+\ea\label{whpath}
+ \phraserule{CP}{
+  \rulenode{XP\\\memb{focus}\\%\templatecall{focus}{\DOWN\ \UP}\\
+                         \assign{FocusPaths}\\
+                         \udcopy {q} {WhPaths \& WhPro}}
+  \rulenode{IP\\\UP=\DOWN}}\\[.5ex]
+ \small \begin{tabular}[t]{l@{\hsp{10.5em}}l@{\ \ }l}
+                                      & where & \attr{FocusPaths} is \set{\COMP, \XCOMP, \ADJ\ (\in)}\kstar \termcomp{\COMP}\\
+                                      &            & \attr{WhPaths} is \set{\SPEC\kstar,\! \OBJ}\\
+                                      &            & \attr{WhPro} is \attr{gf}\kstar \offp{\GF}{\eqc {\rgf{prontype}} {wh}}
+                               \end{tabular}
+\z
+
+
+\noindent   In fuller treatments, of course, the uncertainty languages \attr{FocusPaths} and  \attr{WhPaths} are supplemented with appropriate configurations of obliques, adjuncts, and other grammatical functions.
+
+\hspace*{-.7pt}The initial phrase of the English c-structure configuration is the probable cause, the trigger, for introducing the \attr{FocusPaths} uncertainty expression, and this must then resolve to the proper within-clause grammatical function for that \FOCUS phrase.  In Mandarin interrogative pronouns appear in situ, at the position in the embedded clause where the proper function is assigned by normal clause-level rules.  \citet{Huang1993b} discusses the following example.
+
+ \ea\label{mandarinquestion}Mandarin\\
+\gll Zhangsan xiwang Lisi gen shei xue yuyanxue?\\
+      Zhangsan hope Lisi \attr{gen}(with) who learn linguistics\\
+ \glt    `With whom does Zhangsan hope that Lisi will learn linguistics?'
+ \z
+ 
+\noindent An unbounded uncertainty is not needed here to establish the within-clause function, and indeed there is no natural place in the c-structure to specify a \mbox{\attr{FocusPaths}} connection as in \xref{whpath}.  But Huang notes that the pronoun must still be linked to some enclosing f-structure in order to establish the necessary scope for semantic and discourse interpretation.  He proposes to include in the lexical entry of an interrogative pronoun an uncertain path language that resolves to a higher-level f-structure.  Along the lines of that proposal, the lexical entry \xref{shei} places the interrogative pronoun in the \FOCUS set of a clause from which it is accessible through a path in the collection of (Mandarin-specific) \attr{FocusPaths}.
+
+\ea\label{shei}
+    \textit{shei}: \ \   \mb{\up \in ( \gfu {FocusPaths}\ \FOCUS)} 
+\z
+
+\noindent This makes use of the formal device of \textit{inside-out function application} \xref{insideouta}, originally introduced by \citet{kaplan1988} and subsequently extended by \citet{HalvorsenKaplan1988} to uncertain path languages \xref{insideoutb}. 
+
+\ea\label{insideout} Inside-out function application\\*
+\ea\label{insideouta} \mb{(\sigma\, f)\teq g} iff  $\sigma$ is an attribute string and \mb{(g\, \sigma)\teq f}.
+\ex\label{insideoutb} \mb{(\attr{Paths}\, f)\teq g} iff \attr{Paths} is a set of attribute strings and \nvaln g{Paths}f. % \mb{(g\, \attr{Paths})\teqc f}.
+\z\z
+
+\noindent In this case also there is an explicit probable cause for the uncertainty, the interrogative lexical entry.  In contrast, there is typically no local evidence to trigger the inside-out uncertainties that are attached to empty nodes in trace-based theories of unbounded dependencies \citep[e.g.][]{bresnan2001lexical,BresnanEtAl2016}.
+
+%\noindent The relation =$_c$ in these definitions means that the inside-out designator picks out a pre-existing f-structure $g$ that is connected to $f$ by an attribute or path that is also pre-existing; it does not by itself justify the construction of new f-structure units or paths.\footnote{This  is a slightly stronger version of the non-constructivity convention that figures in the analysis of LFG's mathematical and computational properties \citep{KaplanWedekind2019,KaplanWedekind2020:Zipper,\citetv{chapters/Computational},wed:kap:20}. Reentrancies or uncertainties are non-constructive under that technical formulation if the $\phi$ mapping of nodes to f-structures does not change if they are removed from the functional description. The condition here disallows the creation of new f-structure units or new connections whether or not that would affect the $\phi$ mapping.}
+
+
+%In the typological framework discussed by \citet{Mycock07}, English is a language that forms constituent questions according to a simple-fronting strategy.     Japanese makes use of an in-situ strategy wherein all question phrases appear in the same c-structure configurations as their non-interrogative counterparts.  Mycock cites the following Japanese examples:
+
+%\ea\label{jap}
+%\ea Declarative
+% \glll Mari-ga       dep\={a}to-de     Gor\={o}-ni     ranpu-o       eranda.\\
+%        Mari-{\NOM}    dept.store-\attr{loc} Gor\={o}-{\DAT} lamp-{\ACC} choose.\attr{past}\\
+%        {\SUBJ}        \attr{obl$_{\attr {loc}}$}            \attr{obl$_{\attr{ben}}$}          {\OBJ}          \attr{verb}\\
+%\glt \vspace{-1ex} `Mary chose a lamp for Gor\={o} at the department store.'
+%\ex Question
+% \glll Dare-ga       dep\={a}to-de     dare-ni     ranpu-o       eranda ka.\\
+%        who-{\NOM}    dept.store-\attr{loc} who-{\DAT} lamp-{\ACC} choose.\attr{past}\\
+%        {\SUBJ}        \attr{obl$_{\attr {loc}}$}            \attr{obl$_{\attr{ben}}$}          {\OBJ}          \attr{verb} \attr q\\
+%\glt \vspace{-1ex} `Who chose a lamp for who at the department store.'
+%\z\z
+%\noindent The interrogative pronouns in this construction are correlated in written language with the question particle \textit{ka} in final position, but that particle is otherwise semantically vacuous.
+
+%\ea\label{dare}
+%    \textit{dare}: \ \   \mb{\up \in ( \gfu {FocusPaths}\ \offp{\FOCUS}{\lgf q}) }
+%\z
+
+%\noindent The generic symbol \attr {gf} is realized by the grammatical function determined by the case marking of each occurrence in a clause, and the f-structure of each occurrence becomes a member of the \FOCUS set at the top of the path. Under the \FOCUS attribute is an ``off-path constraint" that tests for the existence of a \attr q feature at the top-level and thus ensures the presence of the \textit{ka} interrogative particle.  Off-path constraints are discussed in \sectref{islands}.
+
+
+\section {Grammaticized discourse functions?}\label{discoursefunctions}
+
+%\footnote{The \attr q attribute is technically not necessary to enforce the syntactic conditions of grammaticality, since the same effect can be achieved by the single uncertain constraining equation \dvalc{WhPaths prontype}{wh}. Just as for \FOCUS and \TOPIC, the \attr q attribute is included as one way of recording information that might be needed for subsequent interpretation.} 
+
+%\ea\label{cqfs-i}
+%\evnup{\avm[style=fstr]{
+%      [pred & \semforma{think}{{subj} {comp}}\\
+%      subj & [pred & \semformna{John}]\\
+%     \textbf{comp} & [pred & \semforma{call}{{subj} {obj}}\\
+%                               tense & future\\
+%                               subj & \semformna{Henry}\\
+%                               \textbf{obj} & [pred & \semformna{lawyer}\\
+%                                                    num & pl\\
+%                                                    \textit{spec} & [pred & \semformna{which}\\
+%                                                                             prontype & wh]]]]
+%}}
+%\z
+
+ \citet{kaplanbresnan82} introduced the attributes \TOPIC and \FOCUS to distinguish the fillers of the different unbounded dependency constructions as separate from the establishment of their within-clause grammatical functions.  These f-structure attributes were presumed to represent the syntactic features needed for subsequent interpretation by semantic and discourse components of grammar, and they were maintained as ``grammaticized discourse functions'' in some later work \citep[e.g.][]{BM87}.  Other chapters describe the subsequent development of explicit theories of semantic representation (\citetv{chapters/Glue}) and information structure  (\citetv{chapters/InformationStructure}) and how LFG's Correspondence Architecture \citep{kaplan1987three,kaplan1995formal} provides a uniform framework for integrating such independent modules with the core components of syntax.  The literature surveyed in those chapters and also \citet{DLM:LFG} suggest that the entailments of discourse functions like \TOPIC and \FOCUS can be spelled out in information structure (i-structure) features such as  \attr{$\pm$new} and \attr{$\pm$prom}(inent) and by other potential i-structure concepts that help in managing how semantic content is transmitted from speaker to hearer.   
+ 
+ With respect to the external phrases of topicalization and question formation, if their different discourse entailments can be carried over to i-structure, there may no longer be motivation to mark those with the distinguished \TOPIC and \FOCUS attributes in f-structure.  Thus, to record the external element in either construction, \citet{Asudeh2004,Asudeh12} proposed just one ``overlay function''  \attr{udf} (for ``Unbounded Dependency Function''), \citet{alsina2008} suggested the attribute \attr{op} (for ``operator''), and \citet{DLM:LFG} used the attribute \attr{dis} (for ``dislocated''). \citet{Snijders2015} goes even further, questioning whether the filler f-structure of either construction is needed other than at its within-clause position.  This issue was foreshadowed in King's (\citeyear{King1997}) earlier and more general argument that discourse focus should be represented in the independent information-structure module.  If the discourse functions do not interact with other syntactic features and if the i-structure discourse status of the within-clause function can be signaled without them, then the f-structure clutter of these grammaticized functions can be eliminated entirely. In the following, I explore this possibility.
+  
+The Correspondence Architecture is designed to encourage theoretical modularity, allowing different components of linguistic description to be organized in their own most natural ways and avoiding the complexity and confusion that comes from mixing conceptually unrelated primitives in a single representation.  \citet{DN} propose to relate f-structure to i-structure with the correspondence functions diagrammed in \xref{projections} \citep[see also][]{DLM:LFG}. The projection $\sigma$ maps from units of f-structure to meaning constructors in semantic structure, and the projection $\iota$ maps meaning constructors into correlated properties in information structure. 
+
+\ea\label{projections}I-structure correspondences \citep[from][]{DN}\\*  %p 90
+\vspace{.75em}\hsp{1em}
+c-structure
+\Rnode{cbot}{}\hsp{3em}\Rnode{ftop}{}
+f-structure
+ \Rnode{fbot}{}\hsp{3em}\Rnode{stop}{}
+s-structure
+\Rnode{sbot}{}\hsp{3em}\Rnode{itop}{}
+i-structure
+\ncline[vref=2ex]{->}{cbot}{ftop}
+\naput{$_\phi$}
+\ncline[]{->}{fbot}{stop}
+\naput{\small$\sigma$}
+\ncline[]{->}{sbot}{itop}
+\naput{\small$\iota$}
+\z
+
+\noindent  Given this arrangement and without involving any special features in f-structure, the composition of projections $\iota\circ\sigma\circ\phi$ can be used to express the fact that the filler in the topicalization construction is interpreted as an i-structure topic.
+
+The abstract interface between the syntactic and information modules, according to this organization, is made explicit in the revision of the topicalization rule \xref{rule5} shown in \xref{itopicrule}.  The \TOPIC function assignment has been replaced by the invocation of the \TOPIC template defined in \xref{topictemplate} \citep[for more on the explanatory value of templates, see the discussion in][]{dalrymple2004linguistic}.
+
+\ea \label{istopic}
+\ea\label{itopicrule}
+   \phraserule{CP}{
+  \rulenode{XP\\\templatecall{topic}{\UP\ \ \DOWN}\\\assign{TopicPaths} }
+  \rulenode{C$'$\\\UP=\DOWN} }%\\[.5ex]
+  \ex\label{topictemplate}
+     \attr{topic}(\textit{scope topic}) $\equiv$ {\small @}(\attr{i-topic} \textit{scope}$_{\sigma\iota}$ \textit{topic}$_{\sigma\iota}$)
+\z\z
+
+\noindent The template \attr{i-topic} is a placeholder for a separate i-structure theory of topic  whose details are hidden from the syntactic modules, but substituting the f-struc\-ture designators \UP and \DOWN for the template parameters \textit{scope} and \textit{topic} makes clear that the information needed to interpret the topic is carried by the external phrase.\footnote{Of course the original f-structure \TOPIC attribute, should that be useful, can be easily resurrected by the alternative definition \xref{oldtopic}.
+\ea\label{oldtopic}\attr{topic}(\textit{scope topic}) $\equiv$ \nassign{\textit{scope\ }} {topic} {\textit{topic}}
+\z
+\ea\label{olddis}\attr{topic}(\textit{scope topic/focus}) $\equiv$ \nmemb{\textit{topic}\hsp{-.1em}} {scope} {dis}
+\z
+\noindent Definition \xref{olddis} produces the common \attr{dis} representation that \citet{DLM:LFG} specify for both topic and focus. The set value suggests that syntactically the topic is not easily accessible. 
+} The subscript $\sigma\iota$ is the conventional way of notating the composition of projections in LFG annotations. In comparison to the structures shown in \figref{tree2fu} for sentence \xref{topic}, this gives rise to the three-module relationships in \xref{iscall}.  
+
+
+\setbox1=\hbox to 0 pt{\evnup{\small
+\begin{forest} 
+for tree={s sep=.3em, inner sep=.4}
+ [\rnode{CP}{CP} [\rnode{ttop}{NP}
+       [N [Mary]]]
+    [IP [NP[N  [John]]]
+          [VP [V [claimed]]
+                 [CP  
+                       [ that Bill \hbox to 0pt{said that  Henry called} ,roof] 
+                        ]]]]
+ \end{forest}                                                 
+%
+\hsp{-2.5em}\raisebox{-4em}{$\phi$}
+\hsp{2em}
+\raisebox{-.25em}{\evnup{\avm[style=fstr]{[
+      \Rnode{claim}{}pred & \semforma{claim}{{subj} {comp}}\\
+      subj & [pred & \semformna{John}]\\
+      \disattr{comp} & [
+                                pred & \semforma{say}{{subj} {comp}}\\
+                                subj & [pred & \semformna{Bill}]\\
+                                \disattr{comp} & [
+                                                          pred & \semforma {call}{{subj} {obj}}\\
+                                                          subj & [pred &\semformna {Henry}]\\
+                                                          \disattr{obj} & \rnode{fbot}{}[
+                                                                                                     pred & \semformna{Mary}]\rnode{fmary}{}]]]
+}}} 
+\begin{tabular}[t]{@{}l}\\[-.5em]
+                                    \hsp{-.7em}\rnode{fclaim}{}\\[.1em]
+                                    \hsp{3.5em}$\iota\circ\sigma$\\[1.1em]
+                                    \hsp{.4em} \attr{i-topic}(\textit{\rnode{scope}{scope} \Rnode{topic}{topic}})
+ \end{tabular}
+\ncarc[nodesepA=.2em,nodesepB=.6em,arcangleA=10,arcangleB=10, linewidth=.5pt,arrowscale=2]{->}{CP}{claim}
+\ncarc[nodesepA=.2em,nodesepB=0em,arcangleA=-27,arcangleB=-34, linewidth=.5pt,arrowscale=2]{->}{ttop}{fbot}\ncarc[nodesepA=.2em,nodesepB=.1em,arcangleA=20,arcangleB=10, linewidth=.5pt,arrowscale=2,linestyle=dashed]{->}{fclaim}{scope}
+\ncarc[nodesepA=.2em,nodesepB=0em,arcangleA=-15,arcangleB=-35, linewidth=.5pt,arrowscale=2,linestyle=dashed]{->}{fmary}{topic}
+}}
+
+\ea\label{iscall}
+\hsp{-2.5em}
+\raisebox{.15em}{\scalebox{.9}{\box1}}
+\z
+
+
+\noindent Note that there is no \attr{topic} and no structure sharing in this f-structure.  The filler f-structure appears only at the position of its within-clause function, with the projection lines indicating how the c-structure phrases relate indirectly through the f-structure to the topic in i-structure. 
+
+Rule \xref{whpathi} is a similar revision of the constituent question rule \xref{whpath}. The three-place template \attr{FocusQ} defined in \xref {fucustemplate} makes properties of the interrogative pronoun available for i-structure interpretation in addition to information about the focus constituent and its scope.  
+
+\ea
+\ea \label{whpathi}
+  \phraserule{CP}{
+       \rulenode{XP\\\templatecall{FocusQ}{\ \UP\ \ \DOWN\ \ \dgf{WhPaths \& WhPro}}\\
+                         \assign{FocusPaths}}
+       \rulenode{IP\\\UP=\DOWN}}
+%\ex\label{origfocus}
+%\attr{FocusQ}(\textit{scope focus q}) $\equiv$    \begin{tabular}[t]{@{}l}
+%                                                                              \mb{\textit{focus} \in \ngf {\textit{scope}} {focus}}\\
+%                                                                              \nassign {\textit{scope\ }} q {\textit q}
+%                                                                            \end{tabular}
+\ex\label{fucustemplate}
+ \attr{FocusQ}(\textit{scope focus q}) $\equiv$ {\small @}(\attr{i-FocusQ} \textit{scope}$_{\sigma\iota}$
+                                                                                                         \textit{focus}$_{\sigma\iota}$
+                                                                                                         \textit{q}$_{\sigma\iota}$)
+\z\z
+
+\noindent This results in the relationships shown in \xref{cqfsi} for the indirect question \xref{cquestions1}.
+%
+\setbox1=\hbox to 0pt{\evnup{\small
+\begin{forest} 
+for tree={s sep=.3em, inner sep=.4}
+ [\Rnode{tthink}{CP} [\rnode{tlawyer}{NP}
+               [\rnode{twhich}{Det} [which, tier=which]]
+                [N [lawyer]]
+              ]
+    [IP  ,tier=which  [ John thinks \hbox to 0pt{ Henry will call} ,roof] 
+                        ]]
+ \end{forest}               
+%
+\hsp{.75em}\raisebox{-.25em}{\evnup{\avm[style=fstr]{
+     [ 
+      \rnode{think}{}pred & \semforma{think}{subj comp}\\
+      subj & [pred & \semformna{John}]\\
+     \disattr{comp} & [pred & \semforma{call}{subj obj}\\
+                               tense & future\\
+                               subj & \semformna{Henry}\\
+                               \disattr{obj} & [\rnode{lawyer}{}pred & \semformna{lawyer}\\
+                                                     num & pl\\
+                                                     \proattr{spec} & [pred & \semformna{which}\\
+                                                                                \rnode{pron}{}prontype & wh]\rnode{fpron}{}
+                                                     ]\rnode{flawyer}{}
+                                ]
+       ]
+ }}}
+ \ncarc[nodesepA=.2em,nodesepB=.6em,arcangleA=10,arcangleB=10, linewidth=.5pt,arrowscale=2]{->}{tthink}{think}
+\ncarc[nodesepA=.2em,nodesepB=.6em,arcangleA=-15,arcangleB=-28, linewidth=.5pt,arrowscale=2]{->}{twhich}{pron}
+\ncarc[nodesepA=.2em,nodesepB=.6em,arcangleA=-10,arcangleB=-5, linewidth=.5pt,arrowscale=2]{->}{tlawyer}{lawyer}
+%
+ \begin{tabular}[t]{@{}l}\\[-.5em]
+                                    \hsp{-.7em}\rnode{fthink}{}\\[.1em]
+                                    \hsp{3.5em}$\iota\circ\sigma$\\[1.1em]
+                                    \hsp{.25em} \attr{i-FocusQ}(\textit{\rnode{scope}{scope} \rnode{focus}{focus} \rnode{q}{q}})
+            \end{tabular}
+\ncarc[nodesepA=.2em,nodesepB=0em,arcangleA=-27,arcangleB=-34, linewidth=.5pt,arrowscale=2]{->}{ttop}{fbot}
+\ncarc[nodesepA=0em,nodesepB=0em,arcangleA=-15,arcangleB=-40, linewidth=.5pt,arrowscale=2,linestyle=dashed]{->}{flawyer}{focus}
+\ncarc[nodesepA=.5em,nodesepB=0.1em,arcangleA=10,arcangleB=10, linewidth=.5pt,arrowscale=2,linestyle=dashed]{->}{fthink}{scope}
+\ncarc[nodesepA=0em,nodesepB=0em,arcangleA=-20,arcangleB=-35, linewidth=.5pt,arrowscale=2,linestyle=dashed]{->}{fpron}{q}
+}}
+%
+\ea\label{cqfsi}
+\hsp{-2.5em}\raisebox{.15em}{\scalebox{.875}{\box1}}
+\z
+%\vspace{-1.5em}
+
+\noindent There is no set-valued \FOCUS attribute and again no structure sharing in this simplified f-structure: the discourse entailments of this construction are off-loaded to the separate i-structure module.  This is attractive because it exploits the Correspondence Architecture to simplify syntactic representations, but the full consequences of this arrangement remain to be investigated.
+
+%
+%\ea\label{darei} 
+%    \textit{dare}: \ \  \templatecall{focus}{\UP \gfu {FocusPaths}}\\[1ex]
+%                          \hsp{5em}    where \attr{FocusPaths} is \offp{\eestring}{\lgf q} \attr{[comp|xcomp]\kstar\ \GF}
+%\z
+%
+
+%Eliminating \FOCUS from f-structure would also be consistent with Mycock's (\citeyear{Mycock07}) observation that the focus of constituent questions in some languages (for example, Japanese) is signaled prosodically and not by a phrase in a dislocated syntactic position.
+
+\section{The \textit{tough} construction}\label{tough}
+
+The English \textit{tough} adjectives (\textit{easy}, \textit{hard}, \textit{difficult}, \textit{impossible}...) induce unbounded dependencies with only one uncertainty, as for topicalization, but they differ from both topicalization and constituent questions in that a single phrase contributes information to grammatical functions that are governed by predicates in two clauses.  These adjectives subcategorize for a subject and an open \textit{to}-comple\-ment. If the complement has a simple transitive predicate, the adjective's subject is understood as the complement's object and its object must otherwise not be realized. The basic pattern is displayed in \xref{seem}. 
+
+\ea\label{seem}
+\ea [ ]{Moths seem tough to kill.}\label{seema} 
+\sn       \hsp{1.5em} (cf.\ It seems tough to kill moths.)
+\ex [ ]{Moths are tough (for someone) to kill.}\label{seemb}
+\ex [*]{Moths are tough to kill moths.}\label{seemc}
+\ex [*]{Moths are tough to arrive.}\label{seemd}
+\z\z
+
+ 
+% \ea\label{mothfs}
+%\evnup{\avm[style=fstr]{[subj & \rnode{subj}{[pred&\semformna{moth}\\num & pl\\case & nom]}\smallskip\\
+%           pred & \semformraise{tough}{xcomp}{subj}\\
+%           xcomp & [ubd & +\\
+%                           subj &[pred & \semformna{pro}]\\
+%                           pred & \semforma{kill}{subj obj}\\
+%                           obj & \ \rnode{obj}{ }]
+%]}}
+%\ncangles[armA=1.8,linearc=.2,nodesepA=2pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{subj}{obj}  
+% \z
+
+
+\noindent It is also generally accepted that the adjective's \SUBJ can serve as an \OBJ in a clause embedded at an uncertain depth within the immediate complement, as illustrated by the examples in \xref{toughlong}.
+ 
+\ea\label{toughlong}
+\ea\label{toughlonga} Moths are tough to plan to kill.
+\ex This book is hard to get her to avoid reading. \citep{dalrympleking2000} 
+\ex\label{toughlongobl} Kim would be difficult for me to persuade Robin to attempt to deal with.  \citep{HukariLevine1991}
+\ex\label{toughlongcomp} Mary is tough for me to believe that John would ever marry. \citep{kaplanbresnan82}
+\ex\label{toughadj}Kim is difficult to sit next to. \citep{Grover1995}
+\z\z
+
+This unbounded dependency also differs from topicalization in that the uncertainty is keyed by the lexical entries of adjectives in this particular class rather than by a rule that describes a generic configuration of c-structure phrases.  The uncertainty language itself is also quite different. The paths begin with sequences of {\XCOMP}s that do not alternate with {\COMP}s (\ref{toughpath}a-b), and they end only with \OBJ, not just any non-\COMP grammatical function (\ref{toughpath}c-d).  The bottom \OBJ can be preceded by an oblique \xref{toughlongobl}, a \COMP \xref{toughlongcomp}, or a member of a set of adjuncts \xref{toughadj}.
+
+\ea\label{toughpath}
+\ea [*]{Mary is tough that John would ever marry.}
+\ex [*]{Mary is difficult for me to believe that John wanted to plan to marry.}
+\ex [*]{Tuesday would be difficult to take the exam. \citep{dalrympleking2000}}
+\ex [*]{Mary is tough for me to believe would ever marry John.}
+\z\z
+
+\noindent These possibiliites are expressed in the lexical uncertainty shown in \xref{toughentry}.
+
+\ea\label{toughentry}
+\textit{tough}\ \ \ A\ \ \ \feqs{\predsfraise{tough}{xcomp}{subj}\\\uucopy {subj}{xcomp ToughPaths}}\\
+\hsp{8em}where \attr{ToughPaths = xcomp\kstar \set{\OBLTHETA, \COMP, \ADJ \in} obj}
+\z
+
+\noindent This gives rise to the outer connection shown in \xref{mothfs}, the f-structure corresponding to sentence \xref{toughlonga} (the inner  line indicates the local functional control relation for \textit{plan}).
+
+\ea\label{mothfs}
+\evnup{\small\avm[style=fstr]{[subj & \rnode{subj}{[pred&\semformna{moth}\\num & pl\\case & nom]}\smallskip\\
+           pred & \semformraise{tough}{xcomp}{subj}\\
+           xcomp & [subj &[pred & \rnode{hisubj}{\semformna{pro}}]\\
+                                      pred & \semformraise{plan}{xcomp}{subj}\\
+                                     \disattr{xcomp} & [subj & \rnode{lowsubj}{}\\ 
+                                                             pred & \semforma{kill}{subj obj}\\
+                                                             \disattr{obj} & \ \rnode{obj}{ }]]]
+}}
+\ncangles[armA=3.6,linearc=.2,nodesepA=2pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{subj}{obj}  
+\ncangles[armA=2.4,linearc=.2,nodesepA=5pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{hisubj}{lowsubj}  
+ \z
+
+The \textit{tough} uncertainty establishes an identity between the \SUBJ of the adjective and an \OBJ somewhere within its complement.  The effect is that the predicate and all other f-structure properties of the matrix \SUBJ appear also in the embedded \OBJ.  The examples in \xref{pronouns} suggest that this might lead to inconsistent values for a shared \CASE feature.
+
+\ea\label{pronouns}
+They/*Them are tough to kill.
+\sn It is tough to kill *they/them.
+\z
+
+\noindent  This 
+connectivity problem has received some attention in the literature \citep[e.g.][]{HukariLevine1991,dalrympleking2000}.  \cite{dalrympleking2000} proposed to avoid this problem by removing the functional identity of the two f-structure values.  Rather than linking the \textit{tough} \SUBJ directly to an embedded \OBJ, they depend on an obligatory anaphoric relation between the \SUBJ and a grammaticized pronominal  \TOPIC in \textit{tough}'s immediate complement. It is then the \TOPIC f-structure that the uncertainty  identifies with an embedded \OBJ, as spelled out in \xref{toughtopic}.\footnote{\citet{dalrympleking2000} assign the function \COMP instead of \XCOMP to the immediate complement, for reasons that are not relevant to the current discussion. They also argue that the \textit{tough} \SUBJ is thematic, but here I follow the raising/non-thematic representation suggested by \citet{kaplanbresnan82}. With respect to the issues of unbounded dependencies, this is also a difference of no consequence.}  This two-step connection preserves the intended semantic entailments while the appeal to the referential component of grammar suppresses the propagation not only of \CASE but also of all other syntactic features.  The entry in \xref{toughpredlink} achieves the same effect without relying on anaphora or an explicitly grammaticized \TOPIC simply by asserting that the \SUBJ and the embedded \OBJ share only the same uniquely instantiated \PRED.\footnote{Since \SUBJ is generally assumed to map to a position of i-structure prominence, invoking the  \TOPIC template in \xref{toughpredlink} may not be necessary for proper interpretation.}    
+
+\ea
+\ea\label{toughtopic}  \textit{tough}\ \ \ A\ \ \ \feqs{\predsfraise{tough}{xcomp}{subj}\\
+                                           \uval {xcomp topic pred}{\semformna{pro}}\\
+%                                           \uval {xcomp subj}{\semformna{pro}}\\
+                                           \uucopy {xcomp topic} {xcomp ToughPaths}
+                                           }
+\ex\label{toughpredlink}
+  \textit{tough}\ \ \ A\ \ \ \feqs{\predsfraise{tough}{xcomp}{subj}\\
+                                              \uucopy{subj pred} {xcomp ToughPaths pred}\\
+                                              \templatecall{topic}{\ugf{xcomp}\ \ugf{subj}}}
+\z\z
+
+\noindent The lexical entry \xref{toughtopic} would assign the f-structure  (\ref{mothfstop}a) to sentence \xref{seemb}, with the dashed lines representing an anaphoric relationship.   Entry \xref{toughpredlink} would assign the f-structure  (\ref{mothfstop}b).  
+ 
+\ea\label{mothfstop}
+%\hsp{-2.1em}
+\begin{tabular}[t]{@{}c@{\hsp{2.2em}}c@{}}
+a. Anaphoric binding to \SUBJ   & b. \PRED sharing of \SUBJ and \OBJ\\[1ex]
+
+{\small\avm[style=fstr]{[subj & \rnode{subj}{[pred &\rnode{xxxj}{\semformna{moth}}\\num & pl\\case & nom]}\ \smallskip\\
+           pred & \semformraise{tough}{xcomp}{subj}\\
+           xcomp & [topic& \Rnode{xxx}{\rnode{top}{[pred & \rnode{antop}{\semformna{pro}}\ \\case & acc]}}\smallskip\\
+                                      subj &[pred & \semformna{pro}]\\
+                                      pred & \semforma{kill}{subj obj}\\
+                                      \disattr{obj} & \ \rnode{obj}{ }]
+]}}
+\ncangles[armA=1.8,linearc=.2,nodesepA=1pt,angleA=0,nodesepB=6pt,angleB=0,linewidth=.5pt,linestyle=dashed]{subj}{antop}\ncangles[armA=.9,linearc=.2,nodesepA=2pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{top}{obj}  
+
+&
+
+{\small\avm[style=fstr]{[subj & \rnode{subj}{[pred &\rnode{subj}{\semformna{moth}}\ \ \\num & pl\\case & nom]}\ \smallskip\\
+           pred & \semformraise{tough}{xcomp}{subj}\\
+           xcomp & [
+                                      subj &[pred & \semformna{pro}]\\
+                                      pred & \semforma{kill}{subj obj}\\
+                                      \disattr{obj} & [pred & \Rnode{objpro}{}\ \\case & acc]]
+]}}
+\ncangles[armA=1.9,linearc=.2,nodesepA=1pt,angleA=0,nodesepB=1pt,angleB=0,linewidth=.5pt]{subj}{objpro}%\ncangles[armA=.9,linearc=.2,nodesepA=2pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{subj}{obj}  
+\end{tabular}\
+ \z
+ 
+\noindent Each of these solutions supports the intended semantic interpretation while avoiding the \CASE conflict. But each allows for free variation of all other syntactic features, even inherent features like gender or person that may enter into patterns of agreement that \CASE does not participate in.
+
+A more precise alternative is based on the restriction operator defined in \xref{restriction}.  This permits relaxing the compatibility requirement for specific features (like \CASE) while still enforcing consistency of all otherwise unmentioned features.  
+
+
+\ea\label{restriction}
+Definition of restriction: \hsp{1em} \citep{kaplanwedekind93} \\*
+If $f$ is an f-structure and $a$ is an attribute, then the restriction of $f$ by $a$ is the f-structure \mb{f\restrict a =\set{\langle s,v\rangle \in f \,\vert\, s\neq a}}.
+%allowing for a is a set:  (put in footnote above??)
+%\ea \label{setrestr}
+%\mb{f|_{\langle a, v \rangle} \equiv  f|_a} if \mb{(f\, a) = v}\\
+%\mb{f|_{\langle a, v \rangle} \equiv f|_a \cup \set{\langle a,(f\,a)-\{v\} \rangle}} otherwise
+\z
+
+\noindent An f-structure $f$ restricted by an attribute $a$ contains all the attribute-value pairs of $f$ except for the attribute $a$ and its value.  This formal device was used by \citet{ZaenenKaplan2002:Subsumption} to suppress unwanted \CASE conflicts in German functional control. It is applied in \xref{toughrestrict} to exclude \CASE from the unbounded lexical uncertainty that holds between the  \textit{tough} \SUBJ and the embedded \OBJ. That particular incompatibility is thereby eliminated while all other features are shared (and may conflict).
+
+\ea\label{toughrestrict}
+\textit{tough}\ \ \ A\ \ \ \feqs{\predsfraise {tough}{xcomp}{subj}\\
+                                    \ugf {subj}\restrict{case} = \ugf{xcomp ToughPaths}\restrict{case}\\
+                                    \templatecall{topic}{\ugf{xcomp}\ \ugf{subj}}}
+\z
+
+\noindent The logical f-structure relationships that the \CASE restriction induces are shown explicitly in \xref{casesubsumed}:
+
+\ea\label{casesubsumed}Functional binding of \CASE-restricted \SUBJ\\*
+\evnup
+{\small\begin{tabular}[c]{lll}
+{\avm[style=fstr]{[subj & \rnode{subj}{[pred &\semformna{moth}$_i$\\num & pl\\case & nom]}\smallskip\\
+           pred & \semformraise{tough}{xcomp}{subj}\\
+           xcomp & [subj &[pred & \semformna{pro}]\\
+                                      pred & \semforma{kill}{subj obj}\\
+                           \disattr{obj} & \ \rnode{obj}{[pred &\semformna{moth}$_i$\\num & pl\\case & acc]}]
+]}}
+&\hsp{1em}$\sqsupseteq$\hsp{.5em}
+&
+\hsp{1em}\avm[style=fstr]{ [\hsp{-.5em}\rnode{top}{}\hsp{.5em}pred &\semformna{moth}$_i$\\
+           \hsp{-.5em}\rnode{bot}{}\hsp{.5em}num & pl]}
+\ncarc[nodesepA=.2em,nodesepB=0em,arcangleA=-20,arcangleB=-15,linewidth=.5pt,arrowscale=2]{->}{top}{subj}
+\ncarc[nodesepA=.2em,nodesepB=0em,arcangleA=20,arcangleB=15,linewidth=.5pt,arrowscale=2]{->}{bot}{obj}
+\end{tabular}
+}
+\z
+\noindent  On the right is the \CASE-restricted f-structure that is shared across the functional uncertainty. It subsumes the \SUBJ and \mbox{\XCOMP \OBJ} values, causing them to have all of the same syntactic features except for \CASE.
+
+The same logical relations are depicted more intuitively with the abbreviatory graphical convention shown in \xref{mothfssub2}. While the gray brackets in this diagram are not formally part of the linguistic representation, they highlight that the functional identity induced by the restricted unbounded dependency holds only between the enclosed proper subsets of the features of the \SUBJ and \mbox{\XCOMP \OBJ} f-structures.
+
+ \ea\label{mothfssub2}Functional binding of \CASE-restricted \SUBJ (succinct)\\*
+\evnup
+{\small\avm[style=fstr]{[subj & [\rnode{subj}{\lightgray[\black pred &\black\semformna{moth}\\
+                                                           \black num & \black pl]}\\
+                        case \  nom\hsp{1.9em}]\smallskip\\
+           pred & \semformraise{tough}{xcomp}{subj}\\
+           xcomp & [subj &[pred & \semformna{pro}]\\
+                                      pred & \semforma{kill}{subj obj}\\
+                           \disattr{obj} &[ \ \rnode{obj}{\lightgray[\hsp{2em}]}\\
+                                                case \ \ \  acc]]
+]}}
+\ncangles[armA=1.8,linearc=.2,nodesepA=0pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{subj}{obj}  
+ \z
+
+In sum,  the English \textit{tough} construction involves an unbounded connection between two grammatical functions, the \SUBJ in the matrix clause and an \OBJ embedded in its complement. While this has the potential of  creating an undesired f-structure conflict between the values of the clause-specific \CASE features, that potential conflict can be avoided if an anaphoric relationship disrupts the functional identity across the clauses or if only the \PRED value is shared.  An alternative solution uses the f-structure restriction operator to suppress only the \CASE feature without disturbing other patterns of agreement.
+
+
+
+\section{Relative Clauses}\label{relativeclauses}
+
+%The English relative clause in \xref{rel0b} combines the double uncertainties of constituent questions with the double function assignments of the \textit{tough} construction.
+
+English relative clauses blend the double function assignments of the \textit{tough} construction with the double uncertainties of constituent questions, as exemplified in \xref{rel0b}.\footnote{As mentioned earlier, the underscore indicating the position of the `gap' is provided only as a reader's guide to the intended interpretation.  As discussed in \sectref{linearorder}, it is quite a separate question whether it should also indicate the presence of an empty node in the syntactic representation.}
+
+\ea \label{rel0b} \hsp{-.3em}
+                        The \rnode{shop1}{shop} [[the \rnode{owner}{owner} of \rnode{which}{which}] [Sue knows  \rnode{gap1}{\GAP} ]] sells books.
+\ncbar[nodesep=1pt,angle=90]{<->}{shop1}{which}
+\ncbar[nodesep=1pt,angle=-90]{<->}{owner}{gap1}
+\ncbar[nodesep=1pt,angle=90]{<->}{shop2}{gap2}
+%\ncbar[nodesep=1pt,angle=-90]{<->}{shop2}{John}
+\z
+
+\noindent With respect to function assignments, \textit{shop} is understood as both the subject of the matrix predicate \textit{sells} and the (oblique) object of \textit{owner}.  With respect to uncertainties, the f-structure of the clause-initial \textit{owner} phrase is the object of \textit{knows} in this example but it could also bind to a function in a deeper complement.  And the relative pronoun \textit{which} can also appear at an arbitrary depth inside the clause-initial phrase. The examples \xxref{elected}{reportheight} of what \citet{ross1967constraints} called ``Pied-piping''  show  some of the positions possible for the relative pronoun; example \xref{shop} shows that the relative pronoun must appear somewhere.   
+
+\ea \label{rel20}
+            \ea []{The man who we elected ...}\label{elected}
+            \ex  []{The woman to whom we gave the book ...}
+ %           \ex  []{The kind of person proud of whom I could never be ...\\\hsp{1em}\citep{Webelhuth92}}
+            \ex  []{The boy whose book Bill said was stolen ...}\label{relnowonder}
+            \ex  []{Reports the height of the lettering on the covers of which the government prescribes ...    
+                        \citep{ross1967constraints}}\label{reportheight}
+            \ex [*]{The shop the owner of the car Sue knows sells books.}\label{shop}
+%            \ex  [*]{I wonder whose book Bill said was stolen...}\label{relwonder}
+%            \ex [*]{The shop [ the owner of what [Sue knows]] sells books.}\label{shopwhat}
+\z\z
+
+% I wonder the reports the height ... of which
+%            \ex  []{The boy the uncle of whom Bill knows ... }\label{relnowonder}
+%            \ex  [*]{I wonder the boy the uncle of whom Bill knows...}\label{relwonder}
+
+%\textit{shop}, an \OBLTHETA with accusative case, but the head NP is also the nominative \SUBJ of the matrix predicate \textit{sells}. It is common to avoid this potential conflict of syntactic features by positing an anaphoric relationship between the pronoun and the head, similar to the relationship between the matrix \SUBJ and embedded \OBJ of the \textit{tough} construction.
+
+F-structure \xref{relanaphoric} lays out the significant grammatical relationships of sentence \xref{rel0b}.  The uncertainty of the within-clause function for the clause-initial phrase is resolved by the blue \OBJ path in \attr{RelTopicPaths}, and that phrase also maps to the i-structure topic.  The relative pronoun is identified as the \attr{head} of the clause (the solid line) by virtue of the attributes on the green path from \attr {RelHeadPaths}.  The dashed line between the \attr{head} and the nominal predicate indicates a connection of obligatory anaphoric control, as in the \textit{tough} f-structure (\ref{mothfstop}a), that avoids any \CASE-like inconsistencies that might stem from the double function assignment.
+
+\ea\label{relanaphoric}
+%\raisebox{-.25em}{
+\evnup{\avm[style=fstr]{
+[pred & \semforma{sell}{subj obj}\\
+ tense & present \\
+ subj & [ pred & \rnode{Npred}{\semformna{shop}}\\
+                     def & +\\
+                     num &  sg\\
+             case  &nom\smallskip\\
+             adj   \{\rnode{clause}{[head &\rnode{head}{[pred &\rnode{relpred}{\semformna{pro}}\ \ \ \\
+                                                                                    prontype & rel ]}\smallskip\\
+                        pred & \semforma {know}{subj obj}\\
+                        tense & present\\
+                         subj & [pred & \semformna {Sue}\\
+                                     num & sg\\
+                                     case & nom]\\
+                         \disattr{obj} &  \rnode{topic}{[pred &\semforma{owner}{\OBLTHETA}\\
+                                                            \proattr{\OBLTHETA} & [\proattr{obj} & \rnode{obl}{}\ \ ]\\
+                                                            num & sg\\
+                                                            def & +\\
+                                                           case & acc
+                                                           ]}
+                                             ]}
+                                \ \}      
+    ]\smallskip\\
+ obj & [ pred & \semformna{book}\\
+            num & pl\\
+            case & acc]
+]       
+}}%}
+\hsp{2.5em}\evnup{\small\begin{tabular}[c]{l}\hsp{-3.4em}\rnode{fclaim}{}\\[13em]
+                                               \hsp{-.75em}\rnode{scope}{}\\[-.5em]
+                                               \hsp{-.75em}\attr{i-topic}\\[-1em]
+                                               \hsp{-.75em} \rnode{itopic}{}
+                                              \end{tabular}}
+\ncangles[armA=5.15,linearc=.2,nodesepA=1pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt,linestyle=dashed]{Npred}{relpred}
+\ncangles[armA=1.75,linearc=.2,nodesepA=2pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{head}{obl}
+%\ncangles[armA=1.05,linearc=.2,nodesepA=0pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{top}{obltheta}
+\ncarc[nodesepA=0em,nodesepB=0em,arcangleA=-20,arcangleB=-35, linewidth=.5pt,arrowscale=2,linestyle=dashed]{->}{topic}{itopic}
+\ncarc[nodesepA=0em,nodesepB=0em,arcangleA=10,arcangleB=25, linewidth=.5pt,arrowscale=2,linestyle=dashed]{->}{clause}{scope}
+\z
+
+This f-structure is derived by the rules and lexical entry in \xref{relprorules}. According to rule \xref{relattach}, the f-structure of a single relative clause is added to the adjunct set of the NP; the recursion through the NP category allows for NP's with multiple clauses. Rule \xref{topicpath} describes the internal structure of the relative clause itself. The f-structure of the clause-initial phrase is linked to its within-clause function through a path in \attr {RelTopicPaths} and is also projected to the i-structure topic by the \TOPIC template.  The \attr{head} at the top is set to the relative pronoun required at the end of one of the \attr {RelHeadPaths}. The dashed anaphoric connection is not established in the syntax.
+
+\ea\label{relprorules}
+\ea \label{relattach}
+\phraserule{NP}{\rulenode{NP\\\UP=\DOWN}
+                            \rulenode{CP\\\memb{adj}} }\\[1ex]
+
+\ex\label{topicpath}
+\phraserule{CP}{
+  \rulenode{XP\\\templatecall{topic}{\UP\ \DOWN}\\
+                         \assign{RelTopicPaths}\\
+                         \udcopy{head}{RelHeadPaths \& RelPro}
+                  }
+  \rulenode{C$'$\\\UP=\DOWN}}\\[1ex]
+ \small \hsp{7em} where \begin{tabular}[t]{@{\ }l@{}}
+                                              \attr{RelTopicPaths} is \set{\COMP, \XCOMP,...}\kstar \termcomp{comp}\\
+                                              \attr{RelHeadPaths} is \set{\SPEC\kstar, \,[(\OBLTHETA)\ \OBJ]\kstar}\\
+                                              \attr{RelPro} is  \attr{gf}\kstar \offp{\GF}{\rvalc{prontype}{rel} }                                                                  
+                                        \end{tabular}
+\ex\label{whichpro}
+      \textit{which}\ \ \ Pro\ \ \ \feqs{\uval{pred}{\semformna{pro}}\\
+                                                  \uval{prontype}{rel}}
+\z\z
+
+%\noindent The path-set cover terms in \xref{topicpath} are specific to relative clauses.   \attr {RelTopicPaths} may be similar or even identical to the paths for topicalization and constituent questions across languages, but that is not necessarily the case.  The \attr {RelHeadPaths} include \mbox{(\OBLTHETA) \OBJ} sequences that do not belong to the \attr {WhPaths} language \xref{whpath}, thus accounting for the unacceptability of interrogative sentences like (\ref{rel20}g).\marpar{get a sentence}
+
+Sentence \xref{rel0a} exemplifies a pattern for English relative clauses that is not derived by rule \xref{topicpath}.  
+
+\ea \label{rel0a}
+     The \rnode{books}{books}  (that)  the shop  sells \rnode{gap}{\GAP} are expensive.
+     \ncbar[nodesep=1pt,angle=-90]{<->}{books}{gap}
+\z\bigskip
+
+\noindent The embedded clause in this sentence does not begin with an external XP topic phrase.  Rather, the XP position of \xref{topicpath} is either filled with the complementizer \textit{that} or is left completely empty, and in either case there is no explicit relative pronoun to trigger an anaphoric interpretation.  The alternative CP expansion in \xref{nopro} accounts for these c-structure configurations, simulates the anaphoric link by introducing a null pronoun, and identifies directly the within-clause function for the value of the \attr{head} attribute.
+
+\ea\label{nopro}
+\phraserule{CP}{
+  \rulenode{\textit{that}\,|\,\eestring\\
+                        \templatecall{topic}{\UP\ \ugf{head}}\\
+                        \uucopy{RelTopicPaths}{head}\\
+                        \uval{head pred}{\semformna{pro}}}
+  \rulenode{C$'$\\\UP=\DOWN}}\\[1ex]
+\z
+
+\noindent This produces  \xref{nullproanaph} as the f-structure for the relativized matrix subject NP in \xref{rel0a} (now omitting the projection arrows that presumably map the \attr{head} by default to the i-structure topic).
+
+ \ea\label{nullproanaph}
+ \evnup{\small\avm[style=fstr]{
+[pred & \rnode{Npred}{\semformna{book}} \\
+ num & sg\\
+ def & +\\
+ case & nom\\
+   adj & \{
+             [head & \rnode{head}{[pred & \semformna{pro}\,\Rnode{relpred}{}\vspace{.75ex}
+                                                             ]}\smallskip\\
+               pred & \semforma {sell}{subj obj}\\
+              tense & present\\
+               subj & [ pred & \semformna{shop}\\
+                          num & sg\\
+                          def & +\\
+                          case & nom]\\
+               \disattr{obj} & \rnode{obj}{} 
+                ]          
+              \}
+    ]
+}}
+\ncangles[armA=3.5,linearc=.2,nodesepA=2pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt,linestyle=dashed]{Npred}{relpred}
+\ncangles[armA=1.05,linearc=.2,nodesepA=2pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{head}{obj}
+\ncangles[armA=3.3,linearc=.2,nodesepA=0pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{topbot}{subj}
+\z
+
+The \attr{head} \semformna {pro} is an essential ingredient of this commonly accepted analysis of relative clauses.  On this account the semantic connection between the head noun and its role within the clause is established without a direct syntactic relationship.  This has the advantage that unwanted inconsistencies of any double-function syntactic feature values cannot arise (cf. the anaphoric solution for \textit{tough}).  However, \citet{falk2010} puts forth several arguments against what he describes as this ``anaphorically mediated'' analysis.
+
+On one line of attack he points to the contrast in \xref{headway}.  While the word \textit{headway} in the idiom \textit{make headway} can be the head of a relative clause \xref{headway1}, it cannot otherwise be an antecedent for a referential pronoun \xref{headway2}.
+
+\ea\label{headway}
+\ea []{Mary praised the headway that John made.}\label{headway1}
+\ex [*]{Mary always praises headway when John makes it.}\label{headway2}
+\z\z
+
+\noindent As another argument, he notes \citep[citing][]{DMaxwell1979} that languages with pronoun-less relative clauses are quite common among the 49 languages listed in the NP accessibility database of 
+{\citet{KeenanComrey1979}}. He illustrates this with examples from a number of languages, including the ones in \xref{Hebrew} (\textit{that} is a complementizer in the English translations, not a pronoun).
+
+\ea\label{Hebrew}
+\ea Hebrew\hsp{2em}\citep[from][]{falk2010}\\
+\gll meabed hatamlilim \u{s}e Bill maadif.\\
+processor \DEF.texts {\COMP} Bill prefers\\
+\glt `the word processor that Bill prefers'\\[1ex]
+
+\ex Japanese\hsp{2em}  \citep[from][]{KeenanComrey1979}\\ 
+\gll Watashi wa sono otoko ga tataita inu o miru.\\
+     I {\TOP} that man {\NOM} struck dog {\ACC} see\\
+\glt `I see the dog that the man struck.'
+ \z\z
+
+\noindent Some languages allow relative clauses with or without relative pronouns, like English, but relative pronouns simply do not exist in Japanese and other languages.  Falk thus suggests that relative clauses without mediating pronouns are the typical case cross-linguistically, and that English examples like \xref{rel0b} are more the exception than the rule. A general account of head dependencies, he concludes, should not rely on the machinery of anaphoric binding.
+
+\citet{falk2010} thus proposes an anaphorically-unmediated account of the connection between the f-structure of the relativized NP and the \attr{head} f-structure of the clause.  The restriction operator is used to prevent selected features from clashing, along the lines of the \textit{tough} analysis in \xref{toughrestrict} above.  His proposal in essence is to augment the relative clause introduction rule \xref{relattach} with an equation that identifies the NP's (restricted) f-structure with the (restricted) \attr {head} of the clause \xref{relrestrictN}.\footnote{The attribute \attr{head} is neutral with respect to Falk's semantically-oriented \attr{oper} attribute and the attribute \attr {relpro} that aligns more with previous anaphora-based solutions.}
+
+\ea \label{relrestrictN}
+\phraserule{NP}{\rulenode{NP\\\UP=\DOWN}
+                        \rulenode{CP\\\memb{adj}\\
+                                   {\UP}\restrict{\set{\CASE,\ADJ}}{\,}=\,\dgf{head}\restrict{\set{\CASE,\ADJ}} }   }
+\z 
+
+\noindent This permits the \CASE feature of the NP and the relative \attr{head} to disagree; the relative-containing \ADJ set is also restricted to avoid the technical confusion of circularity. The modified rule figures in the derivation of relative clauses with or without relative pronouns.    English clauses with pronoun-containing initial XP phrases are still derived by rule \xref{topicpath}, but the relative pronoun no longer introduces its own pronominal \PRED \xref{whichnopro}.  Instead the \attr{head} explicitly shares the head noun's \PRED, thus establishing the semantic connection.  Rule \xref{nopro} is also simplified, since the null \semformna{pro} is not needed to compensate for the absence of an initial XP \xref{restrictthat}.
+
+\ea
+\ea\label{whichnopro}
+\textit{which}\ \ \ Pro\ \ \ \uval{prontype}{rel}
+\ex\label{restrictthat}
+\phraserule{CP}{
+  \rulenode{\textit{that}\,|\,\eestring\\
+                          \templatecall{topic}{\UP \ugf{head}}\\
+                           \uucopy{head}{RelTopicPaths}}
+  \rulenode{C$'$\\\UP=\DOWN}}\\[1ex]
+\z\z
+
+\noindent With these revisions the f-structure (\ref{noprofs}a) is provided for the relativized NP \textit{shop} in \xref{rel0b} and (\ref{noprofs}b) is provided for \textit{book} in \xref{rel0a}.
+  
+ \setbox1=\hbox{\attr{\small\begin{tabular}[c]{@{}l@{}l@{}}
+                                                         prontype\ \   & rel
+                                  \end{tabular}}}
+ \ea\label{noprofs}
+\hsp{-2.25em}\begin{tabular}[t]{@{}c@{\hsp{2.5em}}c@{}}
+ a.&b.\\[-1ex]
+ \evnup{\small\avm[style=fstr]{
+ [ \rnode{NP}{\lightgray[\black pred & \black\semformna{shop}\\
+                                                  \black num & \black sg\\
+                                                  \black def &  \black +] }\\
+             case  \ nom\smallskip\\
+             adj   \{[head & \Rnode{head}{[\rnode{headrest}{\lightgray [\hsp{2em} ]}\\
+                                                                                              \box1
+                                                                                              ]}\smallskip\\
+                        pred & \semforma {know}{subj obj}\\
+                        tense & present\\
+                         subj & [pred & \semformna{Sue}\\
+                                   num & sg\\
+                                   case & nom]\\
+                         \disattr{obj} & [pred &\semforma{owner}{\OBLTHETA}\\
+                                                            \proattr{\OBLTHETA} &[\proattr{obj} &  \rnode{obj}{}\ \ ]\\
+                                                            num & sg\\
+                                                            def & +
+                                                           ]
+                      ]
+                                \}      
+    ]
+}}
+\ncangles[armA=4.00,linearc=.2,nodesepA=2pt,angleA=0,nodesepB=2pt,angleB=0,linewidth=.5pt]{NP}{headrest}
+\ncangles[armA=1.8,linearc=.2,nodesepA=0pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{head}{obj}
+%
+&
+\evnup{\small\avm[style=fstr]{
+[\rnode{NP}{\lightgray[\black pred & \black\semformna{book}\\
+                                                  \black num & \black sg\\
+                                                  \black def &  \black +] } \\
+  case \ nom\\
+   adj  \{[head &\rnode{head}{}\Rnode{headresttop}{} 
+                                                                                              \\
+              pred & \semforma {sell}{subj obj}\\
+              tense & present\\
+               subj & [ pred & \semformna{shop}\\
+                          num & sg\\
+                          def & +\\
+                          case & nom]\\
+               \disattr{obj} & \rnode{obj}{} 
+                ]          
+              \}
+    ]
+}}
+\ncangles[armA=2.85,linearc=.2,nodesepA=0pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{NP}{headresttop}
+%\ncangles[armA=1.20,linearc=.2,nodesepA=2pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{head}{toptop}
+\ncangles[armA=2.95,linearc=.2,nodesepA=0pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{head}{obj}
+\end{tabular}
+\z
+
+\noindent In these structures the link between the restricted \attr{head} f-structures is strictly local.  The links within the clause are unbounded, as indicated by the colored  attributes from paths in the \attr{RelTopicPaths} and \attr{RelHeadPaths} uncertainty languages.
+
+%A different type of relative clause is discussed in \citet{buttetal07} and \citet{Belyaev14}. They look at correlatives in Urdu and Ossetic respectively. Butt et al. treat correlatives a ``as quantifiers that appear either in the specifier position of the DP they modify or in a topicalized position at the left periphery'' They differ from normal relative clauses by being part of the \textsc{spec} structure rather than being an adjunct. They claim that the parallels to free relative clauses suggest that a similar analysis might be appropriate for German and English free relatives but that proposal has not be worked out further. It is not clear from the discussion whether these correlatives exhibit long distance characteristics. 
+%
+
+\section{Further constraints on uncertainty paths}\label{constraints}
+
+In modern LFG theory the admissibility of particular unbounded dependencies is determined first and foremost by the attribute strings in the uncertainty path-languages.  But these dependencies have been challenging for linguistic description because they are also conditioned in different constructions and different languages by second-order interactions with other structural properties.  Dependencies and the phrases they pass through must sometimes be aligned with respect to special morphological or phonological feature values (\sectref{marking}).    Separate dependencies in some languages cannot pass through the same f-structures, giving rise to island effects (\sectref{islands}).  Unbounded dependencies are of course related indirectly to word order by virtue of a grammar's normal c-structure rules and f-structure annotations, but they may also be sensitive to additional linear order constraints (\sectref{linearorder}).
+
+\subsection{Marking of intervening f-structures}\label{marking}
+
+\citet{zaenen1983} discussed a number of languages in which f-structures on a path between a filler and its clause-internal function differ in form from f-structures that are not in the domain of an unbounded dependency.  She specifically considered Irish and Kikuyu, but since then many more cases have been discussed in the literature \citep[see e.g.][]{vanUrk}. Here I focus on just the Irish examples of the phenomenon, as illustrated by the contrasts in \xref{Irishexamples} \citep[data originally from][]{McCloskey79}.\footnote{In the linguistic literature the complementizer \textit{a} is typically written as \textit{aL} or \textit{aN}, indicating that it triggers a lenition mutation or a nasalization mutation on the following word.}
+
+\ea\label{Irishexamples}
+Path-dependent complementizer selection in Irish
+\ea\label{Irishnocomp}\gll Deir siad goN/*aL síleann an t-athair goN/*aL bpósfaidh Síle é.\\
+     Say they that thinks the father that will-marry Sheila him\\
+\glt `They say that the father thinks Sheila will marry him.'\\
+
+\ex\label{Irishcomp}
+\gll An fear aL/*goN deir siad a shíleann an t-athair aL/*goN phósfaidh Síle.\\
+    The man that say they that thinks the father that will-marry Sheila\\
+\glt `The man that they say that the father thinks Sheila will marry \GAP.'\\
+\z\z
+
+\noindent Embedded complements not on a binding path \xref{Irishnocomp} are introduced by the complementizer \textit{goN} and not \textit{aL}, while \textit{aL} is required for complements that the rel\-a\-tive-clause dependency passes through \xref{Irishcomp}.  This pattern has a simple account if all and only intervening f-structures on a dependency path are marked with a distinguishing diacritic feature \attr {[\ubd gap]} (for ``gapped unbounded dependency'').  That feature would then be available for checking by the complementizers' lexical annotations \xref{Irishlex}.\footnote{This is a respelling of the \attr{ldd} (``long distance dependency'') feature that appears in \citet{DLM:LFG} and elsewhere.  Ash Asudeh (p.c.) argues that \attr{ubd} is a more accurate designation, since some instances of these constructions are actually quite short. \citet{falk09} proposes a feature \attr{whpath} for related path-marking purposes.}
+
+\ea\label{Irishlex}{Irish complementizers}\\
+   \catlexentry {aL}C{\phantom{$\lnot$}\ugf{\ubd}}\\
+   \catlexentry {goN}C{\negexist{\ugf{\ubd}}}
+\z
+
+\noindent The positive existential constraint would not be satisfied if \textit{aL} appears with a \COMP that does not have a \ubd feature, and the negative existential for \textit{goN} would fail if that feature is present. 
+
+Working within the original \citet{kaplanbresnan82} c-structure formulation of unbounded dependencies (\sectref{early}), \citet{zaenen1983} added the f-structure marking feature (\attr{bnd} in her account) at sentential bounding nodes in a successive-cyclic fashion.    In the modern functional framework, a basic uncertainty leaves no footprints as it passes through the intervening f-structures along a path, but its presence can be made known by adding off-path annotations to the attributes of the regular expression.   Off-path constraints were formalized originally by \citet{kaplanmaxwell96} and \citet{xledoc}; see also \citet{DLM:LFG}.
+
+An off-path annotation is a functional description attached to an attribute in an ordinary functional designator, much like traditional descriptions are attached to c-structure categories.  The difference is that an off-path annotation can use metavariables $\leftarrow$ and $\rightarrow$ instead of (or in addition to) \UP and \DOWN.  These are instantiated to the f-structure containing the annotated attribute and the value of that attribute in the containing f-structure, respectively.  A formal definition is given in \xref{offpaths}. 
+
+
+\ea\label{offpaths} Off-path annotations\\*
+\mb{(f\, \offp{$a$}{\scriptsize $D$}\,)=v} iff \mb{(f\, a)=v} and
+     \mb{D_{\scriptsize
+                 \begin{tabular}[t]{@{}l@{}}
+                           $\leftarrow$/$f$\\[-.1em]
+                           $\rightarrow$/$v$
+                    \end{tabular}
+                   }} is satisfied, where\\
+\hsp{3em} $D$ is a functional description and\\
+\hsp{3em}  \mb{D_{\scriptsize
+                 \begin{tabular}[t]{@{}l@{}}
+                           $\leftarrow$/$f$\\[-.1em]
+                           $\rightarrow$/$v$
+                    \end{tabular}
+                   }} is the result of substituting $f$ for $\leftarrow$ and $v$ for $\rightarrow$ in $D$.% \mb{(f \\z
+\z
+
+\noindent This definition extends the notation and meaning of primitive function-applica\-tion designators \xref{fudefa} and thus immediately carries over to the path languages of functional uncertainties (cf.\ \xref{fudefc}).
+
+Off-path annotations were first used in a functional account of Irish complementizer marking that was developed in unpublished research by Mary Dalrymple, Ronald Kaplan, John Maxwell, and Annie Zaenen; \citet{dalrymple01} provided the first published account of this approach.  In essence,  the uncertainty expression defined in \xref{lddmark} inserts the \ubd feature at every intervening f-structure without imposing any further restrictions on the grammatical functions along the path.  The \attr{RelTopicPaths} schema \xref{markpaths1} then applies regular-language intersection to mark the attributes of whatever path language is separately specified.
+
+\ea\label{lddmarkgen}
+\ea\label{lddmark}\attr{Mark} = \attr {\offp {gf\kstar}{\lval {ubd}{gap}} gf}
+\ex\label{markpaths1}\attr{RelTopicPaths} = [ ... ] \&  \attr{Mark}  
+\z\z
+
+\noindent  The off-path annotation adds the \attr{ubd} features parallel to the {\COMP}s in \xref{irish1}, the f-structure for (the English gloss of) sentence \xref{Irishcomp}, and the lexical constraints \xref{Irishlex} then assure the proper distribution of complementizers.
+
+\ea\label{irish1}  \evnup{\small\avm[style=fstr]{
+[\rnode{NP}{\lightgray[\black pred & \black\semformna{man}\\
+                                                  \black num & \black sg\\
+                                                  \black def &  \black +] } \\
+   adj  \{[head &\rnode{head}{}\Rnode{headresttop}{} 
+                                                                                              \\
+              pred & \semforma {say}{subj comp}\\
+               subj & [ pred & \semformna{pro}\\
+                          num & pl]\\
+               \disattr{comp} & [pred & \semforma {think}{subj comp}\\
+                                          subj & [ pred & \semformna{father}\\
+                                                       num & sg\\
+                                                       def & +]\\
+                                          \disattr{comp} & [pred & \semforma {marry}{subj obj}\\
+                                                                     subj & [ pred & \semformna{Sheila}]\\
+                                                                     \disattr{obj} & \rnode{obj}{} ]\\
+                                                        ubd & gap]\\
+                            ubd gap ]
+              \}
+    ]
+}}
+\ncangles[armA=5.9,linearc=.2,nodesepA=0pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{NP}{headresttop}
+%\ncangles[armA=1.20,linearc=.2,nodesepA=2pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{head}{toptop}
+\ncangles[armA=6,linearc=.2,nodesepA=0pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{head}{obj}
+\z
+
+\citet{Asudeh12} discusses the more complicated relative clause patterns of Irish described by \citet{McCloskey:2002}.   Generally, the head nominal is assigned a within-clause function that has no surface realization (a gap), as in \xref{irish1}, if every intervening clause is marked with \textit{aL}.  But if the nasalization mutation triggered by \textit{aN} appears at any clause along the way, then additional \attr{ubd} marking is suspended and the head must bind to an explicit resumptive pronoun found in that clause or below.  \citet{McCloskey:2002} illustrates this pattern with the relative clause in \xref{irishscrap}.  
+
+\ea\label{irishscrap}Irish\\
+\gll aon duine a cheap sé a raibh ruainne tobak aige\\
+    any person aL thought he aN was scrap tobacco at-him\\
+\glt `anyone that he thought had a scrap of tobacco' % McClosky 2002: 198 (34)
+\z
+
+\noindent  This motivates the more elaborate version of the marking language shown in \xref{mark2}.  Here the f-structures on an arbitrary (possibly empty) prefix of an uncertainty path are marked with the feature \attr{[ubd gap]}, as before. But at any point along the path the marking value for embedded f-structures can optionally switch to \attr{res}(umptive).  Intersecting the language \attr{Resolve} in \xref{Resolve} forces the uncertainty to resolve to a resumptive pronoun only when the \attr{res} value has been chosen. 
+
+ \ea\label{Irishmark} Irish gap marking (with resumptives)\\*
+\ea\label{mark2}
+\attr{Mark} =  \offp {\attr{gf}\kstar}{\lval {ubd}{gap}}\hsp{.5em}(\ \offp {\attr{gf}\kstar}{\lval {ubd}{res}}\ )
+
+\ex\label{Resolve} 
+\attr{Resolve} =  \attr{gf}\kstar \offp {\hsp{-2.3em}\attr{gf}}{\lval {ubd} {res} iff  \rvalc{prontype}{res}}
+
+\ex\label{markpaths}\attr{RelTopicPaths} = [ ... ] \&  \attr{Mark}  \& \attr{Resolve}
+\z\z
+
+\noindent The lexical annotations \xref{Irishlex2} then make sure that the complementizers along the way are properly correlated with how the uncertainty is resolved at the bottom. 
+
+\ea\label{Irishlex2} 
+   \catlexentry {aL}C{\eqc{\ugf{ubd}}{gap}}\\
+  \catlexentry {aN}C{\eqc{\ugf{\ubd}}{res}}
+\z
+
+\noindent  For the relative clause \xref{irishscrap} this analysis gives rise to the abbreviated f-structure \xref{irish3}.
+
+ \setbox1=\hbox{\attr{\small\begin{tabular}[c]{@{}l@{}l@{}}
+                                                         prontype\ \   & res
+                                  \end{tabular}}}
+ \ea\label{irish3}
+ \evnup{\small\avm[style=fstr]{
+ [ \rnode{NP}{\lightgray[\black pred & \black\semformna{person}] }\smallskip\\
+             adj   \{[head & \rnode{head}{[\rnode{headrest}{\lightgray [\hsp{2em} ]}\\
+                                                                                              \box1
+                                                                                              ]}\smallskip\\
+                        pred & \semforma {think}{subj comp}\\
+                         subj & [pred & \semformna{pro}]\\
+                         \disattr{comp} & [pred & \semforma{have}{subj obj}\\
+                                                    \disattr{subj} &  \rnode{subj}{}\ \  \\
+                                                     obj  & [pred & \semformna{scrap}]\\
+                                                    ubd & res
+                                                     ]\\
+                        ubd & gap]
+                      \}      
+    ]
+}}
+\ncangles[armA=3.85,linearc=.2,nodesepA=2pt,angleA=0,nodesepB=2pt,angleB=0,linewidth=.5pt]{NP}{headrest}
+\ncangles[armA=2.1,linearc=.2,nodesepA=0pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{head}{subj}
+\z
+
+\citet{Asudeh12} provides an alternative treatment of this and other patterns of Irish relatives. On his account the entire head f-structure, not just an atomic feature, is instantiated at every clause along the path. In this successive cyclic \COMP-to-\COMP arrangement, the head appears in the \textit{aN}-complementizer clause in particular, and the pronoun binding  is then set up there by a new uncertainty launched by \textit{aN}'s lexical annotations.  The marking strategy \xref{mark2}, by comparison, offers the transition from gap to pronoun as a feature-controlled choice at any point within a single uncertainty language.  It allows both the gap and the pronoun to be bound in the same end-to-end fashion, without any intermediate landing sites.  This produces a less cluttered f-structure while making the claim that features of the particular head do not interact with properties of any intermediate clauses.
+                                            
+For Irish it is the selection of complementizers that interacts with unbounded dependency paths.  The Kikuyu data cited by \citet{zaenen1983} and \citet{dalrymple01} show that the verbs in intervening f-structures may also be sensitive to the presence of a dependency.  This effect may be seen also in English:  unbounded dependencies freely propagate through the complements of some verbs \xref{think} while (at least for some speakers) the complements of other verbs act as barriers \xref{whisper}.
+
+\ea
+\ea [ ]{Mary, we thought that Henry called.}\label{think}
+\ex [*]{Mary, we whispered that Henry called.}\label{whisper}
+\z\z
+
+\noindent Verbs like \textit{think} are called bridge verbs, while \textit{whisper} belongs to the class of nonbridge verbs. If the simpler \attr{Mark} in \xref{lddmark} is applied to the sets of English uncertainty paths, then the difference in behavior is accounted for by the negative existential in \xref{whisperlex}.\footnote{\citet{DLM:LFG} formalize the bridging restriction by pairing a negative defining equation \uval{ldd}{--} on \textit{whisper} with  an off-path negative value constraint \negeq{\ugf{ldd}}{--} in the uncertainty. The \attr{ldd} feature thus always appears in the complement f-structures of nonbridge verbs, even if not in the context of an unbounded dependency.  In the solution outlined here that feature appears always and only along a dependency path and is available there for the bridge verb to test.}
+
+\ea
+\ea\catlexentry{think} V {\predsfa {think}{subj comp}}\\
+\ex\label{whisperlex}\catlexentry{whisper} V {\feqs{\predsfa {whisper}{subj comp}}\\
+                                        \negexist {\ugf {ubd}}}
+\z\z
+
+\noindent This captures the syntactic difference between bridge and nonbridge verbs, but that difference may be a structural reflection of a more basic semantic or pragmatic difference.   \citet{erteschik-shir1973on-the-nature} suggested that verbs that imply the manner of saying something are more likely to form islands than verbs that simply describe what is being said.  It is not clear whether the various constraints on unbounded dependencies that can be formalized with LFG's syntactic machinery are better explained by appeal to other components of grammar, or to principles of cognition, pragmatics, or computation.
+
+In these illustrations the unbounded dependency announces itself by the value it defines for the special \attr{ubd} feature, and that value can then be examined to limit the f-structures that the dependency passes through.  English adjuncts appear to interact with unbounded dependencies in a different way.  Sentence \xref{untensedadj1} was cited earlier to show that adjuncts can be topicalized and that the topicalization path-language (for English, not Icelandic) should include \mb{\ADJ\ (\in)} as an option.  But the ungrammaticality of example \xref{tenseadj2} indicates that an additional restriction must be imposed on the general pattern \citep[examples from][]{dalrymple01}.  
+
+\ea\label{tensedadj}
+\ea []{This room Julius teaches his class in \GAP.}\label{untensedadj1}
+\ex []{We think that David laughed after we selected Chris.}\label{tenseadj1}
+\ex [*]{Chris, we think that David laughed after we selected \GAP.}\label{tenseadj2}
+\z\z
+
+\noindent This difference has been ascribed to the fact that the \ADJ clause is tensed in \xref{tenseadj2} but not  \xref{untensedadj1}, although there may be other pragmatic or semantic factors also at work  (see Toivonen \citeyear{toivonen:2021} and references cited there). 
+
+Taking the bridge verbs as a model, tensed adjuncts could be excluded from unbounded dependencies by adding a negative existential constraint \mb{\neg\ugf {ubd}} to every tensed verb.   But it is more economical to leave all the verbs alone and instead to refine just the uncertainty so that it cannot pass to or through a tense-marked  \ADJ element.   The path language \xref{tac} and the intersection \xref{plustac} impose that constraint on \attr{TopicPaths} (Dalrymple \citeyear{dalrymple01} and Dalrymple et al. \citeyear{DLM:LFG} formulate \attr{tac} in a slightly different but equivalent way).   
+
+\ea\label{adjpaths}Tensed Adjunct Constraint\footnote{Intersection and term-complementation of off-path annotations can be reduced to more primitive expressions by noting the equivalences of \mbox{\offp{$a$}{\scriptsize $D_1$} \& \offp{$a$}{\scriptsize$D_2$}} and \mbox{\offp{$a$}{\scriptsize $D_1\land D_2$}}\hsp{-.1667em}and of\, \mbox{\termcomp{\ [\,\offp{$a$}{\scriptsize $D$}}\,]} and \disj{ \offp{\termcomp{$a$}}{\scriptsize $D$}, \offp{$a$}{\scriptsize $\lnot D$}}.}\\
+
+\ea\label{tac} \attr{tac} = \termcomp{\,[ \offp{\ADJ}{\rgf {\in \ tense}}]}\kstar
+\ex\label{plustac}\attr{TopicPaths} = [\,\set{\COMP, \XCOMP, \ADJ\ (\in)}\kstar  \termcomp{comp}] \& \attr{mark} \& \attr{tac}
+\z\z
+
+\noindent  The \attr{tac} restriction can be applied with a similar intersection to \attr{FocusPaths} and the path languages of other constructions, as appropriate.
+
+However, examples \xref{subadj} indicate that grammaticality is not correlated with the presence of absence of the \TENSE feature.  The participial adjunct in \xref{subjadj1} is untensed and therefore the inadmissible dependency in \xref{subjadj2} would not be ruled out by the Tensed Adjunct Constraint.   
+
+\ea\label{subadj}
+\ea []{The cat slept after devouring the rat.}\label{subjadj1}
+\ex [*]{What did the cat sleep after devouring \GAP?}\label{subjadj2}
+\z\z
+
+\noindent Instead, what is common to the ungrammatical examples in \xref{tensedadj} and  \xref{subadj} is the presence of a subject, either derived from an explicit phrase \xref{tenseadj2} or inserted as an anaphorically controlled null pronoun \xref{subjadj2}.    Unbounded dependencies may thus be more sensitive to the constraint as formulated in \xref{sac}.
+
+\ea\label{sac}Subject Adjunct Constraint\\*
+\attr{sac} = \termcomp{\,[ \offp{\ADJ}{\rgf {\in \ subj}}]}\kstar
+\z
+
+Like many other conditions, restrictions on adjunct dependencies seem to be language-particular and not universal.  Swedish for example seems to be more flexible than English in this regard  \citep[see][]{Muller19}.  It is an advantage of the LFG approach that such constraints can be expressed easily within the formalism without appeal to extragrammatical (and often false) general principles.
+
+
+\subsection{Classical island constraints}\label{islands}  
+
+Early interest in unbounded dependencies was mainly stimulated by the constraints on them that were first described in detail by \citet{ross1967constraints}. Working within a framework of transformational rules,  Ross gave a list of ``island'' configurations that block the movement of constituents from one clause to another. He observed in particular that sentential subjects, coordinate structures, and complex NPs all seem to interfere with unbounded relationships, as the contrasts in \xref{Ross} suggest \citep[after][]{ross1967constraints}.
+
+\ea\label{Ross} Sentential Subject Constraint
+\ea []{The reporters expected that the principal would fire some teacher.}\label{firstssc}
+\ex []{The teacher who the reporters expected that the principal would\\ fire \GAP\ ...}
+\ex []{That the principal would fire some teacher was expected by the reporters.}
+\ex [*]{The teacher who that the principal would fire \GAP\ was expected by the reporters ...}\label{lastssc}
+%
+\sn\vspace{1ex}\hsp{-1.8em} Coordinate Structure Constraint
+\ex []{Henry plays the lute and sings madrigals.}\label{firstcsc}
+\ex [*]{The lute which Henry plays \GAP\ and sings madrigals ...}\label{csc2}
+\ex [*]{The madrigals which Henry plays the lute and sings \GAP\ ...}\label{lastcsc}
+%
+\sn\vspace{1ex}\hsp{-1.8em} Complex NP Constraint
+\ex    []{Phineas knows a girl who \GAP\ is jealous of Maxime.}\label{xfirstcnc}
+\ex    [*]{Who does Phineas know a girl who \GAP\ is jealous of \GAP?}\label{cnc2}
+\ex   [*]{Maxime, Phineas knows a girl who \GAP\ is jealous of \GAP.}\label{lastcnc}
+\z\z
+
+\noindent  It appeared that transformations cannot move the constituents of sentential subjects \xxref{firstssc}{lastssc}, that parts of individual conjuncts in a coordination cannot be moved \xxref{firstcsc}{lastcsc}, and that the complex NPs of relative clauses also form a barrier \xxref{xfirstcnc}{lastcnc}. Ross formulated these island constraints in phrase-structure terms and appealed to extra-grammatical (and presumably universal) stipulations to impose them on the otherwise unfettered operation of individual transformational rules.
+
+Later transformational accounts maintained the view that unbounded dependencies are allowed except when they would cross into phrasal islands, and this conception was carried over into the early c-structure-based LFG approach.  \citet{kaplanbresnan82} and \citet{zaenen1983} provided a grammar-internal way of limiting the range of the bounded-domination metavariables $\Uparrow$ and $\Downarrow$ and thus enabled more fine-grained characterizations of island configurations. They permitted particular categories in c-structure rules to be marked as ``bounding categories'', and nodes licensed by those categories were not allowed on the dominance paths connecting co-instantiations of $\Uparrow$ and $\Downarrow$. For example, the ungrammaticality of \xref{cnc2} would follow on that theory if the CP under NP in rule \xref{relattach} is marked as a bounding category.  But there is no need for such categorial distinctions in the modern LFG theory of unbounded dependencies, since the vocabulary of grammatical functions and features provides a natural platform for expressing such island-like restrictions.  
+
+Ross' Sentential Subject Constraint, for instance, can be expressed by the term-complement formula \xref{ssca}.  This defines paths of arbitrary length that do not pass through subjects and that bottom out in any grammatical function.  And the constraint could then be enforced by intersecting this with any other long distance regular language, as in \xref{ssb}. Any paths with \SUBJ-containing prefixes would no longer be available.
+
+\ea\label{ssc}
+\ea\label{ssca} \attr{ssc} = \attr{\termcomp{subj}\kstar  gf}
+\ex\label{ssb} \attr{RelTopicPaths} = [ ... ] \& \attr{ssc} \hsp{1em}(English)
+\ex\label{tagalog} \attr{RelTopicPaths} = \attr{subj}\kplus  \hsp{3em}(Tagalog)
+\z\z
+
+\noindent  This restriction would be helpful for English relatives if there is an explanatory advantage in stating the basic path language in a simple but overly general way (e.g. \attr{[gf\kstar \termcomp{comp}}]). But it would not be needed if the regular expression for the basic uncertainty defines the admissible paths more precisely.   Either way, this is clearly not a universal constraint:  \citet{Kroeger93} observes that the path language for Tagalog unbounded dependencies contains \textit{only} subjects, as in \xref{tagalog}.  Such an extragrammatical condition may have been the only way of regulating the operation of transformational rules, but it serves no particular purpose in the setting of functional uncertainty.
+
+Coordinate structures in LFG are represented formally as conjunct-containing sets under distributive attributes, and their behavior with respect to f-structure well-formedness is specified in \xref{distribute}, repeated here for convenience.  A set satisfies a distributive f-structure property if all of its elements satisfy that property. While this account of coordination is defined only for local f-structure configurations, unbounded dependencies simply inherit that local behavior by virtue of the incremental, single-attribute expansion of functional uncertainty as spelled out in \xref{fudefc}, also repeated.
+
+
+\begin{exe}
+\exr{distribute}
+     \mb{(f\ a)=v} iff $f$ is a set and\\
+       \hsp{2em}\begin{tabular}[t]{l@{\hsp{1em}}l@{}}
+              \mb{(g\ a)=v}  for all \mb{g\in f} & if $a$ is a distributive attribute\\
+              \mb{\langle a, v\rangle \in f} &  if $a$ is a nondistributive attribute.
+         \end{tabular} 
+\exr{fudefc}
+   If \attr{Paths} is a set of attribute strings,\\*
+      \hsp{2em} \mb{(f\ \attr{Paths})=v} iff \mb{((f\ a)\ \textit{Suff}\,(a,\attr{Paths}))=v}.
+\end{exe}
+
+\noindent The pattern of coordinate structure violations illustrated in (\ref{Ross}e-g), and in \xref{coordination} above, follows immediately from this independent theory of coordination: without further stipulation, a dependency that crosses into a coordination cannot affect just one of the conjuncts.\footnote{The suffix language for a chosen attribute must propagate into each conjunct, but \citet{kaplzaen89} note that the residual uncertainties are then not required to resolve all in the same way: 
+\ea\label{song}
+Mary, John expected to see \GAP\ and give the book to \GAP.
+\z
+\noindent Here the set of \attr{xcomp} suffix paths resolves to \attr{obj} in the first complement but \attr{\OBLTHETA} in the second.  In contrast, \citet{Saiki1985} observes that some Japanese relative clauses are constrained so that the dependencies in all conjuncts must resolve either to a subject or to a non-subject.  This constraint can be imposed by intersecting \attr{[gf\kstar subj | gf\kstar \termcomp{subj}]} with the basic Japanese path specification.}
+
+An NP is ``complex'' for Ross if it immediately dominates a clausal category (CP now, S as originally formulated). The  essence of the Complex NP Constraint is that no unbounded dependency can relate an element outside such an NP to an element inside the dominated clause.  Examples \xref{cnc2} and \xref{lastcnc} are ungrammatical on this theory because the relativized NPs are complex in this way and thus are opaque to the question and topicalization dependencies.  Our framework offers a different account of their ill-formedness: the clauses are represented in f-structure as adjuncts of the head noun \textit{girl} and so do not satisfy Subject Adjunct Constraint installed in the English \attr{FocusPaths} and \attr{TopicPaths} path sets.  As noted above, \attr{tac} is not universal, it applies in English but not for instance to Swedish dependencies.   It is not surprising that the Complex NP Constraint also does not seem to operate in Swedish \citep{Muller19}.
+
+The CNPC characterizes English relative clauses (with assignments to \ADJ) as islands for unbounded dependencies. It does not cover other cases where dependencies seem to be mutually exclusive.  Example  \xref{q2} shows that two question dependencies cannot overlap, \xref{q3} shows that a topicalization cannot pass into a question, and \xref{lastq} shows that a question also obstructs a relative clause dependency. None of these involve complex NPs.
+
+\ea\label{cncq}
+\ea    []{Phineas wonders which girl is jealous of Maxime.}\label{firstq}
+\ex    [*]{Who does Phineas wonder which girl \GAP\ is jealous of \GAP?}\label{q2}
+\ex    [*]{Maxime, Phineas wondered which girl \GAP\ is jealous of \GAP.}\label{q3}
+\ex    [*]{The girl that Phineas wondered who \GAP\ is jealous of \GAP\ left.}\label{lastq}
+%The girl asked who Phineas wondered who \GAP\ is jealous of  \GAP.}\label{lastq}
+\z\z
+
+\noindent On one approach the path languages for each of the outer dependencies can be conditioned against tell-tale properties of the innner question f-structure, presuming that those are recognizable and independently motivated (for example, if a grammaticized \FOCUS attribute is still needed for some other reason).  \citet{falk09} proposes instead to make use of the path-marking feature \attr{ubd} (his \attr{whpath}) that is already needed for verb and complementizer selection.  It is the inner construction that then determines whether to protect itself from other unbounded dependencies. English embedded questions thus become dependency islands when a negative \attr{ubd} constraint is added to the rule \xref{ubdq} that introduces them.
+
+\ea \label{ubdq}
+  \phraserule{CP}{
+       \rulenode{XP\\\templatecall{FocusQ}{\ \UP\ \ \DOWN\ \ \dgf{WhPaths \& WhPro}}\\
+                         \assign{FocusPaths}\\
+                          \negexist{\ugf{ubd}}}
+       \rulenode{IP\\\UP=\DOWN}}
+\z
+
+\noindent  It may not be an accident that the constraint that blocks an outer unbounded dependency co-occurs with an equation that launches an inner one, as in this rule. Some but not all languages may use this as a strategy to keep at bay the confusion of too many overlapping uncertainties.
+
+
+%Over the years, research on unbounded dependency constraints has undergone a paradoxical change. At first they were seen as prime examples of universal structural constraints. Now it is often assumed that whatever commonalities are found across languages are due to non-syntactic factors, and that only language specific constraints are structural. 
+
+%Some researchers have even gone as far as claiming that all island effects are non-syntactic. The need to tease out the relation between syntactic and non-syntactic factors had led to intensive psycholinguistic research on the acceptability of the various patterns that in the syntactic literature were at one or another moment characterized as unbounded dependency constraints. There is not much LFG participation in that research, which is surprising, first because LFG assumes various projections, and hence has a readily made framework in which to discuss various nonsyntactic factors, and, secondly, because the theory was meant to be psychologically more appropriate than the generative alternatives. It has, however, to be admitted that the existing research has not clarified the issues as much as one might have hoped, mainly because the relation between acceptability and grammaticality remains problematic. When evaluating the relation between acceptability and grammaticality with respect to island constraints, a first observation is that unbounded dependencies tend to occur in contexts that are relatively difficult to process: they assume in general an embedded clause and acceptability studies show that people find these less acceptable than simple, one clause, sentences. So from an acceptability point of view, the extractions that are as grammatical as the extractions out of argument complement clauses which are not considered to be islands, should be considered grammatical. This of course under the assumption that other relevant factors are kept constant. Non-syntactic factors influencing acceptability are e.g. coherence, specificity. In LFG these should be factored out of the syntactic representation: if extractions are possible under these circumstances, they are syntactically possible and the non-acceptable cases should be ruled out in the information/semantic structure. 
+%
+%%In what follows we first describe how the phenomenon is handled in LFG, then we discuss some recent research that points to a more complex picture than the one that is represented in LFG research and try to evaluate whether the LFG tools described above would be capable of handling these complexities. We describe the one attempt that has been made in LFG to present a general theory of island constraints and finally we discuss how the relation between syntactic and non syntactic factors could be handled.
+%
+%In fact further work on unbounded dependencies in LFG has, instead of producing generalizations, led to further language specific constraints. They do not concern the paths but the kind of elements that can be found in \textsc{cee}. For German partial \textsc{vp}-topicalization, \citet{ZaenenKaplan2002:Subsumption} appealed to subsumption, a different form of structure-sharing:
+
+
+\subsection{Constraints on linear order}\label{linearorder}
+
+In the unbounded dependency constructions examined so far, an uncertainty is launched from an overt c-structure constituent or lexical item and binds the content of that element to a remote position in f-structure.  The uncertainty is outside-in for most of the constructions, where the external element is realized perhaps far away from the normal c-structure location of its within-clause function assignment. The uncertainty is inside-out when the overt element of a dependency is in situ, as in the Mandarin example \xref{mandarinquestion}.  These purely functional accounts go through without making reference to c-structure positions that correspond to the other, covert ends (bottom or top) of the dependencies. So far there has been no need for the phonologically empty nodes or traces that have been an essential ingredient of other theories of syntactic binding.
+
+However, there are well known cases to suggest that the bottom end of an outside-in uncertainty must be grounded at a specific c-structure position, that the external element must be associated with a within-clause c-structure position in addition to a within-clause function.   The weak crossover pattern in \xref{crossover}, first discussed by \citet{Wasow79}, has received the most attention.  Controlling for other possibly relevant factors, this shows an interaction between the linear position of the pronoun and the within-clause position where the \OBJ or \OBLTHETA function assigned to  \textit{who} would normally be expressed.  The pronoun \textit{his}  and \textit{who} cannot refer to the same individual if the pronoun comes before the assumed within-clause position of \textit{who}:
+
+\ea \label{crossover}Weak crossover \hsp{1em}\citep[examples from][]{dalrympleetal2001}
+\ea [*]{\rnode{Who}{Who}$_i$ did \rnode{his}{his}$_i$ mother greet \rnode{wgap}{\GAP?}\\%[1em]
+\hsp{2em}(cannot mean:  Whose\textsubscript{i} mother greeted him\textsubscript{i}?)}\label{cross1}
+%\ncbar[nodesep=1pt,arm=1.1em,angle=-90,offsetA=-3pt,linewidth=.5pt]{->}{Who}{wgap}
+%\ncbar[nodesep=1pt,arm=.8em,angle=-90,offsetA=3pt,linestyle=dotted]{<-}{Who}{his}
+\ex  [*]{\rnode{Who}{Who}$_i$ did Sue talk to \rnode{his}{his}$_i$ mother about \rnode{wgap}{\GAP}?}\label{cross2}
+\ncbar[nodesep=1pt,arm=1.1em,angle=-90,offsetA=-3pt,linewidth=.5pt]{->}{Who}{wgap}
+\ncbar[nodesep=1pt,arm=.8em,angle=-90,offsetA=3pt,linestyle=dotted]{<-}{Who}{his}
+\ex []{\rnode{Who}{Who}$_i$ did Sue talk to \rnode{wgap}{\GAP} about \rnode{his}{his}$_i$ mother ?}\label{cross3}
+\ncbar[nodesep=1pt,arm=.8em,angle=-90,offsetB=2pt,linewidth=.5pt]{->}{Who}{wgap}
+\ncbar[nodesep=1pt,arm=.8em,angle=-90,offsetA=2pt,linestyle=dotted]{<-}{wgap}{his}
+\z\z
+
+\noindent  The English contrast in \xref{sonatatrace} has also been taken as evidence that within-clause locations must be assigned to the external elements of question and \textit{tough} constructions  (see \citet{kaplanbresnan82} and references cited therein).  Sentence \xref{badsonata} is uninterpretable because the link from \textit{sonata} to its putative within-clause position crosses over the link from the overt appearance of \textit{violin} to its covert linear position.
+
+\ea\label{sonatatrace}Nested syntactic dependencies %\hsp{1em}\citep[examples from][]{kaplanbresnan82}
+\ea []{Which \rnode{violin}{violin} is this \rnode{sonata}{sonata} easy to play \rnode{strace}{\GAP} on \rnode{vtrace}{\GAP}.}
+\ncbar[nodesep=1pt,arm=.4,angle=-90,linewidth=.5pt]{->}{violin}{vtrace}
+\ncbar[nodesep=1pt,arm=.25,angle=-90,linewidth=.5pt]{->}{sonata}{strace}
+\ex [*]{Which \rnode{sonata}{sonata} is that \rnode{violin}{violin} easy to play  \rnode{strace}{\GAP} on \rnode{vtrace}{\GAP}.}\label{badsonata}
+\ncbar[nodesep=1pt,arm=.4,angle=-90,linewidth=.5pt]{->}{violin}{vtrace}
+\ncbar[nodesep=1pt,arm=.25,angle=-90,linewidth=.5pt]{->}{sonata}{strace}
+\z\z
+
+\noindent The ordering patterns illustrated by these examples are not found in all languages.  \citet{MalingZaenen1982}, for example, note that crossing dependencies are acceptable in Norwegian and only dispreferred in Swedish. It must therefore be possible to parameterize or otherwise express these restrictions in the grammars of individual languages.
+
+\subsubsection{Ordering by (empty) trace nodes}
+
+\citet{bresnan2001lexical} proposed to handle the linear ordering facts of weak crossover within a larger cross-linguistic theory of anaphoric binding.\footnote{For the general theory of anaphoric binding this proposal is part of, see \citetv{chapters/Anaphora}. On the \citet{bresnan2001lexical} theory a pronominal cannot be more ``prominent'' than its potential antecedents, where prominence for a given language may be based on relative positions on a hierarchy of grammatical functions (\SUBJ is more prominent than \OBJ), on a hierarchy of thematic roles (\attr{agent} is more prominent than \attr{patient}), or on the linear order of corresponding c-structure nodes. Only the linear prominence condition is relevant for these particular examples of weak crossover in English.}  She expands the NP at the within-clause position to an empty string, and then arranges for the $\phi$ correspondence function to map both the trace node and the NP at \textit{who} to the same f-structure (e.g.\ \OBJ or \OBLTHETA). That many-to-one correspondence is set up by converting the uncertainty from outside-in to inside-out and shifting its launch site to the new trace node, as illustrated in \xref{bresnan}.\footnote{This analysis was also carried over into \citet{BresnanEtAl2016}, but the later co-authors are not in full agreement about the status of empty elements and whether dependencies should run outside-in or inside-out (Ash Asudeh, p.c.).}   
+
+\ea\label{bresnan}
+\ea\label{bresnanCP}
+  \phraserule{CP}{
+        \rulenode{XP\\\templatecall{FocusQ}{\ \UP\ \ \DOWN\ \ \dgf{WhPaths \& WhPro}}\\
+                         \Rnode{start}{}\ \assign{FocusPaths}\ \Rnode{end}{}\\
+                          \negexist{\ugf{ubd}}}
+  \rulenode{IP\\\UP=\DOWN}}
+         \ncline[linewidth=.5pt]{start}{end}
+\ex\label{bresnanNP}
+     \phraserule{NP} {\rulenode {\eestring\\ \UP = {\gfu {FocusPaths}} }}
+\z\z
+
+\noindent  With node mappings set up in this way, the weak crossover constraint on linear order can be stated in terms of the f(unctional)-precedence relation defined in \xref{f-precbres}:  a pronoun cannot f-precede its antecedent.\footnote{Bresnan's f-precedence definition \xref{f-precbres} differs from the proposals of other authors.  It compares the positions of only the right-most nodes of the inverse-$\phi$ images, while \citet{kaplzaen89} and others take into account all nodes in the correspondence.
+
+\ea \label{f-prec2} Functional precedence  \hsp{1em} \citep{kaplzaen89}\\
+\mb{f <_f g} iff for all \mb{n_1 \in   φ\textsuperscript {-1}(f)} and all \mb{n_2 \in φ\textsuperscript{-1}(g)}, \mb{n_1} c-precedes  \mb{n_2}  (\mb{n_1 <_c n_2}).
+\z
+
+\noindent These definitions are equivalent for purposes of this discussion.}
+
+\ea \label{f-precbres} Functional precedence  \hsp{1em} \citep{bresnan2001lexical}\\
+$f$ f-precedes $g$ (\mb{f <_f g}) iff the rightmost node in  \mb{φ\textsuperscript{-1}(f)} c-precedes the rightmost node  in \mb{φ\textsuperscript{-1}(g)}.
+\z
+
+\hspace*{-1.5pt}However, separating the uncertainty specification from the dependency's overt element comes at a descriptive cost.  Without some further stipulation the grammar would accept a phrase in the XP position of \xref{bresnanCP} even when it corresponds to no \attr{FocusPath} trace node in the clause c-structure and thus is assigned no within-clause function.  This issue has been addressed by introducing a global condition on well formed f-structures, the Extended Coherence Condition. This was first proposed by \citet{Zaenen85}; this version is taken from \citet{dalrymple01}:\footnote{If grammaticized discourse functions are not represented in f-structure, the intuition behind this constraint would have to be reformulated as a condition on i-structure correspondences.}
+
+\newpage
+\ea \label{coherence}Extended Coherence Condition\\
+\FOCUS and \TOPIC must be linked to the semantic predicate argument structure of the sentence in which they occur, either by functionally or anaphorically binding an argument. 
+\z
+
+\noindent   This important requirement can be reconstrued as a well-formedness condition on grammars rather than on representations.  Functional binding is guaranteed if a simple existential constraint \xref{coherenceconstraint} is attached by convention as an additional annotation to the filler XP in  \xref{bresnanCP}. 
+
+\ea\label{coherenceconstraint}Extended coherence constraint\\
+\gfd {gf}
+\z
+
+\noindent  Depending on how the relationships of anaphoric binding are made formally explicit, a similar constraint can be defined for those linkages.
+
+Another convention is needed to prevent the proliferation of trace nodes at different c-structure positions whose inside-out uncertainties would bind a single filler to the same or different within-clause functions (but see \sectref{multiplegaps}).  One motivation for Bresnan's Economy of Expression principle \xref{economy} is to exclude derivations that contain such unwarranted trace bindings.\footnote{Separately, \citet{Dalrympleetal2015} present a critical discussion of Economy as a general principle of syntax.} 
+
+\ea\label{economy}Economy of Expression \hsp{1em}\citep{BresnanEtAl2016}\\ 
+All syntactic phrase structure nodes are optional and are not used unless required by independent principles (completeness, coherence, semantic expressivity).
+\z
+
+\noindent  Extended Coherence and Economy help to control the promiscuous behavior of trace-launched uncertainties, those that are not directly associated with overt triggering configurations.\footnote{Although it has not been explored in the literature and I am not advocating for it here, there is a trace-based alternative that may be somewhat less unattractive.  On this analysis the trace is used only to establish a within-clause linear position for the uncertainty: it does not serve as a launching site. The uncertainty remains with the overt external element, but each path language (e.g.\ \attr{FocusPaths}) is intersected with the off-path annotations in \attr{Locate}  \xref{locate} to guarantee that it ends at a function assigned at a c-structure trace node. The bookkeeping feature \attr{trace} is defined at all and only trace nodes. 
+
+\ea\label{locate}
+  \attr{Locate} = \attr{gf\kstar \offp{gf}{\scriptsize\feqs{\rgf {trace}\\\rval{\ubd}{gap}}}}
+\hsp{3em}  %\z\vspace{-2em}  
+ %\ea \label{hastraceNP}
+     \phraserule{\footnotesize NP} {\hsp{-.75em}\rulenode {\eestring\\[-1ex]\scriptsize \uval{trace}+\\[-.5ex]\scriptsize\ugf{\ubd}}}
+\z
+}
+
+As a final observation, it is also not clear whether or how well the Bresnan account of weak crossover ordering extends to characterize the nested dependency pattern in examples \xref{sonatatrace}, given that the path languages for the question and \textit{tough} constructions are not the same. Careful regulation of empty-node ordering offered a solution to the \textit{sonata/violin} contrast in the original LFG theory of unbounded dependencies \citep{kaplanbresnan82}, but the c-structure stipulations of that theory do not naturally carry over to the path languages of modern approaches.
+
+%Traces are also claimed to be necessary to account for weak cross-over facts in German, as discussed in \citet{Berman2003}. The data in German is different from that in English and the translation of \xref{crossover} is actually grammatical in German \xref{crossover2}. This is argued to be due to the fact that in German there is no trace as the grammatical function of the \textsc{np}s can be determined through case marking and does not rely on word order as in English. Traces in German only show up when the \textsc{cee} has to be interpreted as the argument of an embedded predicate, as in \xref{crossover3} (examples from \citet{Berman2003}):
+%
+%\ea \label{crossover2}
+%\gll Wen\textsubscript{i} mag seine\textsubscript{i} Mutter?\\
+%     Who likes his mother?\\
+%\glt Who does his mother like? 
+%\z
+%
+%\ea \label{crossover3}
+%\gll Wen\textsubscript{i} meinte seine\textsubscript{i} Mutter habe sie getröstet?\\
+%     Who said his mother has she consoled?\\
+%\glt Who did his mother say she consoled? 
+%\z
+%
+%\noindent Other languages discussed in \citet{BresnanEtAl2016} are Hindi, Malayalam and Palauan.
+
+\subsubsection{Ordering by coarguments}
+
+\citet{dalrympleetal2001} use a different definition of linear prominence based on the notion of coargumenthood and a relation between the pronoun and the f-structure that contains the wh-term (called the ``operator''). With this formulation they show that the linear order constraints of weak crossover can be modeled without appealing to traces. They define coarguments as the arguments and adjuncts of a single predicate\footnote{\citet{DLM:LFG} note that ``co-dependent'' may be a more accurate label for this concept, since adjuncts are included along with arguments.  Here I continue to use the terminology of the original paper.} and propose that both of the following prominence conditions must be satisfied:
+
+\ea \label{DKT}
+Let CoargOp and CoargPro be coargument f-structures such that CoargOp contains the within-clause function of the operator (wh-term) and CoargPro contains the pronoun. Then:\\[1ex]
+Syntactic [= Functional] Prominence: An operator O is more prominent than a pronoun P if and only if CoargOp is at least as high as CoargPro on the functional hierarchy.\\[1ex]
+Linear Prominence: An operator O is more prominent than a pronoun P if and only if CoargOp f-precedes CoargPro.
+\z
+
+\noindent The key idea is that Linear Prominence depends on the f-precedence relations of the coarguments, the clause-internal f-structure sisters that contain the operator and pronoun.  The positions of the nodes that the outside-in uncertainty maps to the coarguments in the weak crossover example \xref{cross1} are indicated in \xref{coargweak1}. Note that CoargOp is located only at the leading position because its function \OBJ is not projected from any clause-internal (trace) node. This sentence meets the Linear Prominence requirement, but fails the Syntactic Prominence test because \OBJ is lower than \SUBJ on the function hierarchy.
+
+\ea\label{coargweak}
+\ea\label{coargweak1}
+   \begin{tabular}[t]{@{}l@{}c@{}c@{}c@{}c@{}} 
+            *  \ Who$_i$  &\ \ did\ \ \ \ &[his$_i$ mother] &\ \ \ greet?\\
+              \small \ \            CoargOp             &         &         \small CoargPro                    
+      \end{tabular}
+\ex\label{coargweak2}
+    \begin{tabular}[t]{@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}} 
+          *  Who$_i$  &\ \ \ did Sue talk&\ \ \  [to his$_i$ mother]\ \ \  & about?\\
+                             &                           &\small CoargPro              &  \small  CoargOp                    
+      \end{tabular}
+\ex\label{coargweak3}
+    \begin{tabular}[t]{@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}} 
+          \phantom{*\ }Who$_i$  &\ \ \ did Sue talk & to                        & [about his$_i$ mother]?\\
+                           &                       &\ \   \small CoargOp\  \    &   \small CoargPro                       
+      \end{tabular}
+
+\z\z
+
+\noindent  For examples \xref{cross2} and \xref{cross3} the oblique functions are at the same position on the functional hierarchy so they both meet the Syntactic Prominence condition.  This grammaticality difference follows from the locations of the within-clause coargument nodes as annotated in \xref{coargweak2} and \xref{coargweak3} respectively. CoargPro is the \attr{obl$_{\attr{to}}$} of \textit{talk} in \xref{coargweak2}  (because \textit{his} is contained in the \textit{to}-phrase) and CoargOp is the \attr{obl$_{\attr{about}}$} (because the outside-in uncertainty resolves to that function).    The sentence is ungrammatical because the nodes mapping to CoargPro and \mbox{CoargOp} are in the wrong order.  The Coargs and their order are switched in the grammatical sentence \xref{coargweak3}.
+
+On this proposal, the operator's within-clause function is first determined by an outside-in uncertainty. After that the coarguments are identified in the clause at which the paths to the operator and pronoun functions first diverge. Linear order is then defined on the nodes that map to those overt, lexicalized coargument functions.  Weak crossover is the  target of this particular account, but coargument precedence may apply more generally.  The nested dependency constraint \xref{sonatatrace} may follow from a different coargument ordering requirement once the coargument functions are identified for the \textit{violin} and \textit{sonata} phrases. 
+
+\ea\label{coarg}
+\ea\label{coargviolin}\begin{tabular}[t]{@{}c@{}c@{}c@{}c@{}c@{}} 
+   \ [Which  violin] &\ \ is\  \ &\  [this  sonata]    &\  \ easy to play  & on?\\[-.5ex]
+        \small  1            &        &   \small 2/Coarg2     &                      & \small \ \ Coarg1
+ \end{tabular}
+\ex\label{coargsonata} \begin{tabular}[t]{@{}c@{}c@{}c@{}c@{}c} 
+   * [Which  sonata] & \ is  &\ \  [that violin] \   &\  easy to play  & on?\\[-.5ex]
+   \small       1/Coarg1  &        &    \small  2           &                        & \small \ \ Coarg2
+ \end{tabular}
+\z\z
+
+\noindent  The formal details of such an ordering principle have not yet been worked out.
+ 
+\subsubsection{Ordering by subcategorizing {\PRED}icates}
+\largerpage[-2]
+The subcategorizing predicate for a given grammatical function is the semantic form that licenses that function in a local f-structure, via the Coherence and Completeness conditions. The value of those conditions in linguistic description is obvious, but \citet{KaplanMaxwell1988:Uncertainty} noted that they are also key to the computationally efficient resolution of functional uncertainties.  A typical uncertainty allows for the full array of grammatical functions each of which must be hypothesized in principle at every level of embedding. The overall computational complexity is much reduced if that exploration is deferred until the subcategorizing predicate is reached:  the possible realizations can then be limited to all and only the functions that it governs.  \citet{Kaplan89:CUNY} made a related psycholinguistic processing observation:  the results of early trace-inspired measures of word-by-word cognitive load experiments \citep{Kaplan:thesis,WannerMaratsos78} could also be attributed to additional activity when the subcategorizing predicate is first encountered. It was not recognized in these early studies that subcategorizing predicates could also be the basis for a trace-free account of linear order grammaticality conditions.
+
+\citet{pickeringbarry91} made a much more systematic sentence-processing argument that overt subcategorizing predicates and not empty categories determine how external elements are integrated into embedded clauses.  Adopting their Direct Association Hypothesis, \citet{dalrympleking13} sketch an account of nested dependencies that depends on the linear order of the predicates that subcategorize for the bottom functions of overlapping uncertainty paths. They use the term ``anchor'' for the subcategorizing predicate of the bottom function, as illustrated in \xref{sonataanchor}.\footnote{This notion of ``anchor'' should not be confused with the formal definition used in the decidability proofs for LFG parsing and generation \parencitetv{chapters/Computational}.}
+
+\ea\label{sonataanchor}Anchor ordering
+\ea\label{sonataanchor1}
+    \begin{tabular}[t]{@{}c@{}c@{}c@{}c@{}c@{}c@{}}
+           [Which violin]                 &\  is\  &     \   [this sonata]                      &\  easy to &   play                                    & on?\\[-.5ex]
+        \rnode{violin}{\small 1}    &     &    \rnode{sonata}{\small 2}     &                     &  \rnode{play}{\small Anchor2}   \        & \   \rnode{on}{\small Anchor1}
+   \end{tabular} \\[1em]
+\ncbar[nodesep=2pt,arm=12pt,angle=-90,linewidth=.5pt]{->}{violin}{on}
+\ncbar[nodesepA=3pt,nodesepB=2pt,arm=6pt,angle=-90,linewidth=.5pt]{->}{sonata}{play}
+
+\ex\label{sonataanchor2}
+   \begin{tabular}[t]{@{}c@{}c@{}c@{}c@{}c@{}c}
+       *             [Which sonata ]                &\  is\  &     \   [this violin]                      &\  easy to &   play                                    & on?\\[-.5ex]
+        \rnode{sonata}{\small 1}    &     &    \rnode{violin}{\small 2}     &                     &  \rnode{play}{\small Anchor1}   \        & \   \rnode{on}{\small Anchor2}
+    \end{tabular}\\[1em]
+\ncbar[nodesep=2pt,arm=6pt,angle=-90,linewidth=.5pt]{->}{violin}{on}
+\ncbar[nodesepA=2pt,nodesep=2pt,arm=11pt,angle=-90,linewidth=.5pt]{->}{sonata}{play}
+\z\z
+
+\largerpage[-2]
+\noindent In \xref{sonataanchor1} \textit{violin} is anchored at the \textit{on} predicate, as indicated by the arrow, because the outer uncertainty resolves to \textit{on}'s \OBJ. Similarly, the anchor for \textit{sonata} is \textit{play}.  The anchoring predicates are the same in \xref{sonataanchor2}, but they occur in the opposite linear order. Dalrymple and King make precise what it means for two dependencies to interact (intuitively, that the outer dependency unfolds through a clause containing the inner one).  The difference between \xref{sonataanchor1} and \xref{sonataanchor2} then follows from their nesting condition:  if two dependencies 1 and 2 interact, then Anchor1 must not precede Anchor2.  \citet{nadathur13} accounts for the linear order  of weak crossover by a separate anchor-ordering constraint:  the anchor of the operator must precede the pronoun.
+
+Although \citet{dalrympleking13} and \citet{nadathur13} do not give a detailed specification of their outside-in, anchor-based approaches to linear order, the basic notions are easy to represent within the existing LFG formalism.  First, the anchor of an uncertainty path is the \PRED of the f-structure one up from the bottom.  The off-path annotation on the path language \xref{anchor3} picks out that \PRED and adds it as a diacritic feature to the f-structure at the top of the path, where the uncertainty is launched.
+ 
+ \ea\label{anchor3}
+\attr{Anchor} = \attr{gf\kstar \offp{gf}{\ugf {anc} = \lgf {pred}}}\\
+\z
+
+\noindent The effect of intersecting \attr{anchor} with any other path language (e.g. \attr{FocusPaths} or \attr{ToughPaths}) is to make the within-clause anchor directly available at the top, presumably at the operator's f-structure. 
+
+Second, \PRED semantic forms in LFG are composite entities that encapsulate succinctly a collection of syntactic and semantic properties.  These are accessible by distinguished attributes \attr {rel}, \attr{arg1}, \attr{arg2}, etc.  Semantic forms are also instantiated, and   \citetv{chapters/Computational}   make explicit that the instantiating index of a \PRED is the value of another distinguished attribute \attr{source}.  Moreover, the value of \attr{source} is the daughter node, formally denoted by $*$, at which the \PRED is introduced into the f-description.  Thus a defining equation \xref{predinst} is implicitly carried along with every \PRED.
+
+\ea\label{predinst} \PRED instantiation (from \citetv{chapters/Computational}) \\
+ \uval{pred source}{$*$}
+\z
+
+\largerpage[-2]
+\noindent A \PRED-precedence relation \xref{p-prec} follows naturally from the immediate connection between instantiated semantic forms and c-structure nodes: semantic forms are ordered by the c-structure order of their instantiation \attr{source} nodes.
+
+\ea \label{p-prec}\attr{pred} precedence\\*
+\mb{p_1 <_p p_2} iff \mb{\ngf {p_1} {source}} $<_c$ \mb{\ngf {p_2} {source}}.
+\z
+
+\noindent This is a simpler relation than f-precedence since it is defined directly on singleton nodes, not on $\phi^{-1}$ sets of nodes. Finally, the path language \xref{anchornest} encodes the nested-order constraint.
+
+\ea\label{anchornest}
+\attr{Nested} = \attr{\offp{gf\kstar}{\ugf{anc} $\nless_p$ \rgf{anc}}  gf}
+\z
+
+\noindent  \ugf{anc} is the anchor of the outer uncertainty (\textit{on} in \xref{sonataanchor1}, \textit{play} in \xref{sonataanchor2}). That remains constant as the uncertainty unfolds.  If the outer uncertainty (the \textit{wh} phrase) overlaps an inner uncertainty (\textit{easy}), the ordering condition will compare their two anchors.  The nesting follows from the fact that the hierarchical positions of the anchors in f-structure are reversed relative to the linear c-structure order.  The nested-order constraint can be imposed (for a language where it applies) by intersecting \xref{anchornest} with the path languages for the various constructions.
+
+The c-structure and f-structures for the nested sentence \xref{sonataanchor1} are sketched in \xref{goodnest}. The attributes and anchor are blue for the outer question dependency and green for the inner \textit{easy} dependency.  The outer path overlaps the inner path at the \attr{xcomp} of \textit{easy} and then diverges. At that point \ugf{anc} in the question uncertainty denotes the \textit{on} semantic form with source node {\color{lsMidBlue} $n_o$} and  the source of \rgf{anc}, the \textit{play} form, is node {\color{lsMidGreen} $n_p$}.  The nesting test succeeds because {\color{lsMidBlue} $n_o$} does not precede {\color{lsMidGreen} $n_p$}. For the ungrammatical \xref{sonataanchor2} the anchors are reversed \xref{badnest} and the test fails.
+ 
+
+\ea\label{goodnest}
+\small
+\hsp{-2em}
+\scalebox{.8}{\begin{forest} 
+for tree={s sep=.5em, inner sep=.4}[CP
+  [NP [Which violin, roof]]
+  [C$'$
+    [C [is]]
+    [IP
+      [NP [this sonata, roof]]
+        [AP [A$'$ [A [easy]]
+            [VP [to]
+              [V$'$ [V [\color{lsMidGreen} \ \ \ \treenodesub{play}np\ \ \ ]]
+                    [PP  [P [\color{lsMidBlue} \treenodesub{on}no]]]]]]]]]]
+\end{forest}}
+%
+\hsp{1em}\evnup{
+\scalebox{.8}{\avm[style=fstr]{
+[ anc   & \disattr{\semforma{on}{obj}\hsp{-.2em}\raisebox{-.6ex}{$n_o$}}\\
+  pred & \semformraise{easy}{xcomp}{subj}\\
+  subj & \rnode{sonata}{[\black pred & \black\semformna{sonata}\\
+                                                      \black case & \black nom]}\smallskip\\
+   \disattr{xco}\proattr{mp} & [anc & \proattr{\semforma{play}{subj obj}\hsp{-.2em}\raisebox{-.6ex}{${n_p}$}}\\
+                   pred & \semforma{play}{subj obj}\hsp{-.2em}\raisebox{-.6ex}{${n_p}$}\\
+                   subj & [pred & \semformna{pro}]\\
+                    \proattr{obj}  & \Rnode{obj}{}\\
+                    \disattr{adj}  & \{  [pred & \semforma{on}{obj}\hsp{-.2em}\raisebox{-.6ex}{${n_o}$}\\
+                                    \disattr{obj}    & [ pred & \semformna{violin}\\
+                                                  spec & \rnode{pron}{ [pred & \semformna{which}\\
+                                                                                     prontype & wh]}
+                                                 ]             
+                                   ]\}]
+]}}}
+\ncangles[armA=2.6,linearc=.2,nodesepA=0pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{sonata}{obj}
+\z
+
+\ea\label{badnest}
+\small
+\hsp{-2em}
+\scalebox{.8}{\begin{forest} 
+for tree={s sep=.5em, inner sep=.4}[CP
+  [NP [Which sonata, roof]]
+  [C$'$
+    [C [is]]
+    [IP
+      [NP [this violin, roof]]
+        [AP [A$'$ [A [easy]]
+            [VP [to]
+              [V$'$ [V [\color{lsMidGreen}\ \ \ \treenodesub{play}np\ \ \ ]]
+                    [PP  [P [\color{lsMidBlue} \treenodesub{on}no]]]]]]]]]]
+\end{forest}}
+%
+\hsp{1em}\evnup{
+\scalebox{.8}{\avm[style=fstr]{
+[ anc & \proattr{\semforma{play}{subj obj}\hsp{-.2em}\raisebox{-.6ex}{${n_p}$}}\\
+  pred & \semformraise{easy}{xcomp}{subj}\\
+  subj & \rnode{violin}{[\black pred & \black\semformna{violin}\\
+                                                      \black case & \black nom]}\smallskip\\
+   \disattr{xco}\proattr{mp} & [anc   & \disattr{\semforma{on}{obj}\hsp{-.2em}\raisebox{-.6ex}{$n_o$}}\\
+                   pred & \semforma{play}{subj obj}\hsp{-.2em}\raisebox{-.6ex}{${n_p}$}\\
+                   subj & [pred & \semformna{pro}]\\
+                    \proattr{obj}   & [ pred & \semformna{sonata}\\
+                                  spec & \rnode{pron}{ [pred & \semformna{which}\\
+                                                                                     prontype & wh]}
+                                                 ]\\
+                     \disattr{adj}  & \{  [pred & \semforma{on}{obj}\hsp{-.2em}\raisebox{-.6ex}{${n_o}$}\\
+                                                 \disattr{obj}   & \Rnode{obj}{}          
+                                                 ]\}]
+]}}}
+\ncangles[armA=3.0,linearc=.2,nodesepA=0pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{violin}{obj}
+\z
+\section{Multiple gap constructions}\label{multiplegaps}
+
+It is unremarkable in LFG that a given subsidiary f-structure may appear as the values of several attributes at different levels inside a higher structure.  This is a consequence of the equality relation in functional descriptions and is the basis for accounts of functional control, agreement, distributed coordination, and the unbounded dependency of \textit{tough} adjectives (and other unbounded dependencies if grammaticized discourse functions are retained in f-structure). Other identities might be consistent with the set of assertions in an f-description, but the linguistically-relevant minimal models contain only those that follow from the basic propositions and the transitivity of equality. This simple picture is violated by the well-known instances wherein a single unbounded-dependency filler appears to resolve to more than one (uncoordinated) within-clause grammatical function (in LFG terms) or somehow binds to more than one trace position (in other frameworks).
+
+Sentence \xref{pgaps1} from \citet{Engdahl1983} is a paradigmatic example of such a multiple gap dependency.
+
+\ea\label{pgaps1} Which articles did John file \GAP\ without reading \GAP?
+\z
+
+
+\noindent This is understood as asking about a particular set of articles that were filed by John but not read by him. The second gap is usually described as ``parasitic'' on the first because of the contrast in \xref{pgaps} (following the literature, the parasitic gap is now labeled with the subscript $p$).
+
+\ea\label{pgaps}
+\ea [*] {Which articles did John file the book without reading \GAP$_p$ ?}\label{pgaps2}
+\ex []{Which articles did John file \GAP\ without reading more than their titles?}\label{pgaps3}
+\z\z
+
+\noindent Example \xref{pgaps2} is ungrammatical for the usual reason that its putative gap is in an island-forming adjunct with respect to unbounded dependencies (in an LFG analysis its \attr{FocusPaths} uncertainty would not satisfy the path language \attr{sac}, the Subject Adjunct Constraint \xref{sac}).  \xref{pgaps1} shows that that barrier is inactive in the presence of the earlier gap, and \xref{pgaps3} shows that resolving to the direct object does not require the support of an adjunct gap.
+
+Multigap dependencies have received relatively little attention in LFG compared to other grammatical frameworks.  If an outside-in uncertainty is used to characterize an unbounded dependency, the natural interpretation is that the minimal model for the resulting f-description will establish only one within-clause function for the clause-initial phrase. And even if some technical adjustment is made to allow for multiple function assignments in general, it would still be necessary to account for the fact that the \attr{sac} constraint of the normal \attr{FocusPaths} can be abrogated just in \xref{pgaps1} and similar multigap configurations.
+
+\citet{alsina2008} discusses parasitic gaps in the context of a new general architecture for structure sharing in LFG. On his proposal the f-structure for a sentence is not the minimal model for an f-description derived from the annotations of particular c-structure rules.  Rather, the universe of all formally well-formed f-structures, with unlimited structure-sharing relationships, is filtered by a collection of restrictive principles, and the sentence is assigned all and only the f-structures that are not thereby eliminated.   As an example, the filter \xref{alsina1} disallows structure-sharing of an \attr{op} and \SUBJ at the same level (recall that \attr{op}(erator) is the undifferentiating attribute that Alsina uses to represent the filler in f-structure).
+
+\ea\label{alsina}Alsina's (\citeyear{alsina2008})  ``Same-clause \attr{op-subj} ban''\\*
+\ea\label{alsina1}{\large *}\ \evnup{\avm[style=fstr]{[op  \Rnode{op}{} &\\
+                                subj & \Rnode{subj}{}\ \ ]}
+}\\
+\ncangles[armA=1,linearc=.2,nodesepA=0pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{op}{subj}
+\ex\label{alsina2}For all f-structures $f$, \mb{ \ngf {f}{op}\neq \ngf{f}{subj}}.
+\z\z
+
+
+\largerpage
+\noindent  A formal expression of this principle is given in \xref{alsina2}. The basic proposition is expressed in the ordinary notation of functional annotations.  But this differs from the annotations of the conventional LFG architecture in that the f-structure variable is instantiated by universal quantification over the space of all f-structures and not by mapping particular c-structure nodes through the $\phi$ correspondence.  \citet{alsina2008} argues that this new architecture and the set of principles he puts forward can provide a unified treatment of bounded (raising) and unbounded dependencies, and that appropriate f-structures can be assigned to sentences with parasitic gaps.  This architecture and its principles have not yet been widely adopted, however.
+
+
+\citet{Falk11} addresses the multigap problem by an alternative analysis within the conventional LFG architecture.  He reasons that if a single uncertainty can license only one dependency and if a sentence has multiple dependencies for one filler, then the f-description for that sentence must have multiple uncertainties.  Further, since the number of dependencies in a multigap sentence is determined by the number of within-clause functions assigned to a given filler, the uncertainties for those dependencies must be introduced inside-out at each of the gap locations and not outside-in at the single clause-initial phrase.  Thus, he proposes a trace-based, inside-out analysis that freely anticipates any number of unbounded dependencies, even though there may be no local evidence to trigger the empty c-structure nodes.  Falk reviews much of the literature on parasitic gaps and other multiple gap constructions, suggesting that many of their restrictions are due to mixtures of pragmatic and processing factors and others are the result of syntactic constraints carried by the inside-out uncertainty paths with their off-path annotations.
+
+The key fact about parasitic gaps is that they are, indeed, parasitic. That fact is not exploited directly by either the \citet{alsina2008} or \citet{Falk11} solutions to the multigap problem.   In an intuitively straightforward account, an outside-in uncertainty launched at the filler phrase would resolve to the main gap (\OBJ in \xref{pgaps1}) in the ordinary one-to-one way.  But then, optionally, a secondary uncertainty would be launched to bind that same filler also to the grammatical function of the parasitic gap.  This is what happens if the \attr{para} path language \xref{para1} is imposed by intersection on the \attr{FocusPaths} uncertainty \xref{para2}.
+
+\ea\label{para}
+\ea\label{para1}
+    \attr{para} = \attr{gf}\kstar \offp{\termcomp{subj}}{(\rightarrow\,=\,\lgf{adj \in\ gf\kplus})}
+\ex\label{para2}
+    \attr{FocusPaths = [...] \& para \& sac}
+\z\z
+
+\largerpage
+\noindent If \attr{FocusPaths} resolves to a non-\SUBJ within-clause function, the right arrow $\rightarrow$ in the optional off-path annotation denotes the top-level filler f-structure.  Thus, if the option is taken, this equation launches a new uncertainty that must resolve to some function inside one of the elements of an \ADJ set.  By virtue of the left arrow $\leftarrow$, that \ADJ must be an f-structure sister of the non-\SUBJ.  The non-\SUBJ restriction is included in this example to illustrate one way of accounting for the ungrammaticality of \xref{gapsubj}; obviously, other factors may also be at work.
+
+\ea\label{gapsubj}
+*\,Which articles did you say \GAP\ got filed by John without him \mbox{reading \GAP$_p$ ?}\\
+    \hsp{2em} \citep[from][]{Engdahl1983}
+\z
+
+
+\noindent The underlying idea of this solution is that a single filler can be bound to two gaps within an outside-in, one-to-one setting if one uncertainty is allowed to launch another one. The details of an analysis along these lines remain to be developed. 
+
+In fact, \citet{Falk11} notes that parasitic gaps may be a special case of a more general pattern of multiple-gap constructions. Sentences \xxref{multigap2}{multigap3} show that each of the gaps in \xref{multigap1} can be filled without the support of the other one.  
+
+\ea\label{multigap}
+\ea {Who did you tell \GAP\ that you would visit \GAP\ ?}\label{multigap1}
+\ex {Who did you tell \GAP\ that you would visit your brother?}\label{multigap2}
+\ex {Who did you tell your brother that you would visit \GAP\ ?}\label{multigap3}
+\z\z
+
+\largerpage
+\noindent  This pattern can be assimilated to the \attr{para} outside-in off-path solution simply by enlarging the path language of the secondary uncertainty.  For this example \attr{comp obj} would be added as an alternative to the paths beginning with \ADJ. There is still an asymmetry between the dependencies for the two gaps: only the primary uncertainty (resolving to the shorter path) is launched from the top, while the secondary one is optionally introduced at the bottom of the first. On this theory what distinguishes adjunct parasitic gaps from other multiple gap examples is just the adjunct island created by the intersection of \attr{sac} with the primary path language; that constraint is not incorporated into the secondary uncertainty.\footnote{Further research and consideration of more  examples might show that multiple gaps operate symmetrically and that the sequential chaining of secondary uncertainties is therefore inadequate.  That would add weight to Falk's (\citeyear{Falk11}) preference for an inside-out solution.  Another possibility, indifferent as to inside-out or outside-in, is to extend the interpretation of uncertainty languages in general so that multiple gaps are no longer seen as exceptional:
+
+\ea\label{multifu}Multi-gap functional uncertainty\\*
+   If \attr{Paths} is a set of attribute strings and \mb{\emptyset \subset \attr{P} \subseteq \textit{Pref}\,(\attr{Paths})},\\*
+      \hsp{2em} \mb{(f\ \attr{Paths})=v} iff \mb{((f\ a)\ \ \textit{Suff}\,(a,\attr{Paths}))=v} for all \mb{a\in\attr{P}}\\
+          \hsp{4em} where \mb{\textit{Pref}\,(\attr{Paths}) =  \set{a \mid a\sigma \in \attr{Paths}}}.\\
+                             \hsp{6em} (the set of single-attribute prefixes of strings in \attr{Paths})
+\z
+
+\noindent A subset \attr{P} of the available attributes would be selected at each point as an uncertainty unfolds, and the uncertain suffix of each of those attributes must recursively resolve.  This is an easy adjustment, technically, but it may be difficult to define path languages so that \attr{P} subsets properly handle any cross-path interactions.}
+
+
+%\ea
+%\ea []{Which articles did John file \GAP\ without reading \GAP\ and marking \GAP\ ?}
+%\ex [*]{Which articles did John file \GAP\ without reading them and \mbox{\hsp{1em}marking \GAP?}}
+%\ex []{Which articles did John file \GAP\  without reading and marking them ?\\
+%               \hsp{1em} cf. John read and annotated them.}
+%\z\z
+
+\section{Summary}
+
+Unbounded dependencies interact in complicated ways with the syntactic properties that define the local organization of clauses and sentences.  This chapter provides a sample, clearly incomplete, of the many theoretical and empirical issues that have been discussed in the LFG literature and in the linguistic literature more broadly.  The earliest LFG approaches to such dependencies were modeled after the phrase structure solutions of other frameworks, but it is now generally recognized that the functional configurations enshrined in f-structure support the most natural and direct descriptions and explanations.  Accounts based directly on f-structure were made possible by extending the basic LFG formalism with the technical device of functional uncertainty.
+
+Functional uncertainty permits the backbone dependencies of topicalization, constituent questions, relative clauses, and the \textit{tough} construction to be stated as regular languages containing the f-structure paths that connect fillers to their within-clause functions.  But unbounded dependencies are additionally challenging because they can be sensitive to various features of the f-structures they pass through.  The intervening f-structures may be marked in distinctive ways, they may form dependency-blocking islands, and there may be restrictions based on linear order.  This chapter has suggested that many of these ancillary effects can be accounted for by attaching off-path annotations to the uncertainty-path attributes.
+
+In sum, the combination of functional uncertainty with off-path annotations is an expressive tool for describing the rich and varied properties of unbounded dependencies.  It integrates well with the other formal devices of LFG theory, and it is the foundation for modern LFG treatments of these phenomena.
+
+
+%In the rule schema given above the uncertainty equation is anchored at the external constituent.
+%This makes sense as LFG avoids empty categories, such as traces in the c-structure, and without a trace there is no way to anchor the equation within the c-structure of the clause. Some versions of LFG, however, allow traces as long as they obey the
+%%RMK3: This is a little tricky.  Optional nodes doesn't necessarily mean empty category, where ALL nodes are thrown out.  I.e., you can have all nodes be optional in the sense that any of them can be left out...as long as one (you don't know which one) remains.
+%Economy of Expression principle according to which ``all syntactic phrase structure nodes are optional and are not used unless required by independent principles (completeness, coherence, semantic expressivity)." (\citet{BresnanEtAl2016}. In those versions there is another option: inside out \textsc{fu}. E.g. \citet{Berman2003} associates the following (provisional) \textsc{fu} equation for German:
+%
+%
+%\ea \label{inside out}
+% \UP = (\gfu{\set{\COMP|\XCOMP}* \GF} \DF)
+%\z
+
+
+%(check!!!!)
+%With the plain vanilla version of topicalization that we have illustrated up to here, it is clear that the original outside in version is the least cumbersome: it avoids traces and it doesn't require special annotated \textsc{psr} for sentences with unbounded dependencies. The possible advantages of the two other approaches come into play when one looks at more complicated varieties of unbounded dependencies such as structures with multiple gaps and in cases which cross-over phenomena. We discuss them in the next sections. 
+%The variants above all assume complete equality between the features of the \textsc{cee} and the \textsc{cie} but as we already indicated this is not always the case. Under some analysis of resumptive pronouns, the \textsc{ldd} mechanism needs to allow for some features not to be shared. This can be done through the use of the restriction operator as described above. In other cases, topicalization of a functional unit can be complete or only partial, in that cases subsumption instead of equality seems to be the right approach to use (see ....)
+
+
+%\section{More exotic varieties}
+
+%\subsection{Crossing and nested dependencies}
+%In the examples above, we have a structure sharing relation between two functional elements, one of which is not pronounced. Other varieties exist: first it is possible to have sentences with more than one  \textsc{ldd}, as in:
+%
+%\ea \label{nested}
+%Which violins are these sonatas easy to play on? 
+%\z
+%For examples like this, what needs to be determined are the constraints on the interaction between the two \textsc{fu} paths. The main constraint is often that the dependencies cannot cross. For instance, the following does not have the intended meaning:
+%
+%\ea \label{crossing}
+%Which sonatas are these violins easy to play on?  
+%\z
+%[RMK I think most of this has been done.  Not sure about Behaghel though]\\
+%The anti-crossing constraint is in general stated as a constraint on linear order. \citet{kaplanbresnan82}, assuming that empty categories are represented in the c-structure to support such an account. \textsc{fs} doesn't refer to linear order, so a purely functional account does not allow reference to linear order but it is well known that hierarchical order and linear order are related.
+%%Geistig eng Zusammengehöriges wird auch eng zusammengestellt. (Erstes Behaghelsches Gesetz) 
+%For instance Behaghel's first law states that ``Elements that belong close together intellectually will also be placed close together.'' In English this would insure that given a hierarchy of \textsc{gf}s in which an \OBJ is higher than an \OBL, the object will come before the oblique and hence the observation that nested dependencies are possible, whereas crossing ones are not, can be recast as a constraint involving the hierarchy of \textsc{gf}s. This idea has been worked out in detail in \citet{dalrympleking13} who appeal to the notion of \textit{operator superiority} based on f-command and a \textit{direct association} version of \textsc{fu} without reference to linear order. 
+%
+%
+%\subsection{Resumptive pronouns}
+%
+%%Up to now we have assumed that in \textsc{fu} the lower element is always phonologically null but this is not necessary correct. 
+%\xref{coherence} states that \textsc{df}s can be linked through functional and through anaphoric binding. What we have discussed up to now are cases of functional binding and more specifically of cases in which we find full connectivity. These are the core cases of \textsc{ldd} but arguably not the only ones. Discourse functions are often found in sentence initial position and need to be linked to an element further down in the sentence but the linking doesn't always need to be done through \textsc{fu} equations as given above. In \xref{dislocation}, the initial element in the sentence is anaphorically linked to a pronoun, not functionally shared. 
+%
+%\ea  \label{dislocation}
+%%\begin{exe}
+%Mary, John said that he saw her yesterday. 
+%%\end{exe}
+%\z
+%\xref{dislocation} is an example of a so-called dislocation structure. The syntax of these can be handled as other cases of anaphoric relations (see chapter xxxx) but the conditions on them, which are clearly different from the ones on \textsc{fu}, have not been studied in much detail in LFG (see \citet{Berman2003} and \citet{Szucs2014} for some discussion). The relation between the pronouns found in dislocation construction and their antecedent can be argued to be anaphoric but the status of so-called resumptive pronouns is less clear. Resumptive pronouns can be found, not only with topicalization but also in wh-constructions such as:
+%
+%\ea \label{resum}
+%\gll Kalle letar efter en bok som han inte vet hur \textit{den} slutar.\\  
+%     Kalle looks for a book that he not knows how it ends \\
+%\glt ‘Kalle is looking for a book that he does not know how (it) ends.’\\
+%\z
+%Here the antecedent of the pronoun does not occur in a 'dislocated' position falling outside of the main sentential domain. While it possible to argue that the relation in \xref{resum} is anaphoric, one has to determine how the cases with pronouns relate to those with gaps as typically languages with resumptive pronouns also have cases in which there is a gap. \citet{Asudeh12}, following \citet{McCloskey:2006} \citet{McCloskey:2002} argues that there are two different types of resumptive pronouns, one kind where the relation is anaphoric (syntactically active resumptive pronouns(\textsc{sars})) and one in which it is one of functional equality (syntactically inactive resumptive pronouns(\textsc{sirs})). \citet{Falk2002} had proposed that in cases of functional equality, resumptive pronouns would be distinguished from ordinary pronouns by not having a \PRED value. Asudeh follows McCloskey in treating resumptive pronouns lexically as ordinary pronouns, so, for \attr{sirs}, the functional equality relation has to be stated so as to exclude the \textsc{pred} value. Asudeh proposes to use the restriction operator \citet{kaplanwedekind93}, which allows one to state which features can be exempted from the structure sharing operation. His arguments for a distinction between gaps and resumptive pronouns are semantic in nature: e.g. \xref{resum} can only mean that Kalle is looking for a certain book whose ending is unknown to him. It cannot mean that he will settle for any book so long as its ending is unknown to him. Sentences with gaps in Swedish are ambiguous between the specific and the non-specific reading. His arguments for functional equality are based on the syntactic constraints on \attr{sirs}, which he claims are similar to those on \textsc{fu} constructions with gaps. \citet{CamSad11:LFG} have extended this type of analysis to Maltese.  
+%
+
+
+\section*{Acknowledgements}
+I am very grateful to Annie Zaenen for significant contributions to earlier drafts of this chapter.  I thank Ash Asudeh, Mary Dalrymple, and Ida Toivonen  for helpful comments and guidance along the way, and the anonymous reviewers for thoughtful criticism and advice.  I of course am responsible for any remaining errors.
+%\citet{Nordhoff2018} is useful for compiling bibliographies
+
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}

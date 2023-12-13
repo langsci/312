@@ -1,0 +1,1287 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10186040}
+\title{LFG and Dependency Grammar}
+\author{Dag Haug\affiliation{University of Oslo}}
+\abstract{This chapter discusses Dependency Grammar from the perspective of LFG. I first introduce the key ideas behind Dependency Grammar and how they relate to LFG concepts. I then show how both LFGs and Dependency Grammars can be translated into Multiple Context-Free Grammars to study formal differences between the frameworks. Next I discuss two recent efforts to translate from LFG analyses to the version of Dependency Grammar adopted in Universal Dependencies. Finally I show how Glue semantics can be applied to dependency structures.}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[40]%%chapternumber
+}{}
+
+\begin{document}
+\maketitle
+\label{chap:Dependency}
+
+\section{Introduction}\label{sec:Dependency:intro}
+Dependency Grammar (DG) is a tradition for syntactic analysis based on
+binary, asymmetric relations (called dependency relations or just
+\emph{dependencies}) between words. These relations are typically
+labelled, giving rise to a set of labels that can be thought of as
+grammatical functions, which are of course also important in
+LFG. In fact, the correspondence between dependencies in DG and
+grammatical functions in LFG and their central role in both theories
+is the main similarity, formally and conceptually, between the two
+frameworks.
+
+The primacy of dependencies is what holds together work in the DG
+tradition. As we will see, it is characteristic of almost all
+DG theories that they acknowledge a level of syntax that we will call
+the \emph{core dependencies}. This is a set of dependencies restricted
+so as to form a tree over the words of a sentence, i.e. a structure
+where each word has exactly one head, except the root word, which has
+none (or equivalently, is attached to a synthetic root node). (\ref{ex:simpletree})
+shows a very simple example of this.
+
+\begin{exe}
+  \ex\label{ex:simpletree}
+  \begin{dependency}[baseline=-0.6ex,theme=simple]
+    \begin{deptext}
+      Tracy \& loves \& Chris\\
+    \end{deptext}
+    \deproot[edge unit distance=1.5ex]{2}{\textsc{root}}
+    \depedge{2}{1}{subj}
+    \depedge{2}{3}{obj}
+  \end{dependency}
+\end{exe}
+Most theoretical work and concrete analyses have seen the need to
+introduce additional mechanisms or levels of structure beyond core
+dependencies to give the theory more analytical bite; this goes all
+the way back to \citet{Tesniere1959}, the founding work of modern DG.
+However, there is typically little agreement about the additional
+mechanisms or levels of structure between individual scholars working
+in the DG tradition. So, while the core dependency representation is
+often acknowledged as theoretically inadequate, it has enjoyed
+considerable popularity as a simplified representation with practical
+applications in computational linguistics and natural language
+processing.
+
+But even restricting attention to core dependencies, there are a
+number of choice points where different dependency frameworks make
+different decisions. For example, when the core dependencies model structures with a lexical word and one or more function words (for example, articles and
+nouns, auxiliaries and full verbs, or prepositions and their
+complements), we must take a stance on
+whether the lexical or the functional word is the head: the co-head
+option often used in LFG is not available. (\ref{ex:functionwords}) shows what the
+(unlabelled) dependency structure of a simple sentence would look
+like if we take function words as heads (left) or lexical
+words as heads (right).
+\begin{exe}
+  \ex\label{ex:functionwords}
+  \begin{dependency}[baseline=-0.6ex,theme=simple]
+    \begin{deptext}
+      Fido \& has \& slept \& on \& the \& mat \\
+    \end{deptext}
+    \deproot[edge unit distance=2ex]{2}{\textsc{root}}
+    \depedge{2}{1}{}
+    \depedge{2}{3}{}
+    \depedge{3}{4}{}
+    \depedge{4}{5}{}
+    \depedge{5}{6}{}
+  \end{dependency}
+  \begin{dependency}[baseline=-0.6ex,theme=simple]
+    \begin{deptext}
+      Fido \& has \& slept \& on \& the \& mat \\
+    \end{deptext}
+    \deproot[edge unit distance=2ex]{3}{\textsc{root}}
+    \depedge{3}{1}{}
+    \depedge{3}{2}{}
+    \depedge{3}{6}{}
+    \depedge{6}{5}{}
+    \depedge{6}{4}{}
+  \end{dependency}
+\end{exe}
+It is obviously not necessary to treat all function words the same,
+and so there are intermediate variants between these two extremes,
+taking for example prepositions and articles as heads, but not auxiliary verbs.
+
+Another point at which dependency grammarians diverge is the treatment
+of coordination. Because coordination is normally thought of as
+symmetric, it is not easy to represent with directed
+dependencies. Here the most common competing analyses, shown in
+(\ref{ex:conjunctions}), involve taking the first conjunct as the head (left),
+which entails giving up on symmetry; or to make the conjunction the
+head (right) and maintain symmetry, but at the cost of dissociating the
+conjuncts from their normal head (e.g. the verb), which is the basis
+for most morphosyntactic and semantic constraints.
+
+
+
+\begin{exe}
+  \ex\label{ex:conjunctions}
+  \begin{dependency}[baseline=-0.6ex,theme=simple]
+    \begin{deptext}
+      Mary \& likes \& fruit \& and \& vegetables\\
+    \end{deptext}
+    \deproot[edge unit distance=2ex]{2}{\textsc{root}}
+    \depedge{2}{1}{}
+    \depedge{2}{3}{}
+    \depedge{3}{4}{}
+    \depedge{3}{5}{}
+  \end{dependency}
+  \begin{dependency}[baseline=-0.6ex,theme=simple]
+    \begin{deptext}
+      Mary \& likes \& fruit \& and \& vegetables\\
+    \end{deptext}
+    \deproot[edge unit distance=2ex]{2}{\textsc{root}}
+    \depedge{2}{1}{}
+    \depedge{2}{4}{}
+    \depedge{4}{3}{}
+    \depedge{4}{5}{}
+  \end{dependency}
+\end{exe}
+
+Faced with the choices illustrated in (\ref{ex:functionwords}) and
+(\ref{ex:conjunctions}) many linguists in the DG tradition have felt
+that neither analysis is satisfactory, and they have therefore reacted
+by enriching the dependency formalism in various ways that result in
+data structures that have more in common with LFG. I discuss some key
+examples of this in \sectref{sec:Dependency:keyideas}.  Even if much
+theoretical work in DG assumes such enriched data structures, most
+practical applications of DG rely on core dependencies, thereby
+forcing choices that, at least from an LFG perspective, are somewhat
+arbitrary.
+
+One key difference between DG and LFG is that dependency
+grammarians typically do not formalize their work and in many cases do
+not provide (even informal) rules that generate the constructions they
+are interested in but content themselves with providing analyses of
+the whole structure. This goes back to the earliest dependency
+grammarians such as Tesnière, but has become even more prominent with
+the increasing use of dependency structures in data-driven parsing,
+where the goal is not to define a grammar that recognizes (or
+generates strings from) a formal language, but to parse strings into a
+single plausible structural representation. Nevertheless, it \emph{is}
+possible to conceive of DGs as formal grammars. In
+\sectref{sec:Dependency:wordorder} I discuss how this can be done using the
+framework of Multiple Context-Free Grammars. While this is not an
+approach that most dependency grammarians follow, it yields a useful 
+framework for comparing DG and LFG. Another useful perspective on DG
+and LFG is offered by recent efforts to translate LFG resources into
+DG resources, which I discuss in \sectref{sec:Dependency:computational}.
+\sectref{sec:Dependency:semantics} explores the potential for combining
+dependency grammars with Glue semantics, the standard semantic
+framework in LFG.
+
+
+\section{The dependency grammar tradition and LFG}\label{sec:Dependency:keyideas}
+The idea of using binary, labelled, asymmetric relations to analyze
+syntax is found in the work of P\=aṇini, Ancient Greek and Roman grammarians and
+the speculative grammarians of the Middle Ages
+\citep{Covington1984}. On its own, this idea is too vague to define a
+theoretical framework and both P\=aṇini and the speculative
+grammarians have also been seen as forerunners of generative grammar
+\citep{Kiparsky1994,Chomsky1966}. What defines the modern dependency
+grammar tradition, which started with \citet{Tesniere1959}, is the attempt to base syntax primarily, or even
+exclusively, on the concept of core dependencies, as opposed to the
+concept of constituency developed in American structuralism and the
+generative tradition. Although there have been a number of attempts to
+develop dependency grammar into a full-fledged grammatical theory (the
+most well-known ones being Functional Generative
+Description \citep{SgallEtAl1986}; Meaning--Text Theory (MTT) \citep{Melcuk1988}; and
+Word Grammar \citep{Hudson84,Hudson2010}), none of these are very
+widespread beyond the environments where they originated and hence
+there is no single, coherent version of DG as a formal framework.  The
+focus of this section is therefore not to identify assumptions made in
+specific frameworks, but rather to compare ideas that are common in
+the dependency grammar tradition with LFG.
+
+\subsection{Dependency graphs and f-structures}
+There is an obvious similarity between dependencies, as found in DG,
+and the binary, labelled, asymmetric relations between the nodes of an
+LFG f-structure.\footnote{To emphasize the parallelism between
+f-structures and dependency graphs, we rely here on the
+graph-theoretic interpretation of attribute-value matrices, where
+feature structures and atomic values are nodes, and attributes are
+labelled edges between these nodes, and not the ``official''
+interpretation of f-structures as functions
+\citep{kaplan1995formal,kaplanbresnan82}. The graph-theoretic interpretation is standard in most other
+unification-based frameworks from Functional Unification Grammar \citep{kay1979functional} onwards, and was, to my knowledge, first formalized by \citet{MoshierRounds}. It is used in HPSG \citep{rich:20}; see
+\citetv[section 4]{chapters/HPSG} for discussion of the
+differences between the two views.} In both cases, the
+relations form a directed labelled graph over nodes corresponding to
+linguistic material. The similarity even extends to the set of labels
+used, which in both cases contain traditional grammatical functions
+such as subject and object. Formally, however, there are two important
+differences: First, the nodes of the f-structure are not words, but
+correspond to zero, one or several words/c-structure terminals. This
+is how LFG escapes the indeterminacy of direction of headedness in
+constructions which combine lexical and functional words that we saw
+in (\ref{ex:functionwords}).
+Second, labelled dependencies are
+not necessarily functional, i.e. there may be two or more daughters
+bearing the same relation to the same head, in violation of LFG's
+uniqueness condition.\footnote{LFG can deal with several dependents bearing the same relation by using set-valued attributes e.g. for \textsc{adjunct}; this introduces the concept of sets, which also has no counterpart in DG.}
+
+In addition to these two formal differences, there are in practice
+many more differences, because DG analyses rarely use the full power
+of a directed graph and instead typically emphasize the core
+dependencies, which form a tree spanning the words of the sentence. To the extent
+that e.g. multiple heads are used, one of the heads is typically considered ``primary''. Even so, the
+formal similarities between dependencies and f-structures mean that
+similar theoretical questions can arise in both DG and LFG and even
+that one can think of LFG's f-structures as dependency graphs that
+take a particular view on certain foundational questions in DG.\footnote{Furthermore, on the implementation side, \citet{broker-1998} shows how DGs can be encoded as LFGs and implemented in the XLE platform.}
+
+An overarching question in the DG tradition (see e.g. 
+\citealt[199f.]{deMarneffeNivre2019}) is whether dependency relations
+are sufficient for analyzing syntax. In one sense, the answer is
+obviously no. Like f-structures, dependency structures say nothing
+about word order. This is dealt with in the c-structure in LFG, and
+scholars within dependency grammar have also seen the need to enrich
+the theory with a mechanism for constraining word order. I return to
+this in \sectref{sec:Dependency:wordorder}. But more fundamentally, one
+might ask whether core dependencies, tree structures over words, are
+sufficient to capture functional aspects of syntax like f-structures
+do in LFG.
+
+In fact, it is not too hard to see that core dependencies cannot fully
+represent the functional relations of a sentence. Consider for example, the
+subject in a raising construction.
+
+\begin{exe}
+  \ex
+    It seems to rain.
+\end{exe}
+%
+The expletive \textit{it} bears a functional relation to the raising
+verb \textit{seems} as witnessed by agreement; but the form of the expletive is
+licensed by the lexical verb \textit{rain} (and would be different in
+e.g. \textit{There seems to be a problem}), giving evidence for a
+second functional relation. If one insists on core dependencies, one
+of the two relations must be privileged.
+
+The alternative is to increase the expressivity of the theory, and
+this is in fact what Tesnière did when he introduced two other kinds of
+relations beside dependencies that can hold between words, namely
+junction (\emph{jonction}) and transfer (\emph{translation}). Junction
+is the relation that holds between coordinated items that are either
+dependents of the same head or heads of the same
+dependent. Translation is the relation that holds between lexical
+words and functional words that license their appearing in various
+dependencies. For example, complementizers ``translate'' verbs so as
+to license their appearing in object position according to the
+analysis in \citet[24]{Tesniere1959}; similar analyses are given for
+determiners and adpositions.
+
+Crucially, words that are linked by
+junction or transfer form a complex node (\textit{nucleus dissocié})
+in the dependency graph and jointly contract dependency relations. In
+this way, their dependents end up having more than one head; and
+they can collectively bear a single dependency relation to their
+head. In this respect, Tesnière's analyses are in fact quite close to
+standard LFG f-structures, where coordination is analyzed in terms of
+a set-valued attribute (\ref{ex:dance}) and function words such as
+e.g. auxiliaries form a single f-struture node with their lexical verb
+(\ref{ex:maryhasarrived}).
+
+\begin{exe}
+  \ex\label{ex:dance}
+  \begin{xlist}
+  \ex
+  All boys and girls dance.
+  \ex\evnup{
+    \avm[style=fstr]{
+      [pred & `dance\arglist{\textsc{subj}}' \\
+        subj & \{ [pred & `boy' \\
+                   spec & \1[ pred & `all' ] ]\\\\
+        [pred & `girl' \\
+        spec & \1 ] \} ]
+    }}
+    \ex\label{ex:junction}
+    \begin{dependency}[baseline=-0.6ex,theme=simple]
+      \begin{deptext}
+        All \& boys \& --- \& and \& --- \& girls \& dance \\
+      \end{deptext}
+      \wordgroup{1}{2}{6}{subject}
+      \depedge{2}{1}{det}
+      \depedge{7}{2}{subj}
+      \depedge{6}{1}{det}
+      \depedge{7}{6}{subj}
+      \deproot{7}{\textsc{root}}
+    \end{dependency}
+  \end{xlist}
+\end{exe}
+
+
+\begin{exe}
+  \ex\label{ex:maryhasarrived}
+  \begin{xlist}
+    \ex
+    Mary has arrived.
+    \ex\evnup{
+    \avm[style=fstr]{
+      [pred & `arrive\arglist{\textsc{subj}}' \\
+        tense & perfect \\
+        subj & [ pred & `Mary' ] ]
+    }}
+    \ex\label{ex:translation}
+    \begin{dependency}[baseline=-0.6ex,theme=simple]
+      \begin{deptext}
+        Mary \& has \& arrived \\
+      \end{deptext}
+      \wordgroup{1}{2}{3}{verb}
+      \wordgroup[color=white]{1}{1}{1}{subject}
+      \groupedge{verb}{subject}{subj}{2}
+      \deproot{3}{\textsc{root}}
+    \end{dependency}
+    \end{xlist}
+\end{exe}
+In this respect, both Tesnière's theory and LFG's f-structure reject
+the idea that syntactic dependencies can be adequately captured in a
+tree structure over the words of a sentence. Nevertheless, LFG's
+approach is much more general than Tesnière's. Tesnière allows
+many-to-one relations between words and dependency nodes based on
+relations that are not dependencies, but he maintains the tree
+structure over dependency nodes. Therefore, the only way a word can
+have two heads is if those heads form a single node by junction or
+transfer, as in (\ref{ex:junction}) and (\ref{ex:translation}); but
+LFG also allows for a word to have two heads that do not form a group,
+as in the analysis of functional control verbs (\ref{ex:functionalcontrol}).
+
+\begin{exe}
+  \ex\label{ex:functionalcontrol}
+  \begin{xlist}
+    \ex Chris persuaded Mary to come
+    \ex\evnup{
+    \avm[style=fstr]{
+      [pred & `persuade\arglist{\textsc{subj}, \textsc{obj}, \textsc{xcomp}}' \\
+        subj & [pred & `Chris' ] \\
+        obj &  \1[pred & `Mary'  ] \\
+        xcomp & [pred & `come\arglist{\textsc{subj}}' \\
+          subj & \1  ]
+    ] }}
+  \end{xlist}
+\end{exe}
+%
+Such dependencies cannot be expressed in Tesnière's formalism, because
+\textit{persuade} and \textit{come} share the dependent \textit{Mary},
+despite not forming a group. Moreover, \textit{Mary} bears a different
+syntactic relation to each of them, which again is not possible in
+Tesnière's formalism. More recent versions of dependency grammar have
+typically accounted for control and raising verbs by positing more
+levels of representation, see \sectref{subsec:morelevels}.
+
+Finally, an important difference between Tesnière's dependency graphs and
+f-structures is that f-structures may contain nodes that correpond to
+no overt word. A typical case is pro-drop, as in (\ref{ex:prodrop}) from Italian.
+
+\ea\label{ex:prodrop}
+  \ea
+    \gll vengono\\
+    come-\PRS.3\PL\\
+
+    \ex\evnup{
+    \avm[style=fstr]{
+      [pred & `come\arglist{\textsc{subj}}' \\
+        subj & [ pred & `pro' ] ]
+      }}
+
+    \ex
+    \begin{dependency}[baseline=-0.6ex,theme=simple]
+      \begin{deptext}
+        vengono \\
+      \end{deptext}
+      \deproot{1}{\textsc{root}}
+    \end{dependency}
+  \z
+\z
+%
+Again, Tesnière's formalism cannot capture this: dependency nodes may
+correspond to one word, or more words if they form a group by junction
+or transfer, but not to zero. The strategy in later versions of DG has
+been the same as that used to address phenomena where LFG uses
+structure sharing, namely to introduce more levels of representation.
+
+\hspace*{-4.3pt}In sum, one can say from an LFG perspective that Tesnière's dependency
+graphs, while certainly more expressive than core dependencies, are
+insufficiently general to deal with the complex functional relations
+that exist in natural language sentences.
+
+\subsection{Other levels of syntactic representation}\label{subsec:morelevels}
+Tesnière's strategy was to enrich dependency graphs so as to be able
+to represent more functional relations than core dependencies can do.
+More recent versions of DG have instead opted to keep the core
+dependencies simple and instead go beyond a single level of
+grammatical description to accommodate more information. One prominent
+example is the so-called tectogrammatical layer found in Functional
+Generative Description \citep{SgallEtAl1986} and the associated Prague Treebanks \citep{HajicEtAl2020}. This layer
+is annotated with an enriched dependency tree that will contain nodes
+that do not correspond to words (e.g.\ pro-dropped subjects) and
+secondary edges capturing multiple head-phenomena such as
+control.\footnote{The status of the tectogrammatical layer is not
+  entirely clear: the Prague Dependency Treebank annotation guidelines
+  (\url{https://ufal.mff.cuni.cz/pdt2.0/doc/manuals/en/t-layer/html/ch02.html})
+  say that it ``represents the semantic structure of the sentence'',
+  but \citet{HajicEtAl2020} describe it as ``deep
+  syntax''. The difference may be merely terminological.}
+
+Mel\v{c}uk's Meaning--Text Theory explicitly distinguishes a
+deep syntactic level between the semantic level and surface
+syntax. However, as pointed out by \citet{Kahane2003}, the deep
+syntactic level is the least defined level of MTT and it is not clear
+how much information it is supposed to contain. What is clear,
+however, is that grammatically imposed coreference relations are
+resolved in deep syntax, opening up a way to deal with, e.g., control.
+
+In Word Grammar \citep{Hudson84,Hudson2010}, too, control is treated by loosening the tree
+constraint on dependency structures. Example~(\ref{ex:WGstructureshare}), from \citet[521]{Hudson2003}, illustrates how structure
+sharing is used to analyze raising (\textit{you} shared by
+\textit{have} and \textit{been})\footnote{Instead of Hudson's \textit{sharer}, I have used the LFG relation \textsc{xcomp} which Hudson explicitly mentions as an alternative name for the same concept. The diagram in \citet[521]{Hudson2003} does not have a
+  subject relation between \textit{you} and \textit{looking}, although
+  \textit{looking} is an \textsc{xcomp} of \textit{been}. It is
+  unclear whether this is just an error.   } and extraction
+(\textit{what} shared by \textit{have}, \textit{been},
+\textit{looking} and \textit{at}).
+
+\begin{exe}
+  \ex \label{ex:WGstructureshare}
+  \begin{dependency}[baseline=-0.6ex,theme=simple]
+    \begin{deptext}
+      What \& have \& you \& been \& looking \& at?\\
+    \end{deptext}
+    \deproot{2}{\textsc{root}}
+    \depedge{2}{1}{extractee}
+    \depedge{2}{3}{subj}
+    \depedge{2}{4}{xcomp}
+    \depedge{4}{5}{xcomp}
+    \depedge{5}{6}{prep}
+    \depedge[edge below]{4}{3}{subj}
+    \depedge[edge below]{4}{1}{extractee}
+    \depedge[edge below]{5}{1}{extractee}
+    \depedge[edge below, label style={below}]{6}{1}{extractee,complement}
+  \end{dependency}
+\end{exe}
+
+The dependency graph in (\ref{ex:WGstructureshare})  is
+essentially identical to the standard LFG analysis (except that in
+extraction, LFG usually has structure sharing only between the gap and
+the filler position, without involving the inter\-mediate f-struc\-tures).
+However, in Word Grammar, the edges above and below the words have
+different status:
+\begin{quote}This diagram also illustrates the notion `surface
+structure' [\dots]. Each dependency is licensed by the grammar
+network, but when the result is structure-sharing just one of these
+dependencies is drawn above the words; the totality of dependencies
+drawn in this way constitutes the sentence's surface structure. In
+principle any of the competing dependencies could be chosen, but in
+general only one choice is compatible with the `geometry' of a
+well-formed surface structure, which must be free of `tangling'
+(crossing dependencies -- i.e.\ discontinuous phrases) and `dangling'
+(unintegrated words). There are no such constraints on the non-surface
+dependencies.'' \citep[521]{Hudson2003}
+\end{quote}
+
+This illustrates the point that I made in the introduction: different
+varieties of dependency grammar may have different notions of ``deep
+syntax'', but they all share the idea that there is an interesting
+representation of syntactic dependencies that is a rooted tree over
+nodes that stand in a one-to-one correspondence with the words of the
+sentence. This is very different from LFG: all edges of an f-structure
+graph are equal. The subject edge that connects the subject of a
+control construction to the control verb has exactly the same status
+as the subject edge that connects the subject to the non-finite
+verb. Thus, there is no ``privileged subgraph'' of the f-structure
+that forms a rooted tree over the words. By contrast, Hudson's
+distinction between the surface structure and the non-surface
+dependencies gives rise to such a privileged subgraph, although it
+must be said that the distinction between surface and non-surface
+dependencies is not further developed in Word Grammar.
+
+Dependency grammars also differ in their treatment of ``null words'',
+i.e. cases where LFG would have an f-structure node that does not
+correspond to any surface word, as in e.g.\ pro-drop. Most dependency
+analyses would simply leave out such subjects, as we saw in (\ref{ex:prodrop}).
+But here too, many dependency grammars introduce the missing subjects
+in ``deeper'' projections, for example in the tectogrammatical layer
+of Functional Generative Description. In fact, Word Grammar is one of
+the few dependency grammar frameworks that acknowledge empty elements
+in the core syntactic graph. \citet{CreiderHudson2006} present an argument for this
+that runs along standard lines of LFG thinking. In Ancient Greek,
+predicate nouns and adjectives agree in case (and adjectives also in number and
+gender) with their subjects; and subjects of infinitives are in the
+accusative.
+
+\ea Ancient Greek (Xenophon, Anabasis 1.3.6)\\
+\gll {nomízo:} {gàr} {humâ:s}   emoì      eînai  kaì  patrída             kaì  phílous\\
+{think-1.\PRS} {for}  {you-\ACC} {me-\DAT} {be-\textsc{inf}} and {fatherland-\ACC} and {friends-\ACC}\\
+\glt `For I think you are to me both fatherland and friends'
+\z
+But crucially, the predicative is accusative also when the accusative subject is absent (\ref{ex:noaccusative}), even in cases where there is a coreferential element in the higher clause (\ref{ex:longdistance}).
+
+\ea\label{ex:noaccusative} Ancient Greek (Isocrates 2.15)\\
+\gll philánthro:pon eînai deî \\
+{humane-\ACC} {be-\textsc{inf}} must\\
+\glt `one must be humane' 
+\z
+
+\ea\label{ex:longdistance} Ancient Greek (Plato, Alcibiades 2, 141a7)\\
+\gll exarkései        soi         túrannon  genésthai \\
+{suffice-\FUT} {you-\DAT} {king-\ACC} {become-\textsc{inf}} \\
+\glt `it will be enough for you to become king' 
+\z
+%
+In (\ref{ex:longdistance}), we observe that the predicate noun \textit{turannon} does not agree directly with its logical subject \textit{soi}, but rather with the unexpressed subject of the infinitive.
+Since case agreement is generally agreed to be syntactic (whereas
+agreement in number and gender could potentially be semantic), \citet{CreiderHudson2006}
+conclude that the unexpressed subject of the infinitive must
+nevertheless be present in the syntax. This is unsurprising from an
+LFG point of view, but does not seem to be generally accepted in
+DG. It is unclear, for example, how Functional
+Generative Description would deal with this kind of data, since null words are
+inserted only at the tectogrammatical layer, where there is no case
+feature.
+
+\section{Word order and generative power in DG and LFG}\label{sec:Dependency:wordorder}
+In most versions of dependency grammar, it is assumed that the nodes
+of a dependency structure are not linearly ordered in themselves: a dependency relation implies no particular linear order between a head and its dependents, but
+can be related to different surface linearizations. This view goes
+back to \citet[chapter 7]{Tesniere1959}, who distinguishes sharply
+between structural order (dependencies) and linear order. The main
+exception to this is Functional Generative Description, which assumes
+a linear order on the nodes even in the tectogrammatical layer, to
+capture information structure.
+
+But even if the nodes of the dependency structures are not linearly
+ordered, it is possible (and in fact necessary for most languages) to
+constrain the relation between dependency structure and
+linearization. One much-discussed constraint is \emph{projectivity}.\footnote{It seems that this term originated with a technical report by P. Ihm and Y. Lecerf ``Eléments pour une grammaire générale des langues projectives'', Bruxelles 1960, but I have been unable to find this paper.}
+
+\ea\label{def:projectivity} A dependency graph is projective iff for every edge $n_h
+\rightarrow n_d$ it contains, $n_h$ dominates all nodes that occur
+between $n_h$ and $n_d$ (where domination is the transitive closure of
+the edge/dependency relation)
+\z
+%
+An early result due to \citet{Gaifman1965} is that projective
+dependency grammars are weakly equivalent to context-free
+grammars.\footnote{See also \citet{Hays1964}.} This result may in fact
+have led to a lack of interest in dependency grammar because it was
+widely believed in the sixties and seventies (and eventually proved in
+the eighties) that natural languages are \emph{not} context-free. On
+the other hand, the recognition problem for a dependency grammar with
+no linearization constraints at all (thus allowing arbitrary
+discontinuities) is NP complete \citep{NeuhausBroeker97}.\footnote{As
+we will see in \sectref{sec:Dependency:computational}, this is not an issue
+in data-driven parsing, which sidesteps the recognition problem and
+aims directly at providing a contextually plausible parse.}
+
+With the increasing popularity of dependency grammars in the 2000s,
+this led to the search for \emph{intermediate} linearization
+constraints between strict projectivity and arbitrary
+non-projectivity. One important class of constraints is based on the
+notion of \emph{block degree} \citep{HolanEtAl1998}. Intuitively,
+projectivity as defined in (\ref{def:projectivity}) ensures that the
+subgraph of $n_h$ (i.e. $n_h$ and the set of nodes it dominates) forms
+a single block of adjacent nodes. We can instead allow the subgraph to
+form \emph{two} blocks of adjacent nodes, interrupted by a continuous
+set of words. We say that $n_h$ has block degree 2; and the block
+degree of a dependency tree is the highest block degree of any of its
+nodes. Equivalently, we can speak of gap degree, which is block degree
+minus 1 (i.e., the number of allowed gaps). (\ref{ex:latinex}) illustrates this
+with an example from Latin.
+
+
+\begin{exe}
+  \ex\label{ex:latinex}
+  \begin{xlist}
+    \ex Latin\\
+    \gll Mihi nullus est terror\\
+    me.\textsc{dat} none.\textsc{nom} is fear.\textsc{nom}\\
+    \glt `I have no fear.'
+    \ex \label{ex:latintree}
+      \begin{dependency}[baseline=-0.6ex,theme=simple]
+        \begin{deptext}[column sep=1cm]
+          mihi \& nullus \& est \& terror \\
+        \end{deptext}
+        \deproot{3}{\textsc{root}}
+        \depedge{3}{4}{{subj}}
+        \depedge{4}{2}{{adj}}
+        \depedge{3}{1}{{obl}}
+      \end{dependency}
+  \end{xlist}
+\end{exe}
+
+The gap degree of \textit{est} is 0, since its subgraph is continuous;
+but the gap degree of \textit{terror} is 1, since there is one gap in
+its subgraph -- \textit{est} intervenes between \textit{terror} and
+\textit{nullus}, but is not dominated by \textit{terror}. As a result,
+the gap degree of the whole tree is 1.
+
+\hspace*{-2.5pt}To study the computational complexity of the dependency grammars that
+could generate structures like (\ref{ex:latinex}), and their relationship to LFG
+grammars, it is convenient to use phrase structure-based systems
+that allow discontinuities, so-called Linear Context-Free Rewriting
+Systems (LCFRS, \citealt{vijay-shanker-etal}) or the notational variant Multiple Context-Free
+Grammars (MCFG, \citealt{SekiEtAl1991}).  The MCFG formalism is a generalization of CFG which
+retains ordinary CFG productions for the expression of categorial
+structure, but uses explicit \emph{yield functions} to compute the
+yield of the mother node from the yields of the daughters. In an
+ordinary CFG, yield computation is conflated with category formation:
+a rule such as DP $\rightarrow$ D NP says both that the category DP is
+formed of a D and an NP, and that the yield of the resulting DP is
+formed by concatenating the yields of D and NP. In effect, then, a CFG
+can be seen as an MCFG with concatenation as the only yield
+function.\footnote{See \textcite{clark2014} for an accessible
+introduction for linguists and \citet[chapter 6]{Kallmeyer2010} for a
+more formal introduction.}
+
+To allow for greater expressivity, MCFG allows yields to be
+\emph{tuples} of strings. For example, we may want to say
+that the yield of DP is a pair (2-tuple) consisting of the yields of D
+and NP. This pair will then be the input to further yield functions
+that apply to productions with DP on the right-hand side. More
+generally, we may allow yields to be $n$-tuples of strings. The interesting point is that there is a close
+correspondence between yield components in an MCFG and blocks in a
+corresponding dependency structure. We can extract MCFG rules from
+dependency trees, as shown in \textcite{Kuhlmann2013}, where a formal
+exposition is given. Here I just provide an intuitive understanding of
+how the tree in (\ref{ex:latintree}) gives rise to the rules
+in \tabref{tbl:mcfgrules}.
+
+\begin{table}
+  \begin{tabular}{lll}\lsptoprule
+    rule & yield function & compact notation \\\midrule
+  $\textsc{adj} \rightarrow g()$ & $g=\langle$\textit{nullus}$\rangle$   & $\textsc{adj} \rightarrow \langle$\textit{nullus}$\rangle$ \\
+  $\textsc{obl} \rightarrow h()$ & $h=\langle$\textit{mihi}$\rangle$ & $\textsc{obl} \rightarrow \langle$\textit{mihi}$\rangle$\\
+  $\textsc{subj} \rightarrow i(\textsc{adj})$ & $i=\langle x_1,$\textit{terror}$\rangle$ & $\textsc{subj} \rightarrow \langle x_1,$\textit{terror}$\rangle$ (\textsc{adj})\\
+  $\textsc{root} \rightarrow j(\textsc{obl subj})$ & $j=\langle x_1 y_1$ \textit{est} $y_2\rangle$ & $\textsc{root} \rightarrow \langle x_1 y_1$ \textit{est} $y_2\rangle$(\textsc{obl subj})\\\lspbottomrule
+\end{tabular}
+\caption{Rules extracted from the tree in (\ref{ex:latintree})}\label{tbl:mcfgrules}
+\end{table}
+
+Looking at \textit{nullus} in (\ref{ex:latintree}), we see that it has no dependents, hence the right-hand side of the first rule is a constant function which fixes the yield to the string \textit{nullus}, and similarly for \textit{mihi}. For \textit{terror}, things are more interesting. It takes one dependent, an \textsc{adj}, and hence its yield function $i$ depends on the value of that argument. Concretely, the yield of the node \textit{terror} is a tuple, consisting of the yield of the \textsc{adj} dependent which is represented as $x_1$,\footnote{The convention is that we use $x$ for the yield of the first dependent and $y$ for the yield of the second dependent, and subscript those variables with an index referring to blocks of the yield.} and the string \textit{terror}. Finally, the verb takes two arguments, $\textsc{subj}$ and $\textsc{obl}$. The yield is constructed by concatenating the yield of the $\textsc{obl}$ (i.e.\ $x_1)$, the first component of the $\textsc{subj}$ (i.e.\ $y_1)$, the string \textit{est}, and the second component of \textsc{subj} ($y_2$).
+
+With the rules in \tabref{tbl:mcfgrules}, we can construct the MCFG derivation tree in (\ref{ex:mcfg}).
+
+\begin{exe}
+\ex\label{ex:mcfg}
+\begin{forest}
+  [{$\langle x_1 y_1$ \textit{est} $y_2\rangle$}
+    [{$\langle$\textit{mihi}$\rangle$} ]
+    [{$\langle x_1,$\textit{terror}$\rangle$}
+      [{$\langle$\textit{nullus}$\rangle$} ]
+    ]
+  ]
+\end{forest}
+\end{exe}
+
+But notice that because the MCFG grammar is lexical, i.e. each rule introduces exactly one lexical item, the tree in (\ref{ex:mcfg}) is isomorphic to the dependency tree in (\ref{ex:latintree}). In other words, a lexicalized MCFG can simply be interpreted as a dependency grammar which simultaneously restricts word order.
+
+This allows us to compare the generative capacity and the parsing
+complexity of dependency grammars with other formalisms. Under a
+reasonable constraint on discontinuities,\footnote{Namely
+  wellnestedness; a tree is wellnested if there are no disjoint subtrees that overlap linearly.} the expressivity of an MCFG depends only
+on the maximal block degree of the grammar, giving rise to a hierarchy
+of $k$-MCFGs, where $k$ is the block degree of the most complex yield
+function in the grammar. It turns out that 2-MCFGs (and hence
+dependency grammars that allow maximally one gap) are weakly
+equivalent to Tree Adjoining Grammars and `classical' Combinatory
+Categorial Grammar, as was proven by \citet{BodirskyEtAl2005}.\footnote{See also \citet{Kuhlmann2007,Kuhlmann2010}.}
+
+Even more interesting from an LFG perspective, there is also a result
+that a subclass of LFG grammars, so-called \emph{finite copying LFGs},
+can be translated into weakly equivalent MCFGs/LCFRSs
+\citep{SekiEtAl1993}. Finite copying LFGs are quite restricted in what
+functional annotations they allow, in particular they do not allow
+head annotations (\ua=\da) or reentrancies, and also impose the
+crucial constraint that the grammar puts an upper bound on the number
+of c-structure nodes corresponding to a single
+f-structure. \citet{wed:kap:20} show that we can impose this upper
+bound while still allowing head annotations and reentrancies, as long
+as they are nonconstructive. This allows most functional equations
+that are used in linguistic work, including functional control
+equations of the type (\ua\,\textsc{f
+  g})=(\ua\,\textsc{h}). \citet{wed:kap:20} call these grammars
+$k$-bounded LFGs and prove that for any $k$-bounded LFG, a weakly
+equivalent $k$-MCFG can be constructed. Moreover, the MCFG rules can
+be annotated with functional descriptions that allow us to construct
+the f-structure that the corresponding $k$-bounded LFG assigns to the
+sentence, yielding a strongly equivalent MCFG.
+
+These results allow us to compare dependency grammars and LFGs in a
+precise way. First of all, dependency grammars and $k$-bounded LFGs
+are weakly equivalent. Nevertheless, although strongly equivalent
+MCFGs can be constructed from both dependency grammars and $k$-LFGs,
+it is not the case that we can construct a strongly equivalent
+dependency grammar from an LFG. The interpretation of an MCFG as a
+dependency grammar relies on unique lexicalization: each rule contains
+a single lexical item interpreted as the head. The MCFGs that
+\citet{wed:kap:20} construct from LFGs are not lexicalized in this
+way. They do contain functional descriptions that allow us to identify
+the head but, since LFG allows co-heads, the head is not guaranteed to
+be unique. Moreover, the functional descriptions in the MCFG
+constructed from an LFG may contain reentrancies, i.e. words having
+more than one head, which have no interpretation on the dependency
+grammar side, thus losing information. A final, minor point is that
+Kuhlmann's interpretation of MCFGs as dependency grammars say nothing
+about edge labels; it would be natural and straightforward to
+interpret LFG's ordinary function assignments as such labels.
+
+\hspace*{-.1pt}In sum, then, the formal analysis tells us that the difference between
+$k$-bounded LFGs and dependency grammars resides exactly in the
+availability of co-heads and reentrancies, which provide important
+information from a linguistic point of view. Finally, it should be
+noted that the restriction to $k$-bounded LFGs, while preserving
+coverage of many, perhaps most, linguistic phenomena, is nevertheless
+not trivial. \citet{Rambow2014} argued that unbounded scrambling as
+found in German and other free word order languages falls outside the
+generative capacity of MCFGs (and mildly context sensitive grammar
+formalisms in general) and hence $k$-bounded LFGs.
+
+The comparison of dependency grammars and LFGs through MCFGs is also
+interesting from other points of view. As \citet{wed:kap:20} point
+out, the effect of converting an LFG to an MCFG is to precompute the
+interaction between f- and c-structure and construct a grammar that
+recognizes all and only the c-structures whose f-descriptions are
+satisfiable. From a practical point of view, this may be an advantage
+in parsing. But from the perspective of theoretical LFG, it can be
+argued that MCFGs and the dependency grammars they give rise to
+conflate c- and f-structure, making it harder to state linguistic
+generalizations. The advantage of LFG's projection architecture is
+precisely ``to account for signifiant linguistic generalizations in
+a factored and modular way by means of related but appropriately
+dissimilar representations'' \citep[309]{kapl:89}. Seen from the
+dependency grammar side, the formal results offer a choice:
+Kuhlmann's translation to MCFGs makes it possible to enrich dependency
+grammars with an account of word order in a single component; but
+\citegen{wed:kap:20} results show that MCFGs can be ``modularized''
+into a word order component and a functional component (which is not
+surprising given that MCFGs generalize CFGs precisely by dissociating
+dominance and linearization) to give something very close to LFG.
+Either way, the formal analysis exposes similarities and differences
+between the frameworks. In principle, this paves the way for
+cross-fertilization on the theoretical side, but in practice such
+gains are limited by the fact that, as I pointed out in
+\sectref{sec:Dependency:intro}, dependency grammarians typically do not think
+in terms of (formal or informal) rules that generate the constructions
+they are interested in but content themselves with providing analyses
+of the whole structure.
+
+%% \subsection{Long distance dependencies}
+%% Let us look more closely at one particular kind of discontinuity, long
+%% distance depencies. The Word Grammar analysis was shown in Figure
+%% \ref{fig:WGstructureshare}. It involves secondary dependencies beyond
+%% the dependency tree proper. For the surface tree, the Word Grammar
+%% analysis chooses to represent only the \emph{extractee} relation
+%% between \textit{what} and \textit{have}, but this choice is governed
+%% by the requirement that the surface structure be projective. From a
+%% semantic point of view, it is clear that we can never represent the
+%% correct meaning of this sentence if we do not have the
+%% \emph{complement} relation between \textit{at} and \textit{what}. So
+%% we could choose to have represent only this relation and this is in fact the choice of most dependency treebank.
+
+%% Figure showing projective analysis (e.g. of Heringer/Erom/some treebank, see Müller)
+
+%% Because such an analysis allows nonprojective dependencies, it needs
+%% to be constrained in order to not overgenerate. 
+
+%% \begin{exe}
+%%   \ex What have you been looking at?
+%%   \ex At what have you been looking?
+%%   \ex *What have at you been looking?
+%% \end{exe}
+
+%% One way to constrain the construction is to use MCFG rules to take
+%% care of the word order. This minimizes functional information: we only
+%% know that \textit{what} depends on \textit{at} and the linearization
+%% rules take care of the rest. The other possibility is to allow
+%% multiple dependencies as in Word Grammar. On this view, we use more
+%% functional information, but the linearization is simpler:
+%% \textit{what} simply occurs next to (one of) its heads. This could be
+%% translated into an MCFG that is actually a context free grammar (with
+%% only continuous yield functions), but would need functional
+%% annotations to retrieve the secondary dependencies/reentrancies needed
+%% to recover the meaning. Unfortunately, the existing dependency grammar
+%% analyses that exists, surveyed in Müller XXX, are not sufficiently
+%% explicit to allow a comparison of the pros and cons of the different approaches.
+
+
+
+\section{DG and LFG in computational linguistics}\label{sec:Dependency:computational}
+\subsection{Data-driven dependency parsing}
+On the computational side, there is a similar difference between DG on
+the one hand, and LFG and most other formal linguistic traditions on
+the other hand, in
+that there has generally been little interest in developing formal
+grammars that can generate or parse languages. There are some
+exceptions to this: in the framework of Constraint Dependency Grammar
+\citep{Maruyama1990}, there is for example a broad-coverage parser of
+German \citep{FothEtAl2005}; and Constraint Grammar
+\citep{karlsson1995} is a widely used system in which implemented
+grammars have been created for a wide variety of languages. Many of
+these grammars content themselves with assigning syntactic function
+labels to words, without building a full syntax tree, but even so,
+many have proven useful in practical tasks.
+
+Nevertheless, the dominant use of DG in computational linguistics is
+closely associated with machine learning approaches where computers
+find patterns in human annotated data. For such approaches, it is
+sufficient that annotators provide case-by-case analyses of the corpus
+without actually abstracting the rules that would create these
+analyses. Consistency remains a goal, since it makes the patterns
+easier to learn, but it is not enforced in the way it would be in
+grammar-based annotation such as typical scenarios for creating LFG
+parsebanks, where annotators choose between alternative analyses
+provided by the underlying grammar.
+
+As we have seen several times so far, the constraints on core
+dependency syntax, namely the unique mother and the one-to-one
+correspondence between nodes and tokens, mean that many theoretically
+relevant distinctions cannot be encoded. On the flip side, this makes
+the annotation task easier as the annotator does not have to be
+trained in drawing the distinctions. The result is also often more
+accessible to end users: while grammar-based treebanks contain much
+more information than dependency trees, this information is typically
+encoded in a specific theoretical framework and not always easily accessible to
+users without training in that framework. In short, core dependency
+trees offer a tradeoff between practical considerations and
+theoretical depth, which may be attractive for many applications where
+the deeper linguistic distinctions do not matter much.
+
+On top of that, the simple target structure makes it possible to train
+very efficient statistical dependency parsers. This approach is
+fundamentally different from the formal grammar approach to DG
+developed by \citet{Kuhlmann2013}, which we saw in
+\sectref{sec:Dependency:wordorder}. Data-driven parsers learn from human
+annotation and try to provide the most plausible parse in context,
+without judging acceptability or enumerating possible parses. In this
+context, non-projective dependencies are not an issue and can be
+captured efficiently \citep{mcdonald-etal-2005}. \citet{nivre2008}
+introduced algorithms that could produce projective dependency parses
+in time linear of the input and algorithms that allow non-projective
+parses and run in quadratic time. Such results led to a huge increase
+of interest in dependency parsing, which quickly became dominant in
+statistical approaches to computational linguistics.
+
+Data-driven parsing requires annotated data and the last decade has
+seen a large increase in the number of dependency treebanks that are
+available, especially driven by the Universal Dependencies (UD)
+initiative.\footnote{See \url{https://universaldependencies.org/} and
+\citet{deMarneffeEtAl2021}.} UD developed out of the Stanford
+dependencies for English \citep{DeMarneffeManning2008} (which means
+that there is a certain amount of LFG heritage) as an effort to create
+an annotation scheme that can be used across languages. Though it has
+been driven mainly by practical considerations in NLP research,
+it has in recent years also been used for linguistic research (e.g. \citealt{Hahn2347,berdicevskis-piperski-2020-corpus}).
+
+As of release 2.9 (November 2021), UD contains 217 treebanks from 122
+languages. A comparison with LFG's ParGram approach reveals the
+strengths and weaknesses of the approach.\footnote{For more on ParGram, see \citetv{chapters/ImplementationsApplications}.} Drawing on the long
+tradition of using DG to provide case-by-case analyses rather than
+abstracting grammars has made it possible to achieve an unprecedented
+breadth of coverage. On the other hand, the analyses are more shallow
+than those provided by LFG grammars and the lack of underlying
+grammars makes the UD project much more prone to inconsistencies both
+within and across treebanks. 
+
+\subsection{Converting LFG parsebanks to dependency treebanks}
+The existence of annotated resources in both LFG and DG formats makes
+it possible to study differences between the two from a different 
+perspective than the formal language approach we adopted in
+\sectref{sec:Dependency:wordorder}. In this section, we look at work on
+converting LFG-based resources to dependency structures to see how the
+two formats compare and to what extent information can be preserved
+when converting to the less expressive DG format.
+
+For completeness, we mention that there has also been some work on
+enriching them to yield LFG-structures, e.g. by
+\citet{forst-2003-treebank} and \citet{haug2012dependency}. However,
+both Forst and Haug started from relatively rich dependency
+annotations (with secondary edges), so that the conversion to
+f-structures was not difficult and other issues were more important
+(e.g. the creation of c-structures from the dependency representations
+by Haug).
+
+Several conversion algorithms have been developed to convert LFG
+structures to dependency structures. Here I discuss two recent
+approaches, by \citet{Meurer17LFG} and
+\citet{prz:pat:19:lre},\footnote{\citet{dione2020b} presents an
+approach that combines \citet{Meurer17LFG} and
+\citet{prz:pat:19:lre}. For older work, see \citet{Ovrelid2009} and
+\citet{Cetinoglu2010}.} which contrast in interesting ways, since
+Meurer starts from the c-structure and Prze\-pi{\'o}r\-kowski and
+Pate\-juk from the f-structure. Both are natural starting points: the
+f-structure represents grammatical functions, just like the target
+dependency structure; but the c-structure has the advantage that its
+terminal nodes are in one-to-one correspondence with the words of the
+sentence, just like in the dependency structure. Both algorithms
+target the particular style of dependency annotation adopted in UD,
+but proceed in two steps, namely first the creation of a dependency
+structure, and second, the modification of that structure to comply
+with the exact representation chosen in UD. Here we focus on the first
+step. To illustrate how the two algorithms work, we consider the LFG
+structure in (\ref{ex:depconvertC})--(\ref{ex:depconvertF}).
+
+\begin{exe}
+  \ex \label{ex:depconvertC}
+  \begin{forest}
+  [IP
+    [{(\ua\ \TOPIC)=\da\\NP$_1$} [{\ua=\da\\N} [this ] ] ]
+    [{\ua=\da\\IP}
+      [{(\ua\ \SUBJ)=\da\\NP$_2$} [{\ua=\da\\N} [John ] ] ]
+      [{\ua=\da\\V$'$} [{\ua=\da\\V} [wants ] ]
+        [{(\ua\ \XCOMP)=\da\\VP} [{\ua=\da\\{PART}} [to ] ]
+          [{\ua=\da\\V} [see ]]]]]]
+  \end{forest}
+  \ex \label{ex:depconvertF}\evnup{
+  \avm[style=fstr]{
+    [pred & `want\arglist{\textsc{subj, xcomp}}' \\
+      topic & \1[ pred & `pro' ] \\
+    subj  & \2[ pred & `John' ] \\
+    xcomp & [ pred & `see\arglist{\textsc{subj, obj}}' \\
+      subj & \1 \\
+      obj & \2 ]
+    ]
+  }}
+
+\end{exe}
+%
+In Meurer's approach, the first step is to ``lexicalize'' the
+c-structure tree by recursively replacing each non-terminal node with
+its functional head node, as determined by the annotation
+$\ua=\da$. This is straightforward for IP, NP$_1$ and NP$_2$ in
+(\ref{ex:depconvertC}): \textit{wants}, \textit{this} and \textit{John}
+are uniquely linked to these nodes via an unbroken chain of
+$\ua=\da$. But more generally, the challenge here is the same as in
+lexicalizing an MCFG that results from the Wedekind-Kaplan
+construction: co-heads and absence of heads mean there might be no
+unique daughter to lift. To find a unique head in such cases the
+algorithm proceeds as follows: 1) if no daughter of $x$ is a
+functional head, attach all daughters to the mother of $x$ and proceed
+as before; 2) if more than one daughter of $x$ is a functional head,
+choose the one with the shortest embedding path; 3) if there is a tie,
+choose the leftmost node. For the VP in our example, case 3 applies and we choose
+\textit{to} as the head; it is therefore lifted to the VP node, while
+\textit{see} is only lifted to the V node. These lifting operations
+yield the tree in (\ref{ex:liftedtree}).
+
+\begin{exe}
+  \ex \label{ex:liftedtree}
+  \begin{forest}
+    [wants
+      [this ]
+      [John ]
+      [to [see ]]]
+  \end{forest}
+\end{exe}
+%
+\largerpage
+We then need to label the edges. Meurer's algorithm does that by
+labelling the edge between nodes $x$ and their daughter $y$ in the
+resulting tree with the f-structure path from $\phi(x)$ to
+$\phi(y)$. So, the edge from \textit{John} to \textit{wants} is
+labelled \textsc{subj} since that is the path from the f-structure of
+\textit{wants} to the f-structure of \textit{John}. But because of
+reentrancies in the f-strucure, the path between two f-structures is
+not always unique: for example, there is a path from the f-structure
+of \textit{wants} to the f-structure of \textit{this} that is labelled
+\textsc{topic}, but there is another path that is labelled
+\textsc{xcomp obj}. In such cases, Meurer chooses the shortest path
+that contains only grammatical functions (i.e. no discourse
+functions); in our case that yields the complex label \textsc{xcomp.obj} where the two elements of the f-structure path have been concatenated with a dot. Co-heads present another problem for the labelling approach:
+\textit{to} and \textit{see} share the same f-structure, so there is
+no path. In such cases a dummy relation $=$ is used.
+
+
+This algorithm produces a projective dependency graph with complex
+labels, as shown for our example in the lefthand side of (\ref{ex:meurerconvert}). In the
+next step, the complex labels are resolved and nodes attached
+accordingly, potentially introducing non-projectivity. For our
+example, when the complex relation \textsc{xcomp.obj} is
+resolved, we obtain the non-projective tree on the right-hand side of (\ref{ex:meurerconvert}).
+
+\begin{exe}
+  \ex\label{ex:meurerconvert}
+  \begin{minipage}{0.4\textwidth}
+  \begin{dependency}[baseline=-0.6ex,theme=simple]
+    \begin{deptext}
+      This \& John \& wants \& to \& see\\
+    \end{deptext}
+    \deproot{3}{\textsc{root}}
+    \depedge{3}{1}{\textsc{xcomp.obj}}
+    \depedge{3}{2}{\textsc{subj}}
+    \depedge{3}{4}{{\textsc{xcomp}}}
+    \depedge{4}{5}{=}
+  \end{dependency}
+  \end{minipage}
+  \begin{minipage}{0.1\textwidth}
+    $\Rightarrow$
+  \end{minipage}
+  \begin{minipage}{0.4\textwidth}
+  \begin{dependency}[baseline=-0.6ex,theme=simple]
+    \begin{deptext}
+      This \& John \& wants \& to \& see\\
+    \end{deptext}
+    \deproot{3}{\textsc{root}}
+    \depedge{4}{1}{\textsc{obj}}
+    \depedge{3}{2}{\textsc{subj}}
+    \depedge{3}{4}{\textsc{xcomp}}
+    \depedge{4}{5}{=}
+  \end{dependency}
+  \end{minipage}
+\end{exe}
+%
+This then is the input to the final step, where the dependency tree is
+normalized according to the UD annotation standard.
+
+\largerpage
+\citet{prz:pat:19:lre}, by contrast, start from the f-structure, which
+already represents the syntactic dependencies. This means the
+challenge is different, namely to match the nodes of the f-structure
+to the words of the sentence, which are the nodes of the target
+dependency graph. F-structure nodes may correspond to zero, one or
+several words; they are given by the $\phi^{-1}$, which is part of the
+source annotation. F-structures that correspond to no words (e.g. in
+pro-drop) may simply be ignored in the dependency structure; but for
+f-structures that correspond to more than one word, the ``true'' head
+that will take the f-structure's place in the corresponding dependency
+structure must be identified, and the other words in $\phi^{-1}$ must
+be attached with appropriate relations. The basic algorithm is simple:
+if there is a verbal token in $\phi^{-1}$, choose that as the true
+head; otherwise, choose a nominal or adjectival token; otherwise an
+explicit lexical conjunction. The other nodes are then attached to the
+true head with a relation labelled by their own preterminal
+category. This produces the structure in (\ref{ex:ppconvert}) from the f-structure in
+(\ref{ex:depconvertF}).
+
+\begin{exe}
+  \ex\label{ex:ppconvert}
+  \begin{dependency}[baseline=-0.6ex,theme=simple]
+    \begin{deptext}
+      This \& John \& wants \& to \& see\\
+    \end{deptext}
+    \deproot{3}{\textsc{root}}
+    \depedge{3}{1}{\textsc{topic}}
+    \depedge{3}{2}{\textsc{subj}}
+    \depedge{3}{5}{\textsc{xcomp}}
+    \depedge{5}{4}{\textsc{part}}
+    \depedge[edge below]{5}{1}{\textsc{obj}}
+  \end{dependency}
+\end{exe}
+
+As we can see, the output from the algorithm of \citet{prz:pat:19:lre}
+is not a tree, but a graph, where all f-structure relations are preserved, including two incoming edges to \textit{this}. This is exploited to produce enhanced UD, which allows for this kind of graph structure; but the
+output is also trimmed to produce a basic UD structure.
+
+(\ref{ex:meurerconvert})--(\ref{ex:ppconvert}) illustrate the output
+of the first steps in the conversions, where the target is to produce
+the desired data structure, namely a dependency tree or graph over
+words. As mentioned, the next step is to normalize this structure to
+the concrete requirements of the UD annotation standard. This is less
+interesting from our point of view, but it is worth looking at a few
+topics that display divergences between standard LFG solutions and
+choices that are made in the dependency grammar community as
+exemplified by UD.
+
+First, UD subscribes to the primacy of content
+words. This means that content words are typically heads of function
+words, for example in structures consisting of auxiliary and verb,
+adposition and noun, and determiner and noun, as illustrated in the lower graph of (\ref{ex:functionwords}) in \sectref{sec:Dependency:intro}. Also, there are
+no nested structures of function words, so e.g. in structures with multiple auxiliaries (\textit{may have been understood}), all the auxiliaries attach directly to the lexical verb. While UD may be extreme among
+dependency grammar approaches in adopting this principle across the
+board, similar analyses are found for some of these structures in
+other frameworks. By contrast, such analyses are non-existing in the
+LFG literature, except for noun-determiner structures (where the
+determiner is often analyzed as a \textsc{spec} dependent of the
+noun): function words are typically either co-heads, or lone heads,
+taking a lexical word as their dependent. For example, there are
+analyses of auxiliaries as co-heads specifying features of the
+f-structure where the lexical verb contributes the \textsc{pred}, and
+alternative analyses where auxiliary verbs take \textsc{xcomp}
+dependents, potentially in a cascading sequence ending in the lexical
+verb.
+
+In fact, the difference between the co-head analysis and the UD
+dependent analysis of function words is rather slight, as revealed by the
+conversion procedure of \citet{prz:pat:19:lre}. In
+f-structures that have functional co-heads, the lexical head will be
+chosen as the head during conversion, and hence the function words
+will end up as dependents. And in fact, given that UD uses a flat
+structure for multiple function words means that the two
+representations are more or less equivalent, a point made in the UD
+documentation
+too,\footnote{\url{https://universaldependencies.org/u/overview/syntax.html}}
+where it is said that function word relations are different from
+dependency relations between content words and in fact form
+Tesnière-style nuclei.
+
+This in turn opens the door to theoretical cross-fertilization. What
+are good criteria for choosing between the two analyses? The UD
+argument is that primacy of lexical words maximizes parallelism across
+languages, and the exact same argument has been raised in the LFG
+literature \citep{buttetal96}. On the other hand, \citet{dyvik99} has
+countered that this leads to a stipulative, rather than empirical,
+notion of language universality and also that it can lead to analyses
+that are language-internally unmotivated. Recently,
+\citet{OsborneGerdes2019} criticized the UD approach and argued that
+functional words should always be heads. They were apparently unaware
+of the LFG literature on the topic, perhaps because it is cast in terms of
+co-heads vs. \textsc{xcomp}s. But as we have seen, the
+difference between a co-head analysis and a UD-style annotation is
+very slight, and so the arguments made in the LFG context are certainly relevant also for the DG community.
+
+The other main divergence between initial dependencies, as resulting
+from the conversion algorithms, and the target UD structures concern
+coordination. Here LFG makes use of an additional data structure,
+sets, which have no equivalents in standard dependency grammar or in
+UD. (Although as we saw above, Tesnière's junction comes close.) There
+are many competing analyses of coordination in the dependency
+literature,\footnote{And also in (pre-UD) dependency treebanks, see \citet{pop:etal:13}.} maybe suggesting that the basic data structure of
+dependency trees is ill-suited to model coordination, as
+Tesnière argued. The UD choice is to take the first conjunct
+as the head and attach the other conjuncts to it with a special
+dependency relation \textsc{conj}, whereas conjunctions and
+punctuation marks are attached to their following conjunct with
+\textsc{cc} and \textsc{punct}. It is known that this annotation style
+cannot capture all important structural differences, such as the
+difference between a dependent of the first conjunct and a shared
+dependent of multiple conjuncts, or different style of nested
+coordinations. The conversion procedure exposes this lack of
+expressivity, but also makes it possible to quantify its effect. As
+observed by \citet{prz:pat:19:lre}, only twelve out of 21,732 utterances in the Polish LFG structure bank are effected.\footnote{See \citet{przepiorkowski-patejuk2019} for a proposal as to how nested coordination could be captured in UD.}
+
+More generally, \citet{prz:pat:19:lre} conclude that the information
+loss in converting from LFG to (enhanced) UD is in fact negligible,
+except in the case of pro-drop structures. As the UD effort continues
+to expand, there is therefore considerable potential for theoretical
+cross-fertilization.
+
+
+\section{Semantics}\label{sec:Dependency:semantics}
+Tesnière in general pays much less attention to meaning than to
+structure, but at various points he does talk about semantic
+dependencies. Several versions of dependency grammars (Functional
+Generative Description, Meaning--Text Theory) have taken this up and
+operate with a separate level of semantic structure. There are also
+various graph-based semantic representation languages such as Abstract
+Meaning Representation (AMR, \citealt{banarescu-etal-2013}), which arguably are semantic
+dependency representations without an accompanying syntactic
+representation. All such semantic dependency graphs, whether they are coupled
+to syntax or not, differ considerably from standard logic-based
+formalizations of meaning as used in LFG and most other formal
+frameworks. They will not be further discussed here.
+
+Robaldo's Dependency Tree Semantics \citep{Robaldo2006} is much closer to standard conceptions of formal semantics, as it aims to transform dependency trees into structures that can be interpreted model-theoretically. But for the purposes of comparison with LFG, it is more interesting to observe that \citet[308]{Broeker2003}, in his discussion of the formal
+foundations of dependency grammar, briefly suggested that the
+similarity between dependency trees and LFG's functional structure
+could make the application of Glue semantics
+(\citealt{dalrympleetal93,Dalrymple:Glue}; see also
+\citetv{chapters/Glue}) to dependency grammar a promising research
+area. \citet{gotham-haug:2018} flesh out this idea and show how to
+combine Universal Dependencies with Partial Compositional Discourse Representation Theory \citep{Haug2014}.
+
+On the formal side, there are few if any obstacles to such an
+application.  The fundamental idea behind glue semantics is to have
+linear logic terms guide the composition of corresponding lambda
+terms.  In the first order glue setting, the terms of the linear logic
+are the f-structures, atomic formulae are formed by applying
+predicates to the f-structures (in type-theoretic terms, these
+predicates act like unary type constructors) and complex formulae are
+formed with $\multimap$, which acts as a binary function type
+constructor. Consider (\ref{ex:semantics}), which gives the meanings, dependency structure and f-structure for \textit{Everybody loves somebody}. We write $e_1$ for $e(1)$, i.e. the application of the type constructor/predicate $e$ to the syntactic object/term with index $1$.
+
+\begin{exe}
+  \ex\label{ex:semantics}
+  \begin{xlist}
+    \ex \label{ex:gluesem} \begin{tabular}[t]{lll}
+      \textit{everybody} & $\lambda P.\forall x.\IT{person}(x) \rightarrow P(x)$ & $(e_1 \multimap t_2) \multimap t_2$ \\ 
+      \textit{somebody}  & $\lambda P.\forall x.\IT{person}(x) \land P(x)$ & $(e_3 \multimap t_2) \multimap t_2$ \\
+      \textit{loves}     & $\lambda x.\lambda y.\IT{love}(x,y)$ & $e_1 \multimap e_3 \multimap t_2 $ \\
+      \end{tabular}
+    \ex \label{ex:d}
+      \begin{dependency}[baseline=-0.6ex,theme=simple]
+        \begin{deptext}[column sep=1cm]
+          everybody \& loves \& somebody \\
+        \end{deptext}
+        \deproot{2}{\textsc{root}}
+        \depedge{2}{1}{{subj}}
+        \depedge{2}{3}{{obj}}
+      \end{dependency}
+
+      \ex\label{ex:f}\evnup{
+      \avm[style=fstr]{
+        [pred & `love\arglist{ \textsc{subj} }' \\
+          subj & [ pred & `everybody ] \\
+          obj  & [ pred & `somebody' ] ]
+      }}
+
+  \end{xlist}
+\end{exe}
+%
+Clearly, it makes no difference whether we interpret the glue types in
+(\ref{ex:gluesem}) over the dependency tree in (\ref{ex:d}) or the
+f-structure in (\ref{ex:f}): in both cases we just need the same mapping between the indices 1, 2, 3 and the corresponding f-structures or dependency nodes.
+
+However, while the formal properties of the two theories are similar
+enough that Glue semantics can be used for both LFG and DG, a practical consideration is that dependency trees typically do not contain all the semantically relevant information that we find in the 
+corresponding f-structure. Control structures are a case in point (\ref{ex:abrams}).
+\begin{exe}
+  \ex\label{ex:abrams}
+\begin{dependency}[baseline=-0.6ex,theme=simple]
+  \begin{deptext}
+    Abrams \& persuaded \& the \& dog \& to \& bark \\
+  \end{deptext}
+  \deproot{2}{\textsc{root}}
+  \depedge{2}{1}{{subj}}
+  \depedge{2}{4}{{obj}}
+  \depedge{4}{3}{{det}}
+  \depedge{2}{6}{{xcomp}}
+  \depedge{6}{5}{{mark}}
+\end{dependency}
+\end{exe}
+%
+The dependency tree in (\ref{ex:abrams}) lacks the information that
+\textit{the dog} is the subject of \textit{to bark}. However, the
+label \textsc{xcomp} does tell us that the missing subject of
+\textit{to bark} is one of the dependents of \textit{persuaded}. As a
+result, the best we can do is to introduce a discourse referent $x_2$
+that is the subject of the infinitive clause and must be linked to one
+of the participants in the matrix event, though we do not know which
+one, unless we have access to the lexical information that
+\textit{persuade} is an object control verb.
+%
+%  \begin{exe}
+%    \ex\label{ex:gluelambda}
+%    $\lambda P.\lambda y.\lambda x.\lambda F.$\SDRS{e_1~x_1~x_2}{\IT{persuade}(e_1)\\\IT{controldep}(e_1,x_2)\\\IT{xcomp}(e_1,q)\\\IT{obj}(e_1,y)\\\IT{subj}(e_1,x)\\q:P({x_2})(\lambda \_.[\ |\ ]) } ; $ F(e_1)$
+%  \end{exe}
+%
+We see that it is possible to compensate for some of the information
+loss in dependency trees, although the result only becomes useful if
+we have other, lexical information sources available: dependency trees
+on their own do not typically come with the rich semantic
+lexical entries that glue (and other formal semantic theories)
+require.
+We refer to
+\citet{gotham-haug:2018} for more details.
+
+
+\section{Summary}
+We have seen that the basic relations for analyzing functional syntax,
+dependencies in DG and grammatical functions in LFG, are very similar,
+both formally and conceptually. Nevertheless, the focus on core
+dependencies that is often seen in DG work leaves other levels of
+analysis less well-developed than in LFG. Word order, in particular,
+has not received much attention, but we have seen that it can be
+interestingly restricted through the use of lexicalized MCFGs,
+offering a point of comparison to LFGs, which can also be translated
+to MCFGs. Another point of comparison is offered by work on converting
+LFG parsebanks to dependency treebanks. Finally, we saw that the
+similarity between DG and LFG also means that they can use the same
+syntax-semantics interface in the form of Glue semantics.
+
+All in all, the considerable similarities between the two theories
+suggest there is ample room for mutually benefiting discussion,
+especially if the increasing use of DG in computational linguistics
+triggers a corresponding interest in theoretical DG.
+
+\section*{Acknowledgements}
+I thank the two anonymous reviewers, one non-anonymous reviewer (Adam Przepiórkowski) and the editor Mary Dalrymple for very helpful comments on a previous version of this chapter.
+ 
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}

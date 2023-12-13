@@ -1,0 +1,1962 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10185952}
+\title{Clause structure and configurationality}
+\author{Avery D. Andrews\affiliation{The Australian National University}}
+\abstract{LFG differs strongly from Mainstream Generative Grammar in basing its theory of clause structure on overt surface appearance, as would be input to a parser, rather than the outputs of a derivational process that might produce these structures.  This leads to a number of differences, such as a much smaller number of functional projections, and more emphasis on a typology of overt structures, including the inclusion of special provisions for `non-configurationality'. In this chapter, we examine LFG analyses resulting from this perspective from the beginning of LFG in \citet{bresnan82} through to the theory as presented in \citet{BresnanEtAl2016}.}
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[9]%%chapternumber
+}{}
+
+\begin{document}
+\maketitle
+\label{chap:Cstr}
+
+\section{Introduction}
+Because LFG is based on using phrase-structure rules (PS rules, with a substantial
+involvement of universal principles) to provide a direct
+description of overt structure, with more abstract levels such as f-structure
+determined by annotations on these rules, they carry a major burden in
+describing the organization of clause-structure.  In particular, it is not possible
+to invoke `movement' mechanisms to get things into their surface positions.  Rather,
+with one plausible minor exception,\footnote
+ {``Second position'' items, as discussed below.}
+the PS rules have to put everything
+in the exact positions where they are found overtly, albeit
+with the possible help of filtering by other components of the grammar.
+
+Partly for this reason, in LFG. the treatment of clause structure has been from the
+beginning closely involved with the concept of `non-configurationality', a term coined
+by \citet{Hale81} to refer to situations where linear order does not determine
+grammatical relations in any clear way, and where, in addition, referring expressions
+and other clausal constituents are sometimes discontinuous.  Transformational Grammar
+and its more direct descendants, sometimes called `Mainstream Generative Grammar',
+avoided having a problem with this by proposing that underlying clause structures were
+transformed into overt ones by the application of `scrambling' rules (in later work,
+sometimes relegated to the `phonology').  But when phrase structure rules are to be used
+for providing a direct characterization of overt structures (with filtering by other
+components), this is not possible.
+
+Another relevant issue is the position of subjects. If a language
+appears to have verb phrases that exclude an apparent `subject' NP argument, then
+the PS rules have to provide a position for NP external to VP, while if a
+putative subject is freely intermixed with other arguments, then we probably
+do not want to have a full-sized VP containing the verb and other arguments,
+but rather have the verb and the arguments appear
+directly under S.\footnote
+ {As we shall see, languages sometimes have a smaller verbal phrase containing
+ the verb and certain other material, but not, normally, the object; this is
+ sometimes treated as a VP, and sometimes as a different kind of verbal phrase,
+ often symbolized as $\overline{\hbox{V}}$.}
+The theory should then plausibly provide two
+possibilities along the lines of (a) and (b) below, where (a) puts an
+NP in front of a VP, while (b) has no VP:\footnote
+ {\label{IDLPfn}We don't use the  `ID/LP' notation of \citet{Gazdar1982}, first applied to LFG by
+   \citet{Falk84}, to allow the daughters of S to appear an any order in (\ref{ex:Cstr:1}b) (\textphraserule{S}{NP$^*$, V}) because of the plausibility of interpreting this as a possibly null string of NPs, either before or after one V.  There are issues worth looking into further here, but not in this chapter.}
+
+\ea
+\begin{xlist}\label{ex:Cstr:1}
+\item \phraserule{S}{NP ~ VP}
+\item \phraserule{S}{NP$^*$ ~ V ~ NP$^*$}
+\end{xlist}
+\z
+A comma could also be included in the first rule to allow the NP to precede or follow the VP, as in Makua \citep{Stucky1983}.
+
+A further general consequence of the archicture is that because many phenomena
+including agreement, case-marking and anaphora can be largely or entirely
+described in terms of the more abstract level of f-structure, the sources
+of evidence for phrase structure are more limited than they are in Mainstream
+Generative Grammar.  We cannot, for example, easily use coreference phenomena to motivate
+phrase structures in which one object in a double object construction c-commands
+another, but would need a very extensive (and therefore fragile) argument
+to show that other levels such as f-structure are not sufficient.
+
+In this chapter, I take a predominantly historical approach to clause structure
+in LFG, on the basis that a reader might want to engage in literature from any time
+from the early 1980s to the present, and therefore find useful some discussion of what
+kinds of proposals were being made at different times.
+I will divide the history of clause structure in LFG into three periods so far,
+with the possibility of a new one starting now.  In the first, from the
+beginnings of LFG in the early 1980s to the early 1990s, some version of the
+X-bar theory was assumed, but there was little explicit discussion about
+exactly what that version was.  The 90s constitute a transitional period, in which both
+the `extended projections' from Minimalism and ideas from Optimality Theory are
+taken on.  The third period plausibly begins with Bresnan's
+(\citeyear{bresnan2001lexical}) theory of structure-function mappings, which can be seen
+as a consolidation of the work of the transitional period, based on a division
+between `endocentric' and `exocentric' structure, the former obeying the X-bar
+theory with functional structures, the latter not, along with some principles
+derived from Optimality Theory, such as Economy of Expression.  This approach
+has persisted with little alteration through \citet{BresnanEtAl2016} to the
+present.
+Since it is the result of multiple analyses of different languages by a number
+of people, I will call it the `2001 Synthesis'.  More recently, a fourth
+period may have begun with \citet{low:lov:20} and \citet{Lovestrand2022},
+a thorough revision of
+the underlying phrase-structure theory making greater use of architectural ideas
+of LFG rather than simply applying some version of mainstream X-bar theory.  However
+there hasn't yet been substantial work on a variety of
+clause structures in this new approach.
+
+In this chapter, I consider early LFG in the first section, the transitional
+period in the second, and the 2001 Synthesis in the third.  Then, in the fourth
+section, I review some of the earlier and transitional systems in light
+of the 2001 Synthesis, and discuss the revisions that are thereby motivated,
+and conclude with a speculation about S derived from a modification
+in the new X-bar framework made in \citet{Lovestrand2022}.
+
+\section{Early LFG}\label{earlyLFG}
+In early LFG, it was assumed that some version of the X-bar theory was correct,
+but no attempt was made to seriously formalize or revise the proposals that were standard
+at the time. \citet[354-356]{bresnan1982control-complementation}, which also appeared in the foundational LFG collection
+ \citet{bresnan82}, developed a fairly permissive theory of ‘structure-function mappings’,
+many provisions of which have persisted until now.  This theory constrains how c-structure
+nodes can be annotated to produce f-structures, and shows the influence of Ken Hale’s ideas
+about `configurational’ vs.\ `non-configurational' languages. The other papers in
+the \citeyear{bresnan82} collection tended to conform to these ideas without discussing them explicitly.
+
+In these papers, the languages treated as configurational
+(where grammatical relations are largely coded by phrase-structure position)
+were English, French, Russian and Icelandic, all of them analysed as SVO, while
+the one analysed as non-configurational was Malayalam, predominantly verb-final.
+Most of the SVO languages were analysed with distinct S and VP rules like these:
+\ea\label{vsorule}
+\begin{xlist}
+\item \phraserule{S}{\rulenode{NP \\ {(\UP \SUBJ)=\DOWN}} \rulenode{VP \\ \UP=\DOWN}}
+\item \phraserule{VP}{\rulenode{V \\ \UP=\DOWN} \rulenode{NP \\ {(\UP \OBJ)=\DOWN}} $\ldots$}
+\end{xlist}
+\z
+But for Icelandic, Andrews used a flat S rule with subject first (consistent with
+Bresnan's \citeyear[354/296]{bresnan1982control-complementation}\footnote{The page before the `/' is for the journal version, the one after for the
+ page in the 1982 volume.}
+schema, which he does not however cite or discuss).
+
+From that time to the present, a major concern of LFG authors has been to marshal arguments that c-structure
+relationships were neither a necessary nor sufficient basis for assigning grammatical
+relations in the general manner suggested by
+\citet{chomsky1965aspects} and persisting through to \citet{chomsky1981lectures}, which appeared in the early days of LFG, and beyond.
+So considerable attention was paid to arguing for the nonexistence of a VP
+node in languages that appeared not to have a VP constituent, and a contrastive sketch
+of configurational English versus non-configurational Warlpiri constitutes the
+first chapter of the high-level LFG textbook \citep{BresnanEtAl2016}.
+
+In the following two subsections, we consider first Malayalam, and then Warlpiri,
+the other non-configurational language to which considerable attention was paid
+in this period; discussion of Warlpiri was included in \citet{bresnan1982control-complementation} and several
+other chapters in the \citet{bresnan82} collection.\footnote
+  {Warlpiri is discussed in \citet{SimpBres1983}, but the focus of that article
+    is grammatical relations rather than clause structure as such.}
+
+\subsection{Malayalam}
+Non-configurational Malayalam, an essentially verb-final language, was analysed by
+\citet{mohanan1982} using the clausal category S,
+introducing its arguments as an unstructured, possibly empty, string of NPs.  It
+was proposed to have a verb-final S rule, with
+the NPs introduced by a rule whose first version was
+\citep[507]{mohanan1982}:
+
+\ea\label{noncfgpsr}
+\phraserule{S}{\rulenode{NP$^*$} \rulenode{V}}
+\z
+Annotations for this version of the rule were not specified.
+Later \citep[542--643]{mohanan1982}, a series of annotations are proposed associating specific
+grammatical functions with cases and other properties such as animacy, for example:
+\ea
+\begin{tabular}[t]{l}
+{(\UP \OBJ)=\DOWN}\\
+{(\DOWN \CASE)=\ACC}~\\
+{(\DOWN \ANIM)=+}
+\end{tabular}
+\z
+This is one of the alternative annotations to the NP in rule
+(\ref{noncfgpsr}), allowing any NP in the series to have any grammatical
+function, subject to filtering by other constraints of LFG.
+
+The flatness of the structure given by (\ref{noncfgpsr}), with its absence of
+a VP dominating objects, is motivated by several arguments, one of which is
+the fact that the bearers of the grammatical relations can appear in any order.
+But the most important one, according to \citet[526-533]{mohanan1982}, is the workings of a clefting
+phenomenon which allows all and only direct daughters of the S to be clefted,
+but not subconstituents of anything, such as possessors or objects of prepositions.
+The construction is effected by suffixing {\it -aanə} `is' to the last word
+of the clefted constituent, and {\it -ṯə} `is' to the verb.  Some relevant
+examples are:
+\ea Malayalam \citep[528-529]{mohanan1982}
+\begin{xlist}
+\item
+\gll Kuṭṭi iṉṉale ammakkə anaayey-aaṇə koṭuṯṯa-ṯə.\\
+child  yesterday mother.{\DAT} elephant-is gave-it\\
+\glt{`It was an elephant that the child gave to the mother yesterday.'}
+\item
+\gll kuḷaṯṯil wecc-aaṇə jooṇinte kuṭṭi aanaye ṇuḷḷia-ṯə.\\
+pond at-is John.{\GEN} child elephant pinched-it\\
+\glt{`It was at the pond that John's child pinched the elephant.'}
+\item
+\gll *kuḷaṯṯil aaṇə weccə jooṇinte kuṭṭi aanaye ṇuḷḷia-ṯə\\
+pond is at John.{\GEN} child elephant pinched-it\\
+\end{xlist}
+\z
+In (a), the object is clefted, in (b) the PP, but when we try to cleft the
+object of the PP (or, not shown, the possessor of the object), the result is
+bad.  The proposed generalization is that you can cleft a direct constituent of
+S, but not a subconstituent of S, which precludes the existence of a VP sitting on
+top of the verb and its object.
+
+There are two further significant elaborations in Mohanan's analysis.  First, it turns out
+that Malayalam is not actually strictly verb-final: in main clauses, the verb
+can be followed by additional NPs, but this normally requires putting a heavy
+nuclear pitch on the verb, wiping out the word melodies on the following NPs,
+and lengthening the vowel of the verb, evidently with some kind of contrastive
+meaning \citep[511]{mohanan1982}.  This is furthermore not possible with certain
+kinds of subordinate clauses.  Mohanan suggests an analysis involving a `scrambling
+rule', which applies to the S rule, but this is not an option that is available
+in the LFG formalism, and these NPs need to be introduced in their surface positions,
+presumably with annotations connecting them to discourse functions (\citetv{chapters/InformationStructure}).
+
+The second elaboration
+is that there is a kind of verb phrase, but it contains only the
+verb and certain additional elements, such as NPs and PPs used to form Copula 
+Constructions and Complex Predicates \citep[513-534]{mohanan1982}.
+An example is:
+\eabox{\begin{forest}
+[S
+    [$\overline{\hbox{N}}$
+      [N
+        [kaʐuṯa \\ donkey
+        ]
+      ]
+    ]
+    [$\overline{\hbox{V}}$
+       [$\overline{\hbox{N}}$
+           [Det [or̄ə \\ one] ]
+           [N   [mrəgan \\ animal] ]
+       ]
+       [V   [aaṇə \\ is]]
+    ]
+]
+\end{forest}
+
+`The donkey is an animal.' \citep[513--534]{mohanan1982}
+}
+These are plausibly VPs (maximal projections of V, Malayalam having only one
+phrasal projection layer), which are however very restricted in what kinds of constituents
+and bearers of grammatical relations they can introduce. On the other hand,
+some superficially similar complex verbal constituents in other languages
+do not appear to contain any maximal projections, and so can be analysed as
+V$^0$ nodes with adjoined `non-projecting' lexical nodes \citep{Toivonen2001},
+also discussed in \citetv{chapters/CoreConcepts}. One example  is Complex
+Predicate constructions in Japanese (\citealt{Ishikawa1985}, \citealt{Matsumoto1996}),
+discussed in \citetv{chapters/ComplexPreds}, and another is Warlpiri preverbs,
+considered shortly below.
+
+Another important characteristic of Malayalam and other non-configurational languages
+is that all or most arguments of verbs can be freely omitted, and understood as
+if they were represented by pronouns. \citet[544]{mohanan1982} discusses this briefly,
+and provides a few examples including:
+\newpage
+\ea Malayalam \citep[544]{mohanan1982}\\
+\gll Roṭṭi ewiṭe? Kuṭṭi ṯiṉṉu.\\
+bread where? Child ate.\\
+\glt{`Where is the bread?  The child ate it.'}
+\z
+The LFG treatment of this kind of phenomenon uses lexical rules of `anaphoric
+control', developed in \citet{bresnan1982control-complementation}, which optionally
+add a
+pronominal f-structure specification to the lexical entries of verbs.  In the
+above case, this would be {(\UP\OBJ\PRED)=`\textsc{pro}'}.  In Malayalam, anaphoric control
+applies to the grammatical relations \SUBJ, \OBJ, and \OBJTHETA (`indirect object';
+\OBJ2 in the original). Anaphoric control is not restricted to non-configurational
+languages, and is subject to numerous variations in different languages.  In English,
+anaphoric control is predominantly used with subjects of nonfinite verbs, but also applies in some other, more limited, circumstances.
+For example, an inanimate subject can be omitted but understood as if it refers
+to something that the group of people being addressed are looking at:
+\ea
+Looks bad! [said by one of a group of people staring at an engine with smoke
+coming out of it]
+\z
+The typological range of such constructions and their semantics deserves further
+investigation in LFG.
+
+\subsection{Warlpiri}
+A more extreme form of non-configurationality was addressed in the comprehensive
+analysis of Warlpiri provided by \citet{Simpson1983}, later published with substantial
+revisions as \citet{Simpson1991}, and also discussed by \citetv{chapters/Australian}.  Warlpiri differs from Malayalam (and Japanese)
+in a number of ways:
+\ea\label{warldiff}
+\begin{xlist}
+\item In finite clauses, there is no constraint on NPs coming after the verb.
+\item NPs can be discontinuous, with different components appearing separated by other
+constituents of the clause.
+\item There is an `auxiliary', obeying a complex `second position' constraint.
+\end{xlist}
+\z
+All of these phenomena are illustrated in this example:
+\newpage
+\ea\label{warlp}
+Warlpiri\\
+\gll Kurdu-jarra-rlu ka-pala maliki wajilipi-nyi wita-jarra-rlu.\\
+child-\DU-{\ERG} \PRS-{\DU} dog(\ABS) chase-\textsc{npast} small-\DU-\ERG\\
+\glt{`(The) two small children are chasing the dog.'\\
+`(The) two children are chasing the dog and they are small.'}
+\z
+The theoretically most interesting point is (\ref{warldiff}b).
+
+\citet{Hale81} described the two nominals `child' and `small' in
+(\ref{warlp}) as being interpretable
+in two ways, one being the `merged' interpretation, shown in the upper gloss,
+where the two components are interpreted in the same way as a normal NP in
+English, and the other being the `unmerged' interpretation, shown in the lower gloss, in which
+the second nominal is interpreted as a secondary predicate giving additional
+information.
+
+To capture the merged interpretation, Simpson proposed that an NP (in her analysis,
+for Warlpiri, an $\overline{\hbox{N}}$, the language having no evidence for either a specifier
+level for lexical projections, or any kind of DP) could expand
+to an adjunct alone with no head (as well, as of course, to a single head), so
+that two independently introduced components of an f-structural
+NP-correspondent could merge, as reflected in the annotations on the tree for
+example (\ref{warlp}):\footnote
+ {Note that Simpson assumed a rule or convention that would copy agreement features from
+ the f-structure correspondent of an NP down to those of its {\sc adj}-members. There
+ is furthermore a problem with the positioning of AUX that we will consider shortly.}
+\eabox{\label{warlptree}
+\hspace*{-1cm}\resizebox{\textwidth}{!}{\begin{forest}
+[S
+    [{(\UP \SUBJ)=\DOWN}\\{$\overline{\hbox{N}}$}
+      [{\UP=\DOWN\\N}
+        [{(\UP \PRED)=\textsc{`child'}} \\ {(\UP \CASE)=\ERG} \\ {(\UP \NUM)=\DU}\\ kurdu-jarra-rlu
+        ]
+      ]
+    ]
+    [{\UP=\DOWN\\AUX}
+        [{{(\UP \ASP)=\PRS}\\ {(\UP \SUBJ \PERS)=1}\\ {(\UP \SUBJ \NUM)=\DU}\\ka=pala}
+        ]
+    ]
+    [{(\UP \OBJ)=\DOWN}\\{$\overline{\hbox{N}}$}
+      [{\UP=\DOWN\\N}
+        [{(\UP \PRED)=\textsc{`dog'}}\\ maliki
+        ]
+      ]
+    ]
+    [{\UP=\DOWN \\ $\overline{\hbox{V}}$}
+      [{\UP=\DOWN\\V}
+        [{(\UP \PRED)=\textsc{`chase\arglist{{(\UP \SUBJ)},{(\UP \OBJ)}}'}} \\ {(\UP \TENSE)=\NPST} \\ {(\UP \PRED)=\textsc{`pro'}} \\ wajili-pi-nyi
+        ]
+      ]
+    ]
+    [{{(\UP \SUBJ)=\DOWN}\\$\overline{\hbox{N}}$}
+      [{\DOWN $\in$ (\UP \ADJ)}\\N
+        [{{(\UP \PRED)=\textsc{`small'}} \\ {(\UP \CASE)=\ERG} \\ {(\UP \NUM)=\DU}\\wita-jarra-lu}
+        ]
+      ]
+    ]
+]
+\end{forest}
+}
+
+~\hfill \citep[283]{Simpson1991}
+}
+  
+The annotations on the first and last $\overline{\hbox{N}}$s allow them to unify into a single
+f-substructure, the value of {\SUBJ}: 
+\eabox{
+\avm[style=fstr]{
+[ \SUBJ & [ \PRED & \textsc{`child'}\\
+           \ADJ & \{[\PRED & \textsc{`small'}\\
+                     \CASE & \textsc{erg}]\}\\
+           \CASE & \ERG]\\
+  \PRED & `chase\arglist{{(\UP \SUBJ)},{(\UP \OBJ)}}'\\
+  \ASP  & \PRS\\
+  \TENSE & \NPST\\
+  \OBJ & [\PRED & \textsc{`dog'}]]
+  }
+}
+Similarly to Malayalam, Warlpiri also makes extensive use of anaphoric control, although
+many arguments not expressed as NPs will receive morphological registration in the AUX
+constituent, which we will discuss shortly.
+
+There are two further characteristics of Simpson's analysis that interact with each
+other, and have been important in later developments.
+The first is that similarly to Malayalam, Simpson analyses Warlpiri
+as having an inner VP, symbolized as $\overline{\hbox{V}}$, containing the verb and certain
+other elements, especially `preverbs', as discussed in \citet[111]{Simpson1991}.
+However none of these items can contain complex phrasal constituents, and it is
+therefore probably better to treat them as non-projecting words adjoined to
+V.
+
+The second additional feature of Warlpiri, already seen in the Warlpiri tree structure
+(\ref{warlptree}), is the `AUX' constituent.  This was postulated for Warlpiri\footnote
+ {AUX as a node-type was widely proposed at that time for the analysis of
+ many other languages, including English, as discussed extensively for
+ example by \citet{AkmajianSteeleWasow1979}.}
+in the classic article of
+\citet[310]{Hale1973}, as a constituent containing three kinds of constituents,
+all optional.  First comes a `complementizer', which has a variety of functions,
+later called the `augment' by \citet{Laughren2002}.  We will follow this usage.
+Next comes the `base', which is one of the tense-aspect markers {\it -ka}
+`present imperfective' or {\it -lpa} `past imperfective'.\footnote
+ {Hale treated the future marker {\it kapi} as a base, but \citet{Legate2008warl2p}
+shows that it is actually an augment.}
+Finally come agreement markers, for subject
+and object.  \citet[312]{Hale1973} proposed  that if the augment+base sequence was less
+than two syllables in length, then the auxiliary could
+not appear in initial position, but only after some other, evidently first, element
+of the clause.\footnote
+ {With the exception that certain items, such as topics set off with a pause,
+  were seen as appearing outside the basic clause structure, allowing the AUX
+  to appear in apparent third position if these items were included.}
+
+\citet[83]{Simpson1991} proposes that the underlying position of the AUX is initial,
+as specified by this rule:
+\newpage
+\ea
+\phraserule{S}{(AUX) \makebox[1em]{} $\alpha$ \makebox[1em]{} $(\alpha)^*$}\\
+$\alpha=\overline{\hbox{V}}, \overline{\hbox{N}}$, Particle\\
+(\UP\textsc{aspect}) $\leftrightarrow ($\UP\TENSE)~\\
+Assign (\UP \textsc{g})=\DOWN freely~\\
+(where \textsc{g} stands for any grammatical function)
+\z
+The second line tells us that $\alpha$ can be any of three kinds of constituents,
+while the third adds the information that \textsc{aspect} is specified if and only
+if \TENSE\ is, a move that has the effect of requiring a verb to be present
+if an AUX is, by mechanisms we will not consider here.  Finally, the last two
+lines allow constituents to be annotated
+freely as either heads (\UP=\DOWN) or arguments bearing any grammatical
+function, providing a high degree of non-configurationality, including generating
+multiple $\overline{\hbox{N}}$ nodes with the {(\UP \SUBJ)=\DOWN} annotation, allowing
+NP-splitting.
+
+AUX is then put into second position in most examples by first allowing all
+AUXs to be classified as enclitics, but obligatorily so for the ones with monosyllabic
+bases \citep[69]{Simpson1991}.  Then the clitics are postposed to a position after
+the first phonological unit by a rule of sentence-phonology:
+\ea
+Encliticization Rule:\\
+]AUX $\;$ $[\alpha]$ $\;$ $[\alpha]^*$ $\;\;\rightarrow\;\; \alpha+$AUX $\;[\alpha]^*$\\
+(the `]' in front of AUX represents that the AUX has enclitic status)
+\z
+It is perhaps worth noting that for all examples where AUX appears in second
+position, the trees are also written with AUX in second position, including the
+effects of the Encliticization Rule in the diagram.
+In later work, various aspects of this proposal are questioned and revisions proposed,
+as we will see later, in \sectref{ausnonconfig} of this chapter.
+
+A final observation I will make about Warlpiri concerns the treatment of discontinuous
+NPs.  The LFG analysis permits an NP to be split into any number of separated
+components, all of which can contribute to a single f-structure with a nominal
+\PRED-feature, subject to no constraints of any kind.  There is considerable work
+showing that this appears to be false, including \citet{SchuSima12}, \citet{Schultze-Berndt2022}
+and \citet{LouaVers16}. Rather, discontinuous NPs appear to be associated
+with a range of specific discourse functions (and to furthermore be rather rare, probably
+not more than 1\% of NPs), and examples where an NP is split into three or more
+components at the same level in f-structure (e.g. demonstrative, modifier(s) and head noun)
+do not appear to be attested in the literature so far.  
+Unfortunately, none of this recent literature discusses Warlpiri, but I am aware of no
+triply split NPs in \citet{Simpson1983, Simpson1991}, \citet{Nash1986} or
+\citet{Laughren1989},\footnote
+ {Who also provides an example of discontinuous participial VPs, which \citet{Simpson1991}
+ argues are nominalized.}
+nor in the discussion of discontinuous NPs in Latin and Classical Greek provided by
+\citet{DevineStephens2000}. Therefore, the proposition that discontinuous constituents are
+limited to two components is a proposition worth further investigation.
+
+Similarly to Mohanan, Simpson provides some arguments for a flat structure and no VP,
+but they are more complex than Mohanan's cleft argument, one involving coreference,
+another involving nonfinite constructions.  These will not be discussed here.
+
+Concluding our discussion of the first period, we find a basic distinction between configurational
+and non-configurational encoding, the former associated with SVO languages,
+usually associated with a VP, the latter with verb-final or verb-anywhere languages,
+often with flat structure.  It was usual to assume some kind of X-bar
+theory, without being very specific about the details.  There were however some
+intimations of later developments, such as Falk's (\citeyear{Falk84}) analysis
+of the English Auxiliary system, in which, influenced by \citet{jackendoff1977}, he treats
+auxiliaries as a lexical category M, taking VP as a complement and the subject
+as a specifier.  This can be seen as an early version of the idea of the functional
+projection IP, with its binary  branching auxiliary structure as opposed to the
+flat ternary structure NP AUX VP proposed for S by \citet{AkmajianSteeleWasow1979},
+which is taken up in the third period, the 2001 Synthesis (\sectref{synthsec}).
+
+\section{The transitional period}
+The characteristics of the transitional period are (a) the introduction of the
+concept of `functional categories' from the GB and Minimalist frameworks, a feature which
+has remained; (b) considerable experimentation with ideas from Optimality Theory,
+which appears to have fallen off to some degree, although it is still being explored
+(\citetv{chapters/OT}).
+The dating of the period is difficult,  since the use of functional categories could be
+said to have been anticipated by \citet{Falk84}, while drafts of what I take
+to be the initiation of the third period, \citet{bresnan2001lexical}, were
+available to some workers as early as 1996 \citep[15]{nordlinger1998constructive}.
+But I will here take it to begin with \citet{Kroeger93},\footnote
+ {The Stanford PhD thesis upon which the book is based is from 1991.}
+where the functional
+categories I and C are adopted from Government-Binding theory,
+and continue until the publication of \citet{bresnan2001lexical}.  
+Many of the features of what I will in the next section call the `2001 Synthesis' are
+present in the analyses of the transitional period, to the point that some discussions
+could be put in either section.  But here we take an essentially chronological view
+surveying phenomena that lead to the 2001 Synthesis, presenting the resulting system
+in \sectref{synthsec}, together with some new analyses as well as possible updates
+to older ones.
+
+\subsection{\citet{Kroeger93} on Tagalog}
+Tagalog is a verb-initial language with preverbal discourse positions, and, according
+to Kroeger, no evidence for a VP, and some evidence against (we will consider a different view below),
+but evidence for some other predicate phrases, namely,
+PP, AP and NP.  Kroeger analyses these patterns by taking from \citet{ChungMcCloskey1987}
+the idea of a special category `S' that can constitute a predication (`small clause')
+without providing TAM information, and combining this with the notion of
+a `functional projection' IP, where the S appears as the complement of I.  He
+also departs from \citeauthor{ChungMcCloskey1987} to allow S to expand to a lexical predicate
+and multiple arguments, rather than only to a subject NP and a predicate
+phrase.
+
+For clauses with an aspect-marked verb, this verb appears in the I
+head of the functional projection
+IP (INFL for Kroeger), 
+while the arguments and adjuncts appear in free order under S, although there
+are some tendencies (p. 111):
+\ea
+\begin{xlist}
+\item The `Actor' (non-nominative Agent marked with {\it ng}, or {\it ni} if
+a proper name) tends to come first.
+\item The `Nominative' (marked with {\it ang}, or {\it si} if a proper name) tends
+  to come after the other arguments.
+\item ``Heavier'' NP's tend to follow ``lighter'' NPs.
+\end{xlist}
+\z
+Kroeger does not actually give a structure for a sentence with multiple NP
+arguments: the closest is one with a clitic Actor and a focussed adjunct in the specifier of IP. Clitics are however subject to very interesting positional restrictions which
+in this case put the clitic {\it ko} after the SPEC of IP, as indicated in this example
+\citep[129]{Kroeger93}, where the original tree has INFL rather than just I:\footnote
+ {The clitic rule, discussed in \citet[119-123]{Kroeger93}, is: ``Clitics
+ appear immediately after the first daughter of the smallest maximal projection that
+ contains them'' (but there are some apparent exceptions).  The `object-focus' suffix
+ glossed \textsc{ov} indicates that the Patient of the verb is the `grammatical
+ subject', traditionally called the `focus' in Philippine linguistics, analysed
+ by Kroeger as the {\SUBJ} grammatical function in his LFG analysis.}
+
+\newpage
+\ea Tagalog
+\begin{xlist}
+\item\label{tagfin}
+\gll [Para kay=Pedro] ko binili ang=laruan.\\
+for \DAT=Pedro {1\SG.\GEN} \PRF.buy.\textsc{ov} \NOM=toy\\
+\glt{`For Pedro I bought the toy.'}
+\item\label{tagfintree}
+%
+% didn't want to take the time to figure out how to do this in forest right now
+%
+%\input{trees/tagfintree.tex}
+\begin{forest}
+[IP
+    [PP
+        [{para kay=Pedro\\for \DAT=Pedro}, roof]
+    ]
+    [NP, phantom [,name=target]]
+    [I$'$
+        [I
+            [binili\\\PRF.buy.\textsc{ov}]
+        ]
+        [S
+            [NP
+                [ko, circle, draw]
+                {\draw[->] () to[out=south west,in=south west] (target);}
+            ]
+            [NP
+                 [{ang=laruan\\\NOM=toy},roof]
+            ]
+        ]
+     ]
+]
+\end{forest}
+\end{xlist}
+\z
+In this tree, the {\it ko} is ascribed to a position under S where a full
+NP argument could appear (initial in accord with the
+ordering tendencies noted above), with the arrow indicating
+some kind of clitic displacement to after the first constituent of IP.
+Another thing to note is the use of prime notation rather than bars, so
+I$'$ instead of $\overline{\hbox{I}}$.  In this chapter, I will use whichever notation
+is employed by the original author. 
+
+Since functional projections have both the head and the complement annotated with
+{\UP=\DOWN}, there is no problem with assembling the f-structure for a c-struc\-ture
+such as (\ref{tagfintree}).  The initial PP is an instance of what Kroeger and much
+subsequent work has called `Adjunct Fronting', which applies to the bearers of
+non-core GFs, that is, adjuncts, oblique arguments and adverbials
+\citep[43]{Kroeger93}.  We can analyse this by allowing SPEC of IP to receive
+one of the non-term grammatical functions, together with some sort of focus-like discourse
+function.  I can't find an explicit statement of this in the literature, but it
+appears to be an implication of the discussion in Kroeger and other sources such as
+\citet{GerassimovaSells2008} that the construction is clause-bounded,
+since only subjects are said to be extractable from subordinate clauses, and
+only from ones that are themselves subjects \citep[210,~215-221]{Kroeger93}.
+
+So we can propose an annotated structure like (\ref{philanntree}) below for the example,
+with the clitic {\it ko} placed overtly in its second position, without concern here for what
+constraints put it there, an issue discussed extensively by \citet{Kaufman2010},
+but too complex 
+to attempt to provide an updated account of here.   We will notate it
+as `\textsc{a-sb}', for the non-subject
+Agent in Philippine languages, following the choice of \citet{Manning1996} for the
+Agent in syntactically ergative languages such as Inuit:
+\ea\label{philanntree}
+\begin{forest}
+[IP
+    [ {\DOWN $\in$ (\UP \ADJ)}\\ {(\UP \FOC)=\DOWN}\\ PP
+        [{para kay=Pedro}\\for \DAT=Pedro, roof]
+    ]
+    [{(\UP \textsc{a-sb)=\DOWN}}\\Cl 
+        [I\\ko]
+    ]
+    [{\UP=\DOWN}\\ I$'$ 
+        [{\UP=\DOWN}\\I
+            [binili\\\PRF.buy.\textsc{ov}]
+        ]
+        [{\UP=\DOWN}\\ S
+            [{(\UP \SUBJ)=\DOWN}\\ NP
+                 [{ang=laruan}\\{\NOM=toy},roof]
+            ]
+        ]
+     ]
+]
+\end{forest}
+\z
+
+Given appropriate lexical entries, this will produce the following f-structure:\footnote
+  {This structure uses the older treatment of discourse functions such as {\FOC}us as
+  grammatical functions in f-structure, along the lines of \citet[97-98]{bresnan2001lexical}
+  or \citet[97]{BresnanEtAl2016}.   \citet{Kroeger93} does not provide any specific f-structures.
+  For contemporary views, see \citetv{chapters/InformationStructure}.}
+%%%%%%% 
+\ea
+\avm[style=fstr]{
+  [ \FOC  & \rnode{a}{[\PRED & `for'\\
+                      \OBJ & [\PRED & `Pedro']]}\\\smallskip
+    \SUBJ & [ \PRED & `toy'\\
+              \CASE & \NOM\\
+              \textsc{spec} & \DEF
+             ]\\
+    \PRED & `buy<{{(\UP \sc a-sb)}} {(\UP\SUBJ)}>'\\
+    \ASP  &  \PRF\\
+    \textsc{a-sb} & [ \PRED  & `pro'\\
+                  \PERS & 1\\
+                  \NUM  & \SG\\
+                  \CASE & \GEN
+                ]\\
+     {\sc adjuncts} & \{\rnode{b}{[$\;$]}$\;$\}
+  ]
+}
+\CURVE[1]{-2pt}{0}{a}{-2pt}{0}{b}
+\z
+
+\noindent
+In addition to verbal clauses, there are clauses with adjectival, nominal and prepositional
+predicates.  Kroeger argues that these show a different pattern, where some phenomena of
+clitic placement are said to show that the main predicate can either appear on its own as first daughter
+of S, or as head of a phrase that contains its complements, with the subject final under
+S in the former case, as indicated by these (somewhat abbreviated) structures \citep[133]{Kroeger93}:
+\ea\label{tagcstrucs}
+\begin{xlist}
+\item
+\begin{forest}
+[S
+    [XP\\(\PRED)]
+    [NP\\(\SUBJ)]
+]
+\end{forest}
+\item
+\begin{forest}
+[S
+      [X$^0$]
+      [YP]
+      [YP]
+]
+\end{forest}
+\end{xlist}
+\z
+Unfortunately, \citet[259-260]{Kaufman2010}, working within the Minimalist framework,
+finds that the clitic facts cited by Kroeger\footnote
+ {Originally from \citet{SchachterOtanes1972} and \citet{Sityar1989}.}
+do not appear to be representative, in ways that undermine Kroeger's analysis.  Since
+this is of some interest for the history of the subject, I think it is worth
+considering the examples, in the hope that it will be further investigated in LFG.
+
+What Kroeger says is that with nominal, adjectival
+and propositional phrasal predicates, a personal pronoun clitic can appear either
+at the end, or after the predicate word, illustrated here for PP:
+\ea\label{galing} Tagalog
+%
+%  the \DAT etc commands are introducing an unwanted space.
+%
+\begin{xlist}
+\item
+\gll Galing sa=Maynila siya.\\
+from {\sc dat}=Manila 3\SG.\NOM\\
+\glt {`He is from Manila.'}
+\item
+\gll Galing siya sa=Maynila.\\
+from {3\SG.\NOM} {\sc dat}=Manila\\
+\glt {`He is from Manila.'}
+\end{xlist}
+\z
+But with a verbal main predicate, the sentence-final position is impossible:
+
+\newpage
+\ea Tagalog
+\begin{xlist}
+\item
+??\gll Hinangkan ng=nanay ako.\\
+\PRF.kiss.\textsc{dv} {\sc gen}=mother 1\SG.\NOM\\
+\glt{`I was kissed by mother.'}
+\item
+\gll Hinangkan ako ng=nanay.\\
+\PRF.kiss.\textsc{dv} {1\SG.\NOM} {\sc gen}=mother\\
+\glt{`I was kissed by mother.'}
+\end{xlist}
+\z
+This is to be explained by:
+\ea\label{tagclitprinc}
+\begin{xlist}
+\item A principle to the effect that the clitics are placed after the first
+constituent in the domain they apply to, which is the IP.
+\item The two constituent structures in (\ref{tagcstrucs}) are available for nonverbal
+predicates, but only the flat one of (\ref{tagcstrucs}b) for verbal predicates.
+\end{xlist}
+\z
+However, Kaufman finds that there is no significant difference between the clitic final
+position for verbal and nonverbal predicates: both are pretty bad.  He also argues
+that Kroeger's generalization about where the clitic goes is insufficient, and proposes
+something different, well beyond the scope of this chapter.  This leaves the
+flat rule (\ref{tagcstrucs}b) motivated by the evidence, but not (\ref{tagcstrucs}a), for Tagalog.
+
+Nevertheless, there is motivation for structures of the general form of (\ref{tagclitprinc}a) elsewhere
+in the Austronesian language family: Dalrymple and Randriamasimanana use it in
+their XLE grammar of Malagasy,\footnote
+  {\url{http://users.ox.ac.uk/~cpgl0015/pargram/}; argumentation is however not
+  provided.}
+and \citet{LiuKL2017} presents an LFG analysis of Squliq Atayal arguing on various
+grounds for this structure.  Finally, \citet{KaufmanChen2017}
+review a rather long tradition of argumentation in Austronesian historical syntax
+for the position that structures with a clause-initial predicate phrase and a following
+subject are the original form of the `Philippine type' of which Tagalog is the most
+often discussed exemplar.
+
+It is perhaps worth emphasizing that the `subject' in Philippine languages
+is not the classic subject of western European languages with its strong association
+with semantic Agent properties, but rather the `Pragmatic Peak' of
+\citet{FoleyVanValin1984}, drawing heavily on earlier work by Paul Schachter and Edward
+Keenan \citep{keenan76,Schachter1977}, or the `g-subject' of \citet{Manning1996}.
+These have an association with topic-like pragmatic functions, but not with agentivity.
+Indeed, the constructions with patient as subject tend to be more common than those
+with agent, and are closer in form to the proposed diachronic original, as discussed
+by \citet{KaufmanChen2017}.
+
+A final point is that above IP, arguably the domain of clitic positioning, there
+are projections treated by Kroeger as CP, and irrelevant to clitic positioning
+(resulting in `third position' phenomena), and this general approach is also adopted
+by \citet{Kaufman2010}.
+
+
+\subsection{Warlpiri: non-configurationality in Australian Languages}\label{ausnonconfig}
+\citet{AustBres96} update Simpson's (\citeyear{Simpson1983}, \citeyear{Simpson1991}) analysis
+of Warlpiri to use the functional projection IP to house the material constituting the auxiliary,
+and also give an extended treatment
+of Jiwarli.  Two important differences between Warlpiri and Tagalog with
+respect to I are:
+\ea
+\begin{xlist}
+\item In Warlpiri, the verb does not appear in I.\footnote
+ {\citet{Legate2008warl2p} proposes in her Mimimalist analysis that the verb can be
+ attracted to I, but in LFG, there is no advantage to be obtained by allowing it
+ to appear there, as we will see below.}
+\item I nodes in Warlpiri that meet a certain condition, to be discussed immediately below, cannot
+appear initially, at least in a phonologically independent clause.
+\item Most items, including the verb, can appear in front of the auxiliary
+material (contents of I).  This analysis proposes two mechanisms for how this happens:
+NPs appearing in SPEC of IP, and a prosodic inversion operation for verbs and preverbs.
+\end{xlist}
+\z
+The nature of condition (b) calls for some discussion.
+
+As mentioned above, earlier work from \citet{Hale81} to \citet{Simpson1991}  proposed that the AUX had to appear in second position if the augment+base was monosyllabic, but \citet{Laughren2002} shows that the bisyllabicity
+condition is not correct, on the basis that the complementizer {\it yi-}
+`for, since' followed by a null base can appear initially, as long
+as the entire auxiliary, including agreement markers, is bisyllabic (all the other
+augments are bisyllabic).   This is also the case for the present imperfective
+base {\it -ka}, but apparently not for the past imperfective base {\it -lpa}.\footnote
+ {But the existence of possible exceptions is discussed in \citet[125,
+     footnote 19]{Laughren2002}.}
+So I suggest that the actual condition is a combination of phonology and morphology:
+\ea
+In order for I to be overtly initial in Warlpiri, its contents must:
+\begin{xlist}
+\item be at least bisyllabic
+\item be phonologically well-formed as a word (initial {\it -lp} clusters are
+ not allowed)
+\item have an overt augment+base (either augment or base is sufficient, as long as something appears).
+\end{xlist}
+\z
+I will call an auxiliary that meets these conditions `heavy', and one that doesn't, `light'.
+So our basic generalization is that only heavy auxiliaries can be initial in the
+sentence.
+
+With this issue considered, we examine the basic sentence structure that \citet{AustBres96} propose for Warlpiri, with an initial NP in the SPEC of IP position,
+and auxiliary material in the following I:
+\ea
+%\input{trees/warltree.tex}
+\hspace*{-5mm}\begin{forest}
+[IP, s sep=0em
+    [NP
+        [kurdu-jarra-rlu\\child-\DU-\ERG,roof]
+    ]
+    [I$'$
+        [I
+               [ka{=}pala\\ \PRS{=}3\DU.\SUBJ]
+        ]
+        [S
+             [NP
+                 [maliki\\dog.\ABS,roof]
+             ]
+             [V
+                 [wajilipi-nyi\\chase-\NPST]
+             ]
+             [NP
+                 [wita-jarra-rlu\\small-\DU-\ERG,roof]
+             ]
+        ]
+    ]
+]
+\end{forest}
+\z
+This illustrates the first mechanism whereby the auxiliary material can appear in
+second position, but is not plausible for cases when the verb is in first position, 
+because a lexical category should not be able to occur in SPEC position in Warlpiri \citep[226]{AustBres96}.
+
+To deal with verb-initial sentences,  \citeauthor{AustBres96} propose the rule of prosodic inversion from \citet{Halpern95},
+which moves the
+contents of I to a position after the verb, or, sometimes, after the initial part
+of a complex verb.  This division of labor permits the inversion rule to apply to
+a considerably more restricted range of cases than Simpson's Encliticization, removing
+the need for it to swap the auxiliary around multiword phrases.
+
+Examples of multiword phrases are modifier+modified nominal constructions with case marking,
+on either only the last or both elements, %, object+verbal noun constructions,
+% where the bloody hell is it
+and also coordinate NPs (auxiliaries in boldface to make the examples easier to follow):
+\newpage
+\ea Warlpiri
+\begin{xlist}
+\item
+\gll Kurdu(-ngku) wita-ngku={\bf ka} maliki wajilipi-nyi\\
+child(-\ERG) small-{\ERG}={\PRS} dog(\ABS) chase-{\NPST}\\
+\glt{`The small child is chasing the dog.'}\\
+(\citealt[159-160]{Nash1986}, citing \citet{Hale81})
+\item
+\gll Karnta-ngku manu ngarka-ngku={\bf pala} kurdu nya-ngu\\
+woman-{\ERG} and man-{\ERG}=3.\DU.{\SUBJ} child.(\ABS) see-\PST\\
+\glt{`The man and the woman saw the child.'}
+\citep[177]{Nash1986}
+\end{xlist}
+\z
+Since these multi-word NPs can be generated in a position before I, we do not need to have
+any rule putting the auxiliary after them.
+
+However, sentences with something other than an NP appearing before the auxiliary 
+pose some tricky problems.  If all and only the things found in this position were
+verbs, we could suggest that a V could optionally be adjoined to I,
+appearing in front of the auxiliary material.  But this proposal faces two problems.
+One is that if the preverb appears in its normal position before the verb, then
+the auxiliary can appear between them, as long as it doesn't contain
+an augment (but polysyllabic auxiliaries with base {\it ka} are fine.):\footnote
+ {The suffix {\it -jinta} glossed {\sc dd} indicates that this is a `failed effect'
+  construction discussed in \citet[336]{Hale1973}, in which the object is marked dative, indicating that the action
+  indicated by the verb did not succeed.}
+\ea\label{warlphrase} Warlpiri  \citep[227]{AustBres96}\\
+\begin{xlist}
+\item
+\gll Rambal-luwa-rnu={\bf rna=rla=jinta} marlu-ku\\
+mistake-shoot-\PST=1\SG.\SUBJ-1\SG.\DAT-{\sc dd}  kangaroo-\DAT\\
+\item
+\gll Rambalpa={\bf rna=rla=jinta} luwa-rnu marlu-ku\\
+mistake=1\SG.\SUBJ-3\SG.\DAT-{\sc dd} shoot-{\PST}  kangaroo-\DAT\\
+\end{xlist}
+`I shot at a kangaroo and failed.'
+\z
+If the auxiliary intervenes, a preverb whose stem ends in a consonant must end in the stem-extender
+{\it -pa}, which it can do anyway.  This indicates that one requirement for
+intervention is that the preverb must be construed as in some sense being an independent
+word.
+
+Another is that for those `productive' preverbs that can appear after or before the verb, the auxiliary material seems to almost obligatorily
+appear after just the verb rather than after the whole verb+preverb combination
+when the preverb comes second \citep[117]{Simpson1991}:
+\ea Warlpiri \citep[52]{Nash1986}\\
+\gll Yani={\bf rli} wurulypa\\
+go-\textsc{npst}=12 seclusion\\
+\glt{`Let's go and hide.'}
+\z
+Nash observes that the ordering {\it yani-wurulypa=rli} occurs once in a text,
+but seems much less common than the other possibilities, while Simpson characterizes
+it as ``hardly ever found, and it is usually rejected by speakers''.  This is a problem
+for any analysis which puts V in front of I in c-structure, unless we assume
+a category other than V to dominate the V+Preverb order.\footnote
+  {On the other hand, \citet[100]{Laughren2002} provides such an example without
+  comment, but with a heavy auxiliary which could not be inserted into the verb.}
+
+So the conclusion is that an inversion rule along the lines of Simpson's
+encliticization is needed, but applying in a narrower range of cases, more consistent
+with being a morphological or phonological operation.  \citet{AustBres96} assume
+that it is the `prosodic inversion' of \citet{Halpern95}, which only applies as
+a last resort.  This is supposed to explain why the clitics can't be inserted into
+phrasal units as in (\ref{warlphrase}), but there is a problem here in that
+the structure in which the phrasal NP is sitting in SPEC of IP is different from one
+where it is initial in S right after I, so it is not clear that a `last resort'
+restriction can apply in a well-defined manner.\footnote
+ {And it is furthermore clear that it is in general not impossible for
+ second-position clitics to be inserted into otherwise intact NPs; this
+ is for example rather common with {\it -que} `and' in Latin.}
+A further problem is that it appears to be fine for a heavy auxiliary to appear
+after the verb \citep[97]{Laughren2002}, so a last resort restriction won't work.
+
+What I suggest is an inversion rule which can be formulated like this:
+\ea
+\begin{tabular}[t]{cccc}
+I & V/Pvb\\
+1 & 2 & $\Rightarrow$ 
+  & 2+1
+\end{tabular}\\
+Subject to restrictions that need further investigation.
+\z
+The category restriction is sufficient to prevent I from being inserted
+into an NP (a restriction documented at considerable length by Laughren),
+and another restriction, not formalized here, states that an auxiliary with an augment cannot be inserted
+into a verb.  
+
+A final problem discussed by \citet{Laughren2002} and \citet{Legate2008warl2p}
+concerns evidence that there is more than one functional projection dominating S, in
+spite of no evidence of two distinct head positions being occupied in the same clause.
+This is the interaction of topicalization and focus in questions. In
+(\ref{warltopint}) below, we see the auxiliary between the topic and a question word:
+\ea\label{warltopint}
+Warlpiri  \citep[34]{Legate2008warl2p}\\
+\gll Kuturu-ju ka=npa=nyanu nyarrpara-wiyi marda-rni?\\
+nullanulla-{\TOP} \PRS.\textsc{ipfv}=2\SG.\textsc{nom}=\textsc{anaphobj} where-first have-\NPST\\
+\glt{`Where do you have this nullanulla of yours?'}
+\z
+And in (\ref{legexmpls}a-c)
+below, we see that a potentially interrogative word can be interpreted as either 
+interrogative or indefinite if it appears right after an auxiliary,
+but only interrogative if before, while (\ref{legexmpls}d) shows that if a potential question word
+appears further into the clause, after the auxiliary and the verb, it can only be interpreted as
+indefinite:
+\ea\label{legexmpls} Warlpiri
+\begin{xlist}
+\item
+\gll Kaji=ka=rna nyarrpara-kurra ya-ni.\\
+\textsc{nfactc}=\PRS.\IPFV=1{\SG} where-{\ALL} go-\textsc{npst}\\
+\glt{`I might go somewhere.'/`Where might I go?' \citep[17]{Legate2008warl2p}}
+\item
+\gll Nyarrpara-kurra kaji=ka=rna ya-ni.\\
+where-{\ALL} \textsc{nfactc}=\PRS.\IPFV=1{\SG}  go-\textsc{npst}\\
+\glt{*`I might go somewhere.'/`Where might I go?' \citep[17]{Legate2008warl2p}}
+\item
+\gll Nyiya=rlangu kaji=ka=rlu nyina wampana-piya-ju.\\
+what-for.example {\sc nfactc}=\PRS.\IPFV=3\PL.{\OBJ} be.\textsc{npst} spectacled.hare.wallaby-like-\TOP\\
+\glt{`What ones for example might be like this spectacled hare wallaby?'\\
+\citep[18]{Legate2008warl2p}}
+\item
+\gll Kaji=lpa=ngu wanti-yarla nyiya-rlangu milpa-kurra.\\
+{\sc nfactc}=\PST.{\IPFV}=2\SG.{\OBJ} fall=\textsc{irr} what-for.example eye-\ALL\\
+\glt{`If something fell into your eyes $\ldots$'\\
+*`What might have fallen into your eyes?' \citep[18]{Legate2008warl2p}}
+\end{xlist}
+\z
+I tentatively suggest the following analysis.  The auxiliary appears in a
+fixed position, which \citeauthor{AustBres96} call I, although C would also work.
+The interrogative/indefinite pronouns
+are interpreted as interrogative if they appear `external to S', indefinite
+if `internal'.  `Internal to S' means that they appear inside the lowest S
+in a stack of S's to which things have been adjoined (and are therefore not
+themselves adjoined), `external to S' outside of the lowest in such a stack, so
+either adjoined to a S or in some higher projection.  In Warlpiri, there are two ways in which this
+can happen: they can appear in Spec of CP, giving rise to (\ref{legexmpls}b-c)
+above, or adjoined to S, giving rise to the interrogative interpretation of
+(\ref{legexmpls}a), where an internal position is also possible, giving rise
+to the indefinite interpretation.  But in the case of (\ref{legexmpls}d), the
+pronoun can only be internal to S, so only an indefinite interpretation
+is  possible. However, for this to be the case we need a bit more, namely a restriction on adjunction to S, that it can only add
+a question-focus, which is easy to arrange with appropriate annotations.\footnote
+  {I do not know what happens if there is more than interrogative word; typologically,
+  there are various possibilities.}
+Finally, in the case of
+(\ref{warltopint}), the Spec of CP position is occupied by the topic, so adjunction
+to S, and consequent position right after the auxiliary, is the only possibility
+for an interrogative reading (the only one that makes sense in the context).
+
+The essential difference between the present LFG analysis and Legate's is that in
+the LFG analysis, the auxiliary appears in one position, and interrogatives in two, one
+on on either side of the auxiliary, while in Legate's, interrogatives appear in one
+position, while auxiliaries can appear overtly in two.
+I am aware of no clear theory-independent empirical evidence distinguishing
+between these possibilities; they are each motivated by what appears to work out
+best given the resources of the theory.
+
+\subsection{Russian}\label{russian}
+Although Russian has sometimes been presented as non-configurational, \citet{King95}
+argues that it is configurational, but with provisions that make the word order
+considerably more flexible than in English. She provides first a Government and Binding (GB)
+analysis, and then an LFG one, which leans heavily on the GB analysis for data
+and associated discussion.
+
+She analyses Russian clauses as having CP, IP and VP layers, with two bar levels in each. The outer level of the VP introduces subjects, and there is one further layer over CP, which is available only in main clauses. This is for ‘external topics’, which have an initial XP, set off by a pause, with possibly an anaphoric pronoun later in the clause  \citep[202]{King95}: 
+\ea Russian
+\begin{xlist}
+\item
+\gll Gleb, ja ego ne ljublju.\\
+Gleb, I him not like\\
+\glt{`Gleb, I don't like him.'}
+\item
+\gll Opera, net drugogo vida musykal'nogo iskusstva, kotoryj privlekal by k sebe takoe vnimanie.\\
+opera not other type musical art which attract would to itself such attention.\\
+\glt{`Opera, there is no other kind of musical art which would attract such attention to itself.'}
+\end{xlist}
+\z
+She analyses this with an `expression phrase' rule \citep{Banfield:Unspeakable,Rudin1985}  as follows, outside the
+X-bar system (similarly in her GB analysis):
+\ea\label{ex:Cstr:33}
+\phraserule{EP}{\rulenode{XP\\ {(\UP \textsc{e-top})=\DOWN}}  \rulenode{CP\\ \UP=\DOWN} }
+\z
+\citet[105]{King95} suggests that these external topics do  not fall under the X-bar
+system in Government-Binding theory, and does not attempt to assimilate them
+to X-bar theory in LFG either, but I suggest that perhaps the rule in (\ref{ex:Cstr:33}) could be replaced by
+`Chomsky-adjunction' to CP,\footnote
+ {Meaning that it has one CP node as sister, another as mother,  with identical
+ feature-composition.}
+with some kind of further restriction, perhaps essentially
+semantic, preventing them from occurring in embedded positions \citep[106]{King95}:
+\ea
+\phraserule{CP}{\rulenode{XP\\ {(\UP \textsc{ e-top})=\DOWN}}  \rulenode{CP\\ \UP=\DOWN} }
+\z
+Russian is not a full pro-drop language, so that an NP coreferential with
+an \textsc{e-top} is normally expressed.
+
+In C we find the complementizer {\it\v sto} and the question-marker {\it li}, most
+frequent in embedded questions, while in SPEC of CP we find question words: all question words
+in multiple wh-questions \citep[215]{King95}, unlike in English where only one
+appears. This is illustrated in the following example (\citealt[216]{King95}, {\UP=\DOWN} annotations
+omitted):\footnote
+  {In the tree, the annotation over the first constituent should be
+  \DOWN $\in$ {(\UP\gloss{adjuncts})}, but in the structure I give the original.} 
+\ea Russian
+\begin{xlist}
+\item
+\gll kogda kto udaril Boris-a\\
+when who(\NOM) hit Boris-\ACC\\
+\glt{`Who hit Boris when?'}
+\item
+\begin{forest}
+[CP
+    [{(\UP \ADJ)=\DOWN}\\ \DOWN $\in$ (\UP {\sc qfoc})\\AP [kogda\\when]]
+    [{(\UP \SUBJ)=\DOWN}\\ \DOWN $\in$ (\UP {\sc qfoc})\\NP [kto\\who]]
+    [C$'$
+      [IP
+          [I$'$
+              [I [udaril\\hit.\PST]]
+              [VP  [V$'$   [{(\UP \OBJ)=\DOWN}\\NP   [Borisa\\Boris.\ACC]]]]
+          ]
+      ]
+    ]
+]
+\end{forest}\\
+\end{xlist}
+\z
+Yes-no questions can be marked either by intonation, or with the marker {\it li},
+which appears in second position, after either an XP or the verb.  An XP in front of \textit{li}
+is interpreted as a focus, with the body of the question presupposed (\citealt[236--237]{King95}, \citealt{King1994}),
+and items in SPEC of IP are Topics, as indicated by the annotation:
+\ea\label{rusmainverb}
+Russian:
+\begin{xlist}
+\item
+\gll Knigu li ona pro\v citala?\\
+book.{\ACC} Q she.{\NOM} read.\PST\\
+\glt{`Was it a book that she read?'}
+\item
+\begin{forest}
+[CP
+    [{(\UP \OBJ)=\DOWN}\\ \DOWN $\in$ (\UP {\sc qfoc})\\ NP  [N  [{knigu\\book.\ACC}]]]
+    [C$'$
+        [C  [{li\\Q}]]
+        [IP
+            [{(\UP \SUBJ)=\DOWN}\\ \DOWN $\in$ (\UP \TOPIC)\\ NP  [{ona\\she.\NOM}]]
+            [I$'$  [I  [{pro\v citala\\read.\PST}]]]
+        ]
+     ]
+]
+\end{forest}
+\end{xlist}
+\z
+
+If the yes-no question has no focus, then the verb appears before {\it li}, and
+King proposes that the verb is adjoined to C: 
+\ea
+\begin{forest}
+[CP
+    [C$'$
+        [C
+            [I  [pro\v citala\\read.\PST]]
+            [C  [li\\Q]]
+        ]
+        [IP
+            [{(\UP \SUBJ)=\DOWN}\\ \DOWN $\in$ (\UP \TOPIC)\\ NP  [ona\\she.\NOM]]
+            [I$'$   [{(\UP \OBJ)=\DOWN}\\ NP  [N  [knigu\\book.\ACC]]]]
+        ]
+    ]
+]
+\end{forest}
+\z
+This solution avoids the issue of putting a nonmaximal projection in specifier position,
+and is independently motivated by the absence of the focus-presupposi\-tion
+articulation that appears when there is an XP in the specifier position.  Formally,
+it could also be applied to Warlpiri, but without the additional motivation,
+insofar as is now known, and the problem of insertion of the auxiliary into
+combinations of verb and preverb would remain unsolved. 
+
+Moving down into IP, what we find here is `internal topics' normally followed by 
+contrastive foci, but with the possibility of some topics, especially pronouns,
+to come after the foci. Both contrastive foci and post-focus topics bear grammatical functions in their clause, and therefore
+do not cooccur with resumptive pronouns.  The ordering phenomena are also connected
+to the issue of `emotive' vs. `non-emotive' sentences, an important topic in Russian
+syntax that does not get much discussion in King's LFG analysis (although more in
+the GB one).  After considering various proposals, including recursive right-branching,
+King's final proposal is to use the ID/LP rule format \citep[208]{King95}, previously mentioned in
+footnote~\ref{IDLPfn}, where the `$<$' symbol in (b) means that the item in front
+of $<$ must appear before the one after, if both occur in the structure: 
+\ea
+\begin{xlist}
+\item
+\phraserule{IP}{\rulenode{XP$^*$,\\ {(\UP \GF)=\DOWN} \\  \DOWN $\in$ (\UP\textsc{df})}
+                \rulenode{I$'$\\ \UP=\DOWN}}
+\item \TOP $<$ {\sc cfoc}, XP $<$ I$'$
+\end{xlist}
+\z
+A constraint putting the I$'$ after the XPs  has been added,  and `{\sc df}' (discourse
+function) is assumed to comprise ordinary topics ({\TOP} but not {\sc etop}), and
+contrastive foci ({\sc cfoc}).  This formulation allows for considerable flexibility
+in word order, even though the language is fundamentally configurational.
+The big difference between King's IP rule for Russian and Bresnan's for
+English is that in Russian, any \GF\ that is also topic or focus can appear in
+Spec of IP, while in English, only subjects can.  \citet[133]{King95} notes that preverbal
+subjects tend to appear less markedly topicalized than other preverbal items,
+and discusses some possible reasons for this, including the tendency for arguments
+to be ordered consistently with the thematic hierarchy, which would put Agentive
+subjects, the most frequent kind, at the top, and therefore tending to be first.
+
+In I itself appear finite verbs, either main verbs as in example (\ref{rusmainverb}),
+or the future auxiliary {\it budet} `be', used to form imperfective futures, with
+the  main verb appearing as head of VP:
+\ea\label{rusfutverb}
+\begin{forest}
+[IP
+  [{(\UP\SUBJ)=\DOWN}\\ {\DOWN$\in\,$(\UP\TOPIC)}\\ NP\\ Anna\\ Anna.\NOM]
+  [I$'$
+     [I\\ budet \\ will]
+     [VP
+        [V\\ \v citat'\\ read.\INF]
+        [{(\UP\OBJ)=\DOWN} \\ NP \\ knigu \\book.\ACC]
+     ]
+   ]
+]
+\end{forest}
+\z
+This leads on to the structure of VP.
+
+A somewhat unusual feature of King's analysis is that it introduces
+subjects not only as SPEC of IP, but also as SPEC of VP, along with other governed
+GFs that appear in V$'$ as usual, leading to this rule \citep[209]{King95}:\footnote
+ {King omits the Kleene star on the complements in (b), presumably as a typographical
+ error.}
+\ea\label{russvp}
+\begin{xlist}
+\item
+\phraserule{VP}{ \rulenode{(XP) \\ {(\UP\SUBJ)=\DOWN}}
+                 \rulenode{V$'$ \\ \UP=\DOWN}
+               }
+ \item
+ \phraserule{V$'$}{ \rulenode{V \\ \UP=\DOWN}
+                  \rulenode{XP$^*$ \\ {(\UP\GF)=\DOWN} }
+             }
+\end{xlist}
+\z
+The evidence for this comes from various kinds of sentences where the subject
+is not also a topic, discussed more in King's GB analysis than in the
+LFG version.
+
+One kind of example is `thetic sentences', which assert that something happened,
+with no NP or other constituent singled out as the topic.  The order in such examples
+is VSX$^*$, as illustrated in the example below, as answer to the question `what
+happened yesterday' \citep[101]{King95}:
+\ea
+\begin{forest}
+[IP
+     [{(\UP \ADJ)=\DOWN}\\\DOWN $\in$ (\UP \TOPIC)\\AdvP  [v\v cera\\yesterday]]
+     [I$'$
+         [I   [prislal\\sent ]]
+         [VP
+             [{(\UP \SUBJ)=\DOWN}\\NP  [mu\v z\\husband]]
+             [V$'$   [{(\UP \OBJ)=\DOWN}\\ NP  [den'gi\\money]]]
+         ]
+      ]
+]
+\end{forest}\\
+`Yesterday (my) husband(\FOC) sent(\FOC) (me) money(\FOC).'
+\z
+The placement of the subject in SPEC of VP rather than SPEC of IP causes it
+to be interpreted as Focus rather than Topic, leading to a thetic interpretation
+of the clausal material excluding {\it v\v cera} `yesterday'.
+We will see later in \sectref{ltwoconfrev} that this analysis
+can be assimilated to that of other languages within the 2001 Synthesis
+presented in that section,
+by having the complement of I be (configurational) S rather than VP with
+internal subject.
+
+\subsection{German}\label{german}
+%
+% pg 33 discusses how her OT analysis does not yield I over 'auxiliaries' in final position
+%
+German as analysed by \citet{Choi1999}\footnote
+ {A revised version of her 1996 Stanford dissertation of the same title.}
+resembles Warlpiri in arguably having only one functional projection,\footnote
+ {A possibly confusing factor is that the German problem in \citet[375-379]
+  {BresnanEtAl2016} assumes that the auxiliary {\it haben} in final position is an
+  occupant of I, but makes no argument for this analysis, which Choi explicitly
+  rejects \citep[33]{Choi1999}.  \citet[31-32]{Berman2003}, citing Choi, also discusses the lack of
+  evidence for I.}
+but differs in a number of respects:
+\ea
+\begin{xlist}
+\item Verbs can appear in the functional projection (and, often, must), but otherwise
+appear finally in VP.
+\item There is no NP-splitting.
+\item There is some evidence for an S node, although this is challenged by the later work
+of \citet{Berman2003}.
+\end{xlist}
+\z
+The functional projection in these works is labelled ``C$'$'',\footnote
+  {Presumably because it contains some traditional complementizers, such
+  as {\it dass} `that', although this choice is essentially arbitrary.}
+and houses complementizers in subordinate
+clauses, and the topmost (main) verb in matrix clauses.  Otherwise, the verb appears
+clause-finally, and the so-called ``auxiliaries'' are treated as main verbs taking
+VP complements. Full clauses consist of an S with an NP~VP structure.  A sample
+main clause with the auxiliary {\it sollte} is:
+\ea\label{germanmain}
+German
+\begin{xlist}
+\item
+\gll Nachher sollte der Kurier dem Spion den Brief zustecken.\\
+later was.supposed.to the courier.{\NOM} the spy.{\DAT} the note.{\ACC} slip\\
+\glt{`Later, the courier was supposed to slip the letter to the spy.'}
+\item
+\hspace*{-1cm}\begin{forest}
+[CP
+    [AdvP
+        [nachher\\later]
+    ]   
+    [C$'$
+       [C
+          [sollte\\was.supposed.to]
+       ]
+       [S
+          [NP
+             [der Kurier\\the courier.{\NOM}]
+          ]
+          [VP [VP?
+             [$\overline{\hbox{V}}$
+                  [NP
+                     [dem Spion\\the spy.{\DAT}]
+                  ]
+                  [$\overline{\hbox{V}}$
+                      [NP
+                          [den Brief\\ the note.{\ACC}]
+                      ]
+                      [V
+                          [zustecken\\slip]
+                      ]
+                  ]
+             ]
+          ]]
+       ]
+    ]
+]
+\end{forest}
+\end{xlist}
+\z
+This structure is extrapolated from \citet[19, ex.~7a]{Choi1999} on the
+basis of later
+examples such as \citet[27, ex.~20]{Choi1999}.  The nested $\overline{\hbox{V}}$ nodes are postulated to
+introduce the complements of V, a feature of the 2001 Synthesis which appears
+to be arbitrary, as we will discuss in \sectref{synthsec}.
+
+The question-marked VP solely dominated by another VP is motivated by the fact that
+the verbs traditionally called `auxiliaries' in German ({\it sein} `be', {\it haben}
+`have', {\it werden} `become', and the modals such as {\it sollen} `should', which also has other
+meanings) appear syntactically
+to be plausibly taken to be the complement of the auxiliary {\it sollen} in C, whose VP appears immediately
+over the one with the question-marks.  On the other hand, LFG for some time has been
+strongly oriented towards structure minimization principles, and the upper VP, which
+would be annotated `\UP=\DOWN', is not doing anything, and is therefore highly likely to
+be omitted, and indeed seems to be omitted by Choi in the somewhat later abbreviated
+structure (17) on p.\ 26. 
+
+A typical subordinate clause structure is:
+\ea\label{germansub} German \citep[27, ex.~20]{Choi1999}
+\begin{xlist}
+\item
+\gll dass der Kurier nachher dem Spion den Brief zustecken sollte\\
+that the courier.{\NOM} later the spy.{\DAT} the note.{\ACC} slip was.supposed.to\\
+\glt{`that the courier was supposed to slip the note to the spy later'}
+\item
+\resizebox{.45\textheight}{!}{
+\begin{forest}
+[CP
+  [C
+     [dass\\that]
+  ]
+  [S
+      [NP
+          [der Kurier\\the courier.{\NOM}]
+      ]
+      [VP
+          [VP
+              [AdvP
+                  [nachher\\later]
+              ]
+              [VP
+                [$\overline{\hbox{V}}$
+                    [NP
+                        [dem Spion\\the spy.{\DAT}]
+                    ]
+                      [$\overline{\hbox{V}}$
+                        [NP
+                             [den Brief\\the note.{\ACC}]
+                        ]
+                        [V
+                            [zustecken\\slip]
+                        ]
+                    ]
+                ]
+              ]
+          ]
+          [V
+              [sollte\\was.supposed.to]
+          ]
+      ]
+  ]
+]
+\end{forest}
+}
+\end{xlist}
+\z
+Here we see the complementizer occupying C, and the VP complement to the auxiliary
+{\it sollte}, at the end.
+
+Although this analysis is in accord with the 2001 Synthesis, to be discussed in
+the next section, a later analysis by \citet{Berman2003} rejects certain aspects
+of it, especially the arguments for putting the subject under S, as we will consider
+in \sectref{germanrev} below.
+
+
+\subsection{Korean}
+The languages we have seen so far have one or two functional projections over S
+or equivalent, but \citet{Choi1999} presents Korean as having none: S expands
+to NP followed by VP.  She finds no evidence for I or C, since the
+functions of these projections
+are expressed by formatives on the verb, removing the need for any phrase
+structure positions to house them, and no other kinds of evidence for their
+existence. 
+
+She provides three arguments for VP \citep[43--47]{Choi1999}, of which I will give two. One
+of them is that there is a
+contrastive focus-marking particle {\it nun} which can be attached to either an
+object NP or the verb to make either the attached-to constituent or the entire VP
+the focus, but not the entire clause including the subject.  Illustrating the
+two readings for marking on the object, we have:
+\ea Korean\\
+\gll Mary-ka chayk-un ilk-nun-ta\\
+Mary-{\NOM} book-{\TOP} read-\PRS-\textsc{dcl}\\
+\glt{`Mary reads nothing but books.'\\
+(Mary does nothing but read books)}\\
+     (\citealt[45, example 52]{Choi1999}; note that Choi glosses the marker as `\TOP' even though
+its function here is described as contrastive focus.)
+\z
+Another argument is phonological: syllable-initial obstruents become voiced after a vowel
+in a phonological phrase, and this happens between an object and the
+following adverb {\it caypalli}, but not a subject; here, the segments
+voiced for this reason are italicized:\footnote
+  {Choi uses underlining to indicate the non-phonemic voicing, rather than
+  different segmental phonetic symbols.}
+\ea \label{korscram} Korean
+\begin{xlist}
+\item
+\gll  Cwuni-{\it g}a kong-ul {\it j}aypalli {\it j}a{\it b}-a.\\
+Cwuni-{\NOM} ball-{\ACC} quickly catch-\PRS\\
+\glt{`Cwuni catches balls quickly.'}
+\item
+\gll Kong-ul Cwuni-{\it g}a caypalli {\it j}a{\it n}-a.\\
+ball-{\ACC} Cwuni-{\NOM} quickly catch-\PRS\\
+\glt{`Balls Cwuni catches quickly.'}
+\end{xlist}
+\z
+This treatment contrasts with that of \citet{sells1994}, who proposes that Korean
+has an `inner VP' (similar to the combinations of verb and preverb in Warlpiri)
+which can be plausibly analysed as a V$^0$ with adjoined non-projecting words,
+but no S vs.\ VP distinction.
+Instead, following \citet{fukui1986}, all arguments are attached by phrase structure rules
+expanding VP to XP and VP, recursively. Sells's argument for the VP seems convincing,
+but not those for the binary branching structures for the arguments \citep[353, fn.\ 2]{sells1994}.
+Later, in \citet{bresnan2001lexical}, a branching VP like that of Sells was
+accepted, but with no serious attempt to show that it was superior to the
+more traditional flat VP assumed by Choi.
+
+Another important characteristic of Choi's phrase structures is the absence of
+verbal functional projections.  She considers an analysis in which tense and
+the declarative markers are treated as inhabitants of I and C, respectively, and
+morphologically fused with the verb, but rejects such analyses on the
+basis of violating the LFG principle that inflected words are inserted under
+single terminal nodes in the c-structure.  One could propose that these
+projections do exist, but are fused with the verb via lexical sharing, but
+then there would be the problem of the nonexistence of any evidence for
+the syntactic autonomy of the two components, of the kind that the mechanism
+of lexical sharing was devised in order to explain.
+
+As a consequence of the absence of C and I, we cannot use SPEC positions of these
+projections to house preposed items to provide a treatment of scrambling
+as found in (\ref{korscram}b).  Choi does not in fact present any c-structures
+for scrambled sentences in Korean, but states \citep[9]{Choi1999} that this is to be
+the structure for scrambling, and illustrates them for German \citep[127, ex.\ 17a]{Choi1999} with
+left-adjunction to S.  This illustrates the principle that LFG does not propose
+a functional projection if there is no material that can occupy the head of that
+projection (in any structure; it is allowed for the head position to be unoccupied in
+some structures).
+
+Furthermore, since there is no IP, we can't use SPEC of IP to house
+the subject, so Choi proposes S expanding to NP and VP.  Therefore, the structure
+of (\ref{korscram}b) is:
+\ea
+\begin{forest}
+[S
+    [{(\UP\OBJ)=\DOWN}\\ NP
+       [kong-ul \\ ball-{\ACC}]
+    ]
+    [{\UP=\DOWN} \\ S
+       [{(\UP\SUBJ)=\DOWN}\\ NP
+          [Cwuni-ka \\ Cwuni-{\NOM}]
+       ]
+       [{\UP=\DOWN} \\ VP
+          [\DOWN$\in${(\UP\ADJ)} \\ AdvP
+             [caypalli \\ quickly]
+          ]
+          [{\UP=\DOWN} \\ $\overline{\hbox{V}}$ [{\UP=\DOWN} \\ V
+             [cap-a \\ catch.\PRS]
+          ]]
+        ]
+     ]
+]
+\end{forest}
+\z
+{\it Caypalli} is not one of the adverbs listed by Sells as restricted to
+immediately preverbal position, so we introduce it here as a daughter of VP
+rather than adjoined to V.  The general question of VP versus
+$\overline{\hbox{V}}$ is a difficult one, which the new phrase structure theory of
+\citet{low:lov:20} might allow us to eliminate and thereby solve, but this is beyond
+the scope of this chapter.
+
+
+\section{The 2001 synthesis}\label{synthsec}
+And now we turn to the system presented in \citet{bresnan2001lexical},
+foreshadowed at various points in the preceding discussion,
+and largely unchanged in its successor \citep{BresnanEtAl2016},
+which will be the source of our page reference citations.
+We have already introduced many elements of this proposal, so it is time to develop
+it more systematically.  The basic ingredients, some of which are present in all
+of the intermediate stage analyses, are:
+\ea
+\begin{xlist}
+\item the 3-level X-bar theory of \citet{chomsky1970remarks}, with one lexical
+and two phrasal levels, with the option
+ for a language to have only two levels (one lexical and one phrasal), as in
+ Warlpiri;
+\item the modified system of category features (for nouns, verbs, etc.) from
+\citet{jackendoff1977} and \citet{bresnan1982control-complementation};
+\item functional (extended) projections in the version of
+\citet{grimshaw00ep}, in which the extended projections share category features
+  with their complements, which facilitates keeping the number of phrasal projections
+  to 2. These are normally called I (as in Warlpiri), or C (as in German);
+\item the existence of a category S, outside of the X-bar system, which
+can either be non-configurational, as proposed for Tagalog
+and Warlpiri, or configurational as will be proposed for Welsh and some minor
+constructions in English;
+\item principles of structure-function mapping that limit what kinds of grammatical
+functions can be introduced in what positions;
+\item the claim that phrases in the X-bar system are `endocentric', while S is `exocentric'.
+\end{xlist}
+\z
+
+A new feature of the 2016 version relative to the 2001 version is the `non-projecting words'
+of \citet{Toivonen2001}, discussed in \citetv{chapters/CoreConcepts}, which have
+a category feature but are adjoined to another phrase without projecting
+anything themselves.  Another feature of both versions that is not widespread
+in X-bar theory is the treatment of multiple complements.  \citet[127]{BresnanEtAl2016}
+observe that there are two possible treatments of complements, (\ref{Cstr:ex:49}a) below
+with a nested structure, (\ref{Cstr:ex:49}b) with a flat one:
+\ea\label{Cstr:ex:49}
+\begin{xlist}
+\item
+\phraserule{X$'$}{X$'$, YP}
+\item
+\phraserule{X$'$}{X, YP$^*$}
+\end{xlist}
+\z
+(\ref{Cstr:ex:49}b) is what the older LFG literature assumed, (\ref{Cstr:ex:49}a) what
+\citet{bresnan2001lexical} and \citet{BresnanEtAl2016} propose, on the
+basis of supporting a `flexible definition of an endocentric complement' (\citealt[118]{bresnan2001lexical}, \citealt[123]{BresnanEtAl2016}).\footnote
+ {\citet{BresnanEtAl2016}, fn.~50 refers to footnote 41, but that appears to be
+ be irrelevant; the relevant definition appears on the page following fn.~41.}
+Option (a) constitutes the choice that Choi makes for German in
+example (\ref{germanmain}), and works well when the complements can
+be ordered freely, but it is not clear to me how it is
+to account for the ordering restrictions in double object constructions,
+where the {\OBJ} tends to precede an {\OBJTHETA}; the relevant restrictions
+can be easily stated, either with conventional phrase structure rules as in most early LFG,
+or with the ID/LP format (briefly mentioned in footnote \ref{IDLPfn}).
+I suggest this is an issue best left for future investigation.
+
+A further theme that interacts with the X-bar principles is a tendency to
+reduce the complexity of c-structure to a minimum.  Two of the more important
+conditions are:
+\ea\label{ex:Cstr:50}
+\begin{xlist}
+\item
+A c-structure position is not postulated unless there is a class of items that
+can fill it.
+\item
+In any specific structure, all nodes are optional.
+\end{xlist}
+\z
+(\ref{ex:Cstr:50}a) prevents us from postulating a functional projection such as `T' for topic,
+or `E' for `evidential',
+unless we can find a class of items that plausibly appear in their head positions,
+while (\ref{ex:Cstr:50}b) allows us to leave out items in specific cases, as will
+be discussed below.
+
+The optionality of c-structure positions is an aspect of an important more
+general principle, Economy of Expression \citep[90]{BresnanEtAl2016}:
+\ea
+{\bf Economy of Expression}:\\
+All syntactic phrase structure nodes are optional and are not used unless
+required by independent principles (completeness, coherence, semantic expressivity).
+\z
+A consequence of this principle is that the traditional principle
+of `S as the ``initial symbol'' in a phrase-structure derivation of a sentence'
+is abandoned: a `sentence' can phrase-structurally
+be an S, an IP, or a CP, depending on the language and details of the particular
+sentence.
+I suggest that this involves a shift from a traditional `syntactic' notion
+of sentence-hood to a more `semantic one', since glue semantics (\citetv{chapters/Glue})
+can connect these multiple superficial syntactic structures to a single
+semantic type.  Further reductions in the complexity of c-structure are
+achieved by the reworking of X-bar theory developed in \citet{lovestrand-lowe2017},
+but these have not yet been applied to a substantial typological variety of
+clause structures so as to produce results with differently organized overall
+structure, and therefore will not be discussed here.
+
+The c-structure principles interact with a set of structure-function
+mapping principles, which constrain the relationship between the
+c-structures and the f-structures.  The principles
+\citep[105-109]{BresnanEtAl2016} assert that:
+\ea\label{structurefunction}
+\begin{xlist}
+\item C-structure heads are f-structure heads.
+\item Complements of functional categories are f-structure co-heads.
+\item Specifiers of functional categories are the grammaticalized discourse
+functions, such as \SUBJ, \FOC, \TOP.
+\item Complements of grammatical categories are the non-discourse argument
+functions, such as \OBJ, \OBJTHETA (but not \SUBJ).
+\item Constituents adjoined to phrasal constituents are optionally nonargument
+functions, either adjuncts or nonargument discourse functions.
+\end{xlist}
+\z
+This principle does not apply to S, whose daughters can bear any grammatical function.
+
+Some simple effects of these principles apply in the structure for `Mary swims':\footnote
+ {The \citet{bresnan2001lexical} version has S instead of IP, but this is rejected due to the lack of
+ independent evidence for S in English main (indeed, finite and most nonfinite) clauses
+ in English.}
+\ea\label{simpIP}
+\begin{forest}
+[IP
+    [NP [Mary] ]
+    [VP
+       [V$^0$ [swims]]
+    ]
+]
+\end{forest}\\
+\citep[120]{BresnanEtAl2016}
+\z
+The NP `Mary' can be a subject because it is external to the VP in SPEC of IP position,
+while the other nodes will bear the $\UP=\DOWN$ equation and so will correspond to the
+single f-structure that the NP's f-structure correspondent is {\SUBJ} of.  Turning
+to Economy, unfilled heads and intermediate level nodes that dominate nothing but their head
+are eliminated, and the IP, VP, and V nodes will all correspond to the same
+f-structure.
+
+The CP level appears in complement clauses, where the complementizer is head of C,
+and in certain other structures such as questions, where we get a CP level with an
+auxiliary verb filling C, a kind of analysis
+that is strengthened by the fact that an auxiliary can replace the complementizer
+{\it if} in a somewhat archaic/solemn variant of conditional clauses:
+\ea\label{QinC}
+Has he called?
+\z
+\ea\label{ArchCond}
+\begin{xlist}
+\item If he had called, I would have answered.
+\item Had he called, I would have answered.
+\end{xlist}
+\z
+For (\ref{QinC}), given the preceeding, the plausible structure is:
+\ea
+\begin{forest}
+[CP
+     [C$'$
+          [C [has] ]
+          [IP
+              [NP [N [he]]]
+              [VP [V [called]]]
+           ]
+      ]
+]
+\end{forest}
+\z
+The IP provides the location of the subject, which has no alternative
+locations in English finite clauses.\footnote
+ {But, as we will see shortly, certain nonfinite `small clauses' arguably
+ use S rather than IP.  The exact nature of the connection between  `finiteness'
+ and IP deserves further investigation.}
+The conditional clause in (\ref{ArchCond}b) has the same structure, with the
+preposed auxiliary replacing the overt complementizer that appears in
+(\ref{ArchCond}a).
+ 
+In the systematization of \citet[103]{BresnanEtAl2016}, the functional projections are
+distinguished from the lexical ones by having values 1 or 2 for a feature F, whose
+value is unspecified for lexical projections.  This implies that the choice of C or I in
+the 1 level languages such as Warlpiri and German is arbitrary, with a further
+consequence that any tendency in two-level languages to express some things in C
+and others in I is probably functional in origin.  It is of course also possible
+for there to be no verbal functional projections at all, as argued by
+Choi for Korean, and is plausibly also the case for Malayalam and Japanese.
+
+
+\section{Applications to languages}
+In this section we consider the application of the 2001 synthesis to various
+languages, starting with Welsh, and then reviewing some of the previous ones
+which call for comment.  Malayalam and Korean fit without further discussion,
+and so are omitted here.
+
+\subsection{Welsh}
+The basic structure for a main clause is:
+\ea
+\begin{forest}
+[IP
+     [I$'$  [I [Aux/V]]
+         [S
+              [NP]
+              [VP]
+         ]
+      ]
+]
+\end{forest}
+\z
+If there is no auxiliary, the finite verb appears at the front of the
+sentence, in the I position, as shown in (\ref{dragons}a) below, very similarly to
+King's (\citeyear{King95}) analysis of Russian.  But if there is an
+auxiliary, the auxiliary appears in I, the verb initially in V of VP,
+again similarly to Russian, as shown in (\ref{dragons}b), but with the VP under S
+dominating the subject, rather than a two-level VP
+\citep[131-133]{BresnanEtAl2016}:
+\ea\label{dragons}
+\begin{xlist}
+\item
+\begin{forest}
+[IP
+   [I [gwelodd\\see.3.\SG.\PST]]
+   [S
+      [NP  [Si\^on\\John]]
+      [VP
+          [NP  [ddraig\\dragon]]
+      ]
+    ]
+]
+\end{forest}\\
+`John saw a dragon.'
+\item
+\begin{forest}
+[IP
+    [I  [gwnaith\\do.\SG.\PST]]
+    [S
+        [NP  [Si\^on\\John]]
+        [VP
+              [V  [weld\\see]]
+              [NP  [draig\\dragon]]
+        ]
+     ]
+]
+\end{forest}\\
+`John saw a dragon.'
+\end{xlist}
+\z
+One issue here is how a VP can appear sitting over only an NP in (\ref{dragons}a). This goes against the idea that an endocentric category needs to have a head, while the presence of
+a VP is motivated by the range of things that can appear in the position after the subject, where overt VPs sometimes appear over the same material.
+
+This problem is
+averted by the `Extended Head Principle' \citep[135-137]{BresnanEtAl2016},
+which in effect says that a phrase can have a `displaced head',
+as long as that head appears within a higher phrase having the same
+f-structure correspondent.  The definition of `extended head' is:
+\ea
+Given a c-structure containing nodes $\mathcal{N}$ and $\mathcal{C}$ and a c- to f-structure
+correspondence $\phi$, $\mathcal{N}$ is an extended head of $\mathcal{C}$  if and only if
+$\mathcal{N}$ is the minimal node in $\phi^{-1}(\phi(\mathcal{C}))$ that c-commands $\mathcal{C}$ without
+dominating $\mathcal{C}$. \citep[136]{BresnanEtAl2016}
+\z
+and the principle is:
+\ea
+Every (phrasal)\footnote
+ {This qualification is absent from the original, but seems to me
+ to make the principle work properly.}
+ lexical category has an extended head
+\z
+
+Although we have discussed only I, Welsh also has a functional projection
+C, containing complementizers as discussed by for example \citet{Roberts2005}.
+Therefore it is a 2-level language like English, but differs from English in
+that the complement of I is S rather than VP.  This is required because
+in Welsh, the position of the subject is after the auxiliary rather than
+before it.  `I+S' languages, such as for example Tagalog, also often have
+the property that S can have PP, AP, and NP as well as VP as the predicate
+phrase, but this does not appear to be the case for Welsh, since it uses
+a copula in sentences where these play the semantic role of predicate.\footnote
+ {\citet[130]{BresnanEtAl2016} suggest that Welsh has these as possible predicates under S,
+ but no examples are provided, and Welsh appears in fact to use a copula.
+ See \citet{Borsley2019} for a recent discussion of Welsh copular clauses
+ in the framework of HPSG.}
+Welsh also differs from English (and is similar to most other Germanic languages) in
+that all verbs can appear in I, rather than only a restricted class of
+`auxiliaries'.
+ 
+\subsection{More English}
+As observed above, the fact that English puts the subject in front of I
+rather than after it indicates that it has VP rather than S as complement
+of I, an analysis corroborated by the fact that a verb is obligatory in finite
+clauses (recalling that IP shares category features with its complement, so excludes
+a non-verbal complement).  But nevertheless, as observed by \citet{ChungMcCloskey1987},
+English does arguably have
+nonfinite clauses where S expands to NP subject and a predicate phrase, which
+can be NP, AP, VP or PP.
+These so-called `small clauses' are used
+in English to express a combination of incredulity and often
+dismay \citep{Akmajian:Mad}:
+\ea\label{esc}
+\begin{xlist}
+\item What?? Him an alcoholic?? 
+\item What?? Her sick with the flu??
+\item What?? Him run(ning) a company??
+\item What?? That guy in the White House??
+\end{xlist}
+\z
+Along with nonfiniteness comes accusative case on the subject and
+no agreement with any verbal element.  This is evidence that in English,
+nominative case on NPs is a marker of finiteness on the clause, somewhat
+in the manner of the proposals of \citet{PesetskyTorrego2007} within the Minimalist
+program, although an LFG analysis would have quite a different implementation,
+similar to the treatment of `modal case' in Tangkic languages, as presented
+in somewhat different forms by \citet{Andrews1996} and \citet{nordlinger1998constructive}.  In these languages, nominative forms would have an equation specifying an appropriate tense
+feature value for whatever they were subject of.  
+
+Another plausible case for S would be gerundive nominalizations with accusative
+(rather than genitive) subjects, as analysed by \citet{schachter76}:
+\newpage
+\ea
+John giving/*give an invited talk might be a good idea
+\z
+A potential issue with having NP expanding to S here is that the predicate phrase
+of the S is restricted to being a VP whose verb is marked with {\it -ing}.
+But this can be accommodated by including an appropriate constraining equation
+in the c-structure rule:
+\ea
+\phraserule{NP}{ \rulenode{S \\ \UP=\DOWN \\ {(\DOWN \VFORM) =$_c$ \textsc{ing}}}
+              }
+\z
+The constraining equation will require the predicate of the S to be a verb, as
+well as a verb marked with {\it -ing}. Taking this analysis further would require
+entering the realm of `mixed category constructions', beyond the scope of this chapter.
+But there is clearly a question of what causes S to have a rather limited distribution
+in English, as opposed to other languages such as Welsh or Tagalog.
+
+\subsection{Russian revised}\label{ltwoconfrev}
+Moving on to Russian, King's analysis, discussed in \sectref{russian},
+diverges from the previous analyses we have discussed in this section in using a
+two-level VP, with the top level introducing a subject.  This difference can
+be easily eliminated by replacing the upper level VP with S, but is there
+any serious motivation for doing that?
+
+The structure-function mapping principles listed in (\ref{structurefunction})
+are not entirely clear on this: (\ref{structurefunction}c) says that specifiers of functional categories
+are the grammaticalized discourse functions, which suggests no, but grammaticalized
+discourse functions can also be adjoined (\ref{structurefunction}e), which suggests possibly yes.
+A general point that suggests that the S analysis is correct is that the
+question of what should appear in the specifier of VP in many languages, such
+as English, has always been rather controversial.  \citet{fukui1986} proposes
+that only functional, not lexical, categories, have specifiers, and this appears
+to be consistent with what we have seen here.  On the other hand,
+specifier is at least a somewhat plausible place to locate quantity and degree
+modifiers of nouns and adjectives, but there could be a weaker position that
+specifiers of lexical  categories do not supply arguments to those categories,
+but serve different functions when they exist at all.
+
+If we accept this reanalysis, a natural concomitant is to place postposed
+focussed subjects and certain other NPs under S, following the VP:
+\ea
+\phraserule{S}{ \rulenode{(XP) \\ {(\UP \SUBJ)=\DOWN}}
+                \rulenode{VP \\ \UP=\DOWN}
+                \rulenode{XP$^*$\\ {(\UP \GF)=\DOWN}\\ {(\UP \FOC)=\DOWN}}               }
+\z
+\citet[210]{King95} put these under V$'$ in order to treat examples
+such as:
+\ea\label{rusfinsub} Russian \citep[209]{King95}\\
+\gll Kupila plat'e Inna.\\
+bought dress Inna\\
+\glt{`Inna.\FOC bought a dress.'}
+\z
+But this actually does run against the structure-function mapping
+principle (\ref{structurefunction}d).  Using S in this way gives us a version of King's analysis
+that is clearly within the framework of the 2001 Synthesis.
+
+\subsection{German again}\label{germanrev}
+German, however, presents a problem.  Choi's treatment was within the Synthesis,
+in spite of originating in 1996, but \citet{Berman2003} eroded an important
+aspect of it, that subjects appear under S.  In particular, following
+\citet{Haider1990, Haider1995}, she concluded that
+various kinds of presumed subjects were included in VP-preposing, including the
+rather hard to dismiss unergatives, which cannot be construed as nominative
+objects, as is possible for some of the other examples:
+\ea German \citep[36]{Berman2003}\\
+\gll Kinder gespielt haben hier noch nie.\\
+children played have here still never\\
+\glt{`Children have never played here.'}
+\z
+Her solution was to introduce all arguments, including subjects, under VP
+in nested VPs, her VP not being clearly distinct from Choi's $\overline{\hbox{V}}$,
+with a complex verb at the bottom, as discussed in a considerable amount
+of literature in different frameworks.\footnote
+ {For example \citet{Wurmbrand2017} in Minimalism, \citet{zaenen-kaplan1995}
+ in LFG.}
+
+Unfortunately, she did not provide an actual tree for this example ((28b) in
+the text, nor for the similar (28a)), but I suggest:
+\newpage
+\ea German\\
+\begin{forest}
+[CP
+    [VP
+        [VP
+            [NP [N [{Kinder\\children}]]]
+            [V [{gespielt\\played}]]
+        ]
+        [V [{haben\\have}]]
+     ]
+     [C'
+         [VP
+            [AdvP [{hier\\here}]]
+            [VP
+                [AdvP [{noch nie\\never}]]
+            [(VP) ]
+            ]
+          ]
+      ]
+]
+\end{forest}
+\z
+Where the parenthesized (VP) is an informal notation for the fact that the
+head of the unparenthesized VP above it is supplied by the Extended Head Principle
+from the Spec of CP position.
+
+This would seem to call for revision of Choi's structures for German such as
+(\ref{germansub}a), but, on the other hand, the VP-internal subjects appear
+to be restricted; for example, they must be indefinite.  So it is not excluded
+that there is both an S where most subjects reside, as proposed by Choi, and
+subjects appearing in the VP, as proposed by Haider.  Alternate word orders are
+also produced by `scrambling', with strong effects on information structure,
+as extensively discussed by Choi.
+
+\subsection{Final remarks}\label{final}
+We can sum up the discussion in the previous subsections into a set of rules for when
+to posit S as opposed to VP as complement of I and in some other environments.
+\ea
+\begin{xlist}
+\item If SPEC of IP has a subject position, and subjects appear there, rather
+than in the complement of I, then the complement of I is VP or possibly other
+maximal lexical projections.
+\item If subjects appear in the complement rather than in the SPEC of IP, then the complement
+of I is S.
+\item This can happen in two ways: either S is non-configurational, introducing predicates
+and arguments in variable order (with the possibility of the predicates being ordered
+at the end or beginning of S), or S is configurational, dominating NP and a predicate phrase
+(maximal projection).
+\end{xlist}
+\z
+In this context, we interpret `subject' as the core grammatical function
+\citep[97]{BresnanEtAl2016} that is also a discourse (topic) grammatical
+function \citep[100]{BresnanEtAl2016}.
+We also of course assume S when there is no evidence for I, as in Korean.
+
+The organization of functional projections, on the other hand, is to be ascertained
+by the arrangements of elements marked by verbal features with respect to other
+members of the clause, with a general tendency for there to be more intervening
+items when the projections precede the main verb position than when they follow, leading
+to a tendency for verb-final languages to appear to lack verbal functional
+projections.
+
+It is clear that many of the languages we have considered are due for careful
+reanalysis, due to unresolved issues and discrepancies between earlier and later versions
+of LFG, and also taking into account the new phrase structure theory of \citet{low:lov:20}.
+Of particular interest would be the nature of clitic placement in Tagalog, and
+the issue of flat versus nested structure in non-configurational languages such
+as Tagalog and German, where the order of arguments is free, but the predicate is
+fixed at one end or the other.
+
+A major study of clause structure that we have not tried to work through is
+\citet{sells2001} on Swedish, for the reason that this makes heavy use of Optimality
+Theory in ways that have not become mainstream in LFG.  However, word order and clause
+structure in Scandinavian languages is an extremely complex and interesting area
+that deserves further investigation.
+
+I will conclude with a speculation about the nature of nonconfigurationality. This is that nonconfigurational S is what ensues diachronically when a language       makes such extensive use of discourse-conditioned preposing that the learner gives up trying to analyse it, but instead returns as c-structure something       that is essentially a list of fragments, similar to what the XLE system (\citetv{chapters/ImplementationsApplications}) does when it can’t find a parse.  But the syntax does find an f-structure for the c-structure fragment list appearing under S.
+The idea of non-configurational S as a kind of partial failure of c-structure
+parsing would be consistent with the revision of the theory of \citet{low:lov:20}
+proposed in \citet{Lovestrand2022}, whereby non-configurational S has no category
+feature value. 
+
+\section*{Acknowledgements}
+I would like to acknowledge the help of Jane Simpson and three anonymous reviewers.
+
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}

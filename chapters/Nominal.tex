@@ -1,0 +1,693 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10185958}
+\author{Kersti Börjars\affiliation{University of Oxford} and John J. Lowe\affiliation{University of Oxford}}
+\title{Noun phrases in LFG}  
+\abstract{In this chapter we consider the analysis of noun phrases in LFG. As a preliminary, in \sectref{sec:nominal:def} we go through a number of criteria that can be used to distinguish noun phrases from other phrase types. Degree of configurationality at clause level and its consequences for c-structure is a well-studied phenomenon in the LFG literature, and in \sectref{sec:nominal:NPconfig} we evaluate how the conclusions drawn for clausal structure can be applied to noun phrases. In \sectref{sec:nominal:NPgfs} we review the different approaches that have been taken to the functional structure and argument structure of noun phrases. In \sectref{sec:nominal:NPdfs} we explore briefly how discourse functions may be expressed within the noun phrase.}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \boolfalse{bookcompile}
+   \input{../localhyphenation}
+   \togglepaper[14]%%chapternumber
+}{}
+
+\begin{document}
+\maketitle
+\label{chap:Nominal}
+
+\section{Defining noun phrases}\label{sec:nominal:def}
+
+Before discussing the syntax of noun phrases, it is helpful to consider briefly the definition or delimitation of the category: how do we know what is and is not a noun phrase, and what are the essential properties of the class of noun phrases? In regard to most relevant phenomena in most languages, there is little difficulty in distinguishing a particular class of words which we label as ``nouns'' in distinction from verbs and other categories such as adjectives, adverbs, adpositions etc. We informally utilize different criteria in making these distinctions: the core meaning and basic function of the words, their morphology and the structure of the phrases they head. Some words, and some phrases, may be more problematic, however, aligning with our basic category of nouns in some respects, but not in others. Moreover, if we want to talk about the properties and analysis of noun phrases crosslinguistically, we need to be clear about the criteria used for categorization, and to ensure that our criteria for categorization are applicable crosslinguistically.
+
+
+According to \citet[1297--1298]{KornfiltWhitman11a}, approaches to categorizing phrases and words can be broadly divided into two types: ``distributionalist'' approaches define categories with exclusive reference to syntactic criteria, while ``essentialist'' approaches make use of nonsyntactic criteria, such as lexical semantics. Some approaches to categorization make use of both types of criteria; this is true, for example, of \citegen{Baker03} theory of syntactic categories.
+
+Given the separation of syntax and semantics in the LFG architecture, ``essentialist'' criteria have relatively little weight in the definition of categories in LFG. As discussed by \citet{Lowe19b}, there are three types of ``distributionalist'' criteria commonly used for defining categories in LFG, by authors such as \citet{Spencer15} and \citet{BresnanEtAl2016}; we discuss each of these in turn.
+
+The first type of criteria is the internal syntax of the phrase in question; that is, what sorts of words and phrases may appear together with the head inside the phrase in question. For example, we might say that noun phrases typically may contain determiners (in those languages that have them) and adjectives, while other types of phrase cannot contain these. There may also be differences in the configurational possibilities of different phrase types. For example, under some approaches to the phrase structure of English, noun phrases are the only lexical phrase type which contain a specifier \citep[e.g.][]{dalrymple01}; for others \citep[e.g.][]{falk2001lexical} no lexical phrases may contain specifiers, while functional phrases can. We discuss the phrasal structure of noun phrases in detail in \sectref{sec:nominal:NPconfig}.
+
+Furthermore, there may be differences between phrases of different categories in terms of the grammatical functions which can appear with them, i.e.\ in terms of which grammatical functions a head of a particular category may or may not subcategorize for. Given the LFG architecture and the concept of structure-function mapping principles (\citealt[105, 117]{BresnanEtAl2016}, see also \sectref{sec:nominal:NPgfs}), these issues are related to configurational differences between phrase types, but are not fully defined by them. For example, a grammatical function {\POSS} for the possessor in a noun phrase is often assumed, and sometimes contrasted with \SUBJ, such that {\POSS} may be a grammatical function exclusively associated with noun phrases, and {\SUBJ} a grammatical function exclusively associated with verb phrases. Similarly, it is widely assumed that nouns and adjectives do not, at least usually, subcategorize for {\OBJ} \citetext{though see \citealp{MittSadl08}, \citealp{AlShaSadl09}, and \citealp{VincBorj10a} for {\OBJ} with adjectives and \citealp{Lowe17} for further discussion}. We discuss grammatical functions within the noun phrase in detail in \sectref{sec:nominal:NPgfs}, and discourse functions within the noun phrase in \sectref{sec:nominal:NPdfs}. 
+
+The second type of criteria used for defining categories within LFG is the external syntax of the phrase in question \citep[labelled ``distribution'' by][]{Lowe19b}. This means that there are a certain set of positions within other phrase types where noun phrases may appear, and others where they may not. For example, in English, noun phrases may appear in the specifier of IP, in the complement position of VP and PP, but not in the complement position of AdjP or NP (though see references to {\OBJ} with adjectives above).
+
+The third type of criterion used for defining categories in LFG is the morphosyntax of the head of a phrase (or of the phrase itself): typically languages show differences between the morphosyntactic properties of, say, nouns, adjectives, and verbs. In many Indo-European languages, for example, nouns inflect for case and number, while verbs inflect for tense/aspect, person and number; adjectives inflect for case and number, but also inflect for gender, which is an inherent property of nouns.
+
+The use of all three types of criteria is widespread in LFG approaches to categorization. Although each of the criteria can be problematic when applied in individual cases, in most cases the three types of criteria align unproblematically, such that it is relatively easy to distinguish broad categories of noun phrases, adjective phrases, verb phrases, etc. For example, while there are differences in the internal syntactic possibilities of noun phrases and verb phrases, there is also a degree of overlap: some noun phrases may be indistinguishable from verb phrases, purely in terms of their internal syntax. In such cases, however, external syntax and morphosyntactic criteria may help to distinguish noun phrases from verb phrases. 
+
+In rare cases there are serious mismatches between the criteria for categorization. This is perhaps most common in the case of noun-verb mixed categories: phrases which show properties of both noun and verb categorization. We avoid discussions of such mixed categories in this paper \citep[for discussion see][]{Lowe19b}, restricting ourselves to phrases which can (fairly) unambiguously be defined as purely noun phrases based on the sorts of criteria discussed above. 
+
+
+
+\section{Configurationality and noun phrases}\label{sec:nominal:NPconfig}
+
+In this section we investigate the analysis of the surface configurational structure, the c-structure, of noun phrases in LFG. We consider how generalizations developed for degrees of configurationality at clausal level can be applied to noun constituents and how these can be represented at c-structure (cf.\ \citetv{chapters/Cstr}).
+
+\citet{Abney87} changed the way in which noun phrases are analysed within mainstream generative approaches to syntax. Projecting functional categories at clausal level had been introduced in the work that led to the publication of \citet{Chomsky86b}, and Abney's work was intended as ``a defense of the hypothesis that the noun phrase is headed by a \emph{functional element} (...) D, identified with the determiner. In this way, the structure of the noun phrase parallels that of the sentence, which is headed by Infl(ection)'' \citep[3]{Abney87}.
+
+In this chapter, we will make comparisons between clausal and nominal constituents, but not with the aim of emphasizing parallels. Within LFG, the approaches to c-, f- and a-structure have been developed more on the basis of clausal structures than anything else, and we will explore the extent to which the resulting assumptions can be applied also to noun constituents. Our aim here is not to provide full analyses of any language, but to illustrate how a particular interpretation of a data set might be analysed in LFG.
+
+
+
+ Three levels of configurationality are generally distinguished within LFG at clausal level: configurational, illustrated in (\ref{Cconf}), part-configurational (\ref{Cponc}) and non-configurational (\ref{Cnonc}), with S being an exocentric clause-level category (\citetv{chapters/Cstr}). If we assume a corresponding exocentric category NOM for noun phrases, then we can set up the parallel noun phrase structures in (\ref{Nconf}), (\ref{Nponc}) and (\ref{Nnonc}). Different combinations of these options may be motivated for different languages; for discussion see \citet{nordlinger1998constructive} and \citet[118--9]{BresnanEtAl2016}. Specifiers of functional projections are assumed to be either syntactically prominent, illustrated here with {\SUBJ} and {\POSS}, or information-structurally prominent functions, here we have used {\DF} for discourse function (see \citealt{Snijders2015}, \citealt[104--11]{BresnanEtAl2016} and \citealt[121--6]{DLM:LFG}). As we will see in \sectref{sec:nominal:NPgfs}, functions such as {\sc subj} and {\sc poss} may be seen to have a dual role in this respect.  We will return to what {\DF} may mean for noun phrases in \sectref{sec:nominal:NPdfs}. In (\ref{Cconf}) -- (\ref{Nponc}), we have only annotated the specifier node, for information about annotations and how they work,
+ see
+\bookorchapter{\citetv[\sectref{sect:intro:annotated}]{chapters/Intro}}{\citetv[§4.2]{chapters/Intro}}
+ and
+\bookorchapter{\citetv[\sectref{sect:annotated}]{chapters/CoreConcepts}.}{\citetv[§4.1]{chapters/CoreConcepts}.}
+
+
+\begin{minipage}[t]{0.5\textwidth}
+\eabox{\label{Cconf}
+\begin{forest}
+[IP [XP\\{(\UP\SUBJ)=\DOWN}] [I$'$ [I] [VP]]]
+\end{forest}
+}
+\end{minipage}%
+\begin{minipage}[t]{0.5\textwidth}
+\eabox{\label{Nconf}
+\begin{forest}
+[DP [XP\\{(\UP\POSS)=\DOWN}] [D$'$ [D] [NP]]]
+\end{forest}
+}
+\end{minipage}
+
+\vspace{0.5 cm}
+
+\begin{minipage}[t]{0.5\textwidth}
+\eabox{\label{Cponc}
+\hspace*{-8mm}
+\begin{forest}
+[IP [XP\\{(\UP\DF)=\DOWN}] [I$'$ [I] [S [\ldots] [X(P)] [X(P)] [X(P)] [\ldots]    ]]]
+\end{forest}
+}
+\end{minipage}%
+\begin{minipage}[t]{0.5\textwidth}
+\eabox{\label{Nponc}
+\hspace*{-8mm}
+\begin{forest}
+[DP [XP\\{(\UP\DF)=\DOWN}] [D$'$ [D] [NOM [\ldots] [X(P)] [X(P)] [X(P)] [\ldots]    ]]]
+\end{forest}
+}
+\end{minipage}
+
+\vspace{0.5 cm}
+
+\begin{minipage}[t]{0.5\textwidth}
+\eabox{\label{Cnonc}
+\hspace*{-8mm}
+\begin{forest}
+[S [\ldots] [X(P)] [X(P)] [X(P)] [\ldots]    ]
+\end{forest}
+}
+\end{minipage}%
+\begin{minipage}[t]{0.5\textwidth}
+\eabox{\label{Nnonc}
+\hspace*{-8mm}
+\begin{forest}
+[NOM [\ldots] [X(P)] [X(P)] [X(P)] [\ldots]    ]
+\end{forest}
+}
+\end{minipage}
+
+\vspace{0.5 cm}
+
+\subsection{Degrees of configurationality}
+
+Criteria commonly applied to strings to establish degrees of configurationality are (i) word order, (ii) capacity for discontinuity, and (iii) structural vs.\ non-structural determination of grammatical functions (for an excellent summary of arguments, see \cite{nordlinger1998constructive}).\footnote{The concept of null anaphora is also called upon quite widely to justify a configurational analysis of languages like Warlpiri that are characterized by freedom of word order (see for instance \citealt{Jelinek84,Hale93}). This approach has been criticized by \citet{AustBres96} for lacking empirical support when a broader set of languages is considered, and we will not consider this further here.}
+
+English is a language in which noun phrases display strict word order and relatively little discontinuity. Examples of discontinuity such as (\ref{EngDisc}) are generally not taken to indicate non-configurationality, but are assumed to be due to a more general principle of extraposition due to weight. Noun phrase internal grammatical functions such as {\POSS} are generally marked by structural position in English (though see \sectref{sec:nominal:NPgfs} for more detailed discussion).
+
+\ea \label{EngDisc}
+A \emph{book} was published last year \emph{on a new theory}.
+\z
+
+\noindent English noun phrases can therefore be assumed to be thoroughly configurational and best represented by a tree such as (\ref{Nconf}), though we will return to the issue of functional categories in \sectref{NPDP}.
+
+Turning now to the other end of the configurationality spectrum, for a number of languages which may at first sight appear to have non-configurational noun phrases, it has been argued that they do not in fact have noun phrases at all (see for instance \cite{Blake83}). A string of elements that refer to the same referent -- we will use the term \textsc{nominal string} for these -- whether continuous or not, may in some languages be best analysed as a number of independent nominal elements in apposition. In order to find a language with non-configurational noun phrases we must therefore first make sure that there is reason to assume that there are noun phrases in the language. \citet{LouaVers16}, in an evaluation of claims about non-configurationality in noun phrases in Australian languages, propose five criteria for establishing whether nominal strings form noun phrases: (i) contiguity, (ii) word order, (iii) diagnostic slots, (iv) phrasal case marking and (v) intonation. 
+
+Contiguity (i) is a necessary but not sufficient criterion; where the elements do occur together, they could still be assumed to occur in apposition, just as in the discontinuous examples. For our purposes, (relative) freedom of word order (ii) within a string for which there is other evidence of it forming a constituent will be taken as evidence of a flat structure. Some of the languages we will consider have an identifiable position (iii) at clausal level in which only a single constituent can occur, hence if a nominal string can occur in this position it can be assumed to form a structural unit. In a similar vein, if case is marked only once in a nominal string (iv), this string can be assumed to form a constituent. If a nominal string has a single intonation contour (v), it can be assumed to form a noun phrase (see also \citealt{SchuSima12}).  The conclusion \citeauthor{LouaVers16} draw is that statements about the lack of noun phrase constituents in Australian languages have been overstated, but this is to some extent dependent on how they apply the criteria. For instance, whereas discontinuity has been taken as evidence against constituency, they say that ``the existence of discontinuous constructions is not invariably an argument against NP constituency'' \citeyearpar[28]{LouaVers16}. 
+
+
+
+With respect to Warrongo (Pama-Nyungan), \citet[35]{LouaVers16} conclude: ``This is really the only type of language where flexibility provides evidence against constituency.'' This is based on the description by \citeauthor{Tsunoda11}, who argues on the basis of evidence such as (\ref{WarrCont}) that ``the relative order of NP constituents is not fixed and it is difficult to generalize about it'' \citeyearpar[347]{Tsunoda11}.\footnote{We
+    use the Leipzig glossing rules also when these have not been used in the source of the example. For a number of glosses used in our sources, there is no equivalent in the Leipzig glossing rules, and we have maintained the original. This applies to the following: \textsc{an} action nominal, \textsc{dub} dubitative, \textsc{emph} emphatic, \textsc{min} minimal, \textsc{pot} potential, \textsc{only} restrictive and \textsc{seq} sequential.
+}
+
+
+\eal\label{WarrCont} Warrongo 
+\ex[]{\gll  yarro-$\varnothing$ gajarra-$\varnothing$ ngali-ngo\\
+this-{\ACC} possum-{\ACC} {1\DU-\GEN}\\
+\glt `this possum of ours' \citep[348]{Tsunoda11}}
+\ex[]{\gll   yarro-$\varnothing$ ngaygo gajarra-$\varnothing$\\
+this-{\ACC} {1\SG.\GEN} possum-{\ACC}\\
+\glt `this possum of mine' \citep[348]{Tsunoda11}}
+\ex[]{\gll   yino gornggal-$\varnothing$ ngona-$\varnothing$ nyon.gol-$\varnothing$ jarribarra-$\varnothing$\\
+{2\SG.\GEN} husband-{\ACC} that-{\ACC} one-{\ACC} good-{\ACC}\\
+\glt `that one good husband of yours' \citep[347]{Tsunoda11}}
+\ex[]{\gll   ngaygo yarro-$\varnothing$ jarribara-$\varnothing$ wobirri-$\varnothing$\\
+\textsc{1sg.gen} this-{\ACC} good-{\ACC} English.bee-{\ACC}\\
+\glt `this nice English bee of mine' \citep[347]{Tsunoda11}}
+\zl
+
+Though nominal strings in Warrongo are generally contiguous, there are examples of discontinuity, as exemplified in (\ref{WarrDisc}).
+
+\eal\label{WarrDisc} Warrongo
+\ex[]{\gll  yinda \textbf{gagal-$\varnothing$} wajo-ya \textbf{bori-$\varnothing$}.\\
+\textsc{2sg.erg} big-{\ACC} burn-\textsc{imp} fire-{\ACC}\\
+\glt `Make a big fire.' \citep[349]{Tsunoda11}}
+\ex[]{\gll   \textbf{gajarra-$\varnothing$} nyola ganyji-n \textbf{goman-$\varnothing$}.\label{WarrDiscb}\\
+possum-{\ACC} \textsc{3sg.erg} carry-\textsc{nfut} another-{\ACC}\\
+\glt `She carried [i.e.\ brought] another possum.' \citep[349]{Tsunoda11}}
+\zl
+
+
+The examples in (\ref{WarrCont}) and (\ref{WarrDisc}) show that each element of the nominal string is separately case marked, apart from the genitive possessor, regardless of whether the string is contiguous or not. Furthermore, with the exception of the genitive, the parts can each form an independent noun phrase. There is no diagnostic slot at clause level in Warrongo, and we do not have enough information about prosody to use that as evidence. Hence, based on the evidence available, we can assume that Warrongo is best analysed as a language where each part of a nominal string forms an independent nominal phrase, even when there is no discontinuity, so that in both (\ref{WarrCont}) and (\ref{WarrDisc}), the individual words occur as daughters of a flat clausal structure. Though it is not our aim to provide a detailed analysis of Warrongo clause structure, our conclusions can be illustrated schematically as in (\ref{WarrTree}) for (\ref{WarrDiscb}), where the case feature on the initial and final elements would ensure that they both become associated with {\OBJ} in the associated f-structure (compare the analysis of Kalkatungu in \cite{Blake83}).
+
+\eabox{\label{WarrTree}
+\begin{forest}
+[S [NP\\{[\ACC]}] [NP\\{[\ERG]}] [V\\{[\textsc{nfut}]}] [NP\\{[\ACC]}] ]
+\end{forest}
+}
+
+
+
+We turn now to Bilinarra (Pama-Nyungan), as described by \citet{MeakNord14}. Discontinuous noun phrases are possible in Bilinarra, as illustrated in (\ref{BilDisc}), and for these cases \citet[107--108]{MeakNord14} assume an analysis where each part forms a structurally independent constituent, in line with the conclusions drawn about Warrongo above.
+
+\ea\label{BilDisc}Bilinarra  \citep[108]{MeakNord14}
+
+\gll  \textbf{Ngurra-nggurra}=rna=rla ga-nggu, \textbf{ngayiny-jirri}, warrba=ma.\\
+house-\textsc{all=1min.s=3obl} take-\textsc{pot} \textsc{1min.dat-all} clothes=\textsc{top}\\
+\glt `I'm going to take them to \textbf{the house}, to \textbf{my} (house), the clothes I mean.'
+\z
+
+However, there is also evidence in Bilinarra that contiguous nominal strings do form constituents and hence can be NPs. Pronominal clitics, such as \emph{yi} in (\ref{Biyi}), can occur in different positions in the clause, but most commonly occur in second position. When they do, they can be preceded by a word or a phrase. When a nominal string occurs in this pre-clitic position, as in (\ref{BilPrec}) it can be assumed to form a constituent. It should be added here that the clitic can also be preceded by just one word of a nominal string as illustrated in (\ref{BilPrecw}), and in such cases \citeauthor{MeakNord14} analyse all elements of the string as separate noun phrases in apposition.
+
+
+\eal\label{Biyi} Bilinarra
+\ex[]{\gll  Ngayiny-ju=ma ngamayi-lu=ma=\textbf{yi} wanyja-rni yabagaru=rni.\label{BilPrec}\\
+\textsc{1min.dat-erg=top} mother-\textsc{erg=top=1min.obj} leave-\textsc{pst} small=\textsc{only}\\
+\glt `My mother left me as a child.' \citep[102]{MeakNord14}}
+\ex[]{\gll  Yalu-lu=\textbf{yi} ngumbid-du ba-ni, garndi-lu.\label{BilPrecw}\\
+that-\textsc{erg=1min.obj} man-{\ERG} hit-\textsc{pst} stick-{\ERG}\\
+\glt `That one, the man hit me with a stick.' \citep[102]{MeakNord14}}
+\zl
+
+Prosodic criteria are also used by \citeauthor{MeakNord14} to identify a difference between strings that form noun phrases and strings that involve separate constituent parts in apposition. In (\ref{BilIntd}), the comma between \emph{nyanuny-jirri} and  \emph{munuwu-yirri} indicates an intonational break and the possessor and the noun are assumed to form two phrases in apposition. In (\ref{BilIntu}), on the other hand, the two form part of the same prosodic unit and can be assumed to form a noun phrase constituent like they do in (\ref{BilPrec}). The resulting difference in meaning is captured by the idiomatic translations.
+
+
+\eal Bilinarra \citep[103]{MeakNord14}
+\ex[]{\gll  Jardila=ma ya-n.gu=nga na, lurrbu na, \textbf{nyanuny-jirri}, \textbf{munuwu-yirri}.\label{BilIntd}\\
+tomorrow=\textsc{top} go-\textsc{pot=dub} \textsc{seq} return \textsc{seq} \textsc{3min.dat-all} home-\textsc{all}\\
+\glt `Tomorrow she might go home \textbf{to hers}, \textbf{to home}.'} 
+\ex[]{\gll  Jardila=ma ya-n.gu=nga na, lurrbu na, \textbf{nyanuny-jirri} \textbf{munuwu-yirri}.\label{BilIntu}\\
+tomorrow=\textsc{top} go-\textsc{pot=dub} \textsc{seq} return \textsc{seq} \textsc{3min.dat-all} home-\textsc{all}\\
+\glt `Tomorrow she might go home \textbf{to her home}.' }
+\zl
+
+We can then follow \citeauthor{MeakNord14} and assume that nominal strings may form noun phrases in Bilinarra; when the string is contiguous, not interrupted by a pronominal clitic and forms one prosodic unit. On the assumption that there is no evidence in favour of a functional projection in Bilinarra (see \sectref{NPDP}), we can assume that a tree like that in (\ref{Nnonc}) is appropriate for these noun phrases. For examples of other languages that warrant (partially) flat analyses of noun phrases, see for instance \citet{Simpson1991} on Warlpiri, \citet{RazaAhme11} on Urdu, \citet{Lowe15} on Old English, \citet{Borjarsetal16} on Old Icelandic and for constraints on discontinuity of Latin noun phrases see \citet{Snijders12}.
+
+
+\subsection{Headedness of noun phrases}\label{NPDP}
+
+There were early suggestions in the literature that noun phrases may in fact be headed by determiners (see for instance \citealt{Lyons77} and \citealt{Hudson84}) and a debate between \citet{Zwicky85} and \citet{Hudson87} attempted to establish criteria on the basis of which the issue could be settled. However, these criteria do not lead to an unambiguous empirical conclusion, but theoretical assumptions determine the choice. Generally, after \citet{Abney87} all noun phrases were assumed to be (at least) DPs within Chomskyan approaches, but more recently the suggestion has been made within this architecture that a DP may not be motivated for all noun phrases \citep{Boskovic08, Boskovic13}. LFG generally takes a more restrictive approach to functional categories; they are assumed when a functional feature is associated with a particular structural position (\citealt[6]{Kroeger93}, \citealt{BoPaChi99}, \citealt[92, 108]{Sadler00}). LFG's universal principles of endocentric structure-function association also state that the specifier of a functional category hosts a {\DF} (\citealt[105, 117]{BresnanEtAl2016}, see also \sectref{sec:nominal:NPgfs}), so that if a {\DF} can be found to be associated with a particular structural position, this can be used to argue in favour of a functional category (see \sectref{sec:nominal:NPdfs} for further discussion). Only one functional category is generally assumed within noun phrases, though there are some language-specific exceptions, for instance as in the analysis of Welsh by \citet{MittSadl05} and Chinese by \citet{Borjarsetal18}; for further examples, see \citet[102--103]{DLM:LFG}.\footnote{\citet{MittSadl05} say explicitly ``Determining the precise c-structure is not our main concern here.''}
+
+There has not been much discussion in the LFG literature of the headedness of noun phrases. \citet{BresnanEtAl2016} assume that English noun phrases are DPs, but without much motivation. \citet{dalrymple01} analyses them as NPs, with determiners located in specifier of NP, and this is maintained in \citeauthor{DLM:LFG} ``for simplicity'' \citeyearpar[101]{DLM:LFG}.  NP analyses for English can also be found in \citet{ChisaPayn03}, \citet{ArnoSadl14}, and \citet{Lowe15}.\footnote{However, in \citet{Lowe15} an NP-internal possessor is a DP, and the '\emph{s} is structure shared.}  \citet{BoNoSa19} include a brief discussion of the issue and conclude that there is no unambiguous evidence either way in the case of English noun phrases, but analyse them as DPs on the basis of the definiteness feature being associated with the left edge.
+
+\citet[92]{Sadler00} argues explicitly for an NP analysis of Welsh on the basis of lack of evidence for a DP. {\POSS}, which shares some properties with {\SUBJ} and hence is a {\DF}, occurs in the specifier position of NP in this analysis. However, Sadler points out in a footnote that ``the discourse-oriented functions are canonically associated with specifier of functional categories'' \citeyearpar[97]{Sadler00} and suggests an alternative DP analysis in which {\POSS} is found in the specifier of DP position. \citet[211]{Charters14} also uses the role of the specifier of a functional category in determining the headedness of noun phrases: ``These days a DP analysis is more generally assumed, is a ``universal default'' under the EMPs [Endocentric Mapping Principles] ...''. We will return to Sadler's analysis in \sectref{sample}.
+
+
+There are languages for which the marking of definiteness can be argued to provide clearer evidence of headedness. Consider the Amharic data in (\ref{AmhDP}), from \citet[197--199]{Kramer10}.
+
+\eal\label{AmhDP} Amharic
+\ex[]{\gll   bet=\textbf{u}\\
+house=\textsc{def}\\
+\glt `the house' \citep[197]{Kramer10}}
+\ex[]{\gll   t\textbari ll\textbari =\textbf{u} bet\\
+big=\textsc{def} house\\
+\glt `the big house' \citep[198]{Kramer10}}
+\ex[]{\gll   bätam t\textbari ll\textbari =\textbf{u} bet\\
+very big=\textsc{def} house\\
+\glt `the very big house' \citep[198]{Kramer10}}
+\ex[]{\gll   \textbari\textdyoghlig\textdyoghlig\textbari g bätam t\textbari ll\textbari =\textbf{u} bet\\
+really very big=\textsc{def} house\\
+\glt `the really very big house' \citep[198]{Kramer10}}
+\ex[]{\gll   lä-mist-u tamma\~n\~n=\textbf{u} {gäs'ä bahriy}\\
+to-wife-his faithful=\textsc{def} character\\
+\glt `the faithful-to-his-wife character' \citep[199]{Kramer10}}
+\ex[]{\gll   \textbari bab yä-gäddäl-ä=\textbf{w} l\textbari\textdyoghlig\\
+snake \textsc{comp}-kill.\textsc{pfv}-\textsc{3m.sg}=\textsc{def} boy\\
+\glt `the boy who killed a snake' \citep[199]{Kramer10}}
+\zl
+
+\newpage
+Here we see that the definiteness marker attaches to the first constituent. The status of the definiteness marker is problematic.\footnote{Kramer formulates her analysis within Distributed Morphology, where the distinction between affix and clitic is not directly relevant. In her analysis the element is found under D, with an indication that it is bound, but this is the case regardless of the nature of its  prosodic and morphological dependency.} The marker attaches to whatever word ends the first constituent, including nouns (\ref{AmhDP}a), adjectives (\ref{AmhDP}b--e) and finite verbs (\ref{AmhDP}f).  Following the arguments of \citet[161]{lowe2015clitic}, this freedom of attachment to in principle any word class suggests a clitic, an analysis also followed by \citet{Lyons99}, and hence we have used = in the glossing. In that case, the definiteness marker is most naturally interpreted as a D head, with a specifier position preceding it. By the structure-function association principles, the specifier position would be expected to be able to house a {\DF}, and this can indeed be argued to be the case in Amharic. In Amharic, possessors, which can be argued to have discourse-functional properties (see \sectref{GFprim} for discussion), take the shape of a PP with the preposition \emph{yä} as in (\ref{AmhPoss}), and are found in the pre-definiteness position.\footnote{As noted, the status of the definiteness marker is problematic, and besides the evidence for clitic status there is also evidence for affixal status, including the possibility for multiple definiteness marking: in noun phrases with more than one modifier, the first one is obligatorily marked, and any following modifiers are optionally marked \citep[202]{Kramer10}. \citet{BeermannEphrem07} assume affixal status within their HPSG analysis. Even if the definiteness marker is taken to be an affix, it still unambiguously marks the right edge of a constituent which can host a {\DF} function, and thus represents a specifier position. Similar distribution of \textsc{def} can be found in Balkan languages and there are a range of analyses, in part dependent on the view of the morpho-syntactic status of \textsc{def} (e.g.\ \citealt[117--120]{Sadock91}, \citealt[153--157]{Halpern95}, \citealt{DimiTomi09}, \citealt{BeOtPayn11}, \citealt{Franks15}). We will return to elements that display properties of both affix and clitic in \sectref{sample}.} The annotated tree is provided in (\ref{Amhtree}).
+
+\ea\label{AmhPoss} Amharic\\
+\gll yä=l\textbari\textdyoghlig=\textbf{u} däbtär\\
+of=boy=\textsc{def} notebook\\
+\glt `the boy's notebook' \citep[202]{Kramer10}
+\z
+
+If we apply the argument based on the relation between free word order and a flat structure conversely, and assume that lack of flexibility of word order indicates a hierarchical structure, then the tree in (\ref{Amhtree}) would be appropriate for Amharic. This is a version of the skeletal tree in (\ref{Nconf}). However, as we shall see in \sectref{sec:nominal:NPdfs}, word order may be fixed even in languages for which there is evidence in favour of a flat structure; this is unproblematic to analyse within LFG.
+
+\eabox{\label{Amhtree}
+\begin{forest}
+[DP [PP\\{(\UP\POSS)=\DOWN} [{yä-l\textbari\textdyoghlig}, roof]] [D$'$\\{\UP=\DOWN} [D\\{\UP=\DOWN} [{=u}]] [NP\\{\UP=\DOWN} [däbtär]]]]
+\end{forest}
+}
+
+
+A DP analysis of noun phrases has been proposed also for Catalan \citep{Alsina10},\footnote{This is an analysis within a lexical sharing approach.} Faroese \citep{Borjarsetal16}, German \citep{Dipper05},\footnote{Note that Dipper has a flat structure under D$'$.} Hungarian \citep{Laczko07, Laczko17},\footnote{\citet[250]{Laczko17} comments: ``when  there  is  no  need  for  a  DP  projection  from an LFG perspective, I use the NP maximal projection''.} Low Saxon \citep{Strunk05}, Old English \citep{Allen07} and Welsh \citep{MittSadl05} (compare deP for Mandarin in \citealt{Charters04}). NP analyses have been proposed for Arabic \citep{AlShaSadl09}, Chimane \citep{Ritchie16}, Hebrew \citep{Falk01actnom, Falk07, Spector09},\footnote{Though note that \citet{Falk01actnom} has a KP (case phrase) inside this NP.} Hindi \citep{Lee03}, Hungarian \citep{ChisaPayn01, ChisaPayn03}, Russian \citep{King95}, Swedish \citep{sellssao}, Tagalog \citep{Kroeger93}, Tz'utujil \citep{Duncan03}, Urdu \citep{BoBuSu08, RazaAhme11}, Vedic (and other Early Indo-Aryan varieties) \citep{Lowe17}, Welsh \citep{Sadler03, MittSadl08}, and widely for Australian languages (e.g.\ \citealt{Simpson1991, AustBres96, nordlinger1998constructive} and many more). In many of these publications, establishing the structure and category status of the noun phrases is not the main issue, so that there are varying degrees of commitment to the structure assumed.
+
+Complements of nouns are generally assumed to be the sister of N in c-struc\-ture, though as we shall see in \sectref{obl}, some argue that it is not possible to draw a clear structural distinction between complements and adjuncts. We will return to the f-structure feature of complements of nouns in \sectref{sam}. Modifying elements like APs or modifying PPs have the function {\ADJ}unct,  and can be assumed to adjoin either at phrasal or X$'$ level (see \citealt[127]{BresnanEtAl2016}, \citealt[105--114]{ButtEtAl1999}). In a DP analysis, they may attach either within the D spine or the N spine. Their position is established empirically, and there may be arguments within a particular language for attaching different types of modifiers at different levels within the noun phrase.
+
+\section{Noun phrases, \textsc{gf}s and argument structure}\label{sec:nominal:NPgfs}
+
+
+In this section we review the different grammatical functions that have been used for noun phrases and the arguments for the different approaches. We also consider how the relevant aspects of the structure-function association principles apply within the noun phrase.   
+
+While there is in general a good understanding and broad agreement on how to identify and define the grammatical functions of arguments within verb phrases and clauses (\citetv{chapters/GFs}), there are a variety of contrasting approaches to arguments within the noun phrase in LFG, and little sign of a developing consensus. We begin this discussion by considering the universal principles of endocentric structure-function association proposed by \citet[105, 117]{BresnanEtAl2016}:\footnote{In \citet{DLM:LFG}, some of these principles are modified slightly. \citeauthor{DLM:LFG} note that according to \citet{Laczko14}, Hungarian is an exception to Bresnan's claim that {\SUBJ} cannot be the complement of a lexical category. \citet[121]{DLM:LFG} further ``propose that specifier positions are filled by phrases that are prominent either syntactically or in information-structural terms. \ldots{}Syntactically prominent phrases that can appear in specifier positions in the clause are those bearing either the function {\SUBJ} or the overlay function \textsc{dis} heading a long-distance dependency. Information-structurally prominent phrases can also appear in specifier position; if they are not syntactically prominent, they may bear any grammatical function within the local clause.''}
+
+\begin{enumerate}
+	\item c-structure heads are f-structure heads;
+	\item complements of functional categories are f-structure coheads;
+	\item specifiers of functional categories are the grammatical discourse functions;
+	\item complements of lexical categories are nondiscourse argument functions or f-structure co-heads;
+	\item constituents adjoined to phrasal constituents are optionally nonargument functions. 
+\end{enumerate}
+\vspace{0.2 cm}
+
+These principles are fundamentally developed on the basis of, and exemplified using, verb phrases and clauses, but as universal principles of endocentric structure-function mapping, there is an implicit assumption that these principles should hold also for noun phrases. One explicit acknowledgement of the applicability of these principles to noun phrases is by \citet[94]{Sadler00}, who notes that her proposed annotated c-structure rules for Welsh NPs are ``fully consistent with the structure-function mapping principles for configurational languages proposed in Bresnan 2000 [2001].'' \nocite{bresnan2001lexical}
+
+Based on the current state of research, it seems that noun phrases crosslinguistically do in fact tend to conform to the structure-function association principles (but see also \sectref{sec:nominal:NPdfs}). However, this still leaves a significant degree of flexibility in how grammatical functions within the noun phrase may be analysed, as discussed in the rest of this section.
+
+%{\POSS} (or equivalent) is obvious \textsc{gf} within the noun phrase and it is associated with discourse function related to topicality \citep{Rosenbach02}
+
+\subsection{Types of nouns involving possessors (in the broadest sense)}
+
+We can distinguish at least three broad categories of noun: common nouns (e.g.\ \emph{dog}, \emph{book}), %KBcomm: `sortal nouns' \citep{Barker97}
+relational nouns (e.g.\ \emph{sister}, \emph{friend}\/), and nouns derived from verbs (e.g.\ \emph{arrival}, \emph{destruction}, \emph{playing} etc.). Common nouns can unproblematically, and commonly do, occur without any dependent argument or possessor phrase, though they can, of course, have possessors. Relational nouns differ in that they seem to entail the existence of an entity to which the referent of the noun bears the relevant relation; and this entity is regularly expressed as a possessor phrase within the relational noun phrase. There are different types of nouns derived from verbs, and it is not always easy to distinguish the different types cross-linguistically (see amongst others \citealt{Comrie76an}; \citealt{Grimshaw90};
+\citealt{KoptTamm93, KoptTamm02an}).
+
+But in different ways and to different degrees, all nouns derived from verbs necessarily bear a relation to a lexeme which has an argument structure (i.e.\ the verb), and thus can or do entail the existence of other participants corresponding to the arguments of the base verb, and may also inherit some of the selection properties of the base verb.
+
+In the case of nouns derived from verbs, questions of nominal argument structure intersect with questions of verbal argument structure, and so it is here that the theoretical implications of the similarities and/or differences between nominal and verbal argument structure are most significant (for verbal argument structure and its mapping to f-structure, see \citetv{chapters/Mapping}). Within LFG, this was first explored by \citet{Rappaport83}. In event nominalizations, for instance, noun phrases may contain two phrases that bear a grammatical relation in a way that closely parallels that of a corresponding clause:
+
+\newpage
+\eal\label{ex:seawater}
+\ex[]{The sea water constantly hit the loose stones on the beach.}
+\ex[]{the sea water's constant hitting of the loose stones on the beach}
+\zl
+
+
+But there are a wide variety of views on the necessary inheritance of verbal argument structure by derived nouns. At one extreme, \citet[135]{Rappaport83} assumes that ``in the unmarked case, a derived nominal inherits the argument structure of its related verb''. At the other, \citet[15]{Lowe17} argues that a derived noun like \emph{destruction} (in e.g.\ \emph{the destruction of the city by the invaders}) has no syntactic or semantic arguments, the agent and patient relations of the prepositional dependents being ``pragmatically inferrable''. In between these two positions, \citet[46]{ButtEtAl1999} treat phrases like \emph{of the city} and \emph{by the invaders} as adjuncts (like \citeauthor{Lowe17}) but assume there is a dependency relation between the head noun and its modifiers at the level of semantics.
+
+A key element of this debate is the greater optionality of the arguments found with derived nominals, compared with the obligatoriness of the arguments of corresponding verbs. But there is crosslinguistic variation here: \citet{Laczko95,Laczko00} shows that argument realization is obligatory for Hungarian complex event nominals, and he therefore naturally adopts an analysis involving full verbal argument structure inheritance by the derived nominals.
+
+
+
+\subsection{\textsc{gf}s used for primary arguments}\label{GFprim}
+
+Many languages have a special marking for what we will call the primary argument of a noun; this will often be a possessor, or may be a thematic argument in the case of nouns derived from verbs. Some languages have more than one means of marking the arguments of nouns, but if so there is usually one means of marking which is the more common and basic, and which is thus in a second sense the more primary means of marking arguments of nouns. In English, this primary marking is the so-called genitive or possessive \emph{'s} marker. Much of the following discussion is based on the English possessive \emph{'s}, but the principles apply more widely to primary markers of arguments of nouns in other languages.
+
+There are three main approaches to the analysis of primary-marked possessors in noun phrases. The most common assumption is that such possessors fill the grammatical function {\POSS} \citep[e.g.][]{Rappaport83, Sadler00, falk2001lexical, bresnan2001lexical, BresnanEtAl2016, Laczko00, Laczko07, Laczko17, Strunk05, Charters14, Lowe17, DLM:LFG}. A few authors, including \citet{Williford98}, \citet{ButtEtAl1999}, and \citet{dalrymple01}, treat these possessors rather as {\SPEC}. However, the function {\SPEC} is also widely used for the function of determiners and/or quantifiers, and as noted by \citet{Sadler00} and \citet{Falk02Poss} this is problematic for languages in which determiners and possessors (e.g.\ Romanian) and/or quantifiers and possessors (e.g.\ English) can co-occur. On this basis \citet[83--84]{DLM:LFG} argue that {\SPEC} should be restricted to quantifiers; instead they use {\POSS} for possessors and features such as \textsc{def} and \textsc{deixis} for articles and demonstratives.\footnote{It
+    should be pointed out here that quantifiers have not been fully explored from a c-structure perspective. They are sometimes assumed to head a QP, but without detailed argumentation (e.g.\ \citealt{wescoat2007}, \citealt[211--212]{BresnanEtAl2016}). A referee suggests that one reason form and function of quantifiers have not been so well-explored in LFG is that the distinction is either trivial or problematic for these elements. However, \citet{Dipper05} is an example of how the distinction can be made; she provides detailed argumentation that elements in German which function as quantifiers in fact belong to two different c-structure categories, some sharing properties with adjectives and some with determiners. Note that beyond LFG, \citet{PaynHudd02} do distinguish between the category `determinative', to which quantifiers belong, and the function ``determiner''. The semantics of quantifiers has been well explored in LFG; see \citet[302--312]{DLM:LFG}.
+}
+
+\citet{ChisaPayn01, ChisaPayn03} argue that primary possessors have the function {\SUBJ}. The close relation between possessors and the {\SUBJ} function is clear in the case of nouns derived from verbs (cf.\ \ref{ex:seawater}), and is acknowledged also by some of those who treat possessors as {\POSS}. For example, \citet[106]{Sadler00} defines {\POSS} as a ``{\SUBJ}ective'' function; similarly, \citet[358]{Laczko07} refers to the ``subject-like nature of the possessor''. Like {\SUBJ}, {\POSS} includes discourse-functional properties, and may be associated with topicality \citep{Rosenbach02}; see further \sectref{sec:nominal:NPdfs}.
+
+
+In some sense, {\POSS} can be seen as the nominal equivalent of {\SUBJ}, the most basic, most common, and semantically most variable verbal argument function. Yet there are important differences between the two. For example, expletives can fill {\SUBJ}, but cannot be possessors in English:\footnote{The examples are taken from  \citet[315]{BresnanEtAl2016}. A referee points out that the noun phrase status of the constituent built around \emph{appearing} in (\ref{reindeer1}) and (\ref{reindeer2}) is controversial, and suggests that using \emph{tend} and \emph{tendency} in examples (\ref{ExplPoss1}) and (\ref{ExplPoss2}) would be more convincing.}
+
+\eal\label{ExplPoss1}
+\ex[]{There appears to be a reindeer on the roof.}
+\ex[*]{There's appearing to be a reindeer on the roof is an illusion.}\label{reindeer1}
+\zl
+
+\eal\label{ExplPoss2}
+\ex[]{It appears that there's a reindeer on the roof.}
+\ex[?]{Its appearing that there's a reindeer on the roof is an illusion.}\label{reindeer2}
+\zl
+
+ {\SUBJ} is generally assumed to be associated with specifier of IP, or to be morphologically marked as a {\SUBJ} (or both);  {\POSS} is assumed to be associated with a broad range of positions crosslinguistically.\footnote{\citet[209]{Charters14} sums up: ``Possessors have been said to occur in Spec NP \citep{Sadler00, Charters04, Laczko07, Lodrup11pp}; Spec DP/FP \citep{Charters04, Strunk05}; adjoined to NP \citep{ChisaPayn01}; adjoined to N \citep{Lodrup11pp}, and in the complement of N \citep{ChisaPayn01}.''} The semantic relation between a {\POSS} and its possessum is considerably more flexible than that between a {\SUBJ} and its verbal head, and there does not appear to be a nominal equivalent of the Subject Condition (\citetv{chapters/Mapping}), for example.\footnote{In fact, arguments of nouns are rarely obligatory, with only a few possible exceptions in English (like \emph{behalf} and \emph{sake}). To account for the obligatory realization of arguments with complex event nominals in Hungarian, \citet{Laczko95} proposes a nominal equivalent to the subject condition, namely the ``{\POSS} condition''.}  Thus there does seem to be some justification for distinguishing {\SUBJ} from the grammatical function of possessors.
+
+
+{\SUBJ} is a governable grammatical function, and so must be subcategorized for. The status of {\POSS} is arguable: some authors treat {\POSS} as an argument function, others as a non-argument function, and others as both. For \citet[97]{Sadler00}, {\POSS} is a non-argument function for common nouns and an argument function for deverbal nouns, this is illustrated in (\ref{Welsharg}). 
+
+\ea\label{Welsharg} Welsh
+\ea{\catlexentry{llyfr}{N}{`book\arglist{~}(\UP{\sc poss})'} (common noun)}
+\ex{\catlexentry{disgrifiad}{N}{`description\arglist{(\UP{\sc poss})}'} (deverbal noun)}
+\z\z
+
+\citet[315--319]{BresnanEtAl2016}  assume a lexical predication template which converts nouns, including deverbal nouns, into predicates with an optional {\POSS} argument:\footnote{Similarities and differences between {\POSS} and {\SUBJ} are referred to but {\POSS} is not classified with respect to argument or discourse function. For verbal gerunds like \emph{Mary's frequently visiting Fred} {\POSS} is equated to {\SUBJ}.}
+
+\eal
+\ex[]{\catlexentry{horse}{N}{(\UP{\sc pred}) = `horse\arglist{~}'}\\
+`horse\arglist{~}' $\Rightarrow$ `horse-of\arglist{(\UP \sc poss)}'}
+\ex[]{\catlexentry{singing}{N}{(\UP{\sc pred}) = `singing\arglist{(\UP\OBLROLE{of})}'}\\
+`singing\arglist{(\UP\OBLROLE{of})}' $\Rightarrow$ `singing-of\arglist{(\UP{\sc poss}) (\UP\OBLROLE{of})}'}
+\zl	
+	
+ \citet{Laczko07} proposes a slightly different lexical redundancy rule which converts a noun without argument structure into a one-place ``raising'' predicate, and a relational noun to an ``equi'' predicate:\footnote{The templates used by both Bresnan and Laczk\'o have the effect of adding an optional argument. For an alternative way of capturing the optionality of arguments of nouns, see \citet[293--294]{Lowe17} with reference to \citet{AsudGior12, GiorAsud12}, and \citet{asudeh2014meaning}.}%uniform analysis of relational and non-relational
+ 
+\ea Hungarian
+\ea {\catlexentry{\makebox[4em][l]{kalap$_1$}}{N}{`{\sc hat}\arglist{~}'} $\Rightarrow$\\
+\catlexentry{\makebox[4em][l]{kalap$_2$}}{N}{`{\sc hat}\arglist{(\UP{\sc xcomp})}(\UP{\sc poss})'\\
+(\UP{\sc poss}) = (\UP{\sc xcomp poss})}}
+\ex{\catlexentry{\makebox[4em][l]{h\'ug$_1$}}{N}{`{\sc younger-sister-of}\arglist{$\theta$}'} $\Rightarrow$\\
+\catlexentry{\makebox[4em][l]{h\'ug$_2$}}{N}{`{\sc younger-sister-of}\arglist{(\UP{\sc poss})(\UP{\sc xcomp})}'\\
+(\UP{\sc poss}) = (\UP{\sc xcomp poss})}}
+\z\z
+	
+\citet[804--805]{Payneetal13} argue that no clear distinction can be drawn between inherently relational and non-relational nouns, they propose to treat all nouns grammatically as nonrelational until combined with a dependent.
+
+
+\subsection{Secondary argument marking}
+\label{sam}
+
+In many languages the primary means of marking a possessor or other argument of a noun can only mark one such argument, and there is a secondary means of marking arguments which can be used alongside, or sometimes instead of, the primary marking. This is not the case in all languages, for example in Estonian the genitive case is the primary means of marking possession, but two arguments of a noun can be marked in the genitive:
+
+\eal Estonian  \citep[732]{KoptTamm02an}
+\ex[]{\gll Jaan-i Inglisma-a kaart\\
+Jan-\textsc{gen.sg} England-\textsc{gen.sg} map.\textsc{nom.sg}\\
+\glt `Jan's map of England'}
+\ex[]{\gll Peetr-i maja-de ehita-mine\\
+Peter-\textsc{gen.sg} house-\textsc{gen.pl} build-\textsc{an.nom.sg}\\
+\glt `Peter's building (of) houses'}
+\zl
+
+In contrast, in English, as illustrated by the translations above, any second argument of a noun must be expressed by means of a prepositional phrase, and this can also be the case for single arguments of a noun. This can include possessors, marked in English with \emph{of}. 
+
+The grammatical function of such secondary argument phrases, such as English \emph{of} possessors, is also a matter of debate. Such possessors are sometimes treated as {\ADJ}, e.g.\ by  \citet{ButtEtAl1999}, \citet{Sadler00}, and \citet{Lowe17}, sometimes as an \OBLROLE{of}, e.g.\ by \citet{Rappaport83} and \citet{BresnanEtAl2016}.\footnote{\citet{Laczko95} permits English \emph{of} possessors to realize either {\OBLTHETA} or {\POSS}.
+%\citet[37]{Lowe17} says that optional prepositional dependents must be treated as adjuncts, but a few pages later represents an \emph{of} possessor phrase as an \textsc{obl}$_\theta$ \citeyearpar[41]{Lowe17}.
+} We consider the major grammatical functions associated with secondary argument marking in the following subsections.
+
+
+
+
+\subsubsection{Secondary argument marking and {\OBJ}}
+
+It is significant that while the close relation between {\POSS} and {\SUBJ} is widely recognized, and the two are sometimes conflated, a clear distinction is always maintained between secondarily marked possessor phrases and the {\OBJ} function, despite, for example, the positional similarity between \emph{of} possessors and objects (as seen in (\ref{ex:seawater})). It is taken as a strong, if not definitional, generalization, that nouns cannot take {\OBJ} \citep{bresnan1989locative, BresMosh90,BresMuga06, ChisaPayn01, ChisaPayn03, Lowe17, Lowe19b}. \citet{Lowe17,Lowe19b} argues that noun phrases which appear to include object dependents are in fact mixed projections, incorporating a verbal projection which licenses the object.
+
+\citet{ChisaPayn01, ChisaPayn03} propose a specialized nominal argument function \textsc{ncomp}/\textsc{adnom}, which is intended to capture the relevant similarities between the secondary possessor function and {\OBJ}, while keeping them distinct. In argument structure terms, \textsc{ncomp} is, like {\SUBJ} and {\OBJ}, an unrestricted function [$-r$]. Like {\SUBJ} and unlike {\OBJ}, however, \textsc{ncomp} is also [$-o$] (for an explanation of these features, see \citetv{chapters/Mapping}). 
+
+As with {\POSS} and {\SUBJ}, secondarily marked possessors are considerably less semantically restricted than any corresponding verbal argument function (including {\OBJ}). For example, secondarily marked possessors differ from clausal {\OBJ} in that they can be mapped to Agent:
+
+\eal
+\ex[]{the love of a good woman}
+\ex[]{the poor performance of the team}
+\zl
+
+Moreover, primary and secondary possessors are unrestricted to different degrees.  \citet[473--478]{PaynHudd02} argue that the set of semantic relationships that can be expressed by an \emph{of}-phrase in English is a proper superset of those that can be expressed by an \emph{'s} phrase. For example, genitive {\POSS} has to be affected: *\emph{history's knowledge} vs.\ \emph{knowledge of history}. The following examples, from \citet[809]{Payneetal13}, illustrate how widely the relation between a prepositional possessor and its head can (and must) be interpreted in English.
+
+
+\eal
+\ex[]{David Peace's Red Riding Quartet, which spins a fictional plot alongside \textbf{the murders of the Yorkshire Ripper}, is all the more potent for its true crime background.}
+\ex[]{One of two sisters who bombed the Old Bailey in the 1970s is in custody today being questioned about \textbf{the murders of two soldiers} in Northern Ireland in March.}
+\ex[]{Paul Temple is part of the era between \textbf{the upper class murders of Agatha Christie} and \textbf{the gritty murders of today}.}
+\ex[]{The driving rhythms of London's fiercely competitive cat-walks may seem a thousand miles away from \textbf{the cosy cottage murders of Miss Marple}, but they provide a perfect environment for the more chilling edge of Agatha Christie's short stories.}
+\zl
+
+
+
+
+\subsubsection{Secondary argument marking and {\ADJ}}
+
+\citet[94]{Sadler00} claims that ``there are several reasons for believing that PP dependents of nouns do not map to complement functions''. She analyses PP dependents of nouns in Welsh as {\ADJ} because they show relatively free word order with respect to each other, but are fixed with respect to a possessor DP/NP \citeyearpar[94--97]{Sadler00}.  The argument to some extent works also for English; in the following examples, the \emph{of}-possessor phrase follows an optional \emph{by}-phrase, even when the latter is heavy, as in (\ref{Flegel}).\footnote{The example in (\ref{Flegel}) is taken from \citet[1379]{Flegel02}.} 
+
+\eal
+\ex[]{the description by the victims of their attacker}
+\ex[]{the description by the surgeon, Sir Zachary Cope, author of a highly regarded monograph on the early diagnosis of the acute abdomen, of his own experience with cholecystitis} \label{Flegel}
+\zl
+
+\subsubsection{Secondary argument marking and \textsc{obl}}\label{obl}
+
+
+Rather than {\ADJ},  \citet[135--136]{Rappaport83} considers {\OBLTHETA} to be the best analysis of postnominal preposition phrases in English, on the grounds that postnominal noun phrases always ``appear as the object of a preposition which reflects its thematic role.'' Possessive \emph{of}-phrases are assumed to be \OBLROLE{theme} explaining the restriction on \emph{of}-phrases with some deverbal nouns:
+
+
+
+\eal
+\ex[]{Randy instructed Deborah to meet him at two.}
+\ex[*]{Randy's instruction of Deborah to meet him at two}
+\ex[]{Randy's instructions to Deborah to meet him at two}
+\zl
+
+\eal
+\ex[]{John fled the city.}
+\ex[*]{John's flight of the city}
+\ex[]{John's flight from the city}
+\zl
+
+\ea
+*the destruction of the Romans (with \emph{the Romans} as Agent)
+\z
+
+Another argument in favour of {\OBLTHETA} over {\ADJ} is the treatment of deverbal nouns from verbs like \emph{put} which subcategorize for both {\OBJ} and {\OBLTHETA}. If the verb \emph{put} requires {\SUBJ}, {\OBJ} and \OBLROLE{loc}, does the gerund \emph{putting} require {\POSS}, \OBLROLE{loc} and {\ADJ}? Given that the semantic restrictions on the locational phrase remain in the deverbal noun phrase, \OBLROLE{loc} seems reasonable; but then it seems odd to assume that the {\OBJ} of the verb is demoted to {\ADJ}, moving below the \OBLROLE{loc} argument on the grammatical function hierarchy (\citetv{chapters/GFs}). It would mean that in examples such (\ref{putorder}), the {\ADJ} would naturally precede a subcategorized \textsc{obl}.\footnote{The examples in (\ref{putordera}) and (\ref{putorderb}) are from \url{http://edition.cnn.com/TRANSCRIPTS/1702/06/nday.06.html} (accessed 6 July 2021) and \url{https://www.goodreads.com/review/show/1326602940} (accessed 6 July 2019), respectively.}
+
+
+ \eal\label{putorder}
+ \ex[]{All right, Republicans are denouncing President Donald Trump because of his apparent defense of Russian President Vladimir Putin and \textbf{his putting of the United States and Putin's Kremlin on moral equivalent grounds}.}\label{putordera}
+ \ex[]{her constant placing of the Hills on a pedestal}\label{putorderb}
+ \zl
+
+On the other hand, \citet[795]{Payneetal13} argue that ``the empirical facts show the distinction between complements and modifiers of nouns to be unfounded. There is no rational way to motivate drawing the distinction between them\ldots{} We assume no structural differentiation of the phrases formerly classified as either complements or adjuncts: all nouns are treated grammatically as nonrelational until they combine with a dependent.'' \citeauthor{Payneetal13}'s analysis is not formalized within LFG, but correlates with recent LFG work by \citet{Przep16,Przep17a}, who argues against the argument vs.\ adjunct distinction. If this is accepted, the {\OBLTHETA} vs.\ {\ADJ} question with respect to noun phrase dependents is moot.
+
+
+
+
+
+In some languages, the distribution of primary and secondary argument marking differs from the patterns seen above in English. As shown by \citeauthor{Laczko95} (\citeyear{Laczko95,Laczko00}; see also \citealp{Laczko07,Laczko17}), event nominalizations in Hungarian require the theme argument to be expressed as either a dative or a nominative possessor, whereas the agent must be treated as an adjectivalized postpositional modifier. There is therefore no mapping in Hungarian equivalent to the mapping involved in the English \emph{Edith's smashing of the vase}.
+
+For \citet{Laczko00}, the Hungarian linking pattern for event nominals is essentially ergative: the {\SUBJ} of an intransitive event nominal and the {\OBJ} of a transitive event nominal are mapped to {\POSS}, while the {\SUBJ} of a transitive event nominal is mapped to a \emph{by}-phrase. 
+
+\subsection{Sample analyses}\label{sample}
+
+It will have become clear from \sectref{GFprim} and \sectref{sam} that there are different views on what grammatical functions are available within the noun phrase and what their positions are within the c-structure. Here we will illustrate with two analyses of English noun phrases based on different assumptions, and one of Welsh, which shows interestingly different properties. 
+
+Based on some of the assumptions with respect to c-structure and noun-phrase internal grammatical functions, we would get the annotated tree in (\ref{Englishc}) for the noun phrase in (\ref{Engfortree}), with the associated f-structure in (\ref{Englishf}), where we have simplified the {\PRED} values for the \OBLROLE{of} and the {\ADJ}.
+
+\ea\label{Engfortree}
+the commission's discussion of the issue last week
+\z
+
+
+\ea \label{Englishc}\small
+\begin{forest}
+[DP [DP\\{(\UP\POSS)=\DOWN} [{the commission's}, roof] ]
+    [D$'$\\{\UP=\DOWN}   [NP\\{\UP=\DOWN} [NP\\{\UP=\DOWN} [N\\{\UP=\DOWN} [discussion]]
+                    [PP\\{(\UP\OBLTHETA)=\DOWN} [{of the issue}, roof]]
+                ]    
+                [DP\\{\DOWN $\in$ (\UP{\ADJ})} [{last week}, roof]]
+            ]
+    ]
+]
+\end{forest}
+\z
+
+\eabox{\label{Englishf}
+\avm[style=fstr]{
+[ pred &  `discussion\arglist{(\POSS), \OBLROLE{of}}'  \\
+\OBLROLE{of} & [ pred & `issue' ] \\
+\POSS & [ pred & `commission' \\
+                 def & $+$ ] \\
+\ADJ & \{ [ pred & `last week' ]\} ]
+}
+}
+
+
+
+In (\ref{Englishc}) and (\ref{Englishf}) we have opted to use the functions \POSS\ and \OBLTHETA\ for the primary and secondary arguments, respectively, and assumed that these are optional arguments of \emph{discussion}. With respect to c-structure, we have assumed that a distinction in attachment can be made between the complement \emph{of the issue} and the adjunct \emph{last week}, though we recognise that the arguments for this distinction are by no means unambiguous. There is no determiner element present in this analysis and hence the head of the DP is eliminated by what is generally referred to as the Principle of Economy of Expression (see \citetv{chapters/CoreConcepts} for a summary, for different versions, see \citealt[90--2]{BresnanEtAl2016} and \citealt{Toivonen:NonProj}, and for a critical discussion see \citet{Dalrympleetal2015}). An alternative, if \emph{'s} is analysed as a clitic, is to assume that it fills the D position (cf.\ similar assumptions for the Amharic definiteness marker in (\ref{Amhtree})), and this could then also account for the complementary distribution between the determiner and the {\POSS}. However, \citet{lowe2015clitic} provides arguments against this type of analysis and instead provides a lexical sharing analysis in which \emph{'s} can be analysed as both an affix and a clitic. The lexical sharing analysis makes use of the dimension representing the string of words, the s-string, which is mapped to the hierarchical c-structure. Under certain circumstances, one element in the s-string can be associated with two nodes in the c-structure, and in this case \emph{'s} is mapped both to the N and the D head of the possessor. In this analysis, though possessors are of category DP, non-possessor noun phrases are assumed to be of the category NP, where the specifier position can be filled either by a non-projecting D (represented as \NONPROJ{D} in LFG)
+\bookorchapter{(\citetv[\sectref{sect:xbar}]{chapters/CoreConcepts}),}{(\citetv[§2.1]{chapters/CoreConcepts}),}
+or by a possessor DP, thereby accounting for the complementarity of possessors and determiners. The analysis is best demonstrated with an example where there is evidence of affix status, for instance where the \emph{'s} is unexpressed because some property of the final word of the phrase it attaches to, as in (\ref{EngLS}), where \emph{species} has the irregular ``possessive'' form \emph{species'}. The annotated tree capturing the lexical sharing analysis is found in (\ref{EngLStree}).
+
+\newpage
+\ea\label{EngLS}
+the species' immunity
+\z
+
+\ea\label{EngLStree}
+\begin{forest}
+for tree={s sep=17mm, inner sep=0, l=0}
+[NP [DP\\{(\UP\POSS)=\DOWN} [NP\\{\UP=\DOWN} [D\\{(\UP\SPEC)=\DOWN} [the]]
+            [N$'$\\{\UP=\DOWN} [N\\{\UP=\DOWN} [species', s=10mm, anchor=west, name=sharedN]
+                                ]
+            ]
+        ]
+        [D\\{\UP=\DOWN}, name=sharedD]
+    ]
+    [N$'$\\{\UP=\DOWN}   [N\\{\UP=\DOWN} [immunity]
+            ]
+    ]
+]
+\draw(sharedD) to (sharedN);
+\end{forest}
+\z
+
+
+\citet{Sadler00} provides an LFG analysis of Welsh noun phrases that she contrasts with the head movement analysis proposed by \citet{Rouveret1994}. Sadler assumes an NP structure, with the function {\POSS} found in the specifier of NP position.\footnote{Note that \citet[97, fn 17]{Sadler00} points out that if one accepts the claim that discourse-oriented functions such as {\POSS} are found in the specifier of a functional category, then a DP analysis of Welsh noun phrases would be appropriate, but states that the analysis developed in the paper can be recast in a DP structure.} This analysis captures the complementarity of a possessor and the definite determiner, which is a property also of Welsh, and it accounts for the definiteness of the noun phrase as a whole. The definiteness of a noun phrase containing a possessor is determined by the presence of the definite article \emph{y}(\emph{r}) within the possessor, and if there are nested possessors, within the most deeply embedded possessor. The complementarity is assumed to be a property of the definite article. The first equation in the lexical entry in (\ref{WelshDef}) captures the complementarity and the second the definiteness feature.
+
+\ea\label{WelshDef}
+\lexentry{\emph{y}(\emph{r})  `the'}{ $\neg$ (\UP\POSS)\\
+ (\UP\DEF) = +}
+\z
+
+Consider the noun phrase in (\ref{Welsh}), where we have three layered possessors (note that `bank' in `bank manager' is realized as a possessor in Welsh). 
+
+\newpage
+\ea\label{Welsh}Welsh\\
+\gll cath merch rheolwr y banc\\
+cat daughter manager the bank\\
+\glt `the bank manager's daughter's cat'
+\z
+
+The annotated c-structure tree assumed by \citet[101]{Sadler00} and the associated f-structure can be found in (\ref{Welshc}) and (\ref{Welshf}). Here we see how a possessor is annotated as sharing its {\DEF} feature with its daughter, ensuring that the definiteness of the most deeply embedded possessor determines the definiteness of the noun phrase as a whole. In (\ref{Welshf}), we also see illustrated the difference in argument status of {\POSS} between common (\emph{cat} and \emph{manager}) and relational (\emph{daughter}) nouns illustrated for common and deverbal nouns in (\ref{Welsharg}).
+
+
+
+\ea \label{Welshc}
+\begin{forest}
+[NP [N$'$\\{\UP=\DOWN} [N\\{\UP=\DOWN} [cath] ]] 
+    [NP\\{(\UP\POSS)=\DOWN}\\{(\UP\DEF)=(\DOWN\DEF)} 
+        [N$'$\\{\UP=\DOWN}  [N \\{\UP=\DOWN} [merch]
+                            ]
+        ] 
+        [NP\\{(\UP\POSS)=\DOWN}\\{(\UP\DEF)=(\DOWN\DEF)}
+            [N$'$ \\{\UP=\DOWN} [N \\{\UP=\DOWN} [rheolwr]
+                                ]
+            ]
+            [DP\\{(\UP\POSS)=\DOWN}\\{(\UP\DEF)=(\DOWN\DEF)} 
+                [D\\{\UP=\DOWN} [y \\{(\UP\DEF)=+}]
+                ]
+                [NP\\{\UP=\DOWN} [banc]]
+            ]
+        ]
+    ]
+]
+\end{forest}
+\z
+
+\eabox{\label{Welshf}
+\avm[style=fstr]{
+[ pred &  `cat\arglist{~}(\UP\POSS)'  \\
+def & $+$ \\
+\POSS & [ pred & `daughter\arglist{(\UP\POSS)}' \\
+                 def & $+$ \\ 
+\POSS & [ pred & `manager\arglist{~}(\UP\POSS)' \\
+                def & $+$ \\
+                \POSS & [ pred & `bank' \\
+                 def & $+$ ] ] ] ]
+}
+}
+
+
+\section{Noun phrases and ``discourse functions''}\label{sec:nominal:NPdfs}
+
+In \sectref{sec:nominal:NPgfs}, we referred to the principle of structure-function association, which states that the specifier of functional categories houses discourse functions. This does not, of course mean that this is the only position where {\DF}s can occur (see for instance \cite{Laczko14}, who provides evidence for a {\DF} in the specifier of VP for Hungarian).  Though noun phrases are unlikely to allow the same range of grammatical discourse functions as clausal constituents, languages may have positions reserved for emphasis or contrastive focus within the noun phrase, and in what follows we will use {\DF} in its broadest sense as any information-structurally marked position (\citetv{chapters/InformationStructure}).
+
+Babungo (Grassfields, Benue-Congo) has radically head-initial noun phrases. The examples in (\ref{BabHI}) illustrate this for a range of elements.\footnote{\textsc{pst2} and \textsc{pst4} refer to different past tense markers.}
+
+
+\eal\label{BabHI} Babungo
+\ex[]{\gll   k\'a w\^{i}\\
+money that\\
+\glt `that money' \citep[73]{Schaub85}}
+\ex[]{\gll   {y\'ilw\'a\ng} t\^ee\\
+hammers five\\
+\glt `five hammers' \citep[74]{Schaub85}}
+\ex[]{\gll   \ng g\'a kw\`al\`\textschwa\\
+antelope big\\
+\glt `a big antelope' \citep[72]{Schaub85}}
+\ex[]{\gll   t\'\textschwa s\`aw t\'{\={ə}}\\ 
+pipes your\\
+\glt `your pipes' \citep[72]{Schaub85}}
+\ex[]{\gll   {gh\'\textbari} $^{!}$w\'ee\\
+loaf child\\
+\glt `the loaf of the child' \citep[76]{Schaub85}}
+\ex[]{\gll   w\v{e}embw\=a {f\'a\ng} t\v{i}i wi {s\'\textbari} {s\'a\ng} (\ng w\'\textschwa)\\
+child who father his \textsc{pst2} beat.\textsc{pfv} him\\
+\glt `a child whom his father had beaten' \citep[34]{Schaub85}}
+\ex[]{\gll   sh\'uu \ng \`ii w\'uumb\v{a} w\=i\\
+mouth house friend his\\
+\glt `the door of his friend's house' \citep[76]{Schaub85}}
+\zl
+
+Babungo has a number of elements indicating emphasis. The elements \emph{\ng k\`ee} and \emph{sh\`e\textprimstress}, which can be associated with noun phrases as in (\ref{BabEA}), are described as emphasis adverbials. However, since these can also modify PPs, A(P)s and Adv(P)s, we can assume they are external to the noun phrase.
+
+\eal\label{BabEA} Babungo
+\ex[]{\gll   \ng k\`ee \ng k\'aw k\=a\ng\\
+very chair my\\
+\glt `my own chair' \citep[74]{Schaub85}}
+\ex[]{\gll   {sh\`e\textprimstress} \ng k\'aw k\'\textschwa bw\=\textschwa\\
+only chair bad\\
+\glt `only a bad chair' \citep[74]{Schaub85}}
+\zl
+
+More relevant to our exploration of {\DF}s within the noun phrase are the emphatic forms of possessors and demonstratives, which precede the noun, as illustrated in (\ref{BabEPD}).\footnote{Emphatic demonstratives may also follow the noun \citep[73]{Schaub85}.}
+
+\eal\label{BabEPD} Babungo
+\ex[]{\gll  y\'i\ng k\'ii t\={\textbari}\\
+that.\textsc{emph} tree\\
+\glt `that particular tree' \citep[73]{Schaub85}}
+\ex[]{\gll   {nt\v\textbari\textbari} t\'\textschwa s\'aw\\
+your.\textsc{emph} pipes\\
+\glt `your own pipes' \citep[73]{Schaub85}}
+\zl
+
+There is also a negation focus element \emph{t\v{u}u}, which may precede the head noun as in (\ref{BabNeg}).
+
+\eal\label{BabNeg} Babungo
+\ex[]{\gll  t\v{u}u {w\`\textschwa} {mù\textprimstress} (n\`e k\'ee lùu {sh\'\textopeno} m\=e)\\
+even person one \textsc{pst4} \textsc{neg} be there \textsc{neg}\\
+\glt `Not even one person was there.' \citep[75]{Schaub85}}
+\ex[]{\gll   ({\ng w\'\textschwa} {n\`\textschwa} k\'ee {k\`\textopeno}) t\v{u}u f\'a (sh\'ee m\=e)\\
+he \textsc{pst4} \textsc{neg} give.\textsc{pfv} even thing to.me \textsc{neg}\\
+\glt `He didn't give me anything at all.' \citep[75]{Schaub85}}
+\zl
+
+As shown in (\ref{BabCoEA}), the emphasis adverbials, which we hypothesize occur outside the noun phrase, can co-occur with emphatic possessors and demonstratives.
+
+
+\eal\label{BabCoEA} Babungo
+\ex[]{\gll {sh\`e\textprimstress} y\'i\ng k\'ii \ng k\'aw \label{emphD}  \\
+only that.\textsc{emph} chair\\
+\glt `only that particular chair'  \citep[77]{Schaub85}}
+\ex[]{\gll {sh\`e\textprimstress} {\ng k\v{a}\ng} \ng k\'aw  k\^i\\
+only  my.\textsc{emph} chair that\\
+\glt `only that chair which is mine' \citep[77]{Schaub85}}
+\zl
+
+An unfocused demonstrative and an unfocused possessor can co-occur (\ref{BabuDP}), as can an focused possessive and an unfocused demonstrative (\ref{BabuPD}). 
+
+\eal Babungo
+\ex[]{\gll \ng k\'aw {k\={a}\ng} k\^i\label{BabuDP}\\
+chair my that\\
+\glt `that chair of mine' \citep[77]{Schaub85}}
+\ex[]{\gll {\ng k\v{a}\ng} \ng k\'aw k\^i\label{BabuPD}\\
+my.\textsc{emph} chair that\\
+\glt `that chair which is mine' \citep[77]{Schaub85}}
+\zl
+
+However, an emphatic demonstrative and an emphatic possessive cannot co-occur.\footnote{Emphatic demonstratives cannot co-occur with any possessor.} Similarly, the emphatic negative \emph{t\v{u}u} cannot co-occur with either the emphatic demonstrative or the emphatic possessive. The examples in (\ref{BabCoEA}) indicate that there is no general restriction on two emphatic elements being associated with the same noun phrase, so we can assume that the constraint that rules out the co-occurrence of the emphatic demonstrative and the emphatic possessive or \emph{t\v{u}u} is a noun phrase internal structural constraint. In other words, there appears to be one unique dedicated information-structurally privileged position within the noun phrase. By structure-function mapping, we might expect this to be the specifier of a functional projection, and hence for the tree in (\ref{Nconf}) or (\ref{Nponc}) to be appropriate. However, there is no other obvious evidence of a functional projection. There is no article in Babungo; there is what is described as an ``anaphoric demonstrative adjective''\citep[97]{Schaub85}, but its position would not be taken as evidence of it being a projecting D. Babungo has a strict ordering within the noun phrase: Head noun > A > Poss > Nom > Dem > Q > PP > RelC \citep[77]{Schaub85}, but no evidence of a hierarchical structure.\footnote{The only exceptions involve obligatory possession (inalienable and kinship), which occur between the head noun and the A .} Since freedom of word order is generally taken as one piece of evidence in favour of a flat structure, in \sectref{NPDP} we referred to the possibility of using the criterion conversely, to assume that strict word may indicate a hierarchical structure. However, the interpretation of the Babungo data that we have argued for here indicates that word order can be strict even when there is no other evidence of hierarchical structure. Such non-hierarchical ordering restrictions can be accounted for within LFG by means of \textsc{linear precedence rules} \citep[144--145]{DLM:LFG}. However, this is not something that has been extensively explored in the LFG literature. Interestingly, in contrast to Babungo, which is head-initial and can be argued to have an initial information-structurally priviliged position, Ingush (Northeast Caucasian) has consistently head-final noun phrases and has an information-structurally privileged post-nominal position \citep{Nichols11}, so in a sense provides a mirror image of Babungo. 
+
+We see evidence, then, that noun phrases in different languages may include positions specifically associated with discourse-function marking. However, such positions need not be specifiers of functional projections, but may instead be specifiers of lexical projections (parallel to Laczk\'o's DF specifier of VP in Hungarian). Relatively little work has been done on discourse-function marking within the noun phrase, however, and more work is needed to establish the patterns and constraints on this cross-linguistically.\footnote{Authors who do consider the dimension of discourse structure within the noun phrase include \citet{Charters14} and \citet{ChisaPayn01,ChisaPayn03}.}
+
+
+\section{Conclusion}
+
+In this chapter, we have explored aspects of the analysis of noun phrases in LFG. Relatively little work has been done within LFG on the c-structure of noun phrases, though there are some notable exceptions, to which we have referred in this chapter. Degrees of configurationality at clause level and how to analyse them has, however, been a focus of much LFG work. Therefore, in \sectref{sec:nominal:NPconfig}, we considered how these analyses could be transferred to noun phrases. We argued that examples can be found of strictly configurational, partly configurational and non-configurational noun phrases, so that the c-structure analyses of the three global levels of configurationality developed at clause level can be carried over to noun phrases. In \sectref{NPDP} we also considered the use of functional categories in the noun phrase in light of the restricted approach generally taken to such categories within LFG.
+
+\hspace*{-1mm}The role of argument structure and grammatical functions within noun phrases is, on the other hand, well-studied within LFG. However, there is no consensus on which {\GF}s are relevant within noun phrases, or how the arguments of nouns relate to those of verbs. In \sectref{sec:nominal:NPgfs}, we reviewed and evaluated a number of proposals from the literature. We also considered how principles of endocentric structure-function association \citep[105, 117]{BresnanEtAl2016} apply to the relation between grammatical functions and structure in noun phrases.
+
+Though noun phrases are unlikely to involve the same range of information structural notions as clauses do, basic notions such as emphasis and contrast do apply. In \sectref{sec:nominal:NPdfs}, we argued that there are languages that have a position for a basic grammaticalized discourse function within the noun phrase. In the languages we considered, this is a position at the edge of the noun phrase, preceding the head in a head-initial language (Babungo) and following the head in a head-final language (Ingush). However, our consideration has been relatively superficial and the noun phrases of these languages deserve further consideration. 
+
+
+\section*{Acknowledgements}
+
+Some of this paper formed part of a presentation at LFG 2019 at ANU in Canberra, and Börjars is grateful for comments received there. We are grateful to the three referees whose comments have helped clarify a number of things.
+
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}

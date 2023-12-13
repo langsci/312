@@ -1,0 +1,1390 @@
+\documentclass[output=paper,chinesefont]{../langscibook}
+\ChapterDOI{10.5281/zenodo.10186000}
+\title{LFG and Austronesian languages}
+\author{I Wayan Arka\affiliation{The Australian National University} and Li-Chen Yeh\affiliation{The Australian National University}}
+\abstract{Austronesian (AN) languages are known for their diverse grammatical characteristics in many typological and descriptive works. Their properties provide fertile grounds for testing assumptions in syntactic theories. In this chapter, we demonstrate that the parallel correspondence architecture of LFG can be used as a powerful tool for language-specific linguistic analysis, while also precisely capturing the cross-linguistic differences within and between Western and Eastern AN languages. LFG is flexible in incorporating analytical tests, such as adverbial insertion and clitic placement for examining constituency; reflexive binding, nominal marking and pronominal-indexing for syntactic status of an argument. Although AN languages have posed challenges to traditional syntactic notions of subject, as well as the mapping between grammatical relations and functions, we show that such multi-dimensional views of grammar, and projection design, can deal with these challenges efficiently, and also lead to a coherent comparative representation of AN languages for the purpose of tracking morphosyntactic stages according to their respective typological categories.}
+
+\IfFileExists{../localcommands.tex}{
+ \addbibresource{../localbibliography.bib}
+ \addbibresource{thisvolume.bib}
+ \input{../localpackages}
+ \input{../localcommands}
+ \input{../localhyphenation}
+ \togglepaper[34]%%chapternumber
+   \boolfalse{bookcompile}
+}{}
+
+\hypersetup{colorlinks=true, citecolor=brown, pdfborder={0 0 0}}
+
+\begin{document}
+\maketitle
+\label{chap:Austronesian}
+
+\section{Introduction}
+\label{sec:Austronesian:1}
+
+The world of Austronesian (AN) languages comprises a huge and diverse language family, which covers a wide geographical span ranging from Formosan languages in the northwest of the Pacific, Malagasy at its westernmost point, Māori in south Oceania, Hawaiian in the northeast and Rapanui at its most eastern point. In fact, this geographical spread is a historical outcome of the prehistoric settlement by AN speaking communities (\citealt{Pawley1998}; \citealt[242]{Bellwood2007}). The histories of the people in the widespread Asian-Pacific region are testimony to the genealogical continuity of AN languages that form one single language family.
+
+Initially, the AN dispersal began from the island of Taiwan in the northern part of the Pacific island chain, outside the east Asian continental mainland \citep{Pawley2002,Bellwood2007,Skoglund2016,Blust2019}. The languages natively spoken on the island of Taiwan are direct descendants of the Proto-AN language \citep{Blust1999}. These languages are collectively called \textsc{Formosan languages}, and are sisters to the common ancestor of the remaining AN languages, Proto-Malayo-Polynesian (PMP).
+
+The AN expansion took place in subsequent waves, as laid out chronologically below (\citealt{Adelaar1989}, \citealt[201-254]{Bellwood2007}). The PMP subgroup began to split up as it spread from Taiwan to the Philippines (est.~2200 BCE), along with early migration settling in Micronesia. There were also dispersals from the Philippines into Indo-Malaysia and eastward to New Guinea and the Bismarck Archipelago. The settlement in the Bismarck has been dated to around 1350 BCE. Later on, the dispersal went further eastwards into the Pacific (e.g. Solomons, Vanuatu, New Caledonia, Fiji, Tonga and Samoa) between 1200 and 900 BCE. After 600 CE, the AN occupation of eastern Polynesia occurred, and immigrants from Borneo arrived in Madagascar around 500 CE.
+
+The AN migration history above shows the geographical distribution of AN languages. Meanwhile, it similarly indicates a diachronic progression in the varying prototypical features of AN morphosyntax and offers a general guideline for the typology of AN languages. A major typological distinction can be made between \textsc{Western AN} and \textsc{Eastern AN}.
+
+The Western AN group\footnote{In this chapter, Western AN is used as a cover term for symmetrical voice languages. It differs from \citegen{Himmelmann2005} geographic label of `Western Austronesian' which encompasses all non-Oceanic languages.} includes languages of Taiwan, the Philippines, western Indonesia, Malaysia and Madagascar. These languages are typically characterised by their robust `alternating' and `symmetrical voice' systems, which use verbal morphology to mark a non-Agent argument as grammatical \textsc{subj}(ect) or \PIVOT without demoting the Agent argument to oblique (discussed in \sectref{sec:Austronesian:4}). This non-demotion property of the Western AN voice system differs from the commonly observed active-passive voice alternation system in Indo-European languages like English.
+
+The symmetrical voice systems in Western AN pose challenges to many grammatical frameworks, including some versions of the standard Lexical Mapping Theory analysis in LFG. The non-demotion property of the symmetrical voice system licenses a passive-like structure with a non-actor thematic role selected as subject, called Patient (or Undergoer) voice, but unlike in the passive, the non-subject actor role has the most prominent core status. This leads to a mismatch between its semantic and syntactic prominence: the most prominent semantic (agent) argument is not the most privileged (\SUBJ) argument. The diagnostic tool for identifying this mismatch involves reflexive binding (see \sectref{sec:Austronesian:2}). The surface realisation of reflexive binding allows reflexive pronouns to be bound by antecedents bearing both the least and most prominent grammatical functions. While posing challenges to many grammatical frameworks, this unusual and intricate variation of voice alternation is best explained by the multi-layered argument structure of LFG's architecture which tackles associations between grammatical functions and grammatical relations.
+
+The Eastern AN language group\footnote{Eastern AN languages have been commonly referred to in the literature as preposed-possessor languages, Oceanic languages or isolating languages of eastern Indonesia.} includes languages of Timor-Leste, New Guinea and Oceania. In contrast to symmetrical-voice languages, Eastern AN languages no longer maintain the layered distinctions at the semantics-morphology-syntax interface. We refer to these languages as the non-alternating type because the typical alternative selection of a semantic role as grammatical \SUBJ, as seen in Western AN languages, is not observed. Instead, Eastern AN languages are characterised by other properties such as the emergence of systematic pronominal indexing, as well as increased complexity in other parts of its grammar as seen in their rich serial verb constructions (SVCs) and clausal complementation (see \sectref{sec:Austronesian:5}). The pronominal indexing paradigm is an exclusive feature of Eastern AN languages, and in this regard, they may be referred to as indexing-type languages.
+
+Indexing-type languages show distinct properties in complex constructions that are intriguing for typological comparisons and important for theoretical testing. These languages show a striking consistency in the distinction of \OPTXCOMP (i.e. clausal complementation with(out) shared missing \SUBJ: see \citetv{chapters/Control} and \sectref{sec:Austronesian:5} of this chapter) while also revealing a significant difference with regard to the structural tightness between regular complementation and complex predicates. The latter has usually been subsumed under the general heading of SVCs. It is not always straightforward in many syntactic theories to capture the distinction among different kinds of \OPTXCOMP (e.g. control, SVCs and multi-verb constructions in coordination and subordination). Nonetheless, a few clear cases of the distinction in argument gapping strategies can be effectively demonstrated from the LFG perspective where, crucially, no movement is required (cf. \citegentv{chapters/Minimalism} comparison of LFG with the traditional analysis of control/raising complementation in transformational grammars). Instead, the LFG perspective can clearly present how a verb form with/without
+an overt voice marker can serve as a diagnostic tool for testing the core status of \OPTXCOMP, and how voice morphology (as well as negation) forms a criterion for teasing apart the differences between complementation and SVCs. Even the compound-like structure of the complex event-composition in SVCs can be captured via the interrelated specifications on different linguistic dimensions (see \sectref{sec:Austronesian:5.2}).
+
+Even though the above description has provided a general indication of the major typological differences between Western and Eastern AN languages, two important points should be made on the typological diversity of AN morphosyntax.
+
+\hspace*{-.3pt}First, not all Western AN languages behave alike. Symmetrical-voice languages are typically further subcategorised into `Philippine-type' and `Indonesian-type', due to their distinct characteristics in word order (cf. \sectref{sec:Austronesian:3}), the number of semantic roles allowed as privileged arguments (cf. \sectref{sec:Austronesian:4.1}), and the use of case-marking flagging and applicative constructions (cf. \sectref{sec:Austronesian:4.2}). Although most Western AN languages may be subcategorised further, some transitional languages do not adhere to the typological profile of either type \citep{Kroeger:NonMalayic}. Certain Western AN languages in Taiwan even appear to show disputable traits of asymmetry in syntax (cf. \sectref{sec:Austronesian:4.3}).
+
+Moreover, geography and typology do not always neatly align. For instance, certain Barrier Island languages off the south coast of Sumatra, such as Mentawai \citep{Lenggang1978,Arka2006}, Enggano (\citealt{Crowley:Enggano}{,} \citealt{Hemmings:Enggano}) and Nias \citep{Brown2001}, do not show a symmetrical voice property of the type seen in the Western AN group, but they have developed person-marking prefixes on verbs that encode subject similar to \textsc{nom}(inative) subject prefixes in outlier AN languages in southern/eastern Indonesia, such as Kambera in Sumba \citep{Klamer1998} and Wooi in West Papua \citep{Sawaki2016}. Makassarese, spoken in Sulawesi, has unmarked word order like the Philippine-type, but it also exhibits systematic pronominal indexing on the verbal predicate. In Makassarese, a transitioning state of word order change is observed in the expression of contrastive focus through clefting (cf. \sectref{sec:Austronesian:6}).
+
+Typologically, the AN language family is intensely diverse with a variety of transitioning languages comprising two heterogeneous macrogroups. This diversity has posed difficulties for descriptive and comparative analysis, particularly for long-standing and often controversial topics of typological and theoretical significance, such as ergativity or the complex interconnection between surface grammatical relations and deeper semantic-syntactic argument structures. Nonetheless, LFG's parallel correspondence architecture provides the necessary flexibility for a coherent and comparable descriptive representation of AN grammar on these topics.
+
+In this chapter, we show how LFG can be used as a descriptive and analytical tool to capture the typological range of AN linguistic diversity on these selected topics. We begin by highlighting the LFG modular design, and its application in modelling the morphosyntactic operation of AN voice systems (\sectref{sec:Austronesian:2}), then illustrate how the LFG framework can capture word order variation (\sectref{sec:Austronesian:3}), grammatical functions and alignment (\sectref{sec:Austronesian:4}), complex argument sharing constructions (\sectref{sec:Austronesian:5}) and information structure (\sectref{sec:Austronesian:6}).
+
+\section{LFG modular design and Austronesian linguistics}
+\label{sec:Austronesian:2}
+
+LFG is modular in its design. From the LFG perspective, a language is construed as multiple dimensions of linguistic information, and each dimension constitutes an individual module, or structure, that comes with its own formal properties. Different structures are parallel but are linked by principles of correspondence, as introduced in \citetv{chapters/Intro}. 
+
+In the standard LFG framework, traditional syntactic structure is primarily represented on two structural levels: \textsc{constituent structure} (c-structure) and \textsc{functional structure} (f-structure). Ordering of constituents and syntactic categories are analysed in c-structure, whereas grammatical functions (\GF{s}) of arguments and grammatical features are dealt with in f-structure, as detailed in \citetv{chapters/GFs}. In subsequent developments, semantic \textsc{argument structure} (a-structure) was proposed in Lexical Mapping Theory (LMT) to capture cross-linguistic \GF alternations \citep{bresnan1989locative}; see also \citetv{chapters/Mapping}. \citet{bresnan1989locative} propose that a-structure is represented as a list of semantic roles which are directly mapped onto {\GF}s. \citegen{bresnan1989locative} LMT works well to account for voice and alternative argument realisations in languages like English; e.g.\ the agent's \textsc{subj}(ect)-\textsc{obl}(ique) alternation in passivisation.
+
+However, the rich voice systems of western AN languages pose a problem for this version of LMT such that semantic a-structure and the traditional analysis of {\GF}s cannot be maintained.  Based on data from western AN languages, which will be discussed in detail in this chapter, we argue against \citegen{bresnan1989locative} version of mapping theory; see \citet[119--124]{arka2003} for a comprehensive examination of the evidence and justification.  Consider the following examples from Balinese (\ref{ex:Austronesian:1}) and Puyuma (\ref{ex:Austronesian:2}):
+
+\ea\label{ex:Austronesian:1} Balinese (WMP, Indonesia) (Arka, own knowledge)\footnote{In this chapter, a language is presented with its linguistic and geographical classification in the first instance based on information from Glottolog for the purposes of locating genealogical and typological relations between languages. WMP and CEMP stand for Western Malayo-Polynesian and Central-Eastern Malayo-Polynesian respectively.}\\
+\ea\gll
+[Tiang]\textsubscript{\SUBJ} ng-ejang [nasi]\textsubscript{\OBJ} [*(di) bodag-e]\textsubscript{\OBLROLE{loc}}.\\
+\phantom{[}{1\SG} \AV-put \phantom{[}rice \hspace*{1em}in basket-\textsc{def}\\
+\glt `I put rice in the basket.'
+\ex\gll
+[Nasi-ne]\textsubscript{\SUBJ} $\emptyset$-ejang [tiang]\textsubscript{\OBJ} [*(di) bodag-e]\textsubscript{\OBLROLE{loc}}.\\
+\phantom{[}rice-\textsc{def} \UV-put.rice \phantom{[}{1\SG}  \hspace*{1em}in basket-\textsc{def}\\
+\glt`I put rice in the basket.'
+\z\z
+
+\ea\label{ex:Austronesian:2} Puyuma (Formosan) \citep[47-48]{Teng2008}\\
+\ea\gll
+Tr<em>akaw [dra paisu]\textsubscript{\textsc{obl}} [i isaw]\textsubscript{\SUBJ}.\\
+ \textlangle{\AV}{\textrangle}steal \phantom{[}\INDF.\textsc{obl} money \phantom{[}{\SG.\NOM} Isaw\\
+\glt`Isaw stole money.'
+\ex\gll
+[Tu=]\textsubscript{\OBJ} trakaw-anay [i tinataw]\textsubscript{\SUBJ} [dra paisu]\textsubscript{\textsc{obl}}. \\
+\phantom{[}3\GEN= steal-\textsc{cv} \phantom{[}{\SG.\NOM} his.mother \phantom{[}\INDF.\textsc{obl} money\\
+\glt`He stole money for his mother.'
+\z\z
+The examples above represent two salient features of the AN voice system and related argument realisations. First, verbal voice morphology marks \SUBJ selection (cf. \sectref{sec:Austronesian:4}). The \textsc{actor voice} (\AV), indicated by \textit{ng-} in Balinese (\ref{ex:Austronesian:1}a) and \textlangle\textit{em}{\textrangle} in Puyuma (\ref{ex:Austronesian:2}a), selects the most agent-like role, or A (\textit{tiang} and \textit{Isaw} respectively) as \SUBJ.\footnote{Following standard conventions in language typology (\citealt{Comrie1978,dixon1979,Croft2003,Haspelmath2007}, among others), we adopt the following abbreviations to denote generalised semantic roles: A represents the argument that is most actor-like, while P represents the argument that is most patient-like in a transitive predicate. It is worth noting that P is approximately synonymous with the undergoer (U) macro-role in Role and Reference Grammar \citep{FoleyVanValin1984}.} The \textsc{undergoer voice} (\UV) in Balinese is indicated by a zero prefix and selects a patient-like (P) role as \SUBJ as in (\ref{ex:Austronesian:1}b), whereas the \textsc{conveyance voice} (\textsc{cv}) in Puyuma selects a peripheral role, as in the beneficiary `mother' in (\ref{ex:Austronesian:2}b)\footnote{In AN linguistics, non-\AV or \UV is also often called Objective Voice \citep{Kroeger93}. It is the voice type that selects certain semantic roles other than the actor as \SUBJ/\PIVOT. In the AN languages of the Philippines and Taiwan, there are typically different types of \UV named after the associated semantic role of the \SUBJ and each has its own verbal morphology, e.g. \textit{-anay} for Conveyance Voice (\textsc{cv}) in Puyuma in (\ref{ex:Austronesian:2}).} (see \sectref{sec:Austronesian:4.1} for the properties of \SUBJ/\PIVOT and the typology of AN voice systems). The voices in these AN languages are called \textsc{symmetrical voice}. Evidence for their symmetricality comes from the fact that agent and non-agent roles are equally selectable by the voice morphology as the ``privileged argument'', which is analysed as \SUBJ/\PIVOT in LFG \citep{Kroeger93,Manning1994,arka2003,falk06}. In addition, symmetricality is seen in verbal marking, particularly in Puyuma, where different voice types (e.g. \AV and \textsc{cv}) are equally marked.\footnote{Balinese and Puyuma belong to two different subcategories of Western AN languages: the Indonesian-type and Philippine-type, respectively. They differ in their number and type of voice distinctions, and the syntactic properties of their non-\SUBJ arguments (e.g. the obliqueness of P in \AV) (cf. Section 4). Note that the \UV verb in Balinese is also analysed as being `marked'; it is realized as a zero \UV prefix on the basis of its contrasting form with the \AV verb.}
+
+Second, non-\AV alternations in (\ref{ex:Austronesian:1}b) and (\ref{ex:Austronesian:2}b) are not passivisation. That is, in both Balinese \UV and Puyuma \textsc{cv}, the promotion or selection of a non-A role as \SUBJ is not accompanied by the demotion of A to \textsc{obl}, a lower ranked function. Functionally, the A argument is the \textsc{obj}(ect); it retains its core status in the structure. This is clearly seen in Balinese, where the A of the \UV structure in (\ref{ex:Austronesian:1}b) appears immediately after the verb as a bare Noun Phrase (NP), like the \OBJ of the \AV verb in (\ref{ex:Austronesian:1}a). Note that \textsc{obl} in Balinese is flagged by a preposition. In addition, Balinese does have a passive, in which case the agent appears as \textsc{obl} (see \citealt{arka2003}). Likewise, the A of the \textsc{cv} verb in Puyuma is realised as a bare \textsc{gen}(itive) clitic. A free \textsc{obl} nominal in Puyuma is also prepositionally flagged, and if it is a pronominal, it has a special \textsc{obl} form distinct from the \GEN or \textsc{nom}(inative)\footnote{Note that Puyuma is an ergative language. In \citet{Teng2008}, \NOM refers to the case assigned to \SUBJ. It should not be confused with nominative case in \NOM-\ACC languages. See the discussion in \sectref{sec:Austronesian:4.3}.} form (see \citealt[63]{Teng2008}). \citegen{bresnan1989locative} classic LMT approach cannot account for the agent's alternative realisation as \OBJ in \UV, as in Balinese (\ref{ex:Austronesian:1}b) and \textsc{cv} in Puyuma (\ref{ex:Austronesian:2}b), since the agent is inherently classified as [$-o$] (i.e. not object-like), thus only allowing for the \SUBJ-\textsc{obl} alternation as seen in passives.
+
+To capture the non-demotion of A in \UV and other salient typological and morphosyntactic properties of AN voice alternation in LFG, we distinguish {\GF}s from \textsc{gr}s (Grammatical Relations). \textsc{gr}s are clause-internal relations that reflect semantic-syntactic dependency between a predicate and its dependents. They form the so-called syntacticised a-structure in \citet{Manning1994}, \citet{arka2003} and \citet{Arka2008}. This syntacticized a-structure, as distinct from the semantic a-structure in \citegen{bresnan1989locative} classic LMT, incorporates syntactic information regarding coreness/obliqueness alongside its structural prominence, which includes thematic ranking.  Although \textsc{gr}s and {\GF}s belong to different layers of structure, the two are interrelated and are mapped together through linking principles. In AN languages, the mapping is marked by verbal voice marking and/or indexing, depending on the available coding resources. Although the \textsc{gf-gr} distinction may not be assumed and embraced in all LFG analyses, we contend that it is essential to provide a consistent explanation for voice alternations and related alternative argument realizations in languages that exhibit both accusative and ergative properties, as seen in western Austronesian languages such as Balinese and Indonesian. 
+
+We use different convention labels for \textsc{gr}s and {\GF}s to avoid confusion: small caps for {\GF}s (e.g. \SUBJ, \OBJ) and lower case for \textsc{gr}s (e.g. subject, object). We illuminate the significance of the \GF-\textsc{gr} distinction by taking into account recent findings (e.g. reflexive binding) in descriptive and typological research in AN linguistics. The informal \textsc{gr} or a-structure representation is given in (\ref{ex:Austronesian:3}a) for the Balinese verb \emph{jang} `put', and its simplified representation is given in (\ref{ex:Austronesian:3}b). The a-structure in (\ref{ex:Austronesian:3}) outlines that \emph{jang} is a three-place predicate with core arguments (i.e. agent and patient) and a third non-core oblique locative (\LOC) (i.e. location). In our analysis, we adopt the convention of using a vertical line (\,|\,) to explicitly delineate argument classes, distinguishing between core and oblique or non-core arguments within the argument structure list. This convention supplements the valency information specified in the a-structure representation in the lexicon.\footnote{Syntactic coreness/obliqueness and valency are distinct syntactic properties that pertain to whether an argument is core or not and the number of arguments a predicate takes, respectively. These properties are not always predictable from the semantics of the predicate, as evidenced by the variation observed across languages when expressing the same event using equivalent verbs with different syntactic argument structures. For example, the verb \emph{give} is semantically a three-place predicate involving a giver, givee, and gift. However, languages differ in how they syntactically realize these arguments. Balinese \emph{baang} 'give' exclusively permits ditransitive constructions without a dative alternation \citep[63--63]{Arka2003b}, while English allows the verb 'give' to function as either ditransitive, like in Balinese, or monotransitive with an oblique as the third argument, depending on the context. Furthermore, languages such as Indonesian exhibit ditransitive/transitive alternations facilitated by applicative morphology. Consequently, this lexically specific syntactic information must be encoded in the syntacticized a-structure rather than the semantic structure within the lexicon. \citegen{arka2003} work provides detailed evidence from Balinese supporting this perspective.}
+
+\ea\label{ex:Austronesian:3} Syntacticised argument structure of \emph{jang} (Balinese):
+\ea `put\rarglist{ \csn{\ARG1:agent}{(subject)} , \csn{\ARG2:patient}{(object)} | \csn{\ARG3:location}{(oblique)} }'
+\ex `put\rarglist{ 1:agt, 2:pt | 3:loc}'
+\z\z
+The following should be noted regarding the representation of \textsc{gr}s in (\ref{ex:Austronesian:3}). First, \textsc{gr}s conceptually reflect event construal and participant roles, which signify `who does what to whom'. This is the semantic-conceptual basis underlying valency and transitivity information in the syntacticised a-structure. The valence information specifies the number of arguments (e.g. one, two, or three arguments) and syntactic/semantic transitivity specifies types of arguments (i.e. core or oblique, and the associated semantic roles). The Balinese verb \emph{jang} in (\ref{ex:Austronesian:3}) is a three-place transitive predicate with two core arguments, 1:agent and 2:patient, and one non-core argument, 3:location. For the purposes of comparative typology, 1:agent and 2:patient will be referred to as \emph{subject} and \emph{object}, respectively (noting lower case). They roughly correspond to the typologists' labels A and \mbox{P/O} respectively),which are distinguished from surface {\GF}s, \SUBJ and \OBJ.
+
+Voice morphology on the verb regulates \textsc{gr}-\GF mapping. For example, the Balinese \UV in (\ref{ex:Austronesian:1}b) and Puyuma \textsc{cv} in (\ref{ex:Austronesian:2}b) select 2:patient and 2:beneficiary respectively as \SUBJ/\PIVOT. These \UV structures result in a mismatch between \GF and \textsc{gr} prominence, informally represented by crossing lines.
+
+\ea\label{ex:Austronesian:4}
+\ea Balinese \UV in (\ref{ex:Austronesian:1}b) \\
+\begin{tabular}{cccccc}
+& \rnode{s}{\SUBJ} & \rnode{o}{\OBJ} && \rnode{ob}{\textsc{obl}}\\[2ex]
+`\UV.put{\textlangle} &\rnode{a}{1:agt}, & \rnode{p}{2:pt} & | & \rnode{l}{3:loc} & \textrangle'
+\end{tabular}
+\LINE{2pt}{270}{s}{2pt}{90}{p}
+\LINE{2pt}{270}{o}{2pt}{90}{a}
+\LINE{2pt}{270}{ob}{2pt}{90}{l}
+\ex Puyuma \textsc{cv} in (\ref{ex:Austronesian:2}b)\\
+\begin{tabular}{cccccc}
+& \rnode{s}{\SUBJ} & \rnode{o}{\OBJ} && \rnode{ob}{\textsc{obl}}\\[2ex]
+`steal.\textsc{cv}{\textlangle} &\rnode{a}{1:agt}, & \rnode{p}{2:ben} & | & \rnode{l}{3:pt} & \textrangle'
+\end{tabular}
+\LINE{2pt}{270}{s}{2pt}{90}{p}
+\LINE{2pt}{270}{o}{2pt}{90}{a}
+\LINE{2pt}{270}{ob}{2pt}{90}{l}\z\z
+By distinguishing \textsc{gr}s and {\GF}s, we can reflect a prominence mismatch in the non-\AV structures in (\ref{ex:Austronesian:4}) above. This is evident from the interaction between reflexive binding and voice alternation in AN languages. For instance, the \AV-\UV voice alternation does not affect the acceptability of reflexive binding, exemplified by \emph{awakne} in Balinese (\ref{ex:Austronesian:5}) and \emph{izipna} in Kavalan (\ref{ex:Austronesian:6}). For simplicity, the f-structures showing reflexive binding are only given for the examples below.
+
+\ea\label{ex:Austronesian:5} Balinese \citep[178]{arka2003}\\
+\ea\gll
+[Ia]\textsubscript{\SUBJ} ngenehang [awakne]\textsubscript{\OBJ}.\\
+ \phantom{[}3 \AV.think \phantom{[}self.3 \\
+\glt`(S)he thought of herself/himself.'\\
+\hspace*{\fill}\begin{tabular}{cc}
+  \SUBJ & \OBJ\\
+  \mid & \mid\\
+`\AV.think{\textlangle}1:agt.`3'$_i$, & 2:th.`self.3'$_i$ {\textrangle}'
+\end{tabular}
+\ex\gll
+[Awakne]\textsubscript{\SUBJ} kenehang[=a]\textsubscript{\OBJ}.\\
+\phantom{[}self.3 \UV.think=3 \\
+\glt`(S)he thought of \emph{herself/himself}.'\\
+\hspace*{\fill}\begin{tabular}{cc}
+  \rnode{o}{\SUBJ} & \rnode{s}{\OBJ}\\[2ex]
+`\UV.think{\textlangle}\rnode{1}{1:agt.`3'$_i$}, & \rnode{2}{2:th.`self.3'$_i$}{\textrangle}'
+\end{tabular}
+\ncdiag[nodesep=2pt,angleA={270},angleB={90},linewidth=.5pt,arm=0]{s}{1}
+\ncdiag[nodesep=2pt,angleA={270},angleB={90},linewidth=.5pt,arm=0]{o}{2}
+\z\z
+
+\ea\label{ex:Austronesian:6}  Kavalan (Formosan) \citep[57]{Shen2005}\\
+\ea\gll
+K{\textlangle}em{\textrangle}nit  [ci Utay]\textsubscript{\SUBJ} [tu izipna]\textsc{obl}.\\
+ \textlangle{\AV}{\textrangle}pinch \phantom{[}\textsc{pn} Utay \phantom{[}\textsc{obl} body:3\GEN \\
+\glt`Utay pinched at himself.'\\
+ \hspace*{\fill}\begin{tabular}{c@{~}c@{~}c}
+   \SUBJ && \textsc{obl}\\
+   \mid && \mid\\
+`\AV.pinch{\textlangle}1:agt:`Utay'$_i$, & $|$ & 2:pt: `self.3'$_i$ {\textrangle}'
+\end{tabular}
+\ex\gll
+Kenit-an=na   [ni  Utay]\textsubscript{\OBJ} [ya izipna]\textsubscript{\SUBJ}. \\
+pinch-\textsc{pv}=3{\ERG} \phantom{[}{\ERG} Utay   \phantom{[}{\ABS} body:3\GEN\\
+\glt`Utay pinched \emph{himself}.'\\
+\hspace*{\fill}\begin{tabular}{cc}
+  \rnode{o}{\SUBJ} & \rnode{s}{\OBJ}\\[2ex]
+`\textsc{pv}.pinch{\textlangle}\rnode{1}{1.agt:`Utay'$_i$}, & \rnode{2}{2:pt: `self.3'$_i$} {\textrangle}'
+\ncdiag[nodesep=2pt,angleA={270},angleB={90},linewidth=.5pt,arm=0]{s}{1}
+\ncdiag[nodesep=2pt,angleA={270},angleB={90},linewidth=.5pt,arm=0]{o}{2}
+\end{tabular}
+\ex f-structure of sentence (\ref{ex:Austronesian:6}a)\\
+\avm[style=fstr]{
+[pred & `pinch\arglist{subj obl}'\\
+subj & [pred & `utay'\\
+        ntype & proper\\
+        index & [pers & `3'\\num & sg]$_i$]\\
+obl & [pred & `pro'\\
+       prontype & reflexive\\
+       index & $i$]\\
+voice-type & av]
+}
+\ex f-structure of sentence (\ref{ex:Austronesian:6}b)\\
+\avm[style=fstr]{
+[pred & `pinch\arglist{subj obj}'\\
+subj & [pred & `pro'\\
+        prontype & reflexive\\
+        index & $i$]\\
+obj & [pred & `utay'\\
+       ntype & proper\\
+       index & [pers & `3'\\num & sg]$_i$]\\
+voice-type & pv]
+}\z\z
+The above data points show that reflexive binding in Balinese and Kavalan takes place at the level of a-structure, as shown in the a-structure representations on the right side. In Balinese, for example, both (\ref{ex:Austronesian:5}a) and (\ref{ex:Austronesian:5}b) share the same a-structure, but differ in their respective mapping to {\GF}s: consider the crossing line in (\ref{ex:Austronesian:5}b) in the UV structure. In Kavalan, both (\ref{ex:Austronesian:6}a) and (\ref{ex:Austronesian:6}b) are similar in their a-structure representations except that the non-actor argument in (\ref{ex:Austronesian:6}a) is non-core, as represented by the vertical line (\,|\,). Both languages demonstrate that the reflexive is bound by the subject, as indicated by the subscript $i$. However, the voice alternations trigger a difference in the resulting {\GF}s of the reflexive. It is realised as \OBJ in the \AV in (\ref{ex:Austronesian:5}a) and \SUBJ in \UV in (\ref{ex:Austronesian:5}b) for Balinese. In Kavalan, on the other hand, the patient is realised as \textsc{obl} flagged by an \textsc{obl} marker \emph{tu} in the \AV verb in (\ref{ex:Austronesian:6}a) (due to the ergative system of this language), and it is realised as \SUBJ and flagged by the marker \emph{ya} in Patient Voice (\textsc{pv}) in (\ref{ex:Austronesian:6}b). In both instances, the relationship between the reflexive pronoun (\emph{izipna} `body.3\GEN') and its binder (i.e., the intended antecedent) is expressed through coindexation in the f-structure, indicated by the subscript $i$. The \PERS and \NUM values (i.e., 3\SG) of the \textsc{index} attribute of the bindee (\emph{izipna}) are linked or bound to the \textsc{index} values of the binder (\emph{Utay}). This binding of \textsc{index} values between the binder (\emph{Utay}) and the reflexive pronoun (\emph{izipna}) is permissible due to a binding requirement associated with the reflexive pronoun (cf. \citetv{chapters/Anaphora}). Crucially, being the first core agent (i.e. {\textlangle}1:agent\textrangle) argument, \emph{Utay} outranks the reflexive pronoun (\emph{izipna}) in the a-structure. 
+
+The acceptable reflexive binding of \SUBJ(i.e. the most privileged argument) by \OBJ in (\ref{ex:Austronesian:5}b) and (\ref{ex:Austronesian:6}b) would be unexpected if binding took place at the surface grammatical function level because the antecedent (\OBJ) has lower syntactic prominence. The occurrence of reflexive binding in non-AV structures confirms the prominence outranking in the a-structure (i.e., A\,$>$\,P). This finding emphasizes the necessity of a separate syntacticized a-structure to provide an accurate analysis of reflexive binding phenomena in Austronesian languages, including Balinese and Kavalan.
+
+\largerpage[-2]
+In LFG, the important characteristics of the AN voice system can be captured using the layered a-structure, and cross-linguistic variation in the voice system is effectively illustrated by the varying transparency of the mapping. A distinction between {\GF}s (the primitives of f-structure) and \textsc{gr}s (the primitives of a-structure) is maintained in western AN, but collapses in accusative languages like English, and Eastern AN languages that lack a symmetrical voice system (see \sectref{sec:Austronesian:4}). Without this notion of layered structures, the unusual variation in the surface realisation of reflexive binding cannot be easily captured in other theories.\footnote{For the sake of brevity, a detailed comparation with other theories is omitted here. We confine our illustration to the use of LFG in analysing AN languages. An in-depth comparative discussion of LFG and other frameworks is provided in \bookorchapter{Part~\ref{part:comparison}}{Part VII}.}
+
+Having shown how the basics of the AN voice system work from an LFG perspective, we now move on to an overview of some typologically interesting phenomena in AN languages in the subsequent sections.
+
+\section{Clausal word order}
+\label{sec:Austronesian:3}
+
+In Western AN languages, there are two broad patterns of clausal word order that are geographically distributed \citep[461--461]{Blust2013}. Verb-initial order is encountered in the AN languages of Taiwan, the Philippines, northern and central Sulawesi, and Madagascar. Philippine-type languages tend to be verb-initial, whilst Indonesian-type languages, including Balinese, Madurese and Indonesian, are verb-medial. Diachronically speaking, the development of these two types of word orders appears motivated primarily by information structure—such as clefting to express contrastive \textsc{focus} (see \sectref{sec:Austronesian:6})—resulting in synchronic word order variation. The broad classification of Western AN will be used in the ensuing discussion with regard to the typology of word order. However, it should be noted that there is also a great deal of variation across the Philippine-type and Indonesian-type languages due to the flexibility of the order of agent and non-agent arguments relative to the head verb, giving rise to languages with or without a VP and languages with a rigid or flexible subject position (see \citealt{Riesberg2019} for further details). In addition, language-internal variation exists, and it has been claimed that some AN languages do not have a fixed basic word order, or that word order choice may differ by voice construction, among other things (cf.\ \citealt{Riesberg2019}).
+
+Unlike most Western AN languages, word order varies among Eastern AN languages. The AN languages of eastern Indonesia and many Oceanic languages have typically developed systematic pronominal indexing systems,\footnote{Some Formosan languages (e.g. Puyuma and Kavalan) have pronominal indexes on verbs. While they closely interact with robust voice verbal morphology, they do not usually contain a complete set of forms exhibiting the full range of case/role alternations. For this reason, we propose that the systematic pronominal indexing systems in Eastern AN languages are distinct from those in Formosan languages.} and therefore show a greater degree of freedom and variation for the ordering of cross-referencing NPs. Thus, there are Eastern AN languages that show SVO clausal word order with indexed NPs ordered flexibly (e.g. Kambera), and there are others that are verb-initial (e.g. Fijian), and further still, there are other languages which are verb-final as a result of Papuan contact (e.g. Tobati, an AN language spoken in Jayapura Bay, west Papua, and Torau, an Oceanic language spoken in Bougainville; cf.\ \citealt{Lynch2002}).
+
+In LFG, word order variation reflects the surface differences between `default' (or unmarked) clausal order and pragmatically marked order. These are dealt with in terms of variation at the level of c-structure (see \citetv{chapters/Cstr}).\footnote{While c-structure in LFG is modelled using phrase structure trees, with properties possibly following an X-bar schema, it does not represent a deeper `universal' syntactic relation in which, for example, the
+object or patient argument is uniformly represented in the complement position of a VP as typically characterised by Chomskyan generative models. Further, there is no constituent movement in LFG, even though we may informally refer to `fronting'; see \citet{bresnan1982introduction}, \citet[chapter~6]{BresnanEtAl2016}, \citet[chapter~3]{DLM:LFG}, \citetv{chapters/Cstr}.}  Below we illustrate word order variation in Philippine-type, Indonesian-type and indexing type languages, from an LFG perspective.
+
+Verb-initial sentences in Philippine-type languages are finite clause structures with the (inflected verbal) predicate, or the auxiliary, occupying the left-headed inflection (I) node. Hence, a sentence is head (or predicate) initial. However, the precise structures of post-verbal elements vary, with certain languages like Squliq Atayal (Formosan) showing a rigid hierarchical Verb Phrase (VP) structure, whereas others like Tagalog have a non-configurational structure. Evidence for a VP in Atayal comes from an adverbial insertion test. As shown in (\ref{ex:Austronesian:7}a), \emph{hira'} `yesterday' cannot intervene between a transitive verb and its object. The c-structure of (\ref{ex:Austronesian:7}a) is represented in (\ref{ex:Austronesian:7}b). Note that LFG adopts a version of X-bar syntax that allows nonbinary branching, as seen in the top/root node of IP in (\ref{ex:Austronesian:7}b).
+
+\ea\label{ex:Austronesian:7} Squliq Atayal (Formosan) \citep[41]{LiuKL2017}
+\ea \gll
+M{\textlangle}{n}{\textrangle}ihiy (*hira') Watan (hira') qu' Tali'.\\
+ \AV{\textlangle}\PFV{\textrangle}hit \phantom{(*}yesterday Watan \phantom{(}yesterday {\NOM} Tali\\
+\glt`Tali hit Watan yesterday.'
+\ex\begin{forest}
+   [IP [{I\makebox[0em][l]{$'$}}
+   [VP [{V\makebox[0em][l]{$'$}}
+    [V [M\textlangle{n}{\textrangle}ihiy\\\AV{\textlangle}\PFV{\textrangle}hit]] [X,phantom, [(*hira')\\yesterday]] [NP [Watan\\Watan]]]]]
+   [(NP) [(hira')\\yesterday]]
+   [NP [{qu' Tali'\\\NOM~Tali},roof]]]
+ \end{forest}
+\z\z
+
+Turning to Tagalog, we can posit that the finite sentence (IP) in this language contains a non-configurational (i.e. exocentric, flat) Sentence (S), as shown in (\ref{ex:Austronesian:8}b) for the example in (\ref{ex:Austronesian:8}a); for further discussion of exocentricity and the category S, see \citetv{chapters/Cstr}. Evidence for this comes from the fact that post-verbal arguments of non-verbal predicates (e.g. \SUBJ and \textsc{obl}) can be freely ordered \citep[133]{Kroeger93}. There is no surface VP in Tagalog because a second-position (2P) clitic -- which must appear in the second syntactic position of a clause in order to obey syntactic-phonological constraints -- is hosted by the finite verb alone and not the verb complement if the clause is verb-initial (not exemplified here), or by the first/fronted X(P) as exemplified in (\ref{ex:Austronesian:8}). Any attempt for a VP (i.e. V and its argument) to host a 2P clitic is ungrammatical \citep[136]{Kroeger93}. 
+
+\ea\label{ex:Austronesian:8} Tagalog (WMP, Philippines) \citep[129]{Kroeger93}
+\ea\gll
+[Para kay=Pedro]=ko binili ang=laruan.\\
+\phantom{[}for \DAT=Pedro={1\SG.\GEN} {\PFV}-buy-\textsc{pv} {\NOM}=toy\\
+\glt`For Pedro I bought the toy.'
+\ex \begin{forest}
+ [IP [PP, [{Para kay {Pedro}~\rnode{pedro}{}\\for \DAT=Pedro}, roof]]
+ [{I\makebox[0em][l]{$'$}}
+ [INFL [binili\\{\PFV}.buy.\UV]]
+ [S [NP [\circlenode{ko}{ko}]]
+ [NP [{ang laruan\\{\NOM}=toy},roof]]]]]
+ \end{forest}
+  \nccurve[linestyle=dashed,dash=1.5pt,nodesepA=0pt,angleA={180},nodesepB=0pt,angleB={270},ncurv=1.2,linewidth=.5pt]{->}{ko}{pedro}
+\z\z
+
+Variation in predicate-initial word order is pragmatically driven, and allows a unit to be `fronted' to a sentence-initial position before the verb. This position bears a Discourse Function (\textsc{df}) and is not uniquely associated with a particular grammatical function. In the Tagalog example (\ref{ex:Austronesian:8}a), the fronted \textsc{df}, the \textsc{obl} `for Pedro', structurally occupies the Specifier position of the finite sentence, [Spec,IP], as shown in the c-structure in (\ref{ex:Austronesian:8}b). While generated under the S node by the phrase structure rule, because \emph{=ko} is a 2P clitic, it is hosted by the Prepositional Phrase (PP), the first syntactic unit, following the final word of the phrase, \emph{Pedro}.\footnote{Kroeger's analysis of clitic placement follows the standard approach in LFG (cf. \citealt[155]{BresnanEtAl2016}), which treats a clitic as a syntactically independent unit like any other word. It occupies a terminal c-structure node, but is post-lexically hosted by another X(P) node due to a prosodic requirement in the syntax-phonology interface in the grammar. A different approach is to treat a clitic as a phrasal affix which does not occupy a terminal syntactic node on its own (cf. \citealt{OConnor2002}). See \citet{Halpern95}, \citet{HalpernZwicky1996}, \citet{King2005b}, and \citet{boegel-etal2010}, among others, for further discussion of (2P) clitic placement.} Additionally, as in example (\ref{ex:Austronesian:9}) for Squliq Atayal, the sentence-initial position can be occupied by a grammaticalised topic that co-references \SUBJ. This results in a pragmatically marked order for the pseudo-SV(O), namely, \SUBJ-\textsc{verb}-(\OBJ/\textsc{obl}). A pause, indicated by a comma in (\ref{ex:Austronesian:9}), is observed between the adjoined topic and the IP.
+
+\ea\label{ex:Austronesian:9} Squliq Atayal \citep[202]{LiuKL2017}\\
+\gll
+Pagay qani (ga), kguh-an na' ngta'.\\
+rice this \phantom{(}{\TOPIC} scatter-{\LV} \textsc{obl} chicken\\
+\glt`(Speaking of) the rice, (it) was scattered by the chicken.'
+\z
+The distribution of pronominal special clitics, such as 2P clitics, may also be determined by syntactic-pragmatic conditions that give rise to variations in clausal ordering. This is observed in Pazeh-Kaxabu (Formosan). Pazeh-Kaxabu has two types of bound pronominals: a full set of 2P clitics, and a `peripheral' clause-final clitic. Crucially, the 2P pronominals are strictly used as an operational device so the speaker can direct an addressee's attention to the predicative element that is syntactically intransitive, as seen in examples (\ref{ex:Austronesian:10}a--b).
+
+\ea\label{ex:Austronesian:10} Pazeh-Kaxabu (Formosan)   \citep[106, 140]{Li2001}\\
+\ea\gll
+[[Ma-desek]\textsubscript{\textsc{v:focus-c}} [=siw]\textsubscript{\SUBJ}]\textsubscript{\textsc{ip}}. \\
+ \phantom{[[}\textsc{stat}-belch \phantom{[}=2\SG.\textsc{abs}\\
+\glt`You \emph{belch}!' (emphasis added)
+\ex\gll
+[[M\textlangle{in}{\textrangle}e-ken]\textsubscript{\textsc{v:focus-c}} [=siw]\textsubscript{\SUBJ} sumay=lia]\textsubscript{\textsc{ip}}? \\
+\phantom{[[}\AV\textlangle{\PFV}{\textrangle}eat \phantom{[}=2\SG.\textsc{abs} rice(meal)=\textsc{modal}\\
+\glt`Have you \emph{eaten} meals?' (emphasis added)
+\ex\gll
+[M\textlangle{in}{\textrangle}e-ken asai paj= [isiw]\textsubscript{\SUBJ}]\textsubscript{\textsc{ip}} ?\\
+\phantom{[}\AV\textlangle{\PFV}{\textrangle}eat what \textsc{modal}= 2\SG\\
+\glt`\emph{What} have you eaten?' (emphasis added)
+\z\z
+In (\ref{ex:Austronesian:10}a--b), the 2P clitic pronoun \emph{=siw} appears as the sole argument of a simple stative intransitive verb (\emph{madesek} `belch' in \ref{ex:Austronesian:10}a) and an intransitive clause\footnote{The issue of semantic versus syntactic transitivity of actor-voice clauses in some AN languages is discussed in \sectref{sec:Austronesian:4.3}.} (\emph{meken} `eat' in actor voice in \ref{ex:Austronesian:10}b). These sentences come with an emphatic focus on the predicates\footnote{The term ``focus'' is used in this chapter to refer to the notion in information structure (\citetv{chapters/InformationStructure}), which is different from the term for the ``focus system'' that is primarily used by Formosan linguists. The latter will be discussed in Section 4 as ``voice alternation.''} (indicated by italicisation in the free translation; cf. \ref{ex:Austronesian:10}b and \ref{ex:Austronesian:10}c). The free pronoun \emph{isiw} that encodes the \SUBJ of a wh-question in sentence (\ref{ex:Austronesian:10}c) differs from the 2P clitic pronoun in its pragmatic function. Unlike the predicate host in (\ref{ex:Austronesian:10}b), there is no emphatic focus on the verb in (\ref{ex:Austronesian:10}c), and meanwhile, the pronominal \textsc{subj}s in the two sentences differ in their clausal positions — the free pronoun appears clause-finally, while the 2P clitic appears in an immediately post-verbal position.
+
+Unlike 2P clitics and free pronouns, the host of the peripheral pronominal in Pazeh-Kaxabu is the last word of the clause. The peripheral pronominal clitic, while neutral in case, bears \textsc{df} for contrastive meaning to encode a highly topical entity.\footnote{The 1st person singular pronominal form in Pazeh-Kaxabu lends empirical support to the emergence and development of split-subjecthood in Formosan languages, where a non-\SUBJ agent that bears a high degree of topicality in the discourse is developed to possess syntactic and morphological subject properties. Readers are directed to \citet{LiuKL2017} for discussion of split-subjecthood.} The use of the peripheral pronominal entails that the post-verbal core arguments are pragmatically ordered according to their \textsc{df} roles, giving rise to order variation for VOS with a focused \SUBJ in (\ref{ex:Austronesian:11}a) and VSO with a salient referent of \OBJ in (\ref{ex:Austronesian:11}b).
+
+\ea\label{ex:Austronesian:11} Pazeh-Kaxabu   \citep[96]{Li2002}\\
+\ea\gll
+[Ka-kan-en [nimisiw]\textsubscript{\OBJ} =lia [=aku]\textsubscript{\textsc{subj:focus-c}}]\textsubscript{\textsc{ip}}. \\
+\phantom{[}\textsc{dur}-eat-\textsc{pv} \phantom{[}3\textsc{erg} =\textsc{modal} \phantom{[}={1\SG}.\textsc{neutral}\\
+\glt `She (the leopard) would surely eat \emph{me}.' (emphasis added)
+\ex\gll
+[Ta-padudu-i [isiw]\textsubscript{\textsc{subj:focus-c}} =na [=aku]\textsubscript{\textsc{obj:topic}}]\textsubscript{\textsc{ip}}. \\
+\phantom{[}\textsc{hortative}-consult-\textsc{pv} \phantom{[}2{\SG} =\textsc{modal} ={1\SG}.\textsc{neutral}\\
+\glt`Perhaps, let \emph{me} consult you.' (emphasis added)
+\z\z
+Non-predicate-initial Indonesian-type languages, such as Balinese \citep{arka2003}, Batak \citep{Erlewine2018}, Madurese \citep[249]{Davies2010} and Sasak \citep{Wouk2002}, have slightly different structural properties. First, the [Spec,IP] position is occupied by the grammatical \SUBJ, accounting for the verb-medial (SVO) structure in these languages. This is exemplified by Balinese in (\ref{ex:Austronesian:12}) and Madurese in (\ref{ex:Austronesian:13}). 
+
+\ea\label{ex:Austronesian:12} Balinese \citep[78]{Arka2003b}\\
+\gll [[Tiang]\textsubscript{\SUBJ} [[nunas kopi-ne niki]\textsubscript{\textsc{vp}}]\textsubscript{\textsc{i$'$}}]\textsubscript{\textsc{ip}}.\\
+ \phantom{[[}1  \phantom{[[}\AV.take coffee-\textsc{def} this\\
+\glt`I took this coffee.'
+\z
+
+\ea\label{ex:Austronesian:13} Madurese (WMP, Indonesia) \citep[149]{Davies2010}\\
+\gll
+Sengko' ng-enom kopi.\\
+1 \AV-drink coffee\\
+\glt`I drink coffee.'
+\z
+\largerpage[-2]
+Unlike Tagalog, Indonesian-type languages, such as Toba Batak \citep{Erlewine2018}, Indonesian \citep{Arka2008} and Balinese \citep{arka2003}, appear to have a VP.  Evidence for this comes from constituency tests such as material intervention and joint-fronting. This is particularly evident when the patient/agent argument is indefinite. The material-intervention test is given in (\ref{ex:Austronesian:14}) for Toba Batak, where a clausal adjunct cannot intervene between a verb and its argument. 
+
+\ea\label{ex:Austronesian:14} Toba Batak (WMP, Philippines)  \citep{Erlewine2018}\\
+ \gll Man-jaha (*nantoari) buku (nantoari) si  Poltak (nantoari).\\
+ \AV-read \phantom{(*}yesterday book \phantom{(}yesterday \textsc{pn} Poltak \phantom{(}yesterday\\
+\glt`Poltak read a book yesterday.'
+\z
+The joint-fronting test is evident when the verb receives Contrastive Focus {(\textsc{fo\-cus-c})} and is required to appear sentence-initially. The whole V+NP string should be included, otherwise the structure is ungrammatical. For example, in contrast to the default SVO order in Balinese in (\ref{ex:Austronesian:12}), sentence (\ref{ex:Austronesian:15}a) is a pragmatically marked VOS sentence (as seen from its translation).\footnote{VOS order is also possible when the subject is an afterthought \TOPIC. This is a different structure, and the pragmatics and related prosody are different.} A postverbal subject is unacceptable, as depicted in (\ref{ex:Austronesian:15}b).
+
+\ea\label{ex:Austronesian:15} Balinese  (Arka, own knowledge)
+ \ea\gll
+ [[Nunas kopi-ne niki]\textsubscript{\textsc{vp}} , [[tiang]\textsubscript{\SUBJ}]\textsubscript{\textsc{ip}}]\textsubscript{\textsc{ip}}.\\
+ \phantom{[[}\AV.take coffee-\textsc{def} this (pause) \phantom{[[}1 \\
+\glt`Taking this coffee was what I did.'
+\ex
+*[[Nunas]\textsubscript{\textsc{v:focus-c}}, [[tiang]\textsubscript{\SUBJ} [kopi-ne niki]\textsubscript{\textsc{vp}}]\textsubscript{\textsc{ip}}]\textsubscript{\textsc{ip}}.
+\z\z
+
+\largerpage[-2]
+Clause structure variation in Indonesian-type languages is usually driven by pragmatic considerations, primarily to express varying levels of informational salience or attention, for example, emphatic or contrastive focus and frame setting or topic (\citealt[257--260]{arka2003}, \citealt{Arka2018}, \citealt[175--176]{Davies2010}, \citealt[104--107]{Norwood2002}). The unit that functionally bears a Contrastive Discourse Function is fronted sentence-initially. Following \citet{Arka2021}, we explicitly represent contrastive \FOCUS and \TOPIC as \textsc{focus-c} and \textsc{topic-c}, respectively, where necessary. 
+
+In order to integrate the latest advancements in the study of information structure within Austronesian languages \citep{Riesberg2018} and beyond (\citealt{DN}, \citetv{chapters/InformationStructure}, among others), we deviate slightly from the LFG representation of \textsc{topic} and \textsc{focus} proposed by, for example, \citet{BM87}. Our approach introduces distinct types of Discourse Functions, including \textsc{focus-c}, beyond the traditional analysis assumed in LFG during the 1980s and early 1990s. Apart from contrastive \TOPIC and \FOCUS, the fine-grained realm of \TOPIC and \FOCUS encompasses additional types such as 'new, first mentioned \TOPIC', 'default \TOPIC', 'secondary \TOPIC', and 'new/completive \FOCUS'. \citet{Arka2018} provide examples of these categories in Sembiran Balinese. The suggested contrastive \textsc{df} is ideally situated within an independent i-structure (\citealt{King1997,A07,Butt14}, among others), although it can also be, for simplicity,  integrated within LFG's conventional unified f-structure representation (cf. (\ref{ex:Austronesian:16}c) below). The \textsc{focus-c} case is exemplified by (\ref{ex:Austronesian:15}) in Balinese above and by (\ref{ex:Austronesian:16}) in Indonesian below.
+
+However, the precise structural position of contrastive \textsc{df}s may vary depending on whether or not a language has a functional complementiser (C) word. For a language like Indonesian, which has a C (\emph{bahwa} `that'), the contrastive \textsc{df} is in [Spec,CP]. That is, a finite clause is CP, the maximal projection of C. The finite CP in Indonesian is evident in the relative clause (RC) with \emph{yang} bearing \mbox{\textsc{focus-c}}, as exemplified in (\ref{ex:Austronesian:16}a) (cf.\ \citealt{Arka2011}: 78-80 and \citet{Arka2021} for details). The c-structure tree is given in (\ref{ex:Austronesian:16}b), showing that the pronominal relativiser \emph{yang} is grammatically \OBJ, and the RC is structurally OSV.  The f-structure is shown in (\ref{ex:Austronesian:16}c).\footnote{Note that the Indonesian copular verb \emph{adalah} is analyzed as requiring \PREDLINK, which is one way of analyzing a nominal predicate in LFG. For discussion of single-tier/double-tier analysis of non-verbal predicates, see \citet{Andrews82}, \citet{ButtEtAl1999}, \citet{dalrympleetal04copular}, among others.}
+
+\ea\label{ex:Austronesian:16} Colloquial Indonesian\footnote{Standard Indonesian and Colloquial Indonesian differ in their morphological properties of verbs and the formation of relativisation. See \citet{Arka2021} for more exemplification.} (WMP, Indonesia)  (Arka, own knowledge)\\
+\ea\gll [Yang mereka akan curi]\textsubscript{\textsc{cp}} adalah mobil.\\
+  \phantom{[}{\REL} {3\PL} {\FUT} \AV.steal be car\\
+\glt`The thing that they were going to steal was a car.' 
+\ex
+\begin{forest}
+ [IP
+ [CP [{\REL\\(\UP\textsc{focus-c})=\DOWN\\(\UP\OBJ)=\DOWN} [Yang\\\REL]]
+ [{C\makebox[0em][l]{$'$}}
+  [IP [{NP\\(\UP\SUBJ)=\DOWN} [mereka\\3\PL]]
+   [{I\makebox[0em][l]{$'$}}
+    [{I} [akan\\\FUT]]
+    [VP [V [curi\\\AV.steal]]]]]]]
+ [{I\makebox[0em][l]{$'$}}
+ [VP [V [adalah\\be]]
+   [NP [N [mobil\\car]]]]]]
+\end{forest}
+\ex \avm[style=fstr]{[pred & `be\arglist{subj, predlink}'\\
+subj & [pred & \rnode{p1}{`pro'}\\
+index & $i$\\
+adjunct & \{[focus-c & \rnode{fc}{[pred & \rnode{p2}{\strut}\\index & $i$]}\smallskip\\
+pred & `steal\arglist{subj, obj}'\\
+subj & [pred & `pro'\\pers & 3\\num & pl]\\
+obj & \rnode{o}{\strut}\\
+cl-type & rel]\}]\\
+predlink & [pred & `car']]}
+\CURVE[2.6]{0pt}{0}{fc}{0pt}{0}{o}
+\CURVE[1]{-3pt}{0}{p2}{0pt}{0}{p1}
+\z\z
+Unlike Indonesian, Balinese has no complementiser C equivalent to English \emph{that} \citep{arka2003}.\footnote{However, certain prepositions (e.g. \emph{unduk} `about') and conjunctions (e.g. \emph{apang} `so that') may function like complementisers in particular contexts \citep[54]{Natarina2018}.} A fronted element bearing a contrastive \textsc{df} can be analysed as being left-adjoined to IP. This structure is shown by the IP subscripts in example (\ref{ex:Austronesian:15}a). Note that the fronted element bearing a marked \textsc{focus-c} is typically given stress with a clear pause after it (indicated by a comma above) resulting in a VOS structure.
+
+Like Tagalog, the clausal linear order in Indonesian-type languages may also vary if the \SUBJ is a 2P clitic. The variation may involve contrastive \textsc{df}s. For instance, Sasak has a 2P clitic \SUBJ\citep{Austin2004} which appears after the first constituent for independent syntactic-phonological reasons, giving rise to clausal word-order variation. Thus, while S-(Auxiliary)-V-O is the unmarked order in Sasak, the subject may also be cliticised to an auxiliary if it is the first word in the sentence; this results in an Aux-S-V order, as seen in (\ref{ex:Austronesian:17}a). In (\ref{ex:Austronesian:17}b), however, the verb is fronted sentence-initially, as it bears \textsc{focus-c}. Therefore, it hosts the subject clitic and results in a VSO order.
+
+\ea\label{ex:Austronesian:17} Ngenó-ngené Sasak (WMP, Indonesia) \citep[29,~32]{Asikin-Garmager2017}\\
+\ea\gll
+Kenyengken=ne tokol.\\
+\PROG=3 sit\\
+\glt`They (the women) were sitting.'
+\ex\gll
+M-pantòk=ne$_i$ begang inó (isiq lóq Mus$_i$). \\
+\textsc{predfoc}-hit=3 rat that \phantom{(}by {\ART.\M} Mus \\
+\glt `Mus hit the rat. (He finally got it!)' (emphasis added)
+\z\z
+In contrast, the clausal word order is typically fixed when an argument is generic or indefinite (see \sectref{sec:Austronesian:4.3} for further discussion of definiteness). For example, the Balinese generic statement about a cow in (\ref{ex:Austronesian:18}a) must be in SVO; a VOS variant is unacceptable, as in (\ref{ex:Austronesian:18}b).
+
+\ea\label{ex:Austronesian:18} Balinese \citep[261]{Arka2019}
+\ea\gll
+Sampi ngamah padang. \\
+cow \AV.eat grass\\
+\ex\gll
+*Ngamah padang sampi.\\
+\phantom{*}\AV.eat grass cow\\
+\glt`A cow eats grass.'
+\z\z
+Some AN languages in the peripheral regions, geographically distant from their original homeland of Taiwan, are morphologically isolating and typically exhibit rigid SVO clause order. These languages are encountered on Flores Island in Indonesia and other peripheral areas, such as in Southeast Asia and the Pacific. Structurally, their clauses are like Indonesian-type languages with good evidence for a surface VP. Consider the following intervention test in Rongga (central Flores), a highly isolating language, where the verb and object form a VP:
+
+\ea\label{ex:Austronesian:19} Rongga (CEMP, Indonesia) \citep[192]{Arka2016}\\
+ \ea\gll
+ Ardi [ngedho wolo]\textsubscript{\textsc{vp}} \textbf{nembumai}.\\
+ Ardi \phantom{[}see mountain yesterday\\
+\glt`Ardi saw a/the mountain.'
+\ex *Ardi ngedho \textbf{nembumai} wolo.
+\z\z
+Rongga has developed a relativiser (\REL) from the noun meaning `person', \emph{ata}, exemplified in (\ref{ex:Austronesian:20}a). As in Indonesian, it may also be analysed structurally as appearing in [Spec,CP], bearing a contrastive \textsc{df} \citep{Arka2016}. The c-structure is given in (\ref{ex:Austronesian:20}b), which shows that sentence (\ref{ex:Austronesian:20}a) is a highly marked structure. Both \TOPIC and \FOC are present, with \TOPIC preceding \FOC in the left periphery. Note that \textsc{focus-c} in this example is associated with two elements having the same referent (indicated by the subscript $i$). Hence, it is doubly marked: first by the relativiser, \emph{ata}, and second by the fronted question word (\textsc{q}), \emph{sei} `who'. The sentence is a cleft structure with the \textsc{q}, \emph{sei}, being the (fronted) predicate and the relative clause being the \SUBJ(as shown by the literal translation). Considering that relativization introduces a contrasting emphasis by focusing on or restricting a specific referent under discussion or question, we analyze the relativizer as carrying \textsc{focus-c}. In example (\ref{ex:Austronesian:20a}), for instance, multiple individuals were present, and the relative clause singles out one of them through the event of 'taking (my) water'.\footnote{It should be noted that, from the broader viewpoint of the matrix noun phrase, the relativizer is linked to the specific referent being talked about, to which the relative clause adds its semantic restriction. Therefore the relativizer can also be analyzed as a topic (cf. \citealt{BM87}).}
+
+\ea\label{ex:Austronesian:20} Rongga \citep[212]{Arka2016}\\
+\ea\label{ex:Austronesian:20a}\gll
+Wae ja'o, sei ata neku ndia?\\
+ water {1\SG} who {\REL} take just.now\\
+\glt`As for my water, who's the one taking (it) just now?'\\
+(Lit. `As for my water, the one taking (it) just now is who?')
+\ex
+\begin{forest}
+[CP
+ [{NP\\(\UP\TOPIC)=\DOWN} [{Wae ja'o\\water~1\SG}, roof]]
+ [CP [{NP$_i$\\(\UP\textsc{focus-c})=\DOWN} [sei\\who]]
+ [CP [{\REL$_i$\\(\UP\textsc{focus-c})=\DOWN} [ata\\\REL]]
+  [C$'$ [IP [VP [{neku ndia?\\take just.now}, roof]]]]]]]
+\end{forest}
+\z\z
+Unlike Philippine-type and Indonesian-type languages, the indexing-type AN languages of eastern Indonesia and Oceania have developed systematic pronominal indexing systems. The salient grammatical trait of AN (symmetrical) voice is either disappearing or already lost in these languages. As a result, these languages have relatively free word order determined largely by discourse pragmatics.
+
+\largerpage[-3]
+For example, Kambera in Sumba, eastern Indonesia, has developed different sets of bound pronominal indexes (\NOM, \ACC, \GEN and \DAT) that appear on the predicate with a fixed order \citep[79]{Klamer1998}. In example (\ref{ex:Austronesian:21}) below, \emph{na-} and \emph{-nya} are subject and object arguments, respectively. They appear with free cross-referencing NPs. These free NPs are optional and freely ordered, hence allowing NP$_i$-[{\SUBJ}$_i$-V-{\OBJ}$_j$]=NP$_j$ (or SVO: (a)) and NP$_j$-[{\SUBJ}$_i$-V-{\OBJ}$_j$]=NP$_i$ (or OVS: (b)) orders. OSV, despite not being shown here, is also possible. The SVO structure in (\ref{ex:Austronesian:21}a) is the default/unmarked order for transitive clauses, and OVS is a marked order when \OBJ is contrastive \textsc{topic} \citep[22]{Klamer1996}. The basic word order for an intransitive sentence is, however, VS \citep[85]{Klamer1998}. Kambera syntax is typologically like Chiche\^wa (albeit with a difference in the `agreement' status of the verbal \SUBJ marker),\footnote{The verbal \SUBJ/\OBJ markers in Chiche\^wa differ from those in Kambera in the following ways. As in Kambera, the \SUBJ marker in Chiche\^wa is obligatory in the verbal template. However, the Chiche\^wa \SUBJ marker is only optionally pronominal. It serves as the actual argument when there is no free \SUBJ NP. Therefore, unlike in Kambera, it can also function as a `syntactic' agreement marker when there is a free \SUBJ NP present. The \SUBJ/\OBJ markers in Kambera hold a compulsory position within the verbal template and are consistently pronominals, meaning they refer to entities even in the absence of their corresponding free NPs. Consequently, these markers do not serve as syntactic agreement markers. In this regard, these affixes share similarities with verbal affixes found in Papuan languages \citep{Arka:PapuanNumber} and certain Australian Aboriginal languages like Wambaya and Warlpiri. In these languages, the affixes exhibit ambiguity as they can function both as (anaphoric) agreement markers and incorporated pronominals (see \citealt{AustBres96} and references therein).} and it can be analysed in LFG in the same way as outlined in \citet{BM87}: the bound pronominal indexes are the actual syntactic arguments whereas the free NPs bear \textsc{df}s, and are pragmatically linked to the arguments, which gives rise to some kind of anaphoric agreement.
+
+\ea\label{ex:Austronesian:21} Kambera (CEMP, Indonesia) \citep[13]{Klamer1996}\\
+\ea\gll
+Ka nyuna$_j$ na$_j$-tinu-nya$_k$ na lau$_k$. \\
+ \textsc{cnj} she 3{\SG.\NOM}-weave-3{\SG.\DAT} {\ART} sarong\\
+\glt`So that she weaves the sarong.' (Lit. `she she-weaves-it the sarong.')
+\ex\gll
+Ka na lau$_k$ na$_j$-tinu-nya$_k$ nyuna$_j$.\\
+\textsc{cnj} {\ART} sarong 3{\SG.\NOM}-weave-3{\SG.\DAT} she\\
+\glt`So that the sarong was woven (by her).' (Lit. `the sarong she-weaves-it she.')
+\z\z
+
+To sum up this section, LFG is well-suited for analysing word order variation across different types of AN languages based on a few parameters that are empirically motivated (e.g. VP vs non-configurational, head-initial vs head-final, a contrastive \textsc{df} in [Spec,CP], [Spec,IP] or left-adjoined to IP). This is made possible by the c-structure representation in LFG which follows a flexible version of X-bar Theory, and which not only captures cross-linguistic structural similarities (e.g. headedness in lexical and functional categories), but also varying language-specific properties (e.g. the distinction between the endocentric phrase and an exocentric S that is not X$'$-theoretic, and their multiple branching units). 
+
+\section{Grammatical functions and alternative argument realisations }
+\label{sec:Austronesian:4}
+\subsection{Introduction}
+In LFG, grammatical functions are dealt with independently from the a-structure. Recall that in \sectref{sec:Austronesian:2}, we briefly introduced the basics of the voice system in Western AN and the rationale behind adopting a syntacticised a-structure in LFG (following \citealt{Manning1994}, \citealt{arka2003}, \citealt{Arka2008}). Certain aspects of our architecture and related representations/mechanisms differ slightly from the assumptions generally adopted in LFG. One example is the argument linking/mapping mechanism (cf. \citetv{chapters/Mapping}). The presentation used in this chapter is to account for salient symmetrical AN voice system where both accusative and ergative properties are observed within the same grammatical system, as in Balinese \citep{arka2003}, which allows an underlying argument to have alternative \GF realisations, like the a-subject/object to be the surface \OBJ/\SUBJ as seen in Balinese in (\ref{ex:Austronesian:5}) and Kavalan in (\ref{ex:Austronesian:6}). These languages are classified as alternating languages for our discussion here.
+
+On the other hand, AN languages of the indexing type, like Kambera, Wooi, and Taba, lack symmetrical voice and the associated \SUBJ/\PIVOT distinction, and thus tend to be non-alternating languages \citep{Klamer1996,Bowden2001,Sawaki2016}. Typically, their AN voice morphology and related voice system have disappeared. Consequently, core arguments (subject/object) do not have surface \GF alternations like the kind witnessed in the alternating languages. The transitive subject and object are consistently surface \SUBJ and \OBJ, respectively.
+
+In other words, non-alternating languages tend to have fixed argument linking. In a genuinely non-alternating system, there is typically no distinction between {\GF}s and \textsc{gr}s. This gives rise to the salient typological property of non-alternating systems that {\GF}s are typically semantically transparent. For a transitive predicate, \SUBJ is therefore always the most agent-like argument as seen, for example, in Kambera in the examples in (\ref{ex:Austronesian:21}) above. The bound (\NOM) proclitic \emph{na=} is always the \ARG1:agent/\SUBJ argument of a transitive verb in this language, even when it is cross-referenced by a postposed free NP as in (\ref{ex:Austronesian:21}b). That is, sentence (\ref{ex:Austronesian:21}b) is not grammatically passive despite being given a passive translation in English; the agent is neither \textsc{obl} nor an adjunct (cf. the pronominal marking in a verbal cluster in \citealt{Klamer1996}). Given the semantic transparency of {\GF}s, intransitive predicates unsurprisingly show a split-S property in non-alternating AN languages. This is seen in, for example, Acehnese in examples (\ref{ex:Austronesian:45})-(\ref{ex:Austronesian:46}) below.
+
+In the ensuing sub-sections, we present, from the LFG perspective, how {\GF}s (e.g. \SUBJ, \OBJ, \textsc{obl}) are realised differently in the languages that have robust voice systems (i.e. alternating languages) and in those that do not (i.e. non-alternating languages). Specific diagnostics to identify \SUBJ, \OBJ and \textsc{obl}, or their grouping as core versus non-core arguments, vary depending on the language type and morphosyntactic resources available (such as verbal morphology, pronominal marking, and phrase/case marking) in a given language. The complexity of the properties has led to a wide variety of competing analyses, for example, in the context of grammatical alignment systems to be discussed in \sectref{sec:Austronesian:4.3}. We begin by clarifying the subtle and crucial difference between \SUBJ and \PIVOT. 
+
+\subsection{SUBJECT and PIVOT}
+\label{sec:Austronesian:4.1}
+
+There have been competing proposals within LFG for analysing and representing the predicate's most prominent argument, traditionally referred to as `subject' (cf. subjecthood in \citealt{falk06}, \citetv{chapters/GFs}). In this book chapter, we keep the standard LFG conception of \textsc{subj(ect)} (i.e. in upper case): it is the surface grammatical subject, the most prominent \GF on the relational \GF hierarchy. It is part of f-structure, distinct from the thematic subject (or $\widehat{\mbox{θ}}$), the most prominent role on the thematic hierarchy, and part of the semantic argument structure \citep{bresnan1989locative,BresnanKanerva1992}.\footnote{The thematic subject roughly corresponds to the so-called `logical subject', or the most prominent role-based A/S in linguistic typology (i.e. agentive argument of transitive verb, or sole argument of intransitive verb; see \citet{Jespersen1924} and \citet[7]{Manning1994}.} It is also distinct from the a-subject, the syntacticised a-structure subject \citep{Manning1994}. Separating \SUBJ from a-subject is necessary to account for symmetrical voice alternations and related properties in AN languages (cf. the separation of \GF-\textsc{gr} in \sectref{sec:Austronesian:2}), otherwise certain unusual phenomena, such as the binding of \SUBJ by \OBJ (e.g. in Balinese example [5]) cannot be accounted for.
+
+Furthermore, it is essential to distinguish \SUBJ from \PIVOT to account for the complex morphosyntax/pragmatics interface, which constrains voice alternation in certain constructions such as fronted questions in Balinese and Amis (to be discussed in \sectref{sec:Austronesian:4.1.2}). We also want to emphasize our conception of \PIVOT as schematised in (\ref{ex:Austronesian:22}a): \PIVOT is at the interface of syntax and pragmatics; that is, it shows grammatical properties (i.e. GF-related, typically intersecting with \SUBJ, though not always) as well as discourse-pragmatic (\textsc{df}) properties (e.g. \textsc{focus-c}). In this sense, \PIVOT is an `overlay' or `intersection' of {\GF}s and \textsc{df}s \citep{Arka2021}. \PIVOT is evident in the formation of bi-clausal structures, such as relativisation and coordination, and other grammatical mono-clausal structures involving marked \textsc{df}s, such as \textsc{focus-c} in Balinese fronted questions. Informally, licensing \SUBJ to bear \textsc{focus-c} as \textsc{piv\-ot} can be represented as (\ref{ex:Austronesian:22}b), thus \mbox{[\textsc{df-c}={\SUBJ}]\;\PIVOT} for \SUBJ\PIVOT.
+
+\ea\label{ex:Austronesian:22}
+\ea
+\attop{
+	\begin{tikzpicture}
+	\draw (0,0) ellipse [x radius=3cm,y radius=1.5cm] node (cfoc) {\textsc{focus-c/topic-c}};
+	\draw (4.5,0) ellipse [x radius=3cm,y radius=1.5cm] node (subjobj) {\SUBJ/\OBJ};
+	\node at (2.25,0) {\PIVOT};
+	\node [below=3\baselineskip of cfoc] {(Discourse function)};
+	\node [below=3\baselineskip of subjobj] {(Grammatical function)};
+\end{tikzpicture}}\\
+\ex {[\textsc{focus-c}={\SUBJ}]\textsubscript{\PIVOT}}
+\z\z
+The notion of `pivot' has been discussed and used in previous typological research. In what follows, we briefly provide some context for the conception of \PIVOT adopted in this chapter. Its usage here is broadly aligned to descriptive functional and typological linguistics in place of `Subject' and `Topic' in the analysis of ergativity \citep{Chao1968,Heath1975,dixon1979,FoleyVanValin1984,VanValin1997}. The explicit incorporation of \PIVOT into LFG was proposed by \citet{Manning1994} to replace the \GF attribute label \SUBJ in f-structure (or Manning's \textsc{gr}-structure) and also to account for `inverse' mapping in ergative languages while maintaining LFG's ability to account for `straight-through' mapping in familiar accusative languages. In short, Manning's \PIVOT is intersubstitutable with the standard LFG's \SUBJ to capture the cross-linguistic variation and similarity of ergative and accusative systems. Like \SUBJ, \PIVOT in Manning's proposal is a subcategorised \GF that is licensed by the head \PRED. This is an important point that makes Manning's \PIVOT different from Falk's proposal, to which we now turn.
+
+\largerpage[-1]
+\citet{Falk2000,falk06} also incorporates \PIVOT into LFG. While his conception of \PIVOT is broadly in line with \PIVOT in typological/functional linguistics \citep{dixon1979,FoleyVanValin1984,Dixon1984} and with \PIVOT in Manning's proposal, Falk's \PIVOT in LFG is different in the following respects. First, Falk's \PIVOT is a slightly narrower notion than the generally understood \PIVOT in language typology, and in Manning's interpretation. It is only related to what \citet{Schachter1977} calls reference-related properties of subject, not role-related ones. That is, in Falk's conception, \PIVOT is a syntactic function primarily for cross-clausal, combinatoric purposes \citep[76]{falk06}.\footnote{\citegen{falk06} conception of \PIVOT as a syntactic function has been extended in \citet{Falk07} to account for pragmatic-semantic information in NP syntax (i.e. construct state nominals (CSN) in Hebrew: cf. \citetv{chapters/Semitic}. The function of \PIVOT in AN languages differs from the CSN in Hebrew in its application at the clausal level, where it operates exclusively in the symmetrical voice systems, and is most evident in clause combining.}
+
+Second, given that it is a syntactic function, like in Manning's conception, Falk's \PIVOT is an attribute in the f-structure. However, it should be noted that there is an element of grammaticalisation of topichood in clause combining processes. For example, the zero or unexpressed argument in control structures is strongly motivated by topicality and pragmatic efficiencies in cognitive processing (\citealt[219]{Givon2001}; \citealt[163-165]{Hawkins2004}). Thus, our conception of \PIVOT as schematised in (\ref{ex:Austronesian:22}) is slightly different from Falk's in that it is not purely syntactic. \PIVOT should also be understood as carrying a (grammaticalised) element of discourse-pragmatics in the interface with syntax.
+
+Third, the crucial difference between Falk's and Manning's proposals relates to the status of \PIVOT in relation to the deeper conception of argument structure. Falk's \PIVOT is more like \textsc{df}s or \textsc{adjunct}s in that it is not part of the \PRED's argument structure. In contrast, Manning's \PIVOT is like \SUBJ in that it is licensed by the predicate argument structure. There is good evidence that \PIVOT is grammatically constrained due to its tight link to the \PRED's argument structure. For instance, \PIVOT selection in relativisation and fronted \textsc{q}s in Balinese impose a verbal voice constraint. Such a constraint is unexpected on Falk's conception of \PIVOT as a non-subcategorised or adjunct-like \GF. For this reason, our conception of \PIVOT is in line with Manning's interpretation rather than Falk's. Our \PIVOT is also in agreement with the widely used notion of pivot in typological linguistics.
+
+Finally, it is worthwhile briefly commenting on Falk's conception of \PIVOT and $\widehat{\textsc{gf}}$, and their related mapping. The notation of $\widehat{\textsc{gf}}$ (parallel to $\widehat{\mbox{θ}}$ in thematic structure) means the highest \GF in the subcategorisation frame of the head \PRED. Since there is no syntacticised a-structure (distinct from f-structure) in Falk's framework, his $\widehat{\textsc{gf}}$ is equivalent to the conflated \SUBJ in the traditional LFG analysis of {\GF}s (cf. \citealt{bresnan1989locative}), and Manning's syntacticised a-structure. Crucially, the \GF-\PIVOT mapping in Falk's analysis does not result in \GF alternations. For example, unlike in our analysis where the \AV-\UV alternation changes the mapping of agent and patient, which results in the patient being mapped onto \SUBJ in \UV, the \UV structure in Falk's analysis keeps the patient as syntactic \OBJ and the agent as $\widehat{\textsc{gf}}$ (i.e. his \SUBJ). This is surprising and not empirically supported: the patient of the \UV in Balinese shows up in the surface syntax as grammatical \SUBJ, not \OBJ. The evidence comes from the fact that the patient is structurally in the preverbal \SUBJ position. In contrast, the agent (which would be \SUBJ in \AV) appears as \OBJ in \UV, appearing in the post verbal position (cf. examples \ref{ex:Austronesian:1}a--b).
+
+To conclude, our conception of \PIVOT is more in line with Manning's interpretation than Falk's interpretation. However, unlike Manning's proposal, we keep the standard LFG conception of \SUBJ in f-structure, as we want to keep \SUBJ as the clause-internal and most prominent \GF, licensed by the head \PRED. This is the \SUBJ in its role-related dimension in connection to the \PRED, distinct from \PIVOT (which encapsulates its other clause-external reference-related dimension; \citealt{Schachter1977}). In addition, and unlike in Falk's and Manning's proposals, we do not represent \PIVOT as a separate attribute in f-structure, given the nature of \PIVOT with overlapping \GF-\textsc{df} properties as shown in (\ref{ex:Austronesian:22}a). Its presence can be captured as a construction-type (or language-specific) constraint: see \sectref{sec:Austronesian:6.3}.
+
+In what follows, we discuss and exemplify AN \SUBJ and \PIVOT further. We begin by illustrating the major differences among AN in the morphosyntactic and behavioural properties of clause-internal \SUBJ, and then move on to cases where \PIVOT is also present. While \SUBJ and \PIVOT are oftentimes the same argument, they may diverge \citep{Arka2021}.
+
+\largerpage
+\subsubsection{SUBJECT: Voice marking and argument flagging}
+\label{sec:Austronesian:4.1.1}
+
+Voice marking encodes \SUBJ selection. There are at least three types of voice marking across the AN languages: (i) a multi-way voice system without distinct passive/applicative morphology; (ii) a two-way (\AV versus \UV) voice system, typically with distinct passive/applicative morphology, and; (iii) a restricted and mixed voice-indexing system. Each is discussed below, including its related argument flagging, from an LFG perspective.
+
+\SUBJ selection in multi-way voice systems is encountered in Formosan{\slash}Philip\-pine-type languages such as Puyuma \citep{Teng2008}, Tagalog, Kelabit (Borneo), Talaud (North Sulawesi; see \citealt{Utsumi2013}) and Malagasy. The systems in these languages exhibit several salient properties. First, verbal morphology selects \SUBJ as having a specific semantic role rather than a generalised role. This role-specific linking of \SUBJ is particularly clear in non-actor voice types. Tagalog, for example, shows Patient Voice (\PV), Locative Voice (\LV), Instrumental Voice (\IV), and Dative Voice (\DV, including dative/goal/benefactive), in addition to Actor Voice (\AV: \citealt[135]{FoleyVanValin1984}; \citealt{Arka2003b}). Kelabit, on the other hand, shows a simpler system with a three-way opposition between \AV, \UV, and \IV. For simplicity, only \AV-\textsc{pv}-\LV alternations, like in Tagalog, and \AV-\PV alternations, like in Kelabit, are given in (\ref{ex:Austronesian:23})-(\ref{ex:Austronesian:24}) below.
+
+\ea\label{ex:Austronesian:23} Tagalog \citep[14]{Kroeger93}
+\ea\gll
+M{\textlangle}um{\textrangle}ili \textbf{ang}=lalake ng=isda sa=tindahan. \\
+ \textlangle{\PFV.\AV}{\textrangle}buy \SUBJ=man \textsc{core}=fish \textsc{noncore}=store \\
+\glt `The man bought fish at the store.'\\
+\hspace*{\fill}\begin{tabular}[t]{c@{}c@{\,}c@{}c}
+     & \SUBJ & \OBJROLE{patient}\\ `\AV.buy{\textlangle}&1:agt,&2:pt&{\textrangle}'
+     \end{tabular}
+\ex\gll
+B{\textlangle}in{\textrangle}ili-$\emptyset$ ng=lalake \textbf{ang}=isda sa=tindahan. \\
+ \textlangle{\PFV}{\textrangle}buy-{\PV} \textsc{core}=man \SUBJ=fish \textsc{noncore}=store\\
+\glt`The man bought the fish at the store.'\\
+\hspace*{\fill}\begin{tabular}[t]{c@{}c@{\,}c@{}c}
+     & \OBJROLE{agent} & \SUBJ\\ `\PV.buy{\textlangle}&1:agt,&2:pt&{\textrangle}'
+     \end{tabular}
+\ex\gll
+B{\textlangle}in{\textrangle}ilih-an ng=lalake ng=isda \textbf{ang}=tindahan. \\
+\textlangle{\PFV}{\textrangle}buy-{\LV} \textsc{core}=man \textsc{core}=fish \SUBJ=store \\
+\glt`The man bought fish at the store.'\\
+\hspace*{\fill}\begin{tabular}[t]{c@{}c@{\,}c@{\,}c@{\,}c}
+     & \OBJROLE{agent} & \OBJROLE{patient} & \SUBJ\\ `\LV.buy{\textlangle}&1:agt,&2:pt,&3:loc&{\textrangle}'
+     \end{tabular}
+\z\z
+
+\ea\label{ex:Austronesian:24} Kelabit (WMP, Indonesia)  \citep[161]{Hemmings2021}
+\ea\gll
+\textbf{La'ih} \textbf{sineh} nenekul nuba' ngen seduk.\\
+man {\DEM} \AV.\PFV.spoon.up rice with spoon\\
+\glt`The man spooned up his rice with a spoon.'\\
+\hspace*{\fill}\begin{tabular}[t]{c@{}c@{}c@{}c}
+     & \SUBJ & \OBJ\\ `\AV.spooned.up{\textlangle}&1:agt,&2:pt&{\textrangle}'
+     \end{tabular}
+\ex\gll
+\textbf{Nuba'} sikul la'ih sineh ngen seduk.\\
+rice \PV.\PFV.spoon.up man {\DEM} with spoon \\
+\glt`That man spooned up rice with a spoon.'\\
+\hspace*{\fill}\begin{tabular}[t]{c@{}c@{}c@{}c}
+     & \OBJ & \SUBJ\\ `\PV.spooned.up{\textlangle}&1:agt,&2:pt&{\textrangle}'
+     \end{tabular}
+\z\z
+\SUBJ selection is also indicated by structural properties, such as syntactic position and flagging. In Tagalog, \SUBJ is flagged by \emph{ang=} in (\ref{ex:Austronesian:23}) above.\footnote{The intransitive \rarglist{1:agt} (or S) argument in Tagalog is also flagged by \emph{ang=}, providing robust evidence for clause-internal subjecthood (i.e. the sole core intransitive argument is \SUBJ):
+\ea\gll
+Nagsalita ang=babae.\\
+spoke \SUBJ=woman\\
+\glt`The woman spoke.' \citep[323-324]{Guzman1988}
+\z}
+In Kelabit, \SUBJ is a bare NP that occurs preverbally, and has no prepositional flagging to distinguish it from \textsc{obl}. 
+
+Second, the data points above exemplify the hallmarks of the AN symmetrical voice system in two respects: morphologically and syntactically \citep{Foley1998,Arka2003b,Himmelmann2005,Riesberg2014}. In terms of morphological marking, all voice types are equally marked, as clearly seen in Tagalog and Formosan languages, such as Puyuma \citep{Teng2008} and Pazeh-Kaxabu \citep{Yeh2019}. None of their voice marking is morphologically `default'. As for Kelabit, the root of the \PV verb is \emph{sikul}, and the \PV marking involves \emph{i}-ablaut and sibilation of /t/ to /s/, analysable as a variant of the infix \emph{in-} also seen in Tagalog.\footnote{We thank an anonymous reviewer for pointing this out.} In LFG, semantically transitive predicates, such as `buy' in (\ref{ex:Austronesian:23}) and `spoon up' in (\ref{ex:Austronesian:24}), are listed in their lexical entries as verbal roots with a-structures containing \rarglist{1:agt, 2:pt} (i.e. the most actor-like and patient-like arguments are the first two ordered core arguments). Voice morphology is a marker for \SUBJ linking, following general principles in Lexical Mapping Theory (LMT), and will be further discussed in \sectref{sec:Austronesian:4.2}.
+
+Another syntactic hallmark of the AN symmetrical voice system is that core arguments are equally selectable as \SUBJ without obligatory demotion of any other core argument in the argument structure. This results in a non-\AV alternation with cross-linking as depicted in (\ref{ex:Austronesian:4}), where \rarglist{1:agt} remains the most prominent argument. Evidence for the non-demotion of \rarglist{1:agt} comes from reflexive binding as demonstrated in Balinese (\ref{ex:Austronesian:5}) and Kavalan (\ref{ex:Austronesian:6}). Other evidence comes from argument marking/flagging. This is clearly demonstrated in the \AV-\PV alternation in Tagalog in (\ref{ex:Austronesian:23}a--b). The alternative linking between \rarglist{1:agt} and \rarglist{2:pt} to \SUBJ and \OBJ correlates with the alternative flagging with \emph{ang=} and \emph{ng=}. The phrase markers \emph{ang=} and \emph{ng=} in Tagalog flag \SUBJ and \OBJ respectively. Hence, in the \PV in (\ref{ex:Austronesian:23}b), \rarglist{1:agt} remains core as it is flagged with \emph{ng=}. This non-demotion property is what typologically distinguishes the AN symmetrical voice system from Indo-European languages like English.
+
+Next, \SUBJ selection in AN languages with two-way voice systems is typically encountered in the Indonesian-type. It shows similar symmetrical voice properties to those observed in Tagalog with the exception that the selection of a peripheral semantic role as \SUBJ requires a specific applicative marker. Consider the Balinese examples in (\ref{ex:Austronesian:25}b)-(\ref{ex:Austronesian:25}c) below, which is a near equivalent of the LV in Tagalog, as seen previously in (\ref{ex:Austronesian:23}c): 
+
+\newpage
+\ea\label{ex:Austronesian:25} Balinese  \citep[60, 75]{Arka2014b}
+\ea\gll
+Ia meli baas (sig dagang-e ento).\\
+ 3 \AV.buy rice \phantom{(}at trader-\textsc{def} that \\
+\glt `(S)he bought rice from the trader.'\\
+\hspace*{\fill}\begin{tabular}[t]{c@{}c@{\,}c@{\,}c@{}c}
+     & \SUBJ & \OBJ & \OBL\\ `\AV.buy{\textlangle}&1:agt,&2:th\,|&3:loc/source&{\textrangle}'
+     \end{tabular}
+\ex\gll
+Ia meli-\textbf{nin} \textbf{dagang-e} \textbf{ento} baas. \\
+3 \AV.buy-{\APPL} trader-\textsc{def} that rice\\
+\glt`(S)he bought rice from the trader.'\\
+\hspace*{\fill}\begin{tabular}[t]{c@{}c@{\,}c@{\,}c@{}c}
+     & \SUBJ & \OBJ & \OBJROLE{theme}\\ `\AV.buy{\textlangle}&1:agt,&2:loc/source,&3:th&{\textrangle}'
+     \end{tabular}
+\ex\gll
+\textbf{Anak-e} \textbf{nto} belin-\textbf{in} tiang potlot. \\
+person-\textsc{def} that \UV.buy-{\APPL} 1 pencil\\
+\glt`I bought a pencil from the person.'\\
+\hspace*{\fill}\begin{tabular}[t]{c@{}c@{\,}c@{\,}c@{}c}
+     & \OBJ & \SUBJ & \OBJROLE{theme}\\ `\UV.buy{\textlangle}&1:agt,&2:loc/source,&3:th&{\textrangle}'
+     \end{tabular}
+\z\z
+In Balinese, the two-place transitive verb \emph{beli} `buy' obligatorily requires the applicative marker \emph{-(n)}in order to add a locative/source to the base structure as a core argument. Compare the locative/source role flagged by \emph{sig}\footnote{The noun phrase flagged by \emph{sig} in (\ref{ex:Austronesian:25}a) differs from other non-thematic locatives of \textsc{obl} adjunct in terms of its thematic animacy (versus inanimate location marked by \emph{ka}). See \citet{Arka2014b} for other syntactic properties targeting the distinction between arguments and adjuncts.} in (\ref{ex:Austronesian:25}a) and the unflagged locative/source argument in (\ref{ex:Austronesian:25}b). The latter is licensed by the verb that contains the applicative morpheme \emph{-in}, and receives a P(atient)-like core status, resulting in a ditransitive construction. Crucially, with an applicative verb (\ref{ex:Austronesian:25}b--c), the locative/source argument is promoted to the second most prominent position among the core arguments (i.e. \rarglist{2:loc/source}), essential for its selection as \SUBJ; hence, it can appear sentence-initially without flagging as shown in (\ref{ex:Austronesian:25}c). Similar to Formosan/Philippine languages, core arguments are equally selectable as \SUBJ in two-way voice systems (i.e. evidencing the symmetricality of syntax), except that the latter languages require a distinct applicative marker, while the former have more robust verbal voice morphology.
+
+Additionally, AN languages of the Indonesian type often have a real passive voice. Sundanese, for example, has a passive marked by \emph{di-}. In passive voice, \rarglist{1:agt} is demoted to non-core status, resulting in the promotion of patient to the first argument and its link to \SUBJ, as shown in (\ref{ex:Austronesian:26}b).
+
+\ea\label{ex:Austronesian:26} Sundanese (WMP, Indonesia) \citep[123]{Davies2013}
+\ea\gll
+\textbf{Asép} \textbf{ng}irim buku ka Enéng.\\
+Asep \AV.send book to Eneng \\
+\glt`Asep sent a book to Eneng.'\\
+\hspace*{\fill}\begin{tabular}[t]{c@{}c@{\,}c@{}c@{}c}
+     & \SUBJ & \OBJ & \OBL\\ `\AV.send{\textlangle}&1:agt,&2:pt |&3:go&{\textrangle}'
+     \end{tabular}
+\ex\gll
+\textbf{Buku} \textbf{éta} \textbf{di}-kirim ka Enéng ku Asép.\\
+book that \PASS-send to Eneng by Asep\\
+\glt`The book was sent to Eneng by Asep.'\\
+\hspace*{\fill}\begin{tabular}[t]{c@{}c@{\,}c@{\,}c@{}c}
+     & \SUBJ & \OBL & \OBL\\ `\textsc{passv}.send{\textlangle}&1:pt |&2:agt, &3:go&{\textrangle}'
+     \end{tabular}
+\z\z
+AN languages of the indexing type, such as Kambera, Kodi and Wooi, also show clause-internal evidence for \SUBJ even in the absence of a typical voice system. In these languages, \SUBJ is expressed by a pronominal index (clitic/affix) that commonly exhibits a \NOM pattern. In Wooi, for example, the verbal prefix \emph{he-} indexes the intransitive \SUBJ in (\ref{ex:Austronesian:27}a) and transitive \SUBJ in (\ref{ex:Austronesian:27}b). Incidentally, a free NP would optionally cross-reference the \SUBJ index for pragmatic reasons (e.g. to express contrastive \textsc{focus}) or for semantic reasons (e.g. to express an associative plural as seen in \ref{ex:Austronesian:27}b). In our LFG analysis, the index \emph{he-} fills the \SUBJ slot in the verbal template. Since \emph{he-} is referential, it contributes \textsc{[pred=`pro'], [num=pl]}, and [\PERS=3] to the value of \SUBJ.
+
+\ea\label{ex:Austronesian:27} Wooi (CEMP, Eastern-Indonesia) \citep[203, 206]{Sawaki2016}
+\ea\glll
+Henda. \\
+ \textbf{he}-t-ra\\
+ 3\PL-\PL-go\\
+\glt `They went.'
+\ex\glll
+Jon hendora Agus hia na ramdempe.\\
+ Jon \textbf{he}-t-rora \textbf{Agus} \textbf{hia} na ramdempe\\
+ John 3\PL-\PL-hit Agus {3\PL} {\LOC} yesterday\\
+\glt`John and associates hit Agus and associates yesterday.'
+\z\z
+
+\newpage
+\subsubsection{Behavioural properties of SUBJECT/PIVOT}
+\label{sec:Austronesian:4.1.2}
+
+In the introduction to \sectref{sec:Austronesian:4}, we clarified the theoretical orientation for the terminology used here to denote the distinct notions of \SUBJ and \PIVOT. In this section, we focus specifically on how \PIVOT is motivated, and exemplify cases in AN languages where \PIVOT must be strictly identified with \SUBJ (henceforth, \SUBJ/\PIVOT) and other cases where \PIVOT is not necessarily \SUBJ. We begin with \SUBJ/\PIVOT cases.
+
+Evidence for the \SUBJ/\PIVOT constraint is observed in the fronted \textsc{q}s in Balinese and Amis. Consider the \textsc{q}s \emph{apa} `what' in Balinese (\ref{ex:Austronesian:28}a) and \emph{cima} in Amis (\ref{ex:Austronesian:29}) below. They appear \emph{in situ} because they are simply `weak' \textsc{focus}. By contrast, when the \textsc{q}s are placed sentence-initially (i.e. fronted) as in (\ref{ex:Austronesian:28}b) and (\ref{ex:Austronesian:30}), they must be understood as \SUBJ. This discourse prominent property of \textsc{focus-c} has turned \SUBJ into the highly privileged status of \SUBJ/\PIVOT that is borne by the fronted \textsc{q}. Now consider the contrasting status of arguments that do not involve the overlay function of \PIVOT. In the Balinese example (\ref{ex:Austronesian:28}a), the \textsc{q} is not fronted. Even for the fronted \textsc{q} in example (\ref{ex:Austronesian:28}b), the sentence is only acceptable with reading (i) (indicated by the solid line). While the NP \emph{ci} is closer to the subject position, it can only be understood as \OBJ.
+
+\ea\label{ex:Austronesian:28} Balinese \citep[27]{arka2003}
+\ea\gll
+[Ci ngalih \textbf{apa} ditu ibi]\textsubscript{\textsc{ip}}? \\
+ \phantom{[}2 \AV.search {\OBJ} there yesterday\\
+\glt`What did you look for there yesterday?' (in-situ \textsc{q}=\OBJROLE{th})
+\ex\glll
+ \textbf{Apa} ci [ {\GAP}    ngalih  {\GAP}  ditu ibi]\textsubscript{\textsc{ip}}? \\
+ [\rnode{w}{what}]\textsubscript{\textsc{focus-c}}{\vrule height 1.5ex depth 2ex width 0pt} \rnode{y}{2} {} {\rnode{s}{\SUBJ}} \AV.search {\rnode{o}{\OBJ}} there yesterday\\
+ (\PIVOT)   \\
+\glt i) `What looked for you there yesterday?' (fronted \textsc{q}=\SUBJ/\PIVOT.agt) \\
+ (e.g. a ghost might have disturbed the addressee)\\
+ii) NOT FOR `What did you look for there yesterday?'
+\ncbar[arm=.8ex,angle=-90,linewidth=.5pt]{->}{s}{w}
+\ncbar[arm=1.3ex,angle=-90,linewidth=.5pt]{->}{o}{y}
+\z\z
+
+\ea\label{ex:Austronesian:29} In-situ \textsc{q} (Central Amis - Formosan) (Yeh, fieldwork data)
+\ea\gll
+[Mi-palo'-ay  [\textbf{cima}]\textsubscript{\SUBJ/{\FOC}}  ci   Mayaw-an]\textsubscript{\textsc{ip}}? \\
+ \AV-whip-\textsc{real} \phantom{[}who    \textsc{pn} Mayaw-{\LOC} \\
+\glt`Who whipped Mayaw?'  (in-situ \textsc{q}=\SUBJ.agt)
+\ex\gll
+[Mi-palo'-ay ci Panay [\textbf{cima}-an]\textsubscript{\textsc{obl}/\FOC}]\textsubscript{\textsc{ip}}?\\
+\AV-whip-\textsc{real} \textsc{pn} Panay \phantom{[}who-{\LOC} \\
+\glt`Who did Panay whip?'  (in-situ \textsc{q}=\textsc{obl}.pt)
+\z\z
+
+\ea\label{ex:Austronesian:30} fronted \textsc{q} (Central Amis - Formosan) (Yeh, fieldwork data)
+\ea\glll
+[U   \textbf{cima}]\textsubscript{\textsc{focus-c}} [ku   mi-palo'-ay    {\GAP} ci   Mayaw-an]\textsubscript{\COMP}?\\
+\phantom{[}\textsc{prt} who  \phantom{[}\textsc{cn}.{\ABS} \AV-whip-\textsc{real} {\SUBJ} \textsc{pn} Mayaw-{\LOC}\\
+(\PIVOT)   \\
+\glt`WHO was the one that whipped Mayaw?' (fronted \textsc{q}=\SUBJ/\PIVOT.agt)
+\ex\glll
+[U \textbf{cima}]\textsubscript{\textsc{focus-c}} [ku ma-palo'-ay  ni    Panay  {\GAP}]\textsubscript{\COMP}?\\
+\phantom{[}\textsc{prt} who  \phantom{[}\textsc{cn}.{\ABS} \PV-whip-\textsc{real} \textsc{pn}.{\GEN} Panay \SUBJ\\
+(\PIVOT)   \\
+\glt`WHO was the one that Panay whipped?' (fronted \textsc{q}=\SUBJ/\PIVOT.pt)
+\ex * U cima ku mi-palo'-ay ci Panay?
+\ex * Cima-an ku mi-palo'-ay ci Panay?
+\z\z
+
+Likewise, the difference between \SUBJ and \PIVOT is evidenced by the distinct status of \SUBJ\PIVOT in (\ref{ex:Austronesian:30}) and \SUBJ in (\ref{ex:Austronesian:29}). In the latter, no \textsc{focus-c} is involved, and thus \SUBJ remains in-situ. By contrast, the fronted \textsc{q}s in (\ref{ex:Austronesian:30}) specifically privilege \SUBJ\PIVOT as seen by the verbal voice morphology (e.g. unacceptability of \ref{ex:Austronesian:30}c in contrast to \ref{ex:Austronesian:30}b), and they are associated with the extra-syntactic function \textsc{focus-c} in the discourse. Pragmatically, there is a difference between the fronted \textsc{q}s and in-situ \textsc{q}s. The in-situ \textsc{q} in (\ref{ex:Austronesian:29}a) forms an open question without the presupposition of contrasting entities in the given context \citep[348]{Wei2009}. In contrast, the fronted \textsc{q} in (\ref{ex:Austronesian:30}a) is used when the \SUBJ agent in question is one among a group of people present in a given situation. This indicates that the fronted \textsc{q} comes with a pragmatic meaning of contrast that is not present with the in-situ \textsc{q}.
+
+Note that Amis differs from Balinese in that in-situ \textsc{q}s in Balinese are \OBJ, whilst those in Amis can be either \SUBJ or non-\SUBJ. This is because the two languages differ in their word order. \SUBJ is pre-verbal in Balinese, whereas Amis is verb-initial like Squliq and Tagalog (cf. \sectref{sec:Austronesian:3}) and thus, \SUBJ is realised pre-verbally in pragmatically marked constructions.
+
+\hspace*{-.2pt}In particular, the essence of \PIVOT as the overlay function for clause-combining is evidenced by the structure of fronted \textsc{q}s in Amis. Structurally, the sentences with fronted \textsc{q}s in (\ref{ex:Austronesian:30}a--b) are pseudo-clefts in a bi-clausal structure. The \textsc{q}s are fronted nominal predicates in \textsc{focus}, followed by a headless relative clause flagged by \emph{ku} (i.e. the \ABS case nominal marker) in which \SUBJ is obligatorily relativised. The \SUBJ marker supplies the pronominal value that is coreferential with the fronted \textsc{q} (cf. \sectref{sec:Austronesian:6.3} for the LFG representation of bi-clausal structures with a nominal predicate).
+
+However, the Balinese data point in (\ref{ex:Austronesian:28}b) also shows that the \SUBJ/\PIVOT constraint is not necessarily related to clause combining. This is expected as \textsc{focus-c} (the critical element of \PIVOT) is pragmatically driven for communicative purposes, applicable to a mono-clausal sentence.
+
+\textsc{q} fronting interacts with verbal voice morphology. In Amis, only the most prominent argument (i.e. \SUBJ) takes part in this \PIVOT function for fronting \textsc{q}s. For instance, when understood as A, its selection as \SUBJ is indicated by the same \AV morphology for an in-situ \SUBJ, as in (\ref{ex:Austronesian:29}a), and a fronted \SUBJ, as in (\ref{ex:Austronesian:30}a) (i.e. \SUBJ/\PIVOT). However, when the \textsc{q} \emph{cima} bears the patient role, its fronting (i.e. linking Patient as the \SUBJ in \textsc{focus-c}) requires \PV morphology as seen in (\ref{ex:Austronesian:30}b). Retaining \AV morphology on the verb renders the structure with a fronted \textsc{q} ungrammatical, as seen in (\ref{ex:Austronesian:30}c). Likewise, in contrast to (\ref{ex:Austronesian:29}b), the structure is ungrammatical when the fronted \textsc{q} \emph{cima} is \textsc{obl} marked by \emph{-an}, as in (\ref{ex:Austronesian:30}d).
+
+In short, we have seen how \PIVOT as a syntactic-pragmatic function combines the syntactic property of \SUBJ and the \textsc{focus-c} function in giving rise to the \SUBJ/\PIVOT constraint associated with \textsc{q} fronting in Balinese and Amis. Other behavioural properties targeting \SUBJ as \PIVOT typically encountered in Philippine-type and Indonesian-type AN languages include control/raising and relativisation (see \citealt[11-26]{arka2003}).
+
+\hspace*{-.4pt}Recent research in Indonesian relativisation demonstrates strong evidence that \PIVOT is not always \SUBJ.\footnote{This is evident in relativisation in familiar languages, like English, where non-\SUBJ can be \PIVOT (i.e. gapped in relativisation).} The distinction between \SUBJ and \PIVOT in Indonesian receives further empirical support by the fact that \OBJ can also be \PIVOT, as seen in relativisation in (\ref{ex:Austronesian:31}). However, this \OBJ relativisation through gapping (i.e. \OBJ~\PIVOT) is highly constrained. It is only possible in a specific construction when both \SUBJ and \OBJ are highly salient with the presence of certain contrastive adverbs, such as \emph{hanya} `only', where the \SUBJ-only constraint that is typically imposed in complex clause formation in Standard Indonesian is not maintained. Thus, while the agent \emph{kamu} `2\SG' is \SUBJ in (\ref{ex:Austronesian:31}), as evidenced from the verbal \AV morphology, it is not the \PIVOT for relativisation. Readers are directed to \citet{Arka2021} for a detailed discussion of these relativisation facts in Indonesian, and the puzzles they pose for analysis.
+
+\ea\label{ex:Austronesian:31} Standard Indonesian  \citep[196]{Arka2021}\\
+ \gll
+ [\textbf{Gadis} [yang [(barangkali) [\textbf{hanya} \textbf{kamu} bisa menaklukkan~{\GAP}]\textsubscript{\textsc{cp}}]\textsubscript{\textsc{cp}}]\textsubscript{\textsc{np}}\\
+ \phantom{[}girl \phantom{[}{\REL} \phantom{[}perhaps \phantom{[}only {2\SG} can \AV.conquer\\
+ \glt`the girl who perhaps only you can control'
+\z
+
+\subsection{Non-\SUBJ functions: \OBJ and \textsc{obl}}
+\label{sec:Austronesian:4.2}
+\largerpage
+In LFG, there are three non-\SUBJ functions: \OBJ, \OBJTHETA, and \textsc{obl}. In this subsection, we explore their realisation in AN languages, and show that distinguishing these three non-\SUBJ functions is useful in the transitivity analysis of the \AV patient, and in the analysis of Indonesian-type applicatives. This is because LFG's modular design and conception of {\GF}s as `natural' classes allow us to not only distinguish \OBJ from \textsc{obl} at the level of syntactic f-/a-structure, but also to capture the gradient nature of the \OBJ-\textsc{obl} distinction in Prototype theory (cf. \citealt{Taylor2003}) and a core index analysis \citep{Arka2017}. We begin with a characterisation of {\OBJ}s.
+
+On the basis of cross-linguistic \GF classifications, and research on syntactic prominence and semantic role associations \citep{Comrie1989,bresnan2001lexical}, we define \OBJ syntactically as a class of core complements that is prototypically and thematically unrestricted. The syntactic property of complementation dis\-tin\-gui\-shes \OBJ from \SUBJ since \SUBJ is not a complement, and the coreness property differentiates it from \textsc{obl} since \textsc{obl} is not a core argument. Defining \OBJ as a class of \GF in this way allows us to capture the varied characteristics of \OBJ cross-linguistically, but also within the same language (cf. \citealt{DN}). It also allows us to identify language-specific object-like patterns, which provide empirical grounds for identifying different kinds of \OBJ: prototypical or primary \OBJ (thematically unrestricted \OBJ) and secondary non-prototypical \OBJ (also thematically restricted, and otherwise known as \OBJTHETA in LFG) \citep{bresnan1989locative,Haspelmath2007}. In what follows, we show the variation in the actual morphosyntactic realisations of different types of \OBJ in AN languages, starting with the prototypical \OBJ.
+
+The prototypical \OBJ in descriptive/typological linguistics is patient-like in its semantic role. In our LFG analysis, this \OBJ is linked to the a-object (i.e. \rarglist{2:pt}) in the a-structure representation. In AN languages with voice systems, it is the core argument of the verb in the \AV structure, and typically appears postverbally, like the NP \emph{Watan} in (\ref{ex:Austronesian:7}) (Squliq Atayal) and \emph{apa} `what' in (\ref{ex:Austronesian:28}) (Balinese). Squliq Atayal and Balinese represent languages where free \OBJ arguments have no specific \OBJ flagging. \OBJ NPs are bare, in contrast to prepositionally flagged \textsc{obl}s.
+
+However, there are also AN languages that specifically flag  arguments with non-\SUBJ core status, like \emph{ng=} in Tagalog in (\ref{ex:Austronesian:23}) above, and \emph{te} in Tukang Besi in (\ref{ex:Austronesian:32}) below. In Tukang Besi, the pronominal indexing system on the main (finite) verb of an embedded clause shows diminished voice morphology \citep[8]{Donohue2008}. The underlying \rarglist{2:pt} `you' surfaces as \OBJ in (\ref{ex:Austronesian:32}a) and is flagged by \emph{te}, and not indexed on the verb. It appears as \SUBJ, which is indexed by the enclitic \emph{=ko}, and is optionally cross-referenced by the \NOM NP that is flagged by \emph{na} in (\ref{ex:Austronesian:32}b).
+
+\ea\label{ex:Austronesian:32} Tukang Besi (WMP, Indonesia) \citep[85]{Donohue2002}
+\ea\gll
+No-kiki'i [te iko'o]\textsubscript{\OBJ} [na beka]\textsubscript{\SUBJ}. \\
+3\textsc{real}-bite \phantom{[}\textsc{core} you \phantom{[}{\NOM} cat\\
+\glt`The cat bit you.'
+\hspace*{\fill}\begin{tabular}[t]{c@{}c@{}c@{}c}
+     & \SUBJ & \OBJ\\ `bite{\textlangle}&1:agt:`cat',&2:pt:`you'&{\textrangle}'
+     \end{tabular}
+\ex\gll
+No-kiki'i[=ko]\textsubscript{\SUBJ} ([na iko'o]\textsubscript{\SUBJ}) [te beka].\\
+{3\textsc{real}-bite=2\SG.\OBJ} \phantom{([}{\NOM} you \phantom{[}\textsc{core} cat\\
+\glt`The cat bit you.' or `You, the cat bit.'
+\hspace*{\fill}\begin{tabular}[t]{c@{}c@{}c@{}c}
+     & \OBJ & \SUBJ\\ `bite{\textlangle}&1:agt:`cat',&2:pt:`you'&{\textrangle}'
+     \end{tabular}
+\z\z
+
+
+Note that the \GF alternation in Tukang Besi in (\ref{ex:Austronesian:32}) is equivalent to the \AV-\UV alternation in Indonesian-type languages, like the Balinese example in (\ref{ex:Austronesian:5}). The key differences relate to verbal voice marking and argument flagging. Unlike in Balinese, the \AV structure in Tukang Besi in (\ref{ex:Austronesian:32}a) has no verbal \AV morphology, and its \OBJ is overtly flagged.
+
+The thematically unrestricted property of \OBJ is captured by the [$-r$] feature in LMT (\citealt{bresnan1989locative}; \citealt[21]{dalrymple01}). That is, it is linkable to a range of roles other than patient. In our definition in this chapter, it is indeed a non-\SUBJ core argument, as seen in Tukang Besi in (\ref{ex:Austronesian:32}b) where the \OBJ flagged by \emph{te} is linked to the agent. Additionally, other roles associated with \OBJ include instrumental, benefactive/recipient, goal, and locative, as seen in the Indonesian-type languages that show applicative morphology (e.g. Indonesian, Balinese, Madurese, among others). Madurese has two applicative suffixes, namely \emph{-e} (for locative/goal applicative) and \emph{-agi} (for benefactive/instrumental), both of which are equivalent to \emph{-i}/\emph{-kan} in Indonesian \citep{arkaetal09} and \mbox{\emph{-in}/\emph{-ang}} in Balinese \citep{arka2003}. The Madurese examples in (\ref{ex:Austronesian:33}) show that the post-verbal \OBJ is the thematically unrestricted \OBJ, which is linked to patient/theme in (\ref{ex:Austronesian:33}a), locative/goal in (\ref{ex:Austronesian:33}b) (with the verb containing the locative applicative, \emph{-e}), and recipient/benefactive in (\ref{ex:Austronesian:33}c) (with the verb containing the recipient applicative, \emph{-agi}). 
+
+\ea\label{ex:Austronesian:33} Madurese \citep[283, 299]{Davies2010}
+\ea\gll
+Embuk ngerem [paket]\textsubscript{\OBJ} [ka Ebu']\textsubscript{\textsc{obl}}. \\
+elder.sister \AV.send \phantom{[}package \phantom{[}to mother\\
+\glt`Big Sister sent a package to Mother.'
+\hspace*{\fill}\begin{tabular}[t]{c@{}c@{}c@{}c@{}c}
+     & \SUBJ & \OBJ & \textsc{obl}\\ 
+     `\AV.send{\textlangle}&1:agt,&2:pt~|&3:goal{\textrangle}'
+     \end{tabular}
+\ex\gll
+Embuk ngerem-\textbf{e} [Ebu']\textsubscript{\OBJ} [paket]\textsubscript{\OBJTHETA}.\\
+elder.sister \AV.send-{\APPL} \phantom{[}mother \phantom{[}package \\
+\glt`Big Sister sent Mother a package.'
+\hspace*{\fill}\begin{tabular}[t]{c@{}c@{}c@{}c@{}c}
+     & \SUBJ & \OBJ & \OBJROLE{theme}\\ 
+     `\AV.send.for{\textlangle}&1:agt,&2:goal.&3:th{\textrangle}'
+     \end{tabular}
+\ex\gll
+Sa'diyah melle-\textbf{yagi} [na'-kana']\textsubscript{\OBJ} [permen]\textsubscript{\OBJTHETA}.\\
+Sa'diyah \AV.buy-\textsc{appl} \phantom{[}\textsc{redup}-child \phantom{[}candy \\
+\glt`Sa'diyah bought the children candy.'
+ \hspace*{\fill}\begin{tabular}[t]{c@{}c@{}c@{}c@{}c}
+     & \SUBJ & \OBJ & \OBJROLE{theme}\\ 
+     `\AV.send.for{\textlangle}&1:agt,&2:goal,&3:th{\textrangle}'
+     \end{tabular} 
+\z\z
+
+While primary \OBJ is thematically unrestricted, secondary non-prototypical \OBJ is typically thematically restricted. This is evidenced in the important effect of applicativisation whereby the a-structure is restructured with \OBJ and \OBJTHETA surfacing differently. Consider, firstly, the PP in (\ref{ex:Austronesian:33}a), \emph{ka Ebu'} `mother', which is prepositionally flagged as \textsc{obl} (i.e. non-core). Yet, the argument is promoted to the secondmost prominent slot in the applicative structure in (\ref{ex:Austronesian:33}b). Its realisation as a bare NP, and its structural position immediately following the verb, indicate that it is \OBJ, while the underlying displaced theme \emph{paket} is demoted to the third core position, and surfaces as \OBJTHETA. This results in a ditransitive structure of SVOO. Likewise, the same restructuring of a-structure occurs with the benefactive applicative in (\ref{ex:Austronesian:33}c).
+
+In LFG, the NP \emph{paket} in (\ref{ex:Austronesian:33}b) is an instance of \OBJROLE{theme} in Madurese. Semantically, it is restricted to a displaced theme only. Crucially, and unlike \OBJ (\emph{Ebu'}), it is restricted in the sense that it does not surface as \SUBJ in the \UV voice, as seen in the ungrammaticality of (\ref{ex:Austronesian:34}b) in contrast to (\ref{ex:Austronesian:34}a). This provides clear evidence that the applied argument occupies the second argument in the restructured transitive a-structure. Hence, it is `mappable' to \OBJ in \AV in (\ref{ex:Austronesian:33}b), or \SUBJ in \UV in (\ref{ex:Austronesian:34}a).\footnote{The preposition \emph{bi'} `by' is optional in Madurese. There is no identifiable grammatical difference between the pairs with/without \emph{bi}; the verb in this structure is therefore analysed as \UV, not passive \citep[256-258]{Davies2010}.}
+
+\ea\label{ex:Austronesian:34} Madurese  \citep[284]{Davies2010}
+\ea\gll
+Ebu' e-kerem-e [paket]\textsubscript{\OBJ} bi' Embuk.\\
+mother \UV-send-\textsc{appl} package by elder.sister \\
+\glt`Mother was sent a package by Big Sister.'\\
+\hspace*{\fill}\begin{tabular}[t]{c@{}c@{}c@{}c@{}c}
+     & \OBJ & \SUBJ & \OBJROLE{theme}\\ 
+     `\UV.send{\textlangle}&1:agt,&2:goal,&3:th{\textrangle}'
+     \end{tabular} 
+\ex\gll
+*[Paket rowa]\textsubscript{\SUBJ} e-kerem-e (ka) Ebu' bi' Embuk.\\
+package that \UV-send-{\APPL} \phantom{(}to mother by elder.sister\\
+\glt(`The package was sent (to) Mother by Big Sister.')
+\z\z
+
+In AN languages with a systematic argument indexing system, \OBJ is typically semantically transparent from its case form. That is, the \OBJ index is part of a verbal complex structure, either as a pronominal affix or clitic, and surfaces differently according to semantic roles. In Kambera, for example, the prototypical patient-like \OBJ is expressed by an \ACC enclitic immediately following the verb, whereas the benefactive \OBJ is marked differently via \DAT.  Hence, the first-person patient \OBJ is \emph{ka} `1\SG.\ACC' in (\ref{ex:Austronesian:35}a), but \emph{ngga} in (\ref{ex:Austronesian:35}b), since it is thematically beneficiary. Note that the displaced theme, \OBJROLE{theme}, in (\ref{ex:Austronesian:35}b) is \DAT. In LFG, the Kambera ditransitive sentence in (\ref{ex:Austronesian:35}b) has the same a-/f-structures as the Madurese examples in (\ref{ex:Austronesian:33}b--c), with the key differences being in the coding and feature values of the surface {\GF}s. For the right enclitic form of \OBJ to be selected, the lexical entry must be specified by the relevant constraints, as shown in (\ref{ex:Austronesian:35}c) with \emph{=ngga}. The shorthand (\UP\OBJ)$_\sigma$=(\UPS\,2:ben)  constraint relies on a sigma projection relating f-structure to a-structure, here establishing a correspondence between the \OBJ in the f-structure and the second benefactive argument in the a-structure (see \citetv{chapters/Intro} for discussion of LFG's projection architecture). 
+
+\ea\label{ex:Austronesian:35} Kambera \citep[63]{Klamer1998}
+\ea\gll
+(Na tau wútu) na=palu=ka (nyungga). \\
+ {\ART} person be.fat {3\SG.\NOM}=hit={1\SG.\ACC} \phantom{(}I\\
+\glt`The big man hit me.'\\
+\hspace*{\fill}\begin{tabular}[t]{c@{}c@{\;}c@{}c}
+     & \SUBJ:nom & \OBJ:acc \\ 
+     `hit{\textlangle}&1:agt,&2:pt{\textrangle}'
+     \end{tabular} 
+\ex\gll
+(I Ama) na=kei=ngga=nya.\\
+ \phantom{(}{\ART} father {3\SG.\NOM}=buy={1\SG}.\DAT=3\SG.\DAT\\
+\glt`Father buys it for me.'
+\hspace*{\fill}\begin{tabular}[t]{c@{}c@{\;}c@{\;}c@{}c}
+     & \SUBJ:nom & \OBJ:dat & \OBJROLE{theme}:dat \\ 
+     `buy{\textlangle}&1:agt,&2:pt&3:th{\textrangle}'
+     \end{tabular} 
+\ex\catlexentry{ngga}{CLITIC}{
+(\UP\OBJ\PRED)=`pro'\\
+(\UP\OBJ\PERS)=1 \\
+(\UP\OBJ\NUM)=\SG\\
+ (\UP\OBJ\CASE)=\DAT\\
+ (\UP\OBJ)$_\sigma$=(\UPS\,2:ben)}
+\z\z
+
+The different coding of \OBJ, as seen in Kambera, is not typologically unusual. It is known as Differential Object Marking (henceforth DOM) \citep{DN}. For instance, Palauan has DOM that is primarily regulated by semantic features. However, unlike Kambera, Palauan demonstrates DOM that is determined by definiteness, instead of semantic roles. Definite \OBJ receives pronominal indexing on the verb, as in (\ref{ex:Austronesian:36}a), whereas indefinite \OBJ does not, as in (\ref{ex:Austronesian:36}b). In an LFG analysis, Palauan DOM can be captured by annotating the suffix slot in the verb formation rule with the constraining equation: (\UP\OBJ\textsc{def})=$_c$\/+. The suffix \emph{-ii} also carries a definiteness feature in its lexical entry, (\UP\textsc{def})=+, in addition to person and number features.
+
+\ea\label{ex:Austronesian:36} Palauan (WMP, Palau)  \citep[45]{Georgopoulos1991}
+\ea\gll
+Te-'illebed-\textbf{ii} a bilis a rengalek.\\
+ 3\PL-\PFV.hit-{3\SG} {} dog {} children\\
+\glt`The kids hit the dog.'
+\ex\gll
+Te-'illebed a bilis a rengalek.\\
+3\PL-\PFV.hit {} dog {} children\\
+\glt`The kids hit a dog/the dogs/some dog(s).'
+\z\z
+
+Obliques in AN languages are typically phrasally flagged. The common pattern is that \textsc{obl} is flagged by an adposition, like \emph{ka} `to' for \textsc{obl} locative/goal in Madurese (\ref{ex:Austronesian:33}a), and \emph{teken} `by' for \textsc{obl} agent in Balinese \citep[262]{Arka2019}. However, AN languages of the Philippine type have phrasal markers that specifically mark \textsc{obl} status in contrast to the core status of \SUBJ. This is the case in Puyuma where the \textsc{obl} and \SUBJ are equally flagged. However, Puyuma shows differential \textsc{obl} marking on the basis of differences in nominal type (e.g. common versus proper) and definiteness (as seen in DOM) rather than differences in semantic roles. Consider example (\ref{ex:Austronesian:37}) below, where \emph{kana} is used as the phrasal \textsc{obl} marker for a definite common noun like in (\ref{ex:Austronesian:37}a), and \emph{dra} for an indefinite common noun as in (\ref{ex:Austronesian:37}b--d). The same phrase marker, \emph{dra}, is used for indefinite obliques irrespective of their roles as patient, instrument, location, etc.
+
+\ea\label{ex:Austronesian:37} Puyuma
+\ea\gll
+Ku=tuLud-anay na sarekuDan \textbf{kana} temumuwan.\\
+  {1\SG}.\GEN-pass-{\IV} \textsc{def}.{\NOM} stick  \textsc{def}.\textsc{obl} offspring\\
+\glt`I passed the stick to the offspring.' \citep[23]{Teng2005}
+\ex\gll
+Tr\textlangle{em}{\textrangle}aka-trakaw=ku \textbf{dra} akan-an.\\
+\textlangle{\AV}{\textrangle}\textsc{redup}-steal=1\SG.{\NOM} \INDF.\textsc{obl} eat-\NMLZ\\
+\glt`I stole food repeatedly.' \citep[146]{Teng2008}
+\ex\gll
+Tu=pa-ladram-aw \textbf{dra} lrangetri pa-karun.\\
+3{\GEN}=\CAUS-know-{\PV} \INDF.\textsc{obl} stick \CAUS-work\\
+\glt`They used a stick to teach them to work.' \citep[245]{Teng2008} (translation adapted)
+\ex\gll
+Ka-sa-sanan \textbf{dra} dalran.\\
+ka-\textsc{redup}-stray \INDF.\textsc{obl} road\\
+\glt`He will get lost.' \citep[168]{Teng2008}
+\z\z
+
+\subsection{Alignment systems and related phenomena}
+\label{sec:Austronesian:4.3}
+
+The syntactic status of the non-\SUBJ argument is relevant to the question of alignment. There is a long-standing debate in AN linguistics as to whether syntactic alignment has properties of ergativity, accusativity or split-ergativity. There are competing proposals in the literature, as well as claims that Western AN languages vary in their alignment; see \citet{Aldridge2004},  \citet{Katagiri2005}, and references therein for further discussion.  In the following section, we present cases where morphosyntactic ergativity is firmly observed, like in Puyuma, then move to borderline cases.
+
+Puyuma exhibits syntactic properties that are typical for an ergative system. However, unlike well-known ergative languages such as Dyirbal \citep{Dixon72}, there are no morphologically `basic' or unmarked transitive verbs in Puyuma because they are all marked for their specific non-actor voices; e.g. \emph{-anay} marking for \textsc{cv}, conveyance voice, in (\ref{ex:Austronesian:37}a), and \emph{-aw} for \PV, patient voice, in (\ref{ex:Austronesian:37}c). The \AV verbs are also morphologically marked by \emph{-em-} as in (\ref{ex:Austronesian:37}b).\footnote{Note that in Teng's (\citeyear{Teng2005,Teng2008}) descriptions, the \AV affix \emph{-em-} is glossed as intransitive (\INTR) because the \AV structure is syntactically intransitive.} The \AV structure can be analysed as antipassive because the patient argument of the transitive verb is demoted to non-core status, which is flagged by the \textsc{obl} marker as shown in (\ref{ex:Austronesian:38}). Puyuma, therefore, exhibits clear syntactic asymmetry in its voice alternations, which is the hallmark of a truly ergative system. In the transitive structure, \rarglist{1:agent, 2:patient/theme}, the two core arguments are not equally selectable as syntactic \SUBJ/\PIVOT. That is, \SUBJ/\PIVOT selection is asymmetrically aligned towards the second patient core slot. Hence, when the agent has to be linked to \SUBJ/\PIVOT, the patient must be removed and demoted to non-core status in order to allow for the linking of the agent to \SUBJ/\PIVOT. Removing the patient from the core status in the a-structure results in an intransitive \mbox{\rarglist{1:agent | 2:patient/theme}} structure.
+
+\newpage
+\ea\label{ex:Austronesian:38} Puyuma  \citep[72, 187]{Teng2008}
+\ea\gll
+T\textlangle{em}{\textrangle}engedr=ta dra unan i, ...\\
+\textlangle{\AV}{\textrangle}kill=1\PL.{\NOM} \INDF.\textsc{obl} snake \TOPIC, ...\\
+\glt`We killed a snake, ...'
+\ex\gll
+K\textlangle{em}{\textrangle}asu=ta dra eraw, dra irupan.\\
+\textlangle{\AV}{\textrangle}bring=1\PL.{\NOM} \INDF.\textsc{obl} wine \INDF.\textsc{obl} dishes\\
+\glt`We brought some wine and some dishes.'
+\z\z
+
+However, in many other AN languages with robust voice morphology, the antipassive analysis of \AV is controversial because the evidence for the demotion of the underlying patient to \textsc{obl} is often unclear and debatable. In Tagalog, for example, the patient argument of the \AV sentence is flagged by the core phrase marker \emph{ng} in (\ref{ex:Austronesian:23}a). Thus, the \AV sentence in Tagalog is distinct from Puyuma in that it is syntactically transitive. Conversely, under an ergative analysis, the \AV is  analyzed as antipassive on the basis that P is understood as indefinite, which is a typical semantic property of the antipassive patient \citep{Hopper1980}. Yet, this semantic criterion for the core status of \AV patient is disputable, as shown in the Paiwan (Formosan) examples in (\ref{ex:Austronesian:39}) below. While an \textsc{obl} patient may be indefinite, as in (\ref{ex:Austronesian:39}a), the reverse does not hold since an oblique-marked patient can have a definite reading, as seen in (\ref{ex:Austronesian:39}b) (cf. DOM in Puyuma in \sectref{sec:Austronesian:4.2}). This suggests that in many Philippine-type languages, the coreness status of the non-\SUBJ argument in \AV cannot be easily and solely specified by its semantic property due to the mismatch of semantic transitivity, syntactic transitivity and voice alternation.\footnote{The status of coreness must, therefore, be determined by taking into account all the relevant language-specific morphosyntactic properties. This is possible via a core index analysis \citep{Arka2017}, for example. The core index analysis applied to the P of the \AV structure in Puyuma reveals a core index of 0.44, which is classified as \textsc{obl} albeit atypical. A prototypical \textsc{obl} in Puyuma (e.g. \LOC \textsc{obl} of the \AV verb) has a core index of 0.11, which is in line with the cross-linguistic tendency for prototypical \textsc{obl} to have a core index of below 0.20. The degrees of coreness/obliqueness for the P of \AV structures across other Philippine-type languages is a matter of future research.}
+
+\ea\label{ex:Austronesian:39} North Paiwan (Formosan)  \citep[114, 412]{Chang2006}
+\ea\gll
+Ki-lakarav   tua sipangetjez tua zua marekaka.\\
+  obtain.\AV-flower \textsc{obl.cn} gift \textsc{obl.cn} that both.sibling\\
+\glt `(He) would pluck flowers as a gift for both sisters.'
+\ex\gll
+Na=t\textlangle{em}{\textrangle}ekeL=anga timadju tua ʔucia.\\
+  \PFV=drink\textlangle{\AV}{\textrangle}={\COMPL} {3\SG.\NOM} \textsc{obl.cn} tea\\
+\glt `He has drunk the tea.'
+\z\z
+Likewise, for AN languages in the regions of Sulawesi, which have been analysed as showing ergative properties, the status of the \AV patient is not very straightforward either. Consider the examples in (\ref{ex:Austronesian:40}) from Moronene (in Southeast Sulawesi). Moronene shows DOM whereby a definite \OBJ NP receives object indexing. Conversely, an indefinite or a non-specific \OBJ NP receives no such indexing. The \AV sentence with \AV morphology (\emph{moN-}) has been analysed as antipassive \citep{Andersen2005} based on the patient NP being indefinite or non-specific.
+
+\ea\label{ex:Austronesian:40} Moronene (WMP, Indonesia) \citep[246, 252]{Andersen2005}
+\ea\gll
+ Yo laku ari \textbf{kea'-o} manu.\\
+  {\ART} civet already {bite-3\SG.\ABS} chicken\\
+\glt `The civet bit the chickens.' [laku11]
+\ex\gll
+Da-hoo nta \textbf{mong-kea} miano.\\
+be-3\SG.{\ABS} {\FUT} \textsc{av.nf}-bite person\\
+\glt`It will bite someone.' [col85] [AuAbmV]
+\z\z
+While it is true that the \AV structure shows a lower degree of transitivity in terms of parameters described by \citet{Hopper1980}, it is not syntactically antipassive in the analysis where the a-structure consists of two core arguments; that is, the patient NP in (\ref{ex:Austronesian:40}) is \OBJ, not \textsc{obl}. Additional evidence for this comes from its expression in bare NPs and the fact that \textsc{obl} is prepositionally flagged in Moronene.
+
+In addition to semantic properties, other syntactic evidence in complex constructions such as control properties has been used to argue for an accusative and/or a split ergativity analysis (i.e. \ACC case for the \AV patient). For instance, proponents of treating \AV patient as a core argument \citep{Hsin1996,Chang2000} would analyse the phrasal marker \emph{tu} in Kavalan (\ref{ex:Austronesian:41}) as an accusative case marker, as it phrasally marks the a-object of \emph{pumupup} that functionally controls the subject of the second verb \emph{matiw} `go'. The argumentation here is that only core status can allow an argument to be the controller.
+
+\ea\label{ex:Austronesian:41} Kavalan  \citep[198]{Chang1997}\\
+\gll
+P{\textlangle}um{\textrangle}upup tina-na   \textbf{tu}  \textbf{sunis} \textbf{'nay} m-atiw sa Bakung.\\
+\textlangle{\AV}{\textrangle}persuade mother-{3\SG.\GEN} \textsc{obl} child that \AV-go \textsc{prep} Bakung\\
+\glt`That child's mother persuaded the child to go to Bakung.'
+\z
+However, the status of controller in the matrix clause may not be decided purely on syntactic grounds since it also depends on the semantic properties of the matrix verb. The control construction in (\ref{ex:Austronesian:41}) is analysed as the `influential' type of control, defined by lexical semantic properties \citep{SagPollard1991}, where the controller is the influenced argument (i.e. the persuadee) regardless of its \GF. In other terms, the choice of controller is based on the lexical semantics of the control verb that requires an intentional agent in an open clause complement (\XCOMP). However, the control verb does not specify that the syntactic properties of the influenced argument are core or oblique.
+
+Instead, it is the status of the controllee in the embedded clause that provides the diagnosis of termhood \citep[40]{Kroeger93}. Only core arguments can be the controllee, as opposed to \textsc{obl} arguments. In the Kavalan example (\ref{ex:Austronesian:41}), the controllee is the \SUBJ of a non-finite \AV verb \emph{matiw}, so the agent argument in the embedded clause fulfils both syntactic and semantic properties required by the `influential' type of control. Likewise, in Haian Amis, the core status of the \AV agent is evident by its property as the controllee (i.e. \AV-\SUBJ) as in (\ref{ex:Austronesian:42}a--b), regardless of its status as the controller (i.e. \PV-\SUBJ or \AV-\textsc{obl}) in the matrix clause. By contrast, as shown in (\ref{ex:Austronesian:42}c), it is not acceptable for the \AV patient (i.e. \emph{ci Akian} in \ref{ex:Austronesian:42}c) in the embedded clause to be the intended controllee.\footnote{However, Haian Amis differs from Tagalog \citep{Kroeger93} and Pazeh-Kaxabu \citep{Yeh:PhD} in that the core status of a \PV agent cannot be observed via properties of the controllee.}
+
+\ea\label{ex:Austronesian:42} Haian Amis (Formosan) \citep[378--379]{Wu2006}
+\ea\gll
+Ma-ucur aku ci    Aki  mi-to'or ci Panay-an.\\
+  \PV-assign {1\SG.\GEN} \textsc{pn}.{\ABS} \textbf{Aki}  \AV-follow \textsc{pn} Panay-{\LOC}\\
+\glt `I assigned Aki to follow Panay.'
+\ex\gll
+Mi-ucur kaku     ci \textbf{Aki-an} mi-to'or ci Panay-an\\
+\AV-assign {1\SG}.{\ABS}   \textsc{pn} Aki-{\LOC} \AV-follow \textsc{pn} Panay-{\LOC}\\
+\glt`I am going to assign Aki to follow Panay.'
+\ex\gll
+ *Mi-ucur kaku     ci \textbf{Aki-an} mi-to'or ci Panay\\
+\AV-assign {1\SG}.{\ABS}   \textsc{pn} Aki-{\LOC} \AV-follow \textsc{pn}.{\ABS} Panay\\
+\glt`I am going to assign Aki to be followed by Panay.'
+\z\z
+In comparison to other grammatical tests (e.g. 2P clitic placement, pronominal bound forms and DOM), evidence of control in complex constructions for testing the status of non-\SUBJ arguments should be examined carefully. That is, using control verbs as the evidence of an accusative analysis of the \AV construction necessitates a meticulous evaluation and differentiation between properties of control that have semantic roots and those that are purely syntactic in nature.
+
+At the morphological level, pronominal forms (affixes/clitics) across AN languages show nominative and ergative alignment. In AN languages with robust voice systems, the bound pronouns typically consist of two sets. The first set is often labelled \GEN, or \ERG under an ergative analysis. This pronominal form is linked to the transitive agent argument in non-\AV structures, such as \emph{ku=} and \emph{tu=} in Puyuma in (\ref{ex:Austronesian:37}), \emph{=na} in Kavalan in (\ref{ex:Austronesian:6}), and \emph{no-} in Tukang Besi in (\ref{ex:Austronesian:32}). The second set is the \SUBJ/\PIVOT form and is typically labelled \NOM in the AN literature. This is the thematically unrestricted form that is linkable to any semantic role of a core argument, including the patient core argument of a transitive verb and the intransitive subject. This justifies the labelling of this set as the {\ABS}(olutive) form in an ergative analysis, as exemplified by \emph{-(ho)o} in Moronene in example (\ref{ex:Austronesian:40}) above. Note that in descriptive works, such as \citegen{Teng2008} description of Puyuma, the second set is also (confusingly) called the \NOM{}(inative) set even though the language shows an ergative alignment property. Morphology and syntax in LFG are separate modules in grammar with case (marking) being dealt with at the morphology-syntax interface (see \citealt{BM87}). It is captured through the \CASE feature constraint, which is associated with \GF linking. Thus, in a language like Puyuma and Pazeh-Kaxabu where there is empirical evidence for ergative alignment (both morphologically and syntactically), a pronominal affix/clitic can be specified as having a \CASE feature in its entry: (\UP\CASE)=\ABS. The grammar of the language can be globally specified as having a conditional if-then constraint: (\UP\SUBJ)\,$\Rightarrow$\,(\UP\SUBJ\CASE)=\ABS. Because this constraint applies to verbs broadly, one way to handle it is by incorporating it into the rule that introduces the clausal c-structure that comes with the \SUBJ annotation. This constraint means that if the argument is selected as \SUBJ then it must have \ABS case. Other pronominal clitics can be specified as having (\UP\CASE)=\ERG in their entries for languages like Puyuma, and specifically for the agent a-subject argument of a transitive predicate. However, for other languages that show a \SUBJ fixed linking with \NOM-\ACC alignment, as in Kambera \citep[73]{Klamer1998}, a different specification must be given for the pronominal clitic linked to the transitive agent argument, namely (\UP\CASE)=\NOM.
+
+For non-pronominal forms, the semantic and syntactic information throughout the system can be specified in the entry for phrasal markers.\footnote{The term 'phrasal markers' finds frequent usage in AN linguistics, especially when characterizing Philippine-type AN languages. These markers, like \emph{na} and \emph{kana}, which mark \SUBJ and definite \OBL relations in Puyuma (as seen in example (\ref{ex:Austronesian:37}a)), tend to manifest in diverse forms across various AN languages. They are often labelled differently by different authors depending on their analysis, such as clitics, case markers, non-/personal markers, or prepositions \citep[144--149]{Himmelmann2005}.} This applies to the differential \OBJ and \textsc{obl} marking, noting that we extend DOM to include \textsc{obl} marking as well). For simplicity, only one marker of DOM is exemplified below in (\ref{ex:Austronesian:43}). DOM across languages commonly draws on different semantic properties. In LFG, these semantic features can be specified together with the semantic case value without affecting the syntactic status of the argument \citep{buttking91,buttking03-case,DN}.
+
+In Pazeh-Kaxabu, DOM encodes the differential information related to the topicality and specificity/definiteness of P \citep{Yeh:PhD}. For example, in the \AV structure in (\ref{ex:Austronesian:43}a), P is realised as \textsc{obl} due to the ergative system and is flagged by \emph{u} because the referent is definite and topical (reading [i]) or specific indefinite (reading [ii]). The non-specific indefinite P (cf. example \ref{ex:Austronesian:10}b) is realised by an unmarked bare NP.
+
+Extending from the classic, integrated i- and f-structure (cf.\ \citealt{BM87}) we represent the simplified lexical entry of the phrase marker \emph{u} in (\ref{ex:Austronesian:43}b). It specifies a constraint that the noun phrase flagged by \emph{u} must be \textsc{obl} whose \CASE is \LOC. In addition, it imposes a disjunctive specification with two options capturing the two readings in (\ref{ex:Austronesian:43}a). The first option in reading (i) reflects sharing of the values of \textsc{obl} argument and \TOPIC. This is shown in the partial f-structure in (\ref{ex:Austronesian:44}a) where the reference is definite and specific (cf. \citealt{enc1991}; see also \citealt{Heusinger2002} for the distinction and interaction of definiteness and specificity). The (partial) f-structure for reading (ii) is given in (\ref{ex:Austronesian:44}). It captures the crucial difference in that there is no sharing as the \textsc{obl} is indefinite and not \TOPIC. The empirical fact about having in-/definite readings in the \OBL argument (cf. also the Paiwan example in (\ref{ex:Austronesian:39}) above) is elegantly shown without assuming syntactic status to be determined by semantic property.
+
+\ea\label{ex:Austronesian:43} Pazeh-Kaxabu \citep[169]{Li2002}
+\ea\gll
+... babaxa u kia'aren a arim.\\
+{} \AV.give {\LOC} pretty \textsc{lnk} peach\\
+\glt (i) `... gave the pretty peach(es).' or\\ (ii) `... gave certain pretty peaches.'
+\ex
+\lexentry{u}{(\textsc{obl}\,\UP)\\
+ (\UP\CASE)=\LOC\\
+ \{\/(\TOPIC\UP) ~ (\UP\textsc{def})=+ ~ (\UP\SPEC)=+\\
+ | (\UP\textsc{def})=$-$ ~ (\UP\SPEC)=+ \}}
+\z\z
+
+\eabox{\label{ex:Austronesian:44}
+\ea\avm[style=fstr]{
+  [pred & `give\arglist{... \textsc{obl}}'\\
+    topic & \rnode{top}{\strut}\\
+    obl & \rnode{obl}{[pred & `peach'\\
+    adjunct & \{[pred `pretty']\}\\
+    def & +\\
+    spec & +]}]}
+\CURVE[1]{-2pt}{0}{obl}{0pt}{0}{top}
+\ex\avm[style=fstr]{
+  [pred & `give\arglist{... \textsc{obl}}'\\
+    obl & \rnode{obl}{[pred & `peach'\\
+    adjunct & \{[pred `pretty']\}\\
+    def & $-$\\
+    spec & +]}]}
+\z
+}
+
+There are AN languages showing properties of split intransitivity or split-S. The split can be reflected in the argument pronominal marking, as in Acehnese \citep{Durie1987}, or the morphological marking on verbs, which correlates with the properties of semantic roles as well as lexical-aspectual properties. Acehnese, for example, is an AN language with systematic clitic sets that cross-reference A(ctor) versus U(ndergoer) roles \citep{Durie1987}. It has a split/fluid S or active system, as seen in examples (\ref{ex:Austronesian:45})-(\ref{ex:Austronesian:46}) below. \SUBJ in Achenese is, therefore, semantically very transparent and not a neutralised or syntactic \SUBJ/\PIVOT as seen in Philippine/Indonesian types. It is not uniquely picked up by a set of morphosyntactic behavioural properties, such as `control' (see \sectref{sec:Austronesian:5.1}). LFG is well-equipped to handle such kinds of split transitivity (cf. \citealt{zaenen93}; \citealt{arka2003}). For example, the A and U clitics must have a linking constraint specified in their lexical entries, as shown in (\ref{ex:Austronesian:45}c) and (\ref{ex:Austronesian:46}c), respectively. The sigma metavariable (\UPS) in the entries ensures the correct mapping or correspondence between semantic a-structure and f-structure, so the constraint represented as (\UPS\textsc{a}) in (\ref{ex:Austronesian:45}c) states that semantically \emph{geu} must be Actor). In addition, the specification (\UP\SUBJ) for \emph{geu} also ensures that it is associated with \SUBJ. However, the undergoer or P clitic, \emph{geuh}, must have a disjunctive specification to capture the fact that a sole argument (S, or \SUBJ) of an intransitive verb has the same form as the undergoer (P, or \OBJ) in a transitive clause (i.e. S\textsubscript{\textsc{p}}/P pattern of the split).
+
+\ea\label{ex:Austronesian:45} Cross-reference Actor (Acehnese, WMP, Indonesia)  \citep[366]{Durie1987}
+\ea\gll
+Gopnyan \textbf{geu}=mat lôn. \\
+3 3\A=hold {1\SG} \\
+\glt`S/he holds me.'
+\ex\gll
+\textbf{Geu}=jak gopnyan.\\
+3\A=go 3\\
+\glt`S/he goes.'
+\ex
+\catlexentry{geu}{CL}{(\UP\PRED)=\textsc{`pro'} \\
+ (\UP\PERS)=3\\
+ (\UP\NUM)=\SG\\
+ (\UP\SUBJ)$_\sigma$= (\UPS \textsc{a})}
+\z\z
+
+\ea\label{ex:Austronesian:46} Cross-reference Undergoer (Acehnese) \citep[369]{Durie1987}
+\ea\gll
+Gopnyan ka lôn=ngieng=(\textbf{geuh}). \\
+3 \textsc{in} {1\SG}.\textsc{a}=see(=3\P) \\
+\glt`I saw him/her.'
+\ex\gll
+Gopnyan rhët(=\textbf{geuh}).\\
+3   fall(=3)\\
+\glt`S/he falls.'
+\ex
+\catlexentry{geuh}{CL}{(\UP\PRED)= \textsc{`pro'} \\
+ (\UP\PERS) = 3\\
+ (\UP\NUM) = \SG\\
+ (\UP\{\SUBJ{\mid}\OBJ\})$_\sigma$ = (\UPS \textsc{p})}
+\z\z
+
+This section has demonstrated how AN languages differ in their development of the voice system, and how they also show variation in the realisation of grammatical functions and DOM patterns. The theoretical advances in LFG studies—such as the inventory of {\GF}s, the syntacticised a-structure, the overlay function \PIVOT, and the specifications of case, information status and referential semantics—have shown advantages in capturing some patterns in AN languages that have long been controversial.
+
+\section{Complex constructions}
+\label{sec:Austronesian:5}
+
+Following the discussion of word order and the basic notions of how AN morphosyntax is represented in LFG, we now move on to some complex constructions. In this section, we highlight two salient features of complex structures in AN languages which are of long-standing theoretical and typological interest: complementation that involves argument gapping or control in the embedded clause, and complex predication with a particular focus on SVCs.
+
+\subsection{Complementation and control}
+\label{sec:Austronesian:5.1}
+
+Complement clauses are object-like clausal arguments which, for certain matrix verbs, may be syntactically peripheral or oblique-like. Formally, and in LFG terms, they are realised as {\COMP}s (finite clauses) and {\XCOMP}s (non-finite clauses with syntactic \SUBJ-control). The distinction between \COMP and \XCOMP and their core status may not always be easy to identify. In what follows, we outline clear cases of {\OPTXCOMP}s and their syntactic status.
+
+Languages with robust voice morphology provide a diagnostic tool to determine the core status of \OPTXCOMP. For example, in Indonesian-type languages, only a core argument can be selected as \SUBJ/\PIVOT, and a peripheral oblique/adjunct-like argument must be promoted to become a core argument in order to be realized as \SUBJ. This is the case with the Balinese verb \emph{edot} `want'. It is a two-place intransitive verb with the second argument being either a simple oblique argument appearing as a PP, like in (\ref{ex:Austronesian:47}a) below, or an \XCOMP (without P-flagging) as in (\ref{ex:Austronesian:47}b). In both cases, the applicative \emph{-ang} cannot be used. However, when an embedded clause is fronted and given the discourse function \textsc{focus-c} (i.e. made the \PIVOT/\SUBJ), as in (\ref{ex:Austronesian:47}c), the applicative \emph{-ang} is obligatory; the verb \emph{edot=a} is unacceptable. Note, however, that the matrix verb must be in \UV since the \AV form \emph{ng-edot-ang} `\AV-want-\APPL' is unacceptable. That is, the clausal argument is treated as a non-Actor core argument. The obligatory applicativisation serves as evidence that the second clausal (\COMP) argument with \emph{edot} is syntactically oblique-like in (\ref{ex:Austronesian:47}b), but a core argument in (\ref{ex:Austronesian:47}c).
+
+\ea\label{ex:Austronesian:47} Balinese  \citep[135]{Arka2003b}
+\ea\gll
+Ia edot / *edot-ang [teken poh]\textsubscript{\textsc{obl}}.\\
+3 want {} want-{\APPL} \phantom{[}to mango\\
+\glt`(S)he wants a mango.'
+\ex\gll
+Ia edot / ?*edot-ang [{\GAP} ngae umah luung]\textsubscript{\XCOMP}.\\
+3 want {} want-{\APPL} \phantom{[}{\SUBJ} \AV.build house good\\
+\glt`(S)he wants build a good house.'
+\ex\gll
+[{\GAP} Ngae umah luung]\textsubscript{\PIVOT} (ane) edot-ang=a/*edot=a/*ng-edot-ang.\\
+\phantom{[}{\SUBJ} \AV.build house good \phantom{(}{\FOC} \UV.want-\APPL=3 \\
+\glt`Building a good house is what s/he wants.'
+\z\z
+However, \XCOMP can also be a core argument. This is the case with the \XCOMP of the verb \emph{coba} `try' in Indonesian in (\ref{ex:Austronesian:48}a) below. In Indonesian, like in Balinese, an \textsc{obl} cannot alternate with \SUBJ/\PIVOT without applicativisation. The \XCOMP of the verb \emph{coba} can, however, alternate to become \SUBJ/\PIVOT without applicativisation, as seen in (\ref{ex:Austronesian:48}b). Note that \emph{coba} `try' allows different patterns of control, including the so-called double (backward/forward) control given in (\ref{ex:Austronesian:48}c). This double control structure shows two gaps—left-headed and right-headed arrows indicate backward and forward control types, respectively (see \citealt{Arka2000} and \citealt{Arka2014} for details).
+
+\ea\label{ex:Austronesian:48} Indonesian  (\citealt[31]{Arka2014} and own knowledge)
+\ea\gll
+Aku sudah mencoba [\rnode{g}{\GAP} menjual mobil itu]\textsubscript{\XCOMP}. {\vrule height 1.5ex depth 2ex width 0pt}\\
+\rnode{i}{1\SG} {\PFV} \AV.try {} \AV.sell car that\\
+\glt`I have tried to sell the car.'
+\ncbar[nodesepA=2pt,armA=.8ex,angle=-90,linewidth=.5pt]{->}{i}{g}
+\ex\gll
+[{\GAP} Menjual mobil itu]\textsubscript{\PIVOT} yang sudah ku=coba.\\
+ {} \AV.sell car that {\FOC} {\PFV} {1\SG}=\UV.try\\
+\glt`Selling the car is what I have tried (to do).'
+\ex\gll
+[Mobil itu]\textsubscript{\PIVOT} (yang) sudah  {\GAP} coba [{\GAP} ku=jual]\textsubscript{\XCOMP}. {\vrule height 1.5ex depth 2.5ex width 0pt}\\
+\phantom{[}\rnode{c}{car} that \phantom{(}{\FOC} {\PFV} \rnode{a}{(A)} \UV.try \phantom{[}\rnode{p}{(P)} \rnode{i}{1\SG}=\UV.sell\\
+\glt`That car (is the one that) I have tried to sell.'
+\ncbar[nodesepA=2pt,arm=1.1ex,angle=-90,linewidth=.5pt]{->}{c}{p}
+\ncbar[nodesepA=2pt,armA=1.3ex,angle=-90,linewidth=.5pt]{->}{i}{a}
+\z\z
+
+The clausal argument of a raising verb can also have an \XCOMP with the raised argument being obligatorily \SUBJ. The following shows the (unusual) \SUBJ raising to matrix \textsc{obl} in Puyuma. In (\ref{ex:Austronesian:49}a) below, the clausal complement of the verb `know' is \COMP. It is syntactically non-core since it is flagged by \emph{dra} (i.e. the indefinite \textsc{obl} phrase marker; glossed as a complementiser for clarity here). The patient NP `the fish' (indicated in bold) is selected by the \PV \emph{-aw} on the verb as \SUBJ, and present in the embedded clause. In (\ref{ex:Austronesian:49}b), however, the \SUBJ is raised and appears as \textsc{obl} in the matrix clause, flagged by \emph{kana}. Note that raising in (\ref{ex:Austronesian:49}b) is not possible with an embedded verb containing the voice suffix, \emph{-anay}, since this selects an instrumental argument instead.
+
+\ea\label{ex:Austronesian:49} Puyuma  \citep[153-154]{Teng2008}
+\ea\gll
+Ma-ladram=ku [dra tu=lriputr-\textbf{aw} \textbf{na}  \textbf{kuraw} dra bira']\textsubscript{\COMP}.\\
+\INTR-know=1\SG.{\NOM} \phantom{[}{\COMP} 3{\GEN}=wrap-{\PV} \textsc{def}.{\NOM} fish  \INDF.\textsc{obl} leaf\\
+\glt `I know that the fish was wrapped in a leaf.'
+\ex\gll
+Ma-ladram=ku   \textbf{kana}  \textbf{kuraw} [dra tu=lriputr-\textbf{aw}/ *tu=lriputr-\textbf{anay} dra bira']\textsubscript{\XCOMP}\\
+\INTR-know=1\SG.{\NOM} \textsc{def}.\textsc{obl} fish \phantom{[}{\COMP} 3{\GEN}=wrap-\PV/ 3{\GEN}=wrap-{\IV}
+\INDF.\textsc{obl} leaf\\
+\glt`I know that the fish was wrapped in a leaf.'
+\z\z
+
+In the indexing AN languages of eastern Indonesia and Oceania, the \SUBJ(bound) pronoun is typically part of the verbal morphology and cannot be gapped. \SUBJ is not a syntactic \PIVOT for clause combining purposes in these languages. There is, therefore, no syntactic control or raising. Clausal arguments are consistently {\COMP}s with no \XCOMP alternative. This is the case in Taba in (\ref{ex:Austronesian:50}), and Mangap-Mbula in (\ref{ex:Austronesian:51}):
+
+\ea\label{ex:Austronesian:50} Taba (CEMP, Eastern Indonesia) \citep[391]{Bowden2001}\\
+\glll
+Nculak wangsi de lmul akle.\\
+n=sul-ak wang=si de l=mul ak-le\\
+3\SG=order-{\APPL} child={\PL} {\RES}(so.that) 3\PL=return \ALL-land\\
+\glt`He told the children to go home.'
+\z
+
+\ea\label{ex:Austronesian:51} Mangap-Mbula (Oceanic) \citep[272]{Bugenhagen1995}\\
+\gll
+Ti-maŋmaŋ yo [be aŋ-kam pizin].\\
+\SUBJ:3\PL-urge \OBJ:{1\SG} \phantom{[}{\COMP} \SUBJ:{1\SG}-do \DAT.3\PL\\
+\glt`They urged me to give it to them.'
+\z
+
+Despite their rarity, some Oceanic languages with indexing systems, such as Hoava \citep{Davis2003}, Longgu \citep{Hill2002}, and Kokota \citep{Palmer1999}, have syntactic \SUBJ/\PIVOT. In Hoava, the index on the verb is only for \OBJ. This language shows \COMP, as in (\ref{ex:Austronesian:52}a), as well as \XCOMP like in (\ref{ex:Austronesian:52}b). Complement-taking predicates in Hoava come with an invariant \OBJ index \emph{-a} which signals that there is an embedded complement clause in the structure.
+
+\ea\label{ex:Austronesian:52} Hoava (Oceanic)  \citep[288]{Davis2003}
+\ea\gll
+Hiva-ni-a  ria [de pule mae sa qeto]\textsubscript{\COMP}.\\
+{want-\APPL-\OBJ:3\SG} {3\PL} \phantom{[}{\COMP} return come {\ART:\SG} war.party\\
+\glt`They wanted the war party to come back.'
+\ex\gll Haku=haku-ni-a ria [de naqali-a]\textsubscript{\XCOMP}.\\
+\textsc{redup}=be.tired.of-\APPL-\OBJ:{3\SG} {3\PL} \phantom{[}{\COMP} carry.\TR-\OBJ:3\SG\\
+\glt`They were tired of carrying it.'
+\z\z
+
+\subsection{Serial Verb Constructions}
+\label{sec:Austronesian:5.2}
+
+SVCs are the hallmarks of AN languages of the isolating type and are observed in the languages of eastern Indonesia, such as Rongga \citep{Arka2016}, and also in Oceanic languages, as discussed below. Some SVCs are also encountered in the agglutinating Philippine/Indonesian-type languages, including Balinese \citep{Indrawati2014} and Puyuma \citep{Teng2008}.
+
+Unlike complementation, SVCs syntactically express complex (sub)events in monoclausal structures \citep{Crowley2002,Haspelmath2016}. Semantically, the relations between subevents typically convey adverbial modification with meanings such as comitative, benefactive and instrumental. However, they may also express other tightly integrated meanings often discussed under the rubric of complex predicates (see \citealt{Arka2008b}). For example, the SVC expresses the desiderative `want' (i.e. `feel-say') in Ambae in (\ref{ex:Austronesian:53}), and the causative and resultative meaning in Rongga in (\ref{ex:Austronesian:54}) and Mwotlap in (\ref{ex:Austronesian:55}).
+
+\ea\label{ex:Austronesian:53} Ambae (Oceanic)  \citep[387]{Hyslop2001}\\
+\gll
+No=mo rongo vo na=ni qalo.\\
+\SUBJ:{1\SG}=\textsc{real} feel say \SUBJ:{1\SG}={\IRR} fight\\
+\glt`I want to fight.'
+\z
+
+\ea\label{ex:Austronesian:54} Rongga   \citep[227]{Arka2016}\\
+\gll
+Selu tau mata manu ndau. \\
+Selu make die chicken that\\
+\glt `Selus killed the chicken.'
+\z
+\ea\label{ex:Austronesian:55} Mwotlap (Oceanic)  \citep[232]{Francois2006}\\
+\gll
+Ne-lēn mi-yip hal-yak na-kat. \\
+{\ART}-wind \PRF-blow fly-away {\ART}-cards\\
+\glt`The wind blew the cards away.'
+\z
+
+SVCs can be analysed in LFG in the same way as complex predicates through predicate composition \citep{AndrewsManning1999}. The exact c-structure varies according to the language considered, but it is typically a compound-like nested structure: [V(P)$_1$~V(P)$_2$]\textsubscript{\textsc{V(P)}}. That is, there is a higher VP consisting of lower VPs in the c-structure. The crucial idea of the analysis is to capture the empirical fact that the SVC is monoclausal; that is, the V(P) component(s) share the same \SUBJ, and possibly another argument, depending on the transitivity of V$_1$ and V$_2$ verb components.
+
+SVCs also reveal an intriguing and important property of the construction, exemplified by the Mwotlap example in (\ref{ex:Austronesian:55}). The causative-resultative meaning is constructed at the level of SVC because neither V$_1$ nor V$_2$ carry a causative-resultative meaning lexically. That is, the syntactic transitivity is constructional because neither V$_1$ nor V$_2$ is transitive. In LFG, such resultative constructions, as in example (\ref{ex:Austronesian:55}), can be captured by lexical-constructional a-structure, indicated by the SVC template, @SVC, annotated to V$'$ of the VP in (\ref{ex:Austronesian:56}b). The template consists of complex equations given in the box showing the constructional predicate of `\textsc{cause.result}\arglist{\ARG1, \ARG2}' (where \ARG1 is the causing event and \ARG2 is the resulting event). The restriction operator expressed by \UP\restrict{\PRED}\restrict{\GF}=\DOWN\restrict{\PRED}\restrict{\GF} \citep{kaplanwedekind93} regulates the predicate composition involved in the SVC; see  \citet{buttetal03} for the application of the restriction operator in Urdu/Hindi and other languages. This restriction operator and the other constraints associated with @SVC result in an f-structure with the subcategorisation frame shown in (\ref{ex:Austronesian:56}a).
+
+
+Note that, in the resultative SVC of (\ref{ex:Austronesian:56}b), the \OBJ annotation is specified at the NP of the higher VP, sister of V$'$, of the c-structure since it is the \OBJ argument of the constructed causative-resultative predicate; neither V1 nor V2 has \OBJ. The @SVC template (with detailed specifications provided in the box) specifies that the SVC's \OBJ has the same value as the lower V2's \SUBJ, and the SVC's \SUBJ has the same value as the \SUBJ of V1. This sharing of values for \SUBJ and \OBJ is indicated through tags [1] and [2] in (\ref{ex:Austronesian:56}a). 
+
+\ea\label{ex:Austronesian:56} 
+\ea f-structure of sentence (\ref{ex:Austronesian:55})\\
+\avm[style=fstr]{
+ [pred & `cause.result\arglist{subj[1]: `blow\arglist{[1]}', obj[2]: `fly.away\arglist{[2] }' }'\\
+ subj & [pred & `wind'\\
+   def & +]\\
+ obj & [pred & `cards'\\
+  def & +]]}
+\newpage
+\ex c-structure of sentence (\ref{ex:Austronesian:55})\\
+\vbox{\hspace*{\fill}\rnode{eqs}{\framebox{\begin{tabular}{l}
+(\UP\PRED)=`\textsc{cause.result}\arglist{\ARG1, \ARG2}'\\
+(\UP\restrict{\PRED}\restrict{\GF}=\DOWN\restrict{\PRED}\restrict{\GF}\\
+(\UP\PRED\ARG1)=(\DOWN\PRED)\\
+(\UP\PRED\ARG2)=(\DOWN\XCOMP\PRED)\\
+(\UP\SUBJ)=(\DOWN\SUBJ)\\
+(\UP\OBJ)=(\DOWN\XCOMP\SUBJ)
+\end{tabular}}}\\
+\scalebox{.9}{\begin{forest}
+    [{S\\\UP=\DOWN}
+    [{NP\\(\UP\SUBJ)=\DOWN} [{ne-len\\(\UP\PRED)=\textsc{`wind'}\\(\UP\textsc{def})=+}]]
+    [{VP\\\UP=\DOWN}
+    [{{V}\makebox[0em][l]{$'$ \rnode{v}{@SVC}}}
+    [{V\\\UP=\DOWN} [mi-yip\\{(\UP\PRED)=`\textsc{blow}\arglist{\SUBJ}'}]]
+    [{V\\(\UP\XCOMP)=\DOWN} [hal-yak\\{(\UP\PRED)=`\textsc{fly.away}\arglist{\SUBJ}'}]]]
+    [{NP\\(\UP\OBJ)=\DOWN} [na-kat\\{(\UP\PRED)=`cards'}\\{(\UP\textsc{def})=+}]]]]
+\end{forest}}}
+\CONNECT{2pt}{130}{v}{2pt}{180}{eqs}
+\z\z
+However, the distinction between mono-clausal SVCs and bi-clausal subordination is not always clear. A typical diagnostic test for SVCs is negation: since SVCs are monoclausal, the criterion of single negatability applies \citep{Durie1997}. There are also other language-specific criteria that distinguish SVCs from multi-verb constructions in coordinate and subordinate clauses. In Balinese, for example, the presence/absence of voice morphology serves as a diagnostic criterion. The second verb in an SVC may optionally contain an \AV prefix, indicated by putting the \AV prefix in brackets in (\ref{ex:Austronesian:57}a): \emph{(ng)ajak}. The absence of the \AV prefix (i.e. \emph{ajak}) gives rise to a comitative reading only, as shown by reading (i) in (\ref{ex:Austronesian:57}a); this is a comitative SVC in Balinese. In contrast, the presence of the \AV prefix, \emph{ngajak}, leads to an ordinary coordination, which requires a syntactic \PIVOT, as in reading (ii) in (\ref{ex:Austronesian:57}a). The presence of the clausal negator, \emph{tan} `not', in (\ref{ex:Austronesian:57}b) forces the coordination structure, which requires \SUBJ\PIVOT marking. Hence, the presence of an \AV prefix on the verb in the second clause is obligatory, as seen in (\ref{ex:Austronesian:57}b).
+
+\newpage
+\ea\label{ex:Austronesian:57} Balinese  \citep{ShioharaArka}\\
+\ea\gll
+Tiang [mlajah kelompok (ng-)ajak timpal-timpal-e]\textsubscript{\textsc{svc}}. \\
+{1\SG} \phantom{[}\textsc{mid}.study group (\AV-)invite friend.\textsc{redup}-\textsc{def}\\
+\glt (i) `I studied in a group together with friends.' (with \emph{ajak})\\
+(ii) `I studied in a group and invited friends to join.' (with \emph{ngajak})\\
+\ex\gll
+Tiang [mlajah kelompok], [tan ngajak/*ajak Ketut].\\
+{1\SG} \phantom{[}\textsc{mid}.study group \phantom{[}{\NEG} \AV.invite/invite Ketut\\
+\glt`I studied in a group, (but) I didn't invite Ketut (to join).'
+\z\z
+In addition, the prosody is different: the SVC in (\ref{ex:Austronesian:57}a) with the bare verb, \emph{ajak}, has one intonational contour (i.e. without a break), while the coordination in (\ref{ex:Austronesian:57}b) has a break indicated by a comma after the first VP (cf. prosodic properties of mono-/bi-clausality in \citealt[7]{Aikhenvald2006}, \citealt[339]{Dixon2006}, \citealt[308]{Haspelmath2016})
+ Likewise, sentence (\ref{ex:Austronesian:57}a) in its non-SVC or bi-clausal reading (ii) is also accompanied by a prosodic break before the \AV verb.
+
+\section{Discourse information structure: Contrastive \textsc{focus} and nominalisation }
+\label{sec:Austronesian:6}
+
+In this final section, we consider the interface between information structure and morphosyntax in AN languages. Recall from \sectref{sec:Austronesian:3} that contrastive discourse functions are a crucial factor that motivate syntactic variation for fronting. Fronting is of special interest since it involves clefting, which is closely bound with the \SUBJ-only restriction on extraction in many AN languages with robust voice systems (cf. \sectref{sec:Austronesian:4.1.2}). 
+
+In this section, we look thoroughly at the connection between contrastive \textsc{df}s and the syntactic structure of clefts from a comparative perspective and demonstrate how cross-linguistic variation can be captured in LFG. We begin by introducing the basic notions of discourse features in information structure (\citetv{chapters/InformationStructure}) with a primary focus on \textsc{focus-c} because in many AN languages, \textsc{focus-c} is the most common discourse function associated with clefting.  Then, we move on to show how \textsc{focus-c} expressions via clefting are structured differently across languages.
+
+\hspace*{-3.4pt}The pragmatic uses of clefting in expressing contrastive focus (\textsc{focus-c}) emerge as a motivating factor in the extension of bi-clausal structure  across AN languages, as discussed below. In symmetrical-voice languages, bi-clausal clefting is used in combining nominal predicates and headless relative clauses, while indexing-type languages use mono-clausal clefts without relative constructions. The major difference lies in the gradual erosion of clausal nominalisation. We will see that both types of cleft-structures for expressing \textsc{focus-c} (with/without nominalisation) can be elegantly captured in an LFG analysis to reflect the language-specific variation.
+
+\subsection{Information structure: \textsc{focus-c}, fronting and cleft}
+\label{sec:Austronesian:6.1}
+
+Topic and focus have long been recognized as discourse functions within information structure. However, this traditional dichotomy view falls short of encompassing all the information structure nuances (\citetv{chapters/InformationStructure}). Decomposing i-structure features is generally adopted in LFG studies. In our analysis, marked \textsc{df}s (\textsc{focus-c}/\textsc{topic-c}) are represented by three distinct decomposed features, as demonstrated by \citet{Arka2018} and references therein: contrast, salience, and givenness.  The [+contrast] feature is central for \textsc{focus} and is exemplified in (\ref{ex:Austronesian:58}) below. The [+salient] and [+given] features are typically topic-related, encompassing communicatively important properties, such as the particular frame/entity by which new information should be understood (i.e. the `aboutness' of the topic), and the degree of importance/prominence of one piece of information relative to other bits of information in a given context. The [+salient] feature reflects the speaker's subjective choice of highlighting one element and making it stand out for communicative purposes. While often closely linked, salience and givenness are distinct: for example, new information, \mbox{[$-$given]}, can be [+salient] (see \citealt{Riesberg2018} on information structure across AN languages).
+
+\textsc{focus-c} is a marked \textsc{focus} and is typically characterised by overt marking of the conception of alternatives in the contrastive set it is associated with (cf. \citealt{Krifka}). Clefting is a typical `marked' strategy to express \textsc{focus-c} as seen in the English example of (\ref{ex:Austronesian:58}a): John is a person in the set of referents associated with the \SUBJ(i.e. John, not somebody else). The equivalent structure in Indonesian is given in (\ref{ex:Austronesian:58}b) below:
+
+\ea\label{ex:Austronesian:58} Indonesian  (Arka, own knowledge)
+\ea It is [John]\textsubscript{\textsc{focus-c}} [who killed the robber]\textsubscript{\textsc{vp:comment|given}}.
+\ex\gll
+[(Adalah) John]\textsubscript{\PRED/\textsc{focus-c}} [yang membunuh perampok itu]\textsubscript{\SUBJ}. \\
+ \phantom{[(}be John \phantom{[}{\REL} \AV-kill robber that\\
+\glt`It's John who killed the robber.'
+\z\z
+Note that English and Indonesian show structural parallelism in their relativisation of the second part of cleft structures, and contrastive \textsc{focus} fronting. Also, they both show clear evidence of biclausal structures with each part having its own predicate. However, Indonesian \emph{adalah} `be' is optionally present. English requires the empty \SUBJ \emph{it}, while Indonesian has no such \SUBJ. The fronted NP (\emph{John}) is the predicate, and the (headless) relative with \emph{yang} is actually a (clausal) \SUBJ.
+
+\subsection{Cross-linguistic variation in fronted \textsc{focus-c}}
+\label{sec:Austronesian:6.2}
+
+Fronted content questions in other AN languages of Indonesia also typically employ the same clefting strategy that involves relativisation, including in Indonesian, Sundanese and Sasak as in examples (\ref{ex:Austronesian:59})-(\ref{ex:Austronesian:61}) below. These sentences are biclausal. Note that these languages also allow in-situ mono-clausal content questions with no relativisation required (cf. (\ref{ex:Austronesian:59}) and (\ref{ex:Austronesian:62}a) where \SUBJ is questioned).
+
+\ea\label{ex:Austronesian:59} Indonesian  (Arka, own knowledge)\\
+\gll
+[Siapa]\textsubscript{\PRED/\textsc{focus-c}} [yang membunuh perampok itu]\textsubscript{\SUBJ}? \\
+\phantom{[}who \phantom{[}{\REL} \AV-kill robber that\\
+\glt`Who killed the robber?' (Lit. `Who is the one who killed the robber?')
+\z
+\ea\label{ex:Austronesian:60} Sundanese \citep[3]{Hanafi1997}\\
+\gll
+ [Sahaʔ]\textsubscript{\PRED/\textsc{focus-c}} [nu meuliʔ mobil]\textsubscript{\SUBJ}?\\
+who \phantom{[}{\REL} \AV.buy car\\
+\glt`Who bought a car?'
+\z
+\ea\label{ex:Austronesian:61} Menó-Mené Sasak (Arka, fieldwork data)\\
+\gll
+[Ape]\textsubscript{\PRED/\textsc{focus-c}} [*(saq) Amir paling wiq]\textsubscript{\SUBJ}?\\
+\phantom{[}what  \phantom{[*}{\REL} Amir steal yesterday\\
+\glt`What did Amir steal yesterday?'
+\z
+\ea\label{ex:Austronesian:62} Indonesian  (Arka, own knowledge)\\
+\ea\gll
+[Siapa]\textsubscript{\SUBJ} mem-bunuh perampok itu?\\
+ who \AV-kill robber that\\
+\glt`Who killed the robber?'
+\ex\gll
+Orang itu membunuh [siapa]\textsubscript{\OBJ}?\\
+person that \AV-kill \phantom{[}who\\
+\glt`Who did the person kill?'
+\ex *Siapa orang itu membunuh  \GAP?
+\z\z
+Variation in the above clefting strategies reveals the effect of the \SUBJ-only constraint on extraction of \textsc{focus-c} and a change in the constraint in some languages. Philippine/Indonesian type languages with robust grammatical voice cannot front the \OBJ \textsc{q} NP in \AV (mono)clauses (\citealt[27]{arka2003}, \citealt[50,~208]{Kroeger93}).  This is exemplified by the ungrammaticality of (\ref{ex:Austronesian:62}c) above, in contrast to the acceptable in-situ question (\ref{ex:Austronesian:62}b). A voice alternation is obligatory in order for \OBJ \textsc{q} NP fronting to be acceptable because it maps the patient onto the \SUBJ, and also allows possible clefting of the type seen in (\ref{ex:Austronesian:59}).
+
+However, in languages where grammatical voice is in decline or has disappeared (as often observed with the erosion of AV verbal morphology), the strict adherence to the \SUBJ-only constraint might be eased. This relaxation could allow for the fronting of the \OBJ \textsc{q} NP. However, this can only occur under the condition that the fronted \OBJ \textsc{q} NP necessitates relativization within a bi-clausal structure. Such a phenomenon is evident in Sasak, as demonstrated in (\ref{ex:Austronesian:61}). Notably, when \OBJ \textsc{q} is fronted, the relativizer \emph{saq} cannot be omitted.
+
+
+It should be noted that even when the AN verbal voice is completely lost, syntactic voice is not always lost as well. The languages of western and central Flores, such as highly isolating Manggarai and Rongga, exhibit a syntactic passive or undergoer voice without verbal voice morphology (see \citealt{Arka2005a} for details). The canonical clausal word order in these languages is SVO, and the fronted \textsc{q} NP also makes use of clefting via relativisation, as seen in Manggarai in (\ref{ex:Austronesian:63}a) below. In this instance, the fronted \textsc{q} NP is the actor \SUBJ. Despite the absence of \AV verbal morphology, the syntactic structure follows the Actor Voice (\AV) pattern. Conversely, when the fronted \textsc{q} NP takes on the role of the undergoer, as depicted in (\ref{ex:Austronesian:63}b), the structure undergoes an alteration to become Undergoer Voice (\UV). Here, the actor is expressed in genitive form, which is characteristic of actor realization in the \UV voice within AN languages. Note that the verb form in (\ref{ex:Austronesian:63}a) is identical to that in (\ref{ex:Austronesian:63}b). However, they are assigned distinct voice glosses (\AV/\UV) to signify that they are part of different voice constructions. 
+
+\ea\label{ex:Austronesian:63} Kempo Manggarai (CEMP, Indonesia) 
+\ea\gll
+[Cai]\textsubscript{\PRED/\textsc{focus-c}} [ata tengo hau]\textsubscript{\SUBJ}? \\
+\phantom{[}who \phantom{[}{\REL} \AV.hit you\\
+\glt`Who hit you? (Lit. `who is the one hitting you?') \citep[63]{Semiun1993}
+\ex\gll
+[Cai]\textsubscript{\PRED/\textsc{focus-c}}  [ata   tengo  gau]?\\
+who \phantom{[}{\REL} \UV.hit   2\GEN\\
+\glt'Who did you hit?' \citep[64]{Semiun1993}
+\z\z
+The above discussion has shown how the different morpho-syntactic systems in AN languages are structurally connected in a bi-clausal structure with relativisation. Unlike Philippine/Indonesian type languages, a relaxed constraint on extraction is witnessed in the loss of voice morphology in languages like Manggarai, Flores. In the latter, fronting of a non-\SUBJ argument is possible without the need for voice alternation.
+
+The obligatory relativisation in fronted question NPs discussed so far brings us to the important interconnection between \textsc{focus-c}, relativisation, voice and nominalisation. This interconnection is evident in that the AN relative clause used for fronted \textsc{focus-c} is transparently nominal in its structure. Typically, and formally, the relativiser is a nominal phrase marker and thus, the marker is multifunctional. In Tagalog, for instance, the relativiser is the \NOM marker for an ordinary NP (see (\ref{ex:Austronesian:23})), but also for a verb when its \SUBJ is in \textsc{focus-c} in the content question (see (\ref{ex:Austronesian:64})). Likewise, marked \textsc{focus-c} in declarative sentences—as seen in Indonesian-type languages like Old Javanese in (\ref{ex:Austronesian:65})—also use the same nominalisation strategy through relativisation. The same form \emph{ikang} in (\ref{ex:Austronesian:65}) is also used as a definite determiner in Old Javanese. The NP flagged by \emph{ang} in Tagalog also receives a definite interpretation. Based on these functional correspondences, we contend that Tagalog \emph{ang}, Old Javanese \emph{ikang}, and the Indonesian pronominal relativiser \emph{yang} are clearly cognates (\citealt[266--267]{Kahler1974}; \citealt[465]{Blust2015}; \citealt[228--229]{Kaufman2018}).
+
+\ea\label{ex:Austronesian:64} Tagalog  \citep[219]{Kaufman2018}\\\gll
+[Sino]\textsubscript{\PRED} [ang d\textlangle{um}{\textrangle}ating]\textsubscript{\SUBJ}? \\
+ \phantom{[}who \phantom{[}{\NOM} \textlangle\AV{\textrangle}arrive\\
+\glt`Who arrived?' (Lit. `the coming one is who?')
+\z
+\ea\label{ex:Austronesian:65} Old Javanese (WMP, Indonesia)  \citep[150]{Erawati2014}\\\gll
+Ikang naga Taksaka [ikang s-um-ahut wwang atuha-nira]. \\
+\textsc{def} dragon Taksaka {\REL} \textlangle{\AV}{\textrangle}bite person old-3\SG.\POSS\\
+\glt`The Taksaka dragon is the one who bit his parent.'
+\z
+The same pattern of nominalisation involving a fronted \textsc{focus-c} is observed across Philippine-type languages as shown in \tabref{table:Austronesian:1}. These languages also use the same nominalisation strategy through relativisation. Crucially, there are two morphosyntactic properties worth noting. First, only \SUBJ can be fronted as \textsc{focus-c}. Thus, when the transitive patient is in \textsc{focus-c}, the \PV must be used, as seen in \tabref{table:Austronesian:1}. Second, the agent argument of the \PV verb is expressed in the genitive, which is the realisation of the possessor in the nominal structure.
+
+\begin{table}
+\textit{\begin{tabular}{lllllll}\centering
+\textnormal{Tagalog} & maŋga & aŋ & kinaːʔin & naŋ & baːtaʔ\\
+\textnormal{Bikolano} & maŋga & aŋ & kinakan & kan & aːkiʔ\\
+\textnormal{Cebuano} & maŋga & aŋ & ginkaːʔun & han & bataʔ\\
+\textnormal{Hiligaynon} & pahuʔ & aŋ & kinaʔun & saŋ & baːta\\
+\textnormal{Tausug} & mampallam & in & kyaʔun & sin & bataʔ\\
+\textnormal{Ilokano} & maŋga & ti & kinnan & dyay & ubiŋ\\
+\textnormal{Ibanag} & maŋga & ik & kinan& na & abbiŋ\\
+\textnormal{Pangasinan} & maŋga & su & kina&=y & ugaw\\
+\textnormal{Kapampangan} & maŋga & iŋ & peːŋa=na & niŋ & anak\\\midrule
+ & [mango]\textsubscript{focus-c} & [NOM & eat.\PV.{\PFV} & \GEN & child]\textsubscript{\SUBJ}\\
+& \multicolumn{6}{l}{\textnormal{`It was the mango that the child ate.'}}\\
+& \multicolumn{6}{l}{\textnormal{(Lit. `the mango was the one eaten by the child.')}}\\
+ \end{tabular}}
+\caption{\SUBJ\ \textsc{focus-c} across the Philippine-type languages \citep[220]{Kaufman2018}}
+\label{table:Austronesian:1}
+\end{table}
+The pattern showing the genitive agent in the fronted \textsc{focus-c} with relativisation is also observed in the languages of western Flores, such as Manggarai \citep{Semiun1993}.  Recall that Manggarai is highly isolating, but it has a genitive clitic set usable in fronted \textsc{focus-c} questions. Note that the \textsc{q} \emph{cai} in (\ref{ex:Austronesian:66}) below is associated with the transitive patient; questioning the agent \SUBJ requires no genitive clitic (cf. Kambera example (\ref{ex:Austronesian:21}) above with (\ref{ex:Austronesian:67}a) below).
+
+\ea\label{ex:Austronesian:66} Kempo Manggarai \citep{Semiun1993}\\*
+\gll
+Cai (ata) tengo gau? \\
+who {\REL} hit 2SG.\GEN\\
+\glt`Who did you hit? (Lit. `who is your hitting?')
+\z
+In AN languages of the indexing type, the resources for \textsc{focus-c} may also be parasitic to nominalisation/relativisation coding whereby the focused argument ends up being fronted sentence-initially. For example, the Kambera  example in (\ref{ex:Austronesian:67}a) is a content question (\textsc{focus-c}) with equational structure: the verb is affixed with the subject relativiser \emph{ma-} and the verb appears within a nominal (headless) relative clause structure. The nominal article \emph{na} flags the structure as an NP. The same pattern is observed in (\ref{ex:Austronesian:67}b), where the patient argument is \textsc{focus-c}. Like in Manggarai and Philippine-type languages, the agent in Kambera in (\ref{ex:Austronesian:67}b) appears as a genitive too, which is the same case as used for the possessor of an NP.
+
+\newpage
+\ea\label{ex:Austronesian:67} Kambera  \citep[132, 318]{Klamer1998}
+\ea\gll
+Ngga [na ma-palewa-kai] hi mài lai nai? \\
+ who \phantom{[}{\ART} \textsc{relS}-send-\textsc{2\PL.\ACC} \textsc{cnj} come {\LOC} \textsc{dem}\\
+\glt`Who was the one that send you so that you'd come here?'
+\ex\gll
+[Da kalembi-da]$_k$ [na pa-pa.marihak-na$_j$ nyuna$_j$]\textsubscript{\SUBJ}$_k$.\\
+\phantom{[}{\ART} shirt-3{\PL.\POSS} \phantom{[[}{\ART} \textsc{relO}-\CAUS.be.dirty-{3\SG} he\\
+\glt`Their shirts$_k$ were (the ones) made dirty by him$_j.$'
+\z\z
+In the languages of Sulawesi, such as Makassarese, where unmarked structures are predicate-initial (like in Philippine-type languages), \textsc{focus-c} formation also requires fronting \citep[341--345]{Jukes2006}. However, while relativisation uses a nominalisation strategy by means of the definite clitic \emph{=a} as seen in (\ref{ex:Austronesian:68}a), the \textsc{focus-c} formation requires no nominalisation as seen in (\ref{ex:Austronesian:68}b--c). Makassarese exhibits systematic pronominal indexing, but it still shows the AN voice system. Thus, when agent \SUBJ is in \textsc{focus-c}, it requires the homorganic nasal substitution \AV prefix on the verb (\emph{aN-} realised as \emph{am-}) as in (\ref{ex:Austronesian:68}d). Crucially, the sentences with fronted \textsc{focus-c} NPs in (\ref{ex:Austronesian:68}b--d) are monoclausal.
+
+\ea\label{ex:Austronesian:68} Makassarese (WMP, Indonesia) \citep[238, 343, 353]{Jukes2006}
+\ea\gll
+[tau [na=buno=a sorodadu]\textsubscript{\textsc{rc}}]\textsubscript{\textsc{np}} \\
+ \phantom{[}person \phantom{[}3=kill=\textsc{def} soldier\\
+\glt  `the person killed by a soldier'
+\ex\gll
+Miong=a na=buno kongkong=a.\\
+cat=\textsc{def} 3=kill dog=\textsc{def}\\
+\glt`The dog killed the cat (not something else).'/ `It's the cat that the dog killed.'
+\ex\gll
+Inai na$_i$=ba'ji [i Ali]$_i$? \\
+who 3=hit \phantom{[}\textsc{pn} Ali\\
+\glt`Who did Ali hit?'
+\ex\gll
+Inai am-ba'ji=i i Udin?\\
+who \AV-hit=3 \textsc{pn} Udin\\
+\glt`Who hit Udin?'
+\z\z
+
+\newpage
+\subsection{Representing information structure in LFG}
+\label{sec:Austronesian:6.3}
+
+LFG is well equipped to capture the language-specific variation in fronted {\textsc{fo\-cus-c}} discussed here. There are two kinds of analysis: the (earlier) integrated f-structure analysis (\citealt{BM87,King95}, among others) and the more recent independent i-structure analysis (\citealt{BK96,DN}, among others). In the first analysis, \textsc{df}s are part of the f-structure and share their values (fully or partially) with argument {\GF}s in the f-structure due to the extended coherence condition \citep{Zaenen1985} or their anaphoric relation. This analysis is straightforward for cases involving \textsc{focus-c} with no requirement for nominalisation, as in the Makassar examples of (\ref{ex:Austronesian:68}b--d). Here, the sentences are mono-clausal, and the fronted argument is functionally not the head predicate. For the analysis to work, the sentence-initial XP is identified as \textsc{focus-c} and is licensed by the phrase structure rule shown in (\ref{ex:Austronesian:69}a) below:
+
+\ea\label{ex:Austronesian:69}
+\ea \phraserule{CP}{\rulenode{XP\\(\UP\textsc{focus-c})=\DOWN\\(\UP\textsc{focus-c})=(\UP\GF)} 
+C$'$}
+ \ex Makassarese Voice Marking:\\\begin{tabular}{@{}lll}
+ i) &\AV, \emph{aN-}: &(\UP\textsc{focus-c}) = (\UP\SUBJ)$_\sigma$ = (\UPS\/ 1:agent)\\
+ ii) &\PV, Clitic\textsubscript{A}=: & (\UP\textsc{focus-c}) = (\UP\OBJ)$_\sigma$ = (\UPS\/ 2:patient)\\
+ \end{tabular}
+\z\z
+The two lines of annotation in (\ref{ex:Austronesian:69}a) impose a sharing between \textsc{focus-c} and any \GF, including adjunct. However, there are also other independent language-specific voice selection constraints given in (\ref{ex:Austronesian:69}b) to regulate how a core argument is selected as \SUBJ/\OBJ in Makassarese, particularly when this core argument is also assigned \textsc{focus-c}. Therefore, in light of the rule given in (\ref{ex:Austronesian:69}b.ii), the example in (\ref{ex:Austronesian:68}c) (cf. the same example in (\ref{ex:Austronesian:70}) below) will have the \textsc{focus-c} selected as \OBJ. The f-structure is shown in (\ref{ex:Austronesian:71}) below. We analyse the free NP, which cross-references the agent proclitic, as an adjunct that provides specific information about the agent.
+
+\ea\label{ex:Austronesian:70} Makassarese  \citep[353]{Jukes2006}\\
+\gll
+inai$_j$ na$_i$=ba'ji [i Ali]$_i$?\\
+who 3=hit \phantom{[}\textsc{pn} Ali \\
+\glt`Who did Ali hit?'
+\z
+
+\newpage
+\ea\label{ex:Austronesian:71} f-structure of sentence (\ref{ex:Austronesian:70})\\
+\avm[style=fstr]{
+[focus-c & \rnode{cf}{[pred & `pro'\\
+ index & $j$\\
+ pro-type & wh]}\\
+ q & \rnode{q}{\strut}\\
+ pred & `hit \arglist{subj, obj}'\\
+ obj & \rnode{o}{\strut}\\
+ subj & [pred `pro' \\
+  pro-type & cl\\
+ case & erg\\
+ index & [pers & 3\\
+  num & sg]$i$\\
+ adjunct & \{[pred & `ali'\\
+  index & $i$ \\
+ n-type & proper ]\}]]}
+ \CURVE[.75]{-2pt}{0}{cf}{0pt}{0}{q}
+ \CURVE[.75]{-2pt}{0}{cf}{0pt}{0}{o}
+\z
+The integrated f-structure analysis just outlined for Makassarese faces an issue when it is applied to fronted \textsc{focus-c} involving bi-clausal or relative clause nominalisation as in Indonesian, as illustrated in (\ref{ex:Austronesian:58}b), reproduced as (\ref{ex:Austronesian:72}) below. This is because the \textsc{focus-c} unit is the predicate (cf. the Russian examples discussed by \citealt{King1997}). One way of resolving this issue is to separate f-structure from i-structure in order to focus on the \PRED value only and not its {\GF}s.\footnote{The independent i-structure with a set \textsc{df} value also allows more than one element in focus. This analysis requires a different \textsc{df} annotation in the PS rule. The independent i-structure analysis also adopts more sophisticated i-structure conceptions (e.g. with fine-grained distinctions of internal units, such as \TOPIC/\textsc{focus} \textsc{type}s and \textsc{background/given}. See \citealt{King1997}, \citealt{DN}, \citealt{Butt14}).} Since space precludes a full discussion of a separate i-structure analysis in this chapter, we instead demonstrate an integrated f-structure analysis of the fronted \textsc{q} in Indonesian in (\ref{ex:Austronesian:72}) below, through the double-tier \PREDLINK analysis. This analysis is typically used for the non-verbal predicate with the copula `be' \citep{ButtEtAl1999,dalrympleetal04copular}. The (simplified) f-structure in (\ref{ex:Austronesian:73}) for example (\ref{ex:Austronesian:58}), repeated in (\ref{ex:Austronesian:72}), shows that the fronted \textsc{q} is the \textsc{focus-c} \PREDLINK.
+
+\ea\label{ex:Austronesian:72} Indonesian\\
+\gll
+[(Adalah) John]\textsubscript{\PRED/\textsc{focus-c}} [yang membunuh perampok itu]\textsubscript{\SUBJ}.\\
+\phantom{[}be John \phantom{[}{\REL} \AV-kill robber that\\
+\glt `It's John who killed the robber.'
+\z
+\ea\label{ex:Austronesian:73} f-structure of sentence (\ref{ex:Austronesian:72}).
+\avm[style=fstr]{
+[pred &`be\arglist{subj, predlink}'\\
+subj & [pred & [1]`pro'\\
+  index & $i$\\
+adjunct & \{[pivot & \rnode{p}{[pred  & [1]\\
+   index  & $i$]}\\
+   pred & `kill\arglist{subj obj}'\\
+ subj & \rnode{s}{\strut}\\
+ obj & [pred & `the robber']\\
+  cl-type & rel]\}]\\
+ predlink & \rnode{pr}{[pred  `john'\\
+  index  & $i$]}\\
+ focus-c & \rnode{cf}{\strut}]}
+\CURVE[1]{-2pt}{0}{p}{0pt}{0}{s}
+\CURVE[1]{-2pt}{0}{pr}{0pt}{0}{cf}
+\z
+In this analysis, John in (\ref{ex:Austronesian:72}) is part of the (fronted) \PREDLINK \citep{ButtEtAl1999}, which is introduced by the copular verb \emph{adalah}.\footnote{In LFG, there is more than one way of analysing non-verbal predicates (e.g. nominal predicates) depending on language-specific properties: a single-tier or double-tier analysis. See \citet{Andrews82}, \citet{ButtEtAl1999} and \citet{dalrympleetal04copular} for further discussion.} In the absence of \emph{adalah}, the analysis specifies the existence of an unpronounced copular verb in the c-struc\-ture. The \textsc{focus-c} in the c-structure is occupied by the fronted \PREDLINK and so \PREDLINK and \textsc{focus-c} share the same value. This connection is signified by the curved lines in (\ref{ex:Austronesian:73}). Note that the subject is a headless RC marked by \emph{yang}. The headless RC contains [\PRED~\textsc{`pro'}] (tag [1]) supplied by the pronominal relativiser \emph{yang}.\footnote{\textsc{[pred~`pro']} should be optionally specified in the lexical entry of \emph{yang}. It shows up in the headless RC, but it is not needed in the headed RC as the RC's head noun supplies the \PRED value.} It is coreferential with the \SUBJ/\textsc{focus-c} (i.e. \PIVOT) of the RC, and the fronted complement predicate, John (indexed i).
+
+The difference between two types of \textsc{focus-c} fronting in indexing-type and symmetrical-voice type languages is captured in LFG by the distinct f-structures in (\ref{ex:Austronesian:71}) and (\ref{ex:Austronesian:73}). The f-structure of the indexing type (e.g. Makassarese) in (\ref{ex:Austronesian:71}) shows a single functional clausal \PRED head (i.e. syntactically monoclausal). The \textsc{q}, \emph{inai} `who', functions as the question (\textsc{q}) operator, also identified as \textsc{focus-c} and \OBJ (i.e. sharing the same value). In contrast, the f-structure of the Indonesian cleft in (\ref{ex:Austronesian:73}), which represents the symmetrical-voice type, shows a bi-clausal structure in which the matrix \PRED is the copula `\textsc{be}' and the embedded relative clause's functional head is `\textsc{kill}\arglist{\SUBJ, \OBJ}'. Its \SUBJ is identified as \textsc{focus-c} via anaphoric relation (represented by index i).
+
+To conclude, grammatical variation in \textsc{focus-c} fronting in AN languages can be straightforwardly captured in LFG because of its modular design. In such a design, different dimensions of linguistic information are modelled in separate layers of structure. We have demonstrated how the separation of syntactic representation of linear order (c-structure), relational information about grammatical functions ({\GF}s, or f-structure) and context-related Discourse Function (\textsc{df}) information (i-structure) makes LFG well suited for explicit linguistic analysis to account for the complex constraints in the interface of morphosyntax and pragmatics.
+
+\section{Final remarks}
+\label{sec:Austronesian:7}
+
+In this chapter, we reviewed a broad range of empirically attested morphosyntactic properties in AN languages. We demonstrated how the parallel correspondence architecture of LFG is used to capture the typological diversity of AN languages at different levels of the grammar. Some of these features have posed descriptive and analytical challenges to traditional grammatical notions. Despite these challenges, LFG emerged as a robust and flexible framework for capturing the dynamics of AN languages' internal grammatical systems and the variation between them. This allows us to account for the AN voice system and related grammatical features in a holistic and coherent way. Further, the application of LFG in AN languages plays a crucial role in increasing the framework's potential to be a well-rounded descriptive and analytical tool for typological and theoretical discussions. Thus, additional documentation of AN languages is expected to uncover richer datasets and linguistic diversity, which will provide an ideal testing ground for LFG's grammar-representing architecture.
+
+\section*{Acknowledgments}
+
+We wish to thank the anonymous reviewers for their careful and thorough reviews, and we are grateful to Malcolm Ross, Mary Dalrymple and Larry Lovell for their valuable feedback on correcting the information in the earlier draft.
+We are deeply indebted to Mary Dalrymple for her help on preparing the final version of this chapter in LaTeX. 
+
+The first author acknowledges support from the following grants:
+NSF (BCS-0617198),
+ARC (DP110100307),
+and ELDP (IPF0011). The second author acknowledges support from the Australian Government Research Training Program (RTP) and Mr.\ Wang, the Founder of the Fuguangtang Association, on her research.
+
+\section*{Abbreviations}
+
+Besides the abbreviations from the Leipzig Glossing Conventions, this
+chapter uses the following abbreviations. 
+\medskip
+
+\noindent\begin{tabularx}{.45\textwidth}{lQ}
+{2P} & Second position\\
+{AN} & Austronesian\\
+\AV & Actor Voice\\
+{CEMP} & Central-Eastern Malayo-Polynesian\\
+\textsc{cn} & Common Noun\\
+\textsc{cnj} & Conjunction\\
+\textsc{cv} & Conveyance Voice\\
+\textsc{df} & Discourse Function\\
+{DOM} & Differential Object Marking\\
+\textsc{dv} & Dative Voice\\
+\textsc{focus-c} & Contrastive Focus\\
+\textsc{gen} & Genitive\\
+\textsc{gr} & Grammatical Relation\\
+\textsc{in} & Inchoative\\
+\textsc{iv} & Instrumental Voice\\
+\textsc{lnk} & Linker\\
+\textsc{lv} & Locative Voice\\~\\
+\end{tabularx}\begin{tabularx}{.45\textwidth}{lQ}
+\textsc{mid} & Middle Voice\\
+\textsc{nf} & nonfinite\\
+{PMP} & Proto-Malayo-Polynesian\\
+\textsc{pn} & Proper Name\\
+\textsc{predfoc} & Predicate Focus\\
+\textsc{prep} & Preposition\\
+\textsc{prt} & Particle\\
+\textsc{pv} & Patient Voice\\
+{RC} & Relative Clause\\
+\textsc{real} & Realis\\
+\textsc{redup} & Reduplication\\
+\textsc{relO} & Object relativizer\\
+\textsc{relS} & Subject relativizer\\
+\textsc{svc} & Serial Verb Construction\\
+\UV & Undergoer Voice\\
+{WMP} & Western Malayo-Polynesian\\
+\\
+\end{tabularx}
+
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}

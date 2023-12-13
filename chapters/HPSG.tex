@@ -1,0 +1,1276 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10186042}
+
+\author{Adam Przepiórkowski\affiliation{University of Warsaw, Polish Academy of Sciences \& University of Oxford}}
+\title{LFG and HPSG}
+\abstract{This chapter presents and compares Lexical Functional Grammar and Head-driven Phrase Structure Grammar.  It concentrates on their fundamental properties rather than on analyses of particular phenomena.  After discussing representations assumed in each theory and the kinds of grammars that lead to such representations, the chapter devotes some attention to models explicitly or implicitly assumed in HPSG and LFG\@: it identifies some problems and suggests possible solutions.}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[41]%%chapternumber
+}{}
+
+
+\begin{document}
+\maketitle
+\label{chap:HPSG}
+
+\section{Introduction}
+
+The aim of this chapter is to juxtapose two highly formalised grammatical theories: Lexical Functional Grammar (LFG; \citealt{kaplanbresnan82,BresnanEtAl2016,DLM:LFG}) and Head\hyp{}driven Phrase Structure Grammar (HPSG; \citealt{pollardsag87,pollard1994head-driven}; \citealt{mue:etal:21:ed}).\footnote{This chapter does not presuppose substantial prior exposure to either LFG or HPSG\@.}  LFG was conceived in the late 1970s, HPSG -- in the mid-1980s, so both theories have been around for decades.  Within both theories, diverse phenomena have been analysed and then re-analysed, and many will undoubtedly receive new analyses in the future.  For this reason, rather than compare particular analyses of some phenomena, this chapter focuses on more fundamental issues: on the general representational architecture of the two theories (in~\sectref{sec:arch}), on the kinds of grammars that lead to these representations (in~\sectref{sec:gram}), and on models assumed in both theories (in~\sectref{sec:mod}).  \citet{wec:asu:20} offers a~comparison of the treatment of various phenomena in the two theories and, hence, complements the current chapter.
+
+\section{Representations}
+\label{sec:arch}
+
+Outside of their respective communities, both theories are best known as theories of syntax, although already at their conception both were envisaged as theories of multiple linguistic levels, including semantics. Current versions of both theories have well\hyp{}developed approaches to semantics, as well as proposals for the representation of other linguistic levels: morphological and information\hyp{}structural in the case of both theories, phonological in the case of HPSG, and prosodic in the case of LFG.
+
+However, the two theories adopt rather different approaches to the representation of the various linguistic levels.  
+
+\subsection{LFG}
+\label{sec:arch:lfg}
+
+Let us have a~look at possible representations of the simple sentence \REF{ex:love} in the two theories, starting with the LFG representation in Figure~\ref{fig:ex:lfg}.
+
+\ea\label{ex:love}
+She loves you.
+\z
+\begin{figure}
+  \centering
+  \scalebox{.8}{\begin{tikzpicture}
+    \begin{scope}
+    \tikzset{frontier/.style={distance from root=11em}}
+    \Tree 
+    [.\node (t-s) {S};
+      [.\node (t-np-she) {NP};
+        [.\node (t-pron-she) {Pron}; \emph{she} ]] 
+      [.\node (t-vp) {VP}; 
+        [.\node (t-v) {V}; \emph{loves} ] 
+        [.\node (t-np-you) {NP}; 
+          [.\node (t-pron-you) {Pron}; \emph{you} ]]]];
+    \end{scope}
+    \begin{scope}[xshift=2.75in,yshift=-1in]
+    \node (avm)
+    {\avm[attributes=\scshape,values=\scshape]
+      {\subnode{love}{} [
+        pred & `love〈subj,obj〉' \\
+        subj &  \subnode{subj}{}[pred & `pro' \\
+                                  prontype & personal \\
+                                  case & nom \\
+                                  index & [pers & 3 \\
+                                           num & sg \\
+                                           gend & f ] ]\\
+        obj & \subnode{obj}{}[pred & `pro' \\
+                              prontype & personal \\
+                              case & acc \\
+                              index & [ pers & 2 ] ] \\
+        tense & pres]}
+      };
+  \end{scope}
+  \begin{scope}[xshift=5in,yshift=-1in]
+    \node (s)
+    {\avm[attributes=\scshape,values=\scshape]
+      {\subnode{love-s}{}[rel & love \\
+                             arg1 &  \subnode{arg1}{}[ ] \\
+                             arg2 &  \subnode{arg2}{}[ ] ]}};
+  \end{scope}
+  \node at (2.25, .85) {$\phi$};
+  \node at (10.75, -1.25) {$\sigma$};
+  \draw [->] ([shift={(.75ex,-.25ex)}]t-s.north) to[out=45,in=180,looseness=.5] ([shift={(0.75em,5.5em)}]avm.west);
+  \draw [->] ([shift={(.75ex,-.25ex)}]t-vp.north) to[out=45,in=180,looseness=.5] ([shift={(0.75em,5.5em)}]avm.west);
+  \draw [->] ([shift={(.75ex,-.25ex)}]t-v.north) to[out=45,in=180,looseness=.5] ([shift={(0.75em,5.5em)}]avm.west);
+  \draw [->] ([shift={(1.5ex,0ex)}]t-np-she) to[out=0,in=180,controls=(t-v.north) and (t-np-you.north)] ([shift={(4.25em,2em)}]avm.west);
+  \draw [->] ([shift={(1.5ex,0ex)}]t-pron-she) to[out=-30,in=180,looseness=.75] ([shift={(4.25em,2em)}]avm.west);
+  \draw [->] ([shift={(1.5ex,0ex)}]t-np-you) to[out=-30,in=180,looseness=.75] ([shift={(4.25em,-2em)}]avm.west);
+  \draw [->] ([shift={(1.5ex,0ex)}]t-pron-you) to[out=-30,in=180,looseness=.75] ([shift={(4.25em,-2em)}]avm.west);
+  \draw [->] ([shift={(-1.25ex,1.5em)}]avm.east) to[out=30,in=165,] ([shift={(.5em,1.8em)}]s.west);
+  \draw [->] ([shift={(-2.75ex,-0.5em)}]avm.east) to[out=30,in=170] ([shift={(3.55em,0.5em)}]s.west);
+  \draw [->] ([shift={(-4.25ex,-2.25em)}]avm.east) to[out=30,in=170] ([shift={(3.55em,-.75em)}]s.west);
+\end{tikzpicture}}
+  \caption{LFG representation of \REF{ex:love}}
+\label{fig:ex:lfg}
+\end{figure}
+
+A~prominent feature of LFG representations are the multiple levels.  Figure~\ref{fig:ex:lfg} features three such levels: constituent structure (c-structure; the tree on the left), functional structure (f-structure; the attribute--value matrix, AVM for short, in the middle), and semantic structure (s-structure; the AVM on the right).  The first two of these levels are syntactic in nature and they are the core of any LFG analysis.  The repertoire and exact properties of other levels, including s-structure, is a~matter of some debate.  Among other prominent levels widely assumed in LFG are prosodic structure (for overviews see \citealt[Chapter {11}]{DLM:LFG} and \citetv{chapters/Prosody}) and information structure (see \citealt[Chapter {10}]{DLM:LFG} and \citetv{chapters/InformationStructure}).  Also argument structure used to be assumed as a~separate level (see, e.g., \citealt{butt1997architecture}), but given an appropriately spelled-out approach to semantics, a~separate a-structure does not seem to be needed (see, e.g., \citealt{AsudGior12} and \citealt{findlay2017mapping}).
+
+As shown in Figure~\ref{fig:ex:lfg}, levels of representation are connected via mapping functions (rendered in the figure with arrows between levels).  One such function, usually called $\phi$, maps c-structures to f-structures, another, $\sigma$, maps f-structures to s-structures.  These functions are not necessarily total.  In particular, it is often assumed that $\phi$ maps to f-structures only non-terminal nodes of c-structures.  For example, in Figure~\ref{fig:ex:lfg}, the leftmost nodes NP and Pron, but not the terminal node \emph{she} that they dominate, map to the f-structure representing the subject (the value of the \SUBJ attribute), the rightmost nodes NP and Pron, but not the terminal \emph{you}, map to the f-structure representing the object, etc.  Similarly, the domain of $\sigma$ consists of three f-structures (the ones containing the \PRED attribute), with the exclusion of the f-structures which are the values of \NINDEX.  These functions are also not surjective (not onto), for example the values of \NINDEX in the f-structure are not in the range of $\phi$.\largerpage[2]
+
+Let us take a~brief look at particular levels.  The c-structure in Figure~\ref{fig:ex:lfg} should be self\hyp{}explanatory.  Unlike derivational theories (see \citetv{chapters/Minimalism}), but like Simpler Syntax (see \citetv{chapters/SimplerSyntax}) and HPSG, LFG assumes very simple constituency trees, usually without empty categories -- but see \citet[Chapter {9}]{BresnanEtAl2016} for exceptions -- and without an abundance of functional nodes. Constituency structures are assumed to vary considerably between languages, even though their grammars are required to follow some -- appropriately relaxed -- version of the X$'$-theory.\footnote{See, e.g., \citet[Chapter {6}]{BresnanEtAl2016} and \citet[Section {3.2}]{DLM:LFG}.  LFG versions of X$'$-theory are relaxed in various ways.  While the standard X$'$-theory assumes at most binary branching, LFG does not make such an assumption.  Also, standard derivational versions of X$'$-theory assume the presence of the head (perhaps subsequently moved to a~different tree position or realised as a~phonetically empty constituent to start with), while in LFG the head may be optional in a~rule and completely absent from the resulting tree.  In this sense, LFG versions of X$'$-theory may be construed as theories of descriptions rather than structures.}
+
+On the other hand, functional structures are cross\hyp{}linguistically more uniform.  While they contain morphosyntactic information, which is quite different for different languages, their main function is to represent grammatical functions such as subject and object, and the repertoire of grammatical functions is supposed to be universal.\footnote{See \citet{patejuk2016reducing} for a~critical discussion of this assumption and \citet{kapl:17} for a~reply.}  F-structures also contain “semantic forms” -- values of the \PRED attribute -- originally designed to encode in syntax the information that maps to semantic representations; as repeatedly noted in the literature, this information is largely redundant in contemporary LFG, given the existence of semantic structures.\footnote{See, e.g., \citet[13--14]{dal:etal:93} and \citet[Sections {1.3.3,\,1.4.1}]{kuhn2001}.}  In the case of Figure~\ref{fig:ex:lfg}, the main f-structure represents a~present\hyp{}tense utterance with the semantic form \gloss{‘love\arglist{\SUBJ,\OBJ}’}.  Both the subject and the object of this utterance have the semantic form \gloss{‘pro’}, i.e., they are pronouns, specifically, personal pronouns.  Their morphosyntactic information is represented within the values of \CASE and \NINDEX.\footnote{Analyses in both LFG and HPSG often follow \citet{WechslerZlatic:Agreement2003} and distinguish between \NINDEX agreement and \CONCORD agreement; here I retain \NINDEX as a~separate bundle of features but do not explicitly represent the \CONCORD bundle, just the \CASE feature within it.}
+
+Finally, s-structures contain purely semantic information.  In the case at hand, it is the information that the meaning of this utterance is modelled by the relation \gloss{love} and that there are two arguments of this relation, corresponding to the subject and the object.
+
+\subsection{HPSG}
+\label{sec:arch:hpsg}
+
+Let us now have a~look at the HPSG representation of \REF{ex:love} in Figure~\ref{fig:ex:hpsg}. HPSG representations are formally more uniform: there is just one contiguous data structure used for the representation of information from all linguistic levels, namely, an attribute--value matrix.\footnote{Figure~\ref{fig:ex:hpsg} also contains lists, indicated with angle brackets, but this is a~shorthand notation for AVMs with attributes such as \textsc{first} and \textsc{rest} (or \textsc{head} and \textsc{tail}), whose values are the first element (head) of the list and the rest (tail) of the list.}   In particular, there are no separate levels of representation -- all constituency, morphosyntactic, and semantic information is interspersed throughout the structure.  
+ 
+\begin{figure}[p]
+\resizebox{.75\textwidth}{!}{%
+\avm[extraskip=3pt, stretch=.66]{
+  [\type*{hd-subj-ph}
+   \phon  <she, loves, you> \\
+   synsem & [\type*{synsem}
+             cat & [\type*{category}
+                    head & \tag{10}\\
+                    val  & [\type*{valence}
+                            subj & <\,>\\
+                            comps & <\,> ]] \\
+             cont & \7
+             ]\\
+   dtrs & < [ \type*{word}
+           \phon < she >\\
+           synsem & \8 [\type*{synsem}
+                        cat & [\type*{category}
+                               head & [ \type*{noun}
+                                      case & nom
+                                      ]\\
+                               val  & [\type*{valence}
+                                       subj & <\,>\\
+                                       comps & <\,>\\
+                                      ]
+                                ]\\
+                        cont & [\type*{ppro} 
+                                index & \3 [\type*{ref}
+                                            pers & 3\\
+                                            num & sg\\
+                                            gend & f
+                                            ]
+                        
+                               ]
+                        ]
+             ] , \1 >\\
+  hd-dtr & \1 [\type*{hd-comp-ph}
+               \phon <loves, you>\\
+               synsem & [\type*{synsem}
+                         cat & [\type*{category}
+                                head & \tag{10}\\
+                                val  & [\type*{valence}
+                                        subj  & <\8> \\
+                                        comps & <\,> ] \\
+                        cont & \7]
+                        ]\\
+               dtrs & <\2, [ \type*{word}
+                            \phon < you >\\
+                            synsem & \9 [ \type*{synsem} 
+                                          cat & [ \type*{category} 
+                                                  head & [\type*{noun} 
+                                                           case & acc\\
+                                                         ]\\
+                                                  val & [\type*{valence}
+                                                         subj & <\,>\\
+                                                         comps & <\,>\\
+                                                        ]
+                                                ]\\
+                                          cont & [ \type*{ppro} 
+                                                   index & \5 [\type*{ref} 
+                                                               pers & 2\\
+                                                              ]
+                                                 ]
+                                        ] ] >\\
+                hd-dtr & \2 [\type*{word}
+                            \phon < loves >\\
+                            synsem & [ \type*{synsem} 
+                                       cat & [\type*{category}
+                                              head & \tag{10} [ \type*{verb}
+                                                                vform & fin\\
+                                                                aux & --\\
+                                                                inv & --\\
+                                                              ]\\
+                                              val & [ \type*{valence} 
+                                                      subj & <\8>\\
+                                                      comps & <\9>\\
+                                                    ]
+                                             ]\\
+                                       cont & \7 [\type*{love-rel}
+                                                  act & \3\\
+                                                  und & \5\\
+                                                 ]
+                                     ]
+                            ]
+                ]
+    ]}}
+  \caption{HPSG representation of \REF{ex:love}\label{fig:ex:hpsg}}
+\end{figure}
+
+Clearly, the cost of the greater formal uniformity is the diminished perspicuity (or, for an unaccustomed eye, downright unreadability) of representations such as that in Figure~\ref{fig:ex:hpsg}.  For this reason, it is common among HPSG practitioners to use all kinds of abbreviations and representational devices to make representations more readable.  For example, the structure of that figure may be presented as in Figure~\ref{fig:ex:hpsg:abr}, where the constituency structure becomes transparent.
+
+\begin{figure}
+\begin{forest} for tree = {l sep=4\baselineskip, fit=band, anchor=north}
+  [{\avm{[\type*{hd-subj-ph}
+           head & \tag{10} [\type*{verb}
+                            vform & fin\\
+                            aux & --\\
+                            inv & --\\
+                           ]\\
+           val & [ subj & <\,>\\
+                   comps & <\,>\\]\\
+           cont & \7 [\type*{love-rel}
+                      act & \3 [pers & 3\\
+                                num & sg\\
+                                gend & f\\]\\
+                      und & \5 [pers & 2]
+                     ]
+           ]}}
+    [{\avm{\8 !NP[\textit{nom}]!\textsubscript{\3}}},calign=center [\emph{she}, tier=word]]
+    [{\avm{[\type*{hd-comp-ph}
+           head & \tag{10}\\
+           val & [subj & <\8>\\ comps & <\,>\\]\\
+           cont & \7]}}, edge label={node[midway,sloped,above,font=\footnotesize]{\textsc{hd}}}
+      [{\avm{[\type*{word}
+               head & \tag{10}\\
+               val & [subj & <\8>\\
+                        comps & <\9>\\
+                        ]\\
+               cont & \7]}}, calign=center, edge label={node[midway,sloped,above,font=\footnotesize]{\textsc{hd}}}
+               [\emph{loves}, tier=word] 
+       ] 
+        [{\avm{\9 !NP[\textit{acc}]!\textsubscript{\5}}},calign=center [\emph{you}, tier=word] ]
+    ]
+]
+\end{forest}
+  \caption{Shorthand HPSG representation of \REF{ex:love}}
+\label{fig:ex:hpsg:abr}
+\end{figure}
+
+Taking a~closer look at the AVM in Figure~\ref{fig:ex:hpsg} we may first note that, unlike f-structures (or s-structures) in LFG, feature structures in HPSG are typed.  For example, the structure represented by the whole AVM is of type \textit{hd-subj-ph} (i.e., \textit{head\hyp{}subject\hyp{}phrase}), and the value of the attribute \textsc{hd-dtr} is of type \textit{hd-comp-ph} (i.e., \textit{head\hyp{}complement\hyp{}phrase}).  
+
+As discussed in more detail in \sectref{sec:gram:hpsg} below, types determine what attributes may and must appear on the objects described by the AVM (not necessarily on the AVM itself, which may be a~partial description of such objects; this point will be crucial below) and what their values may and must be.\footnote{In the HPSG lingo, this amounts to saying that feature structures are \emph{totally well-typed} (\citealt[94--95]{carpenter1992}; \citealt[18]{pollard1994head-driven}).} Types are ordered in an inheritance hierarchy, where subtypes inherit conditions imposed by supertypes and may add more such conditions.\footnote{It is sometimes argued that LFG templates (which are, essentially, possibly parameterised macros, as in programming languages) “can play the same role in capturing linguistic generalizations as hierarchical type systems in theories like HPSG” \citep[207]{dalrymple2004linguistic}; unfortunately, a~discussion of similarities and differences between the two mechanisms -- especially, the crucial ontological differences -- is outside the scope of this fairly introductory chapter.}  For example,\label{page:1867} both \textit{hd-subj-ph} and \textit{hd-comp-ph} are subtypes of \textit{headed\hyp{}phrase}, which is a~subtype of \textit{phrase}, which in turn -- along with \textit{word} -- is a~subtype of \textit{sign}; see Figure~\ref{fig:hpsg:types:sign}.
+
+\begin{figure}
+\begin{forest} for tree = {anchor=north}
+  [{\avm{[\type*{sign}
+          phon & list\\
+          synsem & synsem\\]}}
+    [\textit{word}]
+    [{\avm{[\type*{phrase}\\dtrs & list]}}
+        [{\avm{[\type*{headed-phrase}\\ hd-dtr & sign]}}
+            [\textit{hd-subj-ph}] [\textit{hd-comps-ph}]
+        ]
+        [\textit{non-headed-phrase}]
+    ]
+  ]
+\end{forest} 
+  \caption{A small fragment of an HPSG type hierarchy\label{fig:hpsg:types:sign}}
+\end{figure}
+
+All objects of type \textit{sign} must have two attributes: \textsc{phon} and \textsc{synsem} (I will explain their role shortly).  The \textit{word} subtype does not add any conditions, and all the three subsidiary AVMs of type \textit{word} in Figure~\ref{fig:ex:hpsg} have exactly these two attributes and no others.  On the other hand, the \textit{phrase} subtype of \textit{sign} requires an additional attribute, namely, \textsc{dtrs} (i.e., \textsc{daughters}), whose value is a~list of immediate constituents.  An important subtype of \textit{phrase} is \textit{headed\hyp{}phrase}, where one of the immediate constituents is singled out as the syntactic head; this constituent is the value of the additional \textsc{hd-dtr} (i.e., \textsc{head\hyp{}daughter}) attribute.  Hence, any object of type \textit{headed\hyp{}phrase} must have four attributes: \textsc{phon}, \textsc{synsem}, \textsc{dtrs}, and \textsc{hd-dtr}.  As \textit{hd-subj-ph} and \textit{hd-comp-ph} do not add any attributes, the two AVMs corresponding to the phrases \emph{she loves you} and \emph{loves you} have exactly these four attributes.
+
+Let us take a~closer look at the encoding of constituency structure via the attributes \textsc{dtrs} and \textsc{hd-dtr}.  In the root AVM of Figure~\ref{fig:ex:hpsg}, the value of \textsc{dtrs} is a~2-element list, whose first element is a~\textit{word} structure of \emph{she} and the second element is a~\textit{hd-comp-ph} structure of \emph{loves you}.  This second element is only marked as \avm{\1} on the \textsc{dtrs} list, but it is fully presented as the value of the \textsc{hd-dtr} attribute; boxed numbers such as \avm{\1} should be understood as bound variables signalling multiple occurrences of a~structure in different places (here, in the \textsc{dtrs} list and in the value of \textsc{hd-dtr}).  The structure \avm{\1}, being (a~subtype of) a~headed phrase, also has the attribute \textsc{dtrs}, whose value is a~pair of structures of \emph{loves} and \emph{you}, and the \textsc{hd-dtr} attribute, which singles out the structure of \emph{loves} as the head.  This configuration of attributes \textsc{dtrs} and \textsc{hd-dtr} and their values encodes the syntactic tree of Figure~\ref{fig:ex:hpsg:abr}.\label{page:1868}
+
+The other two attributes of \textit{phrase} structures, present also on \textit{word} structures, are \textsc{phon} and \textsc{synsem}.  In work which does not deal with phonology or phonetics the values of \textsc{phon} are taken to be lists of words, as in Figure~\ref{fig:ex:hpsg}, but it is clear that in an exhaustive representation values of \textsc{phon} must be highly structured.\footnote{See, e.g., \citet{bir:kle:94} and \citet{hoeh:98} for two very different proposals.} 
+
+For our purposes, values of \textsc{synsem} are more important -- they represent all grammatical information other than constituency structure.  Figure~\ref{fig:ex:hpsg} presents slightly simplified values of \textsc{synsem}: it omits those parts of \textit{synsem} structures which are responsible for non-local information, i.e., for book keeping related to unbounded dependencies and relative clauses (see \citealt{bor:cry:20}, \citealt{arn:god:20}, \citealt{chav:20}, and references therein).\footnote{Normally, \textit{synsem} structures contain two attributes, \textsc{local} and \textsc{nonlocal}.  Since \textsc{nonlocal} and its value is omitted here, also the attribute \textsc{local} is not mentioned in this chapter, and its values of type \textit{local} are presented as \textsc{synsem} values of type \textit{synsem}.}  Local information is distributed between the attributes \textsc{cat}(egory) and \textsc{cont}(ent), as well as \textsc{context}, not represented here either (see \citealt[332--337]{pollard1994head-driven}, as well as \citealt{deku:20} and references therein).  \textsc{cont} represents semantic information comparable to that distributed between LFG f-structures and s-structures.  For example, the two personal pronouns (see the two \textsc{cont} values of type \textit{ppro}) contribute referential indices, referred to as \avm{\tag{3}} and \avm{\tag{5}}, and the verb contributes the \textit{love-rel}(ation) with the index \avm{\tag{3}} of \emph{she} as its \textsc{act}(or) and the index \avm{\tag{5}} of \emph{you} as its \textsc{und}(ergoer).  This verbal semantics is shared along the verbal spine, so the structures of \emph{loves}, \emph{loves you}, and \emph{she loves you} all have the same \textsc{cont} value \avm{\tag{7}}. 
+
+The other part of \textsc{synsem} values, the \textit{category} structure, models morphosyntactic and combinatorial properties.  The former are the value of \textsc{head}: \emph{she} is a~nominative (pro)noun, \emph{you} is (here) an accusative (pro)noun, and \emph{loves} is a~finite verb (non-auxiliary, not inverted).  The values of \textsc{head} are shared between a~mother and its head daughter -- see the multiple occurrences of \avm{\tag{10}}.  Finally, combinatorial properties are encoded in values of \textsc{val}(ence): the verb \emph{loves} requires a~subject (\avm{\tag{8}} -- the \textsc{synsem} value of \emph{she}) and a~complement (\avm{\tag{9}} -- the \textsc{synsem} value of \emph{you}), \emph{loves you} has no further complement expectations but still needs a~subject, while \emph{she loves you} is a~fully saturated maximal projection -- the values of its valency features are empty lists.  Such maximal projections are often abbreviated the way illustrated in Figure~\ref{fig:ex:hpsg:abr}: NP[\textit{nom}]\textsubscript{\avm{\3}} stands for (the \textsc{synsem} value of) a~structure with empty \textsc{subj} and \textsc{comps}, with \textsc{head} indicating a~nominative noun, and with \textsc{cont|index} value \avm{\tag{3}}.\footnote{While in LFG the attribute separator in paths is a~space, e.g., “\gloss{subj case}”, in HPSG the vertical bar is used, e.g., “\textsc{synsem|cat|head|case}”.}
+
+
+\subsection{Comparison}
+\label{sec:arch:cmp}
+
+\subsubsection{Levels of representation}
+\label{sec:arch:lev}
+
+The two structures in Figures~\ref{fig:ex:lfg} and~\ref{fig:ex:hpsg} look somewhat similar in the sense that they both use complex AVMs, but also very different in the sense that the LFG representation distinguishes multiple levels, each with its own data structure and with a~functional mapping between the levels, while the HPSG representation is a~monolithic AVM.  How important is this difference?  My claim is that it is less important than usually assumed.  For example, it is possible to define a~bijection (a~one-to-one correspondence) between LFG representations such as that in Figure~\ref{fig:ex:lfg} and corresponding HPSG-like monolithic AVM representations such as that in Figure~\ref{fig:ex:lfg:hpsg}. In this representation, the c-structure is encoded with the help of attributes \textsc{label}, \textsc{dtrs}, and \textsc{phon}, the mapping $\phi$ from the c-structure to the f-structure is achieved with the attribute \textsc{synsem}, and the mapping $\sigma$ from the f-structure to the s-structure -- with the attribute \textsc{cont}.\footnote{\label{fn:pred}In fact, this representation makes conspicuous the redundancy -- mentioned in \sectref{sec:arch:lfg} -- of \PRED values with respect to s-structures (i.e., here, \gloss{cont} values).}
+
+\begin{figure}
+  \resizebox{\textwidth}{!}{%
+  \avm{[\phon <she, loves, you>\\
+   label & S\\
+   synsem & \0 [ 
+       pred & [fn & love\\ args & < \8, \9> \\]\\
+       subj & \8 [ pred & pro\\
+                   prontype & personal\\
+                   case & nom\\
+                   cont & \3 [ index & [ pers & \3 \\ num & sg \\ gend & f\\]]
+                 ]\\
+       obj & \9 [ pred & pro\\
+                  prontype & personal\\
+                  case & acc\\
+                  cont & \5 [ index [ pers & 2 ]]]\\
+       tense & pres\\
+       cont & \7 [ rel & love\\ arg1 & \3\\ arg2 & \5]
+       ]\\
+   dtrs & < [ \phon <she> \\
+              label & NP\\
+              synsem & \8\\
+              dtrs & < [ \phon <she>\\
+                         label & Pron\\
+                         synsem & \8 ] > ], [\phon <loves, you>\\
+                                             label & VP\\
+                                             synsem & \0\\
+                                             dtrs & < [\phon <loves>\\
+                                                       label & V\\
+                                                       synsem & \0 ], 
+                        [\phon <you>\\
+                         label & NP\\
+                         synsem & \9\\
+                         dtrs & <[ \phon <you> \\
+                                    label & Pron\\
+                                    synsem & \9 ] > ] > ] >
+    ]}}
+  \caption{HPSG-like LFG representation of \REF{ex:love}\label{fig:ex:lfg:hpsg}}
+\end{figure}
+
+Conversely, the HPSG representation of Figure~\ref{fig:ex:hpsg} might be taken apart and LFG-ified as in Figure~\ref{fig:ex:hpsg:lfg}. The fact that non-terminal nodes in the c-structure are AVMs is not a~problem in itself; in LFG it is often assumed that c-structure node labels are really abbreviations of feature matrices (see, e.g., \citealt{kaplan1995formal}, \citealt{dalr:17}, and \citealt{low:lov:20}).  What is somewhat unusual is that some of the attributes in these AVMs are list-valued and refer to other AVMs within the same c-structure (rather than to particular values within such AVMs as in, e.g., \citealt{low:lov:20}).  However, this does not seem to violate any deep LFG principles.
+
+\begin{figure}
+  \avmsetup{values=\scshape}
+  \scalebox{.75}{\begin{tikzpicture}
+    \begin{scope}
+    \tikzset{every tree node/.style={align=center,anchor=north}}
+    \tikzset{level distance=7.5em}
+    \tikzset{frontier/.style={distance from root=22em}}
+    \Tree 
+    [.\node (t-s) {\avm{[cat & verb \\
+                         subj & <\,> \\
+                         comps & <\,>]}};
+      [.\node (t-np-she) {\avm{\8[cat & noun \\
+                                  subj & <\,> \\
+                                  comps & <\,>]}}; \emph{she} ]
+      [.\node (t-vp) {\avm{[cat & verb \\
+                            subj & <\8> \\
+                            comps & <\,>]}}; 
+        [.\node (t-v) {\avm{[cat & verb \\
+                             subj & <\8> \\
+                             comps & <\9>]}}; \emph{loves} ] 
+        [.\node (t-np-you) {{\avm{\9[cat & noun \\
+                                      subj & <\,> \\
+                                      comps & <\,>]}}}; \emph{you} ]]];
+    \end{scope}
+    \begin{scope}[xshift=3.5in,yshift=-.85in]
+    \node (avm)
+    {\subnode{love}{}\avm{[
+        subj &  [
+                  case & nom \\
+                  index & [pers & 3 \\
+                            num & sg \\
+                            gend & f]]\\
+        comp & [
+                 case & acc \\
+                 index & [pers & 2]] \\
+        vform & fin \\
+        aux & $-$ \\
+        inv & $-$ \\
+        ]}};
+  \end{scope}
+  \begin{scope}[xshift=4.125in,yshift=-2.5in]
+    \node (s)
+    {\subnode{love-s}{}\avm{[
+        rel & love \\
+        act &  \subnode{arg1}{}[ ] \\
+        und &  \subnode{arg2}{}[ ] 
+        ]}};
+  \end{scope}
+  \node at (4, 0.5) {$\phi$};
+  \node at (12.25, -.5) {$\sigma$};
+  \draw [->] ([shift={(-1.25ex,-1.25ex)}]t-s.north east) to[out=30,in=180,looseness=1] ([shift={(0.5em,3.5em)}]avm.west);
+  \draw [->] ([shift={(-1.5ex,-.8ex)}]t-vp.north east) to[out=90,in=180,looseness=1.5] ([shift={(0.5em,3.5em)}]avm.west);
+  \draw [->] ([shift={(-1.25ex,-1.5ex)}]t-v.north east) to[out=20,in=180,looseness=1.5] ([shift={(0.5em,3.5em)}]avm.west);
+  \draw [->] ([shift={(-1.25ex,-1.25ex)}]t-np-she.north east) to[out=45,in=180,looseness=.5] ([shift={(4.275em,2.5em)}]avm.west);
+  \draw [->] ([shift={(-1.5ex,-.8ex)}]t-np-you.north east) to[out=90,in=180,looseness=1.25] ([shift={(4.25em,-1.5em)}]avm.west);
+ \draw [->] ([shift={(-1.25ex,4.5em)}]avm.east) to[out=-30,in=30,looseness=.75] ([shift={(-.5em,2em)}]s.east);
+ \draw [->] ([shift={(-2.75ex,1.25em)}]avm.east) to[out=-30,in=30,looseness=.625] ([shift={(-2.25em,0.25em)}]s.east);
+ \draw [->] ([shift={(-5.75ex,-0.5em)}]avm.east) to[out=-30,in=30,looseness=.5] ([shift={(-2.25em,-1em)}]s.east);
+\end{tikzpicture}}
+  \caption{LFG-like HPSG representation of \REF{ex:love}}
+\label{fig:ex:hpsg:lfg}
+\end{figure}
+
+\largerpage
+What LFG grammars and the multi-level representations they lead to try to capture is the cognitive modularity and encapsulation of particular linguistic levels; constituency structures, functional structures, semantic structures, etc., each have their own sets of primitives and operations, and the interactions between them are only possible via the mapping functions $\phi$, $\sigma$, etc.  By contrast, no such encapsulation is attempted in HPSG, so it is easy to state constraints in this theory which may simultaneously refer to arbitrary parts of the structure of a~sentence, e.g., the phonetic properties of a~verb and the semantics of its subject; such a~constraint would be much more cumbersome to state in LFG\@.  On the other hand, actual LFG analyses sometimes make use of the converses of $\phi$, $\sigma$, etc., i.e., refer to c-structures from the level of f-structures and to f-structures from the level of s-structures, so, in principle, any level may be referred to from any other level.\footnote{However, as pointed out by Ash Asudeh (p.c.), correspondence functions in LFG are typically not injective (i.e., they are many-to-one), so their converses are proper relations rather than functions.  For example, while $\phi$ maps particular c-structure nodes to particular f-structures, the converse of $\phi$ will map f-structures to \emph{sets} of c-structure nodes, making it more difficult to refer to \emph{particular} c-structure nodes from the level of f-structures.  This “blurring” or “fuzziness” of converses of correspondence functions might be claimed to constitute a~substantive hypothesis about encapsulation of grammatical levels.}  Hence, the difference between LFG and HPSG when it comes to encapsulation of linguistic levels is one of degree -- and relative easiness of stating constraints across grammatical levels -- rather than a~categorical difference between the complete encapsulation and the total lack thereof.
+
+\largerpage
+
+In summary, while representations with separate linguistic levels such as those in Figures \ref{fig:ex:lfg} and \ref{fig:ex:hpsg:lfg} are certainly more immediately readable than monolithic representations such as those in Figures \ref{fig:ex:hpsg} and \ref{fig:ex:lfg:hpsg}, it is not clear that there are any fundamental differences in the kinds of linguistic analyses that LFG and HPSG presuppose.\footnote{But see~\sectref{sec:gram:exp}, on the expressiveness of formalisms underlying LFG and HPSG\@.}
+
+
+
+\subsubsection{Grammatical functions}
+\label{sec:arch:gfs}
+
+Perhaps a~more important -- and certainly linguistically more contentful -- difference between HPSG and LFG regards grammatical functions.  In LFG each argument bears a~different grammatical function drawn from a~repertoire that includes \SUBJ{}(ect) and \OBJ{}(ect), as in Figure~\ref{fig:ex:lfg}, but also \OBL{}(ique), \COMP{}(lement) -- a~closed sentential argument, \XCOMP\ -- an open verbal argument, etc.  Moreover, at least \OBJ and \OBL are often indexed with thematic roles, grammatical cases, or particular prepositions.  For example, in the case of sentence~\REF{ex:give:theme}, the f-structure would contain another attribute apart from \SUBJ (for \emph{you}) and \OBJ (for \emph{me}), namely, \OBJROLE{theme} (for \emph{your money}). Similarly, in the case of \REF{ex:give:goal}, the grammatical function of \emph{to you} could be \OBLROLE{goal}, etc.\ (see, e.g., \citealt[Section {10.3}]{DLM:LFG} and references therein).
+
+\ea\label{ex:give:theme}
+You never give me your money.
+\ex\label{ex:give:goal}
+But what I've got I'll give to you. 
+\z
+
+The HPSG approach to naming arguments is radically different: normally only the \textsc{subj}(ect) is distinguished (see \citealt[Chapter {9}]{pollard1994head-driven} and references therein), often for solely tree\hyp{}configurational reasons, and all the other arguments are listed within the predicate's \textsc{comp}(lement)\textsc{s} value.  In the case of a~2-argument verb such as \emph{love} this difference is not conspicuous, but in the case of, say, \emph{give}, the two non-subject arguments would be elements of the \textsc{comps} list, whether they are realised as a~direct object and a~theme object, as in~\REF{ex:give:theme}, or as a~direct object and goal oblique, as in~\REF{ex:give:goal}.  Hence, the two attributes, \textsc{subj} and \textsc{comps}, suffice for any configuration of arguments.\footnote{Also, the \textsc{subj}/\textsc{comps} dichotomy is not assumed in some versions of HPSG (including the early versions of \citealt{pollardsag87} and \citealt[Chapters {1--8}]{pollard1994head-driven}, as well as the Sign-Based Construction Grammar of \citealt{sag2012sign-based}, sometimes perceived as a~version of HPSG) and in HPSG grammars of some languages (e.g., German; Stefan Müller, p.c.).}
+
+Note that this is a~difference between LFG and HPSG \emph{qua} linguistic theories, not \emph{qua} linguistic formalisms.  Either approach can be simulated in the other formalism.  For example, within LFG, \citet{alsina1996the-role} proposes to constrain explicitly named grammatical functions to subject and object, and \citet{patejuk2016reducing} and \citet{Przep16} further justify this approach and provide an LFG formalisation inspired by HPSG analyses of extended argument structure\@.\footnote{Two further -- more formal -- arguments for HPSG-like representations of grammatical functions in essentially LFG settings may be found in \citet[Chapter {4}]{john:88:book}: first, they obviate the need for the LFG principles of completeness and coherence (cf.~\sectref{sec:gram:pull}), which are encoded via formally problematic (cf.~\sectref{sec:mod:cnd}) constraining statements, and second, they lead to an analysis of Dutch infinitive constructions which, unlike the standard -- at that time -- LFG analysis, does not violate the offline parsability constraint (cf.~\sectref{sec:gram:exp}). (Some problems with \citegen{john:88:book} own analysis of Dutch infinitive constructions are pointed out in \citealt{zaenen-kaplan1995}.)}  Conversely, explicit information about grammatical functions of particular arguments could be added to HPSG representations, as in \citet{ack:web:98} or \citet{hell:19}.
+
+\subsubsection{Word forms}
+\label{sec:arch:string}
+
+The final difference between the two representations in Figures \ref{fig:ex:lfg} and \ref{fig:ex:hpsg} that I~would like to point out concerns the place of the word string in these representations.  Traditionally, in LFG the sequence of word forms -- the form of the utterance -- is the yield of the c-structure, i.e., the sequence of leaves. So finding an LFG representation of an utterance amounts to finding a~grammatical representation in which the yield of the c-structure is that utterance.  
+
+On the other hand, in HPSG the sequence of words in an utterance is the value of that utterance's \textsc{phon} attribute. This means that finding an HPSG representation of an utterance boils down to finding a~grammatical structure in which the value of \textsc{phon} is the list of words in that utterance.  Normally this amounts to the same sequence of words as that read off the leaves of the constituency tree.  For example, if -- in a~simple binary tree -- the \textsc{phon} of the first constituent is \HPSGphon{\textit{come}} and the \textsc{phon} of the second is \HPSGphon{\textit{together}}, then the \textsc{phon} of the mother is \HPSGphon{\textit{come}, \textit{together}} rather than \HPSGphon{\textit{together}, \textit{come}} (or \HPSGphon{\textit{drive}, \textit{my}, \textit{car}}, or whatever).  This correspondence is explicitly present in the representation in Figure~\ref{fig:ex:hpsg} and implicitly assumed in the shorthand representation in Figure~\ref{fig:ex:hpsg:abr}, but there is a~well-developed linearisation theory in HPSG which allows for controlled violations to this correspondence. 
+
+I will have more to say about the exact role of the string of word forms in both linguistic theories in \sectref{sec:gram:lin}.
+
+
+
+\subsection{Summary}
+\label{sec:arch:sum}
+
+Let us take stock of similarities and differences between the kinds of representations assumed in LFG and HPSG\@.  The celebrated difference between the multi-level architecture of LFG and the monolithic structures assumed in HPSG is certainly important to many practitioners of both theories and has an impact on readability (of LFG representations) and the need to apply additional conventions and abbreviations (to render HPSG representations), but in my view it is of little substantial consequence.  It is trivial to devise a~lossless conversion of LFG representations to HPSG-like representations, and also HPSG structures may be converted to LFG-like representations which distinguish between constituency structures, structures representing other syntactic information, and semantic structures.  
+
+However, there are at least two more substantial differences conspicuous in the representations in Figures \ref{fig:ex:lfg} and \ref{fig:ex:hpsg}.  One concerns grammatical functions: one function per argument in LFG and just one distinguished argument in HPSG\@. The other concerns the place of the sequence of words which make up an utterance: in LFG this sequence is commonly assumed to correspond to the sequence of leaves in the c-structure, while HPSG allows for dissociation between the string of words and the constituency structure.
+
+
+\section{Grammars}
+\label{sec:gram}
+
+What kinds of grammars lead to representations such as those in Figures \ref{fig:ex:lfg} and \ref{fig:ex:hpsg}?  I will first consider LFG, then HPSG, and then I will compare the two approaches.
+
+\subsection{LFG}
+\label{sec:gram:lfg}
+
+Here is the relevant part of an LFG grammar that produces the structures in Figure~\ref{fig:ex:lfg}.\footnote{Only the core machinery is assumed here, mostly (apart from the $\sigma$-projected s-structures) present already in \citet{kaplanbresnan82}.  See, e.g., \citet[Chapter {6}]{DLM:LFG} for later additions such as functional uncertainty (including inside-out functional uncertainty), off-path constraints, the restriction operator, local names, templates, etc.}
+
+\begin{description}
+\item[Grammar rules:]
+\begin{exe} \sn \end{exe}
+\ea\label{r:s}
+\phraserule{S}{
+  \rulenode{NP\\
+    (\UP\SUBJ) = \DOWN\\
+    (\DOWN\CASE) = \NOM}
+  \rulenode{VP\\
+    \UP{} = \DOWN\\
+    (\DOWN\TENSE)}
+}
+\ex\label{r:vp}
+\phraserule{VP}{
+  \rulenode{V\\
+    \UP{} = \DOWN}
+  \rulenode{NP\\
+    (\UP\OBJ) = \DOWN\\
+    (\DOWN\CASE) = \ACC}
+}
+\ex\label{r:np}
+\phraserule{NP}{
+  \rulenode{Pron\\
+  \UP{} = \DOWN}
+}
+\z
+
+\item[Lexicon:]\largerpage[1.5]
+\begin{exe} \sn \end{exe}
+\ea\label{le:loves} 
+\catlexentry{loves}{V}{\feqs{%
+    (\UP\PRED) = \gloss{‘love\arglist{\SUBJ,\OBJ}’} \\
+    (\UP\SUBJ\NINDEX\PERS) $=_c$ \gloss{3} \\
+    (\UP\SUBJ\NINDEX\NUM) $=_c$ \SG \\
+    (\UP\TENSE) = \PRS \\
+    (\UPS\REL) = \gloss{love} \\
+    (\UPS\ARGone) = (\UP\SUBJ)$_\sigma$ \\
+    (\UPS\ARGtwo) = (\UP\OBJ)$_\sigma$}}
+\ex\label{le:she} 
+\catlexentry{she}{Pron}{\feqs{%
+    (\UP\PRED) = \gloss{‘pro’} \\
+    (\UP\PRONTYPE) = \PERSONAL \\
+    (\UP\CASE) = \NOM \\
+    (\UP\NINDEX\PERS) = \gloss{3} \\
+    (\UP\NINDEX\NUM) = \SG \\
+    (\UP\NINDEX\GEND) = \F}}
+\ex\label{le:you} 
+\catlexentry{you}{Pron}{\feqs{%
+    (\UP\PRED) = \gloss{‘pro’} \\
+    (\UP\PRONTYPE) = \PERSONAL \\
+    (\UP\NINDEX\PERS) = \gloss{2}}}
+\z
+\end{description}
+
+LFG grammars may be viewed as Context\hyp{}Free Grammars (CFGs) with annotations; the purely CFG part of the grammar in \REF{r:s}--\REF{le:you} is this:\largerpage
+
+\begin{exe}
+\exp{r:s} \phraserule{S}{NP~~VP}
+\exp{r:vp} \phraserule{VP}{V~~NP}
+\exp{r:np} \phraserule{NP}{Pron}
+\exp{le:loves} \phraserule{V}{\emph{loves}}
+\exp{le:she} \phraserule{Pron}{\emph{she}}
+\exp{le:you} \phraserule{Pron}{\emph{you}}
+\end{exe}
+Within annotations, \UP refers to the f-structure associated (via the $\phi$ function) with the mother node in the tree (i.e., with the preterminal node, in the case of lexical entries), and \DOWN refers to the f-structure associated with the current node.  For example, the functional equation (\UP\SUBJ) = \DOWN under the NP in rule \REF{r:s} for S says that the f-structure associated with the S node has the \SUBJ attribute whose value is the f-structure associated with the NP node.  The other equation under the NP, (\DOWN\CASE) = \NOM, says that the f-structure for this NP has \CASE with value \NOM.  The head equation {\UP} = {\DOWN} under the VP in the same rule says that S and VP are associated with the same f-structure.
+
+These are so-called “defining equations” -- they may be thought of as constructively building representations.  The statement (\DOWN\TENSE) under VP in rule \REF{r:s} is a~constraining condition requiring the presence of the \TENSE attribute within the f-structure associated with the VP node.  This constraining condition cannot be replaced with a~defining equation such as (\DOWN\TENSE) = \PRS because infinitive verbs are assumed not to have the \TENSE attribute at all, so the effect of such a~defining equation would be to wrongly add the attribute \TENSE (and its \PRS value) to f-structures of such tenseless forms.  Similarly, the constraining equation (\UP\SUBJ\NINDEX\PERS) $=_c$ \gloss{3} in the lexical entry~\REF{le:loves} for \emph{loves} requires that the f-structure associated with the subject of this verb have the attribute \NINDEX whose value has the attribute \PERS whose value is \gloss{3}, but the verb does not itself assign this value -- some other part of the grammar (in this case, the lexical entry~\REF{le:she} for \emph{she}) must take care of that.  As we will see in \sectref{sec:mod:cnd}, the existence of such constraining statements presents a~difficulty for model\hyp{}theoretic formalisations of LFG\@.
+
+While the symbols \UP and \DOWN only implicitly refer to the function $\phi$ mapping c-structures to f-structures, the $\sigma$ function mapping f-structures to s-structures is mentioned explicitly in some of the statements.  For example, the statement (\UPS\ARGone) = (\UP\SUBJ)$_\sigma$ in the lexical entry \REF{le:loves} rather concisely says that there is an s-structure associated with the f-structure related to the preterminal V, this s-structure contains the attribute \ARGone, and the value of this attribute is the s-structure associated with the f-structure which is the value of \SUBJ within the f-structure related to this preterminal.  It is easy to check that the representation in Figure~\ref{fig:ex:lfg} reflects this and all the other statements presented in this subsection.
+
+
+\subsection{HPSG}
+\label{sec:gram:hpsg}
+
+Theoretical HPSG grammars have a~very different feel: they do not have a~CFG backbone, but rather contain statements about various types of linguistic objects -- not only phrases and words, but also valencies, contents, cases, etc.\footnote{However, some such statements, namely, Immediate Dominance Schemata \citep[Section {1.5}]{pollard1994head-driven}, directly encode some of the effects of phrase structure rules.}  HPSG grammars consist of two parts: a~type hierarchy (already mentioned in \sectref{sec:arch:hpsg}, also called “sort hierarchy” and “signature”) and a~theory proper.  
+
+A~small fragment of the type hierarchy assumed in the AVM of Figure~\ref{fig:ex:hpsg} was given in Figure~\ref{fig:hpsg:types:sign}, and a~much larger part is presented in Figure~\ref{fig:hpsg:types}. This type hierarchy seems to mention all types occurring in Figure~\ref{fig:ex:hpsg}, but in fact it does not contain types for the word forms which appear within \textsc{phon} values; on the simplest approach to values of \textsc{phon} each word form is an atom of a~type such as \textit{she} or \textit{loves}. (On a~more comprehensive approach such as \citealt{hoeh:98}, values of \textsc{phon} are highly structured and contain various kinds of phonological information.)  In a~more realistic grammar, the type hierarchy would also contain more subtypes of \textit{headed\hyp{}phrase} (see \citealt[Sections {\mbox{5--6}}]{abe:bor:20} and references therein), a~much larger type subhierarchy below \textit{content} (see, e.g., \citealt{ric:sai2:97c,ric:sai:98} and \citealt{davi:01} for two very different proposals targeting different aspects of semantic representations), a~multiple inheritance hierarchy of subtypes of \textit{head} \citep{malo:98a}, many more subtypes of \textit{vform}, etc.  As shown in Figure~\ref{fig:hpsg:types}, type hierarchies are more than just plain taxonomies of types: they also determine attributes that may occur in structures of particular types, as well as types of values of such attributes.
+
+\begin{sidewaysfigure}\footnotesize
+\begin{forest} for tree = {font=\itshape, anchor=north}
+[object
+  [{\avm{[\type*{sign}
+          phon & list\\
+          synsem & synsem]}}
+              [word]
+              [{\avm{[\type*{phrase}\\dtrs & list\\]}}
+                  [{\avm{[\type*{headed-phrase}\\ hd-dtr&sign\\]}}
+                      [hd-subj-ph] [hd-comps-ph]
+                  ]
+                  [non-headed-phrase]
+              ]          
+          ]
+   [{\avm{[\type*{synsem}\\cat & category \\ cont & content]}}]
+   [content
+       [{\avm{[\type*{ppro}\\index & ref\\]}}]
+       [{\avm{[\type*{love-rel}\\act & ref\\und & ref\\]}}]
+   ]
+   [{\avm{[\type*{ref}\\pers & person\\num & number\\ gend & gender\\]}}]
+   [person [1] [2] [3]]
+   [number [sg] [pl]]
+   [gender [f] [m] [n]] 
+]
+\end{forest}\medskip\\
+\begin{forest} for tree = {font=\itshape, anchor=north}
+[object
+    [..., roof]
+    [{\avm{[\type*{category}\\head & head\\val & valence\\]}}]
+    [head
+        [{\avm{[\type*{verb}\\vform & vform\\aux & bool\\inv & bool]}}]
+        [{\avm{[\type*{noun}\\case&case]}}]
+    ]
+    [{\avm{[\type*{valence}\\subj & list\\comps & list]}}]
+    [vform [fin] [inf]]
+    [bool [+] [\textminus]]
+    [case [nom] [acc]]
+    [list [elist]
+          [{\avm{[\type*{nelist}\\first & object\\rest & list]}}]]
+]
+\end{forest}
+  \caption{A larger part of an HPSG type hierarchy\label{fig:hpsg:types}}
+\end{sidewaysfigure}
+
+Theory proper is a~set of statements -- often called principles -- which impose additional, more complex constraints.  For example, the famous Head Feature Principle (HFP) says that, in a~\textit{headed\hyp{}phrase}, the mother has the same value of the \textsc{head} attribute as the head daughter.  Formally, this principle may be stated as follows:
+
+\ea\label{hfp}Head Feature Principle:\smallskip\\
+\avm[align=false, vectorsep=.5ex]{\textit{headed-phrase} \ensuremath{\Rightarrow}  [synsem|cat|head & \1\\
+                                                                    hd-dtr|synsem|cat|head & \1]}
+\z
+
+Such principles are understood universally: every linguistic object must satisfy them.  For this reason they are usually implicational, with the antecedent defining the scope of the principle.  In the case of \REF{hfp}, either an object is of type \textit{headed\hyp{}phrase}, so the antecedent is true and, hence, the consequent must also be true, or the object is not of this type, in which case the antecedent is false and the whole implication is trivially true.  
+
+The AVM in Figure~\ref{fig:ex:hpsg} describes a~configuration of objects containing two objects of type \textit{headed\hyp{}phrase}, i.e., satisfying the antecedent of HFP\@: the root object of type \textit{hd-subj-ph} and its \textsc{hd-dtr} value of type \textit{hd-comp-ph}.  Both satisfy HFP -- see the three occurrences of \avm{\tag{10}} in that figure.  All other objects in this configuration satisfy HFP trivially, as they are not described by the antecedent of HFP; this holds for the \textit{word} objects representing \emph{she}, \emph{loves}, and \emph{you}, the \textit{synsem} objects which are values of the \textsc{synsem} attribute, the \textit{list} objects which are values of various occurrences of \textsc{phon}, \textsc{subj}, \textsc{comps}, and \textsc{dtrs}, etc.
+
+There are also constraints relating the values of \textsc{val} and \textsc{dtrs}.  The role of valency attributes is similar to the role of slashes in Categorial Grammar (\citealt{ajdu:35,lambek1958}; see also \citealt{kubo:20} and references therein) -- they express information about the combinatory potential of an element.  For example, the \textit{word} structure for \emph{loves} in Figure~\ref{fig:ex:hpsg} specifies that this word expects a~complement and a~subject.  Once it combines with the complement \emph{you}, the mother phrase of type \textit{hd-comp-ph} needs only a~subject in order to be a~fully saturated phrase (i.e., a~sentence) -- its \textsc{comps} list is empty (“$\langle\,\rangle$” is a~synonym of the \textit{elist} type in Figure~\ref{fig:hpsg:types}).  Moreover, once this phrase combines with the subject \emph{she}, both valency lists become empty.  This behaviour is regulated by principles such as the following:\pagebreak
+
+\ea\label{vp}Valence Principles (modified and simplified): \\
+\ea\label{vp:subj} \textit{hd-subj-ph} \ensuremath{\Rightarrow} 
+                   \avm[align=false, vectorsep=2pt]
+                       {[synsem|cat|val & [subj & <\,>\\comps & <\,>]\\
+                         dtrs & <[ synsem \2 ], \1>\\
+                         hd-dtr & \1 [synsem|cat|val [ subj & <\2>\\ comps & <\,> ]]
+                         ]}
+\ex\label{vp:comps}
+\textit{hd-comps-ph} \ensuremath{\Rightarrow}
+                     \avm[align=false, vectorsep=2pt]
+                         {[synsem|cat|val & [subj & \0\\comps & <\,>]\\
+                           dtrs & <\1, [synsem \2]>\\
+                           hd-dtr & \1 [synsem|cat|val & [subj & \0\\comps & <\2>] ]
+                         ]}
+ \z
+\z
+
+The constraint~\REF{vp:subj} is saying that, in phrases of type \textit{hd-subj-ph}, the head daughter (\avm{\1}) only requires a~subject (its \textsc{comps} list is empty), this subject (\avm{\2}) is the (\textsc{synsem} value of the) first daughter of the phrase, while the second daughter (\avm{\1}) is the head daughter, and the phrase itself is fully saturated (both \textsc{subj} and \textsc{comps} are empty).  Similarly, \REF{vp:comps} is saying that, in phrases of type \textit{hd-comps-ph}, the single \textsc{comps} element of the head daughter is realised as its second daughter, the first daughter being the head, and the phrase does not expect a~complement anymore.  On the other hand, it still expects whatever subject (if any) is expected by the head daughter.  The actual Valence Principle assumed in HPSG is more general; in particular, it allows for longer \textsc{comps} lists and the realisation of multiple arguments in a~single local tree (see, e.g., \citealt[348]{pollard1994head-driven}).
+
+\largerpage[-1]
+Note that the values of valency attributes are lists of \textit{synsem} structures (see \avm{\2} in \REF{vp}), not whole phrases.  This is an attempt to encode locality constraints on selection: a~predicate may specify its arguments only by providing the kind of information that is encoded in \textsc{synsem} values, so it cannot select an argument on the basis of its \textsc{phon} value or with reference to the internal constituency structure of that argument (as it is encoded in the values of \textsc{dtrs} and \textsc{hd-dtr}).\footnote{Note also that these principles do not say anything about values of \textsc{phon}. We will deal with \textsc{phon} values shortly, in \sectref{sec:gram:lin}.}
+
+
+
+\begin{figure}
+\caption{\label{wp}Word Principle}
+\footnotesize%
+\begin{tabular}{@{}rl@{}}
+    \textit{word} \ensuremath{\Rightarrow} & 
+    \avm{[\phon <she>\\
+          synsem & [ cat & [ head & [\type*{noun}\\case & nom]\\
+                           val & [\type*{valence}\\subj & <\,>\\comps & <\,>]
+                          ]\\
+                     cont & [\type*{ppro}\\
+                             index & [\type*{ref}\\
+                                      pers & 3\\
+                                      num & sg\\
+                                      gend & f]]]]} \ensuremath{\vee}\\\tablevspace
+    & \avm{[\phon <you>\\
+           synsem & [cat & [ head & noun\\
+                          val & [\type*{valence}\\subj & <\,>\\comps & <\,>]]\\
+                    cont & [\type*{ppro}\\
+                            index & [\type*{ref}\\pers & 2]]]]} \ensuremath{\vee}\\\tablevspace
+    & \avm{[\phon <loves>\\
+            synsem & [ cat & [ head [ \type*{verb}\\
+                                    vform & fin\\
+                                    aux & --\\
+                                    inv & --]\\
+                             val [ subj & <[ cat & [\punk{head|case}{nom}\\
+                                                val & [ subj & <\,>\\ comps & <\,>]]\\
+                                           \punk{cont|index}{\1 [pers & 3\\num & sg]}]>\\
+                                   comps & <[ cat & [\punk{head|case}{acc}\\
+                                                     val & [subj & <\,>\\ comps & <\,>]]\\
+                                            \punk{cont|index}{\2}]>]]\\
+                         cont & [\type*{love-rel}\\act &\1\\und & \2]]]} \ensuremath{\vee \ldots}
+\end{tabular}
+\end{figure}
+
+What about the lexicon?  HPSG has full-fledged theories of the hierarchical lexicon, which make it possible to encode various generalisations across lexical items (see \citealt{dav:koe:20} and references therein), but for the purpose of this comparison the simple principle in \figref{wp} will do.
+What this principle is saying is that any \textit{word} object must either satisfy the description in the first disjunct (which defines the word \emph{she}), or the second disjunct (\emph{you}), or the third disjunct (\emph{loves}), etc.  Again, it is easy to see that the structure described by the AVM in Figure~\ref{fig:ex:hpsg} complies with this principle.
+
+All the principles given or alluded to above constrain the shape of \textit{sign}s -- \textit{word}s and \textit{phrase}s -- but principles may also refer to other types of objects.  For example, the type hierarchy in Figure~\ref{fig:hpsg:types} only says that values of \textsc{subj} and \textsc{comps} are lists, but the values of \textsc{subj} cannot be of any length -- their maximum length is one (a~single predicate cannot have two subjects).  This can be regulated with the constraint in \REF{ssp1} or -- equivalently (given the type hierarchy in Figure~\ref{fig:hpsg:types}) but more concisely -- \REF{ssp2}.
+
+\ea\label{ssp1}
+\textit{valence} \ensuremath{\Rightarrow} \avm{[subj & elist]} $\vee$ \avm{[subj|rest & elist]}
+\ex\label{ssp2}
+\textit{valence} \ensuremath{\Rightarrow} $\neg$\avm{[subj|rest & nelist]}
+\z
+
+Moreover, values of \textsc{subj} and \textsc{comps} cannot be just any lists -- they must be lists of \textit{synsem} objects.  This may be achieved via constraint \REF{valss}, whose antecedent is not just a~type specification, with the predicate \texttt{list-of-synsems} defined as in \REF{listss}.\footnote{I~extend the notational conventions defined in \citet[Section {3.2}]{rich:04} in such a~way that boxed variables appearing in the antecedents of implications are understood as bound by universal quantifiers scoping over the whole formula.  So, the quantificational schema of \REF{valss} is: $\forall\avm{\1}\forall\avm{\2}\,(\phi(\avm{\1},\avm{\2})\,\Rightarrow\,\psi(\avm{\1},\avm{\2}))$.}
+
+\ea\label{valss}
+\avm{[subj & \1\\comps & \2]} \ensuremath{\Rightarrow} \texttt{list-of-synsems(\avm{\1})} $\land$ \texttt{list-of-synsems(\avm{\2})}
+\ex\label{listss}
+  \texttt{list-of-synsems(}\textit{elist}\texttt{).} \\
+  \texttt{list-of-synsems(}\avm{[\type*{nelist}\\first & synsem\\rest & \0]}\texttt{)}\HPSGsfl \texttt{list-of-synsems(\avm{\tag{0}}).}
+\z
+This simple constraint illustrates an important aspect of contemporary HPSG, namely, the possibility to define and use in constraints any relation \citep{rich:98a,rich:04}.  The notation for defining such relations is inspired by the programming language Prolog.  The definition in \REF{listss} consists of two clauses jointly specifying what kinds of objects have the \texttt{list-of-synsems} property: the first clause says that the empty list is a~list of synsems, and the second (recursive) clause says that a~non-empty list whose \textsc{first} element is a~\textit{synsem} object is a~list of synsems if the \textsc{rest} of this list is a~list of synsems.  Nothing else is a~list of synsems.
+
+
+
+\subsection{Comparison}
+\label{sec:gram:cmp}
+
+\subsubsection{Word order}
+\label{sec:gram:lin}
+
+One clear difference between the two frameworks stems from the fact that LFG grammars -- but not HPSG grammars -- are based on a~CFG backbone.  Traditionally (but see below) the sentence string is the yield of the c-structure, i.e., it is read off the leaves of the tree.  In the case of free word order languages, this leads to trees in which functionally related constituents -- for example, a~noun and its adjectival modifier -- are not always directly related configurationally.
+
+Consider the Warlpiri sentence \REF{ex:war} from \citet[257]{Simpson1991}.
+
+\ea\label{ex:war}
+\gll Kurdu-jarra-rlu ka-pala maliki wajili-pi-nyi wita-jarra-rlu. \\
+child-\DU-\ERG{} \PRS{}-3.\DU{} dog.\ABS{} chase-\NPST{} small-\DU-\ERG{} \\
+\glt ‘Two small children are chasing the dog.’ \\
+     ‘Two children are chasing the dog and they are small.’
+\z
+In this example, \emph{wita-jarra-rlu} ‘small’ is a~modifier of \emph{kurdu-jarra-rlu} ‘children’, but on LFG analyses they do not form a~constituent, as other constituents linearly intervene between these two words.  For example, \citet[225]{AustBres96} propose an analysis which results in the c-structure in Figure~\ref{fig:warl:lfg} (cf.~\citealt[112]{DLM:LFG}).
+
+\begin{figure}
+  \begin{forest}
+    [IP
+      [NP
+        [N [\emph{kurdu-jarra-rlu}\\child-\DU-\ERG{}, tier=word] ]] 
+      [I$'$
+        [I [\emph{ka-pala}\\\PRS-3.\DU{},tier=word] ] 
+        [S
+          [NP
+            [N [\emph{maliki}\\dog.\ABS{}, tier=word] ]]
+          [V [\emph{wajili-pi-nyi}\\chase-\NPST{}, tier=word] ]
+          [NP [N [\emph{wita-jarra-rlu}\\small-\DU-\ERG{}, tier=word] ]]
+        ]
+       ]
+      ]
+\end{forest}
+  \caption{LFG c-structure of \REF{ex:war}\label{fig:warl:lfg}}
+\end{figure}
+
+By contrast, it is possible to propose an HPSG analysis of Warlpiri word order on which \emph{wita-jarra-rlu} ‘small’ and \emph{kurdu-jarra-rlu} ‘children’ do form a~constituent in \REF{ex:war} (in the sense in which the attribute \textsc{dtrs} represents immediate constituents).  A~shorthand and very schematic representation of the result of such an analysis is given in Figure~\ref{fig:warl:hpsg} (after \citealt[13]{don:sag:99}).  Note that the order of words within the \textsc{phon} value of the root of this tree is different from the order of \textsc{phon} values of the leaves.
+
+\begin{sidewaysfigure}\small
+\begin{forest}
+  [\avm{[\phon <kurdu-jarra-rlu, ka-pala, maliki, wajili-pi-nyi, \textbf{wita-jarra-rlu}>]}, calign=child, calign child=2
+    [\avm{[\phon <kurdu-jarra-rlu, \textbf{wita-jarra-rlu}>]}
+      [\avm{[\phon <kurdu-jarra-rlu>]}\\child-\DU-\ERG{},tier=word]
+      [\avm{[\phon <\textbf{wita-jarra-rlu}>]}\\small-\DU-\ERG{},tier=word]]
+    [\avm{[\phon <ka-pala>]}\\\PRS-3.\DU{}, tier=word]
+    [\avm{[\phon <maliki, wajili-pi-nyi>]} 
+      [\avm{[\phon <maliki>]}\\dog.\ABS{}, tier=word]
+      [\avm{[\phon <wajili-pi-nyi>]}\\chase-\NPST{},tier=word] 
+    ]
+  ]
+\end{forest}
+  \caption{HPSG constituency structure of \REF{ex:war}, with the form escaping the default word order constraints marked in bold\label{fig:warl:hpsg}}
+\end{sidewaysfigure}
+
+This analysis is possible because values of \textsc{phon} are subject to the same constraints as any other structures.  The usual tree behaviour, with \textsc{phon} values of the mother being the concatenation of the \textsc{phon} values of the daughters in the order in which they occur on the \textsc{dtrs} list, could be simulated with the constraint in \REF{phon}, where \texttt{append-phons(\avm{\2},\avm{\1})} holds if \avm{\1} is the concatenation of \textsc{phon} values of the elements of \avm{\2}.\footnote{Formally, the relation \texttt{append-phons} is defined as in~\REF{apph}, and the relation \texttt{append} it relies on -- as in~\REF{appp}:
+
+\ea\label{apph}
+  \texttt{append-phons(}\textit{elist}, \textit{elist}\texttt{).} \\
+  \texttt{append-phons(}\avm{[first & [phon & \1]\\rest & \2], \3}\texttt{)}\,\HPSGsfl \parbox[c]{5cm}{\texttt{append-phons(\avm{\2},\avm{\4}) $\land$\\\hspace*{1em}append(\avm{\1},\avm{\4},\avm{\3}).}}
+\ex\label{appp}
+  \texttt{append(}\textit{elist}, \avm{\1}\textit{list}, \avm{\1}\texttt{).} \\
+  \texttt{append(}\avm{[first & \1\\rest & \2]}, \avm{\3}\textit{list}, \avm{[first & \1\\rest&\4]}\texttt{)}\HPSGsfl \texttt{append(\avm{\2},\avm{\3},\avm{\4}).}
+\z}
+
+\ea\label{phon}
+\avm{[\type*{phrase}
+      phon & \1\\
+      dtrs & \2]} \ensuremath{\Rightarrow} \texttt{append-phons(\avm{\2},\avm{\1})}
+\z
+If the constraint in \REF{phon} were included in the grammar of Warlpiri, the representation in Figure~\ref{fig:warl:hpsg} would be ill-formed.
+
+However, other definitions are possible, which relax this usual approach.  In fact, there is a~long history of such linearisation accounts in HPSG, dating back to \citet{reap:92,reap:96}, \citet{kat:pol:95}, and \citet{kath:95b,kath:99} (see also \citealt{mull:20} and references therein); such a~relaxed approach to word order is commonly assumed in HPSG analyses of ellipsis and coordination (see \citealt{nyk:kim:20}, \citealt{abe:cha:20}, and references therein).  On such analyses, the two sentences in \REF{ex:coord} (from \citealt[286]{chav:08}) have exactly the same constituency structures but differ in \textsc{phon} values.
+\ea\label{ex:coord} 
+\ea Tim gave a~rose to Mary and a~tulip to Sue.
+\ex Tim gave a~rose to Mary and Tim gave a~tulip to Sue.
+\z\z
+
+
+In LFG such a~relaxed approach to word order is also in principle possible, on the assumption that there is a~representation of the sentence string separate from c-structure.  Such a~separate string structure -- sometimes called s-string \citep[Section {3.5}]{DLM:LFG} -- is programmatically proposed in \citet{kaplan1987three} and substantiated in \citet{wescoat2002}, \citet{asud:09} and, especially, \citet{DM11}, among other works, but it is commonly assumed that the order of words in this additional string structure is the same as the order of leaves in c-structure.  One exception to this common assumption are the analyses of cliticisation in \citet{boegel-etal2010} and in \citet{lowe:16a}, on which the position of clitics in the s-string may differ from their position in the tree.\footnote{Such a~mechanism of prosodic inversion is also alluded to -- but not provided an LFG formalisation -- in \citet[69]{Simpson1991}, \citet[140]{Kroeger93}, and \citet[226]{AustBres96}.}  However, to the best of my knowledge, there are no LFG analyses which would make a~more substantial use of the possibility of relaxing the mapping between the s-string and the c-structure, analogous to those common in HPSG accounts of ellipsis.
+
+\subsubsection{Optionality of attributes}
+\label{sec:gram:opt}
+
+As has already been alluded to above and as will become fully clear in \sectref{sec:mod}, grammars may be understood as theories describing certain linguistic objects. Figures such as \ref{fig:ex:lfg} and \ref{fig:ex:hpsg} are representations of such objects. Both these figures represent all information that follows from all grammatical rules and principles of the respective grammars sketched in this section, but there is a~sense in which the LFG representation in Figure~\ref{fig:ex:lfg} is complete while the HPSG representation in Figure~\ref{fig:ex:hpsg} is only partial: it represents the effects of all constraints in the grammar proper, but it does not contain all information that follows from the type hierarchy.
+
+Let us have a~closer look at the \NINDEX values within structures corresponding to the word \emph{you}.  In both representations in Figures \ref{fig:ex:lfg} and \ref{fig:ex:hpsg} this value is represented as an AVM with just one attribute, \PERS, with a~value indicating 2nd person.  In the case of LFG, this is a~complete description of the underlying feature structure; the linguistic object described by this subsidiary AVM has exactly one attribute: \PERS.  However, in the case of HPSG, the corresponding AVM is marked as representing a~structure of type \textit{ref}(erential index) and -- according to the type hierarchy in Figure~\ref{fig:hpsg:types} (and the standard HPSG type system; see \citealt[399]{pollard1994head-driven}) -- every \textit{ref} object has exactly three attributes: \textsc{pers}(on), \textsc{num}(ber), and \textsc{gend}(er).  Thus, the subsidiary AVM representing the value of \textsc{index} for \emph{you} is only a~partial description of a~complete linguistic object; any such object must also have specific values of \textsc{num} (\textit{sg} or \textit{pl}) and \textsc{gend} (\textit{m}, \textit{f}, or \textit{n}).  That is, this subsidiary AVM describes six different kinds of linguistic objects, differing in number and gender.
+
+This technical difference between the two formalisms reflects a~potentially important linguistic difference between the two theories: to what extent are the described linguistic objects allowed to be partial or indeterminate?\footnote{See also \citet{kaplan18} for a~discussion of this and related issues.}  Such partial objects were the staple of the original HPSG of \citet{pollardsag87}, where the described objects were understood not as strictly linguistic objects but rather as informational objects -- bits of information (including disjunctive and negative information) that competent speakers have about language.\footnote{See \citet[Chapter {2}]{rich:04} for a~discussion of the differences between early and later HPSG.}  But it seems that LFG sides with the latter-day HPSG in describing linguistic objects rather than informational objects.  So the difference between the two representations of the \NINDEX value for \emph{you} seems to be a~linguistically contentful -- and potentially verifiable -- difference: on the LFG view the pronoun \emph{you} is specified for person but \emph{unspecified} or neutralised for number and gender, while on the HPSG view it is \emph{ambiguous} between different values of number and gender.
+
+Interestingly, it is easy to simulate the HPSG approach in LFG, but it is far from obvious how to simulate the LFG approach in HPSG\@.  In LFG, the lexical entry of \emph{you} could be extended from \REF{le:you} to \REF{le:you:extended}, with the last two statements requiring that \NUM and \GEND be present and have values within appropriate sets:
+
+\ea\label{le:you:extended} 
+\catlexentry{you}{Pron}{\feqs{%
+    (\UP\PRED) = \gloss{‘pro’} \\
+    (\UP\PRONTYPE) = \PERSONAL \\
+    (\UP\NINDEX\PERS) = \gloss{2} \\
+    (\UP\NINDEX\NUM) $\in$ \{\SG, \PL{}\} \\
+    (\UP\NINDEX\GEND) $\in$ \{\M, \F, \N{}\}}} \\
+\z
+This leads to six different f-structure representations of the pronoun \emph{you}, differing in the values of \NUM and \GEND.\largerpage
+
+Within HPSG, a~more complex type subhierarchy could allow for different subtypes of \textit{ref}, one of which would only be specified for the attribute \textsc{pers}; let us call this subtype \textit{ref-pers}.  Then, the pronoun \emph{you} could have the \textsc{index} value of type \textit{ref-pers}, with \textsc{pers} equal to \textit{2}.  Another subtype, let us call it \textit{ref-pers-num}, would be specified for \textsc{pers} and \textsc{num}, and it would be appropriate for \textsc{index} values of pronouns \emph{I} (\textsc{pers} \textit{1}, \textsc{num} \textit{sg}) and \emph{we} (\textsc{pers} \textit{1}, \textsc{num} \textit{pl}).  This solution, however, is problematic in view of the following examples:
+\ea\label{ex:yourselves} Creatures, I~give you yourselves… \hfill(C.S. Lewis, \emph{The Magician's Nephew})
+\ex\label{ex:yourself} Creature, I~give you yourself… 
+\z
+The anaphoric pronouns \emph{yourselves} and \emph{yourself} are specified for person (2nd) and for number (plural and singular, respectively), but not for gender, so they should have \textsc{index} values of type \textit{ref-pers-num}.  But, given the standard HPSG binding theory (cf.~\sectref{sec:mod:id} below), these \textsc{index} values should be equal to the \textsc{index} values of the binder -- the pronoun \emph{you} in both examples above -- so they should be of type \textit{ref-pers}.  The only way this is possible is that the two types, \textit{ref-pers} and \textit{ref-pers-num}, have a~common subtype.  But this common subtype would have to inherit the attribute \textsc{num} from \textit{ref-pers-num}, so \textit{ref-pers} would have a~subtype with attribute \textsc{num}.  Given that all objects in HPSG models -- including all values of attributes -- must bear maximally specific types (this will be made clear in \sectref{sec:mod:hpsg} below), the pronoun \emph{you} would be ambiguous: on one interpretation its \textsc{index} would have a~value (of this shared subtype) with \textsc{num} \textit{sg}, on the other -- with \textsc{num} \textit{pl}.  This would contradict the original motivation for the multiple subtypes of \textit{ref}, namely, to make the pronoun \emph{you} indeterminate with respect to number and gender, rather than ambiguous.  It is not clear to me how to simulate within HPSG the behaviour of LFG -- that is, how to make the pronoun \emph{you} indeterminate with respect to number by default (i.e., apart from binding contexts such as \REF{ex:yourselves}--\REF{ex:yourself}) -- without complicating the standard HPSG binding theory.
+
+In summary, while either approach may perhaps be simulated in the other theory, HPSG analyses naturally lead to a~multiplicity of models differing in ways that linguists often do not care about, while LFG grammars naturally specify fewer linguistic objects, differing only in linguistically relevant aspects.  We will return to this issue in \sectref{sec:mod:cmp}.
+
+\subsubsection{Expressiveness}
+\label{sec:gram:exp}
+
+What is the relation of LFG and HPSG to the Chomsky--Schützenberger hierarchy of grammar formalisms \citep{chom:56}?  That is, what classes of languages do possible LFG and HPSG grammars describe?  This question cannot be answered without making the notion of a~“possible LFG/HPSG grammar” more precise.  Given that both theories evolve and that at any particular point there are competing proposals about various aspects of the theories, this notion is not fully explicit and perhaps never will be.
+
+Nevertheless, it is possible to ask about the complexity of the underlying formalisms, and it is clear that -- without additional constraints -- both are equivalent to Turing machines, i.e., they may describe any language that is algorithmically describable at all.  There is no space here to formally prove this claim, but it is based on the well-known fact that attribute--value grammars may encode Turing machines (\citealt[Section {3.4.2}]{john:88:book}; see also \citealt[fn. 32]{kaplanbresnan82}).  In particular, the unification grammar schema for simulating the effect of any Turing machine (i.e., for defining the same language as that recognised by that Turing machine) presented in \citet[Section {6.2}]{fra:win:12} can be easily encoded in the formalisms underlying LFG and HPSG\@.\footnote{\label{fn:turing}In the case of LFG, the schemata $\rho_1$--$\rho_8$ of \citet[230--232]{fra:win:12} can be directly translated into LFG phrase structure rules by taking \textsc{cat} values to be node labels and by encoding all the other information present in the AVMs in $\rho_1$--$\rho_8$ via straightforward functional equations.  In the case of HPSG, these schemata may be encoded as Immediate Dominance Schemata \citep[Section {1.5}]{pollard1994head-driven}, with an additional \textsc{phon} attribute collecting the terminal symbols (dually to how they are collected in the values of the \textsc{left} attribute in \citealt{fra:win:12}).  Schemata $\rho_1$--$\rho_8$ are essentially -- appropriately annotated (which is the source of the additional complexity) -- right-linear grammars with binary branching rules for reading the terminal symbols and with unary branching rules -- including an empty production -- for simulating a~Turing machine.  It is easy to modify this encoding to get rid of the empty production (the unary rules encoding transitions of a~Turing machine could be used at the top of the tree instead of at the right-hand bottom), but the use of effectively unary rules with possible repetitions of non-terminal symbols along unary chains is non-negotiable.}\largerpage
+
+Given this formal power of the underlying formalisms, the recognition problem (given a~grammar and a~sentence, is this sentence predicted by this grammar?) is undecidable -- there is no general algorithm which could take an arbitrary grammar and sentence and always answer that question in finite time.  In the case of LFG, this potential problem was recognised very early and a~solution was proposed \citep[266--267]{kaplanbresnan82} in terms of what later became known as offline parsability \citep[142]{per:war:83}: a~global condition on constituency structures, namely, that, first, they do not contain unary chains (subtrees with only unary branching) in which the same category appears twice and, second, that they do not use empty productions (i.e., that there are no empty leaves in the tree).  The encoding of Turing machines in \citet[Section {6.2}]{fra:win:12} violates both conditions (cf. fn.~\ref{fn:turing}).  A~different way to make LFG grammars tractable is proposed -- and references to other attempts are given -- in \citet{wed:kap:20}.\footnote{Simplifying, \citet{wed:kap:20} require of grammars that there be an upper bound on the number of different c-structure nodes that may map to the same f-structure.}
+
+In the case of HPSG, the dominant underlying formalism (RSRL, \citealt{rich:98a,rich:04}; see~\sectref{sec:mod:hpsg}) is known to be undecidable \citep{keps2:04}.  A~different formalisation, based on an extension of modal logic (namely, polyadic dynamic logic), is proposed and shown to have more desirable complexity properties in \citet{sog:lan:09} but, to the best of my knowledge, it has remained largely unnoticed within the HPSG community.
+
+Let me reiterate, however, that any less than desirable complexity results mentioned above pertain to formalisms underlying the linguistic theories, not to the theories themselves.  As has been repeatedly noted in both frameworks (see, e.g., \citealt[271--272]{kaplanbresnan82}, \citealt[94--95]{john:88:book}, and \citealt[242--243]{rich:04}), it is very well possible that linguistic constraints sufficiently delimit the space of possible grammars to make the recognition problem decidable and efficient, and -- conversely -- it is also possible that human languages are in fact undecidable.  That means that high complexity results for a~formalism underlying a~linguistic theory should not necessarily be held against that theory.
+
+
+\subsubsection{Generative-enumerative or model-theoretic?}
+\label{sec:gram:pull}
+
+\citet{pullum2001distinction} divide syntactic frameworks into “generative\hyp{}enumerative” (GE\@) and “model\hyp{}theoretic” (MT\@).  GE frameworks have a~derivational feel: at their centre are instructions for rewriting certain strings or structures into other strings or structures.  Typical examples are formal grammars in the sense of the Chomsky hierarchy, for example, CFGs such as that in (\ref{r:s}$'$)--(\ref{le:you}$'$), where particular rules are such instructions.  In the top-down mode, one starts with the string “S” and uses the rules to rewrite any non-terminal symbols -- e.g., the rule (\ref{r:s}$'$) to replace “S” with “NP VP” -- until the resulting string contains only terminal symbols, e.g., “\emph{she} \emph{loves} \emph{you}”.  In the bottom-up mode, one starts with a~string of terminal symbols, e.g., “\emph{she} \emph{loves} \emph{you}”, and uses the rules in the other direction, until the resulting string “S”, e.g.: “\emph{she} \emph{loves} \emph{you}” $\rightarrow$ “\emph{she} \emph{loves} Pron” $\rightarrow$ “\emph{she} \emph{loves} NP” $\rightarrow$ “\emph{she} V NP” $\rightarrow$ “\emph{she} VP” $\rightarrow$ … $\rightarrow$ “S”.  The language defined by a~grammar is the set of those strings of terminal symbols for which this procedure succeeds. Examples of GE systems are various transformational grammars, Categorial Grammars, Tree\hyp{}Adjoining Grammars, etc.  GE frameworks have an analogue in syntactic -- proof\hyp{}theoretic -- aspects of logic.
+
+By contrast, MT frameworks have an analogue in semantic -- model\hyp{}theoretic -- aspects of logic.  Grammars are sets of logical formulae which may be understood as defining models (namely, those models in which all the formulae are true).  An early -- historical -- example is Arc-Pair Grammar, but currently HPSG seems to be the most clear case of an MT framework \citep[60]{pullum2019what}.  We will have a~closer look at models of HPSG grammars shortly, in \sectref{sec:mod:hpsg}.
+
+Some GE frameworks have a~somewhat mixed character: they have a~GE backbone but they also impose certain constraints on the resulting structures.\footnote{Thanks to Geoff Pullum for discussion and for the clarification that such “mixed” frameworks should still be classified as unambiguously GE\@.}  Two examples are the transformational grammar of the 1980s (GB; \citealt{chomsky1981lectures,Chomsky86b}) and, to some extent, Generalized Phrase Structure Grammar (GPSG; \citealt{gkps}).  It seems that, at least as originally conceived, LFG belongs in the same category: there is a~generative CFG backbone responsible for building c-structures \citep[175]{kaplanbresnan82}, but also for generating functional statements which act as constraints on f-structures associated with particular c-structure nodes \citep[181]{kaplanbresnan82}.  The following quote makes this dual nature of the original LFG particularly clear:
+\begin{quote}
+  A~string's constituent structure is generated by a~context-free c-structure grammar.  The grammar is augmented so that it also produces a~finite collection of statements specifying various properties of the string's f-structure. \\\hspace*{\fill}\citep[180--181]{kaplanbresnan82}
+\end{quote}
+If such statements -- i.e., functional equations -- cannot be satisfied, then the whole description for a~given input fails, even if the c-structure rules produced an appropriate constituency tree for this input.  The functional component thus acts as a~filter on the output of the c-structure component (as explicitly stated in \citealt[203--204]{kaplanbresnan82}).
+
+Also some general LFG principles are formulated as constraints on possible f-structures (\citealt[178--179]{kaplanbresnan82}, \citealt[Section {2.4.6}]{DLM:LFG}): completeness and coherence jointly state that, simplifying a~little, grammatical functions mentioned in \PRED values must be exactly the grammatical functions occurring as attributes.  The main f-structure in Figure~\ref{fig:ex:lfg} satisfies this constraint: \PRED mentions \SUBJ and \OBJ and these are exactly the attributes which characterise grammatical functions in this f-structure.  Similarly, f-structures which are values of \SUBJ and \OBJ satisfy this constraint: their \PRED values do not mention any grammatical functions and none appears as an attribute in these f-structures.  
+
+\hspace*{-1mm}Generative-enumerative frameworks may often be given model-theoretic reformulations.  \citet{mcca:68} is usually credited with the observation that phrase structure rules may be understood as conditions on trees,\footnote{But cf.~\citet[Section {1.7}]{pull:07}.} and fully-worked out MT equivalents of various GE formalisms were proposed by \citet{roge:97,roge:98}.  While there is no comprehensive MT formalisation of LFG, the description of the general architecture of LFG in \citet[Section {2}]{kapl:89} is formulated in terms of conditions on particular structures, also on c-structures, and on correspondences between them,\footnote{The slightly modified version of \citet{kapl:89} published a~few years later explicitly invokes “model-based approach” as “of course, the hallmark of LFG” \citep[11]{kaplan1995formal}.  An earlier model-theoretic formalisation of an LFG-like formalism (but without the distinction between defining and constraining statements) is \citet{john:88:book}.  See also \citet{blackburn1995a-specification} for another attempt (also limited to defining statements; cf.~\citealt{BorjPayn13}).} and this view is prevalent in contemporary LFG\@.\footnote{For example: “In LFG, phrase structure rules are not rewrite rules, rather they are ‘node admissability conditions’ (McCawley, 1968); they are constraints rather than procedures.” \citep[61]{Snijders2015}.}  For this reason, \citet[20]{pullum2001distinction} classify “recent LFG” as “perhaps” MT\@.  I will have much more to say about model-theoretic aspects of LFG and HPSG in \sectref{sec:mod}.
+
+
+
+\subsection{Summary}
+\label{sec:gram:sum}
+
+In this section we looked at two rather specific differences between LFG and HPSG grammars and two more general aspects.  One specific difference concerns word order: in HPSG, but not in LFG, the string is often -- especially, in analyses of ellipsis -- assumed to be dissociated from the constituency structure.  The other concerns determinacy: HPSG analyses often lead to multiple structures, i.e., to ambiguity, while LFG analyses more naturally lead to more compact indeterminate structures.  Interestingly, despite the expressive power of the two theories, it is not always clear how to elegantly simulate in one theory the analysis commonly assumed in the other.
+
+The two more general issues are expressivity and relation to the generative\hyp{}enumerative vs.\ model\hyp{}theoretic dichotomy postulated in \citet{pullum2001distinction}. Underlying formalisms of both theories, unless additionally constrained, have the expressive power of Turing machines; such additional constraints were proposed in LFG right at the beginning and are the topic of ongoing work, while much less attention is devoted to the matter of complexity in HPSG\@.  Finally, HPSG is a~prototypical model\hyp{}theoretic theory, while the place of LFG in this dichotomy is less clear, as no explicit model theory has ever been proposed for LFG\@.  This is the issue to which I~turn next.
+
+
+\section{Models}
+\label{sec:mod}
+
+Grammars like those discussed in \sectref{sec:gram} are \emph{descriptions} of collections of linguistic objects, pictures like those in Figures \ref{fig:ex:lfg} and \ref{fig:ex:hpsg} of \sectref{sec:arch} are \emph{representations} of particular configurations of such objects, but what exactly are these \emph{objects} themselves?  That is, what are the models of LFG and HPSG grammars?  The two theories differ considerably in the extent to which answers to these question are provided: fully explicit model theories are proposed in HPSG, but only sketches and intuitive ideas may be found in LFG\@.  For this reason, in this section I start with HPSG\@.  First, however, a~few words about models in general.
+
+Take the following formulae of first-order logic:
+\ea\label{fol:or} $\forall x.\, \textit{black}(x) \leftrightarrow \neg \textit{white}(x)$
+\ex\label{fol:bw} $\forall x\forall y.\, \textit{bw}(x,y) \rightarrow \textit{black}(x) \land \textit{white}(y)$
+\ex\label{fol:ifbthw} $\forall x.\, \textit{black}(x) \rightarrow \exists y.\, \textit{white}(y) \land \textit{bw}(x,y)$
+\ex\label{fol:ifwthb} $\forall x.\, \textit{white}(x) \rightarrow \exists y.\, \textit{black}(y) \land \textit{bw}(y,x)$
+\z
+Together they are saying that everything is either $\textit{black}$ or $\textit{white}$ (see (\ref{fol:or})) and that there is a~relation, $\textit{bw}$, which holds between $\textit{black}$ things and $\textit{white}$ things (see (\ref{fol:bw})) such that every $\textit{black}$ thing is in this relation with some (at least one) $\textit{white}$ thing (see~\REF{fol:ifbthw}) and every $\textit{white}$ thing is related to some (at least one) $\textit{black}$ thing (see~\REF{fol:ifwthb}).  Informally speaking, the previous sentence is a~description of possible models of formulae \REF{fol:or}--\REF{fol:ifwthb}.  One model is a~two-element set such that one element is black, the other is white, and they are related.  Another has two black elements and two white elements such that they are pairwise related, i.e., the relation $\textit{bw}$ denotes two pairs of elements.  Another -- one that also has two black elements and two white elements -- is illustrated in Figure~\ref{fig:bw}. The empty set is also a~model, and there are infinitely many other models, both finite (of any cardinality apart from 1) and infinite (of any transfinite cardinality).
+
+\begin{figure}
+ \begin{tikzpicture}
+      \node (b1) at (0,0) {$\bullet$};
+      \node[rotate=45,xshift=-5pt,yshift=3pt] at (b1.north) {$\textit{black}$};
+      \node (b2) at (0,2) {$\bullet$};
+      \node[rotate=45,xshift=-5pt,yshift=3pt] at (b2.north) {$\textit{black}$};
+      \node (w1) at (2,0) {$\bullet$};
+      \node[rotate=-45,xshift=5pt,yshift=3pt] at (w1.north) {$\textit{white}$};
+      \node (w2) at (2,2) {$\bullet$};
+      \node[rotate=-45,xshift=5pt,yshift=3pt] at (w2.north) {$\textit{white}$};
+      \draw [-{Stealth[length=1.5mm]},shorten <=-5pt] ([shift={(.25ex,.25ex)}]b1.south east) to[out=-30,in=180,looseness=.75] node[below,sloped,yshift=1pt] {\footnotesize$\textit{bw}$} ([shift={(.75ex,.25ex)}]w1.west);
+      \draw [-{Stealth[length=1.5mm]},shorten <=-5pt] ([shift={(.25ex,.5ex)}]b1.south east) to[out=-30,in=180,looseness=.75] node[above,sloped] {\footnotesize$\textit{bw}$} ([shift={(.75ex,-.25ex)}]w2.west);
+      \draw [-{Stealth[length=1.5mm]},shorten <=-5pt] ([shift={(.25ex,.25ex)}]b2.south east) to[out=-30,in=180,looseness=.75] node[above,sloped] {\footnotesize$\textit{bw}$} ([shift={(.75ex,.25ex)}]w2.west);
+\end{tikzpicture}
+  \caption{A~model -- one of many -- of \REF{fol:or}--\REF{fol:ifwthb}\label{fig:bw}}
+\end{figure}
+ 
+\largerpage
+The meaning of the theory \REF{fol:or}--\REF{fol:ifwthb} may be equated with the collection of all models of that theory.  However, we may want to exclude some models as not interesting or not really capturing what the formulae \REF{fol:or}--\REF{fol:ifwthb} are meant to capture.  For example, perhaps we want models to be non-empty and -- while possibly arbitrarily large -- finite.  The first condition may be stated by extending the theory with the formula $\exists x.\, x=x$.\footnote{Given the formulae \REF{fol:or}--\REF{fol:ifwthb}, the same effect may be achieved, e.g., with $\exists x.\, \mathit{black}(x)$ or with $\exists x.\, \mathit{white}(x)$.}  However, the second condition, arbitrary finiteness, cannot be stated within first-order logic, so it must be stated meta-theoretically, as an additional constraint on permitted models.\footnote{Alternatively, a~more expressive logic could be adopted.}  As we will see below, both theories make use of such meta-theoretical conditions on models.
+
+
+\subsection{HPSG}
+\largerpage
+\label{sec:mod:hpsg}
+
+Of all linguistic theories, HPSG is perhaps unique in its concentrated attention to the issue of what grammars actually describe -- what the models of HPSG theories are.  There is no place here to summarise the different proposals found in the HPSG literature; some of them are critically discussed in \citet[Section {2.2}]{rich:04}.  Here, I~will describe informally -- and in terms which facilitate comparison with standard logical models and with potential LFG models -- what I~assume to be the standard HPSG approach, namely, the model theory of RSRL (\citealt{rich:98a,rich:04}).\footnote{RSRL -- Relational Speciate Re-entrant Language -- adds relations and quantification to SRL -- Speciate Re-entrant Language -- of \citealt{king:89,king:99} (see also \citealt{poll:98}). See \citealt{rich:20} for an overview.}
+
+As in mathematical logic, RSRL models are sets of objects which may have various properties and relations defined on them.  The properties correspond to the maximal types -- called species -- of type hierarchies: each object is assigned exactly one species.\footnote{That is, in the HPSG lingo, objects are \emph{sort-resolved} \citep[18]{pollard1994head-driven}.}  For example, assuming the hierarchy of Figure~\ref{fig:hpsg:types}, it is not enough for an object to have the property \textit{list}; it must be either \textit{elist} or \textit{nelist}.  Similarly, any \textit{sign} object must actually be either a~\textit{word}, or a~\textit{hd-subj-ph}, or a~\textit{hd-comps-ph}, or a~\textit{non-headed-phrase}.  In other words, species of HPSG type hierarchies partition sets of objects in HPSG models, just like the properties $\mathit{black}$ and $\mathit{white}$ partition sets of objects in models of the first-order theory \REF{fol:or}--\REF{fol:ifwthb}.
+
+Attributes correspond to relations.  For example, still assuming the type hierarchy in Figure~\ref{fig:hpsg:types}, the attribute \textsc{rest} is modelled as a~relation between \textit{nelist} objects and \textit{list} (i.e., \textit{elist} and \textit{nelist}) objects.  Similarly, \textsc{synsem} relates \textit{sign}s (i.e., objects of one of the species: \textit{word}, \textit{hd-subj-ph}, \textit{hd-comps-ph}, and \textit{non-headed-phrase}) to objects of type \textit{synsem} (which is a~species, according to this type hierarchy).  This is similar to the possible interpretations of the relation $\mathit{bw}$ as defined in \REF{fol:or}--\REF{fol:ifwthb}: the domain of that relation is the set of black objects, and the co-domain -- the set of white objects.  However, the meanings of HPSG attributes are not just any relations; they are total functions on sets of appropriate species (\textit{nelist}, in the case of \textsc{rest}) with values in the set of objects of appropriate species (\textit{elist} and \textit{nelist}, in the case of \textsc{rest}).  
+
+Additional constraints on objects and relations between them are provided by the theory proper, i.e., by principles such as the HFP in \REF{hfp}, repeated below as \REF{hfp:again}, and the principles in \REF{vp}--\REF{valss}.
+
+
+\ea\label{hfp:again} Head Feature Principle: \smallskip\\
+\avm{\textit{headed-phrase}\ensuremath{\Rightarrow}
+    [synsem|cat|head & \1 \\
+     hd-dtr|synsem|cat|head \1]}
+\z
+For example, HFP is saying that whenever there is an object of type \textit{headed-phrase}~-- i.e., of species \textit{hd-subj-ph} or \textit{hd-comps-ph} -- there must be other objects related via functions corresponding to \textsc{hd-dtr}, \textsc{synsem}, \textsc{cat}, and \textsc{head} as illustrated in Figure~\ref{fig:hfp}.  In this case, the value of the variable \avm{\1} of \REF{hfp:again} is the object number 7.
+
+\begin{figure}
+\begin{tikzpicture}[baseline=0pt, >={Stealth[length=1.5mm]}]
+\matrix [ampersand replacement=\&] {
+\&[2cm] \&[1cm] {\node [inner sep=0pt] (ss1) {$\bullet_{2}$};} \&[1cm] \&[1cm] {\node [inner sep=0pt] (cat1) {$\bullet_{3}$};} \&[1cm] \&[2cm] \\
+\node (r) [inner sep=0pt] {\textit{hd-subj-ph} $\bullet_{1}$}; \& \& \& \& \& \& \& {\node [inner sep=0pt] (head) {$\bullet_{7}$};} \\
+\&[1cm] {\node [inner sep=0pt] (hdtr) {$\bullet^{4}$};} \&[1cm] \&[1cm] {\node [inner sep=0pt] (ss2) {$\bullet^{5}$};} \&[1cm] \&[1cm] {\node [inner sep=0pt] (cat2) {$\bullet^{6}$};} \\
+};
+\draw[->] (r.north east) to[bend left] node[above] {\footnotesize\textsc{synsem}} (ss1.north west) ; 
+\draw[->] (ss1) to[bend left] node[above] {\footnotesize\textsc{cat}} (cat1) ; 
+\draw[->] (cat1) to[bend left] node[above] {\footnotesize\textsc{head}} (head) ; 
+
+\draw[->] (r.south east) to[bend right] node[below] {\footnotesize\textsc{hd-dtr}} (hdtr) ; 
+\draw[->] (hdtr) to[bend right] node[below] {\footnotesize\textsc{synsem}} (ss2) ; 
+\draw[->] (ss2) to[bend right] node[below] {\footnotesize\textsc{cat}} (cat2) ; 
+\draw[->] (cat2) to[bend right] node[below] {\footnotesize\textsc{head}} (head) ; 
+\end{tikzpicture}
+  \caption{Configuration of objects satisfying the Head Feature Principle}
+  \label{fig:hfp}
+\end{figure}
+
+Given the other principles and the type hierarchy, we know much more about this configuration of objects than is explicitly said in Figure~\ref{fig:hfp}.  For example, the type hierarchy implies that the species of object 4 must be a~maximal subtype of \textit{sign}, the species of objects 2 and 5 must be \textit{synsem}, etc.  Additional constraints on configurations involving objects of type \textit{hd-subj-ph} are imposed via one of the Valence Principles (namely, \REF{vp:subj}), etc.  
+
+\largerpage
+Now, HPSG models are simply collections of objects such that each object satisfies all constraints following from the type hierarchy and the theory proper.  For example, all seven objects in Figure~\ref{fig:hfp} must satisfy HFP, not just object 1.  And they all do, albeit -- apart from object 1 -- trivially: since objects 2--7 are not of type \textit{headed-phrase}, the antecedent of HFP is false of them and the whole statement is true.  But the configuration in this figure is not a~complete model.  For example, according to the type hierarchy in Figure~\ref{fig:hpsg:types}, object 7, which is a~value of \textsc{head}, must be of type \textit{head}, i.e., of species \textit{verb} or \textit{noun}.  If it is a~\textit{verb}, there should be \textit{vform} and \textit{bool} objects in the model related to object 7 via attributes \textsc{vform}, \textsc{aux}, and \textsc{inv}.  If it is a~\textit{noun}, there should be an object related to object 7 via \textsc{case}.  Similarly, according to the type hierarchy, object 1 should be related to two more objects via \textsc{phon} and \textsc{dtrs}, and according to the Valence Principle \REF{vp:subj}, the value of \textsc{dtrs} should be a~two-element list, etc.
+
+
+\largerpage
+Since the late 1980s, all approaches to HPSG models agree with this general view of models, but they all impose additional -- technical and sometimes philosophical -- constraints on what counts as an interesting model.  For example, the empty set is a~model (all elements in this set satisfy all constraints), but a~trivial one.  Also a~set consisting of just one object of species \textit{elist} is a~model, but it is not interesting.  The common view is that HPSG models should be models of whole languages, that they should be exhaustive; in particular, a~single exhaustive model contains configurations corresponding to all utterances licensed by the grammar.  A~little more technically but still very informally, exhaustive models simulate all other models: if there is a~structure in some model, then this (or rather, an isomorphic) structure must also occur in an exhaustive model \citep{king:99}.  So, within a~single exhaustive model, there are configurations of objects corresponding to the AVM in Figure~\ref{fig:ex:hpsg},\footnote{Recall that the AVM in that figure is still an underspecified description, as it does not fix values of \textsc{num} and \textsc{gend} within the \textit{ref} object marked as \avm{\tag{5}}.  It is also underspecified in other respects, to be discussed in \sectref{sec:mod:id}.} other configurations corresponding to the utterance \REF{ex:give:theme} (\emph{You never give me your money}), and similarly for any other structures licensed by the grammar.  This is a~somewhat unusual approach to modelling; an analogous exhaustivity requirement in the case of the first-order theory \REF{fol:or}--\REF{fol:ifwthb} would mean that only infinite models are admitted, namely those which contain all possible correspondences of black and white objects.\footnote{In fact, such models would be so large that they would not be sets anymore, but would rather be proper classes.}  We will return to this issue in \sectref{sec:mod:cmp}.
+
+The above considerations still leave open the question: What exactly are the objects in these models?  For \citet{king:99} they are bits of reality, actual linguistic tokens (e.g., every utterance of \emph{She loves you} by anybody, ever), but also non-actual -- potential -- linguistic tokens, i.e., grammatical utterances which have the bad luck of never being actually uttered.  This last notion is ontologically dubious, and also leads to proliferation of isomorphic structures within a~single model, so it is not frequently subscribed to within the HPSG community.\footnote{Also, apart from the curious notion of non-actual tokens, it is not clear what counts as a~single utterance token.  For example, when John Lennon and Paul McCartney sing together \emph{She loves you}, is this a~single token, or two tokens (or perhaps none, because they are singing rather than speaking)?  Does the answer depend on whether they sing in unison or in harmony?  How many linguistic tokens are there when the song is broadcast on the radio, if any?  Does that depend on the number of listeners at different locations?}  Rather, it is often assumed that the objects in HPSG models are set-theoretic objects -- or abstract feature structures -- which only stand in conventional correspondence to actual or possible utterances \citep{pollard1994head-driven,poll:98}.  These abstract objects are designed in such a~way that -- simplifying again -- any two isomorphic structures must actually be the same structure.  Alternatively, the issue of what exactly these objects are is left unspecified, but an additional requirement is imposed that exhaustive models are minimal in the sense that they contain only one copy of any relevant configuration \citep{rich:07:hpsg}.
+
+\subsection{LFG}
+\label{sec:mod:lfg}
+\largerpage
+While \citet[11]{kaplan1995formal} characterises LFG as “model-based”, no explicit and wor\-ked-out model theory has ever been proposed for LFG, as far as I~know.  Let us, nevertheless, try to construct a~possible model corresponding to the representation in Figure~\ref{fig:ex:lfg}, a~model that is consistent with informal descriptions in \citet{kaplanbresnan82} and \citet{kaplan1995formal}.
+
+First of all, the model must contain a~collection of objects representing the nodes of the c-structure, as well as a~collection of node labels \citep[10]{kaplan1995formal}.  I~assume that both grammatical categories (e.g., S or Pron) and orthographic forms (e.g., \emph{she}) are labels.  There are three relations defined on these objects: \textsc{m} (mother) is the partial function from nodes to nodes, defined on all nodes apart from the root; $<$ is the partial ordering relation on nodes, and $\lambda$ is a~function from nodes to labels.  So a~part of the model for the representation in Figure~\ref{fig:ex:lfg}, one that corresponds to the c-structure, may look as in Figure~\ref{fig:model:c} (with the linear relation $<$ not represented explicitly). There are 18 objects in this model: eight labels (S, VP, V, NP, Pron, \emph{she}, \emph{loves}, \emph{you}) and ten nodes (objects whose exact nature is left unspecified).  For an LFG grammar to lead to such models, it must be translated into appropriate formulae, appropriate tree axioms must be stated explicitly, and these axioms should be formulated in such a~way that they apply to tree nodes and not to labels or objects corresponding to feature structures.
+
+\begin{figure}
+  \scalebox{1}{\begin{tikzpicture}
+    \begin{scope}
+      \node (l-you) at (1, -2.5) {\emph{you}};
+      \node (l-loves) at (1, -1.5) {\emph{loves}};
+      \node (l-she) at (1, -.5) {\emph{she}};
+      \node (l-pron) at (1, 1) {Pron};
+      \node (l-np) at (1, 3) {NP};
+      \node (l-v) at (1, 2) {V};
+      \node (l-vp) at (1, 4) {VP};
+      \node (l-s) at (1, 5) {S};
+    \end{scope}
+    \begin{scope}[xshift=3in,yshift=2.1in]
+      \tikzset{level distance=4.25em, sibling distance=3em}
+    \tikzset{frontier/.style={distance from root=17.5em}}
+    \Tree 
+    [.\node (t-s) {$\bullet_{1}$};
+      \edge[{Stealth[length=1.5mm]}-,shorten <=1pt] node[auto=right]{\textsc{m}}; [.\node (t-np-she) {$\bullet_{2}$};
+        \edge[{Stealth[length=1.5mm]}-] node[auto=right]{\textsc{m}}; [.\node (t-pron-she) {$\bullet_{3}$}; \edge[{Stealth[length=1.5mm]}-,shorten <=1pt] node[auto=right]{\textsc{m}}; \node (t-she) {$\bullet_{4}$}; ]] 
+      \edge[{Stealth[length=1.5mm]}-,shorten <=1pt] node[auto=left]{\textsc{m}}; [.\node (t-vp) {$\bullet_{5}$}; 
+        \edge[{Stealth[length=1.5mm]}-,shorten <=1pt] node[auto=right]{\textsc{m}}; [.\node (t-v) {$\bullet_{6}$}; \edge[{Stealth[length=1.5mm]}-,shorten <=1pt] node[auto=right]{\textsc{m}}; \node (t-loves) {$\bullet_{7}$}; ] 
+        \edge[{Stealth[length=1.5mm]}-,shorten <=1pt] node[auto=left]{\textsc{m}}; [.\node (t-np-you) {$\bullet_{8}$}; 
+          \edge[{Stealth[length=1.5mm]}-] node[auto=left]{\textsc{m}}; [.\node (t-pron-you) {$\bullet_{9}$}; \edge[{Stealth[length=1.5mm]}-] node[auto=left]{\textsc{m}}; \node (t-you) {$\bullet_{10}$}; ]]]];
+    \end{scope}
+  \node at (4, 6.5) {$\lambda$};
+  \draw [{Stealth[length=1.5mm]}-] (l-you.north) to[out=45,in=230,looseness=.45] ([shift={(.5ex,1ex)}]t-you.south west);
+  \draw [{Stealth[length=1.5mm]}-] (l-loves.north) to[out=45,in=235,looseness=.45] ([shift={(.5ex,1.25ex)}]t-loves.south west);
+  \draw [{Stealth[length=1.5mm]}-] (l-she.north) to[out=45,in=195,looseness=.45] ([shift={(.5ex,1.75ex)}]t-she.south west);
+  \draw [{Stealth[length=1.5mm]}-] (l-pron.north) to[out=45,in=150,looseness=.35] ([shift={(.75ex,-.25ex)}]t-pron-she.north west);
+  \draw [{Stealth[length=1.5mm]}-] (l-pron.north) to[out=45,in=150,looseness=.35] ([shift={(.75ex,-.25ex)}]t-pron-you.north west);
+  \draw [{Stealth[length=1.5mm]}-] (l-np.north) to[out=45,in=150,looseness=.35] ([shift={(.75ex,-.25ex)}]t-np-she.north west);
+  \draw [{Stealth[length=1.5mm]}-] (l-np.north) to[out=45,in=150,looseness=.35] ([shift={(.75ex,-.25ex)}]t-np-you.north west);
+  \draw [{Stealth[length=1.5mm]}-] (l-v.north) to[out=45,in=150,looseness=.35] ([shift={(.75ex,-.25ex)}]t-v.north west);
+  \draw [{Stealth[length=1.5mm]}-] (l-vp.north) to[out=45,in=150,looseness=.35] ([shift={(.75ex,-.25ex)}]t-vp.north west);
+  \draw [{Stealth[length=1.5mm]}-] (l-s.north) to[out=45,in=150,looseness=.35] ([shift={(.75ex,-.25ex)}]t-s.north west);
+\end{tikzpicture}}
+  \caption{A~possible LFG model of the c-structure of \emph{She loves you} (without explicit representation of $<$)}
+\label{fig:model:c}
+\end{figure}
+
+
+\citet{kaplanbresnan82} and \citet{kaplan1995formal} are much more explicit about the kinds of objects that correspond to feature structures.  There are three types of objects involved in models of feature structures: atoms (e.g., \textsc{pred}, \textsc{subj}, \textsc{nom}, \textsc{3}, etc.), semantic forms (to the first approximation, strings such as \mbox{\gloss{‘love\arglist{\SUBJ,\OBJ{}}’}}), and sets.  In particular, feature structures are modelled as finite functions -- sets of pairs such that the first element of a~pair is an atom and the second element is either an atom, or a~semantic form, or a~feature structure (i.e., a~set again).\footnote{Together with \citet{kaplanbresnan82} and \citet{kaplan1995formal}, I do not take into consideration sets other than those which model feature structures, i.e., I ignore here coordinate structures, values of the attribute \gloss{adjunct}, etc.}  For example, the AVM in \REF{avm:lfg:index} is a~representation of the set of pairs in \REF{pairs:index}, i.e. -- given the commonly assumed Kuratowski's encoding of a~pair $\langle a, b\rangle$ as the set $\{\{a\}, \{a,b\}\}$ (see, e.g., \citealt[36]{ende:77}) -- the set in \REF{set:index}.\footnote{One potential problem with this standard LFG understanding of f-structures as sets is that, given the possibility of cyclic f-structures -- naturally occurring in analyses of various types of modification, e.g., \citet[19--20]{john:88:book}, \citet{zwei:88}, and \citet[298]{hau:nik:12}, and in other contexts, e.g., \citet[209]{fangsells07}, \citet[Section {4.3.2}]{prz:pat:12b}, and \citet{dal:pat:zym:20} -- sets that are used for modelling f-structures are not the well-founded sets of the standard (Zermelo--Fraenkel) set theory, but must rather rely on the non-standard notion of non-well-founded sets (see \citealt[103--112]{acze:88} on the history of this notion).  To the best of my knowledge, this has not been noticed in the LFG literature so far.}
+
+\ea\label{avm:lfg:index}
+\avm[values=\scshape]{[pers & 3 \\
+    num & sg \\
+    gend & f]}
+\ex\label{pairs:index}
+$\{\langle\PERS,\gloss{3}\rangle, \langle\NUM,\SG\rangle, \langle\GEND,\F\rangle\}$
+\ex\label{set:index}
+$\{\,\{\{\PERS\},\{\PERS,\gloss{3}\}\}, \,\{\{\NUM\},\{\NUM,\SG\}\}, \,\{\{\GEND\},\{\GEND,\F\}\}\,\}$
+\z
+
+Since some parts of f-structures (values of particular attributes, as well as attributes themselves) may be directly referred to in functional equations, they must all be direct elements of the model.  That is, sets representing f-structures cannot be considered unanalysable elements of models; rather, the subsets and atoms within such sets must also be elements of LFG models, so they should be explicitly related by the (converse of the) membership relation $\in$. Hence, the set in \REF{set:index} corresponding to the f-structure \REF{avm:lfg:index} translates into the configuration of model objects in Figure~\ref{fig:model:f}. There are 10 nodes in this configuration that encode particular sets (with node 1 representing the whole f-structure \REF{avm:lfg:index}) and six nodes are atoms.
+
+\begin{figure}[p]
+\begin{forest} for tree = {grow'=east, edge=-{Stealth[length=1.5mm]}, l+=2.5em, s sep+=1ex, anchor=base west}
+[$\bullet_{1}$
+    [$\bullet_{2}$, notin label above [$\bullet_{5}$, notin label above [\PERS, name=pers, notin label above]]
+                                      [$\bullet_{6}$, name=6, notin label below [\gloss{3}, notin label below]]
+    ]
+    [$\bullet_{3}$, notin label above [$\bullet_{7}$, notin label above [\NUM, name=num, notin label above]]
+                                      [$\bullet_{8}$, name=8, notin label below [\gloss{sg}, notin label below]]
+    ]
+    [$\bullet_{4}$, notin label below [$\bullet_{9}$, notin label above [\GEND, name=gend, notin label above]]
+                                      [$\bullet_{{10}}$, name=10, notin label below [\gloss{f}, notin label below]]
+    ]
+]
+\draw [-{Stealth[length=1.5mm]}] (10) to node[midway,sloped,above,inner sep=0pt] {\strut$\ni$} (gend);
+\draw [-{Stealth[length=1.5mm]}] (8) to node[midway,sloped,above,inner sep=0pt] {\strut$\ni$} (num);
+\draw [-{Stealth[length=1.5mm]}] (6) to node[midway,sloped,above,inner sep=0pt] {\strut$\ni$} (pers);
+\end{forest}
+  \caption{A~possible LFG model of the f-structure in \REF{avm:lfg:index}\label{fig:model:f}}
+\end{figure}
+
+The model in Figure~\ref{fig:model:f} is rather complex, when compared to the simplicity of the AVM in~\REF{avm:lfg:index}.  Why not assume the model in~Figure~\ref{fig:model:f:non} instead?\footnote{Compare the HPSG model of~\REF{avm:hpsg:index} in Figure~\ref{fig:model:f:hpsg} below.  Such simpler models, in which feature structures are represented as objects and attributes as relations on objects, are also common in other theories working with AVMs (see, e.g., \citealt[132--133]{bla:spa:93}).} Unfortunately, as explained in more detail presently (in \sectref{sec:mod:fs}), this simpler model is incompatible with the LFG idea that attributes and atomic values are ontologically the same kinds of entities, namely, atoms.  By contrast, according to the model in Figure~\ref{fig:model:f:non}, atomic values are atoms -- objects of the universe of the model -- but attributes are binary relations on such objects, i.e., ontologically very different entities.  Hence, in the following I~will assume the model in Figure~\ref{fig:model:f} as most directly reflecting the LFG view that f-structures are finite functions.
+
+\begin{figure}[p]
+\begin{forest} for tree = {grow'=east, edge=-{Stealth[length=1.5mm]}, l+=4em, s sep+=3ex, anchor=base west}
+[$\bullet$
+    [\textsc{3}, edge label={node[midway,sloped,above,inner sep=0pt]{\strut\textsc{pers}}}]
+    [\textsc{sg}, edge label={node[midway,sloped,above,inner sep=0pt]{\strut\textsc{num}}}]
+    [\textsc{f}, edge label={node[midway,sloped,above,inner sep=0pt]{\strut\textsc{gend}}}]
+]
+\end{forest}
+  \caption{A~hypothetical simpler model of the AVM in \REF{avm:lfg:index}}
+\label{fig:model:f:non}
+\end{figure}
+
+Le me finish this section by noting that configurations in Figures \ref{fig:model:c} and \ref{fig:model:f} are fragments of a~larger model corresponding to the representation of \emph{She loves you} given in Figure~\ref{fig:ex:lfg}.  The complete model would also contain strings representing semantic forms, as well as more atoms, many more sets representing the full f-structure, sets representing the s-structure, and relations $\phi$ and $\sigma$.
+
+
+
+\subsection{Comparison}
+\label{sec:mod:cmp}
+
+\subsubsection{Modelling feature structures}
+\label{sec:mod:fs}
+
+It should be clear from the above discussion that AVM representations correspond to very different model configurations in the two theories.  For example, while the HPSG model of the AVM in \REF{avm:hpsg:index}, shown in Figure~\ref{fig:model:f:hpsg}, contains just four nodes corresponding directly to the whole index (object 1 of species \textit{ref}), to 3rd person (object 2 of species \textit{3}), to singular number (3 -- \textit{sg}), and to feminine gender (4 -- \textit{f}), the LFG model of the corresponding AVM in \REF{avm:lfg:index}, shown in Figure~\ref{fig:model:f}, contains 16 nodes modelling not only the whole f-structure and the respective values of the three attributes, but also the attributes themselves and various intermediate sets.
+
+\ea\label{avm:hpsg:index}
+\avm{[\type*{ref}
+      pers & 3 \\
+      num & sg \\
+      gend & f]}
+\z
+
+\begin{figure}
+\begin{forest} for tree = {grow'=east, edge=-{Stealth[length=1.5mm]}, l+=4em, s sep+=3ex, anchor=base west}
+[$\bullet_{1}$, name=1
+    [$\bullet_{2}$, edge label={node[midway,sloped,above,inner sep=0pt]{\strut\textsc{pers}}}, name=pers]
+    [$\bullet_{3}$, edge label={node[midway,sloped,above,inner sep=0pt]{\strut\textsc{num}}}, name=num]
+    [$\bullet_{4}$, edge label={node[midway,sloped,above,inner sep=0pt]{\strut\textsc{gend}}}, name=gend]
+]
+\node[left=-1pt of 1, inner sep=0pt, font=\footnotesize\itshape] {ref};
+\node[above left=-7pt of pers, inner sep=0pt, font=\footnotesize\itshape] {3};
+\node[above=-5pt of num, inner sep=0pt, font=\footnotesize\itshape] {sg};
+\node[below left=-7pt of gend, inner sep=0pt, font=\footnotesize\itshape] {f};
+\end{forest}
+  \caption{An HPSG model of the AVM in \REF{avm:hpsg:index}\label{fig:model:f:hpsg}}
+\end{figure}
+
+
+This is not an incidental difference between the two theories.  In HPSG, attributes such as \textsc{pers}, \textsc{num}, and \textsc{gend} and types such as \textit{3}, \textit{sg}, and \textit{f} have very different interpretations: attributes denote relations (partial functions) between objects in the model, while types denote properties that objects may have.  In particular, different objects may -- and often do -- have the same species, so there can be many objects of type \textit{sg}, etc.  This difference between attributes and types is rendered typographically by using small capitals for attributes and italics for types.  
+
+On the other hand, in LFG, attributes such as \PERS, \NUM, and \GEND and their atomic values such as \gloss{3}, \SG, and \F are the same kinds of objects, namely atoms, each of which may occur in the model just once (there is only one atom \SG, etc.).  Hence, there is also no typographic distinction between attributes and atomic values of attributes.  
+
+This ontological uniformity of attributes and atomic values is taken advantage of in some LFG analyses.  For instance, according to the analysis of oblique arguments in \citet[196--201]{kaplanbresnan82}, a~“case-marking” preposition which may introduce such an oblique argument defines the value of the attribute \PCASE to be the oblique function homonymous with this preposition, e.g.:
+
+\ea\label{le:to} 
+  \begin{tabular}[t]{@{}lcl@{}}
+    \emph{to} & P & (\UP\PCASE) = \gloss{to}
+\end{tabular}
+\z
+This feature and its value are also present in the f-structure corresponding to the resulting PP constituent\@.  Verb forms like \emph{handed}, as used in \REF{ex:handed} from \citet[196]{kaplanbresnan82}, expect -- apart from any subject and objects -- an argument bearing this grammatical function, see \REF{le:handed}.
+
+\ea\label{ex:handed} 
+A~girl handed a~toy to the baby.
+\ex\label{le:handed} 
+\catlexentry{handed}{V}{\feqs{%
+    (\UP\PRED) = \gloss{‘hand\arglist{\SUBJ,\OBJ,\gloss{to}}’} \\
+    (\UP\TENSE) = \PST
+}}
+\z
+Finally, an appropriate VP rule -- simplified here to \REF{r:vp:kb82} -- contains the crucial equation \REF{eq:vp:kb82} on the PP:
+
+\ea
+\label{r:vp:kb82}
+\phraserule{VP}{
+  \rulenode{V\\
+    \DOWN{} = \UP}
+  \rulenode{NP\\
+    (\UP\OBJ) = \DOWN \\
+    (\DOWN\CASE) = \ACC}
+  \rulenode{PP\\
+    (\UP (\DOWN\PCASE)) = \DOWN}} \\
+\ex\label{eq:vp:kb82}
+(\UP (\DOWN\PCASE)) = \DOWN 
+\z
+Applied to the sentence \REF{ex:handed}, with the PP \emph{to the baby}, (\DOWN\PCASE) in equation \REF{eq:vp:kb82} evaluates to \gloss{to}, so the whole equation is equivalent to (\UP\gloss{to}) = \DOWN.  Note that \gloss{to}, the atomic value of \PCASE of the preposition \emph{to}, is used here as an attribute indicating an oblique grammatical function.  While such double use of atoms as values and attributes is rare in actual LFG analyses, it is not unique to the account of obliques in \citet{kaplanbresnan82}; for example, it also occurs in the formalisation of information structure in \citet[Sections {4.3.3--4.3.5}]{DN}.
+
+
+The above considerations do not imply that not distinguishing attributes from atomic values necessarily leads to such complex models as that partially illustrated in Figure~\ref{fig:model:f}.  For example, \citet[Section {2.1.3}]{john:88:book} defines models of f-structures as consisting of a~set of atoms, a~set of objects directly modelling particular feature structures, and a~2-argument partial function $\delta$ whose first argument is an f-structure, second argument is an atom \emph{qua} attribute, and the value is the value of this attribute in this f-structure.  On this approach the AVM in \REF{avm:lfg:index} receives a~model that may be represented pictorially as in Figure~\ref{fig:model:f:johnson}. Note, however, that on this view feature structures are no longer sets of $\langle$attribute, value$\rangle$ pairs, contrary to \citet{kaplanbresnan82} and \citet{kaplan1995formal}. 
+
+\begin{figure}
+  \begin{tikzpicture}
+      \node (f) at (0,0) {$\bullet_{\scalebox{.5}{1}}$};
+      \node (a-p) at (2,5) {\PERS};
+      \node (a-3) at (4,4) {\,\gloss{3}};
+      \node (a-n) at (2,3) {\NUM};
+      \node (a-s) at (4,2) {\,\SG};
+      \node (a-g) at (2,1) {\GEND};
+      \node (a-f) at (4,0) {\,\F};
+  \draw [-{Stealth[length=1.5mm]},shorten <=-3pt] (a-p.south east) to[out=-30,in=180,looseness=.75] ([shift={(.75ex,-.25ex)}]a-3.west);
+  \draw [-{Stealth[length=1.5mm]}] ([shift={(-.65ex,0ex)}]f.north) to[out=95,in=180,looseness=1.5] node[above, very near end, xshift=7pt, yshift=-1.5pt] {\footnotesize$\delta$} ([shift={(.75ex,-.25ex)}]a-3.west);
+  \draw [-{Stealth[length=1.5mm]},shorten <=-3pt] (a-n.south east) to[out=-30,in=180,looseness=.75] ([shift={(.75ex,-.25ex)}]a-s.west);
+  \draw [-{Stealth[length=1.5mm]}] ([shift={(-.25ex,0ex)}]f.north) to[out=90,in=180,looseness=1.5] node[above, very near end, xshift=2pt, yshift=-2pt] {\footnotesize$\delta$} ([shift={(.75ex,-.25ex)}]a-s.west);
+  \draw [-{Stealth[length=1.5mm]},shorten <=-3pt] (a-g.south east) to[out=-30,in=180,looseness=.75] ([shift={(.75ex,-.25ex)}]a-f.west);
+  \draw [-{Stealth[length=1.5mm]}] ([shift={(.15ex,0ex)}]f.north) to[out=85,in=180,looseness=1.5] node[above, very near end, xshift=-5pt, yshift=-1pt] {\footnotesize$\delta$} ([shift={(.75ex,-.25ex)}]a-f.west);
+\end{tikzpicture}
+  \caption{A~model of the f-structure in \REF{avm:lfg:index} as in \citet{john:88:book}\label{fig:model:f:johnson}}
+\end{figure}
+
+
+\subsubsection{Identity of indiscernibles?}
+\label{sec:mod:id}
+
+Both theories have trouble with indiscernible structures.  Let us illustrate this with sentence \REF{ex:sheshe}.
+\ea\label{ex:sheshe}
+She says she loves you.
+\z
+
+Consider the LFG f-structure for this sentence in Figure~\ref{fig:lfg:sheshe}. In the model configuration corresponding to this AVM there are single objects representing particular atoms: just one object \NOM, one \SG, one \PRS, one \TENSE, etc.  Moreover, since feature structures are sets of $\langle$attribute, value$\rangle$ pairs, the two \NINDEX values -- the substructures marked as \avm{\2} and \avm{\tag{4}} -- are the same set (namely, the one in \REF{set:index}), so they should be modelled with the same single object in the model (or, more precisely, with a~single configuration of objects shown in Figure~\ref{fig:model:f}, rooted in the same object 1). The problem is that nothing in our reconstruction of the intended LFG model theory guarantees this: two different models are possible, one in which $\avm{\2}=\avm{\tag{4}}$, and one in which $\avm{\2}\neq\avm{\tag{4}}$.  Only the first of these models properly encodes the idea that feature structures are sets.\footnote{Interestingly, the XLE platform for implementing LFG grammars \citep{xledoc}, normally very faithful to the LFG theory, does not treat f-structures as (standard) sets: there, two indiscernible f-structures are assumed to be different objects, unless there is a~statement in the grammar that explicitly requires their identity.}  We will return to this issue below, when discussing HPSG models.
+
+\begin{figure}
+  \avm[values=\scshape]{[
+  pred & `say 〈subj,comp〉' \\
+  subj &  \1[pred & `pro' \\
+          prontype & personal \\
+          case & nom \\
+          index & \2[
+            pers & 3 \\
+            num & sg \\
+            gend & f ] ]\\
+   comp & 
+        [
+        pred & `love 〈subj,obj〉' \\
+        subj &  \3[pred & `pro' \\
+                prontype & personal \\
+                case & nom \\
+                index & \4[
+                  pers & 3 \\
+                  num & sg \\
+                  gend & f ] ]\\
+        obj & [pred & `pro' \\
+                prontype & personal \\
+                case & acc \\
+                index & [ pers & 2 ] ] \\
+        tense & pres ] \\
+  tense & pres ]}
+  \caption{F-structure for \REF{ex:sheshe}\label{fig:lfg:sheshe}}
+\end{figure}
+
+The bigger problem is that, if f-structures are sets, the two f-structures representing \emph{she}, i.e., \avm{\1} and \avm{\tag{3}} in Figure~\ref{fig:lfg:sheshe}, are the same set-theoretical object.  (In the modelling of f-structures suggested above they may be the same object, but -- as discussed in the previous paragraph -- they do not have to be.)  But LFG requires that they be different objects -- we do not want to say that the two \gloss{‘pro’} values in these f-structures necessarily refer to the same person.  The way LFG deals with this problem is to assume that \PRED values -- semantic forms -- come with unique indices (normally not shown in AVMs), i.e., that whenever an equation like (\UP\PRED) = \gloss{‘pro’} is used, a~new index is assigned to the semantic form.  So the two references to the lexical entry for \emph{she} in \REF{le:she} that are made in the process of constructing the f-structure in Figure~\ref{fig:lfg:sheshe} result in two different equations, as if the following two statements were used:
+
+\ea 
+\ea (\UP\PRED) = \gloss{‘pro’$_1$}
+\ex (\UP\PRED) = \gloss{‘pro’$_2$}
+\z\z
+Unfortunately, this mechanism, as it stands, seems to be inherently procedural: at the relevant step of the derivation it must be known which indices have already been used so that a~new index can be assigned to a~new semantic form.  It is not immediately clear how to translate this mechanism to the model-theoretic view of LFG.\footnote{Given that \PRED values are largely redundant (cf.~\sectref{sec:arch:lfg} and fn.~\ref{fn:pred}), this problem may be solved by removing \PRED from f-structures altogether.  Another -- perhaps more conservative -- possible solution, suggested by Ash Asudeh (p.c.), is to provide indices with sufficient inherent structure to guarantee their uniqueness.  In the simple case of \REF{ex:sheshe}, it would suffice to take indices to be the relevant c-structure nodes, but a~more complex solution is required to also apply to \gloss{‘pro’} values of \PRED in the case of pro-dropped constituents (especially in languages which allow pro-dropping of multiple arguments of a~single predicate).}
+
+Also HPSG has a~problem with stating when exactly indiscernible structures should be treated as being the same structure.\footnote{The problem to be described presently is sometimes called “Höhle's problem” \citep[113]{poll:01,poll:04}.}  In HPSG, not even atoms are guaranteed to be unique, so one of the models of sentence \REF{ex:sheshe} (\emph{She says she loves you}), whose partial AVM is given in Figure~\ref{fig:hpsg:sheshe}, might involve the configuration in Figure~\ref{fig:hpsg:sheshe:model}, with single objects of type \textit{3} and \textit{sg} and two different objects of type \textit{f}. Given two different \textit{ref} objects, there are eight possible configurations of this part of the model, and given also the possibility of two different \textit{nom} objects, two different \textit{she} objects (in \textsc{phon} values), different \textit{elist} objects, etc., there are billions of different models of sentence \REF{ex:sheshe}, all described by the AVM in Figure~\ref{fig:hpsg:sheshe}, differing in ways that linguists do not care about.\footnote{Each word introduces three lists (values of \textsc{phon}, \textsc{val|subj}, and \textsc{val|comps}), and there are five words in this sentence, so there are 15 \textit{elist} objects stemming from words alone.  The number of different ways to partition a~set of $n$ elements into equivalence classes is given by Bell numbers $B_n$, and $B_{15} = 1{,}382{,}958{,}545$ (see \url{https://oeis.org/A000110/list}).  This should be multiplied by the eight configurations of the two \textit{ref} objects, etc.  \citet{rich:07:hpsg} proposes a~constraint to the effect that all \textit{elist} objects are the same object, but the problem of the other spurious ambiguities remains.}  This contrasts with the efforts within HPSG \citep{pollard1994head-driven,poll:98,rich:07:hpsg} to make models of various interpretations of utterances unique (at least up to isomorphism).
+
+\begin{figure}[p]
+\resizebox{\textwidth}{!}{\avm{[\type*{hd-subj-ph}
+      \phon < she, says, she, loves, you >\\
+      dtrs & < \1 [ \type*{word}\\
+                    \phon <she>\\
+                    \punk{synsem|cont|index}{\2 [\type*{ref}\\
+                                            pers & 3\\
+                                            num & sg\\
+                                            gend & f]}], \5 >\\
+      hd-dtr & \5 [ \type*{hd-comp-ph}\\
+                    \phon < says, she, loves, you >\\
+                    dtrs & <\6, [ \type*{hd-subj-ph}
+                                  \phon < she, loves, you >\\
+                                  dtrs & <\3 [\type*{word}
+                                              \phon <she>\\
+                                              \punk{synsem|cont|index}{\4 [\type*{ref}
+                                                                      pers & 3\\
+                                                                      num & sg\\
+                                                                      gend & f]}], \7 >\\
+                                   hd-dtr & \7 [\type*{hd-comp-ph}\\\phon <loves, you>]] >\\
+                    hd-dtr & \6 [\type*{word}\\phon & says] ] ]}}
+  \caption{Partial HPSG representation of \REF{ex:sheshe}\label{fig:hpsg:sheshe}}
+\end{figure}
+
+\begin{figure}[p]
+  \begin{tikzpicture}
+      \node (f01) at (-1,4) {…};
+      \node (f02) at (5,4) {…};
+      \node (f1) at (0,2) {$\bullet_{\scalebox{.5}{1}}$};
+      \node[rotate=45,xshift=-3pt,yshift=3pt] at (f1.north) {\scriptsize\textit{ref}};
+      \node (p3) at (2,4) {$\bullet_{\scalebox{.5}{2}}$};
+      \node[rotate=45,xshift=-5pt,yshift=3pt] at (p3.north) {\scriptsize\textit{3}};
+      \node (ns) at (2,2) {$\bullet_{\scalebox{.5}{3}}$};
+      \node[rotate=0,xshift=0pt,yshift=1pt] at (ns.north) {\scriptsize\textit{sg}};
+      \node (gf1) at (1.5,0) {$\bullet_{\scalebox{.5}{4}}$};
+      \node[rotate=45,xshift=2pt,yshift=-2pt] at (gf1.west) {\scriptsize\textit{f}};
+      \node (f2) at (4,2) {$\bullet_{\scalebox{.5}{5}}$};
+      \node[rotate=-45,xshift=5pt,yshift=3pt] at (f2.north) {\scriptsize\textit{ref}};
+      \node (gf2) at (2.5,0) {$\bullet_{\scalebox{.5}{6}}$};
+      \node[rotate=45,xshift=2pt,yshift=-2pt] at (gf2.west) {\scriptsize\textit{f}};
+  \draw [-{Stealth[length=1.5mm]}] (f01.east) to[out=0,in=180,looseness=1] node[above,sloped] {\footnotesize\NINDEX} ([shift={(.75ex,-.25ex)}]f1.west);
+  \draw [-{Stealth[length=1.5mm]},shorten >=-3pt] (f02.west) to[out=180,in=0,looseness=1] node[above,sloped] {\footnotesize\NINDEX} ([shift={(.75ex,-.25ex)}]f2.east);
+  \draw [-{Stealth[length=1.5mm]},shorten >=1pt] (f1.north east) to node[above,sloped] {\footnotesize\PERS} ([shift={(.75ex,-.25ex)}]p3.west);
+  \draw [-{Stealth[length=1.5mm]}] ([shift={(0ex,.25ex)}]f1.east) to node[above] {\footnotesize\NUM} ([shift={(0ex,.25ex)}]ns.west);
+  \draw [-{Stealth[length=1.5mm]}] (f1.south east) to node[above,sloped] {\footnotesize\GEND} ([shift={(.75ex,-.25ex)}]gf1.north west);
+
+  \draw [-{Stealth[length=1.5mm]},shorten >=2pt] (f2.north west) to node[above,sloped] {\footnotesize\PERS} ([shift={(-.75ex,-.25ex)}]p3.east);
+  \draw [-{Stealth[length=1.5mm]},shorten >=-1pt] ([shift={(0ex,.25ex)}]f2.west) to node[above] {\footnotesize\NUM} ([shift={(0ex,.25ex)}]ns.east);
+  \draw [-{Stealth[length=1.5mm]},shorten >=-2pt] (f2.south west) to node[above,sloped] {\footnotesize\GEND} ([shift={(-.75ex,0ex)}]gf2.north east);
+\end{tikzpicture}
+  \caption{A~fragment of a~possible HPSG model of the AVM in Figure~\ref{fig:hpsg:sheshe}\label{fig:hpsg:sheshe:model}}
+\end{figure}
+
+Now, it is possible to formulate within RSRL a~constraint that makes sure that all indiscernible structures are in fact the same structure \citep[Section {3.1.4}]{sail:03a}, but such a~constraint, if applied indeterminately, would be incompatible with various HPSG analyses -- most importantly, with the standard HPSG binding theory \citep[Chapter {6}]{pollard1994head-driven}.\footnote{Also the architecture for phonology proposed in \citet{hoeh:98} crucially relies on not all indiscernible structures being the same structure.  \citet{sail:03a} formulates the relevant constraint in such a~way that it only applies to one type of structures.}  There is no space to present that theory here (see \citealt{mul:bra:20} for an overview), but suffice it to say that the traditional generative notion of coindexation is understood here literally: as identity of \textsc{index} values.  For example, the sentence \REF{ex:sheshe} is assumed in HPSG to have two different structures corresponding to the following two indexations:
+
+
+\ea \ea \label{ex:sheshe:a}
+She$_i$ says she$_i$ loves you.
+\ex\label{ex:sheshe:b}
+She$_i$ says she$_j$ loves you.\quad ($i \neq j$)
+\z\z
+So while any model of \REF{ex:sheshe:a} should equate \textsc{index} values within the two words \emph{she} in this sentence, these \textsc{index} values must be different objects in any model of \REF{ex:sheshe:b}, even though they are indiscernible.
+
+To the best of my knowledge, the problem of avoiding spuriously distinct models in a~way that does not conflict with existing HPSG analyses (in particular, with the standard binding theory) remains unsolved.
+
+
+\subsubsection{Conditions on models}
+\label{sec:mod:cnd}
+
+Both theories impose meta-theoretical conditions on what counts as an intended model.  As mentioned in \sectref{sec:mod:hpsg}, the common constraint on HPSG models is that they be exhaustive, i.e., informally speaking, simulate all other models: they should contain all structures admitted by the grammar.  The intuition behind this requirement is that a~single model corresponds to the whole language described by the grammar.
+
+LFG apparently assumes the more common view of models, where each model corresponds to a~single utterance, and it is only the collection of all such models that corresponds to the whole language.  However, meta-theoretical conditions on LFG models are in a~way more complex than conditions imposed on HPSG models.
+
+First of all, LFG models are required to be minimal.  For example, functional equations in the lexical entry of \emph{she} (see \REF{le:she}) involving the attribute \NINDEX, i.e. equations repeated below in \REF{le:she:index}, describe as a~possible value of \NINDEX not only the feature structure in \REF{avm:lfg:index}, repeated below as \REF{index:min}, but also the one in \REF{index:nonmin1} and infinitely many others, including infinite feature structures (both infinitely embedded and -- on the assumption that the set of atoms may be infinite -- with an infinite number of attributes).
+
+\ea\label{le:she:index} 
+  \begin{tabular}[t]{@{}l}
+    (\UP\NINDEX\PERS) = \gloss{3} \\
+    (\UP\NINDEX\NUM) = \SG \\
+    (\UP\NINDEX\GEND) = \F \\
+\end{tabular}
+\ex\label{index:min}
+\avm[values=\scshape]{[pers & 3 \\
+      num & sg \\
+      gend & f]}
+\ex\label{index:nonmin1}
+\avm[values=\scshape]{[pers & 3 \\
+      num & sg \\
+      gend & f \\
+      arbi & trary \\
+      non & [sen & se] ]}
+\z
+Other constraints in the grammar do not preclude such values of \NINDEX, so a~meta-theoretical constraint is needed to the effect that only minimal feature structures satisfying the grammar are admitted within models.  Technically, this amounts to defining a~partial order on models and admitting only the minimal elements of this order.
+
+\largerpage
+The second condition on models is more complex and concerns constraining statements such as \REF{constr:tense} (from the grammar rule \REF{r:s}) and \REF{constr:pers} (from the lexical entry \REF{le:loves}).
+
+\ea
+\ea\label{constr:tense} (\DOWN\TENSE)
+\ex\label{constr:pers} (\UP\SUBJ\NINDEX\PERS) $=_c$ \gloss{3}
+\z\z
+Such statements are understood as additional filters on the minimal models of a~grammar, or -- more precisely -- on the minimal models of the version of the grammar with all such constraining statements removed.
+
+The precise model-theoretic nature of this mechanism has never, to the best of my knowledge, been specified.  Constraining statements of this kind are not mentioned in the model-theoretic view of LFG of \citet{kaplan1995formal}, and they are explicitly excluded in previous attempts to provide LFG (or LFG-like) formalisms with a~model theory (see \citealt[Section {4.2}]{john:88:book} and \citealt[Section {6}]{blackburn1995a-specification}; see also \citealt{BorjPayn13}).  But once meta-theoretical quantification over models and relations on models are permitted -- and they are already inherent both in the HPSG notion of exhaustive models and the LFG notion of minimal models -- it is possible to understand constraining statements in model-theoretic terms.  One possibility is this:\footnote{Given that statements may contain disjunctions, and that different constraining statements may occur in different disjuncts, the actual definition would have to be more complex: grammars would have to be converted to a~disjunctive normal form and collections of models would have to be defined for each disjunct of this normal form.  Then the final collection of models of the grammar would be the sum of all such collections.}
+
+\begin{itemize}
+\item Let $\theta$ be an LFG grammar, understood as a~set of logical formulae.  Some of the (sub)formulae are marked as constraining, the others are understood as defining.
+\item Let $\theta_{\mathit{all}}$ be the whole grammar $\theta$ without any division of (sub)formulae into defining and constraining, and $\theta_{\mathit{def}}$ -- the same grammar with all constraining (sub)formulae removed. \item Let ${\cal M}_{\mathit{all}}$ be the collection of all models of $\theta_{\mathit{all}}$, and ${\cal M}_{\mathit{def}}$ -- the collection of all \emph{minimal} models of $\theta_{\mathit{def}}$.\footnote{Formally, minimal models are the minimal elements of the subsumption relation defined on models as in \citet[Section {2.8}]{john:88:book}.}
+\item Then ${\cal M} \,\stackrel{\text{\tiny df}}{\equiv} \,{\cal M}_{\mathit{def}} \cap {\cal M}_{\mathit{all}}$ is the collection of admitted models of $\theta$.
+\end{itemize}
+The idea here is that ${\cal M}_{\mathit{def}}$ is the collection of all minimal models before the constraining filters are applied, and the intersection with ${\cal M}_{\mathit{all}}$, i.e., with models in which all constraining statements are satisfied, removes from ${\cal M}_{\mathit{def}}$ those models which do not satisfy some constraining statements.
+
+\subsection{Summary}
+\label{sec:mod:sum}
+
+This section, aiming to present and compare model theories assumed in HPSG and LFG, is more speculative than the previous sections.  The reason is that one object of comparison exists and the other does not, so it was necessary to reconstruct a~possible model theory of LFG from informal and very partial suggestions.
+
+Perhaps surprisingly, it turns out that the idea that f-structures are sets of $\langle$attribute, value$\rangle$ pairs does not translate into elegant models, but rather creates an overhead of the need to represent these sets as objects within models.  Also, additional care needs to be taken to ensure that co-extensional sets are really the same model objects.  Moreover, it is not immediately clear how to formally and non-procedurally ensure unique indexation of semantic forms.  Nevertheless, despite these difficulties, and despite the fact that constraining statements were excluded from previous attempts to construct a~model theory for LFG, it is not difficult to imagine how to construct such a~model theory, if only appropriately powerful meta-theoretical operations on candidate models are permitted (as -- to some extent -- they already are, given the minimality requirement).
+
+Also somewhat surprisingly, while much attention has been devoted to model theory within HPSG, there are still unsolved problems there, concerning the multiplicity of different models admitted by typical HPSG grammars, differing in ways that linguists often do not suspect, and certainly do not care about.
+
+Let the conclusion of this section be that, despite their age and stability, both theories would benefit from more work on their formal foundations.
+
+
+\section{Conclusion}
+\label{sec:conc}
+
+So how similar are LFG and HPSG?  I~agree with Carl Pollard that in some ways they are more similar than sometimes perceived:
+
+\begin{quote}
+  I~believe that the difference between LFG and so-called PSG [i.e., theories such as GPSG and HPSG; AP] is no greater than the differences among various theoretical proposals within PSG, or even within HPSG itself.  As far as I~am concerned, then, the separation between PSG and LFG exists more at a~sociological level than at the level of scientific content -- but I~am aware that not everyone agrees about this. \hspace*{\fill}\citep[4]{poll:97:nature}
+\end{quote}
+In particular, the difference between the multi-level representations of LFG and the monolithic AVMs assumed in HPSG is -- in my view -- of little formal consequence, although it is certainly important for the compactness and readability of resulting structures.  
+
+In fact, LFG and HPSG converge in many respects.  As emphasised above, both theories are highly formalised and -- unlike derivational theories or Categorial Grammar -- both are self-described as constraint-based or model-theoretic, although HPSG may boast of much more developed model theories.  Importantly, both have well-developed computational platforms for implementing grammars: XLE \citep{xledoc} in the case of LFG and LKB \citep{cope:02} and Trale \citep{trale:03} in the case of HPSG, with XLE allowing for very direct implementations of theoretical analyses.\footnote{More precisely, XLE makes it possible to faithfully implement syntactic and -- with extensions described in \citet{dal:pat:zym:20} -- semantic parts of LFG analyses.  In the case of HPSG, Trale seems to be closer to its constraint-based nature, while LKB is more efficient and well-developed.}  In both cases, large-scale grammars of multiple languages have been developed.
+
+Also, unlike some of the other highly formalised and implementable theories, both LFG and HPSG are empirically rich.  A~plethora of analyses of multiple phenomena in typologically varied languages have been offered within each theory, in a~great many articles appearing in the best linguistic journals and in numerous monographs published by the most prominent publishers.  Both have very well developed semantic components, and both make it possible to formulate precise analyses encompassing multiple linguistic levels.  As emphasised in \citet{wec:asu:20}, many phenomena receive similar accounts in the two theories.
+
+In summary, it is clear that LFG and HPSG are close neighbours in the linguistic theoretical landscape of the early 2020s, and it is my hope that this chapter encourages more neighbourly collaboration between the two theories.
+
+\section*{Acknowledgements}
+
+Many thanks to the following people for comments on the first version of this chapter and -- in some cases -- for discussion: Doug Arnold, Ash Asudeh, Stefan Müller, Agnieszka Patejuk, Geoff Pullum, Frank Richter, Shuly Wintner, Annie Zaenen, and the anonymous reviewers.  They should not be held responsible for any controversial opinions expressed here or for any remaining inadequacies; if some of their suggestions are less than fully addressed, it is only because this is just a chapter (and one that is too long already!\@), and not the monograph that a~fuller presentation and comparison of LFG and HPSG deserves.  And many thanks to Mary Dalrymple, the editor of this volume, for her infinite patience!
+
+{\sloppy\printbibliography[heading=subbibliography,notkeyword=this]}
+
+\end{document}

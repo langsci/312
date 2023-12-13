@@ -1,0 +1,912 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10185962}
+\title{Raising and control}
+\author{Nigel Vincent\affiliation{The University of Manchester}}
+\abstract{Raising and control are classic topics that have had a key role in theoretical debates since the early days of transformational grammar. In this chapter we examine these structural patterns, taking into account cross-linguistic variation and with a particular focus on the way the phenomena in question have been analysed within LFG and the differences between LFG and other theoretical frameworks.}
+
+\IfFileExists{../localcommands.tex}{
+ \addbibresource{../localbibliography.bib}
+\addbibresource{thisvolume.bib}
+ \input{../localpackages}
+ \input{../localcommands}
+ \input{../localhyphenation}
+ \togglepaper[17]%%chapternumber
+}{}
+
+\begin{document}
+\maketitle
+\label{chap:Control}
+
+\section{The phenomena: raising, control and complementation}
+\label{sec:Control:1}
+
+The terms \textsc{raising}, in reference to the examples in (\ref{ex:Control:1}), and \textsc{control}, for those in (\ref{ex:Control:2}), label different types of relation that may hold between a governing verb and its complement.
+
+
+\ea\label{ex:Control:1}
+\ea\label{ex:Control:1a} The teacher seemed to like the students.
+\ex\label{ex:Control:1b} The students believed the teacher to like them.
+\z\z
+
+\ea\label{ex:Control:2}
+\ea\label{ex:Control:2a} The teacher tried to help the students.
+\ex\label{ex:Control:2b} The students persuaded the teacher to help them.
+\z\z
+
+On the surface these look very similar: a verb immediately followed by an infinitival complement in (\ref{ex:Control:1a}) and (\ref{ex:Control:2a}), and a verb followed by an NP and an infinitival in (\ref{ex:Control:1b}) and (\ref{ex:Control:2b}). However, a moment's inspection is enough to reveal fundamental differences. While (\ref{ex:Control:2b}) does mean that the students persuaded the teacher, (\ref{ex:Control:1b}) says nothing about whether the students believed the teacher. At the same time in both (\ref{ex:Control:1b}) and (\ref{ex:Control:2b}) the NP \emph{the teacher} responds to standard diagnostics for objecthood such as replacement by the pronoun \emph{her/him} and change of status to subject under passivization: \emph{The teacher was believed to like the students} and \emph{The teacher was persuaded to help the students}.
+
+Considered from a semantic perspective, the essential difference here is that a raising verb like \emph{seem} does not assign a theta-role to its external argument; rather the acceptability of a sentence with \emph{seem} depends on the semantic compatibility of its external argument and the predicate expressed in the following infinitive. Thus, (\ref{ex:Control:1a}) is good because \emph{like} requires an animate, sentient being as subject and teacher fills that bill; hence by contrast the unacceptability or pragmatic strangeness of \emph{?The blackboard seemed to like the students}. In this respect, items such as \emph{seem} show similarities with an auxiliary or a copula like \emph{be} or \emph{become} and indeed they have sometimes been referred to as semi-auxiliaries or semi-copulas \citep[5--6]{Pustet2003}. This intermediate status between a grammatical and a lexical item is often the product of historical change, a topic to which we will return in \sectref{sec:Control:13} below. By contrast, the external argument of a control (aka equi) verb such as \emph{persuade} or \emph{try} does identify the source of the persuasion or the effort.
+
+Although, in common with much of the literature, we have referred above to \emph{seem} as a raising verb, it would be more accurate to call it a raising predicate since, as has frequently been observed, a particular lexical item may give expression to more than one predicate, not all of which exhibit the same control/raising status. Thus, \emph{appear} is sometimes synonymous with \emph{seem}, as for instance in (\ref{ex:Control:3a}) beside (\ref{ex:Control:1a}), but can also occur in other contexts where \emph{seem} is not an option, hence the contrast in grammaticality between (\ref{ex:Control:3b}) and (\ref{ex:Control:3c}) and the fact that (\ref{ex:Control:3d}) is perfectly acceptable while (\ref{ex:Control:3e}) is at best tautological:
+
+\ea\label{ex:Control:3}
+\ea[]{\label{ex:Control:3a} The teacher appeared to like the students.}
+\ex[]{\label{ex:Control:3b} The teacher appeared as if from nowhere. }
+\ex[*]{\label{ex:Control:3c} The teacher seemed as if from nowhere. }
+\ex[]{\label{ex:Control:3d} The teacher seemed to appear from nowhere.}
+\ex[?]{\label{ex:Control:3e} The teacher appeared to seem to like the students.}
+\z\z
+
+\largerpage
+In a similar vein, \emph{wants} in (\ref{ex:Control:4a}) is ambiguous between a reading in which Sally desires to be more diligent and one which expresses her teacher's opinion even if Sally herself has no such wish! The former is a control reading, the latter a raising reading. With a gerundial complement in (\ref{ex:Control:4b}) only the raising option is available as also in the alternative version in (\ref{ex:Control:4c}) attested in Scottish and some other varieties of English:
+
+\ea\label{ex:Control:4}
+\ea\label{ex:Control:4a} Sally wants to work harder.
+\ex\label{ex:Control:4b} This shirt wants washing.
+\ex\label{ex:Control:4c} This shirt wants washed.
+\z\z\clearpage
+
+\noindent
+More generally, rather than a binary split between raising and control verbs, there appears to be a continuum from raising to control with different verbs in different languages ranged along it (\citealt[75--79]{barron2001}, who references an earlier discussion by \citealt{Huddleston1976}). Such evidence in turn implies the importance of taking into consideration both the syntactic and semantic bases of these constructions as well as language-particular lexical idiosyncrasies. The latter, as we will see, also argue in favour of adopting a diachronic as well as a synchronic perspective.
+
+The terms `raising' and `control' both go back to the early years of generative grammar and allude in an interestingly complementary way to the different perspectives that scholars have adopted in analysing examples such as those in (\ref{ex:Control:1}) and (\ref{ex:Control:2}). Raising implies a movement from a lower to a higher position within a syntactic representation and thus evokes the derivational type of account that LFG has turned its back on. Control by contrast refers to the relation between a dominant element and a subordinate item or position within a range of non-finite --- and indeed, as we will see, some finite --- contexts, but with no further implication as to how this relation is to be modelled. In other words, it is part of the more general phenomenon of coreference and identifies a relation which can hold both within complement structures, as above, and in broader syntactic contexts as in the examples in (\ref{ex:Control:5}):
+
+\ea\label{ex:Control:5}
+\ea\label{ex:Control:5a} Glad to be home again, Sally waved to her neighbours in the garden.
+\ex\label{ex:Control:5b} Bill called a plumber to fix the drain.
+\ex\label{ex:Control:5c} Sally came across Bill in the garden crying his eyes out.
+\z\z
+
+In (\ref{ex:Control:5a}) the argument that \emph{glad} is predicated of can only be Sally and not her neighbours but the relation is determined by the clausal structure and not by any specific lexical item; in (\ref{ex:Control:5b}) we have an optional purpose clause added to the main clause \emph{Bill called a plumber}; in both (\ref{ex:Control:5b}) and (\ref{ex:Control:5c}) the modifying clauses \emph{to fix the drain} and \emph{crying his eyes out} are controlled by the object of the main clause. Cases such as these fall under the heading of adjunct control, a topic which we consider in more detail in \sectref{sec:Control:12} below.
+
+The literature on these constructions, and possible analyses thereof, is vast (see \citealt{DaviesDubinsky2004} and \citealt{Landau2013} for book-length treatments and \citealt{Polinsky2013} for a briefer but no less valuable survey), and there is now a very thorough and up-to-date account in LFG terms in \citet[chapter~15]{DLM:LFG}. It is natural then to ask what more a chapter such as the present one can bring to the table. Rather than simply serving up yet another overview, we will concentrate instead on three themes, in each case seeking to show the advantages --- and in some instances the problems --- inherent in adopting an LFG perspective:
+\begin{enumerate}
+\item cross-linguistic and diachronic variation in control/raising structures;
+\item proposals that post-date the surveys cited above, in particular the `two-tier' model put forward in \citet{Landau2015}, the analysis of so-called restructuring verbs \citep{Grano2015}, the treatment of partial control \citep{Pearson2016,Sheehan2018b,Sheehan2018,SevdaliSheehan2021}, and the treatment of adjunct control \citep{Donaldson2021,Donaldson2021b,Landau2021};
+\item cross-theoretical comparison of LFG with other approaches, in particular on the one hand derivational accounts within versions of Minimalism and on the other the lexical semantic approach of \citet{JackendoffCulicover2003} and \citet{CulicoverJackendoff2006}.
+\end{enumerate}
+That said, some foundations need to be laid. We begin therefore by reviewing a series of dichotomies and sub-types that have served to frame much of the literature to date (\sectref{sec:Control:2} through \sectref{sec:Control:5}) before moving on to consider our chosen themes and their theoretical implications.
+
+\section{Functional vs anaphoric control}
+\label{sec:Control:2}
+
+Differences of detail and interpretation aside, LFG analyses of these items and constructions all build on the classic distinction between functional and anaphoric control developed in \citet{bresnan1982control-complementation} and other early LFG work on the topic such as \citet{mohanan83}. Functional control involves identity between a controlling grammatical relation and an open function, \XCOMP\ in the case of control induced by lexical items and \XADJ\ for adjunct control. Crucially, on Bresnan's account functional control provides a means of modelling both verbs traditionally labelled as raising and equi, as can be seen in the f-structures for \emph{seem} and \emph{try} in (\ref{ex:Control:6}):
+
+\ea\label{ex:Control:6}
+\ea\label{ex:Control:6a} \catlexentry{seem}{V}{(\UP\PRED) = `\textsc{seem}\arglist{\XCOMP}\SUBJ'\\
+   (\UP\SUBJ) = (\UP\XCOMP\SUBJ)}
+ 
+\ex\label{ex:Control:6b}\catlexentry{try}{V}{(\UP\PRED) =  `\textsc{try}\arglist{\SUBJ,\XCOMP}'\\
+ (\UP\SUBJ) = (\UP\XCOMP\SUBJ)}
+\z\z
+
+These representations distinguish the raising verb \emph{seem}, where the \SUBJ\ is outside the brackets which enclose the semantically pertinent arguments, from the equi verb \emph{try}, where all the arguments are inside. Otherwise put, \emph{try} assigns a theta-role to its subject while \emph{seem} does not.
+
+The open \XCOMP\ function has also been proposed as a way of modelling some copular and auxiliary constructions \citep{Falk84}. Thus in Maltese, where there is no copula in the present tense as in (\ref{ex:Control:7a}) by contrast with the past (\ref{ex:Control:7b}), one solution is to allow the \PRED\ value `\textsc{be}\arglist{\XCOMP}\SUBJ' to be assigned either to the copula or, in its absence, to the predicate nominal. In effect, this treats these constructions as a type of raising.
+
+\ea\label{ex:Control:7} Maltese
+\ea\label{ex:Control:7a}\gll Albert tabib\\
+Albert   doctor\\
+\glt `Albert is a doctor.'
+\ex\label{ex:Control:7b}\gll Albert kien    tabib\\
+    Albert   {be.\PST.\M.\SG} doctor\\
+    \glt`Albert was a doctor.'
+\z\z
+                
+The alternative here, and one perhaps more consistent with traditional accounts of copulas as items that connect subjects and predicates of various grammatical kinds, would involve the closed function \PREDLINK\ and a copula with the \PRED\ value `\textsc{be}\arglist{\SUBJ,\PREDLINK}' (for more discussion of these options and the conclusion that no single account will cover all cross-linguistic copular patterns, see \citet[189--197]{DLM:LFG}).
+
+A further possibility, which we will not discuss here, is to permit control into some object and oblique structures, an account that involves postulating open variants \XOBJ\ and \XOBL\ of the standard closed functions \OBJ\ and \OBL\ \citep{Falk:05}.
+
+ In contrast to these lexically determined structures, an example like (\ref{ex:Control:5a}) requires a statement of the relational equivalence within the relevant PS rule rather than as part of the lexical entry:
+
+ \ea\label{ex:Control:8}
+ \phraserule{IP}{\rulenode{AP\\(\UP\XADJ)=\DOWN\\(\UP\SUBJ)=(\DOWN\SUBJ)}
+   \rulenode{IP\\\UP=\DOWN}}
+\z
+In this way an adjunct phrase (AP) such as \emph{glad to be home again} is marked as serving the \XADJ\ role within the f-structure of the higher IP and the open subject of the \XADJ\ will be determined at the level of the clause rather than by a specific lexical entry.
+
+ The common property in both the \XCOMP\ and \XADJ\ constructions is identity between the controlling and the controlled function, which means not only that the items in question must be coreferential but that they must share all grammatical and semantic features such as case, gender, number and person. They also have in common that in some contexts they may alternate with closed functions. Thus, the examples (\ref{ex:Control:9a}) and (\ref{ex:Control:9b}) illustrate a closed \COMP\ \emph{that}-clause subcategorised by verbs like \emph{believe} and \emph{promise}, while in (\ref{ex:Control:10a}) and (\ref{ex:Control:10b}) we have instances of closed \ADJ\ as the function to be associated with the constituents \emph{everyone having gone home} and \emph{with Sally away}:
+
+ \ea\label{ex:Control:9}
+ \ea\label{ex:Control:9a} The doctor promised Sally that the medicine would work.
+\ex\label{ex:Control:9b} Sally believed that the doctor was right.
+\z\z
+
+\ea\label{ex:Control:10}
+\ea\label{ex:Control:10a} Everyone having gone home, Bill could finally relax.
+\ex\label{ex:Control:10b} With Sally away, the house seemed very quiet.
+\z\z
+ 
+Examples such as those in (\ref{ex:Control:9}) and (\ref{ex:Control:10}) are closed functions with independently defined subjects. However, it is also possible for a closed \COMP\ to have a controlled subject, as in (\ref{ex:Control:11}) and (\ref{ex:Control:12}).
+
+\ea\label{ex:Control:11}
+\ea\label{ex:Control:11a} Losing the race upset Bill.
+\ex\label{ex:Control:11b} Bill and Sally discussed complaining to the teacher.
+\z\z
+ 
+\ea\label{ex:Control:12}
+ \ea\label{ex:Control:12a} Bill prefers to leave now. 
+ \ex\label{ex:Control:12b} Bill wishes to leave tomorrow
+\z\z
+In such a circumstance, in order to establish a link between a controller and a controlled item within a closed function we need anaphoric control. As the name implies, this involves an element, labelled \textsc{pro}, which behaves like a pronoun in its ability to establish a referential link to an item outside the constituent that it is part of, but, like overt anaphors such as reflexives and unlike pronouns, it does not have the ability to refer independently. Formally, what this involves is the rule in (\ref{ex:Control:13}) (=~(35) in \citealt[326]{bresnan1982control-complementation}), where G identifies the universal set of semantically unrestricted functions and $\Delta$ allows for particular limitations on the available function in any given language:
+
+\ea\label{ex:Control:13}
+For all lexical entries L, for all \textsc{g} $\in\Delta$, assign the optional pair of
+equations $\{((\UP\ \mbox{\textsc{g}}\ \PRED)=\mbox{\textsc{`pro'}}),(\UP\ \FIN)=_c\alpha\}$ to L.
+\z
+This general principle allows the \textsc{pro}-valued function to be assigned to lexical entries while respecting language-particular constraints as to what may constitute the function \textsc{g} and what set of forms it can apply to. Thus, in English \textsc{g} can only be \SUBJ\ and the forms in question must be non-finite but, as we shall see, other languages may vary. This rule is applicable both for predicates with no overt subject such as \emph{losing the race} in (\ref{ex:Control:11a}) or \emph{complaining to the teacher} in (\ref{ex:Control:11b}) and for the complements of some verbs, particularly those of wishing and wanting, as in (\ref{ex:Control:12}). We return to the special issues engendered by the analysis of these verbs in \sectref{sec:Control:4} below.
+
+The difference between verbs that take functional control and those that take anaphoric control is very clear in Icelandic \citep{Andrews82,Andrews1990}, a language in which some items display subject properties such as determination of reflexives but where the case marking is not the usual nominative. Thus, in the simple sentence (\ref{ex:Control:14a}) the subject of \emph{gengur vel} `do well' is marked with the dative case. When this predicate is embedded under a functional control verb as in (\ref{ex:Control:14b}) the dative case is maintained but with an anaphoric control verb as in (\ref{ex:Control:14c}), for many speakers, it is the latter item that determines the nominative case on the subject (examples from \citealt[(39) and (43)]{Andrews1990}):
+
+\ea\label{ex:Control:14} Icelandic
+\ea\label{ex:Control:14a} \gll Drengnum  gengur   vel vi{\texteth} vinnuna\\
+ {boy.\DEF.\DAT} {go.\PRS.3\SG} well at  work\\
+\glt `The boy is doing well at work.'
+\ex\label{ex:Control:14b} \gll Drengnum  vir{\texteth}ist    ganga vel vi{\texteth} vinnuna\\
+    {boy.\DEF.\DAT} {seem.\PRS.3\SG} {go.\INF} well at  work\\
+    \glt `The boy seems to be doing well at work.'
+\ex\label{ex:Control:14c} \gll Drengurinn  vonast    til a{\texteth}  ganga vel vi{\texteth} vinnuna\\
+    {boy.\DEF.\NOM} {hope.\PRS.3\SG}  \gloss{c} \gloss{infl}   {go.\INF} well at  work\\
+    \glt`The boy hopes to do well at work.'
+\z\z
+To model (\ref{ex:Control:14c}) requires a lexical entry for \emph{vona} `hope' as in (\ref{ex:Control:15}):
+
+\ea\label{ex:Control:15}
+\catlexentry{vona}{V}{(\UP\PRED) =  `\textsc{vona}\arglist{\SUBJ,\COMP}'\\
+ (\UP\COMP\SUBJ\PRED) = \textsc{`pro'}}
+\z
+
+Where the presence of \textsc{pro} is determined by the lexical entry, as here, we have an instance of obligatory anaphoric control. By contrast in (\ref{ex:Control:16}) we have so-called arbitrary control where the antecedent for \textsc{pro} depends not on the requirements of the matrix verb but on the broader context.
+
+\ea\label{ex:Control:16}
+\ea\label{ex:Control:16a} Bill gestured but nobody noticed it.
+\ex\label{ex:Control:16b} Bill gestured to leave.
+\ex\label{ex:Control:16c} Bill gestured for everyone to leave.
+\ex\label{ex:Control:16d} Sally said everyone thought Bill should have gestured (for them/her) to leave.
+\z\z
+A verb like \emph{gesture} does not require a complement, as (\ref{ex:Control:16a}) demonstrates. However, if it is linked to an infinitive, then the external argument of the infinitival verb can either be implicit and dependent on the discourse situation, as in (\ref{ex:Control:16b}), or be made explicit, as in (\ref{ex:Control:16c}). Moreover, if there is an overt antecedent it may be two or more clauses earlier as in (\ref{ex:Control:16d}).
+
+It is important to underscore that while, as we have already said, labels like raising and control verb or construction are commonly used to classify empirical phenomena, the distinction between functional and anaphoric control is a theoretical construct designed to model such data. It is eminently possible, therefore, that within LFG as within other frameworks, there could be different analyses for the same dataset. Thus, for the verb \emph{try} Bresnan's lexical entry in (\ref{ex:Control:6b}) implies an analysis in terms of functional control, endorsed in \citet[644]{mohanan83} and repeated in \citet[103]{BoNoSa19}. Similarly, \citet[141--144]{falk2001lexical} argues for a distinction between \emph{try} with functional control and verbs like \emph{agree} with anaphoric control. By contrast, \citet[561--566]{DLM:LFG}, and already \citet[§4.2]{dalrymple01}, prefer to analyse \emph{try} as also requiring obligatory anaphoric control and hence with the \PRED\ value in (\ref{ex:Control:17}) akin to the one for Icelandic \emph{vona} in (\ref{ex:Control:15}):
+
+\ea\label{ex:Control:17}
+\catlexentry{try}{V}{(\UP\PRED) = `\textsc{try}\arglist{\SUBJ,\COMP}'\\
+ (\UP\COMP\SUBJ\PRED) = \textsc{`pro'}}
+\z
+This has the benefit of allowing a much closer alignment between the traditional classes and the different analyses, with raising coming under functional control and equi verbs under anaphoric control. It has consequences, too, when we come to consider the semantics of control/raising since a \COMP\ translates naturally into a proposition whereas the obvious semantic correlate of an \XCOMP\ is a property. Moreover, it serves to undermine one of the criticisms of LFG made by \citet[61--62]{Landau2013} following \citet{Davies1988}, namely that functional control is not relevant for phenomena which traditionally fall under the heading of control. But this depends on the analysis not the framework. Landau rightly goes on to observe, as others have done, that in this respect the LFG account exhibits parallels with the movement theory of control advanced by Hornstein and colleagues \citep{Hornstein1999,hornpoli10}: they move everything, Bresnan moves nothing! But once again this is a matter for debate within the frameworks in question not one for \emph{a priori} prescription. What is clear is that more than one analytic device is required to encompass the full range of empirical phenomena both within and across languages.
+
+It should also be emphasised that within LFG neither functional nor anaphoric control requires the postulation of anything more than a VP at the level of c-structure in stark contrast to the FinPs, ForcePs, TPs, vPs and the like which populate the syntactic trees assigned to these constructions within derivational/ configurational analyses, regardless of the finiteness of the complement.
+
+ We return to the question of the relation between finiteness and control/raising in \sectref{sec:Control:6} and to issues concerning the appropriate semantic analysis in \sectref{sec:Control:10}.
+
+\section{Obligatory vs non-obligatory control}
+\label{sec:Control:3}
+
+The distinction between obligatory (OC) and non-obligatory control (NOC) goes back to \citet{Williams1980}; since then there has been considerable discussion about where and how to draw the boundary between them. The crucial differences, as set out by \citet[208--209]{Williams1980}, are that in cases of OC the \textsc{pro} cannot be replaced by an overt lexical item and must have a grammatically determined antecedent. Hence the general agreement that raising constructions fall within the territory defined as OC while the \textsc{pro}s in examples such as those in (\ref{ex:Control:18}) require NOC.
+
+\ea\label{ex:Control:18}
+\ea\label{ex:Control:18a} It is not possible [\textsc{pro} to open the window].
+\ex\label{ex:Control:18b} [\textsc{pro} forgetting his own birthday] is typical of Bill.
+\z\z
+Where other types of control are to be placed and how they are to be modelled are by contrast still matters for debate. There is, for example, a close match between \citegen{Williams1980} dichotomy and the distinction between functional and anaphoric control as originally formulated in \citet{bresnan1982control-complementation}, although even then the two are not equivalent (\emph{pace} for example \citealt[241]{Landau2013}). Since that time, however, there has been general agreement that anaphoric control for desiderative verbs for example must fall within OC. In order to get the discussion going, therefore, we need criteria to delimit these empirical domains, and to that end we will adopt what \citet[29]{Landau2013} calls the OC `signature' and which he defines as in (\ref{ex:Control:19}) (=~his (74)):
+
+\ea\label{ex:Control:19}
+In a control construction [... X$_i$... [\textsubscript{S} \textsc{pro}$_i$...]... ], where X controls the
+\textsc{pro} subject of the clause S:
+\ea\label{ex:Control:19a} The controller(s) X must be (a) co-dependent(s) of S
+\ex\label{ex:Control:19b} \textsc{pro} or part of it must be interpreted as a bound variable.
+\z\z
+NOC is then defined as anything which does not meet these criteria. Alternatively, and more positively, NOC covers control into subject and adjoined or extraposed clauses \citep[38,~(96)]{Landau2013} and, if we follow \citet{Landau2020}, also for some classes of lexical predicates. We return to the issue of NOC in \sectref{sec:Control:11} when we discuss Landau's two-tier model.
+
+\section{Exhaustive vs partial control}
+\label{sec:Control:4}
+
+Within the broader domain of OC there is a sub-type that has generated special interest, namely the phenomenon that has come to be called partial control (PC). We have already observed that in one reading of an example like (\ref{ex:Control:4a}) --- repeated here as (\ref{ex:Control:20a}) --- the subject of \emph{want} can be in a control relation to the unexpressed subject of its infinitival complement: Sally is both the source of the desire and the one who will work.
+
+\ea\label{ex:Control:20}
+\ea\label{ex:Control:20a} Sally wants to work harder.
+\ex\label{ex:Control:20b} The chair wanted to meet without me.
+\ex\label{ex:Control:20c} Morten wants to leave the European Union.
+\z\z
+In (\ref{ex:Control:20b}), on the other hand, the subject of the infinitive includes, but is not simply coreferential with, the subject of \emph{want}. Rather, the embedded verb \emph{meet} requires a semantically plural subject, as is clear from the ungrammaticality of (\ref{ex:Control:21a}) but nonetheless can occur as the complement of \emph{want} even when the subject of \emph{want} is singular. Similarly, while (\ref{ex:Control:20c}) is fine as an expression of Morten's political ambition for the country he belongs to, (\ref{ex:Control:21b}) describes an odd state of affairs since membership of an organization like the EU is not a matter for individual decisions or efforts.
+
+\ea\label{ex:Control:21}
+\ea[*]{\label{ex:Control:21a} The chair met. }
+\ex[\#]{\label{ex:Control:21b} Morten tried to leave the European Union.}
+\z\z
+At the same time, the semantic plurality of the implicit subject does not trigger morphosyntactic plurality for all speakers. Thus, (\ref{ex:Control:22a}) is fine while the uncontrolled (\ref{ex:Control:22b}) fails. (\ref{ex:Control:22c}) is unproblematic because both \emph{Sally} and \emph{herself} are singular whereas American English speakers do not readily accept the plural \emph{by themselves}, as in (\ref{ex:Control:22d}), unless the infinitival clause contains a plural subject as in (\ref{ex:Control:22e}) \citep[161]{Landau2013}.
+
+\ea\label{ex:Control:22}
+\ea[]{\label{ex:Control:22a} Sally wanted to work together.}
+\ex[*]{\label{ex:Control:22b} Sally worked together       }
+\ex[]{\label{ex:Control:22c} Sally wanted to work by herself.}
+\ex[?]{\label{ex:Control:22d} Sally wanted to work by themselves.}
+\ex[]{\label{ex:Control:22e} Sally wanted her and Bill to work by themselves.}
+\z\z
+
+Given the way the PC effects depend on the choice of governing verb, it follows from the principle in (\ref{ex:Control:19}) that partial control must be a sub-type of OC. This conclusion is accepted by \citet{Asudeh05cont}, who proposes an analysis combining f-structure and glue semantics as in (\ref{ex:Control:23}) for the exhaustive control \emph{try} and (\ref{ex:Control:24}) for the partial control \emph{want}:
+
+\ea\label{ex:Control:23}
+\formula{\lambda x. \lambda P. \IT{try}(x, P(x))} : (\UP\SUBJ)$_\sigma$ \linimp [(\UP\XCOMP\SUBJ)$_\sigma$ \linimp (\UP\XCOMP)$_\sigma$] \linimp \UPS
+\z
+
+\ea\label{ex:Control:24}
+\formula{\lambda x. \lambda P. \exists y. \IT{want}(x,P(y)) \wedge x \sqsubseteq y )} :\\
+\hspace*{\fill}(\UP\SUBJ)$_\sigma$ \linimp [(\UP\XCOMP\SUBJ)$_\sigma$ \linimp (\UP\XCOMP)$_\sigma$] \linimp \UPS
+\z
+Here is not the place to go into the technical details of the glue analysis. The crucial difference is that while the analysis of \emph{try} in (\ref{ex:Control:23}) maps directly onto the f-structure representation in (\ref{ex:Control:6b}), the analysis of \emph{want} introduces an additional variable $y$, which can either be equivalent to $x$ or identify a superset of which $x$ is necessarily a member. In other respects (\ref{ex:Control:24}) is a straightforward instance of functional control. However, as \citet{Haug2013} notes, this gives the wrong result with quantified examples like (\ref{ex:Control:25}) (=~Haug's (\ref{ex:Control:29})):
+
+\ea\label{ex:Control:25}
+Everybody wanted to have lunch together.
+\z
+The most natural reading of this is the collective one in which \emph{everybody} and \emph{together} refer to the same set of individuals, whereas the representation in (\ref{ex:Control:24}) implies a distributive reading in which for each member of the set identified by \emph{everybody} there is a different, not necessarily overlapping, group of people (s)he wants to lunch with.
+
+In consequence, Haug proposes an alternative analysis involving what he calls `quasi-obligatory anaphoric control'. Such items are distinguished from contexts of arbitrary control by virtue of a locality constraint imposed by the controlling predicate but, unlike with obligatory control verbs, the constraint is semantic and not syntactic. We will not go here into the formal details of his analysis (for which see also \citealt{Haug2014b}), but note simply that if these proposals are adopted, we end up with a typology of control that allows the four options set out in \tabref{table:Control:1}. Crucially, such a typology creates a de facto continuum from syntax through to discourse-determined structures rather than reducing all patterns to syntactic configurations.
+
+\begin{table}[p]
+\begin{tabularx}{\textwidth}{XCCCc}
+\lsptoprule
+&             &            & quasi- & \\
+  &           & obligatory & obligatory  &arbitrary\\
+  & f-control & a-control & a-control & a-control\\\hline
+  locality & syntactic & syntactic & semantic & discourse\\
+  identity & + & $-$ & $-$ & $-$  \\
+  \lspbottomrule
+\end{tabularx}
+\caption{Typology of control \citep[61]{Haug2013}}\label{table:Control:1}
+\end{table}
+
+\begin{table}[p]
+\fittable{%
+  \begin{tabular}{P{.2\textwidth}P{.2\textwidth}P{.25\textwidth}P{.25\textwidth}}
+  \lsptoprule
+    \multicolumn{3}{c}{CONTROL-TYPE} & \multirow{2}{*}{Example}\\\cmidrule{1-3}
+    Thematicity of controller & Nature of identification & Finiteness\\\midrule
+    \multirow{6}{*}{\begin{tabular}[t]{c}Equi\\(thematic)\end{tabular}} & \multirow{3}{*}{\begin{tabular}{c}anaphoric\\identification\end{tabular}} & finite complement & prolepsis\\\cmidrule{3-4}
+    & & non-finite complement & canonical control (``\emph{agree}-type'')\\\cmidrule{2-4}
+    & \multirow{4}{*}{\begin{tabular}[t]{c}functional\\identification\end{tabular}} & \multirow{2}{*}{finite complement} & Turkish object control (?)\footnote{Turkish is here cited as a further example of control into finite clauses of the kind discussed with reference to a number of other languages in \sectref{sec:Control:6} below.}\\\cmidrule{3-4}
+    & & non-finite complement & canonical control (``\emph{try}-type'')\\\midrule
+    \multirow{6}{*}{\begin{tabular}[t]{c}Raising\\(non-thematic)\end{tabular}} & \multirow{3}{*}{\begin{tabular}{c}anaphoric\\identification\end{tabular}} & finite complement & not expected\\\cmidrule{3-4}
+    & & non-finite complement & \multirow{2}{*}{not expected}\\\cmidrule{2-4}
+    & \multirow{4}{*}{\begin{tabular}[t]{c}functional\\identification\end{tabular}} & \multirow{2}{*}{finite complement} & copy raising/ hyper-raising\footnote{The term `hyper-raising' is taken from \citet{CarstensDiercks2013} and refers to structures that are in all relevant respects parallel to copy raising (on which see \sectref{sec:Control:9} below) but where the embedded finite clause has a covert rather than an expletive subject. See \citet{Zyman2023} for further discussion and assessment of analyses within the framework of Minimalism.}\\\cmidrule{3-4}
+    & & non-finite complement & \multirow{2}{*}{canonical raising}\\
+    \lspbottomrule
+\end{tabular}}
+\caption{An LFG typology of control \citep[359]{Szucs2018a}}\label{table:Control:2}
+\end{table}
+
+
+Similar in spirit, though structurally more wide-ranging, is the LFG-based typology of control proposed in \citet{Szucs2018a} as in \tabref{table:Control:2}. The new data that is here incorporated into the typology is what Sz\H{u}cs calls `prolepsis' as exemplified in Hungarian examples such as (\ref{ex:Control:26}) (=~his 1b):
+
+\ea\label{ex:Control:26} Hungarian\\
+\gll Janós(-t)   mondtad   hogy  jön     a  partira\\
+John(-\ACC)  {say.\PST.2\SG}  \gloss{c}   {come.\PRS.3\SG}  the party.onto\\
+\glt`(Of) John, you said that he is coming to the party.'
+\z
+The fronted argument \emph{Janós} is optionally marked with accusative case. Sz\H{u}cs takes this as evidence that it is an optional argument of the verb \emph{mond} `say' which therefore has a possible \PRED\ value \arglist{(\SUBJ)(\OBJ)(\COMP)}. He draws a parallel here with English examples like \emph{I read of Carol that she was awfully shy}, a type of structure that has received little or no attention in the literature to date. The relation of prolepsis to control has been taken up more recently by \citet[§14.4.5]{Landau2021} though without any reference to Sz\H{u}cs' contribution.
+
+A different strategy for subsuming raising, but not control, within a broader set of constructions is the concept of structure-sharing developed by \citet{alsina2008,Alsina:Raising}. On this view, what raising shares with long distance dependencies (topics and wh-questions) and parasitic gap constructions is a governing and thematically unrestricted function which is shared with the embedded argument slot. There is not space here to go into the full details of Alsina's proposals but the overall logic is similar to that of Sz\H{u}cs, namely that there are shared properties of argument and pronominal constructions that need to be captured in an appropriate formal way, building on functional rather than categorial structure.
+
+Noteworthy, too, is the fact that in a model such as Simpler Syntax, which goes further than LFG in the direction of reducing syntactic operations and structures to a minimum, one area where functions rather than configurations play a key role is precisely raising and control \citep[§3.3]{CulicoverJackendoff2019}.
+
+It is instructive to compare these approaches to syntax-centred ones such as those advanced in recent derivational work. Thus, \citet{Sheehan2014} argues for the presence of a non-overt comitative argument in order to account for the extra participant(s) implicit in examples such as (\ref{ex:Control:20b}), an analytic strategy akin to that proposed by \citet{Asudeh05cont} but with the added variable inserted in the syntax rather than the semantics. This, however, is open to the same objections as raised by Haug and is challenged on its own theoretical terms by \citet{Landau2016}. Alternatively, as argued in \citet{Sheehan2018} and \citet{SevdaliSheehan2021}, the differences between exhaustive and partial control can be attributed to the syntactic constructs Agree and Case, neither of which are available --- or indeed needed --- within the theoretically more economical framework of LFG.
+
+\section{Split and implicit control}
+\label{sec:Control:5}
+
+Partial control needs to be distinguished from two further subtypes, namely split control as exemplified in (\ref{ex:Control:27}) and implicit control as in (\ref{ex:Control:28}):
+
+\ea\label{ex:Control:27}
+John$_i$ discussed with Mary$_j$ [which club \textsc{pro}$_{i+j}$ to become members of].
+\z
+
+\ea\label{ex:Control:28}
+\ea\label{ex:Control:28a} It was fun to visit the new museum.
+\ex\label{ex:Control:28b} It was not permitted to cross the track.
+\z\z
+In the former the antecedents are divided between the arguments of the verb, so that \emph{members} in (\ref{ex:Control:27}) must refer back jointly and exhaustively to John and Mary. As Landau notes, this phenomenon does not fall readily under any of the existing approaches and he concludes that at the time of writing `there is no satisfactory theory for the syntax of split control constructions' \citep[174]{Landau2013}. This may of course be because the pattern is not inherently syntactic but falls within the semantic/discourse domain of Haug's typology. Such a conclusion is reinforced by the fact that it is particularly attested in Japanese and Korean in the context of exhortative marking as in the Korean example (\ref{ex:Control:29}) (=~Landau's 328b):
+
+\ea\label{ex:Control:29}Korean\\\gll
+Chelsu$_i$-ka   Hwun$_j$-eykey [\textsc{pro}$_{i+j}$ ilbon  umsik-ul mek-ca-ko mal-ha-yess-ta]\\
+{Chelswu-\NOM}  {Hwun-\DAT}     {} Japan  {food-\ACC} eat-\gloss{exh}-\gloss{c} {tell-do-\PST-\DECL}\\
+\glt Lit. `Chelswu said to Hwun to eat Japanese food together.'
+\z
+This reports a suggestion (`let's eat together') though it is not direct speech but the presence of the exhortative marker -\emph{ca} on the verb licenses the split control. Similarly, the Japanese minimal pair in (\ref{ex:Control:30}) (adapted from example (38) in \citealt{Fujii2010}) shows that when the exhortative particle \emph{-(y)oo-} is present there can be split control while with the imperative particle \emph{-e-} the examples are ungrammatical:
+
+
+\ea\label{ex:Control:30}Japanese
+\ea[*]{\label{ex:Control:30a}\gll Taro-wa Hiroshi-ni  [\textsc{pro}  otagai-o    sonkeesi-a-e-to] itta/meireisita\\
+{Taro-\TOP} {Hiroshi-\DAT}  {}  {each.other-\ACC} respect-\RECP-\IMP-\gloss{c} say/order.\PST\\
+\glt `Taro said to/ordered Hiroshi that they should {respect-\IMP} each other.'
+}
+\ex[]{\label{ex:Control:30b}\gll Taro-wa  Hiroshi-ni  [\textsc{pro}  otagai-o    sonkeesi-a-oo-to] it-ta/teiansita
+\\
+{Taro-\TOP} {Hiroshi-\DAT} {}   {each.other-\ACC} respect-\RECP-\gloss{exh}-\gloss{c} {say/propose.\PST}\\
+\glt `Taro said/proposed to Hiroshi that they should respect-\gloss{exh} each other.'}
+\z\z
+In other words, it is the nature of the speech act rather than the syntactic configuration that licenses the split control effect.
+
+Implicit control, as in (\ref{ex:Control:28}), is in a way the direct opposite since there is no overt antecedent for the infinitival complements. In the literature, and following \citet{bresnan1982control-complementation}, this has been linked to the so-called Visser's generalization (VG) which states that subject control verbs cannot be passivized and which is claimed to explain the ungrammaticality of examples like (\ref{ex:Control:31a},\ref{ex:Control:31c}) (=~86c,e from \citealt{bresnan1982control-complementation}):\footnote{In the literature VG is often accompanied by something labelled Bach's generalization (BG) --- see for example \citet[586]{DLM:LFG} --- but as \citet[179--179]{Landau2013} notes the empirical basis for BG has been challenged and we will not discuss it further here.}
+
+\ea\label{ex:Control:31}
+\ea[*]{\label{ex:Control:31a} She was failed (by Max) as a husband. }
+\ex[]{\label{ex:Control:31b} Max failed her as a husband.           }
+\ex[*]{\label{ex:Control:31c} Frank was promised to leave (by Mary).}
+\ex[]{\label{ex:Control:31d} Mary promised Frank to leave.          }
+\z\z
+Examples such as these led Bresnan to propose as a general principle that controllers must be overt and occupy a semantically unrestricted grammatical function such as \SUBJ\ or \OBJ. However, while this may be true for English, it does not necessarily hold cross-linguistically as the grammaticality of the following Dutch (\ref{ex:Control:32}) and German (\ref{ex:Control:33}) examples and the ungrammaticality of their literal English translations --- taken from the discussion in \citet{Wurmbrand2021} --- attest:\footnote{Here and elsewhere in the glosses, to avoid confusion, we use \gloss{c} to label the category complementizer as opposed to the function \COMP, although in the general literature and as recommended in the Leipzig conventions \COMP\ is regularly used as a gloss for complementizer.}
+
+\ea\label{ex:Control:32}Dutch\\\gll
+Er  werd  mij  beloofd/aangeboden  om me  op  de  hoogte  te houden\\
+ There  {be.\PST} {I.\DAT}  {promise/offer.\PST.\PTCP} \gloss{c}  {I.\DAT}  on  the  height to {keep.\INF}\\
+\glt `It was promised/offered to keep me informed.'
+ \z
+ 
+\ea\label{ex:Control:33}German\\\gll
+Mir wurde   versprochen  mir  noch heute  den Link f{\"u}r  das  Update zu  schicken\\
+{I.\DAT}  {become.\PST}  {promise.\PST.\PTCP} {I.\DAT}  still today  the link for  the update to  {send.\INF}\\
+\glt`It was promised to me to send me the link for the update today.'
+\z
+In the light of such data, \citet{vanUrk2013} proposes what has come to be called \citep[182]{Landau2013} the restricted VG as in (\ref{ex:Control:34}):
+
+\ea\label{ex:Control:34}
+Implicit subjects cannot control if T agrees with a referential DP.
+\z
+More recent cross-linguistic investigation of the phenomenon is reported in \citet{PitteroffSchafer2019} and \citet{Wurmbrand2021} offers a formal account within a Minimalist framework. Within LFG, data of this kind can be handled within the framework developed by \citet{Haug2014b}, as noted by \citet[ 13--16]{Reed2020} in her discussion of Landau's two-tier approach, although she herself offers yet another Minimalist account.
+
+\section{Control and finiteness}
+\label{sec:Control:6}
+
+Much, if not most, of the literature dealing with the theory of control has focussed on English but, as we have already seen on more than one occasion, contrasting patterns from other languages shed new light on the phenomena and the way that they can be modelled. The English data that was at the heart of early debates focuses almost exclusively on infinitival constructions, but, as \citet{Haspelmath2013} demonstrates, English is unusual in admitting infinitival clauses both with and without subjects co-referential to the subject of the controlling predicate as in the minimal pair \emph{I want to leave} vs \emph{I want Bill to leave}. In this section we review some of the typological diversity focussing in particular on finite vs non-finite splits (Italian, Danish, Hungarian), control into finite clauses (as in Greek, Romanian, Chinese and Japanese), and the special case of inflected infinitives (as in Portuguese and Sardinian).
+
+We begin then with the finite/non-finite alternation seen in the following Italian examples:
+
+\ea\label{ex:Control:35}Italian
+\ea\label{ex:Control:35a}\gll Giorgio vuole    partire  domani\\
+Giorgio   {want.\PRS.3\SG} {leave.\INF} tomorrow\\
+\glt `George wants to leave tomorrow.' 
+\ex\label{ex:Control:35b}\gll Giorgio vuole    che Paolo  parta       domani\\
+ Giorgio   {want.\PRS.3\SG} \gloss{c}  Paolo   {leave.\PRS.\SBJV.3\SG} tomorrow\\
+ \glt `George wants Paul to leave tomorrow.'
+\z\z
+The pattern here is clear: infinitival clause when there is co-reference between the subject of the governing verb and the embedded predicate, finite (and subjunctive) clause when the subjects differ. In LFG terms the functional structure of the `want' verb is constant --- `\textsc{volere}\arglist{\SUBJ,\COMP}' --- but the syntactic realizations differ. Since it is the f-structure that feeds into the semantics there is no need to create parallel c-structures as would be required in frameworks where the configurational syntax drives the semantics.
+
+The Danish examples in (\ref{ex:Control:36}) work in similar fashion but with an extra dimension of complexity:
+
+\ea\label{ex:Control:36}Danish
+\ea\label{ex:Control:36a}\gll Georg vil    gerne    tage  af  sted i morgen\\
+ Georg   {want.\PRS} with-pleasure {go.\INF} from place in morning\\
+\glt `George wants to leave tomorrow.' 
+\ex\label{ex:Control:36b}\gll Georg vil    gerne    *(have)  at  Paul tager af  sted i morgen\\
+Georg   {want.\PRS} with-pleasure {have.\INF}  \gloss{c}  Paul  {go.\PRS} from place in morning\\
+\glt`George wants Paul to leave tomorrow.'
+\ex\label{ex:Control:36c}\gll Georg vil    gerne    *(have)  {\ae}g   til  morgenmad\\
+    Georg   {want.\PRS} with-pleasure {have.\INF}  {egg.\PL} for  breakfast\\
+    \glt`George wants eggs for breakfast.'
+\z\z
+The translation of `want' is \emph{vil gerne}, literally `will with pleasure', and in (\ref{ex:Control:36a}), parallel to both the Italian (\ref{ex:Control:35a}) and the English translation, in the coreferential construction it governs an infinitive. In (\ref{ex:Control:36b}), on the other hand, when there are distinct subjects, the embedded clause is finite but there is an intervening infinitive of the verb \emph{have} `have'. This same additional ingredient is required when the `want' verb takes a nominal object as in (\ref{ex:Control:36c}); both these examples are ungrammatical if \emph{have} is omitted, whereas (\ref{ex:Control:36a}) is ungrammatical if \emph{have} is inserted.
+
+At first sight the Danish data would appear to support the analysis of the syntax of `want' verbs proposed in \citet[83]{Grano2015}, according to which the structures which underlie the various uses of English \emph{want} are as in (\ref{ex:Control:37}):
+
+\ea\label{ex:Control:37}
+\ea\label{ex:Control:37a} John wants [$\emptyset$\textsubscript{\textit{have}} an apple].
+\ex\label{ex:Control:37b} John wants [\textsubscript{VP} to stay].
+\ex\label{ex:Control:37c} John wants [\textsubscript{VP} $\emptyset$\textsubscript{\textit{have}} [\textsubscript{vP} Mary to stay].
+\ex\label{ex:Control:37d} John wants [\textsubscript{VP} $\emptyset$\textsubscript{\textit{have}} [\textsubscript{vP} \textsc{pro} to stay].
+\z\z
+The key part of this analysis, building on \citet{Cinque2004}, is that English \emph{want} is not treated as a full-fledged independent lexical item but rather as an item which occupies a functional head in the modal domain. When it appears to be transitive, as in (\ref{ex:Control:37a}), it is because it is accompanied by a silent transitive \textsc{have} which licenses the direct object. The same would hold for the equivalent Italian \emph{Giovanni vuole una mela}. Danish then differs from English and Italian simply in virtue of the \textsc{have} item being overt.
+
+It follows, too, that if \emph{want} sits in a functional position, an example like (\ref{ex:Control:37b}) is monoclausal. This is supported by Italian examples like (\ref{ex:Control:38}) where the clitic object can either attach to the modal `want' or to the main verb:
+
+\ea\label{ex:Control:38}Italian
+\ea\label{ex:Control:38a}\gll Giovanni vuole     mangiar=la\\
+Giovanni    {want.\PRS.3\SG}  eat.\INF=it\\
+\ex\label{ex:Control:38b}\gll Giovanni la=vuole    mangiare\\
+    Giovanni    {it=want.\PRS.3\SG} eat.\INF\\
+   \glt`Giovanni wants to eat it.'
+\z\z
+Strikingly, this so-called clitic climbing, standardly taken as evidence of restructuring from a bi- to a mono-clausal configuration, is for many speakers not permitted in PC contexts like (\ref{ex:Control:39}):\footnote{Native speaker judgements here are mixed with some speakers accepting both and some neither! However, for the majority (\ref{ex:Control:39a}) is acceptable while for (\ref{ex:Control:39b}) even those who accept it prefer a rephrasing with a finite clause \emph{che ci incontrassimo}  `that we should meet each other'.}
+
+\newpage
+\ea\label{ex:Control:39} Italian
+\judgewidth{*?}
+\ea[]{\label{ex:Control:39a}\gll  Giovanni vuole    incontrar=si   domani\\
+ Giovanni    {want.\PRS.3\SG} {meet.\INF=\RECP} tomorrow\\}
+\ex[*?]{\label{ex:Control:39b}\gll Giovanni si=vuole      incontrare domani\\
+     Giovanni    \RECP={want.\PRS.3\SG}  {meet.\INF}  tomorrow\\
+    \glt `Giovanni wants to meet tomorrow.'}
+\z\z
+In short, exhaustive control is monoclausal and partial control is biclausal, but with the biclausality in the latter licensed not by the \emph{want} verb but by the silent \textsc{have}, in a structure parallel to that postulated for the English (\ref{ex:Control:37d}). There are, however, two problems with this analysis. First, precisely in the partial control context Danish does not permit \emph{have}, and second in no other context in English, Danish, Italian and many other languages do \emph{have} verbs license finite clausal complements. Grano seeks to avoid this latter charge by analysing the complement of the silent \textsc{have} as a \emph{v}P rather than the CP that Cinque had proposed but, given that the Italian item \emph{che} in (\ref{ex:Control:35b}) and the Danish \emph{at} in (\ref{ex:Control:36b}) are the default complementizers used in a wide range of embedded clauses types, this way out of the dilemma lacks conviction. The best alternative, therefore, would appear to involve a syntax or c-structure based on whatever overt categories are attested in the different languages linked to a more cross-linguistically robust f-structure and a syntax-semantics constructional hierarchy of exactly the kind set out in \tabref{table:Control:1} above.
+
+A more radical LFG alternative on the f-structure side, though one still consistent with the Haug hierarchy, would be to collapse \COMP\ and \OBJ\ as proposed for Hungarian \emph{akar} `want' by \citet{Szucs2018}:
+
+\ea\label{ex:Control:40}Hungarian
+\ea\label{ex:Control:40a} \gll Kati {\'e}telt   akar\\
+ Kati  {food.\ACC} want.\PRS.3\SG\\
+\glt `Kati wants food.'
+\ex\label{ex:Control:40b} \gll Kati enni  akar\\
+    Kati  {eat.\INF} want.\PRS.3\SG\\
+\glt    `Kati wants to eat.'
+\ex\label{ex:Control:40c} \gll Kati akarja     hogy  egy{\"u}nk\\
+    Kati  {want.\PRS.\DEF.3\SG} \gloss{c}   eat.\SBJV.1\PL\\
+\glt    `Kati wants us to eat, lit. that we eat.'
+\ex\label{ex:Control:40d} \gll Kati {\'e}telt   {\'e}s  azzal   jóllakni      akar\\
+    Kati  {food.\ACC} and it.with  {satisfied.become.\INF}  want.\PRS.3\SG\\
+\glt    `Kati wants food and to be satisfied with it.' 
+\z\z
+This verb displays the same patterns of simple transitivity and an alternation of finite and infinitival complements as Italian and Danish. Given that the nominal and clausal arguments may be co-ordinated as in (\ref{ex:Control:40d}), Sz\H{u}cs argues that the most economical account involves a single lexical predicate structure, namely \arglist{(\SUBJ)(\OBJ)}. He does not consider the PC option, but there is no reason to believe that this would undermine or alter his argument.
+
+A different type of pattern is found in various languages belonging to the so-called Balkan \emph{Sprachbund} such as Greek and Romanian, in some southern Italian dialects and in Japanese and Korean, where the complements can be finite regardless of whether there is coreference or not. Thus in Greek we have:
+
+\ea\label{ex:Control:41}Greek
+\ea\label{ex:Control:41a} \gll thelo    na  liso     to  provlima\\
+{want.\PRS.1\SG} \gloss{prt} {solve.\PRS.1\SG}  the problem\\
+\glt`I want to solve the problem.'
+\ex\label{ex:Control:41b} \gll O  Kostas theli    na  odhiji\\
+ the Kostas   {want.\PRS.3\SG} \gloss{prt} drive.\PRS.3\SG\\
+\glt `Kostas wants (her/him) to drive.'
+\z\z
+In (\ref{ex:Control:41a}) both the controlling verb and the embedded verb are finite first person singular despite the fact that they refer to the same subject. It follows that if both verbs are third person singular as in (\ref{ex:Control:41b}), they can either co-refer (Kostas wants to be the driver) or have different referents (Kostas wants someone else to drive). A similar ambiguity can be seen in the Korean example (\ref{ex:Control:42}) \citep[112]{Lee2009}:
+
+\ea\label{ex:Control:42}Korean\\
+\gll Mina-ke  hakkyo-ey  ka-nun kes-ul  para-yess-ta Wujin-to kuli-ha-yess-ta\\
+{M.-\NOM}  {school-\LOC}  go-\gloss{adn} {thing-\ACC} {want-\PST-\DECL} W.-also  {so-do-\PST-\DECL}\\
+\glt`Mina wanted to go to school and so did Wujin.'
+\z
+This can mean either that Mina wanted to go to school and Wujin also wanted to go to school himself or that Wujin also wanted Mina to go to school.
+
+In all these languages there are restrictions on the tense or mood of the embedded predicate which space prevents us from going into here. However, the general principle is clear: the overt syntax does not map one-to-one onto the semantic ingredients so that either the syntax has to be rendered more semantically transparent via the use of functional and null heads and syntactic movement, or the configurational syntax is held constant and the burden is shifted to other levels. The use of f-structure and s-structure clearly goes down this latter route; see \citet{Sells07} and \citet{Polinsky2013} for general discussion.
+
+Another difference across languages concerns the realization of the \textsc{pro} item. While this is standardly taken to be a silent category, \citet{Satik2021} argues that in the Anlo dialect of the Niger-Congo language Ewe the pronoun \emph{y{\`e}} in the examples in (\ref{ex:Control:43}) (=~his (5a)) exhibits the properties of an overt \textsc{pro} (\gloss{pot} in his gloss stands for `potential'):
+
+\ea\label{ex:Control:43}Ewe (Anlo dialect)\\
+\gll Agbei dzagbagba/{\texteng}lobe/dzina/v{\textopeno}v{\textopeno}m/wosusu/dzi/susum be  y{\`e}i-a  dzo\\
+A   try/forget/want/afraid/decide/like/intend  \gloss{c}  {\textsc{y\`e}-\gloss{pot}} leave\\
+\glt   `Agbei tried/forgot/wanted/is afraid/decided/likes/intends \textsc{pro}$_i$ to leave.'
+\z
+Satik goes on to develop a Minimalist-inspired analysis of the Anlo data which we will not discuss in the present context. It suffices for our purposes to note that, as he also argues, the existence of languages with overt \textsc{pro} serves to disconfirm the movement analysis of control alluded to at the end of \sectref{sec:Control:2}, since movement would always leave an empty and not an overt trace. This conclusion is reinforced by languages where the item in the expected \textsc{pro} slot is a full NP, as in the Zapotec example in (\ref{ex:Control:44}) cited by \citet{polipots06} as an instance of what they call copy control (=~their (22a)):
+
+\ea\label{ex:Control:44} Zapotec\\
+\gll rc{\`a}{\`a}a'z  Gye'eihlly g-auh  (Gye'eihlly) bxaady\\
+\gloss{hab}-want Mike   \IRR-eat (Mike)   grasshopper\\
+\glt`Mike wants to eat grasshopper.'
+\z
+They further note that while the full NP is optional, a pronominal subject in the controlling clause would obligatorily determine an overt matching pronoun in the controlled clause, akin therefore to the Anlo example in (\ref{ex:Control:43}).
+
+Yet another type of alternation is to be seen in the contrast between bare and inflected infinitives in Portuguese and several other Romance varieties. Thus, consider the examples in (\ref{ex:Control:45}):\footnote{It is important to note that the examples in this section are drawn from European Portuguese (EP) since Brazilian and other varieties exhibit significant differences in relation to these constructions \citep{MadeiraFieis2020}. There are similar patterns to EP in the closely related Galician \citep{SheehanBlokzijlCouto2020}.}
+
+\ea\label{ex:Control:45}European Portuguese
+\ea\label{ex:Control:45a}\gll  Ser{\`a}   dificil (eles)  aprovar-em   a  proposta\\
+{be.\FUT.3\SG} difficult (they) {approve-\INF.3\PL} the proposal\\
+\glt    `It will be difficult for them to approve the proposal.'
+\ex\label{ex:Control:45b}\gll  Eu  lamento    (eles)  terem    trabalhado  pouco\\
+    I  {regret.\PRS.1\SG}  (they) {have.\INF.3\PL} {work.\PST.\PTCP} little\\
+\glt    `I regret that they have worked very little; lit. them to have worked.'
+\z\z
+In (\ref{ex:Control:45a}) the embedded infinitival complement \emph{aprovarem} bears the third person plural suffix, as does the perfect auxiliary \emph{terem} in (\ref{ex:Control:45b}). This same suffix occurs on the finite form \emph{parecem} `they seem' in the raising context of (\ref{ex:Control:46b}) but in that context cannot be added to the embedded infinitive, hence the ungrammaticality of (\ref{ex:Control:46c}).
+
+\ea\label{ex:Control:46}European Portuguese
+\ea\label{ex:Control:46a}\gll  parece   que os  organizadores  adiaram o  congresso \\
+{seem.\PRS.3\SG} \gloss{c}  the {organizer.\PL}  {postpone.\PST.3\PL}  the conference\\
+\glt`It seems that the organizers have postponed the conference.'
+\ex\label{ex:Control:46b}\gll  Os  organizadores  parecem   ter    adiado o  congresso\\
+    the {organizer.\PL}   {seem.\PRS.3\PL} {have.\INF}  {postpone.\PST.\PTCP} the conference\\
+\glt    `The organizers seem to have postponed the conference.'
+\ex\label{ex:Control:46c}\gll  *Os  organizadores  parecem   terem    adiado o   congress\\
+    the {organizer.\PL}   {seem.\PRS.3\PL} {have.\INF.3\PL} {postpone.\PST.\PTCP}  the conference\\
+\z\z
+                
+With control verbs we find a significant difference between exhaustive and partial control (examples from \citealt[429]{MadeiraFieis2020}):
+
+\ea\label{ex:Control:47}European Portuguese
+\ea\label{ex:Control:47a}\gll  Prefer-ias     chegar(*es)   a  tempo\\
+{prefer-\IND.\IPFV.2\SG}  arrive.\INF(*2\SG) on  time\\
+\glt`You would prefer to arrive on time.'
+\ex\label{ex:Control:47b}\gll  O  Jo{\~a}o prefer-ia      reunir(\%em)-se  mais tarde\\
+    the J.  {prefer-\IND.\IPFV.3\SG}  {meet(\%3\PL)-\RECP} more late\\
+\glt    `Jo{\~a}o would prefer to meet later.'
+\z\z
+In the exhaustive control example (\ref{ex:Control:47a}) the inflection on the infinitive is not permitted just as with raising in (\ref{ex:Control:46c}). In (\ref{ex:Control:47b}) on the other hand the notation \% implies significant percentage differences in the judgements of native speakers, a conclusion confirmed by the more detailed statistical evidence presented in \citet{Sheehan2018b,Sheehan2018}. In this respect they parallel the cross-speaker discrepancies noted with respect to clitic climbing in the Italian PC example (\ref{ex:Control:39b}). Such a degree of socio-pragmatic variation in turn would seem to support Haug's concept of a control scale moving from pure syntax through to discourse rather than attempts to motivate the differences in terms of core syntactic concepts such as Case and Agree.
+
+All the languages we have considered in this section so far share the property of having morphological realizations of finiteness and the related categories of tense, mood and person. Mandarin Chinese, and Sinitic languages more generally, however do not exhibit such morphology and therefore call into question the relevance of the finiteness criterion in a different way (see \citealt[chapter~6]{Grano2015} for discussion and a convenient summary of the relevant literature). In his LFG-based discussion of this and related issues, \citet{Lam2022} bases his analysis on the contrast between the f-structure for \emph{shefa} `try' with \XCOMP\ as opposed to \COMP\ for the partial control verb \emph{dasuan} `intend' and with a VP complement for the former beside an IP complement for the latter.
+
+\section{Backwards control/raising and subsumption }
+\label{sec:Control:7}
+
+As we have seen, the treatment of control and raising constructions in LFG relies on f-structure statements of the form (\UP\SUBJ) = (\UP\XCOMP\SUBJ), which imply equality between the content of the functional roles but asymmetry in the dominance relations since the thematic argument will of necessity occur in the higher clause. This is the case even if the linear order differs, as in the Hungarian examples (\ref{ex:Control:40b}) and (\ref{ex:Control:40d}) where \emph{akar} `want' follows rather than precedes its infinitival complement. However, an example like (\ref{ex:Control:48}) from the North Caucasian language Adyghe evidences a different pattern, in which the thematic argument can be situated in the embedded clause \citep[(1),~(2)]{PotsdamPolinsky2012}, where the strikethrough items indicate deletion in their notation):
+
+\ea\label{ex:Control:48}Adyghe
+\ea\label{ex:Control:48a}\gll  \st{axe-r}   [axe-me  se    sa{\v{s}}'e-new] $\emptyset$-fe{\v{z}}e-{\textinvscr}-ex\\
+{3\PL-\ABS}  {3\PL-\ERG}  {1\SG.\ABS}  {lead-\INF}  3\ABS-begin-\PST-3\PL.\ABS\\
+\ex\label{ex:Control:48b}\gll  axe-r   [\st{axe-me}  se    sa{\v{s}}'e-new] $\emptyset$-fe{\v{z}}e-{\textinvscr}-ex\\
+ {3\PL-\ABS}  {3\PL-\ERG}  {1\SG.\ABS}  {lead-\INF}  3\ABS-begin-\PST-3\PL.\ABS\\
+\glt `They began to lead me.'
+\z\z
+While (\ref{ex:Control:48b}) has an overt absolutive subject of the verb \emph{fe{\v{z}}e} `begin', accompanied by an unrealized subject of the embedded infinitive \emph{sa{\v{s}}'enew} `lead', in (\ref{ex:Control:48a}) the overt item is \emph{axe-me} with the ergative suffix appropriate for the subject of `lead'.
+
+The examples in (\ref{ex:Control:48}) demonstrate a free alternation between forward and backward raising. At the same time, as \citet{Perlmutter1970} demonstrated in a classic paper, verbs meaning `begin' can vary between raising and control uses. An instance of backward control with `begin' can be seen in the Malagasy example (\ref{ex:Control:49a}). The difference here is both in the theta role --- Rabe is the active beginner and the active driver --- and in the fact that in Malagasy the forward version (\ref{ex:Control:49b}) is ungrammatical.
+
+\ea\label{ex:Control:49}Malagasy
+\ea\label{ex:Control:49a}\gll  m-an-omboka   [m-i-tondra    ny  fiara Rabe]\\
+\PRS-\gloss{act}-begin \PRS-\gloss{act}-drive  the car Rabe\\
+\glt`Rabe is beginning to drive the car.'
+\ex\label{ex:Control:49b}\gll  *m-an-omboka  Rabe  [m-i-tondra    ny  fiara]\\
+\PRS-\gloss{act}-begin Rabe   \PRS-\gloss{act}-drive  the car\\
+\z\z
+Here only the backward control option is possible, a property which \citet{sellssubsump} proposes can be modelled by introducing the subsumption relation, annotated as $\sqsubseteq$, which implies a directionality in the flow of information from controller to controllee but involves no expectation of hierarchy. The difference between the `begin' verbs in Adyghe and Malagasy can then be represented as in (\ref{ex:Control:50}):
+
+\ea\label{ex:Control:50}
+\ea\label{ex:Control:50a} \makebox[5em][l]{Adyghe:} \lexentry{fe{\v{z}}e}{(\UP\SUBJ) $\sqsubseteq$ (\UP\XCOMP\SUBJ)\\(\UP\XCOMP\SUBJ) $\sqsubseteq$ (\UP\SUBJ)}
+\ex\label{ex:Control:50b} \makebox[5em][l]{Malagasy:} \lexentry{omboka}{(\UP\XCOMP\SUBJ) $\sqsubseteq$ (\UP\SUBJ)}
+\z\z
+
+This kind of cross-linguistic difference is part of a larger typological distribution.  \tabref{table:Control:3}, adapted from \citet[278]{polipots02}, shows the various patterns which have been attested to date for verbs meaning `begin', which fall within the larger class of verbs with an aspectual meaning, something which seems to be a key factor here.
+
+\begin{table}
+\fittable{
+\begin{tabular}{@{}l@{}ccc@{}}
+\lsptoprule
+& & & Raising/control\\
+\multicolumn{1}{c}{Language} & Backward control & Aspectual & ambiguity\\
+\midrule
+Tsez (Nakh-Daghestanian) & yes & yes & yes \\
+Malagasy (Austronesian) & yes & yes & no \\
+Tsaxur (Nakh-Daghestanian) & yes & yes & no \\
+English & no & yes & yes\\
+\lspbottomrule
+\end{tabular}
+}
+\caption{Typology of backward control with `begin'}\label{table:Control:3}
+\end{table}
+
+The concept of subsumption and its relation to backward control and raising goes back to \citet{ZaenenKaplan2002:Subsumption}, who propose as a general principle that raising verbs involve the equality relation (\UP\SUBJ) = (\UP\XCOMP\SUBJ) while control/equi verbs have the subsumption relation (\UP\SUBJ) $\sqsubseteq$ (\UP\XCOMP\SUBJ). \citet{sellssubsump} goes a step further and proposes to replace equality with subsumption across the board. The debate, however, has not been settled in part because, as we have seen, there are arguments in favour of control as involving \COMP\ rather than \XCOMP\ and in part because others, notably within LFG \citep{Arka2014}, have argued that both mechanisms can be at work in the same language.
+
+\citet{polipots06} and again \citet{Polinsky2013} argue that backward raising/control supports a movement account, and in particular a copy-and-delete version, with the difference cross-linguistically depending on whether it is the original or the moved copy that is deleted, but as noted above this analysis faces problems when it comes to copy control constructions. At the same time, \citet{Polinsky2013} raises two queries vis-{\`a}-vis Sells and subsumption: a) is there a risk of over-generation? and b) how does it connect with other properties such as word order and headedness?
+
+On this last point, \citet{Haug2011,Haug2017} extends the discussion of backward control to include adjunct clauses as in the Ancient Greek (\ref{ex:Control:51}) (=~example (15) from \citealt{Haug2011}):
+
+\ea\label{ex:Control:51}Ancient Greek\\
+\gll [egertheis    de  I{\^o}s{\^e}ph   apo tou   hupnou] epoi{\^e}sen...\\
+{wake.\PFV.\PTCP.\NOM}  but {Joseph.\NOM} from {\DEF.\GEN}  {dream.\GEN} do.\PST.\PFV.3\SG\\
+\glt`When he woke up from the dream, Joseph did...'
+\z
+Here, the subject of the \emph{epoi{\^e}sen} `did' is realised in the adjunct participial clause, which linearly precedes but is structurally subordinate to the main clause. For this reason, as Haug notes, it might be better to refer to `upward' control but either way we have something that is parallel to the kind of pattern we have seen in our earlier examples of backward complement control. However, as he goes on to show, the appropriate analysis here involves functional equivalence and linear precedence rather than subsumption, a conclusion which suggests that subsumption as an operation, if required at all, should be restricted to contexts of complement control and raising, where, as examples like (\ref{ex:Control:48}) and (\ref{ex:Control:49}) demonstrate, linearization cannot be the answer.
+
+\section{Nominal control and raising}
+\label{sec:Control:8}
+
+Another logical possibility is that the controlling item is nominal rather than verbal. This is particularly evident in the structure which, following \citet{Tsunoda2020}, we will call the Mermaid Construction (MC), as seen in the Japanese examples (\ref{ex:Control:52}) and (\ref{ex:Control:53}):
+
+\ea\label{ex:Control:52}Japanese\\
+\gll Hanako=ga  Igirisu=ni ik-u    ki=da\\
+{Hanako=\NOM} {UK=\DAT} {go-\NPST.\gloss{adn}} {feeling=\COP.\NPST.\DECL}\\
+\glt`Hanako intends to go to the UK.' (lit. `Hanako is the feeling to go to the UK' or `It is the feeling where Hanako goes to the UK')
+\z
+
+\ea\label{ex:Control:53}Japanese\\
+\gll Hanako=ga  Igirisu=ni ik-u    yotei=da\\
+{Hanako=\NOM} {UK=\DAT} {go-\NPST.\gloss{adn}} {plan=\COP.\NPST.\DECL}\\
+\glt`Hanako is going to the UK.' (lit. `Hanako is the plan that goes to the UK' or `It is the plan where Hanako goes to the UK')
+\z
+The mermaid label reflects the fact that these are mixed constructions involving
+a full noun, \emph{ki} `feeling' and \emph{yotei} `plan', and an associated clitic copula \emph{da} `be' which taken together govern a dependent nominalized verb \emph{ik-} `go' and which translate as modal or aspectual markers. \citet{Tsunoda2020} analyses these examples as monoclausal with the sequences \emph{iku kida} and \emph{iku yotei} being treated as complex predicates. \citet{Taguchi2022}, however, argues that the structures in question are bi-clausal and hence allow independent negation and adverbials for both predicates:
+
+\newpage
+\ea\label{ex:Control:54}Japanese\\
+\gll Kinoo Hanako=ga  [asita   Igirisu=ni ik-u]    yotei=datta \\
+yesterday {Hanako=\NOM} tomorrow {UK=\DAT} {go-\NPST.\gloss{adn}} {plan=\COP.\PST.\DECL} \\
+\glt   `Yesterday Hanako planned to go to the UK tomorrow.'
+\z
+            
+\ea\label{ex:Control:55}Japanese\\
+\gll Hanako=ga  [Igirisu=ni ik-anai]     yotei=dewanai\\
+ {Hanako=\NOM} {UK=\DAT} {go-\NEG.\NPST.\gloss{adn}} {plan=\NEG.\COP.\PST.\DECL}\\
+\glt   `Hanako did not plan not to go to the UK.'
+\z
+He therefore proposes the following lexical entries, where \emph{ki} involves anaphoric control while \emph{yotei} is treated as a raising verb with functional control:
+
+\ea\label{ex:Control:56}
+\ea\label{ex:Control:56a}  \catlexentry{ki}{N}{(\UP\PRED)  =  `\textsc{ki}\arglist{\SUBJ,\COMP}'\\
+ (\UP\COMP\SUBJ\PRED) = \textsc{`pro'}}
+\ex\label{ex:Control:56b}  \catlexentry{yotei}{N}{(\UP\PRED) = `\textsc{yotei}\arglist{\XCOMP}\SUBJ'\\
+           (\UP\SUBJ) = (\UP\XCOMP\SUBJ)}
+\z\z
+
+Examples of the MC are found across a wide range of languages --- twenty-six in Asia and one in Africa according to \citet[1]{Tsunoda2020}, to which Taguchi adds parallel examples from Scots Gaelic, Tatar and Russian. Here is not the place to compare these in detail and it may well be that, even if Taguchi is right and the monoclausal analysis does not hold for Japanese, this is the correct account for the construction in other languages. What more generally, therefore, this data demonstrates is the fuzzy border between raising/control constructions and complex predicates, and the likelihood that over time the former may develop into the latter (see \citealt{Butt2014}, \citetv{chapters/Historical} and the discussion in \sectref{sec:Control:13} below).
+
+\section{Copy raising, control and resumption}
+\label{sec:Control:9}
+
+In addition to the widely discussed examples with an infinitival complement, the English verb \emph{seem} also allows the pattern to be seen in (\ref{ex:Control:57}) in which the subject of \emph{be sick} appears to have been raised and replaced by the pronoun \emph{he} in the complement clause.
+
+\ea\label{ex:Control:57} Alfred seems like/as if he's sick.
+\z
+Structures of this kind have been labelled `copy raising' with the pronoun being treated as `resumptive' (\citealt{AsudehToivonen2007,AshT:12}; \citealt{Asudeh12}). The last-mentioned work in particular shows how this construction can be naturally accounted for by invoking resource logic and glue semantics, as well as demonstrating the cross-linguistic evidence for similar structures. As \citet[chapter~12]{Asudeh12} shows, the availability of copy raising is lexically determined; it is attested with \emph{seem} and \emph{appear} but not for example with \emph{tend}:
+
+\ea\label{ex:Control:58} *Alfred tends like he won.
+\z
+The items in question will therefore have a lexical specification via a local copy name as in (\ref{ex:Control:59}) together with the usual open function to link the main clause subject and the subject of the embedded predicate \emph{like}:
+
+\ea\label{ex:Control:59} \catlexentry{seem}{V}{(\UP\SUBJ)$_\sigma$=(\%\textsc{copy}$_\sigma$\ \textsc{antecedent})\\(\UP\SUBJ) = (\UP\XCOMP\SUBJ)}
+\z
+
+\ea\label{ex:Control:60}  \catlexentry{like}{P}{ (\UP\PRED) = `\textsc{like}\arglist{\COMP}'}
+\z
+The f-structure for \emph{like} needs to include the \COMP\ function in order to cope with the fact that the clause following \emph{like} is finite. What has been more open to contention is its categorial status, with some arguing for it as a complementizer but with Asudeh opting for the more traditional assumption that it is a preposition. The latter is more plausible given that it can also take a simple NP as in \emph{Alfred looks like his sister}. This solution would also allow for a transparent analysis of the \emph{as if} alternant in (\ref{ex:Control:55}) with \emph{as} being a P parallel to \emph{like} and with \emph{if} as the \gloss{c} head of the embedded \COMP.\footnote{\citet[chapter~7]{Gisborne2010} also argues for treating \emph{like} as a preposition albeit in the context of a different Word Grammar analysis of the construction as a whole. \citet{Landau2011} by contrast opts for a derivation-based account in which \emph{like} is treated as a complementizer.} The prepositional account finds support in the analysis advanced by \citet{Camilleri2018}, also within the framework of LFG, of the parallel constructions in Maltese, as in (\ref{ex:Control:61}) (=~her example (\ref{ex:Control:32})):
+
+\ea\label{ex:Control:61}Maltese\\
+\gll qis-ha      b{\textcrh}al(likieku)  ta-w-ha  xebg{\textcrh}a\\
+ {as.though-3\F.\SG.\ACC}  as.if     {give.3\PFV-\PL-3\F.\SG.\ACC} smacking\\
+\glt `She's as though they gave her a smacking.'
+ \z
+We see here a copy raising construction with a null copula (compare the Maltese data in (\ref{ex:Control:7}) above) and where the optional element \emph{likieku} is indeed a counterfactual complementizer but crucially can only occur in this construction as the complement of the preposition \emph{b{\textcrh}al} `like'.
+
+Although space here has only allowed us to look at some core examples of this construction, this has sufficed to demonstrate the importance of such data for the analysis of the relation between semantics, syntax and lexis. Further issues concern the relation between these examples and the ones in (\ref{ex:Control:62}):
+
+\ea\label{ex:Control:62}
+\ea\label{ex:Control:62a} Alfred seems like Thora hurt him.
+\ex\label{ex:Control:62b} Alfred seems like Thora's hurt.
+\ex\label{ex:Control:62c} Alfred sounds/looks like he enjoyed the party.
+\z\z
+
+\noindent
+In (\ref{ex:Control:62a}) the co-referential argument is an object not a subject and in (\ref{ex:Control:62b}) there is no overt co-referent but simply a context-derivable assumption that Alfred and Thora are somehow connected. Such an assumption makes clear the route by which the speaker has reached their conclusion, hence the label `perceptual resemblance verb' (PRV) that has been applied to such items. (Compare too in this connection example (\ref{ex:Control:66b}) in \sectref{sec:Control:12} below.) While \citet[351--356]{Asudeh12} demonstrates how examples like (\ref{ex:Control:62}) and the dialect variation associated with them can be captured, \citet{Toivonen2021} is an exploration of PRVs and the way they vary between English and Swedish.
+
+This construction with raising verbs has its counterpart in the domain of control verbs as we saw in connection with the so-called `copy control' construction exemplified in (\ref{ex:Control:44}), where it is the thematic controller which recurs as a pronoun in the embedded finite clause.
+
+\section{The semantics of raising and control}
+\label{sec:Control:10}
+
+While much of the literature both within and outside LFG seeks to account for control and raising effects in syntactic (i.e. f-structure and/or c-structure) terms, there is an important strand of work which argues that the phenomenon is at heart semantic (for English see \citealt{JackendoffCulicover2003}, \citealt{CulicoverJackendoff2006} and references there, \citealt{Duffley2014}, and compare \citealt{AkuzawaKubota2020} for Japanese). In the words of \citet[152]{CulicoverJackendoff2006}: `Control should be taken out of the hands of the syntax and turned over to the semantics.'
+
+In fact, these debates can be broken down into two separate, though not unconnected, issues. The first concerns the semantics of the governing predicates, which can be divided into a series of lexical sub-classes defined in terms of their semantic content of their predicates and hence their associated thematic roles. Thus, for example, in their treatment of control in Japanese, \citet{AkuzawaKubota2020} distinguish the following classes:
+\ea
+Attitudinal, e.g.\ \emph{try}, \emph{decide}\\
+Commissive, e.g.\ \emph{declare}\\
+Directive, e.g.\ \emph{order}\\
+Implicative, e.g.\ \emph{succeed}\\
+Factive, e.g.\ \emph{regret}
+\z
+Such a list is clearly not exhaustive but it goes a good way towards predicting the types of structures and arguments that will be found with the items in the different classes. It is very much in line with the \citeauthor{CulicoverJackendoff2006} way of thinking and with the recent work by Landau discussed below. That said, the fact remains that raising and control exhibit overt syntactic patterns that need to be accounted for. It is striking that the model deployed by \citeauthor{CulicoverJackendoff2006} under the name `Simpler Syntax' makes crucial use of grammatical relations (GR in their notation) rather than categorial structure in a way that is strikingly similar to the role of f-structure. By contrast a model like Role and Reference Grammar treats raising and control directly in terms of thematic roles without intervening recourse to grammatical functions (see \citetv{chapters/RRG}). Within LFG, the role of meaning, and more precisely the relation between a-structure and f-structure, is handled by lexical mapping theory --- see the chapter by \citetv{chapters/Mapping} --- and semantically defined templates \citep[230--237]{DLM:LFG}.
+
+A separate issue concerns the semantic category to be assigned to the complement: is it to be treated as a proposition, as in \citet{dalrymple01} or a predicate, as suggested by \citet{Asudeh05cont}? The proposition/predicate debate is one which arises in other frameworks. Thus, \citet{Pearson2016} argues for the property interpretation contra Landau and the use of the contrast in relation to adjunct control in \citet{Landau2021}. We return to this issue in \sectref{sec:Control:11} and \sectref{sec:Control:12}.
+
+\section{Predication vs logophoric anchoring}
+\label{sec:Control:11}
+
+In a substantial contribution to the debate \citet{Landau2015} proposes what he calls a `two-tiered' theory of control, more precisely a binary division of OC; NOC remains outside this picture. On the one hand, there is logophoric anchoring where the controlling predicate is labelled `attitudinal'.\footnote{The concept of logophoricity goes back to \citet{Hagege1974} with specific reference to languages which distinguish between two sets of pronouns according to whether the antecedent is the speaker or not. \citet{Sells:Log} offers an early formalization in terms of Kamp's discourse representation structures. Landau's use of the term is rather more general but shares the key idea of reference back to the speaker.} This contrasts with predicative anchoring, which applies to non-attitudinal verbs. The two classes can be further divided into sub-classes:
+
+\ea\label{ex:Control:63}
+\ea\label{ex:Control:63a} attitudinal: desiderative, propositional, interrogative, factive, e.g.\ \emph{want,   refuse, agree, ask, pretend, plan, imagine}, etc.
+\ex\label{ex:Control:63b} non-attitudinal: modal, aspectual, evaluative, implicative, e.g.\ \emph{dare, see, remember}, etc.
+\z\z
+Building on this distinction \citet[20]{Landau2015} states the following generalization:
+
+\ea\label{ex:Control:64}  Nonattitude complements force EC, attitude complements allow PC.
+\z
+This in turn is worked out in terms of a semantic distinction between what he calls a `property-denoting projection', which defines predicative control, and a `propositional projection', which defines logophoric control. Propositional projections involve an extra layer of syntactic structure above the layer containing the property projection and hence they are `two-tiered'. He sets out the properties of the two types of control in \tabref{table:Control:4}, and he sums up the resulting empirical contrasts between the two in \tabref{table:Control:5}.
+
+\begin{table}
+  \begin{tabularx}{\textwidth}{Xcc}
+  \lsptoprule
+    & Predicative control & Logophoric control\\
+    \midrule
+    Semantic type of complement & <d,<e, <s,t>{>}> & <{<}e,<$\kappa$,e{>}>,<$\kappa$,t{>}>\\\hline
+    Head of complement & transitive Fin\textsubscript{[$u$D]} & transitive C\textsubscript{[$u$D]}\\\hline
+    Control and agreement are & predication & predication\\
+    established via: &  &  + variable binding\\
+    \lspbottomrule
+ \end{tabularx}
+\caption{Properties of control constructions \citep[83]{Landau2015}}\label{table:Control:4}
+\end{table}
+
+\begin{table}
+  \begin{tabularx}{\textwidth}{XCc}
+  \lsptoprule
+    & Predicative control & Logophoric control\\
+    \midrule
+    Inflected complement & {\ding{51}} & * \\
+    {[$-$ Human]} \textsc{pro} & {\ding{51}} & * \\
+    Implicit control & * & {\ding{51}} \\
+    Control shift & * & {\ding{51}} \\
+    Partial control & * & {\ding{51}} \\
+    Split control & * & {\ding{51}} \\
+    \lspbottomrule
+  \end{tabularx}
+  \caption[]{Empirical diagnostics of control constructions (Landau\newline \citeyear[65]{Landau2015})}\label{table:Control:5}
+\end{table}
+
+\begin{figure}
+  \centering
+  \begin{tabular}{cc@{\quad}cc}
+ &\multicolumn{2}{c}{\rnode{1}{\framebox[9em]{\centering complement clauses}}}\\[3ex]
+ & \rnode{2}{\framebox{\parbox{8em}{\centering nonattitude\\complements (OC)}}}
+  & \rnode{3}{\framebox{\parbox{8em}{\centering attitude\\complements (OC)}}}\\[5ex]
+  \parbox{5em}{\centering Predicative\\control}\ldelim\{{9}[11ex]{1ex}&
+  \multicolumn{2}{c}{\rnode{4}{\framebox{\makebox[9em][c]{adjunct clauses}}}} & 
+  \rdelim\}{12}[11ex]{1ex}\raisebox{-2em}[0ex][0ex]{\parbox{6em}{\centering Logophoric\\control}}\\ [3ex]   
+  & \rnode{5}{\framebox{\parbox{8em}{\centering right-edge\\adjuncts (OC)}}}
+  & \rnode{6}{\framebox{\parbox{8em}{\centering left-edge\\adjuncts (NOC)}}}\\[6ex]
+  && \rnode{7}{\framebox{\parbox{8em}{\centering subject\\clauses (NOC)}}}
+\end{tabular}
+\nccurve[linearc=.15,angleA={180},angleB={90},offsetB=-2ex,armA=.5cm,linewidth=1pt]{->}{1}{2}
+\nccurve[linearc=.15,angleA={0},angleB={90},offsetB=2ex,armA=.5cm,linewidth=1pt]{->}{1}{3}
+\nccurve[linearc=.15,angleA={180},angleB={90},offsetB=-2ex,armA=.5cm,linewidth=1pt]{->}{4}{5}
+\nccurve[linearc=.15,angleA={0},angleB={90},offsetB=2ex,armA=.5cm,linewidth=1pt]{->}{4}{6}
+  \caption{\citegen{Landau2015} two types of control (his Figure 6.1)\label{fig:Control:1}}
+\end{figure}
+
+The diagram from \citet[85]{Landau2015} reproduced in \figref{fig:Control:1} shows his conception of the relations between the two types of control.  Two questions then arise: do we need this distinction? And if not, how can the issues it is designed to address be accommodated within a framework like LFG? The answer to the first question is probably not and to the second, they already have been!
+Thus, as we have noted, \citet{Reed2020} discusses objections to the two-tier account contrasting it with a single-tier approach and citing in this connection \citet{Haug2014b}. She goes on to develop her own category-based syntactic account but once again we see that elaborating syntactic configurations is an alternative, and less economical, analytical strategy compared to the functional definitions that lie at the heart of LFG, especially once they are combined with a semantics of the Glue type.
+
+\section{Adjunct control}
+\label{sec:Control:12}
+
+In the standard literature, adjunct control, as exemplified in (\ref{ex:Control:5}) --- repeated here in (\ref{ex:Control:65}) for convenience --- has received relatively little attention by comparison with other types of control:
+
+\ea\label{ex:Control:65}
+\ea\label{ex:Control:65a} Glad to be home again, Sally waved to her neighbours in the garden.
+\ex\label{ex:Control:65b} Bill called a plumber to fix the drain.
+\ex\label{ex:Control:65c} Sally came across Bill in the garden crying his eyes out.
+\z\z
+Recently, however, there have been some significant contributions which provide interesting contrasts in the way the phenomenon can be modelled. Thus, \citet{Green2019} extends the movement account and challenges an early version of the approach now developed in \citet{Landau2021}, where he builds on the two-tier model discussed in the previous section. The LFG account developed in \citet{Donaldson2021} adopts a similar line of argument, but this is revised in \citet{Donaldson2021b}.
+
+Consider the pair of examples cited at the beginning of \citet{Donaldson2021b}:
+
+\ea\label{ex:Control:66}
+\ea\label{ex:Control:66a} \tightuline{Watching him}, Thrasher realized that something in his appearance didn't
+  ring true. (Green 1956: \emph{The Last Angry Man})
+\ex\label{ex:Control:66b} \tightuline{Watching him}, it seemed as if a fibre, very thin but pure, of the enormous energy of the world had been thrust into his frail and diminutive body. (Woolf 1942: \emph{The Death of the Moth})
+\z\z
+In (\ref{ex:Control:66a}) the missing subject of \emph{watching him} is supplied by the subject of the main clause. By contrast, \emph{his} in \emph{his appearance} is interpreted pragmatically as referring to the same individual as referenced by \emph{him}. If \emph{appearance} was replaced by \emph{memory}, the natural antecedent of \emph{his} would be \emph{Thrasher}. Similarly, it is the context in (\ref{ex:Control:66b}) which leads the reader to link \emph{him} and \emph{his body}. However, it is also the context that determines the missing subject of \emph{watching him} since there is no argument in the main clause which can fill that role. In short, there is no debate over the fact that structures like (\ref{ex:Control:66b}) require an extrasentential interpretation of the missing argument, in other words arbitrary anaphoric control and hence in the rightmost box of Haug's \tabref{table:Control:1} above.
+
+When it comes to examples like (\ref{ex:Control:66a}), however, different accounts have been proposed. \citet{Donaldson2021} follows a line of analysis within LFG going back to \citet{mohanan83} and argues that the strict link in interpretation between the missing argument and the subject of the main clause is best treated as an instance of functional control providing the link to the open \XADJ\ clause. However, \citet{Donaldson2021b} notes that a functional control analysis will not generalise to examples like (\ref{ex:Control:67}) where there is an embedded gerund, but nonetheless the two types of structure pattern similarly in other respects as can be seen in (\ref{ex:Control:68}).
+
+\ea\label{ex:Control:67}
+After a year of complaining, Bill finally left his job.
+\z
+
+\ea\label{ex:Control:68}
+\ea\label{ex:Control:68a} After three days of preparing himself/*herself, Bill spoke to Sue.
+\ex\label{ex:Control:68b} While preparing himself/*herself, Bill
+helped Sue.
+\z\z
+He therefore proposes an obligatory anaphoric control analysis for both. How then do we distinguish between obligatory and arbitrary anaphoric control in adjuncts?
+
+Adjunct control cross-cuts the opposition between OC and NOC, leading \citet[21]{Landau2021} to propose the following criteria:
+
+
+\ea\label{ex:Control:69}
+\ea\label{ex:Control:69a} Locality: an OC controller must be an
+argument of the clause immediately dominating the adjunct.
+\ex\label{ex:Control:69b} Humanness: \textsc{pro} in NOC, but not in OC, must be [+ human]
+\z\z
+            
+A different issue concerns the location of the adjunct clause. As is clear from \figref{fig:Control:1}, Landau consider his two-tier theory to apply to both and draws a distinction between right edge adjuncts, which involve OC and are predicative, and left edge adjuncts, which involve NOC and are logophoric (compare already \citealt{Williams1992} on logophoricity and adjunct control). Hence by the principle in (\ref{ex:Control:69b}) left edge adjuncts will be interpreted as holding of a human argument. This conclusion appears to be supported by the examples in (\ref{ex:Control:70}) cited by \citet{Donaldson2021b}:
+
+\ea\label{ex:Control:70}
+\ea[]{\label{ex:Control:70a} Being made of stainless steel, rust won't be an issue. (after \citealt{Davies:iWeb})}
+\ex[*]{\label{ex:Control:70b} Rust won't be an issue, being made of stainless steel.}
+\ex[]{\label{ex:Control:70c} The knife resists rusting, being made of stainless steel.}
+\z\z
+
+\noindent
+(\ref{ex:Control:70a}) is acceptable even though the extrasentential controller is necessarily inanimate, while (\ref{ex:Control:70b}) fails because the adjunct is now left edge and therefore is required to be human unless it can be interpreted as an instance of OC as in (\ref{ex:Control:70c}).
+
+An alternative account of the difference between OC and NOC adjuncts is advanced by \citet{FischerHoyem,FischerHoyem2022}. Instead of a reference to right and left they distinguish the levels of emebedding and hence syntactic scope as the determining factor. OC is limited to arguments within the verbal domain, while proposition modifying adjuncts, which display NOC properties, are interpreted on the basis of pragmatic factors. The common property of all of these accounts is that they involve a scale moving from syntax (whether relationally or categorially defined) through semantics to pragmatics, a scale which we have now seen more than once is best defined in the terms of \citet{Haug2013,Haug2014b} rather than always being reduced to a syntactic configuration. An interesting additional dimension introduced by Donaldson is that of processing, who adduces the psycholinguistically based principle that, in his words, `language users guess at a controller as soon as it becomes apparent that one is required' \citep[100]{Donaldson2021b}, and hence with differential consequences for initial, medial and final adjuncts. There are also parallels here with the linearization effects noted by \citet{Haug2017} in connection with examples like (\ref{ex:Control:51}) above.
+
+\section{The diachrony of raising and control}
+\label{sec:Control:13}
+
+Most of the literature on raising and control constructions is synchronic in orientation but there has been some work on the way these patterns may change over time. In this section we will briefly consider some case studies and the contribution made by an LFG-based approach to modelling them.
+
+Our first examples come from the work of \citet{Barron1997,barron2001} on the historical development of `seem' verbs from verbs of perception. One such is Latin \emph{videri}, formally the passive of the verb \emph{videre} `see' but commonly used in the sense of `seem' as in (\ref{ex:Control:71}) contrasted with its literal meaning in (\ref{ex:Control:72}):
+
+\ea\label{ex:Control:71}Latin\\
+\gll ... ill-orum   beata      mors     vid-et-ur\\
+     {} {they-\GEN.\PL} {blessed.\NOM.\F.\SG}  {death.\NOM.\F.\SG} see-\PRS.3\SG-\PASS\\
+\glt    `... their death seems blessed'     (Cicero \textit{De amicitia} 23,7)
+\z
+                    
+\ea\label{ex:Control:72}Latin\\
+\gll ubi sol     etiam  sex mensibus  continuis     non vid-et-ur\\
+ where {sun.\NOM.\SG} even  six  {month.\ABL.\PL} {continual.\ABL.\PL}   {\NEG} see-\PRS.3\SG-\PASS\\
+\glt`where the sun is not seen for six months in a row'
+ (Varro \emph{Res rusticae} 1,2,4)
+ \z
+What (\ref{ex:Control:71}) and (\ref{ex:Control:72}) share is that the perceiver argument has been suppressed and in consequence the object of perception comes to fill the \SUBJ\ function in virtue of the Subject Condition. However, the verb's inflectional morphology and the syntactic configuration of the clause remain unchanged. In Latin both uses are attested over a long time span, but following the general principle of grammaticalization that concrete meanings develop into abstract ones rather than vice versa, it is reasonable to suppose that the `be seen' meaning is older than the `seem' meaning.
+
+The diachronic sequence is not in doubt in Barron's second example, namely the development of French \emph{sembler} and Italian \emph{sembrare}, both meaning only `seem', from the Latin \emph{simulare} `pretend'. At the level of function and argument structure the change is parallel. In this case, the `pretender', that is to say the causer of the perception has been lost with the result that the object that has been made to appear takes over the subject role.
+
+While the above examples involve the historical shift into a raising function of items that were already etymologically verbs, our next examples, drawn from \citet{CamilleriSadler2019}, show how the same verbal function may develop from items that belong to other categories, specifically here a noun \emph{\v{s}akl} `shape, form' and a preposition \emph{z{\=e}y} `like'. Example (\ref{ex:Control:73}) shows the `shape' word in its nominal use together with a dependent genitive and a predicative adjective that can agree either with the masculine head \emph{\v{s}akl} or its possessive feminine dependent \emph{d{\ae}rah} `circle'. (Note here that there is no copula since this is present tense, as with the Maltese example (\ref{ex:Control:7a}) above.)
+
+\ea\label{ex:Control:73}Egyptian\\
+\gll {\v{s}}akl  id-d{\ae}rah   mdawwar/mdawwar-ah\\
+    {shape.\M.\SG} {\DEF-circle.\F.\SG}  round.\M.\SG/round-\F.\SG\\
+\glt    `The shape of the circle is round.'  
+\z
+                
+In (\ref{ex:Control:74}) by contrast \emph{\v{s}akl} serves as a raising predicate taking the perfective \emph{rigi{\textrevglotstop}} `return' as its complement:
+
+\ea\label{ex:Control:74}Egyptian\\
+\gll Morsi {\v{s}}akl-u     rigi{\textrevglotstop}\\
+ M.   {shape-3\M.\SG.\GEN}  return.\PFV.3\M.\SG\\
+\glt    `Morsi seems to have come back.' 
+ \z
+ In LFG terms the diachronic development here involves a shift from the predicate `\textsc{\v{s}akl\arglist{\POSS}}' to `\textsc{\v{s}akl\arglist{\XCOMP}\SUBJ}'.
+
+ \citegen{CamilleriSadler2019} second case can be seen in the difference between the examples (\ref{ex:Control:75}) and (\ref{ex:Control:76}) from two different varieties of Algerian Arabic drawn from studies conducted at different time periods:
+
+\ea\label{ex:Control:75}Sa{\"i}da Algerian Arabic, 1908\\
+\gll l{\=a}bes      z{\=e}y el-m{\textgamma}{\=a}{\d{r}}ba\\
+ {wear.\gloss{act}.\PTCP.\M.\SG}  like \DEF-moroccan.\PL\\
+\glt `He was wearing (i.e. dressed) like Moroccans.'
+ \z
+ 
+ \ea\label{ex:Control:76}Djidjelli Algerian Arabic, 1954\\
+\gll z{\=e}yu     ns{\=a}-na\\
+{like.\M.\SG.\GEN}  forget.\PFV.3\M.\SG-1\PL.\ACC\\
+\glt `He seems to have forgotten us.'
+ \z 
+In this instance the source is prepositional but the outcome once again is a raising predicate: `\textsc{z\=ey\arglist{\XCOMP}\SUBJ}'. Semantic parallels for this development are to be seen in the use of English like in the copy-raising constructions reviewed in \sectref{sec:Control:9} and in the origin of Latin \emph{simulare} `pretend' discussed above as a causative built on the same stem as \emph{similis} `similar'.
+
+What all these examples taken together demonstrate is that it not the categorial status of the etymon --- verb, noun, adposition respectively --- that unites them but a common semantic core plus a the transition to the functional structure \arglist{\XCOMP}\SUBJ, a shared development that a framework like LFG is ideally equipped to model.
+
+We move now to the development of a control predicate, namely \textsc{will} verbs in Germanic. These can all be traced back to the Proto-Indo-European root \mbox{\emph{*wel-,}} and are cognate with Latin \emph{velle} `want' which in turn is the source of French \emph{vouloir} and Italian \emph{volere} discussed in \sectref{sec:Control:6}. As \citet{BorjarsVincent2019} show in detail, comparing items across the family reveals a sequential development from the original `want' meaning through to the future and intentional meanings of modern English. The most conservative languages are Swedish and Icelandic where in the modern languages the verb \emph{vilja} has only `want' meanings and in that respect resembles the Danish pattern set out in (\ref{ex:Control:36}) above. Modern English \emph{will}, by contrast, has lost these uses though they are attested in Old and Middle English. Danish stands in between in the sense that it has retained the `want' meanings but has also developed the intention and future meanings. Hence an example like (\ref{ex:Control:77}) is ambiguous:
+
+\ea\label{ex:Control:77}Danish\\
+\gll Peter vil    hj{\ae}lpe   dig\\
+ Peter  {will.\PRS}  {help.\INF}  you.\ACC\\
+\glt `Peter will help you.' OR `Peter wants to help you.'
+ \z 
+Within grammaticalization studies developments of this kind are typically modelled in terms of informal scales or semantic maps \citep{Bybee:Evolution,NarrogAuwera2011} such as the one proposed in \citet[301]{BorjarsVincent2019}:
+
+\ea\label{ex:Control:78}
+\textsc{desire  ~$>$~   intention  ~$>$~   prediction}
+\z
+We can now offer a more refined version of this development; in effect a diachronic instantiation of Haug's scale:
+
+\ea\label{ex:Control:79}
+\textsc{quasi-obligatory ac   ~$>$~   ac  ~$>$~   fc   ~$>$~   predlink}
+\z
+
+What we see here, then, is the development from an independent lexical item to control verb to raising verb and ultimately to simple of marker of tense and/or aspect, as is consistent with the cross-linguistic diversity in the etymology of control and raising verbs \citep{barron2001,Vincent2019a}. One may compare too the diachronic development from control verb to complex predicate discussed in \citet{Butt2014} and in \citetv{chapters/Historical}.
+
+\section{Conclusion}
+\label{sec:Control:14}
+
+The general conclusion that emerges from this chapter, in line with the view expressed by \citet[257--258]{Landau2013}, is that control and raising do not constitute a unitary phenomenon. Rather such pre-theoretical labels subsume a variety of structural possibilities that vary across languages and which may change over time. However, contrary to \citet{Landau2013,Landau2015}, we argue that these patterns not only can be captured within a framework like LFG but also that a parallel correspondence model of this kind, which does not make all generalizations hinge on syntactic configurationality, has the potential to offer richer insights in both the synchronic and diachronic domains.
+
+\section*{Acknowledgments}
+
+I am grateful to Nik Gisborne, Louisa Sadler, Peter Sz\H{u}cs and two anonymous reviewers for their comments and suggestions, and to Mary Dalrymple for her advice, insight and patience.
+
+\section*{Abbreviations}
+
+Besides the abbreviations from the Leipzig Glossing Conventions, this
+chapter uses the following abbreviations.\medskip
+
+\noindent\begin{tabularx}{.45\textwidth}{lQ}
+\gloss{act} & active\\
+\gloss{adn} & adnominalizer\\
+\gloss{c} & complementizer\\
+\gloss{exh} & exhortative\\
+\end{tabularx}\begin{tabularx}{.45\textwidth}{lQ}
+\gloss{hab} & habitual\\
+\gloss{infl} & head of IP\\
+\gloss{pot} & potential\\
+\gloss{prt} & particle\\
+\end{tabularx}
+
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}

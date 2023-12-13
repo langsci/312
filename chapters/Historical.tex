@@ -1,0 +1,1413 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10185978}
+\title{LFG and historical linguistics}
+\author{Hannah Booth\affiliation{Ghent University}   and   Miriam Butt\affiliation{University of Konstanz}}
+\abstract{This chapter looks at the opportunities and     perspectives that LFG offers for the study of language change, surveying existing LFG approaches within historical linguistics and providing examples of sample phenomena. We discuss how reanalysis, a major driver of language change, can be accounted for elegantly within LFG's parallel architecture thanks to its crucial separation of form from function and, moreover, how different types of reanalysis can be understood, whether they involve rebracketing, recategorization,  or changes at the lexical level commonly discussed in terms of grammaticalization. As we also discuss, LFG's fundamental design principles and resulting flexibility of c-structure allow for complex, nuanced accounts of word order change. Furthermore, we survey the opportunities that LFG offers for exploring the complex relationship between variation and change, and in particular frequency effects and gradual change which proceeds via competition. Finally, we signpost future possibilities for  work in this relatively underexplored but promising area. }
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[23]%%chapternumber
+}{}
+
+
+\begin{document}
+\maketitle
+\label{chap:Historical}
+
+\section{Introduction}
+\label{sec:Historical:intro}
+\largerpage[-1]
+This discussion of historical linguistic work in LFG builds on two previous meta-discussions.\footnote{An additional discussion of previous diachronic LFG accounts relating specifically to the history of English is \citet{Allen2012}.} One is Vincent's (\citeyear{vincent2001lfg})  wide-ranging and satisfyingly deep, comparative look at the possibilities which LFG's particular projection architecture and its combination of both functionalist and generative perspectives offer for an analysis of various different types of language change. The other is a recent handbook article by \citet{borjars2017lexical}, which  offers more detail on c-structural analyses of language change in several Germanic languages that have emerged since the seminal \textit{Time Over Matter} book. The \textit{Time Over Matter} book  \citep{ButtKing01}  represents the first collection of historical linguistic work within LFG, in which Vincent's (\citeyear{vincent2001lfg}) contribution represents more of a position paper than a mere introduction to a collected volume. 
+
+In this chapter, we provide a discussion of architectural issues and perspectives on language change in \sectref{sec:Historical:archi}. However, our intention is not to reproduce  the in-depth discussions already found in \citet{vincent2001lfg} and \citet{borjars2017lexical}, so we keep this section comparatively brief and proceed on to discussing examples of lexical and functional change in \sectref{sec:Historical:lex-change}.  This includes phenomena generally dealt with under the rubric of ``grammaticalization'', but also an understanding of complex predication, passives and case. \sectref{sec:Historical:syn-change} provides a discussion of language change at c-structure, which includes ``growing'' functional categories, understanding changes in word order and the syntactic configuration of a language and the development of mixed categories. Finally, we address the possibilities for modelling the complex relationship between variation and change within LFG in \sectref{sec:Historical:var}.
+
+%------------------------
+\section{The LFG Architecture and mechanisms of language change}
+\label{sec:Historical:archi}
+
+
+\largerpage[-1]
+As \citet{vincent2001lfg} and \citet{borjars2017lexical} point out, LFG is like most theories in the generative tradition in that it was not specifically designed with diachrony in mind. There is no paper tackling language change in the landmark \citet{bresnan82} volume.  Serious historical work within LFG mainly began in the 1990s, with an early exception represented by \citet{allen1986}: see \sectref{sec:Historical:arg-gf}.   However, as demonstrated by \citet{vincent2001lfg}, LFG's fundamental design principles and its parallel projections
+are particularly well-suited to modelling diachronic change (see also the discussion of paradigms in \citealt{borjars1997paradigms}).  
+
+In their textbook on language change, \citet{harris1995historical} articulate a position whereby reanalysis, along with extension and borrowing, is seen as a key mechanism of language change.  Reanalysis in their terms covers quite a broad range of phenomena, involving morphophonological and morphosyntactic changes.\footnote{While phonological change has been overall a central topic in historical linguistics, the focus in this chapter is on morphosyntactic change, reflecting the centrality of syntax in the LFG architecture and the fact that diachronic work within LFG has focused on morphosyntax. A natural framework to work within from an LFG perspective with respect to sound change would be Lexical Phonology \citep{kips82a,kips82b,mo86}, for example as in \citet{lahiri2000-change}. 
+%\textcolor{blue}{@Miriam: add refs to Kiparsky/Lahiri here.} 
+} A relevant touchstone  here is Langacker's (\citeyear[59]{langacker1977syntactic}) classic definition of reanalysis, which \citet[11]{vincent2001lfg} notes is most useful in an LFG setting, namely that reanalysis concerns ``[a] change in
+the structure of an expression or class of expressions that does not involve any immediate or intrinsic modification of its surface manifestation''. 
+% \citet[11]{vincent2001lfg} notes that Langacker's (\citeyear[59]{langacker1977syntactic}) classic definition of reanalysis is the one that is the most useful to work with within LFG, namely that reanalysis concerns ``[a] change in
+% the structure of an expression or class of expressions that does not involve any immediate or intrinsic modification of its surface manifestation''. 
+%repeats what is said later, MB&HB
+% LFG is well poised to model various types of mismatches that arise in diachronic reanalysis across different modules of grammar because of  its clear separation of c-structure (surface manifestation) vs.~f-structure, a(rgument)-structure and semantics.
+Because LFG does not conflate syntactic position and syntactic functions and, thus, by extension, is able to cleanly separate out surface appearance (at c-structure) from functional and semantic import (at f-structure, a(rgument)-structure and s(emantic)-structure), it is particularly well-suited to help understand different types of reanalysis, whether they concern simple syntactic rebracketing, morphosyntactic change of the type where a dative argument or object is reanalyzed as a subject \citep{allen1995case,schaetzle18}, the rise of a recipient passive \citep{allen1995case,Allen01} or the development of complex predication \citep{borjars2017lexical}. Other changes may involve the reanalysis of one syntactic category as another \citep{borjars2011preposition}, %\textcolor{red}{Add Borjars and Burridge ref on complementizers in Pennsylvania dutch here}, 
+also leading to the existence of mixed category phenomena \citep{Nikitina2008}, for example, again with attendant functional changes. \Citet{vangelderen2011} discusses such diachronic developments in terms of ``Linguistic Cycles'' and works with changes in feature specifications that are attached to lexical items and categories. The analyses are  couched within Minimalism and work with a very restricted set of features --- we would argue that LFG is much better poised to account for changes in feature systems in relation to phrase structure (see \sectref{sec:Historical:recat}).
+
+Cases of classic reanalysis at a lexical level, many of which have been prominently discussed as instances of grammaticalization  (\citealt{hopper_traugott_2003,narrog_heine_2017}, but also see \citealt{robertsroussou03} within Minimalism) are also easily modelled and predicted by an architecture which separates surface syntactic form (c-structure) from function (f-structure). As we discuss in \sectref{subsect:grmzn}, a verb can retain its surface form but begin functioning as a perception raising verb, an auxiliary or a light verb \citep{barron2001,butt-lahiri2013}.   Over time, these functional changes may also result in a change in the surface form of the relevant item -- typically some kind of morphophonological reduction, but also changes in the paradigmatic behaviour. The design of the LFG architecture allows for this associated process to be captured distinctly from the actual strict process of reanalysis as per Langacker's definition. In fact, it can also predict which types of functional and semantic elements are more prone to change than others and in what way.  For instance, in terms of lexical or semantic bleaching one would predict that a verb loses its predicational power (the \PRED\ feature) at f-structure, but retains certain functional information.  Or, with respect to originally spatial terms being drawn into the case-marking system of a language, one can imagine working with underspecification and/or the loss of particular features characterizing the spatial terms, e.g., the {\sc place} and/or {\sc path} specifications \citep{ahmed09}. 
+
+
+On the other hand, some instances of language change concern changes at the c-structural level, without necessarily resulting in attendant functional change.  Examples are changes with respect to word order and constituent structure such as those found in Germanic and Romance languages, where a previously freer distribution and ``discourse-configur\-ational'' organization \citep{Kiss1995} yields to a system where grammatical relations are increasingly licensed by position  
+\citep{Kiparsky95,kips97,hinterhoelzl-petrova2010,luraghi2010configurationality,ledgeway2012latin,ponti2018non,Booth17,booth-schaetzle:2019-cr,booth-beck20200jhs}.
+Given that LFG's c-structure represents actual linear order, constituency and hierarchical relations, is not dogmatic about binary branching, and allows for endocentric as well exocentric phrasal organization, there are several parameters across which languages would be expected to vary and change and they indeed do. 
+%CHANGE AT C-STRUCTURE
+%For instance, some changes involve a change in form (here broadly construed as the information captured at c- and m-structure) but not necessarily in function (at f-structure). Changes with respect to word order and constituent structure are one such example and can be modelled elegantly at c-structure, given its flexibility allowing for both endocentric and exocentric organistion, as well as non-binary branching. 
+Thus, the common trend for languages to shift over time from a freer word order to a more fixed word order can be captured in terms of the development of an increasingly endocentric c-structure, as we discuss  in \sectref{subsect:growth}. In such a scenario, the mappings between c-structure and f-structure will necessarily change, fed by the changing positions licensed at c-structure, as typically manifested in the changing realization of grammatical relations, as we discuss in \sectref{subsect:pos-license}. 
+
+
+%CHANGE AT BOTH
+Of course, most instances of language change do not involve just one change within one module of grammar (i.e.~c-structure or f-structure), but are more complex. Given the inherently interactional nature of language change, certain changes which initially occur at c-structure may in turn feed changes at f-struc\-ture, and vice versa. In this sense, keeping surface form, syntactic categorization and functional information apart as in the LFG architecture allows one to neatly model the step-wise nature of such developments. \citet{vincent2001lfg} notes that one of the most complex series of changes he has seen analyzed is that presented by \citet{simpson2001} on the grammaticalization of associated path in Warlpiri (see \sectref{sec:Historical:lex-change}).  Indeed, as \citet{vincent2001lfg} also points out,  another consequence of the complex interactional architecture of LFG is that an LFG perspective on language change does not expect abrupt,  cataclysmic shifts in grammar as proposed in the influential work by \citet{lightfoot1979principles,lightfoot1991set,lightfoot1997catastrophic}, %\textcolor{red}{add Lightfoot refs here},
+for example.  Rather, it is expected that a series of small changes, many of them at the lexical level, will combine together and gradually, over time and with attendant variation in usage, will result in a major structural change. This is what is argued for with respect to the introduction of ergativity in Indo-Aryan by \citet{buttahmed11}, for example (cf.~also \citet{traugott2010gradience} for an overview discussion).
+%changes involve change in both form \textit{and} function. For example, when an item undergoes categorial change, this will involve change at both c-structure and f-structure; the new category of the item will show up as a change at c-structure (which represents information about both category and constituency), but this new categorial status will itself be reflected by new functional properties at f-structure (e.g.~the ability to bear tense marking if the item has become a verb). We discuss such changes in \textbf{Section X}. Furthermore, given the inherently interactional nature of language change, certain changes which initially occur at c-structure may in turn feed changes at f-structure, and vice versa. In this sense, keeping form and funtion apart as in the LFG architecture allows one to neatly model the step-wise nature of such developments.
+
+Indeed, variation as an inherent property of language has been closely linked to language change in a strong tradition of work (e.g., \citealp{kroch1989reflexes,kroch2001,labov1994principles,pintzuk2003}). However, this empirical fact generally presents a challenge for generative frameworks, which did not originally feature gradience or stochastic variation as part of their basic design principles.  One proposed architectural solution here has been in terms of Optimality Theory \citep{kager99}, in particular stochastic Optimality Theory  \citep{BoersmaHayes2001}. As we discuss in \sectref{sec:Historical:var}, this avenue has also been explored within LFG as a way to model gradual syntactic change via competing variants \citep{clark2004stochastic}, using OT-LFG (see~\citetv{chapters/OT}).
+
+Having briefly surveyed the explanatory potential of LFG with respect to diachronic change via a set of examples in this section, we delve into the issues and phenomena more deeply in the next sections, also  involving other parts of LFG's projection architecture, most prominently a(rgument)-structure.
+%This section has provided a brief discussion of the perspective on language change given by  LFG's architecture and has briefly touched on types of language change that have been analyzed within LFG. In the next sections, we delve into this work more deeply, also involving other parts of LFG's projection architecture, most prominently a(rgument)-structure. %and i(nformation)-structure. 
+
+%Aside from the core syntactic components of the architecture, c-structure and f-structure, additional dimensions which represent non-syntactic linguistic information, e.g.~a-structure, s-structure, p-structure and i-structure, allow one to capture changes which involve interactions across various linguistic dimensions. Through much work in recent decades, the details of these additional dimensions and their place in the overall correspondence architecture have been increasingly developed and, as we show below in relation to a-structure and i-structure in particular, offer the possibility for complex accounts of multi-dimensional changes as we discuss in \textbf{Sections X and Y}.
+
+
+%\textcolor{red}{In particular, the clear distinction between form (at c-structure and m-structure) and function (at f-structure) allows one to elegantly capture various types of well-attested diachronic change. Furthermore, as we show in this overview, this distinction allows one to break down some of the details concerning classic language-internal mechanisms of change, such as reanalysis (e.g.~\citealp{langacker1977syntactic,timberlake1977reanalysis,deSmet2009analysing}), analogical extension (e.g.~\citealp{harris1995historical,harris_2017}) and grammaticalisation (e.g.~\citealp{hopper_traugott_2003,narrog_heine_2017}), which otherwise have a tendency to be employed as fairly nebulous terms.}
+
+
+%CHANGE AT F-STRUCTURE
+%Other changes, meanwhile, involve a change in function but not necessarily in form. As mentioned, renanalysis under certain circumstances can qualify as such, for instance, when reanalysis affects grammatical relations. Many languages exhibit a change whereby objects come to be reanalysed as subjects over time (e.g.~\citealp{cole80,allen1995case,haspelmath01}). As we discuss in \sectref{subsect:pos-license}, such a change will typically coincide with further changes concerning case and word order, but the essentials of the reanalysis can be captured in terms of changing values for the relevant grammatical functions at f-structure. Functional change at f-structure is also relevant for many phenemonena labelled as grammaticalisation phenomena, in broad terms, where a lexical item takes on a new grammatical feature (e.g.~\citealp{traugott1991semantics}). In LFG, the loss of the original lexical meaning (`semantic bleaching', cf.~\citealp{traugott1991semantics}) involved in such a change can be captured at f-structure in terms of the item losing its \textsc{pred} feature, as we discuss in \sectref{subsect:grmzn}. Coinciding with this, the new grammatical feature associated with the item will be shown in the item's new f-structure. Although grammaticalisation often coincides with a change in form of the relevant item, typically phonological/morphological reduction, the LFG architecture allows for this associated process to be captured distinctly from the strict grammaticalisation change in itself.
+
+
+% Time over Matter book -- intro by Nigel
+
+% \textbf{Some reasons why LFG is well suited to diachronic change}
+% \begin{itemize}
+% \item LFG is still formally precise but comes with less ideological baggage than Chomskyan frameworks; not necessarily pure focus on I-language.
+% \item And at the same time, LFG still takes into account the pragmatic and semantic aspects of language (e.g. i-structure, f-structure, s-structure), which are so much the focus in usage-based and cognitive approaches.
+% \item LFG does not commit to the view that acquisition is the only locus of language change.\\
+% > Open also to external factors (e.g. contact).
+% \item  The parallel architecture of LFG leaves open the possibility for treating not just syntax but all aspects of language.
+% \item Moreover, the systematic mapping correspondences between dimensions allow us to handle situations which involve interactional change across the linguistic system. \\
+% > Empirical studies tell us that syntactic change often interacts with change at the morphological, information structural and semantic level.
+% \item And in such interactional cases, a change can happen at one rate in one dimension, and a related change in another dimension can happen at another rate.
+% \end{itemize}
+
+%------------------------
+\section{Lexical and functional change}
+\label{sec:Historical:lex-change}
+%\section{Functional Change}
+\label{sec:Historical:func-change}
+
+We begin by discussing examples of lexical and functional change in \sectref{subsect:grmzn}, many of which have been analyzed as instances of grammaticalization.  We then move on to more complex series of changes which involve a restructuring of the mapping relationship between semantic arguments (a-structure) and grammatical relations (f-structure) in \sectref{sec:Historical:arg-gf}.
+
+%----------------
+\subsection{Grammaticalization}
+\label{subsect:grmzn}
+
+The original characterization of the idea behind grammaticalization goes back to \citet[131]{meillet12}, who defines it as:  ``l'attribution
+du caractère grammatical à un mot jadis autonome [the attribution of a grammatical
+value to a formerly autonomous word]'' \citep[134]{vincent2020heads}.  Essentially, this is a process by which an item with lexical content becomes reanalyzed as a functional element \citep{Bybee:Evolution}. Recent  decades have seen a substantial body of work  on grammaticalization phenomena, where grammaticalization has been treated both  as a grammatical framework (e.g., \citealt{lehmann85,hopper_traugott_2003}) and as a pre-theoreti\-cal notion which is to be formalized via the tools and concepts available within a particular framework (e.g., \citealp{campbell2000,Newmeyer2000,robertsroussou03,vangelderen2011}).  LFG belongs in the latter class: it sees grammaticalization as a pre-theoretical concept which describes certain observed historical changes that are to be modelled via the formal tool-kit and assumptions available as part of the projection architecture. 
+
+
+The progression from lexical to functional is typically not accomplished in one fell swoop, but consists of the combined effects of a number of individual changes (see, e.g., the various papers in \citealp{traugott2010gradience}). The grammaticalization literature proposes that change progresses along a cline, for example as shown in (\ref{cline}) for a crosslinguistically well-established change in which auxiliaries, clitics and finally affixes develop from an originally contentful lexical verb.  This change is also generally associated with the concept of ``semantic bleaching'', by which the item undergoes the gradual loss of semantic content until the formerly lexical content word is reanalyzed as a functional element.  
+
+
+\ea \label{cline}
+full verb $>$ (vector verb) $>$ auxiliary $>$ clitic $>$
+affix  \\ Typical Grammaticalization Cline \citep[108]{hopper_traugott_2003}
+\z 
+
+%MB: put this in because of comment by Reviewer 2, seems a bit extraneous to me...
+Note that the cline represents a mixture of surface and functional changes (form and function): the change from a main (full) verb to auxiliary mainly revolves around a change in function, while the change from auxiliary to clitic/affix is very prominently a change in surface form. Given that LFG very clearly differentiates between form (c-structure) and function (f-structure), it seems particularly perspicuous to address issues of grammaticalization from  the perspective of LFG, as we aim to illustrate in  this section. 
+
+The category \textit{vector verb} in the cline in (\ref{cline}) was introduced specifically for instances of light verb formation in Indo-Aryan \citep{hook91} and this has been taken up in discussions within LFG by \citet{butt-lahiri2013}, who argue that light verbs should not be placed on a grammaticalization cline, but are diachronically stable.    
+Butt and Lahiri contrast the diachronic evidence available for Indo-Aryan light verbs with that of auxiliary formation and show that these two categories exhibit very different diachronic behaviour. Light verbs show no signs of  morphophonological surface changes or further functional changes which often follow a categorial reanalysis in instances of grammaticalization. However, auxiliaries do.  This is illustrated in (\ref{bangla-be}) for the Bengali verb `be'  and  in (\ref{urdu-go}) for the Urdu verb `go'.  
+
+
+In Bengali the verb {\textscripta}{\textteshlig}ʰ `be' can function as a full verb (\ref{bangla-be-full}), but also as a light verb (\ref{bangla-be-light}), in which case it is always form-identical to the main verb.  On the other hand, the same verb `be' has given rise to new verbal paradigms whereby the perfect is realized via a cliticized version of a former auxiliary version of {\textscripta}{\textteshlig}ʰ `be' (\ref{bangla-be-clitic}) and the progressive shows a fully affixal version  (\ref{bangla-be-morph}).\footnote{For a full analysis of the morphophonological changes that led to the formation of new verbal paradigms in Bengali, see \citet{lahiri00}.}\  The cliticized and affixal versions of a former auxiliary are as expected/predicted by the grammaticalization cline in (\ref{cline}).
+
+\begin{exe} 
+\ex \label{bangla-be} Bengali
+\begin{xlist}
+\ex[]{ \label{bangla-be-full}
+\gll  {{\textscripta}mi} {bʰ{\textscripta}lo} {{\textscripta}{\textteshlig}ʰi} \\
+I.\textsc{nom} {well} {be.\textsc{pres}.1} \\
+\glt `I am well.' \hfill Main Verb }
+\ex[]{ \label{bangla-be-light}
+\gll 
+{amar} {mone} {{\textscripta}{\textteshlig}ʰe} \\
+I.\textsc{gen} {mind.\textsc{loc}}  {be.\textsc{pres}.3} \\
+\glt `I remember.'  \hfill Light Verb}
+\ex[]{ \label{bangla-be-clitic}
+\gll 
+{r{\textscripta}m} {{\textteshlig}itʰi} {pe-(y)e={\textteshlig}ʰ-ilo} \\
+{Ram.\textsc{nom}} {letter.\textsc{nom}} {receive-\textsc{perf}=be-\textsc{past}.3} \\
+\glt `Ram had received letters.' \hfill Clitic}
+\ex[]{ \label{bangla-be-morph}
+\gll 
+{r{\textscripta}m} {{\textteshlig}itʰi}
+{p{\textscripta}-{\textteshlig}{\textteshlig}ʰ-ilo} \\
+{Ram.\textsc{nom}} {letter.\textsc{nom}} {receive-be-\textsc{past}.3} \\
+\glt `Ram was receiving letters.' \hfill Affix}
+\end{xlist}
+\end{exe}
+
+Similarly, the verb {\textdyoghlig}a `go' in Urdu/Hindi has a light verb use (\ref{urdu-go-light}) that is always form-identical to its main verb use (\ref{urdu-go-main}).  When the surface form of the main verb changes due to language change, the light verb version mirrors this change.  On the other hand, the auxiliary version of `go' that furnished the basis for the innovated future morpheme in Urdu/Hindi went through a clitic phase (\ref{urdu-go-clitic}) and is now an affix whose surface form is \textit{-g-}, as in (\ref{urdu-go-morpheme}).
+
+\begin{exe} 
+\ex \label{urdu-go} Urdu/Hindi
+\begin{xlist}
+\ex[]{  \label{urdu-go-main} 
+\gll 
+{m\~{\textepsilon}}  {g{\textscripta}-ya} \\
+{I.\textsc{nom}} {go-\textsc{perf}.\textsc{m}.\textsc{sg}} \\
+\glt `I went.' \hfill Main Verb}
+
+\ex[]{ \label{urdu-go-light} 
+\gll 
+{b{\textscripta}{\textteshlig}{\textteshlig}a} {g{\i}r} {g{\textscripta}-ya} \\
+{child.\textsc{m}.\textsc{nom}} {fall} {go-\textsc{perf}.\textsc{m}.\textsc{sg}} \\
+\glt `The child fell (down).'  \hfill Light Verb}
+
+%\ex[]{ \label{urdu-go-aux} 
+%\gll 
+%{{\textteshlig}or} {(p{\textupsilon}l{\i}s=se)} {p{\textscripta}k\d{r}-a}
+%{g{\textscripta}-ya} \\
+%{thief.M.Sg.Nom}  {police=Inst} {catch-Perf.M.Sg}  {go-Perf.M.Sg} \\
+%\glt `The thief was caught by the police.'  \hfill Auxiliary}
+
+
+\ex[]{ \label{urdu-go-clitic} 
+\gll  {k{\textscripta}h-\~{u}=hi=ga} \\
+{say-1.\textsc{sg}-\textsc{emph}-\textsc{fut}.\textsc{m}.\textsc{sg}} \\
+\glt `I will say (it), of course.' \hfill Clitic \\
+\citep[\S399]{kellogg93}}
+
+\ex[]{ \label{urdu-go-morpheme} 
+\gll {p{\textupsilon}l{\i}s}  {{\textteshlig}or=ko}  {p{\textscripta}k\d{r}-e-g-i} \\
+{police.\textsc{f}.\textsc{sg}.\textsc{nom}} {thief.\textsc{m}.\textsc{sg}=\textsc{acc}} {catch-3.\textsc{sg}-\textsc{fut}-\textsc{f}.\textsc{sg}} \\
+\glt `The police will catch the thief.'  \hfill Affix}
+\end{xlist}
+\end{exe}
+
+
+Butt and Lahiri focus on developing a theory as to why light verbs should be diachronically stable, proposing an underspecified approach to the deployment of lexical semantic information by which light verbs are inextricably linked to their full verb versions via a single underlying entry, see (\ref{main-light}). When deployed as a light verb, they require combination with another predicational element, with which they form a complex predicate. 
+ 
+\ea \label{main-light}\evnup{
+\begin{tikzpicture}[grow=right]
+\tikzset{level distance=100pt,sibling distance=18pt}
+\tikzset{execute at begin node=\strut}
+\Tree [.Underlying~Verb  [.Light~Verb  ] [.Main~Verb Auxiliary ]  ]
+\end{tikzpicture}}
+\z
+
+
+The diachronic path of change from  verb to auxiliary to clitic and potentially an affix is assumed to be based on the main verb version. 
+Along with other work on grammaticalization in LFG, Butt and Lahiri assume that grammaticalization primarily involves a loss or difference in functional information at f-structure, while the surface form is initially held constant. That is, the difference between a main verb use of `go' and an auxiliary use of `go' would be expressed in terms of a difference in functional information associated with the respective lexical entries.  In the illustrative main verb entry (V) in (\ref{mv-entry}) vs.~the auxiliary version (I) in (\ref{aux-entry}) one major difference in functional information involves the loss of the predicational power of the verb in terms of its \PRED function.  This then also instantiates the ``semantic bleaching'' generally observed in the grammaticalization process.
+
+\begin{exe}
+  \ex 
+  \begin{xlist}
+\ex  \label{mv-entry}
+\catlexentry{go}{V}{(\UP\PRED) = `go\arglist{(\UP \SUBJ)(\UP \XCOMP)}'}
+%(\UP \TENSE) = {\sc present} 
+\ex \label{aux-entry}
+\catlexentry{goes}{I}{(\UP \TENSE) = {\sc fut} }
+% \hspace{23ex} experiencer \\   (\UP \SUBJ \CASE) = \DAT } }
+\end{xlist}
+\end{exe}
+
+%These versions of `go' might be employed in sentences as in the made up English sentences (\ref{abstract-main}) vs.~(\ref{abstract-aux}), which are just meant to illustrate the basic pattern in a simplified way (as is well known, the English future auxiliary derives from a modal verb, as also discussed by \citet{borjars2017lexical,vincent2020heads}).  
+
+Thus, in the main verb use, the verb `go'  subcategorizes for a \SUBJ and an \XCOMP.  In the auxiliary use that develops over time, this information is absent and is instead replaced by a futurate use of the verb. As such, the auxiliary version then merely provides tense information to an overall predication. That is, grammaticalization  primarily involves a change in the functional information associated with an item.  This functional change then engenders further changes, such as the reanalysis of the syntactic category of the item (from V to I) and possible ensuing changes in the morphophonological realization of the item due to its new functional status, so that the item eventually develops into an affix (typically via a clitic stage), as illustrated for Bengali and Urdu/Hindi in (\ref{bangla-be}) and (\ref{urdu-go}) above. 
+
+%footnote{Verbs are not the only syntactic category that are prone to reanalysis, other prominent examples involve adpositions and adjectives, we discuss these and other issues in \sectref{sec:Historical:recat}.}
+
+%\begin{exe} 
+%\ex 
+%\begin{xlist}
+%\ex \label{abstract-main} 
+%`He goes to go.'  (main verb use) 
+%\ex \label{abstract-aux} 
+%`He will($\simeq$goes) go.' (future auxiliary use)
+%\end{xlist}
+%\end{exe} 
+
+Grammaticalization does not tend to occur in one sudden step, but happens gradually over time and tends to involve several intermediate steps.  It also does not take place randomly, but is generally motivated by a semantic reinterpretation of a given configuration (e.g., `goes to go' $\longrightarrow$ `go.\FUT').  This type of semantically motivated change is also discussed in a recent paper by \citet{BorjarsVincent2019}  with respect to Germanic \textit{will} verbs.   \citet{BorjarsVincent2019} propose an LFG analysis of how
+an original verb of desire (`want') undergoes change to a verb of intention and further to prediction, giving rise to a new modal in some languages and a futurate auxiliary in others.  This semantic change goes hand in hand with a change in functional information (e.g., from a control to a raising verb) and a concomitant reanalysis at c-structure. 
+
+Similarly, \citet{CamilleriSadler:LFG2018,camilleri2020grammaticalisation} postulate a total of four separate steps in the formation of a progressive auxiliary from a main verb meaning `sit' in Arabic.  Unlike Butt and Lahiri and B\"{o}rjars and Vincent, who work with diachronic data, but in keeping with many studies on grammaticalization, the evidence Camillieri and Sadler  adduce is mainly from synchronic variation found in dialects of Arabic, which are taken to be indicative of stages of diachronic development. 
+
+Camillieri and Sadler associate the origin of the progressive auxiliary in Arabic with constructions in which the posture verb `sit' is used together with an adjunct clause, as in (\ref{sit-listen}).  The verb `sit' is considered to be a V that projects a VP and this is modified by a VP adjunct. The corresponding (simplified) f-structure analysis is given in (\ref{fstr-sit-listen}).\footnote{Note that the f-structure in  (\ref{fstr-sit-listen}) differs from the original one in \citet[26]{camilleri2020grammaticalisation} in that we have rendered the {\sc xadj} as a set containing one element,  which is what is described in \citet[26]{camilleri2020grammaticalisation}, but not represented in their f-structure.}
+
+\ea \label{sit-listen} W\={a}di Ramm Jordanian Arabic \\
+\hfill(\citealt{almashaqba15}, cited by \citealt[24]{camilleri2020grammaticalisation}) \\
+\gll {lag\={e}-ta-h} {g\={a}{\textrevglotstop}id} {ya-sma{\textrevglotstop}} {al-gi\d{s}idah} \\
+{find.{\sc pfv-1sg-3.sg.m.acc}} {sit.{\sc act.ptcp.sg.m}} {{\sc 3m}-hear.{\sc 1pfv.sg}} {{\sc def}-poem} \\
+\glt `I found him sitting down listening to the poem.'  \\
+\z
+
+\eabox{ \label{fstr-sit-listen}
+\avm[style=fstr]{
+[ pred & `sit\arglist{\SUBJ}'  \\
+ subj  & \rnode{a}{[  pred & `pro' ]} \\
+
+xadj & \{ [ pred & `listen\arglist{\SUBJ\OBJ}' \\
+           subj & \rnode{b}{~} \\ \\
+           obj & [ pred  & `poem' \\ def & +] 
+                     ] \} ]
+}
+\CURVE[3.2]{-2pt}{0}{a}{-2pt}{0}{b}
+}
+
+In a second stage this optional modifying {\sc xadj} is reanalyzed as an obligatory clausal complement of the posture verb `sit', as shown in the f-structure in (\ref{fstr-sit-study}) for the attendant  example in (\ref{sit-study}). 
+
+\ea \label{sit-study} Kuwaiti Arabic \citep[28]{camilleri2020grammaticalisation}\\
+\gll {layla} {g\={a}{\textrevglotstop}d-a} {ta-dris}\\
+{Layla} {sit.{\sc act.ptcp-sg.f}} {\sc 3f-}study.{\sc ipfv.sg} \\
+\glt `Layla is (sitting) studying.' 
+\z
+
+\eabox{
+\label{fstr-sit-study}
+\avm[style=fstr]{
+[ pred & `sit\arglist{\SUBJ\XCOMP}'  \\
+ subj  & \rnode{a}{[  pred & `Layla' ]} \\
+
+xcomp & [ pred & `study\arglist{\SUBJ}' \\
+           subj & \rnode{b}{~} \\ 
+                     ] ]
+}
+\CURVE[1.7]{-2pt}{0}{a}{-2pt}{0}{b}
+}
+
+This use of `sit' in combination with a clausal argument is in turn reanalyzed as signaling durational, stative semantics, abstracting away from the original postural, locational meaning.  Once the step from a concrete postural meaning to an aspectual meaning dimension is made, the verb is assumed to lose its predicational power in terms of the {\sc pred} feature and to only contribute the durational aspectual information to the clause, resulting finally in an innovated progressive marker (cf.~\citet{deo15} for more discussion and evidence of this type of crosslinguistically attested language change).  An example is  shown in (\ref{sit-jump}) with a corresponding f-structure analysis in (\ref{fstr-sit-jump}).  Under Camillieri and Sadler's analysis the syntactic category of `sit' itself is not reanalyzed; it merely no longer projects a VP of its own, but functions as a co-head with the formerly embedded verb, as shown in (\ref{cstr-sit-jump}). 
+
+\ea \label{sit-jump} Kuwaiti Arabic \citep[30]{camilleri2020grammaticalisation}\\
+\gll {g\={a}{\textrevglotstop}d-a} {t-ni\d{t}\d{t}} \\
+{\sc prog-sg.f} {{\sc 3f}-jump.{\sc impfv.sg}}\\
+\glt `She is jumping.' 
+\z 
+
+
+\eabox{
+\label{fstr-sit-jump}
+\avm[style=fstr]{
+[ pred & `jump\arglist{\SUBJ}'  \\
+ subj  & [  pred & `pro' ] \\
+tense & pres \\
+asp & prog                     ] 
+}
+}
+
+\eabox{\label{cstr-sit-jump}\attop{
+\begin{forest}
+[VP
+  [{\UP=\DOWN} \\ V 
+  [g\={a}{\textrevglotstop}d-a]]
+  [{\UP=\DOWN} \\ VP
+    [{\UP=\DOWN} \\ V
+      [t-ni\d{t}\d{t}]]
+   ]]
+\end{forest}}
+}
+
+%\citet{CamilleriSadler:LFG2018,camilleri2020grammaticalisation}:
+%\begin{itemize}
+%    \item Development of a progressive construction via grammaticalisation in Arabic: emergence of a verbal auxiliary element and a dedicated structure to express progressive meaning.
+ %   \item posture verb (\textit{g\={a}\textipa{\textrevglotstop}id} `sit') > progressive auxiliary
+    
+ %   \item Captured in terms of the changing functional information associated with \textit{g\={a}\textipa{\textrevglotstop}id}
+    
+  %  \end{itemize}
+
+The change by which an adjunct is reanalyzed over time as a core argument of a verb has also been argued to play a role in Latin in the innovation of raising predicates such as `seem' from verbs of perception such as `see' \citep{barron2001} and the grammaticalization of associated path in the Australian languages Warlpiri and Warumungu \citep{simpson2001}. It also plays a role in the spread of dative subjects in Icelandic, as argued for by \citet{schaetzle18} and discussed in \citetv{chapters/Case}, as well as in \sectref{sec:Historical:arg-gf} below.
+
+\citet{barron2001} provides a theoretically sophisticated account for the development of Latin \textit{videri} `seem' from the perception verb \textit{videre} `see'.  The general idea is that the epistemic raising verb develops from a passivized version of \textit{videre} in situations where there is a small clause (secondary predication), such as `Laelius was seen as an ideal person.'  This was reinterpreted as `Laelius seemed an ideal person' and  over time was generally concomitantly structurally reanalyzed as a raising predicate.  The analysis is complex and involves changes at the semantic level which translate into functional changes at f-structure. 
+
+Another level of complexity is added by Simpson's
+(\citeyear{simpson2001}) account of associated path in Warlpiri and Warumungu. The puzzle she addresses is how the path expressions (`thither' vs.~`hither')  in (\ref{ex:historical:path}) came to be grammaticalized as morphemes on a verb, given that the languages generally allow for free word order.  She assumes that at some point there must have been a stage in which the path expressions were preferentially placed just after the verbs and that this preferential word order then paved the way for grammaticalization along the cline in (\ref{cline}).
+
+\begin{exe} 
+\ex \label{ex:historical:path} Warumungu \citep[174]{simpson2001}
+\begin{xlist}
+\ex[]{
+\gll {\textbf{Juku-nturrarni}=angi}	{angkinyi}	{kina} {ngurraji}	{kina?}  \\
+{carry-{\sc thither}.{\sc past}=2{\sc s}}	{your}	{to}	{camp}	{to} \\
+\glt	`Did you take it to your home?'
+}
+\ex[]{
+\gll {\textbf{Juku-ntukarni}=ajjul} {ngurraji}	{kina.} \\
+{carry-{\sc hither}.{\sc past}=3{\sc s}}	{camp}	{to} \\
+\glt	`They (more than two) brought it  here to camp.' }
+\end{xlist}
+\end{exe}
+
+Again, the change is conceived of as a complex chain of  reanalyses.  The original construction is taken to be one in which a clause like `I went to camp' is modified by a clausal adjunct, for example: `after yam digging'.  This adjunct was then preferentially realized clause-initially:  `after yam digging, (I) went to camp', thus placing the verbs next to one another in certain situations.  This  adjacent placement of the verbs is thought to have triggered clause unification, yielding a monoclausal structure in which the former verb of motion is eventually reanalyzed as a morpheme expressing the associated path of the event. We thus have a preferential word order opening the way for  a semantic, then syntactic and concomitant functional reanalysis of an original verb into a bound morpheme. 
+
+\hspace*{-.2pt}For further discussions and examples of grammaticalization approaches within LFG, also contextualized in terms of comparison of approaches across theories, see   \citet{vincent2020heads}.  We discuss some aspects of their paper in more detail in \sectref{sec:Historical:recat}, since some of the case studies involve a reanalysis of syntactic categories with attendant ``mixed'' effects. We return to grammaticalization in \sectref{subsect:growth} in the context of c-structural change. Before turning to these topics, we discuss instances of language change which primarily involve a change in the linking configuration between semantic arguments and grammatical relations in \sectref{sec:Historical:arg-gf}.
+
+%Schwarze looks at aux systems in Romance, but doesn't really do much concretely and has the XCOMP analysis of auxiliaries. 
+
+%MB: have decided to either talk about these elsewhere in a different context or that the connection to diachrony is too tenuous to be mentioned. 
+ 
+%HB: Apparently these people have discussed loss of \textsc{pred} feature as part of grammaticalisation:
+%\begin{itemize}
+%   \item \citet{vincent1999evolution}  -- P to C. 
+ %   \item \citet{BM87} -- this is not really diachronic, but involves the optionality of PRED in pronouns, could also do the Punjabi clitics paper in this context
+ %  \item  \citet{borjars1997paradigms}  -- more general discussion in this rather than a concrete example
+ %   \item \citet{CoppockWechsler2010} extend this to loss of person and number features
+%\end{itemize}
+
+%---------------
+\subsection{Arguments and linking}
+\label{sec:Historical:arg-gf}
+
+In the previous section on grammaticalization we discussed phenomena of language change that involved a number of different dimensions. In this section, we focus on changes that are primarily concerned with reconfigurations in the linking  between semantic arguments and grammatical relations. Work that addresses these kinds of specific changes within LFG is: \citet{allen1986,allen1995case,KM15,schaetzle18} and \citet{beck-butt2021}. 
+
+%-----
+\subsubsection{Experiencer verbs}\label{subsect:allen-exp}
+
+% \textcolor{blue}{\citet{allen1986}}\\
+As mentioned above, a very early application of LFG to diachronic change is \citet{allen1986}, who considers  the verb \textit{like} in the history of English. This verb  can be analyzed as having an Experiencer (the liker) and a Cause (the cause of liking).\footnote{Alternatively, this semantic role has been referred to as stimulus or theme, as in, e.g., later work by \citet{allen1995case}.} Such verbs are interesting diachronically because they show   a change in the correspondence between semantic arguments (experiencer, cause) and grammatical relations. In Old English the experiencer argument has the positional and morphological properties of an object, e.g., (\ref{oe-like}), but is uncontroversially a subject in Present-day English, e.g., (\ref{pde-like}).\footnote{As has been pointed out \citep[81]{denison1993english}, the original example from Jespersen in (\ref{oe-like}) is invented and represents a pattern which is in fact rather rare.}
+
+\begin{exe} 
+\ex 
+\begin{xlist}
+\ex[]{ \label{oe-like} Old English (\citealp{jespersen1927modern}, as cited in \citealp[376]{allen1986})\\
+\gll  {{\DH}am} {cynge} {licodon} {peran}  \\
+{the.\textsc{dat}} {king.\textsc{dat}} {liked.\textsc{pl}} {pears} \\ 
+\glt `Pears were pleasing to the king'}
+\ex[] {\label{pde-like}
+`He liked pears.'}
+\end{xlist}
+\end{exe}
+
+\noindent Based on detailed investigations of the historical data, \citet{allen1986} challenges the traditional account for this change (e.g., \citealp{jespersen1927modern,lightfoot1979principles,lightfoot1981history}), which casts it in terms of a reanalysis of preverbal object experiencers as subjects, as a direct consequence of the loss of case-marking and the fixing of SVO word order. As \citet{allen1986} points out, there are various problems for this account, including the fact that the OVS order required as a source for the reanalysis is relatively rare with the verb \textit{like}, and because of chronological issues concerning the link with the loss of case-marking. Moreover, the data indicates that the change proceeded gradually, with subject and object experiencers coexisting alongside one another for several centuries over the course of Middle English and Early Modern English, which is not compatible with a ``catastrophic'' reanalysis account as proposed by Lightfoot, for example. 
+% \begin{itemize}
+
+%  \item Problems with the reanalysis theory according to Allen (1986):
+% \begin{itemize}
+% \item Assumes that loss of case marking led to structural ambiguity with \textit{like}.\\
+% > But what about use of \textit{like} with personal pronouns, where case distinctions between \textsc{nom} and \textsc{dat} are still marked?\\ 
+% > Unlikely that \textit{like} wasn't used with a personal pronoun argument to give the necessary case-marking clues, since experiencer verbs are based inherently on personal experience.
+% \item Assumes that \textit{like} was atypical in OE, occurring with OVS, (experiencer-v-stimulus) rather than SOV or SVO order.\\
+% > Allen finds that only 32\% of OE sentences with \textit{like} have OVS order.\\
+% > And moreover experiencer-v-stimulus order decreases in ME period (not what we expect if experiencer is being reanalysed as subject).
+% \item Assumes that word order has primacy over case in the marking of grammatical relations (case marking for object status of experiencer was still strong).
+% \item It follows that if the experiencer is reanalysed as subject, it should soon bear nominate (rather than dative) case marking.\\
+% > Such examples only appear about 100 years after the reanalysis is assumed to have taken place.
+% \end{itemize}
+% \end{itemize}
+
+In light of these observations, \citet{allen1986} puts forward an alternative account, which involves a gradual change in the mapping correspondences between semantic arguments and grammatical functions, modelled in terms of the introduction and gradual favouring of a new lexical subcategorization frame, employing an early LFG approach to this type of mapping. The new subcategorization frame with a dative-marked subject experiencer, shown here in (\ref{new-frame}), is already available in Old English for the verb \textit{lician} `like', but sits alongside and is less common than the older frame in (\ref{old-frame}) where the dative-marked experiencer maps to object. 
+\begin{exe}
+\ex \label{allen86-frames}
+\begin{xlist}
+\ex \label{old-frame}
+\begin{small}
+Older frame (adapted from \citealp[388]{allen1986}):\\
+\begin{tabular}{lllll}
+  \textit{lician} & V &  \textsc{pred} `\textsc{lician} <  \stackon{(\textsc{obj})}{EXP} \hspace{0.5ex} \stackon{(\textsc{sbj})}{CAUSE} >' \\
+    & &  (\UP\OBJ\CASE) = \DAT &  \\
+    &      &  (\UP\textsc{sbj}\;\CASE) = \NOM &  \\
+    %  & (\textsc{poss}($\epsilon$) \UP) &  \\
+    %  & ((\textsc{poss} \UP) \textsc{def}) = + & \\
+\end{tabular}
+\end{small}
+
+\vspace{2ex}
+
+\ex \label{new-frame}
+\begin{small}
+Newer frame (adapted from \citealp[394]{allen1986}):\\
+\begin{tabular}{lllll}
+  \textit{lician} & V & \textsc{pred} `\textsc{lician} <  \stackon{(\textsc{obj})}{EXP} \hspace{0.5ex} \stackon{(\textsc{sbj})}{CAUSE} >' \\
+ &    &  ({\UP}\textsc{sbj case}) = \textsc{dat} &  \\
+  &        &  ({\UP}\textsc{obj case) = nom} &  \\
+    %  & (\textsc{poss}($\epsilon$) \UP) &  \\
+    %  & ((\textsc{poss} \UP) \textsc{def}) = + & \\
+\end{tabular}
+\end{small}
+
+\end{xlist}
+\end{exe}
+According to \citet{allen1986}, the gradual favouring of the correspondences in (\ref{new-frame}) coincides with changes concerning the assignment of case-marking, specifically a shift from a system where case is lexically assigned to one in which it is structurally assigned on the basis of grammatical relations. Structural case-marking for objects is introduced in the early thirteenth century according to Allen and  specification of case-marking for the experiencer subject is optional as of the mid-fourteenth century. Under pressure towards consistent structural case assignment, all lexically determined case-marking is finally lost, subjects are consistently nominative-marked and the frame for allowing object experiencers in (\ref{old-frame}) is no longer available.
+
+
+% \begin{small}
+% Newer frame (adapted from \citealp[394]{allen1986}):\\
+% \begin{tabular}{lll}
+% & EXP \hspace{1ex} CAUSE & \\
+%   lician, V: \textsc{pred} `LICIAN < & (\textsc{sbj}) \hspace{0.5ex} (\textsc{obj}) >' \\
+%      &  {\UP}SB CASE=DAT &  \\
+%           &  {\UP}OB CASE=NOM &  \\
+%     %  & (\textsc{poss}($\epsilon$) \UP) &  \\
+%     %  & ((\textsc{poss} \UP) \textsc{def}) = + & \\
+% \end{tabular}
+% \end{small}
+
+
+%-----
+% \textcolor{blue}{\citet{allen1995case} here}
+
+\citet{allen1995case} develops this account of experiencer verbs in the history of English further  in terms of Lexical Mapping Theory (e.g., \citealp{bresnan1989locative}, cf.~\citetv{chapters/Case} and \citetv{chapters/Mapping}), discussing a wider range of data and additional changes including the rise of the recipient passive, which we discuss in \sectref{subsect:pos-license}. In particular, she demonstrates that lexical semantic factors, rather than loss of case-marking drives the change with respect to experiencer verbs, and that this can be elegantly modelled with LFG's richly articulated lexicon and Lexical Mapping Theory.
+
+
+\subsubsection{Passives and impersonals}
+
+\citet{KM15} address the innovation of a new impersonal construction in Icelandic which they argue has emerged as a syntactically active construction via reanalysis of an impersonal passive with passive morphology. %whereby an impersonal passive is reanalyzed as an active construction. 
+The new construction is thought to have been emerging approximately over the last fifty years  \citep{Thrainsson07} and has prompted a good deal of debate concerning what the precise analysis should be \citep{MS02,Eythorsson08,Jonsson2009}. 
+\citet{MS02} show that this is currently a change in progress and that speakers of Icelandic show  variation in the interpretation of examples such as (\ref{ice-nti}): some interpret it as an impersonal passive (Reading A), others as an active transitive with a [+human] agentive {\sc pro} subject (Reading B).  Such variation is expected when there is a change in progress, as we discuss further in \sectref{sec:Historical:var}.
+
+%{fundið}
+
+\ea Icelandic\label{ice-nti}\\
+\gll {Loks} {var} {fundið} {stelpuna} {eftir} {mikla} {leit.} \\
+{finally} {was} {found.{\sc n.sg}} {girl.the.{\sc f.acc}} {after} {great} {search} \\
+\glt Reading A: ‘The girl was finally found after a long search.’ \\
+Reading B: ‘They finally found the girl after a long search.’
+\z
+
+
+
+\citet{KM15} argue that this variation and change arises when a former impersonal passive with passive morphology is reanalyzed as an active form.  They argue for a series of step-wise changes, beginning with the potential for the linking configurations of an impersonal passive and a regular passive being confused with one another when the \OBLTHETA agent argument of the passive is left unexpressed, as is often the case in Icelandic language use.  This means that a regular passive on the surface often looks very much like an impersonal passive, where there is a covert {\sc pro} \SUBJ, as  illustrated in (\ref{passives}) for transitive verbs (adapted from \citealp{KM15}).\footnote{In the version of Mapping Theory which \citet{KM15} employ, argument positions (arg$_{1}$, arg$_{2}$ etc.) are separated out from semantic participants and the thematic roles they instantiate. Here, for ease of exposition, and because this separation is not relevant for the changes discussed, we just represent the argument positions.} 
+
+\begin{exe}
+\ex \label{passives}
+\begin{xlist}
+ \ex  \label{pass-link}
+\begin{tikzpicture}[baseline=.85cm]
+\matrix (a) [matrix of nodes, column sep=0.1cm, row sep=0.0cm,  row 2/.style={text height=0.2cm}]{
+% & & x & y  \\
+% &{}&&\\
+ \textit{verb}$_{passive}$ &$<$& arg$_{1}$ & arg$_{2}$ & $>$ \\
+ & & {[}$-o${]} & {[}$-r${]} \\
+ & & {[}$+r${]} \\
+ & & ({\OBLTHETA}) & {\SUBJ} \\
+%&& (={\sc topic}) &&&\\};
+ };
+% \foreach \i/\j in {1-3/3-3,  1-4/3-4}
+% %\foreach \i/\j in {1-3/3-3, 1-5/3-4, 1-4/3-4, 3-3/4-3, 3-4/4-4}
+%   \draw (a-\i.south) -- (a-\j.north);
+\end{tikzpicture}
+
+ \ex  \label{inmpers-link}
+\begin{tikzpicture}[baseline=.85cm]
+\matrix (a) [matrix of nodes, column sep=0.1cm, row sep=0.0cm,  row 2/.style={text height=0.2cm}]{
+% & & x & y  \\
+% &{}&&\\
+ \textit{verb}$_{impers\_passive}$ &$<$& arg$_{1}$ & arg$_{2}$ & $>$ \\
+ & & {[}$-o${]} & {[}$-r${]} \\
+ & & {[}$+r${]} \\ [1ex]
+ & &  {\sc pro}$_{impers}$ & {\SUBJ} \\
+%&& (={\sc topic}) &&&\\};
+ };
+% \foreach \i/\j in {1-3/3-3,  1-4/3-4}
+% %\foreach \i/\j in {1-3/3-3, 1-5/3-4, 1-4/3-4, 3-3/4-3, 3-4/4-4}
+%   \draw (a-\i.south) -- (a-\j.north);
+\end{tikzpicture}
+% \foreach \i/\j in {1-3/3-3, 1-5/3-4, 1-4/3-4, 3-3/4-3, 3-4/4-4}
+\end{xlist}
+\end{exe}
+
+\citet{KM15} assume Kibort's version of Mapping Theory \citep{kibort13,kibort14} by which argument slots and types are defined via an overall template allowing for specific types or argument slots, shown above as `arg$_1$', `arg$_2$' in the case of transitives. The linking between arguments and grammatical relations is accomplished via the  [${\pm}r,o$] features of LFG's standard Mapping Theory. See \citetv{chapters/Mapping} for a detailed exposition on Kibort's Mapping Theory, also cf.~\citetv{chapters/Case}. Maling and Kibort discuss several different paths of change that are predicted as possible within their assumptions as to Mapping Theory and draw on additional examples from Slavic as well as Mayan to illustrate the possible changes. 
+
+With respect to Icelandic, they propose that ``non-promotional'' versions of the passive opened the way for a reanalysis of the impersonal passive as an impersonal active. In these non-promotional passives, the patient/theme argument of transitives is not ``promoted'' and realized  as a \SUBJ, as is usually the case under passivization. Instead, it is realized as an \OBJ in examples such as (\ref{ice-nti}) (as indicated by the accusative marking on `girl' in (\ref{ice-nti})).  The configuration for the non-promotional passive is shown in (\ref{non-prom-link}).  This configuration is in turn very close to that of an active impersonal in which there is a {\sc pro} \SUBJ and so that is what it is reanalyzed as, see (\ref{nti-linking2}). 
+
+\begin{exe}
+\ex \label{change-impers}
+\begin{xlist}
+
+\ex  \label{non-prom-link}
+\begin{tikzpicture}[baseline=.85cm]
+\matrix (a) [matrix of nodes, column sep=0.1cm, row sep=0.0cm,  row 2/.style={text height=0.2cm}]{
+% & & x & y  \\
+% &{}&&\\
+ \textit{verb}$_{passive\_obj}$ &$<$& arg$_{1}$ & arg$_{2}$ &  $>$ \\ 
+ & & {[}$-o${]} & {[}$-r${]} \\
+ & & {[}$+r${]} \\ [2ex] 
+ & & ({\OBLTHETA}) & {\OBJ} \\
+%&& (={\sc topic}) &&&\\};
+ };
+% \foreach \i/\j in {1-3/3-3,  1-4/3-4}
+% %\foreach \i/\j in {1-3/3-3, 1-5/3-4, 1-4/3-4, 3-3/4-3, 3-4/4-4}
+%   \draw (a-\i.south) -- (a-\j.north);
+
+\end{tikzpicture}
+
+\ex  \label{nti-linking2} 
+\begin{tikzpicture}[baseline=.85cm]
+\matrix (a) [matrix of nodes, column sep=0.1cm, row sep=0.0cm,  row 2/.style={text height=0.2cm}]{
+% & & x & y  \\
+% &{}&&\\
+ \textit{verb}$_{impers\_active}$ &$<$& arg$_{1}$ & arg$_{2}$ &  $>$ \\ 
+ & & {[}$-o${]}{[}$-r${]} & {[}$-r${]} \\ [2ex]
+ %& & {[}$+$r{]} \\ [2ex] 
+ & & {\sc pro}$_{impers}$ & {\OBJ} \\
+%&& (={\sc topic}) &&&\\};
+ };
+% \foreach \i/\j in {1-3/3-3,  1-4/3-4}
+% %\foreach \i/\j in {1-3/3-3, 1-5/3-4, 1-4/3-4, 3-3/4-3, 3-4/4-4}
+%   \draw (a-\i.south) -- (a-\j.north);
+\end{tikzpicture}
+\end{xlist}
+\end{exe}
+
+%\citet{KM15}:
+%\begin{itemize}
+ %   \item Mapping Theory for handling grammatical change from impersonal passive to active impersonal (Polish, Irish, Icelandic) and also in the opposite direction
+ %  \item Both changes are enabled by the inherent syntactic ambiguity of the two constructions, and facilitated by small stepwise changes which are predicted by the Mapping Theory.
+%\end{itemize}
+
+Thus, a series of reanalyses that initially arose out of ambiguous surface structures are seen to lead to an overall diachronic reanalysis in which an originally passive construction is reinterpreted as a transitive, syntactically active impersonal with a {\sc pro} \SUBJ and an \OBJ, as illustrated in (\ref{change-impers}).  This reanalysis was enabled by the variation in interpretation that arose from the ambiguous surface structures. 
+Note that under this scenario, the verb does not change, nor does the passive morphology. The surface realization remains the same. What changes is the mapping or linking between arguments of the verb and the grammatical relations. 
+
+%---------------
+\subsubsection{Dative subjects}
+
+Another example of a change involving only the linking configuration between semantic arguments and grammatical relations is the rise and spread of dative subjects in Icelandic and Indo-Aryan.  Dative subjects were innovated as part of diachronic developments in New Indo-Aryan (NIA) from about 1100 CE onwards.  Icelandic dative subjects can be traced back to the earliest documented stages of the language, but these only go back to 1150 CE, about the same time as the new case marking systems of the NIA cousins were developing. 
+
+\citet{schaetzle18} analyzes diachronic data from Icelandic and finds that dative subjects in Icelandic have increased over time.  Besides the well-documented process of ``dative sickness'' or ``dative substitution'' \citep{smith96,jonsson03,bardhdal11}, by which accusative experiencer subjects are systematically replaced by datives, Sch\"{a}tzle finds that dative subjects arise via originally middle forms of verbs of searching or perception to give rise to lexicalizations of experiencer predicates which take a dative subject. As in the example of Latin raising verbs \citep{barron2001} and the Arabic progressive \citep{camilleri2020grammaticalisation}, Sch\"{a}tzle identifies an intermediate stage involving secondary predication as an important step in the series of reanalyses that take place.  We do not provide Icelandic examples and details  of Sch\"{a}tzle's analysis here; the interested reader is referred  to \citetv{chapters/Case} for a summary and examples. 
+
+%as opposed to existing claims in the literature (e.g., %\citealt{barthdal05}), a spread 
+
+Sch\"{a}tzle works out a theory of Linking or Mapping that is based on \citet{kibort13,kibort14}, but that crucially integrates an event-based approach. She includes a notion of subevental participants that draws on Ramchand's (\citeyear{ramchand08}) tripartite view of events.  She further introduces a way of determining relative argument prominence by including a notion of Figure vs.~Ground \citep{talmy78}, as well as information on Proto-Role properties \citep{Dowty1991} as suggested by \citet{zaenen93} for LFG.  The resulting linking system is complex, but it does justice to the complex interface between morphosyntax and lexical and clausal semantics that is involved in  the relationship between semantic roles, event semantics and the realization of grammatical relations.  
+
+\citet{beck-butt2021} refine Sch\"{a}tzle's  framework and address dative subjects in both Icelandic and Indo-Aryan.  The general linking schema they assume is shown in (\ref{gen-link}).  As can be seen, a maximum of four argument slots are assumed.  This number derives from the maximum of four subevental parts identified by Ramchand: 1) the init(iation) subevent, which requires an initiator (or agent) of the event; 2) the proc(ess) or progress of the event, which requires an undergoer or patient of the process; 3) the res(ult) of the event, which requires a resultee argument (often but not necessarily identical to the undergoer of the process). Finally there is (4) the rheme, which is not strictly speaking a subevent, but which can serve to modify the overall event in some way, i.e.~by providing information on where the event took place or the manner in which it took place. 
+
+\begin{footnotesize}
+\ea \label{gen-link} General Linking Schema
+\begin{tabular}[t]{clccccrl}
+& & init & proc & res & rh \\ [2ex]
+
+{\it Predicate}  & $<$ & x & x & x &x
+                                                            
+%{\it predicate}  & $<$ & arg$_{1}$ & arg$_{2}$ & arg$_{3}$ &
+                                                             %arg$_{4}$
+& $>$ \\ [4ex]
+& & {\FIG} & {\GR} \\ [5ex]
+%&  & [-o] & [-r] & [+o] \\ 
+%&  &  $\mid$ & $\mid$  & $\mid$ \\
+ & &  \sc subj &  {\sc obj} & {\sc obj}$_{theta}$ & {\sc obl}\\
+%& & & {\sc nom/erg/dat} &  {\sc acc/nom} & {\sc acc/dat} \\
+\end{tabular}
+\z 
+\end{footnotesize}
+
+The linking in (\ref{link:kill}) provides an example of a typical agentive transitive verb. The verb `kill' has two arguments.  One of these (`Indra') is associated with the initiation subevent and  thus serves as the initiator/agent participant of the event.  The other argument (`serpent') is the undergoer of the event and thus affected as part of the on-going proc(ess) of the event, with a clear res(ult), namely that it is dead.  This argument is thus associated with two subevents. 
+
+
+
+\ea \label{link:kill}
+Indra killed the serpent.
+
+ \hspace{1.1cm}
+\begin{tikzpicture}[baseline=.85cm]
+\matrix (a) [matrix of nodes, column sep=0.1cm, row sep=0.0cm,  row 2/.style={text height=0.2cm}]{
+& & init & proc & res & rh \\
+&{}&&&&\\
+ \textit{kill} &$<$& x$_\mathit{\_Indra}$ & x$_\mathit{\_serpent}$ & & &$>$ \\ [2ex]
+&& {\FIG} & {\GR} &&\\[2ex]
+&&  P-A:***  &  P-P:*** &&\\
+&&  {\sc subj} & {\OBJ} &&\\
+%& &  \textcolor{blue}{ergative} & \textcolor{blue}{nominative} \\
+};
+ \foreach \i/\j in {1-3/3-3, 1-5/3-4, 1-4/3-4,  3-3/4-3, 3-4/4-4, 4-3/5-3, 4-4/5-4}
+    \draw (a-\i.south) -- (a-\j.north);
+% \foreach \i/\j in {4-4/5-4}
+%    \draw[dashed] (a-\i.south) -- (a-\j.north);
+\end{tikzpicture}
+\z 
+
+\noindent The initiator is naturally also the Figure of the event, and the undergoer serves as the Ground.  This basic linking constellation is interpreted with respect to Proto-Role properties in the following way:  a) one Proto-Agent (P-A) property each is adduced for:  initiation and Figure; b) one Proto-Patient (P-P) property each is adduced for:  proc, res, and Ground. 
+In addition, sentient arguments accumulate an additional P-A property. The Proto-Role properties are registered via an `*' in the linking schemas. 
+
+Overall, the linking of arguments works as follows. 
+If an argument has more P-A than P-P properties,  it is linked to  {\SUBJ}. An argument with more P-P than P-A properties is linked to {\OBJ}. When an argument has equally many P-A and P-P properties or no P-A and P-P properties, then other information must be taken into account. In this case  the type of subevent the participant is associated with is taken to play a crucial role. That is, if the argument associated with init vs.~res have equal amounts of P-A and P-P properties, the init argument will be associated with \SUBJ.  This is also true for third and potentially fourth arguments of an event -- once the {\SUBJ} and {\OBJ} linking has been determined, the subevental semantics  play a role in determining the linking to a secondary object ({\OBJ}$_\theta$) or an oblique (\OBL). Obliques are likely to correspond to spatial terms and paths (rhemes) or an init-\GR\ combination. Secondary objects are likely to be related to undergoer semantics.  An init argument that serves as the {\GR}\ rather than the \FIG\  is prohibited from being linked to the \SUBJ\ --- this is the well-known effect of passivization that has often been described as ``demotion'' or ``inversion'' in the literature (e.g., \citealt{perlmutter1977toward}). 
+
+This constellation is illustrated in (\ref{link:kill-pass}).  The association of arguments with subevents remains the same, but the Figure-Ground relationship is flipped.  This affects the number and type of Proto-Role properties associated with each argument.  
+
+
+\ea \label{link:kill-pass}
+The serpent was killed by Indra. 
+
+ \hspace{1.1cm}
+\begin{tikzpicture}[baseline=.85cm]
+\matrix (a) [matrix of nodes, column sep=0.1cm, row sep=0.0cm,  row 2/.style={text height=0.2cm}]{
+& & init & proc & res & rh \\
+&{}&&&&\\
+ \textit{kill} &$<$& x$_\mathit{\_Indra}$ & x$_\mathit{\_serpent}$ & & &$>$ \\ [2ex]
+&& {\GR} & {\FIG} &&\\[2ex]
+&&  P-A:**, P-P:*  &  P-A:*, P-P:** &&\\
+&&  \OBL & \SUBJ &&\\
+%& &  \textcolor{blue}{ergative} & \textcolor{blue}{nominative} \\
+};
+ \foreach \i/\j in {1-3/3-3, 1-5/3-4, 1-4/3-4,  3-3/4-3, 3-4/4-4, 4-4/5-4}
+    \draw (a-\i.south) -- (a-\j.north);
+\foreach \i/\j in {4-3/5-3}
+  \draw[dashed] (a-\i.south) -- (a-\j.north);
+\end{tikzpicture}
+\z 
+
+\noindent Since `Indra' is no longer available to be linked to \SUBJ, the `serpent' is the \SUBJ. Because `Indra' still has more P-A (one for init, one for sentience) than P-P (one for \GR) properties, it is not associable with an \OBJ\ or \OBJTHETA, but is linked to \OBL. 
+
+An example of a linking configuration for an experiencer predicate is provided in (\ref{link:fear2}). As per Ramchand's analysis, the holder of the state of experiencing something is associated with the init subevent, and the stimulus is analyzed as a rheme (since it is neither part of the process or the result of the overall event). The experiencer `Katherine' in (\ref{link:fear2}) is also the \FIG; the stimulus `nightmares' is the \GR.  As a sentient argument who is also a \FIG, `Katherine' receives two P-A properties.  As the holder of a state, this argument receives one P-P property.  The `nightmares' accumulate one P-P property from being associated with \GR.  Because rhemes are not properly event participants, they contribute neither P-A nor P-P properties for the calculation. Since `Katherine' has the most P-A properties, it is linked to \SUBJ. The `nightmares' argument has only P-P properties and is thus linked to \OBJ. 
+
+
+\ea \label{link:fear2}
+Katherine fears nightmares.
+
+\hspace{1.1cm}
+\begin{tikzpicture}[baseline=.85cm]
+\matrix (a) [matrix of nodes, column sep=0.1cm, row sep=0.0cm,  row 2/.style={text height=0.2cm}, row 9/.style={text height=0.2cm}]{
+&&  init (holder) & rh &\\
+&&{}&&\\
+ \textit{fear} &$<$& x$_{\_Katherine}$ & x$_{\_nightmares}$ & $>$\\[2ex]
+ &&{\FIG} & {\GR} &\\[2ex]
+ && P-A:**, P-P* & P-P:* &\\
+ && {\SUBJ} & {\OBJ} &\\
+ };
+ \foreach \i/\j in {1-3/3-3, 1-4/3-4, 3-3/4-3, 3-4/4-4}
+    \draw (a-\i.south) -- (a-\j.north);
+ \foreach \i/\j in {4-3/5-3, 4-4/5-4}
+    \draw[dashed] (a-\i.south) -- (a-\j.north);
+\end{tikzpicture} 
+\vspace{2ex}
+%Katherine: P-A because sentient and Figure;
+%nightmares: P-P because ground and rheme
+\z 
+
+With this basic event-based linking schema in place, \citet{beck-butt2021} chart a path of development for dative subjects in New Indo-Aryan. A crucial component is the innovation of ergative transitive active clauses from originally adjectival participles which featured a nominative  and an instrumental adjunct (e.g., `The by Indra killed serpent.').  Beck and Butt posit that the original instrument adjunct was a \GR\ which was reinterpreted as a \FIG\ in situations where the instrument could be seen as a sentient agent. This then opened the door to further Figure-Ground flips, such as with originally locative structures as in (\ref{ex:dat-urdu2}) (cf.~also \citealt{bresnan1989locative,landau10} on locative inversion). 
+
+
+\ea\label{ex:dat-urdu2} Urdu/Hindi\\
+\gll {{\i}ndra=ko}  {d{\textscripta}r}    {l{\textscripta}g-a}  \\
+{Indra.\M=\DAT}  {fear.\M.\NOM}    {be.attach-\PRF.\M.\SG} \\
+\glt `Indra was afraid.'
+\z 
+
+Their proposal is that the original locative predication involved a linking configuration as in (\ref{fear-orig}).  The overall predication is stative, so the two arguments involved are a holder of a state and a rheme. The `Indra' argument is the location of the `fear', so Indra is associated with a rheme and the \GR. The  `fear' argument is then interpreted as the holder of a state: as a \FIG\ it is located somewhere and receives one P-A property for being a Figure, and one P-A property for being the holder of a state. `Indra' receives one P-P property for being the \GR\ and one P-A property because it is a sentient argument. Both arguments thus have an equal number of P-A and P-P properties, but `fear' is linked to \SUBJ\ because it is associated with the init subevent.  
+
+\ea Fear was attached to Indra. \label{fear-orig}
+
+ \hspace{1.1cm}
+\begin{tikzpicture}[baseline=.85cm]
+\matrix (a) [matrix of nodes, column sep=0.1cm, row sep=0.0cm,  row 2/.style={text height=0.2cm}]{
+&  & init (holder) & rh (loc)  &  &\\
+&{}&&&&\\
+ \textit{be.attach} &$<$& x$_\mathit{\_fear}$ & x$_\mathit{\_Indra}$ & &$>$ \\ [2ex]
+&& {\FIG} & {\GR} &&\\[2ex]
+&&  P-A:*, P-P:* & P-A:*, P-P:* &&\\
+&&    {\SUBJ}&  {\OBL}&&\\
+ & &  nominative & `at/to' \\
+};
+ \foreach \i/\j in {1-3/3-3,  1-4/3-4,  3-3/4-3, 3-4/4-4}
+    \draw (a-\i.south) -- (a-\j.north);
+ \foreach \i/\j in {4-4/5-4}
+    \draw[dashed] (a-\i.south) -- (a-\j.north);
+\end{tikzpicture}
+\z
+
+It is not difficult to see that the linking configuration in (\ref{fear-orig}) is unstable.  The two arguments have equal numbers of P-A and P-P properties and the sentient argument is associated with \GR, which is non-canonical \citep{talmy78}. Beck and Butt propose that as a consequence, in a series of steps, both the Figure-Ground relation and the association with init and rheme are flipped and the resulting linking configuration is as shown in (\ref{link:dat-subj}), corresponding to (\ref{ex:dat-urdu2}).  This configuration is clearly more stable as the sentient  argument is  more prominent and accumulates more P-A properties. 
+
+%\ea At Indra was fear attached. 
+
+% \hspace{1.1cm}
+%\begin{tikzpicture}[baseline=.85cm]
+%\matrix (a) [matrix of nodes, column sep=0.1cm, row sep=0.0cm,  row 2/.style={text height=0.2cm}]{
+%&  & init (holder) & rh (loc)  &  &\\
+%&{}&&&&\\
+% \textit{be.attach} &$<$& x$_{\_fear}$ & x$_{\_Indra}$ & &$>$ \\ [2ex]
+%&& {\GR} & {\FIG} &&\\[2ex]
+%&&   P-P:** & P-A:** &&\\
+%};
+% \foreach \i/\j in {1-3/3-3,  1-4/3-4,  3-3/4-3, 3-4/4-4}
+ %   \draw (a-\i.south) -- (a-\j.north);
+%\end{tikzpicture}
+%\z 
+
+\ea Indra was afraid. \label{link:dat-subj}
+
+ \hspace{1.1cm}
+\begin{tikzpicture}[baseline=.85cm]
+\matrix (a) [matrix of nodes, column sep=0.1cm, row sep=0.0cm,  row 2/.style={text height=0.2cm}]{
+&  & rh & init (holder)  &  &\\
+&{}&&&&\\
+ \textit{be.attach} &$<$& x$_{\_fear}$ & x$_{\_Indra}$ & &$>$ \\ [2ex]
+&& {\GR} & {\FIG} &&\\[2ex]
+&&   P-P:* & P-A:**, P-P:* &&\\
+&&    {\OBJ}&  {\SUBJ}&&\\
+ & &  nominative & dative \\
+};
+ \foreach \i/\j in {1-3/3-3,  1-4/3-4,  3-3/4-3, 3-4/4-4}
+    \draw (a-\i.south) -- (a-\j.north);
+ \foreach \i/\j in {4-3/5-3, 4-4/5-4}
+    \draw[dashed] (a-\i.south) -- (a-\j.north);
+\end{tikzpicture}
+\z 
+
+
+\noindent The original spatial adpositions (`at, to') in fact gave rise to the current dative/accusative case markers in Urdu/Hindi (and  across New Indo-Aryan), resulting in the innovation of dative subjects from originally spatial terms (cf.~\citealt{montaut03,buttahmed11}).  
+
+To summarize, the innovation of dative subjects is seen primarily as the reanalysis of an originally stative locative predication as an experiencer verb. The main change involves a reanalysis of various parts of the overall linking configuration.  Beck and Butt see this as being common to both Icelandic and Indo-Aryan.  In Indo-Aryan, however, there is an additional concomitant but independent change in syntactic category, from a spatial adposition to a case marker. Changes involving reanalysis of an item's syntactic category are taken up in \sectref{sec:Historical:recat}, with \sectref{sec:Historical:syn-change} focusing overall on change with respect to c-structure.
+
+%------------------------
+\section{Syntactic change}
+\label{sec:Historical:syn-change}
+%-----
+\subsection{Recategorization}
+%\subsection{Renalysis}
+\label{sec:Historical:recat}
+
+Studies of language change abound with instances of syntactic recategorization, that is, instances in which an item belonging to one syntactic category is reanalyzed as belonging to a different one. We have already caught a glimpse of such a reanalysis with respect to the grammaticalization cline in (\ref{cline}), whereby a main verb is gradually reanalyzed as an auxiliary, which in turn often becomes a verbal affix. Within LFG, such c-structural recategorization is seen as being preceded by a change in an item's functional import.  That is, with respect to the well-studied changes such as the development of new futurate markers (e.g., \citealt{fleischman09}), as we saw in \sectref{subsect:grmzn} an originally fully predicating verb such as `want' or `go' can be used in situations describing the future attainment of a state or event \citep{BorjarsVincent2019}. Over time, this usage becomes conventionalized and the verb is seen as routinely fulfilling an additional function, namely the temporal placement of an event in the future.  This meaning of the verb ceases to predicate fully and it develops into a functional item.  Often the original lexical/content verb continues to exist side-by-side with the new auxiliary; in other cases it ceases to be used as a main verb.  In English, for example, the item \textit{will} is now only rarely used as a modal meaning `want', but only as a futurate marker.  On the other hand, as we saw for the examples taken from Urdu and Bengali in \sectref{subsect:grmzn}, the verbs `be' and `go' continue to exist as main verbs while also serving as auxiliaries and giving rise to new verbal affixes. 
+
+Within this same verbal domain, \citet{borjars2017lexical}  argue for the historical  development of a causative light verb in Romance from the Latin verb \textit{facere} `make, do', which in turn results in the reanalysis of a formerly biclausal construction as a monoclausal predication.  This reanalysis of biclausal predications, where one verb embeds another into monoclausal structures, also generally results from the reanalysis of main verbs as auxiliaries \citep{butt-etal2004,Butt2010}. 
+
+\citet{vincent2020heads} go through a number of further examples of syntactic recategorization from an LFG perspective, including the development of adpositions from nouns, infinitival markers from prepositions,  complementizers from prepositions (P to C;  \citealt{vincent1999evolution}) and case-marking functions from prepositions. They also engage in a comparison of analyses across frameworks (Minimalism \citep{chomsky1995the-minimalist} and HPSG \citep{pollard1994head-driven}) and ask the question of whether anything in LFG's architecture predicts the mainly \textit{unidirectional} change in categorial reanalysis (meaning that a verb will change into an affix, but an affix does not change into a fully predicating main verb). The answer to this question is ``no'', unlike the clear predictions made by \citet{robertsroussou03} within Minimalism, for example, where such reanalysis is seen as an instance of a lexical category raising upwards into the functional domain of a syntactic tree and eventually being reanalyzed as simply originating in that functional position. Upward ``mobility'' is expected in this framework, while downward movement is prohibited. However, \citet{vincent2020heads} point out that while this type of grammaticalization along a cline from more lexical to more functional can be accounted for well within Minimalism, instances of ``lateral'' change whereby the recategorization involves adjacent categories like deictic markers  into copular verbs \citep{borjars2017lexical} are more challenging. In this case, an originally nominal category is reanalyzed as belonging to the verbal domain. 
+
+Another example of a recategorization that does not necessarily involve directionality can be observed in Chinese, where \citet{BorjarsPayne21} argue that  nouns which originally denoted a container or a measure and which had the syntactic distribution and modificational properties of standard nouns in the language were reanalyzed over time as measure words and classifiers. They argue that the reanalysis as measure words involves only a syntactic recategorization by which these nouns have a more restricted syntactic distribution and modificational properties in comparison to standard nouns. This syntactic change is not accompanied by a systematic semantic or functional change: the words still measure out units, as in the original usage and appear to retain their full lexical semantics. 
+
+%\color{blue}
+%Maybe to add \citet{BorjarsPayne21}:
+%\begin{itemize}
+%    \item Claim: unit words (i.e.~measure word and classifiers) in Chinese have undergone decategorialization, losing modificational possibilities and acquiring a more restrictive syntactic distribution than independent nouns.
+ %   \item Interestingly, this has not been accompanied by any systematic semantic change (the unit word retain full lexical semantics).
+%\end{itemize}
+%\color{black}
+
+\Citet{vangelderen2011} seeks to address issues of recategorization by thinking of language change in terms of cycles (though there seems to be no discussion of actual full cycles of language change) and working heavily with features that are associated with syntactic categories. Changes in the features associated with an item eventually lead to reanalysis at the level of syntactic categories. Interestingly, this take on language change seems to move towards the separation out of functional vs.~categorial characteristics of an item that is already in-built into LFG, but with a comparatively impoverished understanding of feature theory. 
+
+The difference in how many and what kinds of features and functionality are associated with an item can also lead to debates as to whether syntactic recategorization has taken place at all.  \citet[144]{vincent2020heads} discuss this with respect to prepositions being used to mark the  subcategorized for arguments of a predicate, thus acquiring the properties of case markers and note: ``Within Minimalism such shifts can be seen as involving a change from P to K, whereas once again, in
+HPSG and LFG, the change is in the information associated with the argument of P rather than in the category itself.''  This view of the relationship between adpositions and case clashes with the lexical semantic approach to case taken by  \citet{buttking91,buttking03-case,buttking05}, who use the category K to model the status of case markers in New Indo-Aryan as independent clitics that have a range of functional and lexical information associated with them.  \citet{ahmed09} shows how spatial adpositions may be associated with feature structures specifying \textsc{ex:historical:path} and \textsc{place} and how changes in the specification of these features can result in case markers.  \citet{buttahmed11} further chart the development of originally spatial adpositions into case markers, analyzed as K, in modern Urdu.
+
+
+
+\subsection{Mixed categories}
+\label{sec:historical:mixed}
+
+Recategorization as described in \sectref{sec:Historical:recat} also generally does not happen in one fell swoop, but via a number of intermediate stages.  One side-effect of these intermediate stages is the emergence of \textit{mixed categories}.  Verbal nouns or gerundives, which have the external distribution of nouns, but the internal properties of verbs, are one well-known example.  A recent survey and analysis of mixed categories by \citet{nikolaeva-spencer20} shows that there are several different types of mixed categories (see also the discussion in \citealt{lowe16}).
+
+In her diachronic take on mixed categories,  \citet{Nikitina2008} argues for a clear disassociation of the lexical and syntactic components of category mixing, precisely because of the range of mixed properties displayed by syntactic categories. She investigates and analyzes  phenomena from Romance and Wan (Mande) and proposes that a clear distinction be made  between instances of \textit{function retaining} derivational changes in syntactic category and \textit{structural reanalysis}, including rebracketing. An example of the former function retaining change is the English \textit{-ing} nominalization, whereby the head distributes as a noun, but retains the functional predication of a verb. Over time, this retention of function may be lost, resulting in a straightforward nominal, rather than a syntactic category with mixed properties. 
+%The other major type she analyzes is mixed categories which arise out of structural reanalysis, including rebracketing. 
+Examples of the latter (structural reanalysis) include types of instances discussed in the previous section, i.e.~the development of adpositions and case markers from nouns and the development of complementizers from verbs \citep{lord93} or adpositions.  
+
+The work by  \citet{VincBorj10a} on the slippery slope between adpositions and adjectives serves as another example. \citet{VincBorj10a} look at Germanic and Romance languages which are losing their overall case system and investigate paths of change that serve to compensate for this loss.  One path of change involves the use of adpositions like Latin \textit{prope} `near' and English `near'.   These subcategorize for an \OBJ\ and have the spatial meaning of adpositions, but can be used as adjectives and take comparative and superlative morphology. See also \citet{vincent2020heads} for some further discussion on this issue. 
+
+Formal analyses of mixed categories in LFG have often invoked \textit{lexical sharing} of one type or another (\citet{BresMuga06,Lowe15,lowe2015clitic}; see discussion in \sectref{sec:Historical:lex-share}). \citet{brs:2020} propose an alternative to this approach in their analysis of complement clauses in Tamil.  The complement clauses show a mixed set of nominal and verbal properties, which is due to a historical development by which an originally relative clause type structure incorporated a pronoun and thus acquired the external properties of a noun while retaining the internal verbal predication of a finite clause.  \citet{brs:2020} propose an analysis of mixed categories in terms of the formal tool of \textit{complex categories} first introduced in the context of the ParGram computational grammar development effort \citep{ButtEtAl1999,xledoc}.  This approach essentially allows for the parameterization of syntactic categories, avoiding the monolithic assignment of one syntactic category to a given lexical item or phrase.
+
+%See also \citet{VincBorj10a} on case and complement of adjectives.  they look at systems losing case and different ways of how that is replaced.  By things coming from spatial Ps but also by things that were originally adjectives like English "near".  they argue this is not an aberration, but a historical pattern, with Latin \textit{prope} `near' working similarly and on the whole argue for adjectives subcategorizing for arguments. No actual LFG structures though. 
+
+ 
+%-----
+\subsection{The growth of structure}
+\label{subsect:growth}
+
+The diachronic phenomena discussed under the term ``grammaticalization'' in \sectref{subsect:grmzn} involved a change whereby an individual lexical item comes to be reanalyzed as a functional element. This could be considered grammaticalization in the narrow sense, in which the focus is on the changing status of a particular item, as in much of the classic work on grammaticalization where changes occurring above the level of individual lexemes (e.g., changes in word order) are typically secondary concerns. For example, in their seminal textbook, \citet[24, 59]{hopper_traugott_2003} suggest that word order changes, though ``deeply interconnected'' with grammaticalization, are not to be considered under the term on the basis that they do not exhibit the unidirectionality typical of grammaticalization (see also \citealp{sun2011grammaticalization} for a similar view).  
+At the same time, some authors have called for a broader take on grammaticalization, encompassing also cases where a particular fixed word order comes to encode certain functional information. 
+%Meillet already in (1912:148) recognised word order change as grammaticalization apparently - At least he suggested that grammaticalization might be extended to the word order of sentences
+%Claudi, Ulrike. 1994. Word order change as category change. In Pagliuca, ed., 191-231.
+%Claudi 1994 suggests that word order changes are the outcome of grammaticalization
+% Heltoft, L. (1996). Paradigmatic structure, word order and grammaticalization. Content, expression and structure: Studies in Danish Functional Grammar. Amsterdam/Philadelphia: John Benjamins, 469-494.
+% Fischer, S. (2010). Word-order Change as a Source of Grammaticalisation (Vol. 157). John Benjamins Publishing.
+% Lehmann, Christian. "Word order change by grammaticalization". Internal and External Factors in Syntactic Change, edited by Marinel Gerritsen and Dieter Stein, Berlin, Boston: De Gruyter Mouton, 2011, pp. 395-416. https://doi.org/10.1515/9783110886047.395
+This type of change is argued for by \citet{Borjarsetal16} as grammaticalization involving a ``template'' made up of slots and categories, one example being V1 clauses which have grammaticalized to varying degrees so as to encode conditionality across the Germanic languages (see also \citealp{hilpert2010-v1}).  \citet{Borjarsetal16}  extend the remit of grammaticalization further still, proposing a specific type of grammaticalization, couched within LFG,  which involves two concomitant developments: (i) the development of a grammaticalized meaning in a particular item and (ii) the increasing association  of that grammaticalized meaning with a particular structural position.
+
+
+\citet{Borjarsetal16} propose this special type of grammaticalization on the basis of diachronic data concerning the development of definite markers and noun phrase syntax in North Germanic, specifically from Old Norse to modern Faroese. They provide empirical evidence which shows that Old Norse lacks an obligatory dedicated (in)definiteness marker via paired examples such as (\ref{on-def}), where the bold element in (\ref{on-def1}) receives a definite interpretation and that in (\ref{on-def2}) an indefinite interpretation, despite the fact that neither is overtly marked for (in)definiteness. %(examples from \citealp[e10]{Borjarsetal16}).
+
+\begin{exe}
+\ex \label{on-def} Old Norse \citep[e10]{Borjarsetal16}
+\begin{xlist}
+\ex[]{ \label{on-def1}
+\gll  \textbf{Austma{\dh}r} kvezk \dots  \\
+{east.man} {said}  \\
+\glt `The Norwegian said \dots'  }
+\ex[]{ \label{on-def2}
+\gll 
+Ok gekk \textbf{kona} fyrir {\'u}tib{\'u}rsdyrrin \\
+{and} {went}  {woman} {in.front.of} {outhouse.door.\textsc{def}} \\
+\glt `A woman went in front of the door of the outbuilding'}
+\end{xlist}
+\end{exe}
+
+\noindent Moreover the relative order of elements within the noun phrase is relatively free, although the initial position is associated with prominent and contrastive elements, as in the two instances of prenominal possessive pronouns with contrastive emphasis in (\ref{on-emph}). %(taken from \citealp[e14]{Borjarsetal16}).
+
+
+\ea \label{on-emph} Old Norse \citep[e14]{Borjarsetal16}\\
+\gll {at} {\textbf{minn}} {\textbf{fa{\dh}ir}} {v{\ae}ri} {eptirb{\'a}t} {\textbf{{\th}ins}} {\textbf{f{\textpolhook{o}}{\dh}ur}}   \\
+{\textsc{comp}} {1.\textsc{sg.poss}} {father} {was} {after.boat} {2.\textsc{sg.poss.gen}} {father.\textsc{gen}} \\
+\glt `that my father trailed in the wake of yours' \\
+\z
+
+
+In the next diachronic stage which B{\"o}rjars et al.~consider --  early Faroese (ca.~1298 CE) -- they provide evidence which indicates that overt marking of definiteness is now obligatory, since unmodified nouns must occur with a definiteness marker in order to receive a definite interpretation, e.g., (\ref{ef-def1}). Indefinite markers are not yet obligatory, however, as evidenced by examples like (\ref{ef-def2}), which is interpreted as indefinite without any overt indefinite marker. %(examples from \citealp[e18]{Borjarsetal16}).
+
+\begin{exe}
+\ex \label{ef-def} Early Faroese \citep[e18]{Borjarsetal16}
+\begin{xlist}
+\ex[]{ \label{ef-def1}
+\gll  {Bardr Peterson} war ritade \textbf{brefet}  \\
+{B.P.} {was} {written} {letter.\textsc{def}}  \\
+\glt `Bar{\dh}ur Peterson had written the letter.'}
+\ex[]{ \label{ef-def2}
+\gll 
+{Ef} {\textbf{sau{\th}r}} {gengi} j annars haga \dots \\
+{if} {sheep}  {goes} {in} {other's} {field} \\
+\glt `If a sheep goes into another man's field \dots'}
+\end{xlist}
+\end{exe}
+
+\noindent Moreover, unlike in Old Norse, where different definiteness markers can co-occur, by this stage of Faroese they are in complementary distribution. Only later in the history of Faroese --- the representatives which B{\"o}rjars et al.~examine are a newspaper from the 1890s and data from Present-day Faroese --- does overt marking for indefiniteness become obligatory via \textit{ein}, e.g., (\ref{mf-indef}),  and a prenominal syntactic definiteness marker (\textit{tann} or \textit{hinn}) is generally required when there is premodification, leading to ``double definiteness'', e.g., (\ref{mf-defb})--(\ref{mf-defc}). %(examples from \citealp[e22]{Borjarsetal16}).
+
+\begin{exe}
+\ex Present-day Faroese \citep[e22--e23]{Borjarsetal16}
+\begin{xlist}
+\ex[]{ \label{mf-indef}
+\gll ein ungur ma{\dh}ur\\
+\textsc{indef} young.\textsc{str} man\\
+\glt `a young man' }
+\ex[]{ \label{mf-defb}
+\gll  {tann} {st{\'o}ra} gatan  \\
+{\textsc{def}} {big.\textsc{wk}}  {mystery.\textsc{def}}  \\
+\glt `the/that big mystery'}
+\ex[]{ \label{mf-defc}
+\gll 
+{hin} {st\o{}rsta} {vindmylluparkin} {\'i} Europa\\
+{\textsc{def}} {biggest}  {windmill.park.\textsc{def}} {in} {Europe}  \\
+\glt `the biggest wind farm in Europe'}
+\end{xlist}
+\end{exe}
+
+In sum, the history of Faroese exhibits the grammaticalization of dedicated (in)definiteness markers which only later come to be associated with a particular structural position (the left edge of the noun phrase), in line with an overall increasingly fixed word order within the noun phrase.\footnote{Specifically, the definiteness marker was originally associated with the adjective in Old Norse, and frequently occurred postnominally, to the left of the adjective. The proposal by B{\"o}rjars et al.~is that, as adjectives became increasingly prenominal, the definiteness marker became associated with the left edge of the noun phrase overall.} \citet{Borjarsetal16} take advantage of the flexible nature of LFG's c-structure to model the observed gradual changes, %in word order and constituent structure which other generative approaches with more restricted possibilities for phrase structure generally find hard to capture, 
+building on a diachronic account of word order change in the context of grammaticalization concerning Romance prepositions by \citet{vincent1999evolution}.
+% \citet{vincent1999evolution} and \citet{Borjarsetal16} can be considered major contributions in this area of LFG,  putting forward accounts whereby constituency change is captured in terms of the ``growth of c-structure''. Both involve grammaticalization as a process which can result in changes at c-structure, specifically the emergence of a more rigidly endocentric organisation out of an older flatter structure. 
+Central to both Vincent's (1999) and B{\"o}rjars et al.'s (2016) accounts is  the assumption that a new category can emerge diachronically without it necessarily needing to project a full endocentric phrase straightaway.  Indeed, in the two accounts the full endocentric phrase projected by the new category is ``grown'' gradually at c-structure over time. This view is in line with the c-structure principle of Economy of Expression \citep{BresnanEtAl2016}, which privileges lexical over phrasal expression and is radically different to the more standard universal application of X-bar theory in certain other generative approaches whereby, as soon as one posits a category, one also needs to posit a full endocentric phrasal projection complete with a specifier and complement position (cf.~also \citealp{Toivonen2001,Toivonen2007} on non-projecting categories within LFG). %For a comparison of these two approaches in the context of diachronic change, see \citet{vincent2020heads}.
+
+%As in the account on Romance prepositions by \citet{vincent1999evolution},
+Applied to the Faroese story, \citet{Borjarsetal16} propose
+%argue convincingly that the emergence of the new category is a separate step from the later emergence of the full DP structure, which emerges only once the new category has become associated with a fixed structural position. This is illustrated by the 
+three c-structures to capture the structure of nominal phrases in the three periods: Old Norse (\ref{c-1}), early Faroese (ca.~1298) (\ref{c-2}) and Present-day Faroese (\ref{c-3}). In the earliest structure in (\ref{c-1}),  word order is largely free (captured in the flat structure under NOM(inal)) but there is an initial position associated with information-structur\-ally privileged elements. Crucially, in (\ref{c-1}) there is no category D; this only develops in early Faroese, cf.~(\ref{c-2}), but at this point it is not yet associated with a particular structural position. Once definite markers are structurally associated with the left edge of the noun phrase, one can assume a projectional functional category, as captured in the endocentric DP structure for Present-day Faroese in (\ref{c-3}). The proposed growth of c-structure thus captures the grammaticalization of (in)definiteness in the context of a gradual shift from relatively free word order driven by information structure to a much more rigid, syntactically constrained word order as exhibited in modern Faroese.
+
+\begin{exe}
+\ex 
+\begin{xlist}
+
+\ex \attop{\label{c-1} Old Norse\\
+\begin{small}
+\begin{forest}
+[NP
+  [({\UP\textsc{inf-priv})=\DOWN} \\ XP ]
+  [{\UP=\DOWN} \\ NOM
+    [{\UP=\DOWN} \\ Dem ]
+    [{\UP=\DOWN} \\ N ]
+    [{\DOWN$\in$(\UP\textsc{adj})} \\ AP ]
+    [({\UP\textsc{poss})=\DOWN} \\ {NP[\textsc{gen}]} ]
+   ]]
+\end{forest}
+\end{small}}
+
+
+\ex \attop{\label{c-2} Early Faroese\\
+\begin{small}
+\begin{forest}
+[NP
+  [({\UP\textsc{inf-priv})=\DOWN} \\ XP ]
+  [{\UP=\DOWN} \\ NOM
+    [{\UP=\DOWN} \\ \textbf{D} ]
+    [{\UP=\DOWN} \\ N ]
+    [{\DOWN$\in$(\UP\textsc{adj})} \\ AP ]
+    [({\UP\textsc{poss})=\DOWN} \\ {NP[\textsc{gen}]} ]
+   ]]
+\end{forest}
+\end{small}}
+
+
+\ex \attop{\label{c-3} Present-day Faroese\\
+\begin{small}
+\begin{forest}
+[DP
+  [{\UP=\DOWN} \\ D$'$
+    [{\UP=\DOWN} \\ \textbf{D} ]
+    [{\UP=\DOWN} \\ NP 
+    [{\UP=\DOWN} \\ N$'$ 
+     [{\DOWN$\in$\,(\UP\textsc{adj})} \\ AP ]
+      [{\UP=\DOWN} \\ N$'$ 
+       [{\UP=\DOWN} \\ N ] 
+      ]]]
+   ]]
+\end{forest}
+\end{small}}
+
+\end{xlist}
+\end{exe}
+
+
+%----------------------------
+\newpage
+\subsection{Degrammaticalization and lexical sharing}
+\label{sec:Historical:lex-share}
+\largerpage
+Another way in which gradual degrees of syntactic change have been captured at c-structure is via ``Lexical Sharing'', as originally proposed within LFG by \citet{wescoat2002,wescoat2005,wescoat2007,wescoat2009} and further developed by \citet{Lowe15,lowe2015clitic} as ``Constrained Lexical Sharing''. Lexical Sharing is essentially a mechanism which allows two or more constituents at c-structure to map to a single lexical element.  As we discuss in this section, \citet{Lowe15} employs this in the context of diachrony as a way to model degrees of ``\textit{de}grammaticalization'' (see e.g., \citealp{norde2009degrammaticalization, willis_2017}) with respect to the English possessive marker \textit{'s}, building on a synchronic analysis of Present-day English in \citet{lowe2015clitic}. 
+
+The starting point for Lowe's account is Present-day English, which indicates a mixed picture with respect to whether the possessive marker  \textit{'s} has clitic or affixal status. This is reflected in the literature, where some argue for it to be a clitic (e.g.~\citealp{quirk1985comprehensive,anderson2008english}) and others for it to be an affix  (e.g., \citealp{Zwicky87,payne2009english}). %Some authors, e.g. Zwicky (1987) and Payne (2009), argue that possessive ’s is fundamentally an affix, albeit an ‘edge affix’, i.e. an affix attached not to words but to syntactic phrases. Other authors, such as Quirk et al. (1985) and Anderson (e.g. 2008), argue rather that possessive ’s is not an affix, but a clitic.
+In this context, \citet{lowe2015clitic} claims that synchronically \textit{'s} has dual status, i.e.~that Present-day English exhibits both clitic forms and affixal forms and shows how this complex status can be modelled via Constrained Lexical Sharing. As Lowe points out, the lexicalism underpinning LFG leads to a discrete distinction between clitic and affix. An affix is assumed to attach to its host in the lexicon and will thus  map to the same c-structure node as its host,  e.g., (\ref{affix}),  while a clitic is a distinct lexical element which occupies its own c-structure node, e.g., (\ref{clitic}). The example c-structures here are  as  in \citet[213]{Lowe15}.\footnote{In both \citet[213]{Lowe15} and \citet[174]{lowe2015clitic}, different structures are provided for the possessum \textit{toys} depending on whether one assumes the affix analysis or the clitic/lexically shared affix analysis; for the affix analysis, the immediate daughter of N' is N, but for the clitic and lexically shared analysis the immediate daughter of N' is given as an NP. Although Lowe does not provide any explanation for this difference, for the sake of consistency we simply repeat the structures here.} %\textcolor{red}{Note: we have tried here to recreate the structures in \citet{Lowe15} but it was tricky using the Forest package...}
+
+\begin{exe}
+\ex 
+
+\begin{xlist}
+
+
+\exbox[-.85\baselineskip]{\label{affix} \begin{small}
+Affix:\begin{forest}
+[NP,
+  [DP
+  [NP [N, s sep=8mm, [Henry\textbf{'s},tier=word,edge={<-},edge label={node[midway,left,font=\footnotesize]{$\pi$}}]
+  ]]]
+  [N$'$ [N, s sep=8mm, [toys,tier=word,edge={<-},edge label={node[midway,left,font=\footnotesize]{$\pi$}}]
+   ]]
+   ]]
+\end{forest}
+\end{small}
+}
+
+%-----
+\exbox[-.85\baselineskip]{\label{clitic} \begin{small} Clitic:
+\begin{forest}
+[NP, s sep=8mm, 
+  [DP, s sep=8mm, 
+  [NP 
+  [N [Henry,tier=word,edge={<-},edge label={node[midway,left,font=\footnotesize]{$\pi$}}] 
+  ]]
+  [D [\textbf{'s},tier=word,edge={<-},edge label={node[midway,left,font=\footnotesize]{$\pi$}}] 
+   ]]
+  [N$'$
+    [N [toys,tier=word,edge={<-},edge label={node[midway,left,font=\footnotesize]{$\pi$}}]]
+    ]
+   ]
+\end{forest}
+\end{small}
+}
+\end{xlist}
+\end{exe}
+
+\largerpage[2]
+Rather than assume the straightforward affixal analysis in (\ref{affix}) for affix-like instances of \textit{'s}, %like (\ref{pde-ls}), 
+however, \citet{lowe2015clitic} proposes an account involving (Constrained) Lexical Sharing. This allows one  to capture the affixal status of \textit{'s} whilst being able to maintain a consistent syntactic structure for possessive phrases, irrespective of the affixal/clitic status of \textit{'s}. %Lexical Sharing essentially allows one to capture phenomena which display properties of both single-word sequences and two-word sequences. 
+Wescoat's original formulation of Lexical Sharing \citep{wescoat2002,wescoat2005,wescoat2007,wescoat2009}  assumes an additional dimension, l(exical)-structure, which consists of a linearly ordered set of words. The idea behind Lexical Sharing is that it is possible for two adjacent c-structure elements to map to a single element at l-structure, i.e.~``sharing'' the same lexical exponent. Within the Constrained Lexical Sharing of \citet{Lowe15,lowe2015clitic}, Wescoat's l(exical)-structure is identified with the syntactic string (s-string) of \citet{kapl:89}, and thus Lexical Sharing refers to instances where a single element at the s-string is associated via the relation $\pi$ with two adjacent c-structure nodes. In Lowe's account, the affix-like \textit{'s} %examples like (\ref{pde-ls}) \textit{'s} 
+is a lexically shared affix, e.g., (\ref{ls-affix}),  i.e.~constitutes a single lexical element with its host but maps to a separate node from the host at c-structure, resulting in an overall structural configuration parallel to that for the clitic analysis in (\ref{clitic}).
+
+\begin{exe}
+
+\ex \attop{\label{ls-affix} Lexically shared affix:\\
+		\begin{small}
+			\begin{forest}
+				[NP, s sep=8mm, 
+					[DP, s sep=8mm, 
+						[NP, s sep=2mm,  
+							[N,l sep=1.5cm [,phantom] [Henry\textbf{'s},tier=word,edge={Stealth[]}-,edge label={node[midway,left]{$\pi$}},name=henry]]
+						]
+						[D,name=D]
+					]
+					[N$'$ [N [toys,tier=word,edge={Stealth[]}-,edge label={node[midway,left]{$\pi$}}]] ]
+				]
+			\draw [-{Stealth[]}] (henry) edge node [midway, left] {$\pi$} (D);
+			\end{forest}
+		\end{small}
+	}
+\end{exe}
+\clearpage
+
+
+Applied specifically to diachrony, \citet{Lowe15} shows how this approach can be used to represent degrees of ``\textit{de}grammaticalization'' of the English possessive marker, which ``\textit{de}grammaticalizes'' over time from an unambiguous affix to a clitic (cf.~the typical grammaticalization cline in (\ref{cline}) above). At the earliest attested stage, the Old English ancestor of Present-day English \textit{'s}, -\textit{es}, is one of a number of genitive case allomorphs and is uncontroversially an affix which is fully integrated with its stem in the s-string and  maps to the same c-structure node as its host, cf.~(\ref{affix}). 
+% while the newer clitic status is represented in terms of the possessive marker being a distinct lexical element which occupies its own c-structure node, cf., (\ref{clitic}). 
+%The example c-structures here are  as provided in \citet[213]{Lowe15}, who argues that there is evidence for both the older and younger structure coexisting side-by-side in present-day English. 
+Crucially, as \citet{Lowe15} points out, drawing on data discussed by \citet{allen1997origins,allen2003deflexion,allen2008genitives}, the emergence of the clitic over the subsequent centuries is gradual and involves degrees of degrammaticalization and small-step changes  from affix to clitic. 
+% In order to capture intermediate degrees between affix and clitic, \citet{Lowe15} makes use of Lexical Sharing, which  allows one to capture phenomena which display properties of both single-word sequences and two-word sentences. Wescoat's original formulation of Lexical Sharing assumes an additional dimension, l(exical)-structure, which consists of a linearly ordered set of words. The idea behind Lexical Sharing is that it is possible for two adjacent c-structure elements to map to a single element at l-structure, i.e.~``sharing'' the same lexical exponent. Within the Constrained Lexical Sharing of \citet{Lowe15,lowe2015clitic}, Wescoat's l(exical)-structure identified with the syntactic string (s-string) of \citet{kapl:89} and thus Lexical Sharing refers to instances where a single element at the s-string is associated via the relation $\pi$ with two adjacent c-structure nodes. 
+
+
+
+
+Specifically, in the period ca.~1100--1400 CE %In the Early Middle English period (which \citealp{Lowe15} dates to c.~1100-1400 CE), 
+several changes are underway which affect the affixal status of the possessive marker: the various genitive case forms are largely lost and \textit{-(e)s} becomes the possessive marker for most nouns, while possession is increasingly marked on just the head of the possessor, rather than on every element of the possessor. \citet{Lowe15} cites two construction types in particular which are attested during this period and indicate the beginning of a change in the morphosyntactic status of the possessive marker: (i) possessors which involve coordination where possession is marked only on the rightmost head, e.g., (\ref{coord}) and (ii) possessor phrases with split postmodification flanking the possessum, where possession is marked on the head of the possessor, e.g., (\ref{split}). %examples from \citep[217-218]{Lowe2015}. 
+
+\begin{exe}
+\ex \label{me-poss} Middle English
+\begin{xlist}
+\ex[]{ \label{coord}
+\gll  {wif} {\&} {were\textbf{s}} {gederunge}  \\
+{wife} {and} {man.\textsc{gen}} {union}  \\
+\glt `The union of man and wife.' \\(\textit{Hali Meidenhad}, c.~1225 CE)}
+\ex[] {\label{split}
+\gll {\th}e eorle\textbf{s}  dou{\textyogh}ter of Gloucetre\\
+the earl.\textsc{gen} daughter of Gloucester\\
+\glt `The Earl of Gloucester's daughter' \\(\textit{Polychronicon} VIII, ca.~1380) \\
+\citep[217--218]{Lowe15}}
+\end{xlist}
+\end{exe}
+
+\noindent The two constructions in (\ref{me-poss}) show a strong positional constraint, whereby the possessive marker on the head of the possessor phrase must immediately precede the possessum. Lowe interprets this as evidence that the possessive marker is no longer fully affixal, since it is now constrained by the syntactic context in which it appears, rather than just being dependent on the position of the word to which it attaches. In the Lexical Sharing approach, this change can be captured by assuming that the original affix (modelled in (\ref{earl1}))  is reanalyzed as a lexically shared affix as shown in (\ref{earl2}) (structures from \citealp[222]{Lowe15}). In (\ref{earl1}), an optional D node is assumed, 
+which is later incorporated into the head of the possessor phrase (see (\ref{earl2})), once possessor phrases come to supply the definiteness of the possessum, in line with the broader grammaticalization of the definite article which is underway in the period. 
+
+% involving also incorporation of the category D into the head of the possessor phrase and the emergence of a DP.
+%structures involving "Unified Lexical Sharing" (\textbf{explain}) emerge in the early Middle English period and later in the late Middle English/ Early Modern English periods Partitioned Lexical Sharing structures emerge (), and become increasingly popular over the subsequent centuries. 
+
+
+% \begin{exe}
+
+% \ex \label{earl}\gll {\th}e eorle\textbf{s}  dou{\textyogh}ter of Gloucetre\\
+% the earl.\textsc{gen} daughter of Gloucester\\
+% \glt `The Earl of Gloucester's daughter' \\(Polychronicon VIII, c.~1380, \citealp[218]{Lowe15})
+
+% \end{exe}
+
+
+\begin{exe}
+\ex
+\begin{xlist}
+
+\ex \attop{\label{earl1}
+\begin{forest}
+[NP
+  [({\UP\textsc{poss})=\DOWN}\\NP, s sep=8mm, 
+  [{D} [{{\th}e},tier=word,edge={<-},edge label={node[midway,left,font=\footnotesize]{$\pi$}}] 
+ ]
+  [N$'$
+ [{N} [{eorle\textbf{s}},tier=word,edge={<-},name=e,edge label={node[midway,left,font=\footnotesize]{$\pi$}}] 
+  ]] ]
+ [{(D)} ]
+  [N$'$
+    [{N} [{dou{\textyogh}ter},tier=word,edge={<-},edge label={node[midway,left,font=\footnotesize]{$\pi$}}] 
+    ]] 
+ [{\DOWN$\in$(\UP\textsc{poss adj})}\\PP
+ [P$'$, s sep=8mm, 
+ [{P}  [{of},tier=word,edge={<-},edge label={node[midway,left,font=\footnotesize]{$\pi$}}]]
+ [NP 
+   [{N} [{Gloucetre},tier=word,edge={<-},edge label={node[midway,left,font=\footnotesize]{$\pi$}}]]
+   ]]]]   
+\end{forest}
+}
+
+%-------------
+\ex \attop{\label{earl2}
+\hspace{0.5ex}
+\begin{forest}
+[NP
+  [({\UP\textsc{poss})=\DOWN}\\DP, s sep=8mm,  
+  [NP, s sep=8mm, 
+  [{D} [{{\th}e},tier=word,edge={<-},edge label={node[midway,left,font=\footnotesize]{$\pi$}}] 
+  ]
+  [N$'$
+ [{N} [{eorle\textbf{s}},tier=word,edge={<-},name=e,edge label={node[midway,left,font=\footnotesize]{$\pi$}}] 
+ ]] ] 
+ [{D},name=d ] ]
+  [N'
+    [{N} [{dou{\textyogh}ter},tier=word,edge={<-},edge label={node[midway,left,font=\footnotesize]{$\pi$}}] 
+    ]] 
+ [{\DOWN$\in$(\UP\textsc{poss adj})}\\PP
+ [P$'$, s sep=8mm,  
+ [{P}  [{of},tier=word,edge={<-},edge label={node[midway,left,font=\footnotesize]{$\pi$}}] ]
+ [NP 
+ [{N} [{Gloucetre},tier=word,edge={<-},edge label={node[midway,left,font=\footnotesize]{$\pi$}}] 
+ ]]]]
+   ]
+\draw[<-] (d) -- (e);
+\end{forest}
+}
+\end{xlist}
+
+\end{exe}
+
+
+However, the Middle English lexically shared affix in (\ref{earl2}) is not yet equivalent to the status of the possessive marker in Present-day English %in examples like (\ref{pde-ls}), 
+but rather has a subtle difference. As \citet{Lowe15} points out, in the former, the noun component must supply the head of the possessor phrase. This is captured in the lexical entry in (\ref{uni-ls}), where the N component is associated with an f-description which requires that the f-structure of the noun serve as the value (or a member of a set of values) of the feature \textsc{poss} in a wider f-structure; the D does not need to have any f-descriptions associated with it. By contrast, for Present-day English --  where the possessive marker is closer to a clitic -- %examples in (\ref{pde-ls}), where the form \textit{species'} is closer to being two distinct forms, and the possessive marker closer to a clitic, 
+Lowe assumes the lexical entry in (\ref{part-ls}), ``Partitioned Lexical Sharing'', which involves two  c-structure nodes each with their own set of f-descriptions (structures from \citealp[215, 223]{Lowe15}).
+
+\begin{exe}
+\ex 
+\begin{xlist}
+\ex \label{uni-ls}
+Unified Lexical Sharing:\\
+\begin{tabular}{|lll|}
+\hline
+  eorles:   & N & D \\
+     &  (\UP\textsc{pred}) = `earl' &  \\
+     & (\POSS($\epsilon$) \UP) &  \\
+     & ((\POSS\UP) \textsc{def}) = + & \\
+     \hline
+\end{tabular}
+
+\vspace{2ex}
+
+\ex \label{part-ls}
+Partitioned Lexical Sharing:\\
+\begin{tabular}{|lll|}
+\hline
+ species':    &  N & D \\
+     & (\UP\textsc{pred}) = `species'& (\POSS\UP)\\
+     \hline
+\end{tabular}
+
+
+\end{xlist}
+\end{exe}
+
+
+According to Lowe, only from the end of the 14th century are ``phrasal possessives proper'' attested, i.e.~phrasal possessives with postmodified possessors with possessive marking on the right edge of the postmodifier, rather than on the head of the possessor as in early examples, cf.~(\ref{split}). The example Lowe provides is from Chaucer (ca.~1400 CE), shown here in (\ref{chaucer}). These more clitic-like examples coexist alongside the more affix-like split examples as in (\ref{split}) throughout the Middle English and Early Modern English periods, with an increasing preference for the more clitic-like type in (\ref{chaucer}). This is modelled in terms of gradually shifting preferences in favour of the Partitioned Lexical Sharing analysis, cf.~(\ref{part-ls}) over the Unified Lexical Sharing analysis, cf.~(\ref{uni-ls}). 
+
+\begin{exe}
+\ex Middle English \citep[219]{Lowe15} \label{chaucer}\\
+{The} {grete} {god} {of} {Love\textbf{s}} name \\
+\glt `The great God of Love's name.'
+\end{exe}
+
+
+\noindent Taking advantage of Lexical Sharing thus allows \citet{Lowe15} to model the nuanced steps involved in syntactic change via degrammaticalization and, applied to Present-day English, also to capture the coexistence of  older and newer variants at a synchronic level \citep{lowe2015clitic}. 
+
+A very different approach to the mix of clitic and affixal properties is exemplified by \citet{boegelbutt2012}, who work out an analysis of various different Urdu possessive constructions, including case clitics and the originally Persian \textit{ezafe} construction.  Their analysis factors in prosodic features  typical of clitics (rather than leaving them out) and avoids the introduction of lexical sharing or other complex formal  machinery. 
+%We return to the relationship between variation and change in \sectref{sec:Historical:var}.
+
+
+%-----
+\subsection{Grammatical relations and licensing}\label{subsect:pos-license}
+
+As \citet{vincent2001lfg} points out, the fundamental design of the LFG architecture, in which position and function are captured separately, means that it is well suited to modelling changes concerning grammatical relations. A consequence of assuming f-structure as an independent level of representation for abstract functional information is that grammatical functions such as \textsc{subj} and \textsc{obj} are viewed as basic building blocks of the theory. %\footnote{As has been pointed out (e.g., \citealp{DLM:LFG}), primitives is perhaps a misleading term here, as \textsc{subj} and \textsc{obj} can in fact be further broken down in terms of the intrinsic classification features [$\pm$r(estrictive)] and  [$\pm$o(bjective)]. Still, the crucial point is that \textsc{subj} and \textsc{obj} are defined independently from structural configuration.}  
+As such, unlike in some other generative approaches, \textsc{subj} and \textsc{obj} need not be   defined in terms of structural position. This allows one to neatly capture the full cross-linguistic spectrum with respect to how languages encode grammatical relations, from those where structural position plays a strong role, e.g., modern English, to those where morphological marking is the dominant encoding means, e.g., Latin, but also languages which use a mixture of means, e.g., Chiche{\^w}a \citep{BM87} and  Icelandic \citep{ZMT85:Case}.
+% For example, there are languages which combine structural means with head-marking morphology, e.g.~Chiche{\^w}a \citep{bresnan1987topic} and similarly languages which combine structural means with dependent-marking, i.e.~case, e.g.~modern Icelandic \citep{zaenen-maling-trainsson1985}
+Previous work in this area has tended to focus on the cross-linguistic possibilities from a synchronic perspective; see \citet{nordlinger1998constructive} and \citet{Snijders2015} for relevant typologies. But this approach to grammatical relations also has much to offer for diachronic studies, since change concerning how languages encode grammatical relations is well-attested across languages \citep[e.g.,][]{kips97,hewson2006case,ponti2018non} and individual historical stages will naturally exhibit intermediate stages along a change trajectory, with a particular balance between  structural and morphological encoding strategies. 
+
+
+
+
+%-----
+\subsubsection{Word order and recipient passives}\label{subsect:recip-pass}
+% \textcolor{blue}{\citet{allen1995case} and \citet{Allen01} here}
+
+A complex change in this area which has been investigated in detail by \citet{allen1995case,Allen01} is the rise of the recipient passive in English, i.e.~constructions like (\ref{recip-pass}), where the recipient rather than the theme is treated as the subject.  
+
+\begin{exe}
+\ex \label{recip-pass}
+He was given a book. 
+\end{exe}
+
+\noindent According to \citet{Allen01}, recipient passives are unattested in Old English; the earliest known example of a recipient passive is from 1375 CE, alongside other scarce examples from the late fourteenth and early fifteenth centuries. The earliest example according to Allen, from 1375, is shown here in  (\ref{1375-pass}).
+
+\begin{exe}
+  \ex \label{1375-pass} Middle English  (Award Blount, p.~207, \citealp[51]{Allen01})\\
+  Item as for the Parke, she is alowyd Every yere a dere and xx Coupull of Conyes and all fewell Wode to her necessarye\dots\\
+`Item: as for the park, she is allowed a deer every year and 20 pairs of rabbits and all firewood necessary to her\dots' 
+
+\end{exe}
+
+
+ As with the change concerning experiencer verbs discussed in \sectref{sec:Historical:arg-gf},  Allen again challenges classic accounts of this development (e.g., \citealp{jespersen1927modern,vanderGaaf1929conversion,campbell1998historical}), which assume that recipient passives emerged via reanalysis of an ambiguously case-marked fronted indirect object as the subject, as in (\ref{ambig-pass}).
+
+
+\begin{exe} 
+\ex \label{ambig-pass}Middle English (Ric.Couer de L. 1307, Auchinleck \textsc{ms}, \citealp[49]{Allen01})\\
+The Duke Mylon was geven hys liff, and fleygh out of land with his wife.\\
+`Duke Mylon was given his life, and fled out of the country with his wife.' 
+\end{exe}
+
+\noindent \citet{Allen01} points out that the chronology does not stack up to support the classic account, for a variety of reasons. This includes the observation that the loss of the morphological distinction between nominative and dative which results in the prerequisite ambiguity for the classic reanalysis account occurred long before the first recipient passive examples are attested, with a gap of 175 years.
+
+
+
+\citet{Allen01} argues instead for a change involving reanalysis of the indirect object (theme) of active sentences as the direct object, which in turn has consequences for the status of the recipient argument and ultimately facilitates its promotion to subject under passivization. Rather than being driven by ambiguous case-marking, as assumed in the classic accounts, Allen argues that her reanalysis story was triggered by the fixing of the relative word order of two objects. This is based on the observation that the first attestation of recipient passives coincides with the disappearance of examples like (\ref{bare-bare}), in which a (non-pronominal) NP which is the Theme precedes a (non-pronominal) NP which is the Recipient. According to Allen, such orderings with two NPs are unattested as of the last quarter of the fourteenth century. 
+
+\begin{exe}
+\ex \label{bare-bare}
+I gave [a gift]\textsubscript{theme} [the king]\textsubscript{recipient}  %\citep[56]{Allen01}
+\end{exe}
+
+
+Allen suggests that once nominal recipients became fixed in the immediately postverbal position, the simplest analysis from the perspective of the language learner was to analyze the recipient as an \textsc{obj}, due to the fact that the learner could now calculate grammatical relations directly on the basis of position, and in turn the semantic relations too. Specifically, a new processing strategy arose which stated that the first non-pronominal NP after the verb would be the \textsc{obj}, provided no pronoun preceded it ---  the strategy for pronouns would be rather different according to Allen, presumably owing to the special positional distribution of pronouns in Early English. As a result, the semantic role could now be determined on the basis of position: if the \textsc{obj} was followed by another NP, the \textsc{obj} could only be the Recipient and the second NP could only be \textsc{obj}\textsubscript{$\theta$}, with the only possibility in terms of semantic role as the Theme. In this way, the fixing of the order eases the hearer's processing concerning the assignment of grammatical relations and thematic roles. Moreover, since the Recipient as an \textsc{obj} is now [$-r$], it can map to \textsc{subj} under passivization in accordance with the natural classes which fall out from the features [${\pm}r,o$]. Thus recipient passives are now possible.
+
+
+Allen's account thus investigates the connection between word order and the assignment of grammatical relations and in particular a change whereby grammatical relations become increasingly encoded via position. Next, we discuss other work which has considered this type of change within LFG.
+
+% Allen explains the connection in terms of certain c-structure positions becoming associated with a class of grammatical relations, considering the role of language acquisition and processing strategies. In Old English recipient arguments of ditransitives were always thematically restricted objects, i.e., \textsc{obj}\textsubscript{rec}. In terms of the Lexical Mapping Theory in \citet{bresnan1989locative}, this means that the recipient argument is always [+r] in Old English. As a result, under passivization  it is the theme (as --r) which is the highest argument and maps to \textsc{subj} in accordance with the classifications in (\ref{gf-class}); in other words, recipient passives as in (\ref{recip-pass}) are at this stage ruled out.  %The change which, according to Allen, enables recipient passives to be possible concerns active sentences with ditransitives, whereby the old theme \textsc{obj} is reanalysed as a restricted object, i.e., \textsc{obj}\textsubscript{th}. As a result of this reanalysis, the recipient argument can now be --r and thus maps to \textsc{subj} under passivization.
+%Specifically, she argues that the fixing of the order made it advantageous for language learners to analyze the first object as \textsc{obj}, regardless of whether it was the theme or the recipient. In terms of Lexical Mapping Theory, 
+
+% Allen suggests that certain c-structure positions first become associated with a class of grammatical relations in terms of the features in (\ref{gf-class}) and then later becoming associated with a particular grammatical function. Specifically, once the order of two nominal objects in ditransitive constructions became fixed, and the immediately postverbal NP position (now the recipient) thus became associated with --r, the result was that the first object after the verb became reanalysed as a direct object. 
+
+% The change which, according to Allen, enables recipient passives to be possible concerns active sentences with ditransitives, whereby the old theme \textsc{obj} is reanalysed as a restricted object, i.e., \textsc{obj}\textsubscript{th}. As a result of this reanalysis, the recipient argument can now be --r and thus maps to \textsc{subj} under passivization.
+
+% Once certain word orders are lost, the result is that certain c-structure positions becoming associated with particular grammatical functions. Specifically with respect to recipient passives, once the order of two nominal objects became fixed, the first object after the verb became reanalysed as a direct object. Moreover, Allen models this making use of the intrinsic classification of grammatical functions in terms of [$\pm$r, $\pm$o], suggesting an account whereby certain c-structures first become associated with a class of grammatical relations in terms of these features and then later becoming associated with a particular grammatical function. In the account in \citet{allen1995case}, for instance, the order of two nominal objects in ditransitive constructions became fixed in Middle English, , and the immediately postverbal NP position thus became associated with --r. The result was that the first object after the verb became reanalysed as a direct object.
+
+
+
+%-----
+\subsubsection{Positional licensing and information structure}
+\label{sec:Historical:positional}
+
+Change whereby structural position becomes an increasingly dominant licensing strategy for grammatical relations over time is well attested cross-linguistically; cf.~the rise of (argument) configurationality (e.g., \citealp{hewson2006case,luraghi2010configurationality}). In the linking theory developed by \citet{kips87,Kiparsky1988,kips97,kips01}, where case, agreement and position are viewed as interacting licensing strategies for grammatical relations, this type of change has been formalized as the rise of ``positional licensing'' \citep{kips97}. Focusing on the history of English, \citet{kips97} argues that as English lost its morphological case system, position became the dominant licensing strategy for grammatical relations. Beyond Allen's analysis of the recipient passive,  this idea has been explored more recently within LFG by \citet{Booth17}, who present a positional licensing account in LFG terms for the diachrony of subjects in Icelandic.  As both \citet{kips97} and \citet{Booth17} point out,  Icelandic offers an interesting point of comparison with Kiparsky's original account since, unlike English, Icelandic has maintained rich morphological case up to the present day.
+
+
+\citet{Booth17} observe that Icelandic subjects are increasingly realized in the clause-initial prefinite position and capture this change in terms of the rise of positional licensing, also bringing information structure into the account. Two other concomitant changes are observed and feed into their analysis: (i) a decrease in V1 declaratives as in (\ref{v1}) and (ii) the emergence of the expletive \textit{{\th}a{\dh}} which is positionally restricted to the clause-initial prefinite position; cf.~the contrast in (\ref{expl}), when the expletive is ruled out in contexts where this position is otherwise occupied.
+
+
+\begin{exe}
+\ex \label{v1} Middle Icelandic (Georgius, 1525, \citealp[111]{Booth17})
+%\begin{xlist}
+
+\gll S\'yndi drottinn mikla miskunn vin sínum sankti Georgíum\\
+show.\textsc{pst.3sg} lord.\textsc{nom.def} great.\textsc{acc} mercy.\textsc{acc} friend.\textsc{dat} his-own.\textsc{dat} saint.\textsc{dat} George.\textsc{dat}\\
+\glt `The Lord showed great mercy to his friend St. George.' 
+
+
+% \ex[] {
+% \gll Var {\th}\'a gle{\dh}i mikil \'i k\'ongs höll.\\
+%  be.\textsc{pst.3sg} then  joy.\textsc{nom} great.\textsc{nom} in king.\textsc{gen} hall.\textsc{dat}\\
+% \glt `There was then  great joy in the king's hall.' \\(Jarlmann, 1480, \citealp[110]{Booth17})
+%  }
+% \end{xlist}
+\end{exe}
+
+%----------------
+\begin{exe}
+\ex \label{expl} Modern Icelandic (\citealp[111--112]{Booth17})
+\begin{xlist}
+\ex[]{ 
+\gll \textbf{{\TH}að} var ekki minnst {\'a} {\"o}nnur d{\'y}r.\\
+\textsc{expl} be.\textsc{pst.3sg} \textsc{neg} mention.\textsc{ptcp} on other.\textsc{acc} animals.\textsc{acc}\\
+%\glt `There was no mention of other animals.' 
+}
+
+
+\ex[] {
+\gll Ekki var minnst {\'a} {\"o}nnur d{\'y}r.\\
+\textsc{neg}  be.\textsc{pst.3sg}  mention.\textsc{ptcp} on other.\textsc{acc} animals.\textsc{acc}\\
+\glt `There was no mention of other animals.' 
+ }
+\end{xlist}
+\end{exe}
+
+
+\noindent Following a proposal by \citet{hinterhoelzl-petrova2010} for the history of West Germanic, \citet{Booth17} put forward an information-structural account for the rise of the expletive \textit{{\th}a{\dh}} and in turn the decrease in V1 declaratives, assuming that the finite verb serves as an information-structural boundary separating topic and comment. The change is captured in terms of the growth of structure, whereby a flat structure lacking functional categories yields to a more articulated structure making use of functional categories and projections, similar to the account of North Germanic noun phrases by \citet{Borjarsetal16} (see \sectref{subsect:growth}). In Booth et al.'s account at the clausal level, the relevant functional projection which  emerges from an earlier flat structure is IP, headed by the finite verb in I; cf.~the LFG accounts of modern Scandinavian clause structure by \citet{sellssao,Sells05} and \citet{BEA03}. 
+
+
+Once the IP structure is established, various changes occur concerning the nature of the clause-initial prefinite position, i.e.~SpecIP. The information-structural role of the finite verb as a boundary between topic and comment leads to SpecIP becoming increasingly associated with a discourse function (\DF) capturing given or topical information, cf.~(\ref{df-tree}).
+
+\begin{exe}
+\ex \attop{\label{df-tree}
+\begin{small}
+\begin{forest}
+[IP
+[{(\UP\DF)=\DOWN} \\ XP ]
+  [ I'
+    [ I ]
+    [ VP ]
+   ]] 
+\end{forest} 
+\end{small}}
+\end{exe}
+
+\noindent In their account, this increasing association of SpecIP with topicality can in turn explain the observed increasing realization of subjects in this position. Agentive and sentient entities tend to make for better topics than non-sentient entities, and, since subjects typically represent the more agentive, sentient semantic participants, subjects will accordingly often occur in this new topic position (see also \citet{givon90}, who discusses subjects as ``grammaticalized topics''). 
+
+However, as Booth et al. show, SpecIP does not straightforwardly develop into a designated subject position, since subjects can still occur postfinitely in modern Icelandic. In particular, in clauses which lack a topic altogether, i.e.~impersonal and presentational constructions, the expletive occurs in the SpecIP topic position as a signaller that the clause lacks a topic. As such, they propose the functional annotations in (\ref{expl-tree}) for SpecIP in the modern stage: it can be occupied by any topical \textsc{gf}, or alternatively the expletive, provided the clause lacks a topic.
+
+\begin{exe}
+\ex \attop{\label{expl-tree}
+\begin{small}
+\begin{forest}
+[IP
+[ {\begin{tabular}{ll} \rdelim\{{2}{0pt} & (\UP\TOPIC) = \DOWN \\ & (\UP \{\COMP|\XCOMP\}* \GF) = \DOWN \\ %&\\   %\rdelim|{1}{0pt} & ($\uparrow$ SUBJ) = $\downarrow$ \\ 
+ &\\ \rdelim|{2}{0pt} & (\UP\,\textsc{expletive})=$_{c}$ +  \ldelim\}{2}{0pt}\\ &  $\neg$(\UP\TOPIC)
+ \end{tabular}}\\XP ]
+  [ I'
+    [ I ]
+    [ \dots ]
+   ]] 
+\end{forest} 
+\end{small}}
+\end{exe}
+
+
+Thus the reorganization of information structure and word order in Icelandic, and in particular the changing status of SpecIP, is seen as the underlying shift which results in a decrease in V1 in favour of V2 sentences with a clause-initial topic or an expletive in topicless contexts. Booth et al.'s study shows that infor\-ma\-tion-structural properties are an important consideration in the context of change with respect to word order and the licensing of grammatical relations.
+%They adapt Kiparsky's linking system, where position and case interact directly, to the standard version of Mapping Theory in LFG \citep{bresnan1989locative,BresnanEtAl2016}, which allows them to separate out lexical semantics from positional licensing and thus capture related changes concerning dative subjects.
+For a similar account which presents this change in terms of shifting correspondences between c-structure, f-structure and LFG's i(nformation)-structure (\citealp{BK96,King1997}), see \citet{booth-schaetzle:2019-cr} and \citet{booth-beck20200jhs}.
+In a similar vein, \citet{booth2021revisiting} shows how assuming that languages can gradually change their status with respect to argument configurationality and discourse configurationality can account for subtle changes in word order between Old and Modern Icelandic, which have otherwise prompted heated debate within approaches which assume configurationality to be a binary parameter (e.g.~\citealp{Faarlund1990,Rognvaldsson95}).
+
+% \citet{booth-schaetzle:2019-cr} and \citet{booth-beck20200jhs} extend this idea further still to take in the interaction between subjects and information structure in the history of Icelandic, specifically topicality, arguing for the emergence of a unique subject topic position over time and leveraging LFG's i-structure (e.g.~\citealp{BK96,King1997}) as a separate dimension for information structure. They argue that this ongoing change in the correspondence between c-structure and f-structure/i-structure, whereby the correspondences shown in (\ref{ice-mappings}) become increasingly established,  represents the generalisation of verb-second word order at the expense of verb-initial declaratives and can be connected with further concomitant changes in Icelandic concerning the increasing restriction of a certain fronting phenomenon known as "Stylistic Fronting" \citep{Hroarsdottir1998,Rognvaldsson1996} and the rise of clause-initial prefinite expletives, which act as structural placeholders in topicless constructions \citep{Hroarsdottir1998,Rognvaldsson2002,Booth18,booth2019cataphora}. 
+
+%Using commands from pst-node:
+
+% \begin{exe}
+
+% \ex \attop{\label{ice-mappings}
+%  \begin{tabular}[t]{c@{\hspace*{3em}}c}
+% \begin{forest} 
+% [IP, 
+%   [\rnode{1}{NP} ]
+%   [I'
+%     [I ]
+%     [ \dots ]
+%     ]]
+% \end{forest}
+%  &
+% \raisebox{6em}{{\avm[style=fstr]{
+% [ %pred  & %`verb\arglist{\SUBJ,\dots}'     \\
+%  % tense &  pres                \\
+%   topic  &  \rnode{3}{\{[pred-fn \dots]\}}  \\
+%  \dots ]}} } 
+%  \hspace{-13em}\raisebox{1em}{\avm[style=fstr]{
+% [ pred  & `verb\arglist{\SUBJ,\dots}'     \\
+%  % tense &  pres                \\
+%   subj  &  \rnode{4}{[\dots]}  \\
+%  \dots ]}}
+%  \end{tabular}
+% \nccurve[nodesepA=2pt,nodesepB=0pt,angleA={150},angleB={175},linewidth=.5pt]{->}{1}{3}
+% \nccurve[nodesepA=2pt,nodesepB=0pt,angleA={-15},angleB={165},linewidth=.5pt]{->}{1}{4}
+% % \nccurve[nodesepA=2pt,nodesepB=0pt,angleA={-20},angleB={185},linewidth=.5pt]{->}{2}{4}
+% }
+
+% \end{exe}
+
+%------------------------
+\section{Variation and change}
+\label{sec:Historical:var}
+
+In this last section, we turn to  the question of the role of variation. It is well-known that language change is gradual  and goes hand-in-hand with variation (e.g.,  \citealt{weinreichetal68,kroch1989reflexes,labov1994principles,labov2001-principles2,pintzuk2003,chambersetal2002}). However, formal grammars are discrete in nature, so a natural question which arises is how to combine the inherent variability and gradualness associated with language change into formal models of grammar. 
+
+
+One very popular way forward has been the combination of  \textit{Optimality Theory}  \citep{Boersma-etal,kager99} with stochastic methods  \citep{Boersma2000,BoersmaHayes2001}, which has been argued to account for patterns of variation and language acquisition. Optimality Theory (OT) was adapted into LFG very early on to yield a version of LFG dubbed ``OT-LFG'' (\citetv{chapters/OT}, \citealt{Bresnan-96-LFG-conference,Bresnan1998}) and combined with stochastic methods to yield explanations for gradience in judgements \citep{Bresnan07predicting,Bresnan10gradience} and variation across dialects \citep{Bresnan2007,BresnanHay2008,Bresnanetal08,BresnanDingareManning2001}. 
+
+In terms of historical linguistics, \citet{clark2004stochastic} is the first to lay out a formal model of diachronic variation that has led to gradual change.\footnote{Note that `gradual' in this context refers not to incremental steps along, e.g., a grammaticalization cline as in (\ref{cline}) but rather the gradual diffusion of a particular change through a population of speakers, or even possibly the gradual establishment of an innovation in the grammar of an individual.}  He works with two case studies from the history of English: 1) word order change from primarily OV to VO; 2) the preferred association of  subjects with  the clause-initial position.  Clark models the observed changes within stochastic OT-LFG and shows how the model parallels the observed stages in the historical development and variation in the corpora. Change is essentially effected via competing variants, as in much influential work on syntactic change in recent decades (e.g., \citealp{kroch1989reflexes,pintzuk2003}).  In Clark's OT-LFG account, these competing variants are taken to be the result of constraints that are liable to be re-ranked with respect to one another due to inherent ``noise'' in the communication process between humans and the asymmetry of goals between perception (more information is generally useful for decoding) vs.~production (producing less information is generally less burdensome). The stochastic OT-LFG approach is able to capture the steady quantitative rise in the use of an innovated structure by associating it with gradual changes in the relative strength of the relevant constraints.  A constraint re-ranking that may be due to ``noise'' variation may become statistically preferred and from there finally lead to a categorical change. 
+
+%    \item Change in the position of the verb (I vs. V) is accounted for in terms of gradual changes in constraint strength
+ % \item Also captures the general observation that categorical phenomena at one stage show up as statistical preferences at another. 
+ %   \item Aims do the same thing as the competing grammars approach in Chomskyan approaches (e.g. \citealp{pintzuk200315}), i.e. incorporate the fact that syntactic change is gradual into a generative model of syntax. 
+
+In a comprehensive look at auxiliary contraction in English, \citet{bresnan21} proposes a new hybrid model of LFG and a usage-based  mental  lexicon to explain the synchronic distribution and diachronic development of auxiliary contractions/clitics.  The usage-based mental lexicon is conceived of as a combination of ideas coming from Pierrehumbert's examplar-based model of the mental lexicon \citep{pierrehumbert2001,pierrehumbert2002}  and Bybee's usage-based approach \citep{Bybee2006}. 
+The frequent co-occurrence of certain combinations of words, e.g., \textit{you}+\textit{are} or \textit{we}+\textit{will}, are predicted to undergo contraction. Frequencies are calculated using a measure termed \textit{Informativeness}, which is the logarithm of the inverse of the conditional probability of one word following the other.  In \citet{bresnan21}, the corpus study, the frequency calculations and the development of the hybrid LFG plus usage-based mental lexicon make for a rich and complex paper which combines the strengths of formal grammar modelling with by now well-established effects of frequency and variation in usage. 
+
+The auxiliary contractions themselves are modelled via the formal concept of lexical sharing  within LFG (cf.~\sectref{sec:Historical:lex-share}) and this is where \citet{bresnan21} draws a concrete connection to diachrony:  ``lexical sharing as a formal construct
+can be viewed as a grammaticalization of high-probability syntactic distributions in
+usage$\ldots$''.  However, as argued for by  \citet{Boegel2015}, clitics do not necessarily need to be modelled via lexical sharing. She instead proposes a more articulated architecture of the prosody-syntax interface for an analysis of clitics and provides a means for integrating effects of frequency and variation \citep{BoegelTurk2019}.  Frequency effects can also be modelled via preferences applied directly to rules or lexical items, as practiced with respect to computational grammar development in LFG \citep{franketal01,dost-king-2009-using}. 
+
+Overall, the area of variation and change provides an interesting area of research for LFG, with initial architecturally complex and sophisticated proposals having recently been formulated, pointing the path towards innovative and exciting research in this area. 
+
+%------------------------
+\section{Summary}
+\label{sec:Historical:sum}
+
+This chapter has endeavored to provide an overview of the types of work done within LFG on language change. Like most formal theories of grammar, LFG did not address language change from the outset and the first serious work on language change only began appearing in the 1990s.  However, as LFG is fundamentally designed to separate form from function, the complex interaction between the function of an item and its overt realization can be modelled very well.  Indeed, given LFG's complex  formal design, in which the different components of grammar %(phonology, prosody, morphology, syntax, pragmatics and lexical and clause semantics)  
+are %taken to be 
+represented with component-appropriate rules and representations, and interface with one another via the projection architecture, one might argue that there are too many moving parts to permit %leading to confusion rather than 
+a clearly delineated theory of language change. 
+
+In one sense this is correct, but in another sense, one could argue that, as with synchronic description, what LFG provides is a broad formal framework, which must be specified by linguistic theorizing. By its very nature LFG pursues an  \textit{inductive} approach  --- the framework provides a broad perspective on the data (e.g., form and function are assumed to be separate, c-structure is assumed to model linear order, constituency and hierarchical relations, grammatical relations and argument structure are core objects over which generalizations can be stated, etc.) but the linguistic explanations and generalizations themselves emerge from the data and can be stated independently of the theory, thus allowing for potential cross-theoretic validity. 
+% An attraction of LFG is that linguistic generalizations and explanations can be stated independently of the theory (thus allowing for potential cross-theoretic validity) but then modelled with the formal tools specific to LFG. 
+% Moreovoer the linguistic explanations and generalizations emerge from the data and the overall framework is adjusted in the face of strong empirical evidence. 
+% LFG by its very nature pursues an \textit{inductive}  approach --- the framework provides a broad perspective on the data (e.g., form and function are assumed to be separate, c-structure is assumed to model linear order, constituency and hierarchical relations, grammatical relations and argument structure are core objects over which generalizations can be stated, etc.) but the linguistic explanations and generalizations emerge from the data and the overall framework is adjusted in the face of strong empirical evidence. 
+Another aspect of the inductive approach is that the overall framework can be adjusted in the face of strong empirical evidence.
+For instance, when there is strong empirical evidence that information about frequency of items plays a role, the theory is adjusted and opens up interesting new ways of modelling language change, as we saw in \sectref{sec:Historical:var}.
+
+Furthermore, the fact that LFG is very functionally oriented allows for an open channel of communication with the functional-descriptive and grammaticalization literature, leading to natural and insightful  accounts of lexical and functional change, as we discussed in \sectref{sec:Historical:func-change}. Change in terms of syntactic categories and clausal organization is seen as being motivated by changes in function in the first place, with syntactic recategorization and reorganization following to reflect the change in underlying function (\sectref{sec:Historical:syn-change}).
+
+%The fact that LFG allows a statement of generalisations separately from a full-fledged formal modeling has allowed it to forge a very open channel to researchers conducting field work on under-researched languages and it has also 
+
+In this chapter, we have followed the very broad notion of reanalysis adopted by \citet{harris1995historical} and hope to have shown how LFG can naturally account for reanalysis at various different levels: lexical, functional, categorical. In fact, one could see LFG as providing a firm formal basis for understanding the possible moving parts involved in reanalysis as part of language change, while also providing a basis for  understanding how the well-attested gradualness, variation and frequency-based effects of language change can be modelled formally.  That said, and despite the length of the chapter, it should be obvious to the reader that the existing body of historical linguistic work within LFG is so far not large and there is thus much room for investigation into language change.  There is also room for experimentation and innovation with respect to how to represent and understand language change. This might include a new model of the lexicon, a new version of LFG or the introduction of new methods of probabilistic modelling, as we have seen above, or working with new ways of accessing the diachronic data, for example by means of a platform developed together with experts from visual analytics  (e.g., \citealp{schatzle-etal-2019-visualizing,beck2020visual,beck-etal-2020-representation}). 
+
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}

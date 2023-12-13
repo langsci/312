@@ -1,0 +1,263 @@
+% Some useful macros for LFG annotations
+% Written by Ron Kaplan
+%
+
+% Generally useful:
+% \opt	    just wrap parens
+% \bigopt      big optionality brackets ( ) around a mathmode arraay
+% \disj	    curly brackets around a mathmode array, like \set.  Use | or \/ for separation
+% \bigdisj     like bigset, want big | too.
+
+% \kstar        Kleene star ($^*$ in or out of math mode
+% \kplus        Kleene plus ($^+$ in or out of math mode
+% 
+%
+% Annotations:
+% Note:  the parameter \annotationsize controls the font size of the annotations
+% It is a no-op by default, define it as \scriptsize etc.
+% Annotations are enclosed in \annobox {  }, a mathbox with \annotationsize
+
+%  \phin(sub)            \phin(n_sub)
+%  \phiinv   		\phi^{-1}
+
+% \up                           ↑   (in or out of math mode)
+% \down                      ↓
+% \attr{v}                     v in small caps
+% \trivial                      ↑=↓
+% udeq                    ↑=↓
+% \ntrivial  n n'           n=n'    n's in mathmode
+% \memb gf              ↓ ∈ (↑ gf)
+% \dumemb              ↓ ∈ ↑
+% \nmemb n gf n'       n ∈ (n' gf)  n's in math mode
+% \assign gf              (↑ gf)=↓
+% \nassign n gf n’     (n gf)=n’  
+% 
+% Atomic values:
+% \uval a v           (↑ a)=v  a, v in \attr small caps.  enclose a in { } if it's a sequence
+% \dval a v           (↓ a)=v
+% \sval a v           (* a)=v
+% \nval n a v        (n a)=v  n in mathmode, v in \attr small caps
+% \nvaln n a v      (n a)=v  both n and v in mathmode.
+%
+% Path designators:
+% \ugf gf              (↑ gf) useful for semantic form args
+% \dgf gf              (↓ gf)
+% \ngf n gf           (n gf)   n  in mathmode
+%
+% Inside out designators:
+% \gfu  gf             (gf ↑)
+% \gfd  gf             (gf ↓)
+%
+% Semantic forms:
+% \semforma p {a1 .. an}                             'p<a1 .. an>'   semantic forms with args (e.g. verbs)
+% \semformna p                                          'p'     semantic form without args (nouns) 
+% \semformraise  p {a1..an}{na1 .. nam}    'p<a1..an>na1 .. nam'   raising/equi semantic forms
+%
+% \predsfa p {a1 .. an}                                 (↑ PRED)='p<a1 .. an>'        Pred equation with arguments
+% \predsfna p                                               (↑ PRED)='p'                        Pred equation with no arguments
+% \predsfraise p args notargs                     (↑ PRED)='p<args>notargs'  Raising pred equation
+%
+% Reentrancies:
+% fcontrol x s o                (↑ x s)=(↑ o)     Equivalent to \uucopy {x s} {o}
+% nfcontrol n x s o            (n x s)=(n o)  n in mathmode
+% ducopy  gf1 gf2           (↓ gf1)=(↑ gf2) 
+% udcopy  gf1 gf2           (↑ gf1)=(↓ gf2
+% uucopy gf1 gf2            (↑ gf1)=(↑ gf2)
+% ddcopy gf1 gf2            (↓ gf1)=(↓ gf2)
+% ncopy n1 gf1 n2 gf2     (n1 gf1)=(n2 gf2)
+% udpromote gf               ↑=(↓ gf)
+% dupromote gf              (↓ gf)=↑
+% ucycle gf                     (↑ gf)=↑
+% dcycle gf                     (↓ gf)=↓
+
+% Constraints
+% negexist x                  ¬x
+% eqc x y                       x =_c y
+% negeq x y                   x ≠ y
+% dvalc a v                   (↓ a)=c v  a
+% uvalc a v                   (↑ a)=c v  a
+% subsume x y	             x  ⊑ y
+% 
+% Projections
+% proj p d                      p(d)       proj{\sigma}{\ugf{subj}}  ->  \sigma(↑ subj}    (p in math mode)
+%
+
+\providecommand{\kstar}{\mbox{$^*$}\xspace}
+\providecommand{\kplus}{\mbox{$^+$}\xspace}
+%
+% Basics for annotations
+\newcommand{\teq}{\hspace{-.1667em}=\hspace{-.1667em}}    % Equivalent to \!=\!, which fails for some reason
+\newcommand{\up}{\mbox{$\uparrow$}\xspace}
+\newcommand{\down}{\mbox{$\downarrow$}\xspace}
+\newcommand{\annotationsize}{}   % It is intended that this can be redefined on the fly, by \def or \renewcommand
+\newcommand{\attr}[1]{\textsc{#1}}
+\newcommand{\annobox}[1]{\mbox{\annotationsize $#1$}}  %# Size is bracketed for scope, math mode for ups, downs etc
+%
+% Path designators
+\newcommand{\xugf}[1]{(\uparrow\attr{#1})}                  % Internal, assumes mathmode and annotationsize=annobox
+\newcommand{\xdgf}[1]{(\downarrow\attr{#1})}
+\newcommand{\xngf}[2]{(#1\,\attr{#2})}
+% Node instantiation
+\newcommand{\phin}[1]{\annobox{\phi(n_{#1})}}                    % phi(n_#1)
+\newcommand{\phiinv}{\annobox{\phi\textsuperscript{-1}}}
+
+\newcommand{\ugf}[1]{\annobox {\xugf{#1}}}  % External, assumes no environment
+\newcommand{\ngf}[2]{\annobox {\xngf{#1}{\,#2}}}     %mathmode anchor
+%
+
+\newcommand{\trivial}{\annobox {\uparrow\,=\,\downarrow}\xspace}
+\newcommand{\ntrivial}[2]{\annobox {{#1}\teq{#2}}}
+%
+\newcommand{\assign}[1]{\annobox   {\xugf{#1}\hspace{-.1667em}=\,\downarrow}}
+\newcommand{\nassign}[3]{\annobox {\xngf{{#1}}{{#2}}\teq{{#3}}}}   % mathmode anchors
+%
+% Atomic values
+\newcommand{\uval}[2]{\annobox {\xugf{#1}\teq\attr{#2}}}
+\newcommand{\dval}[2]{\annobox {\xdgf{#1}\teq\attr{#2}}}
+\newcommand{\nval}[3]{\annobox {({#1}\,\, \attr{{#2}})\teq{\attr{#3}}}} % mathmode anchor, attr value
+\newcommand{\nvaln}[3]{\annobox {({#1}\,\, \attr{{#2}})\teq{\attr{#3}}}} % mathmode anchor and value
+\newcommand{\sval}[2]{\annobox {(\hspace{-0.15em}*\,\, \attr{#1})\!=\!\attr{#2}}}
+%
+% Semantic forms
+\newcommand{\semforma}[2]{\annobox {\textrm{`}\hspace{-.05em}\attr{#1}\langle\attr{#2}\rangle\hspace{-.05em}\textrm{'}}}
+\newcommand{\semformna}[1]{\annobox {\textrm{`}\hspace{-.05em}\attr{#1}\textrm{'}}}
+\newcommand{\predsfa}[2]{\annobox {\xugf{pred}\teq\semforma{#1}{#2}}}
+% With (↑ PRED)= in front
+\newcommand{\predsfna}[1]{\annobox {\xugf{pred}\teq\semformna{#1}}}
+\newcommand{\predsmraise}[3]{\annobox {\xugf{pred}\teq\semformraise{#1}{#2}{#3}}}
+\newcommand{\npredsfa}[3]{\annobox {\xngf{#1}{pred}\teq\semforma{#2}{#3}}}
+%
+% Rentrancies
+\newcommand{\fcontrol}[3]{\annobox {\xugf{{#1}\,\,\attr{#2}}\teq\xugf{#3}}}
+\newcommand{\ncopy}[4]{\annobox {(#1\,\, \attr{#2})\teq(#3\,\, \attr{#4})}} % mathmode anchors
+\newcommand{\dupromote}[1]{\annobox {\xdgf{#1}\!=\,\uparrow}}
+\newcommand{\udcopy}[2]{\annobox {\xugf{#1}\teq\xdgf{#2}}}
+\newcommand{\ducopy}[2]{\annobox {\xdgf{#1}\teq\xugf{#2}}}
+\newcommand{\uucopy}[2]{\annobox {\xugf{{#1}}\teq\xugf{{#2}}}}
+\newcommand{\ddcopy}[2]{\annobox {\xdgf{#1}\teq\xdgf{#2}}}
+\newcommand{\ucycle}[1]{\annobox {\xugf{#1}\!=\,\uparrow}}
+\newcommand{\dcycle}[1]{\annobox {\xdgf{#1}\!=\,\downarrow}}
+\newcommand{\ncycle}[2]{\annobox {\ngf{#1}{#2}\!=\!#1}}
+%
+% Constraints
+\newcommand{\negexist}[1]{\annobox {\neg\hspace{.1em}{#1}}}
+\newcommand{\eqc}[2]{\annobox {\attr{#1}\!=_c\! \attr{#2}}}
+\newcommand{\negeq}[2]{\annobox {\attr{#1}\!\neq\!\attr{#2}}}
+\newcommand{\dvalc}[2]{\annobox {\xdgf{#1}\!=_c\!\attr{#2}}}
+
+% Some useful macros for LFG annotations and Latex convenience etc.
+% Written by Ron Kaplan
+%
+% Trees, AVMS, examples:
+%\usepackage{avm}
+%\avmfont{\textsc}
+%\avmsortfont{\it}
+%\avmoptions{topleft,sorted}
+%
+
+% How to include and scale a pdf figure:
+%\begin{figure}
+%  \centering
+%  \includegraphics[width=.55\textwidth]{chapters/Prosody/Boegel_Figure_12.pdf}
+%\caption{O'Connor's p-structure as applied to example (\ref{ex:ghost}) from \citet{buttking98}}
+%\label{fig:connor}
+%\end{figure}
+
+
+% Generally useful:
+%\marpar{small margin notes}
+%
+% \mb{xxx}   \mbox{$ xxx $} mathmode with embedded $, so $'s are local.
+% \set{xxx}   mathmode inside set brackets  { }
+% \bigset      big set brackets around a mathmode array
+% \bigopt      big optionality brackets ( ) around a mathmode arraay
+% \seq{xxx}  mathmode inside sequence brackets $<xxx >$
+% \estring    empty string whether or not in mathmode
+% \hsp{dist}  mbox around hspace, to force it in all contexts
+
+% Italics for some words in and out of mathmode (multicharacter words in mathmode look terrible)
+% \Yield
+% \FD
+% String G  String(G) G in math mode
+% \Gminus  (from the k-bounded/tractability work)
+% 
+% Rule categories
+\def\rcatspace{}  % This can be redefined to decrease/increase the white space after a category column, like annosize
+\newcommand{\rcat}[1]{\textrm {\begin{tabular}[t]{@{\strut}c} #1\end{tabular}}\rcatspace}
+\newcommand{\rarrow}{\mbox{\ $\rightarrow$\ }} % rule arrow, spaces for piecing together rcats
+% Lexical entries: 
+% \lexentry word an1\\an2..   (But see the override from Mary at the bottom)
+% \catlexentry word cat an1\\an2..
+% \lexicon entry1\\entry2\\...   with each entry of the form word & cat & annotations 
+%
+% Annotated tree nodes
+% \treenode cat annotations
+% Node with subscripted node identifier
+% \treenodesub cat n i           {\rnode{tni}}{cat}_{n_i}  tni becomes the \rnode label for line drawing (t for tree)
+% Categories with both node-subscripts and annotations
+% \treenodesuba cat n 1 anno  =  cat_{n_1}\\fd
+%
+% terminals
+% \term word  \textrm{word}    For terminals in rules and c-structures
+% \sent string  \textit{string}  For terminals and sentences in text, not in an mbox to allow wraparound
+% \terma word fd   word\\fd
+
+\newcommand{\mb}[1]{\mbox{${{#1}}$}}  % math box
+\newcommand{\hsp}[1]{\mbox{\hspace{#1}}}    % force hspace
+
+\newcommand{\set}[1]{\mb{\{{#1}\}}} 
+\newcommand{\bigset}[1]{\mb{\left\{\begin{array}{@{\hspace{0em}}c@{\hspace{-0em}}} #1 \end{array}\right\}}}
+
+% Italics for some words in or out of mathmode
+\newcommand{\Yield}{\mbox{\textit{Yield}}\xspace}
+\newcommand{\String}[1]{\mbox{\textit{String}$(#1)$}}
+\newcommand{\Gminus}{\mb{G^{\mbox{\tiny $\backslash\hspace{-0.1em}\trivial$}}}\xspace}
+
+
+% Regular expression stuff (providecommand because also used in annotations)
+\providecommand{\estring}{\mb{\epsilon}}
+
+%
+%
+%
+%
+% Trees
+% Categories with annotations
+\newcommand{\treenode}[2]{\begin{tabular}[t]{c}\mbox{\textrm {#1}}\\#2\end{tabular}}    % A{\assign x}
+%
+% Categories with node-subscripts on right. Also produces \rnodes for phi mapping.  0-width hbox to center the category
+\newcommand{\treenodesub}[3]{\rnode{t#2#3}{#1}\hbox to 0pt {$_{#2_{#3}}$}}   %\treenodesub An1   no annotations
+%
+% Categories with both node-subscripts and annotations
+\newcommand{\treenodesuba}[4]{\treenode{\treenodesub {#1}{#2}{#3}}{#4}}   % An1{\assign x}
+\newcommand{\antreesub}{\treenodesuba}
+%
+% Terminal symbols, without and with annotations
+\newcommand{\term}[1]{\mbox{\textrm{#1}}}
+\newcommand{\sent}[1]{\textit{#1}}    % Not in an mbox since a sentence may need to wrap around.  
+\newcommand{\terma}[2]{\treenode {\term{#1}}{#2}}   % the{\assign}
+
+% \nodecol produces a column of node variables n1... to be prefixed to an f-structure bracket
+\newcommand{\nodecol}[1]{\hbox to 0pt{\hspace{-1.15em}\mb{\scriptsize\begin{array}[t]{r}\\[-.5em]#1\end{array}}}}
+
+% Define a special command \cev  for putting a backward vector on top of a letter, opposite of \vec:
+\makeatletter
+\DeclareRobustCommand{\cev}[1]{%
+  {\mathpalette\do@cev{#1}}%
+}
+\newcommand{\do@cev}[2]{%
+  \vbox{\offinterlineskip
+    \sbox\z@{$\m@th#1 x$}%
+    \ialign{##\cr
+      \hidewidth\reflectbox{$\m@th#1\vec{}\mkern4mu$}\hidewidth\cr
+      \noalign{\kern-\ht\z@}
+      $\m@th#1#2$\cr
+    }%
+  }%
+}
+\makeatother
+
+\newcommand{\GenG}[1]{\mbox{\textit{Gen}$_G(#1)$}}
+\newcommand{\ParG}[1]{\mbox{\textit{Par}$_G(#1)$}}
+
+

@@ -1,0 +1,414 @@
+\documentclass[output=paper,japanesefont,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10186034}
+\title{LFG and Cognitive and Constructional Theories}
+\author{Yo Matsumoto\affiliation{National Institute for Japanese Language and Linguistics}}
+\abstract{Goldberg's (Cognitive) Construction Grammar and Langacker's   Cognitive Grammar are compared with LFG. The comparison to be made   involves differences in the notions coded in the representations   recognized in these theories. It is shown that information factored   out in different structures in LFG is often coded in a single   structure in the two theories examined. Once such differences are   recognized, a fruitful comparison of analysis is possible, in spite   of apparent differences in the areas of interest in language and the   conceptualization of grammar.}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[40]%%chapternumber
+}{}
+
+\begin{document}
+\maketitle
+\label{chap:ConstructionGrammar}
+
+\section{Introduction}
+\label{sec:cg:1}
+
+In this chapter, I will compare LFG with cognitive and constructional theories of grammar. I will specifically discuss the (Cognitive) Construction Grammar (CxG) of Adele Goldberg, and Cognitive Grammar (CogG) of Ronald Langacker. These two theories have several commonalities, including the nonderivational, parallel-structure  architecture of grammar, the central role of form-meaning pairs, the embodiment of the usage-based view of grammar, and the cognitive-linguistic conceptualization of language. These pose interesting similarities and differences in their comparison with LFG.
+
+\section{Construction Grammar}
+\label{sec:cg:2}
+
+\subsection{ What is Construction Grammar?}
+\label{sec:cg:2.1}
+
+\subsubsection{The characteristics of Construction Grammar}
+\label{sec:cg:2.1.1}
+
+Construction Grammar (CxG) originates in the work of Charles Fillmore in the 1980s, when he began to work on the noncompositional properties of syntactic units larger than the word (e.g.\ \citealt{Fillmore1988}, \citealt{FillmoreKayOConnor1988}; see \citealt{Fillmore2020}). His thinking was further developed by Adele Goldberg's work on Argument Structure Constructions \citep{goldberg1995constructions,Goldberg2003,Goldberg2006,Goldberg2019}. Over the years, various versions of Construction Grammar have emerged, including Radical Construction Grammar \citep{Croft2001}, Embodied Construction Grammar \citep{BergenChang2005}, Sign-based Construction Grammar \citep{BoasSag2012}, and Fluid Construction Grammar \citep{Steels2011}.  (I will not attempt a comparison of these theories; see \citealt{HoffmannTrousdale2013} for a survey). \citegen{culicover2005simpler} Simpler Syntax is also a version of construction grammar (see \citetv{chapters/SimplerSyntax}). Langacker's Cognitive Grammar, which will be discussed later in \sectref{sec:cg:3}, also incorporates the notion of construction \citep{Langacker2003,Langacker2005}. The idea of construction has also been applied to the area of morphology in the work of \citet{Riehemann98a} and the Construction Morphology of \citet{Booij2010,Booij2018}.
+
+The constructional view cuts across the distinction between formalist and cognitivist theories of grammar. One of the more formal versions of Construction Grammar is Sign-based Construction Grammar, which is a variant of HPSG (\citealt{pollard1994head-driven}; see also \citealt{Sag2010b} and \citealt{MuellerCxG}). In this chapter, I will mainly consider Goldberg's, which is often called Cognitive Construction Grammar \citep[214]{Goldberg2006} due to the influence of the ideas of \citet{Lakoff1987} as seen in the role of metaphor and prototype (see \sectref{sec:cg:2.1.2} for the role of metaphor). I will briefly touch on other theories encompassing the notion of construction.
+
+CxG takes the notion of construction as central. Constructions are conventionalized clusters of syntactic, phonological, semantic, and pragmatic properties. According to Fillmore and Goldberg, construction manifests at all levels of linguistic structures: sentence, phrase, word, and morpheme, etc. This view is encapsulated in the slogan ``it's constructions all the way down'' \citep[18]{Goldberg2006}.
+
+One example of a sentence-level grammatical construction is given in \REF{ex:cg:1}.\largerpage
+
+\ea%1
+    \label{ex:cg:1}
+          Comparative correlative construction (Covariational conditional construction):\\
+\textit{The higher you go, the cooler it becomes.}
+    \z
+
+
+
+The comparative correlative construction in \REF{ex:cg:1} has a number of formal and semantic properties unpredictable from the forms/meanings of its parts and the normal rules of their combinations (see \citealt[6]{Goldberg2006}; see also \citealt{culicover2005simpler}; \citealt{Hoffmann2019}). The concatenation of two clauses without a conjunction is unusual in English, and so is the parallel structure involving the preposing of \textit{the} plus comparative. The meaning of correlation cannot be reduced to any of its parts (i.e.\ there is no overt lexical item indicating correlation, such as the conjunction \textit{as}), although the sense of correlation is implicit in the formal parallelism of the two clauses. It is argued that properties of sentences like \REF{ex:cg:1} must be stated with the pairing of form and meaning at a unit larger than the word, suggesting that the notion of the sign can be extended to nonlexical units, with consequences on the status of compositionality in grammar. One can thus say that CxG focuses on the subregularities found in grammatical combinations, unlike theories like LFG that pay attention to regularities and broad generalizations. 
+
+Goldberg's CxG incorporates the usage-based view of grammar and language acquisition: the representation of grammar is shaped by language use (see \citealt{Langacker1988}, \citealt{BarlowKemmer2000}, \citealt{Bybee2006}, \citealt{Diessel2015,Diessel2019}). This is reflected in the view that ``item-specific knowledge co-exists alongside generalizations'' \citep[12]{Goldberg2006}, which is implemented in the hierarchy of constructions in CxG (see \sectref{sec:cg:2.1.2}). It also means that knowledge of grammatical constructions includes the frequency with which the forms are used \citep{Goldberg2006,Diessel2015,Perek2015}, and language acquisition is seen as the process of making generalizations over the specific constructions \citep{Goldberg2006,GoldbergCasenhiserSethuraman2004,Tomasello2003}. Such a usage-based view of grammar is largely shared by the probabilistic and exemplar-based LFG \citep{BresnanHay2008,BresnanFord2010}, though perhaps not by all practitioners of LFG.
+
+\largerpage[-2]
+What is regarded as a construction has changed somewhat over the years. In \citet[4]{goldberg1995constructions}, a construction is defined as a form-meaning pair in which ``some aspect of form or function is not strictly predictable from its component parts.'' In \citet[5]{Goldberg2006}, the range of constructions was widened to include fully predictable patterns ``as long as they occur with sufficient frequency.'' More recently Goldberg states that one needs to keep track of all uses in order to know whether a form-meaning pair occurs with sufficient frequency, and therefore speakers have representations of form-meaning pairs regardless of their frequency.  She now defines constructions as ``emergent clusters of lossy [i.e.\ not specified in full detail] memory traces that are aligned within our […] conceptual space on the basis of shared form, function, and contextual dimensions'' \citep[8]{Goldberg2019}.\footnote{I would like to add a brief comment on Construction Morphology (CxM; \citealt{Booij2008,Booij2010,Booij2018}; see also \citealt{ChenMatsumoto2018}). CxM is influenced by Goldberg's CxG. CxM is a theory of morphology in which complex words are analyzed in terms of constructions (pairs of form and meaning), which are represented in the form of constructional schemas (e.g.\ \mbox{[[x]\textsubscript{A}-ness]\textsubscript{N}\/$\leftrightarrow$\/`the property/state of A'}). In this theory the lexicon lists both constructional schemas and words that instantiate them, which are organized in a hierarchical network, as in Goldberg's CxG.\\[.5ex] One significant similarity of CxM and LFG lies in the ``full-entry'' view of lexical items \citep{jackendoff1997the-architecture,JackendoffAudring2019}. This means that in CxM, words including inflected forms are fully formed and listed in the lexicon, as in LFG. In this respect, CxM is highly compatible with LFG.}
+
+\subsubsection{Argument Structure Constructions}
+\label{sec:cg:2.1.2}
+
+Some constructions such as Ditransitive, Caused motion, Resultative constructions, relate to argument structure, and are thus called Argument Structure Constructions \citep{goldberg1995constructions,Goldberg2003,Goldberg2006,Goldberg2019,Boas2003,Bardal2008}. Take the example of the Caused motion construction exemplified in \REF{ex:cg:2}. 
+
+\ea%2
+    \label{ex:cg:2}
+          Caused motion construction:\\
+ \textit{Susan sneezed the napkin off the table.}
+    \z
+
+What motivates the constructional status of Caused motion is that verbs which normally do not subcategorize for an object and an oblique, such as \textit{sneeze}, can appear with them in this construction. Goldberg argues that the argument structure and the semantics of caused motion in \REF{ex:cg:2} come from the construction, and not from the verb. Goldberg represents the form and meaning of this construction as in \REF{ex:cg:fig1}.
+
+\ea%2
+\label{ex:cg:fig1}Caused motion construction, \citet[73]{Goldberg2006}:\\
+\begin{tabular}{cc}
+ Form &    Meaning\\\
+ [Subj V Obj Obl\textsubscript{path/loc}]  & [X causes Y to move Z\textsubscript{path/loc}]
+\end{tabular}
+ \z
+
+In Goldberg's view, the roles that a verb has and those that a construction has are different, and are called \textit{participant roles} and \textit{argument roles}, respectively. The participant roles of the verb (e.g.\ sneezer of the verb \textit{sneeze}) is linked to the argument roles of the construction in the way represented in \figref{fig:cg:2}. Participant roles are based on the semantic frame of a verb (cf. \citealt{Fillmore1982}), and bear names specific to the event described (e.g.\ sneezer) rather than thematic role names. The \textit{Coherence Principle} \citep{goldberg1995constructions} ensures that only those participant roles compatible with argument roles can be ``fused'' or linked.
+
+\newcommand{\textvertline}{\textbar}
+\begin{figure}
+  \framebox{\begin{tabular}{lcccccc}
+    Sem & CAUSE-MOVE & \textlangle & cause    &  goal & theme& \textrangle\\[-.5ex]
+    &   \textvertline\makebox[0em][l]{~R} & & \textbar & \vdots & \textbar\\
+    R: means & SNEEZE & \textlangle & sneezer & & & \textrangle\\
+    & \textdownarrow & & \textdownarrow &\textdownarrow &\textdownarrow &\\
+    Syn & V & & SUBJ & OBL & OBJ
+  \end{tabular}}
+\caption{Composite structure of Caused motion + \emph{sneeze} \citep[54]{goldberg1995constructions}}
+\label{fig:cg:2}
+\end{figure}
+
+An important notion in CxG is the notion of a \textit{constructional network} \citep{goldberg1995constructions,Goldberg2006}. A network of constructions is built through \textit{inheritance links}, through which many of the properties of particular constructions are motivated by more general or larger constructions. There are several types of inheritance links. One is \textit{metaphorical extension links}, which are posited when two constructions are related by metaphorical mapping in the sense of \citet{LakoffJohnson1980}. Goldberg states that the Resultative construction is metaphorically inherited from the Caused motion construction \citep{goldberg1995constructions}, as shown in \figref{fig:cg:3}.\footnote{In contrast, \citet{jackendoff1990semantic} treats the two constructions as parallel instantiations of the same thematic structure, with different semantic field features (see \citealt[note~13]{goldberg2004english}).}
+
+   
+\begin{figure}
+  \resizebox{\textwidth}{!}{\begin{tabular}{@{}lp{8em}@{}}
+    Caused-Motion Construction\\
+  \rnode{cm}{\makebox[26em][l]{\framebox{\begin{tabular}[c]{lcccccc}
+    Sem & CAUSE-MOVE & \textlangle & cause    &  goal & theme& \textrangle\\[-1ex]
+    &   \textvertline & & \textbar & \vdots & \vdots\\
+     & PRED & \textlangle & & & & \textrangle\\
+    & \textdownarrow & & \textdownarrow &\textdownarrow &\textdownarrow &\\
+    Syn & V & & SUBJ & OBL\textsubscript{PP} & OBJ
+  \end{tabular}}}} & (e.g.\ ``Joe kicked the bottle into the yard.'')\\[8em]
+  Resultative-Construction\\
+  \rnode{rc}{\makebox[26em][l]{\framebox{\begin{tabular}[c]{lcccccc}
+    Sem & CAUSE-BECOME & \textlangle & agt    &  result-goal & pat& \textrangle\\[-1ex]
+    &   \textvertline & & \textbar & \vdots & \vdots\\
+     & PRED & \textlangle & & & & \textrangle\\
+    & \textdownarrow & & \textdownarrow &\textdownarrow &\textdownarrow &\\
+    Syn & V & & SUBJ & OBL\textsubscript{PP/AP} & OBJ
+  \end{tabular}}}} & (e.g.\ ``Joe kicked Bob black and blue.'')\\
+  \end{tabular}}
+  \ncline[angleA={260},angleB={90},linewidth=.5pt,arrowsize=4pt]{->}{cm}{rc}\naput[ref=l]{\parbox{9em}{\raggedright I\textsubscript{M}: Change of State as Change of Location}}
+\caption{Caused motion construction and Resultative construction \citep[88]{goldberg1995constructions}}
+\label{fig:cg:3}
+\end{figure}
+
+\textit{Instance links} are posited when a specific construction is a special case of a more general construction. Broad generalizations are captured at the level of general constructions which are inherited by more specific constructions. Subregularities are captured by positing constructions that are at lower levels of the network. An ultimate case of specific construction is fully instantiated sentences specified with lexical items. \citet[55]{Goldberg2006} argues that even general constructions are stored in the mental lexicon together with specific examples that are highly conventional and frequent (e.g.\ \textit{Give me a break} as an instance of the Ditransitive construction). In such a case, she argues, it is clear that both generalizations and instances are stored. CxG allows for such redundancy because specific constructions (including specific examples) are often associated with idiosyncratic meanings and special pragmatic functions. Moreover, speakers have knowledge of the frequencies of specific instances, providing evidence for the inclusion of such instances in grammar for even highly compositional constructions.  
+
+It is also important to note that expressions inherit from several constructions due to \textit{multiple inheritance} \citep{goldberg1995constructions,Goldberg2003}. For example, \REF{ex:cg:3} inherits not just from the Caused motion construction but also from the Subject-auxiliary inversion and Passive constructions.
+
+\ea%3
+    \label{ex:cg:3}
+\textit{Was the ball thrown into the net?} 
+    \z
+
+          
+
+\citegen{goldberg1995constructions} theory of argument structure constructions was criticized within the CxG community for the generality of constructions posited and the underestimation of the role of verb meanings; see \citet{Boas2003} and \citet{Iwata2008,Iwata2020} for models in which verb meanings play greater roles. 
+
+\subsection{\textbf{CxG} \textbf{and} \textbf{LFG}}
+\label{sec:cg:2.2}
+
+\subsubsection{Factorization of grammar in CxG and LFG}
+\label{sec:cg:2.2.1}
+
+CxG is, like LFG, a nonderivational theory of grammar, in which two representations (form and meaning) are not derivationally (i.e. transformationally) related but exist in a parallel way. In comparing LFG and CxG, it is worthwhile to consider what sort of factorization of grammar is achieved in different representations in the two theories. LFG recognizes c- and f-structures as grammatical structures, in which different grammatical information is coded \citep{kaplanbresnan82}, and p-structure, a-structure, s-structure and i-structure in addition, in order to represent other information (see \citealt{DLM:LFG}). In contrast, Goldberg's CxG recognizes two representations, form and meaning.
+
+One issue to consider is which LFG grammatical structure the form in CxG corresponds to. In some cases, it appears to correspond to c-structure. The form of some constructions, such as lexically filled idioms (e.g.\ \textit{give the devil his due}), includes the sound forms of words and linear order, which are c-structure information. In the formulation of the Caused motion construction in \REF{ex:cg:fig1}, however, the form contains linearly ordered grammatical functions, and thus contains parts of c-structure and f-structure information. The formalization of forms in CxG is eclectic.\footnote{The following quote from \citet{Goldberg2013} reveals her thinking over formalism in her construction grammar. 
+\begin{quote}I have avoided using all but the most minimal formalization in my own work because I believe the necessary use of features that formalism requires misleads researchers into believing that there might be a finite list of features or that many or most of the features are valid in cross-linguistic work. The facts belie this implication. The meanings or functions of words and constructions do not lend themselves to semantic decomposition [...]\ and often-suggested syntactic primitives such as noun, subject, agreement, or agent actually vary crosslinguistically as well [...] \citep[30]{Goldberg2013}
+\end{quote}
+It is to be noted that there has not been much discussion on the phrase structures or phonology of sentences in CxG.}
+
+Goldberg's CxG contrasts with some other constructional theories, which have stricter separation of phonology and grammar. \citet{jackendoff1997the-architecture}, \citet{JackendoffAudring2019} and \citet{Booij2010}, for example, adopt the tripartite Parallel Structure Architecture, involving phonological, syntactic, and semantic structures. In these theories, constructions are a set of these three structures.\footnote{Jackendoff recognizes tiers within a structure. One of them is the Grammatical Function Tier, which represents grammatical functions separately from phrase structure \citep[Chapter~6]{culicover2005simpler}.}
+
+The way Goldberg uses the term \textit{form} has been discussed by \citet{Langacker2005} and \citet{Verhagen2009}. Langacker points out that the form in Goldberg's CxG (as well as Croft's Radical CxG) is in many cases not phonological and therefore is not truly the form. He argues that the form must not include grammatical information, which must reside in the relationship between the form and the meaning (see \sectref{sec:cg:3}). 
+
+One may note that Goldberg's formulation of the formal properties of argument structure constructions shows some influence of LFG, as can be seen in the use of grammatical functions such as SUBJ, OBJ, and OBL (though Goldberg often uses the categorial term PP in place of OBL). Sometimes she has even used the LFG term XCOMP to refer to result phrases in the Resultative construction (e.g.\ \citealt{goldberg1995constructions}:3), though not in her later writings (e.g.\ \citealt{Goldberg2006}). 
+
+\subsubsection{Construction, lexical integrity, and the lexicon}
+\label{sec:cg:2.2.2}
+
+The most important difference between CxG and LFG lies in the role of the syntax-lexicon distinction. LFG treats the Principle of Lexical Integrity as central \citep{bresnan1995the-lexical,bresnan2001lexical}, by which syntax cannot operate into the internal structure of words. \citet[91]{bresnan2001lexical} formulates this idea as: ``Morphologically complete words are leaves of the c-structure tree and each leaf corresponds to one and only one c-structure.'' This principle suggests a clear division of syntax and the lexicon. LFG also assumes that all features of the whole are shared by those of its head, ensured by the up-equals-down functional annotation on the head. In contrast, all grammatical entities (e.g.\ phrases, words, and morphemes) are constructions in CxG, and in this sense there is no strict division between syntax and the lexicon. Syntactic and lexical constructions differ in their internal structure, but they are essentially the same pair of form and meaning \citep[7]{goldberg1995constructions}. In addition, CxG acknowledges that the properties of a construction may differ from those of its head, as can be seen in the argument structure involved in the Caused motion construction in \REF{ex:cg:2}.
+
+There have been attempts to treat constructional properties in LFG. \citet{kaplanbresnan82} placed the special properties of an idiom \textit{keep tabs on} in a lexical entry of \textit{keep}, which calls for a specific object to be used in the meaning of ‘observe'. \citet{alsina1996the-role} and \citet{Butt1995} went somewhat beyond what is normally expected from lexical integrity in LFG and recognized the case where two nonadjacent lexical items form one complex predicate (a single predicate in f-structure: see \citetv{chapters/ComplexPreds}). They argue that the mechanism of predicate composition creates a single predicate in such a case, and formulate how a complex a-structure maps onto a single predicate in f-structure (see \citetv{chapters/Mapping}). 
+
+\citet{asudeh2013constructions} argue for an analysis incorporating constructions that preserves lexical integrity. They distinguish between Phrase-structural\-ly flagged constructions (such as the Swedish Directed Motion Construction; see \citetv{chapters/Scandinavian}, and Lexically flagged constructions (such as the English \textit{way}-construction; see \citet[Chapter~9]{goldberg1995constructions}). In the former case, a special construction-specific phrase structure rule is posited, which encodes the subcategorization frame of the construction and introduces a template containing information on the special properties of the construction. In the latter, such a template is introduced by the key lexical item in the construction. In this view, lexical integrity is preserved, but the subcategorization is now constructionally captured in terms of c-structure rules and the subcategorization specified in the lexicon is only a default one (see \citealt[27--29]{asudeh2013constructions}). It appears that this analysis can capture some properties of sentential constructions. It is not clear, however, whether \citet{asudeh2013constructions} would like to apply this sort of analysis to all cases of Goldberg's constructions, which would result in a large number of construction-specific phrase-structure rules.  See \citet{MuellerLFGphrasal} for discussions of \citet{asudeh2013constructions}, and \citet{findlay2019} for a more recent treatment of multi-word constructions in LFG.
+
+\section{Cognitive Grammar}
+\label{sec:cg:3}
+
+\subsection{What is Cognitive Grammar?}
+\label{sec:cg:3.1}
+
+Cognitive Grammar (CogG) is a theory developed by Ronald Langacker and his associates \citep[][etc.]{Langacker1987,Langacker1990,Langacker1991,Langacker1999,Langacker2008,Langacker2009,VanHoek1995,KumashiroLangacker2003}. The theory grew out of Langacker's dissatisfaction with generative grammar, which he once adhered to. CogG abandons Chomsky's autonomy thesis (grammar is independent of semantics or matters of language use) and regards ``language as an integral facet of cognition'' and grammar as ``inherently meaningful'' \citep[509]{Langacker1987}. For Langacker, the goal of linguistic investigation is to characterize language as a cognitive entity. In this respect CogG is part of the linguistic endeavor known as Cognitive Linguistics, along with works by \citet{Lakoff1987} and others. While theories like LFG are interested in the the roles of different grammatical information, such as grammatical cateogories and functions, CogG is interested in the semantic import of grammatical notions.
+
+CogG posits only semantic structure, phonological structure, and symbolic links between the two, based on the ``symbolic'' view of language, as shown in \REF{ex:cg:fig4}.
+
+\ea\label{ex:cg:fig4} Symbolic structure of Langacker:\\*[.5ex]
+\begin{tabular}{c}
+  \framebox{\begin{tabular}{c}
+    {\framebox{Semantic Structure}}\\[-.2ex]
+    \rule{.5pt}{2.5ex}\\[-.9ex]
+    {\framebox{Phonological Structure}}\\
+  \end{tabular}}\\
+  Symbolic Structure
+  \end{tabular}
+\z
+    
+Unlike CxG, Langacker posits the form part of the symbolic structure as purely phonological \citep[104]{Langacker2005}. The lexicon, morphology and syntax in CogG reside in the way the phonological and semantic structures are linked, and there is no independent grammatical structure in CogG. In this respect CogG crucially differs from LFG.
+
+\citet[53]{Langacker1987} adopts the \textit{content requirement} for entities used in his representations: only those elements that are part of the directly apprehended primary data or those that emerge from them by means of ``basic psychological phenomena of schematization and categorization''\footnote{By schematization, Langacker means ``the process of extracting commonality inherent in multiple experiences to arrive at a conception representing a higher level of abstraction,'' and by categorization, ``the interpretation of experience with respect to previously existing structures'' \citep[17]{Langacker2008}.} are permitted in grammar. This has led to the elimination of syntactic notions in CogG:
+\begin{quote}
+  Semantic structures, phonological structures, and symbolic links between them are the minimum needed for language to serve its communicative function. Cognitive Grammar is thus maximally austere in claiming that only these elements are necessary. \citep[106]{Langacker2005}
+\end{quote}
+CogG, like Goldberg's CxG, embodies the usage-based view of language (see \citealt{Langacker1988,Langacker2000}). Langacker was the first to use the term \textit{usage-based} \citep[46]{Langacker1987}, and for him this meant that, unlike generative grammarians, grammar lists ``the full range of linguistic conventions, regardless of whether these conventions can be subsumed under more general statements'' \citep[494]{Langacker1987}. Thus, grammar includes not just high-level broad generalizations but also low-level, limited-range generalizations that speakers can make out of the particular forms they are exposed to, a view which influenced Goldberg (see \sectref{sec:cg:2.1} above). Recent usage-based research has shifted to corpus-based frequency studies, but Langacker himself has not engaged in corpus-based frequency study.
+
+\subsection{CogG and LFG}
+\label{sec:cg:3.2}
+
+\subsubsection{Nature of representations}
+\label{sec:cg:3.2.1}
+
+Langacker's CogG may appear to have little resemblance to LFG, and there has not been much interaction between the two theories. The adoption of image-schematic representation in CogG (see below) may strike LFG practitioners as quite alien, and the CogG abandonment of key grammatical notions used in LFG may lead one to think that any comparison is hopeless. Therefore an important purpose of this section is to try to find commonalities and areas of comparison.
+
+\hspace*{-1mm}There \textit{are} some interesting similarities between the two theories, inviting meaningful comparison. Cognitive Grammar is a nonderivational theory in which different structures coexist without any derivational (i.e.\ transformational) relationship between them, as in LFG. CogG recognizes two structures, phonological structure and semantic structure, as noted above. It is beneficial to compare the phonological structure of CogG with LFG's c-structure and p-structure, and the semantic structure with f-structures and a-structure.
+
+Phonological structure encodes surface formal groupings and linear order, and in this sense it encodes part of the information found in LFG c-structure. It also lacks empty categories, again similar to c-structure, in which they are avoided, used only as a last resort (see \citealt{kaplzaen89}, \citealt{Bresnan1998}, \citealt{BresnanEtAl2016}: Chapter 9). Unlike c-structure, however, it does not contain category labels and \textit{syntactic} phrase structure. The formal groupings that Langacker envisages are more phonological than syntactic. The phonological structure of the sentence \REF{ex:cg:4a} is simply \REF{ex:cg:4b}, rather than \REF{ex:cg:4c} \citep[79]{Langacker2003}.
+
+\ea%4
+    \label{ex:cg:4}\begin{xlist}
+  \ex\label{ex:cg:4a}\textit{Bill said Joe believes Roger is angry.}
+  \ex\label{ex:cg:4b}{Bill said / Joe believes / Roger is angry.}
+  \ex\label{ex:cg:4c}{[Bill said [Joe believes [Roger is angry]]]}
+  \end{xlist}
+   \z
+
+Langacker argues that the grammatical constituency (embedding) often assigned for sentences like \REF{ex:cg:4a} is in fact conceptual groupings, and does not exist in the phonological structure. Langacker's phonological structure is thus more similar to the p-structure in LFG proposed in \citet{boegeletal09}, in which prosodic phrasing is encoded.
+
+The most characteristic aspect of CogG is the adoption of the \textit{image-schematic} representation in the semantic structure. The semantic structure is exemplified in \figref{fig:cg:5}, which represents the semantic structure of \textit{near the door}. 
+    
+\begin{figure}
+  \begin{tabular}{cc}
+  \setlength{\fboxrule}{3pt}
+  \framebox{\psovalbox{\begin{tabular}{c@{\hspace*{5.5em}}c}
+      \rule{0ex}{3ex}\cnode[linewidth=3pt](0,0){1em}{1}\nput*[labelsep=.2]{-40}{1}{tr} &
+      \cnode[linewidth=3pt,fillstyle=hlines,hatchsep=3pt](0,0){1em}{2}\nput*[labelsep=.2]{-143}{2}{lm}\\[3ex]
+    \end{tabular}}}
+    \ncline[linestyle=dashed,dash=3pt,linewidth=3pt,arrowsize=.3]{<->}{1}{2} &
+  \setlength{\fboxrule}{0.8pt}
+  \rnode{3}{\framebox{\hspace*{2ex}{\parbox{8ex}{
+          \setlength{\fboxrule}{3pt}{\hspace*{\fill}\rnode{4}{\framebox{\parbox[c][9ex]{4ex}{
+                  \setlength{\fboxrule}{.8pt}
+                  \hspace*{\fill}{\framebox{\rule{0ex}{2ex}\rule{2.5ex}{0ex}}}\hspace*{\fill}\\
+                  \hspace*{\fill}{\textopenbullet}\\\rule{0ex}{3ex}}}}\hspace*{\fill}}\\[-.3ex]
+  \hspace*{\fill}\rule{8ex}{1pt}\hspace*{\fill}}}\hspace{1ex}}}\\
+  \psset{offset=2pt}
+  \ncline[linestyle=dashed,dash=2pt,angleB=130]{2}{4}
+  \psset{offset=-2pt}
+  \ncline[linewidth=1pt,angleB=130]{->}{2}{3}
+\emph{near} & \emph{the door} \\
+\end{tabular}
+\caption{The semantic structure of \emph{near the door} \citep[201]{Langacker2008}}
+\label{fig:cg:5}
+\end{figure}
+
+\largerpage[-2]
+The preposition \textit{near} represents a relationship (represented by a bidirectional arrow) between two entities (represented by circles) within a vicinity (represented by an oblong area). The slashed entity is elaborated by the semantic structure of \textit{the door}, with elaboration represented by a thin arrow), and the dotted line represents identity. (The abbreviations ``lm'' and ``tr'' refer to ``landmark'' and ``trajector'' respectively, which will be expounded later.)\footnote{\textsuperscript{} Concerning the nature of semantic structures, \citet[12]{Langacker2008} states the following:
+\begin{quote} yet another [misconception] is that the schematic images they employ purport to be direct depictions of conceptual structure. The actual intent of these diagrams is rather more modest: to allow certain facets of conceptual organization to be represented in a format that is both user-friendly and explicit enough to serve as a basis for semantic and grammatical analysis.\end{quote}}
+
+Note that the semantic structure includes not just what is foregrounded (\textit{profile}) in the meaning of each expression but also what is in the background (\textit{base}), such as the vicinity border. Profiles are indicated in thicker lines. The box for \textit{near} is profiled since it is the head of the phrase \textit{near the door}.
+
+In the two structures seen above, we see an attempt to encode different information in a different kind of representation with its own geometry and categories, as is the case with LFG. Although the particular representations chosen are very different, we see in both theories attempt to find alternatives to phrase structure trees that have been used to represent all kinds of linguistic information. The two theories thus share the spirit of \textit{liberating linguists from phrase structure trees} so familiar to linguists through Chomsky's generative grammar. In LFG, this is seen in the adoption of attribute-value matrices for f-structure, in which functional information is coded \citep{kaplanbresnan82}. In CogG, it is seen in the adoption of image-schematic representation for the semantic structure seen above.
+
+\subsubsection{Phrase structure,grammatical categories and grammatical
+  functions}
+\label{sec:cg:3.2.2}
+
+CogG clearly differs from LFG in terms of the (lack of) belief in the independent grammatical structure and grammatical notions. In CogG, there is no phrase structure, grammatical categories or grammatical functions \textit{per se}. CogG's phonological structure does not code syntactic constituency, as noted above. According to Langacker, constituency is in fact conceptual groupings. There is no independent representation in which grammatical categories or grammatical functions are stated, either. What is represented is the \textit{conceptual import} of these notions. 
+
+CogG adopts a ``notional approach'' to grammatical categories \citep{Rauh2010}. Grammatical categories are defined in terms of the nature of the profile in the semantic structure. Nouns designate Things; Verbs designate Processes; Adjectives, Adverbs, and Prepositions designate Atemporal Relationships. In this view, the verb \textit{choose} can be represented in \figref{fig:cg:6}a, and the noun \textit{choice} (in the sense of the action of choice) in \figref{fig:cg:6}b.
+
+\begin{figure}
+\begin{tabular}{cc}
+  \setlength{\fboxrule}{0.8pt}
+  \framebox{\begin{tabular}{@{\hspace*{2em}}c@{\hspace*{5em}}c@{\hspace*{2em}}}
+      & \rnode{0}{~}\\[4ex]
+      \cnode[linewidth=3pt](0,0){1em}{1}\nput*{45}{1}{tr} &
+      \cnode[linewidth=3pt](0,0){1em}{2}\nput*{45}{2}{lm}~\\[4ex]
+      & \rnode{3}{~}\\
+    \end{tabular}
+    \ncline[linestyle=dashed,dash=3pt,linewidth=3pt,arrowsize=.3]{->}{1}{2}
+    \ncline[angleA={0},angleB={180},linewidth=.8pt,arrowsize=.3]{<->}{0}{3}} &
+  \setlength{\fboxrule}{0.8pt}
+  \framebox{\psovalbox[linewidth=3pt]{
+      \raisebox{0em}[2em][2em]{\begin{tabular}{c@{\hspace*{5em}}c}
+      & \rnode{0}{~}\\[3ex]
+      \cnode(0,0){1em}{1} &
+      \cnode(0,0){1em}{2}\\[3ex]
+      & \rnode{3}{~}\\
+    \end{tabular}}}}
+    \ncline[linestyle=dashed,dash=3pt,linewidth=.8pt,arrowsize=.3]{->}{1}{2}
+    \ncline[angleA={0},angleB={180},linewidth=.8pt,arrowsize=.3]{<->}{0}{3}\\
+a. \emph{choose} {(V)} & b. \emph{choice} {(N)} \\
+\end{tabular}
+\caption{Semantic structures for \emph{choose} and \emph{choice} \citep[100]{Langacker2008}}
+\label{fig:cg:6}
+\end{figure}
+
+Here, a circle represents a Thing, and an arrow, a Process. While the verb \textit{choose} profiles a Process involving two Things, for the noun \textit{choice} (in the sense of the action of choosing) the whole Process is construed as a Thing (represented by a large oblong circle). The two refer to the same event, but they represent different \textit{construals} of the event.
+
+Grammatical functions are not recognized per se, either, in sharp contrast to LFG. Subject and Object in CogG are nominals which designate \textit{prominent} participants in semantic structure. Among the participants of a relational expression like a verb and a preposition, the one given primary focal prominence is called a \textit{Trajector} (tr), and the one given secondary focal prominence is called a \textit{Landmark} (lm). In the case of a verb, the former is the subject of the verb, and the latter, the object. This is illustrated in \figref{fig:cg:7}, which represents the semantic structure of a transitive verb in the Active, Passive, and Middle uses (e.g.\ \textit{I opened the door}; \textit{The door was opened}; \textit{The door opens easily}). (The double arrows represent processes involving the transmission of force; single arrows represent changes; Δ indicates that a participant is left unspecified.)
+
+      
+\begin{figure}
+\caption{Image-schematic representation of Active, Passive and Middle  \citep[396]{Langacker2008}}
+\label{fig:cg:7}
+\begin{tabular}{ccc}
+\begin{tabular}{c@{\hspace*{5em}}c@{\hspace*{3em}}c}
+      \cnode[linewidth=3pt](0,0){1em}{1}\nput*{-90}{1}{tr} &
+      \cnode[linewidth=3pt](0,0){1em}{2}\nput*{-90}{2}{lm} &
+      \rnode{3}{~}\\[4ex]
+      \ncline[linewidth=3pt,doubleline=true,arrowsize=.55]{->}{1}{2}
+      \ncline[linewidth=3pt,arrowsize=.4]{->}{2}{3}
+\end{tabular} &
+\begin{tabular}{c@{\hspace*{5em}}c@{\hspace*{3em}}c}
+      \cnodeput[radius=1em,linewidth=3pt](0,0){1}{\large\textbf{Δ}} &
+      \cnode[linewidth=3pt](0,0){1em}{2}\nput*{-90}{2}{tr}&
+      \rnode{3}{~}\\[4ex]
+      \ncline[linewidth=3pt,doubleline=true,arrowsize=.55]{->}{1}{2}
+      \ncline[linewidth=3pt,arrowsize=.3]{->}{2}{3}
+\end{tabular} &
+\begin{tabular}{c@{\hspace*{4em}}c@{\hspace*{3em}}c}
+      \cnode[linewidth=1pt,linestyle=dashed,dash=3pt](0,0){1em}{1} &
+      \cnode[linewidth=3pt](0,0){1em}{2}\nput*{-90}{2}{tr}&
+      \rnode{3}{~}\\[4ex]
+      \ncline[linewidth=1pt,doubleline=true]{->}{1}{2}
+      \ncline[linewidth=3pt,arrowsize=.3]{->}{2}{3}
+\end{tabular}\\
+a. Active & b. Passive & c. Middle\\
+\end{tabular}
+\end{figure}
+
+The three are identical in terms of the \textit{action-chain} represented (the energy source of which is agent, which acts on the patient, which undergoes a change). However, the three representations differ in the participant construed as a Trajector; it is agent in the case of Active, and patient in Passive and Middle. Note also that agent in the Middle verb (which is not an argument of the verb) is represented though not profiled. Langacker's semantic structure includes this sort of entity existing in the background of the profiled process, unlike LFG's f- and a-structure.
+
+The notion of Trajector is utilized to make generalizations that would involve SUBJ in LFG. As is well known, a subject is more likely to be the controller of verb agreement, the antecedent of reflexive pronouns, the controller of the embedded predicative complement, etc. According to Langacker, such phenomena are \textit{symptoms} of the underlying cognitive salience of the Trajector \citep[235]{Langacker1987}. Thus, Japanese subject honorification, which makes reference to SUBJ in f-structure in LFG analyses \citep{Ishikawa1985,Matsumoto1996}, is analyzed in CogG in reference to the Trajector of a predicate (participant subject; \citealt{KumashiroLangacker2003}, \citealt{Kumashiro2016}) (see the trajector in \figref{fig:cg:8}a). CogG additionally recognizes the setting subject or the subject of a clause, utilized in sentences like \textit{Friday saw a big event}, represented by the Trajector in \figref{fig:cg:8}b. \citet{Kumashiro2016} claims that Japanese reflexivization makes reference to the subject in this sense as an antecedent.
+
+\begin{figure}
+\begin{tabular}{cc}
+  \setlength{\fboxrule}{0.8pt}
+  \framebox{\begin{tabular}{@{}c@{\hspace*{5em}}c@{\hspace*{1em}}}
+      \raisebox{.3em}[.1ex][.1ex]{setting}\\[2ex]
+      ~\cnode[linewidth=3pt](0,0){1em}{1}\nput*{-90}{1}{tr} &
+      \cnode[linewidth=3pt](0,0){1em}{2}\nput*{-90}{2}{lm}\\[5ex]
+    \end{tabular}
+    \ncline[linestyle=dashed,dash=3pt,linewidth=3pt,arrowsize=.3]{->}{1}{2}} &
+  \setlength{\fboxrule}{3pt}
+  \framebox{\begin{tabular}{@{}c@{\hspace*{1.5em}}l@{\hspace*{2.4em}}cr@{}}
+      \raisebox{.3em}[.1ex][.1ex]{setting} & \raisebox{-4.7ex}[0ex][0ex]{\,\rule{3pt}{8ex}} && \raisebox{.3em}[.1ex][.1ex]{tr}\\[1.8ex]
+      ~\cnode(0,0){1em}{1} &&
+      \cnode[linewidth=3pt](0,0){1em}{2}\nput*{-90}{2}{lm} &\\[4.5ex]
+    \end{tabular}
+    \ncline[linestyle=dashed,dash=3pt,linewidth=3pt,arrowsize=.3]{->}{1}{2}}\\
+  a. Participant subject & b. Setting subject\\
+  \end{tabular}
+\caption{Two notions of subject in CogG \citep[389]{Langacker2008}}
+\label{fig:cg:8}
+\end{figure}
+
+\citet{Kumashiro2016} argues that both are present in the double subject construction in Japanese. The participant subject corresponds to LFG's SUBJ in f-structure, while the setting subject may correspond to TOPIC in i-structure at least in some cases.\largerpage[1.5]
+
+The correspondence of Trajector and Landmark to SUBJ and OBJ in LFG helps elucidate a CogG analysis of Subject-to-Object raising \citep{Langacker1995} in LFG terms. \citet{Langacker1995} represents the semantic structure of the sentence \textit{I expect Don to leave} as in \figref{fig:cg:9}.
+
+    
+\begin{figure}
+  \begin{tabular}{c@{\hspace*{1em}}c@{\hspace*{1em}}c}
+    I & EXPECT\textsubscript{2} & DON\\
+      \rnode{S}{\framebox{\rule[-8ex]{0ex}{16ex}\rule{2ex}{0ex}
+      \circlenode[linewidth=3pt]{Scirc}{\large\textbf S}
+      \rule{2ex}{0ex}}} &
+  \setlength{\fboxrule}{3pt}\framebox{\begin{tabular}{@{\hspace{2em}}c@{\hspace*{4em}}c@{\hspace{2em}}}
+      \rule{0ex}{3ex}\cnode[linewidth=3pt,fillstyle=vlines,hatchsep=3pt](0,0){1em}{1}\nput*[labelsep=.2]{-90}{1}{tr} &
+      \rnode{RHS}{\rnode{box}{\psframebox[fillstyle=vlines,hatchsep=3pt]{\begin{tabular}{@{\hspace*{2em}}c@{\hspace*{2.2em}}}
+    \rule{0em}{3ex}\cnode[linewidth=3pt,fillstyle=hlines*,hatchsep=3pt](0,0){1em}{lm}\nput*[labelsep=.2]{-45}{lm}{lm}\\[5ex]
+    \fnode[framesize=1.5em]{smallbox}\\[2ex]
+  \end{tabular}}}
+\psset{offset=0pt}
+\ncline{lm}{smallbox}}\\[4ex]
+  \end{tabular}}
+  \psset{offsetB=-1pt}
+  \ncline[linewidth=3pt,linestyle=dashed,dash=2pt]{->}{1}{RHS}&
+  \setlength{\fboxrule}{.8pt}\begin{tabular}{c}
+            \rnode{d}{\framebox{\rule[-2.5ex]{0ex}{5ex}\rule{4ex}{0ex}
+      \circlenode[linewidth=3pt]{D}{\large\textbf D}
+      \rule{4ex}{0ex}}}\\[4ex]
+     \rnode{L}{\framebox{\begin{tabular}{@{}c@{\hspace*{3em}}c@{}}
+         \psovalbox{\rule[-4ex]{0ex}{5ex}\circlenode[linewidth=3pt]{leave}{~~}\nput*{-90}{leave}{tr}} &
+         \rnode{empty}{~}
+         \ncline[linewidth=3pt]{->}{leave}{empty}
+     \end{tabular}}}
+  \end{tabular}\\
+ & & LEAVE \\
+  \end{tabular}\\
+  \psset{offsetA=-7pt,offsetB=-4pt}
+  \ncline[linestyle=dashed,dash=2pt,angleB=130]{Scirc}{1}
+  \psset{offsetA=-5pt,offsetB=-5pt}
+  \ncline[linewidth=1pt,angleB=130,arrowsize=.2]{->}{1}{S}
+  \psset{offsetA=8pt,offsetB=0pt}
+  \ncline[linestyle=dashed,dash=2pt]{lm}{D}
+  \psset{offsetA=0pt,offsetB=-6pt}
+  \ncline[linewidth=1pt,arrowsize=.2]{->}{lm}{d}
+  \psset{offsetA=0pt,offsetB=5pt}
+  \ncline[nodesep=0pt,linestyle=dashed,dash=2pt]{lm}{leave}
+  \psset{offsetA=-12pt,offsetB=-4pt}
+  \ncline[nodesep=0pt,linewidth=1pt,arrowsize=.2]{->}{RHS}{L}
+  \psset{offsetA=-20pt,offsetB=-12pt}
+  \ncline[nodesep=0pt,linestyle=dashed,dash=2pt]{RHS}{L}
+\caption{The semantic structure of \emph{I expect Don to leave} \citep[34]{Langacker1995}}
+\label{fig:cg:9}
+\end{figure}
+
+In this structure, the whole process of DON's leaving is the target of the process of the verb \textit{expect}, represented by the dashed arrow pointed at the whole process of DON's leaving rather than the circle representing DON. (In contrast, an arrow representing the process of control verbs such as \textit{persuade} would touch the circle representing DON.) On the other hand, it is DON that is given the Landmark status (indicated by a thick circle) with respect to the process of \textit{expect}, which means that it is an object of the verb. 
+
+What is crucial in Subject-Object raising is that the main verb process takes something other than its semantic participant as its Landmark. This discrepancy is allowed since DON is the ``reference point'' for DON's leaving, which is its ``active zone'' (indicated by shading, as in \figref{fig:cg:9}) with respect to the verb \textit{expect}. An active zone of a reference point with respect to a process is an entity that in fact participates in the process, even though the metonymically related reference-point entity appears in (surface) forms. 
+
+\largerpage[2]
+One can establish a parallelism of this analysis with the LFG analysis of raising in \citet{bresnan1982control-complementation}. The landmark status of DON in the semantic structure of EXPECT corresponds to the OBJ status of \textit{Don,} and the Trajector status of DON in the semantic structure of LEAVE corresponds to its SUBJ status in the embedded structure (XCOMP). The lack of contact of the point of the dashed arrow and the Landmark represents the nonthematic status of the OBJ; the active zone with respect to the raising predicate EXPECT corresponds to an XCOMP (which allows the most salient entity inside it (i.e.\ SUBJ) to be related to an upper PRED); and the dotted line linking the Landmark of EXPECT and Trajector of LEAVE represents (the conceptual import of) functional control.\footnote{Note the following statement of \citet[108]{Croft1999}: ``Although Langacker is at pains to demonstrate how radically opposed his theoretical framework is to the formalist research tradition (and to a great extent this is true), nevertheless even a committed formalist should be able to identify the essence of his analysis.''}
+
+From LFG's point of view, CogG's semantic structure encodes information of different characters, which is factored out in different structures in LFG. From CogG's point of view, information coded in the semantic structures is all of the same sort, since they are conceptual imports of such grammatical notions as grammatical functions and categories.
+
+\section{Concluding remarks}
+\label{sec:cg:4}
+
+In this chapter, I have compared (Cognitive) Construction Grammar and Cognitive Grammar with LFG. We have seen some general differences between LFG and those two theories: emphasis on subregularities (CxG) vs generalizations (LFG) and emphasis on grammatical categories (LFG) vs their semantic import (CogG). We have also seen that information factored out in different structures in LFG are often coded in a single structure in the two theories examined. In spite of such differences in the areas of interest in language and the conceptualization of grammar, I have hopefully shown that a comparison of these two theories with LFG is more fruitful than might have been thought, once the nature of information coded in the structures recognized in each theory is understood.
+
+\section*{Acknowledgements}
+In writing this chapter, I acknowledge the help of Yi-Ting Chen, Keigo Ujiie, Akira Machida, and Mary Dalrymple. I would also like to thank four reviewers for their very helpful comments. All remaining errors are of course mine.
+This work is supported by the NINJAL project \textit{Semantics and Grammar of Predicates}.
+
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}

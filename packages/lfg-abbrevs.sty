@@ -1,0 +1,268 @@
+% This file defines common LFG grammatical functions and features,
+% and macros for line drawing, lexical entries, and annotated rules.
+% Please make sure that the file "langsci-lgr.sty" is also loaded;
+% it provides definitions for the Leipzig Glossing Rules
+% abbreviations.
+% For naming attributes and values, please follow the conventions in
+% chapter 2 of Dalrymple et al, Reference Guide to LFG, OUP (there is
+% a summary chart on p. 85).  These use the Leipzig glossing
+% abbreviations to the extent possible.
+
+%%%%%%%%%%%%%%%%%% Running text:
+
+% Examples in running text are in italics:
+\newcommand\SENT[1]{{\textit #1}}
+
+% Line representing a gap:
+\newcommand\GAP{\rule[-1pt]{1em}{.5pt}}
+
+%%%%%%%%%%%%%%%%%% C-structure macros:
+
+% nonprojecting nodes with "hat"
+%\newcommand\NONPROJ[1]{$\smash{\widehat{\mbox{\kern11000sp #1\kern11000sp}}}$}
+\newcommand\NONPROJ[2][11000]{$\smash{\widehat{\mbox{\kern#1sp #2\kern#1sp}}}$}
+
+% single bar level (line over category label)
+\newcommand\BAR[1]{\mbox{$\overline{\mbox{\small #1}}$}}
+
+%%%%%%%%%%%%%%%%%% Phrase structure rules:
+
+% phrase structure rules
+% usage: \phraserule{S}{NP VP}
+% for annotated rules: \phraserule{S}{\rulenode{NP\\(\UP\SUBJ)=\DOWN} \rulenode{VP\\\UP=\DOWN}}
+\newdimen\mothernodedimen
+\newdimen\defaultmothernodedimen
+\defaultmothernodedimen=1.5em
+\newcommand{\phraserule}[2]{\setbox1\hbox{\small #1}%
+                      \ifdim \wd1 >\defaultmothernodedimen \mothernodedimen=\wd1 %
+                      \else \mothernodedimen=\defaultmothernodedimen \fi%
+   \leavevmode\hbox{\makebox[\mothernodedimen][l]{\box1}\hspace*{1ex}{$\longrightarrow$}\hspace{.6em}{\small #2}}}
+% Annotated categories on the right hand side of a rule
+\newcommand{\rulenode}[1]{\begin{tabular}[t]{c}#1\end{tabular}}
+% Annotated categories on the right hand side of a rule, no additional space
+\newcommand{\tightrulenode}[1]{\begin{tabular}[t]{@{}c@{}}#1\end{tabular}}
+% Optional annotated categories on the right hand side of a rule
+\newcommand{\optrulenode}[1]{
+  \setbox1\hbox{$\left(\hbox{\begin{tabular}{@{\strut}c@{\strut}}#1\end{tabular}}\right)$}
+  \raisebox{1.9ex}{\raisebox{-\ht1}{\copy1}}}
+% Disjunction (enclosed in curly brackets and separated by a vertical
+% bar) over two categories.
+\newcommand{\rulecatdisj}[2]{
+  \setbox1\hbox{$\left\{\begin{array}{c|c}
+    \mbox{#1} & \mbox{#2}\\
+  \end{array}\right\}$}
+  \raisebox{1.9ex}{\raisebox{-\ht1}{\copy1}}}
+% Version of \phraserule formatted for suitability of rules in running text.
+\newcommand{\textphraserule}[2]{\setbox1\hbox{\small #1}%
+                      \ifdim \wd1 >1em \mothernodedimen=\wd1 %
+                      \else \mothernodedimen=1em \fi%
+   \leavevmode\hbox{\makebox[\mothernodedimen][l]{\box1}{$\longrightarrow$}\;{\small #2}}}
+
+
+%%%%%%%%%%%%%%%%%% F-structure macros:
+% Argument lists in semantic forms
+\newcommand{\arglist}[1]{{\textlangle}\textsc{#1}{\textrangle}}
+% Argument lists in standard font
+\newcommand{\rarglist}[1]{{\textlangle}\textnormal{#1}{\textrangle}}
+
+\newcommand{\plusminus}{\ensuremath{\pm}}
+
+% F-structure attributes and values.  Still incomplete!
+\newcommand{\GF}{\textsc{gf}{}\xspace}
+\newcommand{\SUBJ}{\textsc{subj}{}\xspace}
+%\newcommand{\OBJ}{\textsc{obj}{}\xspace} defined in langsci-lgr.sty
+\newcommand{\OBJTHETA}{\mbox{\textsc{obj}$_{\theta}$}{}\xspace}
+\newcommand{\OBJROLE}[1]{\textsc{obj}\textsubscript{\textsc{#1}}{}\xspace}
+\newcommand{\OBLTHETA}{\mbox{\textsc{obl}$_{\theta}$}{}\xspace}
+\newcommand{\OBLROLE}[1]{\textsc{obl}\textsubscript{\textsc{#1}}{}\xspace}
+%\newcommand{\COMP}{\textsc{comp}{}\xspace} defined in langsci-lgr.sty
+\newcommand{\XCOMP}{\textsc{xcomp}{}\xspace}
+%\newcommand{\ADJ}{\textsc{adj}{}\xspace} defined in langsci-lgr.sty
+\newcommand{\ADJROLE}[1]{\textsc{adj}\textsubscript{\textsc{#1}}{}\xspace}
+\newcommand{\XADJ}{\textsc{xadj}{}\xspace}
+\newcommand{\XOBJ}{\textsc{xobj}{}\xspace}
+\newcommand{\XOBL}{\textsc{xobl}{}\xspace}
+\newcommand{\PREDLINK}{\textsc{predlink}{}\xspace}
+% \newcommand{\POSS}{\textsc{poss}{}\xspace} defined in langsci-lgr.sty
+\newcommand{\GFANT}{\textsc{gf}\textsubscript{\textsc{ant}}{}\xspace}
+\newcommand{\GFPRO}{\textsc{gf}\textsubscript{\textsc{pro}}{}\xspace}
+\newcommand{\GFLOG}{\textsc{gf}\textsubscript{\textsc{log}}{}\xspace}
+\newcommand{\LOG}{\textsc{log}{}\xspace}
+\newcommand{\GFHAT}{$\widehat{\textsc{gf}}${}\xspace}
+\newcommand{\PIVOT}{\textsc{pivot}{}\xspace}
+\newcommand{\OPTXCOMP}{\textsc{(x)comp}{}\xspace}
+
+\newcommand{\SPEC}{\textsc{spec}{}\xspace}
+\newcommand{\DEP}{\textsc{dep}{}\xspace}
+\newcommand{\ARG}{\textsc{arg}{}\xspace}
+
+\newcommand{\TOPIC}{\textsc{topic}{}\xspace}
+\newcommand{\FOCUS}{\textsc{focus}{}\xspace}
+\newcommand{\DF}{\textsc{df}{}\xspace}
+\newcommand{\DIS}{\textsc{dis}{}\xspace}
+
+% \newcommand{\PRED}{\textsc{pred}{}\xspace} defined in langsci-lgr.sty
+
+\newcommand{\CASE}{\textsc{case}{}\xspace}
+\newcommand{\PRIV}{\textsc{priv}{}\xspace} % privative
+\newcommand{\PROP}{\textsc{prop}{}\xspace} % proprietive
+\newcommand{\TWD}{\textsc{twd}{}\xspace} % towards
+
+\newcommand{\PERS}{\textsc{pers}{}\xspace}
+
+\newcommand{\NUM}{\textsc{num}{}\xspace}
+\newcommand{\PC}{\textsc{pc}{}\xspace} % paucal
+
+\newcommand{\GEND}{\textsc{gend}{}\xspace}
+
+%\newcommand{\AUX}{\textsc{aux}{}\xspace} defined in langsci-lgr.sty
+
+\newcommand{\TENSE}{\textsc{tense}{}\xspace}
+\newcommand{\NFUT}{\textsc{nfut}{}\xspace} % non-future
+\newcommand{\NPST}{\textsc{npst}{}\xspace}
+\newcommand{\FIN}{\textsc{fin}{}\xspace}
+
+\newcommand{\MOOD}{\textsc{mood}{}\xspace}
+
+\newcommand{\ASP}{\textsc{asp}{}\xspace}
+\newcommand{\INCH}{\textsc{inch}{}\xspace} % inchoative
+\newcommand{\USIT}{\textsc{usit}{}\xspace} % usitative
+
+\newcommand{\ACT}{\textsc{act}{}\xspace} % actual mood
+
+\newcommand{\VOICE}{\textsc{voice}{}\xspace}
+\newcommand{\ACTIVE}{\textsc{active}{}\xspace}
+%\newcommand{\PASS}{\textsc{pass}{}\xspace} defined in langsci-lgr.sty
+\newcommand{\VFORM}{\textsc{vform}{}\xspace}
+\newcommand{\VTYPE}{\textsc{vtype}{}\xspace}
+
+\newcommand{\ASSOC}{\textsc{assoc}{}\xspace} % associative
+
+\newcommand{\NINDEX}{\textsc{index}{}\xspace}
+\newcommand{\CONCORD}{\textsc{concord}{}\xspace}
+
+\newcommand{\ANIM}{\textsc{anim}{}\xspace}
+
+\newcommand{\UP}{\mbox{$\uparrow$}{}\xspace}
+\newcommand{\DOWN}{\mbox{$\downarrow$}{}\xspace}
+\newcommand{\LEFT}{\mbox{$\leftarrow$}{}\xspace}
+\newcommand{\RIGHT}{\mbox{$\rightarrow$}{}\xspace}
+
+\newcommand \STAR  {\hbox{$\ast$}}
+\newcommand \MSTAR {\hbox{$\hat{\ast}$}}
+\newcommand \LSTAR {\hbox{$\raisebox{1pt}{$\scriptstyle <$}\hspace*{-1pt}{\ast}$}}
+\newcommand \RSTAR {\hbox{${\ast}\hspace*{-1pt}{\raisebox{1pt}{$\scriptstyle >$}}$}}
+
+\newcommand{\UPS} {\mbox{$\uparrow_\sigma$}{}\xspace}
+\newcommand{\DOWNS} {\mbox{$\downarrow_\sigma$}{}\xspace}
+
+\newcommand{\UPPROJ}[1]{$\uparrow$\textsubscript{#1}{}\xspace}
+\newcommand{\DOWNPROJ}[1]{$\downarrow$\textsubscript{#1}{}\xspace}
+
+\newcommand{\VBLZ}{\textsc{vblz}{}\xspace}
+\newcommand{\AUG}{\textsc{aug}{}\xspace} % augmented
+\newcommand{\EP}{\textsc{ep}{}\xspace} % epenthetic
+\newcommand{\MIN}{\textsc{min}{}\xspace} % minimal
+\newcommand{\PRONTYPE}{\textsc{prontype}{}\xspace}
+\newcommand{\PERSONAL}{\textsc{personal}{}\xspace}
+\newcommand{\ARGone}{\textsc{arg1}{}\xspace}
+\newcommand{\ARGtwo}{\textsc{arg2}{}\xspace}
+\newcommand{\PCASE}{\textsc{pcase}{}\xspace}
+
+% Off-path constraints
+\newcommand\offp[2]{\begin{tabular}[t]{@{}c@{}}#1\\[-.7ex]{\small #2}\end{tabular}}
+
+% the restriction operator
+\newcommand{\restrict}[1]{\mbox{\raisebox{-.3ex}{\textbackslash}\textsubscript{#1}}}
+
+% idiosyncratic glosses not in the Leipzig abbreviations
+% for example: \gloss{fv} gives "fv" in small caps
+\newcommand{\gloss}[1]{\textsc{#1}{}\xspace}
+
+%%%%%%%%%%%%%%%%%% Lexical entries:
+
+% usage: \lexentry{dog}{(\UP\PRED)=\textsc{`dog}\\(\UP\NUM)=\SG}
+\newdimen\lexentrydimen
+\newdimen\defaultlexentrydimen
+\defaultlexentrydimen=4em
+\newdimen\catdimen
+\newdimen\defaultcatdimen
+\defaultcatdimen=1em
+
+\newcommand{\lexentry}[2]{\setbox1\hbox{\textit{#1}}%
+                      \ifdim \wd1 >\defaultlexentrydimen \lexentrydimen=\wd1 %
+                      \else \lexentrydimen=\defaultlexentrydimen \fi%
+                      \noindent%
+                      \makebox[\lexentrydimen][l]{\box1}\hspace*{1em}\nobreak%
+                      \feqs{#2}}
+% lexical entries with c-structure category specified
+% usage: \catlexentry{dog}{N}{\feqs{(\UP\PRED)=\textsc{`dog}\\(\UP\NUM)=\SG}}
+\newcommand{\catlexentry}[3]{\setbox1\hbox{\textit{#1}}%
+                      \ifdim \wd1 >\defaultlexentrydimen \lexentrydimen=\wd1 %
+                      \else \lexentrydimen=\defaultlexentrydimen \fi%
+                      \noindent%
+                      \makebox[\lexentrydimen][l]{\box1}\hspace*{1em}\nobreak%
+                      \setbox2\hbox{\small #2}%
+                      \ifdim \wd2 >\defaultcatdimen \catdimen=\wd2 %
+                      \else \catdimen=\defaultcatdimen \fi%
+                      \noindent%
+                      \makebox[\catdimen][l]{\box2}\hspace*{1em}\nobreak%
+                      \feqs{#3}}
+\newcommand{\feqs}[1]{\textsc{\begin{tabular}[t]{@{\strut}l@{\strut}}#1\end{tabular}}}
+
+%%%%%%%%%%%%%%%%%% Templates:
+
+% usage: \template{3sg}{(\UP\SUBJ\PERS)=3\\(\UP\SUBJ\NUM)=\SG}
+\newdimen\templatedimen
+\newdimen\defaulttemplatedimen
+\defaulttemplatedimen=1.5em
+\newcommand{\template}[2]{\setbox1\hbox{\textsc{#1}}%
+                      \ifdim \wd1 >\defaulttemplatedimen \templatedimen=\wd1 %
+                      \else \templatedimen=\defaulttemplatedimen \fi%
+                      \noindent%
+                      \makebox[\templatedimen][l]{\box1}\hspace*{1em}$\equiv$\hspace{1em}\nobreak%
+                      \feqs{#2}}
+
+
+%%%%%%%%%%%%%%%%%% Drawing lines with pstricks:
+
+% drawing straight lines
+% usage: \LINE{0pt}{270}{a}{2pt}{90}{b}
+% means: draw a straight line that starts 0 points from the rnode labeled a at the 270
+% degree mark (6:00 on the clockface), and ends 2 points from the
+% rnode labeled b at the 90 degree mark (12:00 on the clockface).
+% See the pst-node documentation for a full explanation of ncline.
+\newcommand{\LINE}[6]{
+  \ncline[nodesepA=#1,angleA={#2},nodesepB=#4,angleB={#5},linewidth=.5pt]{#3}{#6}}
+% Same as \LINE, but draws a dotted line
+\newcommand{\DOTLINE}[6]{
+  \ncline[linestyle=dashed,dash=1.5pt,nodesepA=#1,angleA={#2},nodesepB=#4,angleB={#5},linewidth=.5pt]{#3}{#6}}
+
+% Curved lines, used to connect f-structures.
+% usage: \CURVE[.3]{-2pt}{0}{subj}{0pt}{270}{arg}
+% means: draw a curved line with an arm of .3, starting at -2 points
+% from the rnode labeled subj at the 0 degree mark (3:00 on the
+% clockface), and ending at 0 points from the rnode labeled arg at the
+% 0 degree mark.
+% For curved lines, arm length defaults to .15; to change this, add
+% the desired arm length in square brackets.
+% See the pst-node documentation for a full explanation of ncangles.
+\newcommand{\CURVE}[7][.15]{
+  \ncangles[armA=#1,linearc=.2,nodesepA=#2,angleA={#3},nodesepB=#5,angleB={#6},linewidth=.5pt]{#4}{#7}}
+\newcommand{\DOTCURVE}[7][.15]{
+  \ncangles[linestyle=dashed,dash=1.5pt,armA=#1,linearc=.2,nodesepA=#2,angleA={#3},nodesepB=#5,angleB={#6},linewidth=.5pt]{#4}{#7}}
+
+% Arrow connecting different projections, e.g. from c-structure nodes
+% to f-structures.
+% usage: \CONNECT{0pt}{270}{a}{2pt}{90}{b}
+% means: as above.  
+\newcommand{\CONNECT}[6]{
+  \nccurve[nodesepA=#1,angleA={#2},nodesepB=#4,angleB={#5},linewidth=.5pt]{->}{#3}{#6}}
+\newcommand{\DOTCONNECT}[6]{
+  \nccurve[linestyle=dashed,dash=1.5pt,nodesepA=#1,angleA={#2},nodesepB=#4,angleB={#5},linewidth=.5pt]{->}{#3}{#6}}
+
+%%%%%%%%%%%%%%%%%% Glue:
+
+% font for meanings
+\newcommand{\IT}[1]{\mbox{\textnormal{\textit{#1}}}}
+

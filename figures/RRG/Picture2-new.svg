@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="272.11395mm"
+   height="178.30957mm"
+   viewBox="0 0 272.11395 178.30957"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="Picture2-new.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:zoom="1.1616261"
+     inkscape:cx="616.80777"
+     inkscape:cy="626.70768"
+     inkscape:window-width="3798"
+     inkscape:window-height="2136"
+     inkscape:window-x="42"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <sodipodi:guide
+       position="-0.16812024,163.30733"
+       orientation="1,0"
+       id="guide63818" />
+    <sodipodi:guide
+       position="44.036478,49.951284"
+       orientation="1,0"
+       id="guide385451" />
+    <sodipodi:guide
+       position="250.75183,183.89278"
+       orientation="1,0"
+       id="guide385597" />
+    <sodipodi:guide
+       position="131.55329,140.91858"
+       orientation="1,0"
+       id="guide385632" />
+    <sodipodi:guide
+       position="263.9264,144.68274"
+       orientation="0,-1"
+       id="guide386243" />
+    <sodipodi:guide
+       position="257.65279,159.42572"
+       orientation="1,0"
+       id="guide386358" />
+    <sodipodi:guide
+       position="250.75183,141.08679"
+       orientation="0,-1"
+       id="guide386362" />
+    <sodipodi:guide
+       position="154.05502,175.55036"
+       orientation="0,-1"
+       id="guide386444" />
+    <sodipodi:guide
+       position="144.69619,0.1322947"
+       orientation="0,-1"
+       id="guide386446" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2">
+    <rect
+       x="-284.85503"
+       y="-127.11211"
+       width="1773.0925"
+       height="964.82585"
+       id="rect36433" />
+    <rect
+       x="-98.750945"
+       y="-28.510282"
+       width="1644.2097"
+       height="916.26574"
+       id="rect33580" />
+    <marker
+       style="overflow:visible"
+       id="marker385972"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.625;stroke-linejoin:round"
+         id="path385970" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker385962"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lstart"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(1.1,0,0,1.1,1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.625;stroke-linejoin:round"
+         id="path385960" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker385950"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.625;stroke-linejoin:round"
+         id="path385948" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker385940"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lstart"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(1.1,0,0,1.1,1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.625;stroke-linejoin:round"
+         id="path385938" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow2Lend"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.625;stroke-linejoin:round"
+         id="path385657" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow2Lstart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lstart"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(1.1,0,0,1.1,1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.625;stroke-linejoin:round"
+         id="path385654" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lstart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path385636" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mend"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path385645" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mstart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mstart"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path385642" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="图层 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-5.525015,-2.7600947)">
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="5.356895"
+       y="7.0485463"
+       id="text10292"
+       inkscape:export-filename="/Users/luzi/Documents/柏林/LangSciPress/LFG/Picture2-new.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan10290"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';stroke-width:0.264583"
+         x="5.356895"
+         y="7.0485463"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Bold'"
+   id="tspan27444">SYNTACTIC FUNCTIONS</tspan>: PSA                Direct Core Arguments            Oblique Core Arguments</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="8.7401972"
+       y="14.660976"
+       id="text34496"
+       inkscape:export-filename="/Users/luzi/Documents/柏林/LangSciPress/LFG/Picture2-new.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan34494"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';stroke-width:0.264583"
+         x="8.7401972"
+         y="14.660976">Privileged Syntactic Argument [PSA] Selection:</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';stroke-width:0.264583"
+         x="8.7401972"
+         y="21.858255"
+         id="tspan34498">Highest ranking MR = default (e.g. English)</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';stroke-width:0.264583"
+         x="8.7401972"
+         y="29.055536"
+         id="tspan56292">Lowest ranking MR = default (e.g. Dyirbal)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="5.3568945"
+       y="36.973309"
+       id="text66242"
+       inkscape:export-filename="/Users/luzi/Documents/柏林/LangSciPress/LFG/Picture2-new.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan66240"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Bold';stroke-width:0.264583"
+         x="5.3568945"
+         y="36.973309">SEMANTIC MACROROLES:</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="37.770741"
+       y="44.126003"
+       id="text76326"
+       inkscape:export-filename="/Users/luzi/Documents/柏林/LangSciPress/LFG/Picture2-new.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan76324"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';stroke-width:0.264583"
+         x="37.770741"
+         y="44.126003">ACTOR                                                                      UNDERGOER</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';stroke-width:0.264583"
+         x="37.770741"
+         y="51.323284"
+         id="tspan76328">Arg of     1st arg of    1st arg of       2nd arg of      Arg of state</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';stroke-width:0.264583"
+         x="37.770741"
+         y="58.520561"
+         id="tspan78886">DO           <tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Bold'"
+   id="tspan192970">do´</tspan> (x,...      <tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Bold'"
+   id="tspan194340">pred´</tspan> (x, y))  <tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Bold'"
+   id="tspan195674">pred´</tspan> (x, y)     <tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Bold'"
+   id="tspan196888">pred´</tspan> (x)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="11.841558"
+       y="66.152184"
+       id="text118832"
+       inkscape:export-filename="/Users/luzi/Documents/柏林/LangSciPress/LFG/Picture2-new.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan118830"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';stroke-width:0.264583"
+         x="11.841558"
+         y="66.152184">Transitivity = No. of Macroroles[MR𝛼]</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';stroke-width:0.264583"
+         x="11.841558"
+         y="73.349464"
+         id="tspan172480">    Transitive = 2</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';stroke-width:0.264583"
+         x="11.841558"
+         y="80.546745"
+         id="tspan180036">    Intransitive = 1</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';stroke-width:0.264583"
+         x="11.841558"
+         y="87.744026"
+         id="tspan180038">    Atransitive = 0</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="50.267712"
+       y="95.860222"
+       id="text183960"
+       inkscape:export-filename="/Users/luzi/Documents/柏林/LangSciPress/LFG/Picture2-new.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan183958"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';stroke-width:0.264583"
+         x="50.267712"
+         y="95.860222">Argument Positions in <tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Bold'"
+   id="tspan186152">LOGICAL STRUCTURE</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:sans-serif;baseline-shift:baseline;stroke-width:0.264583"
+       x="63.414825"
+       y="122.6447"
+       id="text215306"
+       inkscape:export-filename="/Users/luzi/Documents/柏林/LangSciPress/LFG/Picture2-new.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan215304"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';baseline-shift:baseline;stroke-width:0.264583"
+         x="63.414825"
+         y="122.6447">STATE                                          <tspan
+   style="font-weight:bold"
+   id="tspan320252">predicate´</tspan> (x) or (x, y)</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';baseline-shift:baseline;stroke-width:0.264583"
+         x="63.414825"
+         y="129.84198"
+         id="tspan215308">ACTIVITY                                    <tspan
+   style="font-weight:bold"
+   id="tspan322060">do´</tspan> (x, [<tspan
+   style="font-weight:bold"
+   id="tspan323202">predicate'</tspan> (x) or (x, y)])</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';baseline-shift:baseline;stroke-width:0.264583"
+         x="63.414825"
+         y="137.03926"
+         id="tspan217076">ACHIEVEMENT                          INGR <tspan
+   style="font-weight:bold"
+   id="tspan325448">predicate´</tspan> (x) or (x, y)</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';baseline-shift:baseline;stroke-width:0.264583"
+         x="63.414825"
+         y="144.23654"
+         id="tspan217078">SEMELFACTIVE                         SEML <tspan
+   style="font-weight:bold"
+   id="tspan327058">predicate´</tspan> (x) or (x, y)</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';baseline-shift:baseline;stroke-width:0.264583"
+         x="63.414825"
+         y="151.43382"
+         id="tspan217080">PROCESS                                     PROC <tspan
+   style="font-weight:bold"
+   id="tspan327870">predicate´</tspan> (x) or (x, y)</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';baseline-shift:baseline;stroke-width:0.264583"
+         x="63.414825"
+         y="158.6311"
+         id="tspan217082">ACCOMPLISHMENT                 BECOME <tspan
+   style="font-weight:bold"
+   id="tspan330080">predicate´</tspan> (x) or (x, y)</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';baseline-shift:baseline;stroke-width:0.264583"
+         x="63.414825"
+         y="165.82838"
+         id="tspan217086">ACTIVE ACCOMPLISHMENT  </tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';baseline-shift:baseline;stroke-width:0.264583"
+         x="63.414825"
+         y="173.02565"
+         id="tspan283148"><tspan
+   style="font-weight:bold"
+   id="tspan407381">do´</tspan> (x, [<tspan
+   style="font-weight:bold"
+   id="tspan333666">predicate<tspan
+   style="font-size:3.175px"
+   id="tspan343490">1</tspan>´</tspan> (x, (y))]) &amp; INGR <tspan
+   style="font-weight:bold"
+   id="tspan332068">predicate<tspan
+   style="font-size:3.175px"
+   id="tspan345006">2</tspan></tspan><tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Bold'"
+   id="tspan9648">´</tspan> (z, x) or (y)</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';baseline-shift:baseline;stroke-width:0.264583"
+         x="63.414825"
+         y="180.3083"
+         id="tspan226094">CAUSATIVE                                 𝛼 CAUSE 𝛽, where 𝛼, 𝛽 are LSs of any type  </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="96.613548"
+       y="123.59006"
+       id="text292662"><tspan
+         sodipodi:role="line"
+         id="tspan292660"
+         style="stroke-width:0.264583"
+         x="96.613548"
+         y="123.59006" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="63.712616"
+       y="109.78812"
+       id="text357930"
+       inkscape:export-filename="/Users/luzi/Documents/柏林/LangSciPress/LFG/Picture2-new.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan357928"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';stroke-width:0.264583"
+         x="63.712616"
+         y="109.78812">Verb Class                                   Logical Structure</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.365;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2.19, 0.73;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 62.790668,114.80701 c 15.056659,0 189.776682,0 189.776682,0"
+       id="path385455"
+       inkscape:export-filename="/Users/luzi/Documents/柏林/LangSciPress/LFG/Picture2-new.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow2Lstart);marker-end:url(#Arrow2Lend)"
+       d="M 137.07831,10.351451 V 30.426993"
+       id="path385634"
+       inkscape:export-filename="/Users/luzi/Documents/柏林/LangSciPress/LFG/Picture2-new.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#marker385940);marker-end:url(#marker385950)"
+       d="M 137.07831,65.245511 V 87.203136"
+       id="path385936"
+       inkscape:export-filename="/Users/luzi/Documents/柏林/LangSciPress/LFG/Picture2-new.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#marker385962);marker-end:url(#marker385972)"
+       d="m 137.07831,99.75035 v 10.03777"
+       id="path385958"
+       inkscape:export-filename="/Users/luzi/Documents/柏林/LangSciPress/LFG/Picture2-new.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 256.27684,5.5193006 h 6.90097 V 36.38692 h -6.90097"
+       id="path386481"
+       inkscape:export-filename="/Users/luzi/Documents/柏林/LangSciPress/LFG/Picture2-new.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 256.27684,39.98287 h 6.90097 v 140.9545 h -6.90097"
+       id="path386483"
+       inkscape:export-filename="/Users/luzi/Documents/柏林/LangSciPress/LFG/Picture2-new.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="-35.929119"
+       y="269.21353"
+       id="text388731"
+       transform="rotate(-90)"
+       inkscape:export-filename="/Users/luzi/Documents/柏林/LangSciPress/LFG/Picture2-new.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan388729"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';writing-mode:lr-tb;text-orientation:sideways;stroke-width:0.264583"
+         x="-35.929119"
+         y="269.21353">Language-</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';writing-mode:lr-tb;text-orientation:sideways;stroke-width:0.264583"
+         x="-35.929119"
+         y="276.4108"
+         id="tspan388985">specific</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="-118.03951"
+       y="269.55853"
+       id="text393343"
+       transform="rotate(-90)"
+       inkscape:export-filename="/Users/luzi/Documents/柏林/LangSciPress/LFG/Picture2-new.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan393341"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';stroke-width:0.264583"
+         x="-118.03951"
+         y="269.55853">Universal</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,5.525015,2.7600947)"
+       id="text33578"
+       style="font-size:37.3333px;line-height:125%;font-family:Arimo;-inkscape-font-specification:'Arimo, Normal';font-variant-ligatures:none;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;white-space:pre;shape-inside:url(#rect33580);fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,5.525015,2.7600947)"
+       id="text36431"
+       style="font-size:37.3333px;line-height:125%;font-family:Arimo;-inkscape-font-specification:'Arimo, Normal';font-variant-ligatures:none;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;white-space:pre;shape-inside:url(#rect36433);fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+  </g>
+</svg>

@@ -1,0 +1,2251 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10186044}
+\title{LFG and Minimalism}
+\author{Peter Sells\affiliation{University of York}}
+\abstract{I compare and contrast LFG and the Minimalist Program   (\citealp{chomsky1995the-minimalist}) with regard to different   overall aspects of the frameworks: fundamental design properties,   the representation of phrase structure, the representation of   clausal grammatical information, the nature and role of syntactic   features, and the analysis of agreement.}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[42]%%chapternumber
+}{}
+
+\begin{document}
+\maketitle
+\label{chap:Minimalism}
+
+\section{A framework for comparison}
+\label{sec:minimalism:framework}
+
+LFG and the Minimalist Program (MP;
+\citealp{chomsky1995the-minimalist,chomsky00}) are not
+straightforwardly comparable, as they are articulated in quite
+different ways. Going back to the 1980s, it could be said that LFG
+and Government-Binding Theory \citep{chomsky1981lectures} had a
+certain amount of commonality of approach, but as MP has developed
+from the earlier Government-Binding theory (GB), more and more
+emphasis has been placed in MP on derivation (see
+e.g.~\citealp{hng06,hornstein18}), rather than on information and
+representation, which are of course cornerstones of LFG.
+
+As both LFG and GB were responses to theoretical concerns about
+``classical'' transformational grammar, which was developed during the
+1970s, it is useful to start with the legacy of the early
+transformational period, which I summarize in (\ref{legacy}):
+
+\ea\label{legacy}\ea
+the overt part of syntax is represented in a phrase structure tree
+\ex
+all information in syntax is structured
+\ex
+different parts of a syntactic representation may share information
+\z \z
+
+As GB has developed into MP, it has been assumed that
+(\ref{legacy}b-c) refer to the same structure as (\ref{legacy}a):
+that only the structures of phrase structure represent syntactic
+information, and that relationships are expressed in that structure,
+being established by movement operations. For instance, topicalization
+of an object creates a relationship between a topic position and an
+object position, as a result of a derivational operation in the MP.
+
+LFG is a framework which is also based on the principle that all
+syntactic information is structured, but importantly that not all
+syntactic information is structure in the sense of phrase structure,
+and so it embodies (\ref{legacy}) by having (at least) three aspects
+to the overall representation of a sentence:
+
+\ea\label{3dims}\ea
+overt phrase structure (c-structure)
+\ex
+a clause-level representation of the information it conveys
+ (f-structure)
+\ex
+an argument-structure representation for predicate-argument structure
+ (a-structure)
+\z \z
+
+All syntactic frameworks have a means to represent argument structure,
+and for any given predicate, its argument structure is structured
+according to the Thematic Hierarchy (e.g.~\citealp{jackendoff72}) or
+something equivalent. This is a-structure in LFG (see
+\citetv{chapters/Mapping}). There is a
+mapping between this structure and the surface grammatical properties,
+f-structure, which is the representation of (\ref{3dims}b). These
+properties include the GFs such as \textsc{subj} and \textsc{obj}.
+The representation of clausal grammatical information (\ref{3dims}b)
+is not part of the phrase structure representation (\ref{3dims}a), but
+rather is the information that the overt structure conveys. This
+clausal representation is nevertheless structured in the sense that
+the information it contains is organized and grouped, according to
+principles of organization pertinent to this level.
+
+This is different to the approach to clausal information in the MP,
+where information may start out quite distributed throughout the
+overall derivation, but can be aggregrated through successive
+movements, but also modified (e.g.~a feature specification being used
+to drive one operation, then being deleted subsequent to the
+application of that operation; see
+\sectref{sec:minimalism:features-mp}). The core arguments of a predicate
+are merged first into a vP-VP structure (see
+\citealp[315ff.]{chomsky1995the-minimalist}) and this is the
+representation of argument structure; the internal argument(s) merge
+into VP and the external argument is the specifier of vP. Then further
+functional structure such as TP or CP is projected above vP.
+Functional or relational properties such as `subject' and `object' are
+characterized by the particular `Agree' relations between v and Obj
+and between T and Subj.
+  
+Broadly speaking, the ``subjecthood'' properties identified by
+\citet{keenan76} divide into those which properly refer to argument
+structure, and those which refer to clausal grammatical information
+(\citealp{Manning1996}). Different syntactic phenomena may relate to
+either representation. For instance, anaphor binding is determined by
+the argument structure hierarchy in some languages
+(e.g.~\citealp{schachter76} on Tagalog; \citealp{wechslerarka} on
+Balinese). In other languages, the hierarchy of grammatical functions
+holding over f-structure is most relevant (see
+e.g.~\citealp[212--213]{bresnan2001lexical};
+\citealp[217]{BresnanEtAl2016} on `syntactic rank').
+
+\hspace*{-.1pt}The representations of argument structure and of clausal information
+are large\-ly langu\-age-invariant, though the mapping between them
+shows more variation, as do the ways in which different syntactic
+phenomena refer to them. The information that they represent is
+carried by the overt phrase structures, (\ref{3dims}a), which are of
+course subject to the most variation, and therefore the least
+revealing about ``deep'' properties of language.
+
+In this chapter I evaluate different aspects of the LFG and MP
+approaches to grammatical theory. In \sectref{sec:minimalism:2} I
+consider overall ``design features'' of the frameworks, and what
+motivates them. In particular I outline how LFG took a different
+direction from transformational grammar. In
+\sectref{sec:minimalism:ps} I contrast the approaches of the
+frameworks to phrase structure, and how the balance of analysis
+between c-structure and f-structure falls in LFG. Finally in
+\sectref{sec:minimalism:features} I compare the role(s) that features
+play in LFG and in MP, and how featural specifications participate in
+agreement.
+
+\section{Design features of a grammatical framework}
+\label{sec:minimalism:2}
+
+\citet{kaplan19} gives a personal statement of how the passage below
+from \citet{chomsky1965aspects} inspired his research which became part of the
+foundation of LFG (see e.g.~\citealp[173--174]{kaplanbresnan82}):
+
+\begin{quote}
+No doubt, a reasonable model of language use will incorporate, as a
+basic component, the generative grammar that expresses the
+speaker-hearer's knowledge of the language; but this generative
+grammar does not, in itself, prescribe the character or functioning of
+a perceptual model or a model of speech production.
+(\citealp[9]{chomsky1965aspects}) 
+\end{quote}
+
+Kaplan also pursued the idea that linguistic complexity will be best
+modelled through (possibly complex) interactions of different
+(relatively simple) components, different representational dimensions,
+inspired by \citet{simon62}.
+
+In this section I will consider how LFG addresses the core aims of a
+generative grammar, and how it has done so according to certain key
+foundational properties which set it apart from the procedural
+approach which has characterized the GB/MP approach led by Chomsky.
+
+\subsection{Levels of adequacy}
+
+One way to approach how a given framework takes up the agenda for
+Generative Grammar is to consider how the framework concerns itself
+with Chomsky's successive levels of adequacy:
+
+\begin{quote}
+To summarize briefly, there are two respects
+in which one can speak of ``justifying a generative grammar.'' On one
+level (that of descriptive adequacy), the grammar is justified to the
+extent that it correctly describes its object, namely the linguistic
+intuition -- the tacit competence -- of the native speaker. In this
+sense, the grammar is justified on external grounds, on grounds of
+correspondence to linguistic fact. On a much deeper and hence much
+more rarely attainable level (that of explanatory adequacy), a grammar
+is justified to the extent that it is a principled descriptively
+adequate system, in that the linguistic theory with which it is
+associated selects this grammar over others, given primary linguistic
+data with which all are compatible. In this sense, the grammar is
+justified on internal grounds, on grounds of its relation to a
+linguistic theory that constitutes an explanatory hypothesis about the
+form of language as such. The problem of internal justification -- of
+explanatory adequacy -- is essentially the problem of constructing a
+theory of language acquisition, an account of the specific innate
+abilities that make this achievement possible.
+(\citealp[26--27]{chomsky1965aspects})
+\end{quote}
+
+\largerpage
+Since the GB era, Chomsky has taken explanatory adequacy to be the
+focus of syntactic theorizing (\citealp{rizzi16};
+\citealp{dalessandro19}). Yet to do this presupposes that there is a
+core of facts and generalizations so that there is a stable set of
+grammars which satisfy descriptive adequacy. \citet[55]{hornstein18}
+presents a list of structural properties that syntacticians might
+agree are the ``mid-level generalizations'' of grammar; see also
+\citet[8]{dalessandro19} for a summary. For instance, data as in
+(\ref{appear1})--(\ref{appear2}), from
+\citet[261]{chomsky1973conditions}, lead to well-established
+generalizations to classify verbs as being raising or control
+predicates, and binding conditions on anaphors and pronouns:
+
+\ea\label{appear1}
+\ea[]{
+They appeared to John to like each other.
+}
+\ex
+[*]{They appealed to John to like each other.}
+\z \z
+
+\ea\label{appear2}\ea
+[*]{We appeared to John to like us.}
+\ex[]{
+We appealed to John to like us. 
+}
+\z \z
+
+At the level of what facts and what kinds of facts are in the domain
+of syntax -- such as those just given -- frameworks such as GB/MP,
+LFG, and HPSG (\citealp{pollardsag87, pollard1994head-driven}) are
+roughly commensurate, and so can be compared as to how they embody
+descriptive adequacy. Of course the formal details of a syntactic
+system which is intended to have a good ``correspondence to linguistic
+fact'' vary between each framework, but these are the easiest points
+of comparison. I take up this kind of comparison in
+Sections~\ref{sec:minimalism:ps} and \ref{sec:minimalism:features}
+below.
+
+LFG is a framework which has been developed to address descriptive
+adequacy, and which can be part of broader cognitive or computational
+approaches to human language, following the first Chomsky quote above.
+In this sense, it perhaps could be argued that LFG committed 40 years
+ago to what has become known in the MP literature as Chomsky's ``third
+factor'' (\citealp[6]{chomsky2005three}) for explaining the format of
+grammatical knowledge:
+
+
+\eabox{\label{3factors}
+``\ldots\ we should, therefore, be seeking three factors that enter
+into the growth of language in the individual:
+\begin{enumerate}
+\item Genetic endowment, apparently nearly uniform for the species,  which  interprets part of the environment as linguistic  experience, \ldots
+\item Experience, which leads to variation, within a fairly narrow range, \ldots
+\item Principles not specific to the faculty of language \ldots
+  \begin{itemize}
+    \item[--] principles of data analysis that might be used in language acquisition
+    \item[--] principles of structural architecture
+    \item[--] principles of efficient computation''
+  \end{itemize}
+\end{enumerate}
+}
+
+The GB perspective on the language faculty put a great burden on an
+innate Universal Grammar which is essentially a parameterized
+blueprint for any individual grammar. This corresponds to Chomsky's
+first factor. Over the last 25 years, the trend in the development of
+the MP has been to reduce reliance on this purely innate component of
+grammar, in favor of the third factor. The reference in that factor
+to principles of data analysis and of structural architecture is quite
+salient as these are the principles at the basis of the considerations
+I raise in the next subsection, though of course this is not to imply
+that frameworks such as LFG deny that there are any `first factor'
+properties or principles of our language capacity. However, as
+\citet[498]{ogrady12} comments: ``\ldots\ the shift of focus to
+third-factor effects in generative grammar marks a milestone of
+sorts. Not because the idea is new, for it is not. Broadly speaking,
+the rest of the field has been committed to the primacy of
+third-factor explanations for decades.''
+
+\subsection{Foundational properties of syntactic systems}
+
+What kinds of property are fundamental to syntax, to be emergent from
+a theory which ``constitutes an explanatory hypothesis about the form
+of language'', as in Chomsky's notion of explanatory adequacy?  From
+the Minimalist perspective, the key notion here is the binary merge of
+abstract syntactic elements -- `External Merge' for initial
+structure-building, and `Internal Merge' for movement from an existing
+position to another one. The structure is built up incrementally, with
+steps in the derivation driven by categorial requirements of
+combination or by features (see \sectref{sec:minimalism:merge} and
+\sectref{sec:minimalism:features-mp} below); the terminal nodes of the
+structure are spelled out morphologically after the syntactic
+operations have taken place.
+
+LFG has taken a different starting point as to what the key properties
+of syntax are; in the rest of this subsection I highlight the
+consequences of a few examples which determine the `lexicalist' and
+`functional' (that is, information-based) aspects of LFG.
+
+\subsubsection{Lexicalist}
+
+LFG is a lexicalist framework, built on the assumption that the
+terminals in the phrase structure are word-level entities, the
+X$^0$s of X$'$-theory. The roots of this approach are in the
+Lexicalist Hypothesis of \citet{chomsky1970remarks}. Chomsky argued
+that the shared properties of different words based on the same lexeme
+could be accounted for without recourse to transformation (a
+nominalization transformation for the specific examples considered in
+that paper), and he introduced X$'$-theory to account for structural
+similarities across categories. LFG, like other declarative
+frameworks, expands on this perspective, using other syntactic
+information not directly represented in the phrase structure
+(cf.~(\ref{3dims})) to capture the appropriate similarities. An
+X$^0$ may be internally complex, carrying the same kinds of
+information as may be expressed by other elements or configurations in
+the syntax, but formed according to its constraints on morphology, not
+on syntax.
+
+The following Swedish example from \citet[29]{mullerwechsler14}
+illustrates several properties which motivate the lexicalist
+analysis. It involves coordination of an active and a passive verb:
+
+\ea Swedish\\
+\gll
+Golfklubben begärde och beviljade-s marklov för banbygget efter en hel
+del förhandlingar och kompromisser med Länsstyrelsen och
+Naturvårdsverket.\\ 
+golf.club.\textsc{def} requested and granted-\textsc{pass}
+ground.permit for track.build.\textsc{def} after a whole part
+negotiations and compromises with county.board.\textsc{def} and
+nature.protection.agency.\textsc{def}\\%{\pxl}
+\glt
+`The golf club requested and was granted a ground permit for track
+construction after a lot of negotiations and compromises with the
+County Board and the Environmental Protection Agency.'
+\z
+
+M\"uller and Wechsler argue that this example does not involve
+Right-Node Raising, but rather coordination of two finite verbs at the
+X$^0$-level (\textit{begärde och beviljades}). Each verb is a
+syntactic word, marked for past tense (the \textit{de} part of each),
+and the second one is marked for passive (the \textit{s}). Hence the
+voice alternation active/passive is represented on single words, and
+does not involve spans of structure involving separate heads such as
+V, v, and Voice. Additionally, the second verb is a straightforward
+counterexample to the `Mirror Principle' (\citealp{baker85}), which is
+supposed to diagnose a close relationship between syntactic structure
+and word-internal morpheme structure. Swedish passive {\it -s\/}
+always appears external to other tense or aspectual suffixes on the
+word, even though in an expanded MP-style clausal structure the Voice
+head would be taken to be lower than and therefore closer to the
+lexeme stem with respect to Aspect or Tense heads.
+
+The French example in (\ref{heureuse-ex}) also motivates both the
+lexicalist approach, as well as the design feature that agreement is
+not directional.
+
+\ea\label{heureuse-ex} French\\
+\gll
+Je suis heureuse.\\
+I am happy.\textsc{f.sg}\\
+\glt
+`I am happy.' (spoken by a female)
+\z
+
+Neither the subject pronoun \textit{je} nor the inflected verb
+\textit{suis} are categorized or marked for gender -- as in English and
+many other languages -- yet the predicate adjective is marked as
+feminine (and singular). The non-formal linguistic intuition that the
+adjective agrees with its subject, or ``agrees with a noun'', has been
+the basis of many formalized linguistic analyses: the predicate
+adjective is a target and the subject should be its controller. Yet
+there is no plausible source in the lexical content of
+(\ref{heureuse-ex}) for a feminine gender specification except for the
+adjective. It is certainly true of the \textit{sentence}
+(\ref{heureuse-ex}) that it expresses a meaning involving a feminine
+subject, but the morphosyntactic basis of that meaning could not be
+\textit{je} or \textit{suis}, under any plausible analysis of those words.
+
+This example is very powerful. From it, it follows then that
+\textit{heureuse} is a lexical item marked for feminine gender
+independently of the syntactic structure in which it appears, as there
+is no source for feminine in the rest of the structure. This entails
+the Lexicalist Hypothesis, as each X$^0$ in the syntactic
+structure has properties that do not refer to any other X$^0$ in
+the structure -- usually referred to as `Lexical Integrity'
+(e.g.~\citealp[92]{bresnan2001lexical}; \citealp[92]{BresnanEtAl2016}).
+
+\subsubsection{Information-based clausal representation}
+\label{sec:minimalism:info-based}
+
+Next, from the same example, it follows that ``agreement'' is the name
+we give to a situation in which two or more syntactic elements put
+constraints on a single informational unit, but that there is no
+priority of one element over the other(s). In (\ref{heureuse-ex}), all
+three such elements (the words in this case) put constraints on what
+the subject is; and as the combination of those constraints is not
+contradictory, the example is well-formed. The f-structure
+contribution of each word is shown in
+(\ref{heureuse}). (\ref{f-s-heureuse}) shows the f-structure for the
+full example.
+
+\eabox{\label{heureuse}\ea
+%\evnup[2pt]{
+ \avm[style=fstr]{%\begin{avm}
+[pred & `pro'\\
+  pers & 1\\
+  num & sg ]
+  }%\end{avm}
+ % }
+  \hbox to 14em{\hfill = je}
+\vspace{0.5em}
+\ex
+%\evnup[2pt]{
+\avm[style=fstr]{%\begin{avm}
+[ subj&\rnode{a}{[pers & 1\\
+                   num & sg]}\smallskip\\
+         {tense} & pres\\
+         pred & `{be}\arglist{(\UP \SUBJ)(\UP \XCOMP)}' \\ 
+  xcomp & [ subj & !\rnode{b}{[\ \ ]}! ]  ]
+}%\end{avm}
+%}
+\hbox to 6em{\hfill = suis}
+\vspace{0.5em}
+%\rtor[3.5]{a}{b}
+%\nccurve[ncurv=3.5]{a}{b}
+\CURVE[2.7]{-2pt}{0}{a}{-2pt}{0}{b}
+\ex
+%\evnup[2pt]{
+\avm[style=fstr]{%\begin{avm}
+[ subj&[ gend & fem ]\\
+         pred & `happy\arglist{(\UP \SUBJ)}']
+}
+\hbox to 11em{\hfill = heureuse}
+  \z }
+
+  \eabox{\label{f-s-heureuse}%\evnup[2pt]{
+  \avm[style=fstr]{%\begin{avm}
+[ subj&\rnode{a}{[pred & `pro'\\
+         pers & 1\\
+         num & sg\\
+         gend & fem]}\smallskip\\
+         {tense}&pres\\
+  pred&`be\arglist{(\UP \SUBJ)(\UP \XCOMP)}'\\
+  xcomp & [ subj & !\rnode{b}{[\ \ ]}!\\
+         pred&`happy\arglist{(\UP \SUBJ)}']  ]
+}%\end{avm}
+%}
+%\rtor[3.5]{a}{b}
+%\nccurve[ncurv=3]{a}{b}
+\CURVE[2.5]{-2pt}{0}{a}{-2pt}{0}{b}  
+}
+
+Local syntactic relationships indicated by the structure-sharing seen
+above are typically located in a predicate -- these will involve what
+kind of arguments the predicate takes, possibly specifications of
+case, whether it is a raising or control predicate, agreement
+information, and so on. The apparent directionality of agreement seen
+in canonical examples has nothing to do with ``agreement'' itself --
+as a mechanism of agreement does not exist -- but rather comes from
+the second property of \textit{suis}, that it is effectively a raising
+predicate, and so whatever is true of its complement's subject is true
+of its subject. In (\ref{f-s-heureuse}) the information shown as the
+value of \textsc{subj} is the minimal amount of which the constraints
+coming from each of the entries in (\ref{heureuse}) is true.
+
+With regard to the implications for explanatory adequacy, this simple
+example shows that the format of grammars is only consistent with
+those that lack derivation and directionality -- in other words, if
+the hypothesis space is restricted to declaratively stated grammars,
+we expect that languages will quite generally show examples like
+(\ref{heureuse-ex}). In \sectref{sec:minimalism:agreement}, I take up in
+more detail the key information-based properties of what we informally
+refer to as ``agreement''.
+
+Other examples also show the importance of the information that an
+item carries over its phrase structure properties. (\ref{hudson})
+(originally from \citealp{hudson77}; see also \citealp[64]{gkps};
+\citealp[19]{bresnan2001lexical}, \citealp[14]{BresnanEtAl2016})
+illustrates one of the ``paradoxes of movement'':
+
+\ea\label{hudson}\ea[*]
+{I aren't happy.}
+   \ex
+Aren't I happy?
+\z
+\z
+
+An initial positioning of an internally-negated auxiliary is taken as
+evidence in movement analyses that the auxiliary has undergone several
+movements, combining with Neg and then with T[ense] before moving to
+C. However, from the notional analytic source \textit{I am not happy}
+there is no pre-T-to-C version *\textit{I amn't happy}, as in (standard)
+English there is no form \textit{amn't}, and (\ref{hudson}a) is also
+ungrammatical. In this use, then, the form \textit{aren't} is a word
+which can only appear in the C, or inverted-aux, position, but not in
+any other position. In terms familiar from the early days of
+transformational grammar, (\ref{hudson}b) would have to be analyzed as
+a grammatical example derived from an ungrammatical source.
+
+The contrast in (\ref{hudson}) shows that the syntactic properties
+that an item has (being a tensed negated auxiliary in this case) are
+not inexorably associated with structural derivations which aggregate
+information. A movement-based account of (\ref{hudson}) would have to
+assume that the syntactic features of \textit{aren't} can be assembled
+on T, and from there moved to C, but that there is no lexical item
+which can spell out those features on T, but only on C. In other
+words, what actually matters is the surface position of the
+realization of a set of syntactic properties, not where (or where
+else) those properties came from. This is exactly what a declarative
+framework such as LFG provides, with the same implication for
+explanatory adequacy -- if an element in a higher position must
+correspond to a derivationally related version of itself in a lower
+position, pairs like (\ref{hudson}) should not exist. But they do
+exist, and they show that the format of grammars should recognize that
+words have bundles of features which are associated with (sets of)
+syntactic positions. Within the broader Miminalist approach, the
+realizational account of morphology in the Distributed Morphology
+framework (\citealp{hallemarantz}; see \citealp{bobaljik17} for a
+recent overview) has the same sensitivity to syntactic position: for
+\textit{aren't}, a rule of vocabulary insertion could be made sensitive
+to the collection of relevant syntactic features in the context of C,
+but not of T.
+
+\subsection{Rules and representations}
+
+As syntactic frameworks have developed since the 1980s, they have
+diverged as to whether the focus is on constraints stated on
+representations, or on steps in a procedural
+derivation. Government-Binding theory has a mix of properties:
+conditions on rule application and conditions on representations. For
+instance, the examples above in (\ref{appear1})--(\ref{appear2})
+involve \textit{appear} as a raising predicate which requires an
+operation of the rule Move-$\alpha$, while \textit{appeal} is a control
+predicate which requires a representational check involving a
+\textsc{pro} subject (see e.g.~\citealp{haegeman94} for a summary of
+GB). More recently, the ``movement theory of Control''
+(e.g.~\citealp{hornpoli10}) eliminates the representational condition
+on the empty category subject in favor of a derivational analysis
+similar in the relevant ways to the one for the raising predicate.
+
+The GB Binding Theory Principles A and B were originally each stated
+as a condition on a representation. For instance, Principle A looks
+for a specific relationship of coindexing between antecedent and
+anaphor within a certain domain; reinterpreted as a condition on rule
+application, the principle must involve an operation of movement up to
+(near) the antecedent, within a certain domain, following an idea
+first proposed in \citet{lebeaux83}.
+
+In the development of the MP, Chomsky has taken
+the view that as some aspects of the grammar are procedural, and so
+require conditions on rule application, parsimony would dictate that
+all grammatical conditions are of that type, with no conditions on
+representation. Hence the levels of GB over which representational
+conditions were stated were eliminated. The MP is an
+attempt to deconstruct GB along purely procedural aspects (see
+e.g.~\citealp[54]{hornstein18}) -- in the limit, there is no
+``stopping off'' at any point to evaluate a representation. In fact,
+though, each step in a derivation must involve a local representation
+-- but one within which or to which some further operation should take
+place. The proposed operation of `Minimal Search' for the operation
+{\it Agree\/} (\citealp[9]{chomsky07}) must inspect a structure to
+find something within it -- here, an element W probing within a
+structure Z -- and the outcome of that will constrain what
+(procedurally) can happen next: ``Since W contains all information
+relevant to further computation involving Z, W is also necessarily the
+probe that selects a goal in any internal modification of Z. Minimal
+search conditions limit the goal of the probe to its complement, the
+smallest searchable domain.''
+
+The output of syntax is fed to the `interfaces'. On the semantic
+side, the end of the syntactic derivation corresponds to the GB level
+of Logical Form (LF), which feeds to the `conceptual-intentional'
+interface. On the phonetic side, the overt output of the derivation is
+spelled-out to Phonetic Form (PF), which feeds to the interface
+known as `articulatory-perceptual' or `sensorimotor' (see
+e.g.~\citealp[2]{chomsky1995the-minimalist},
+\citealp[5]{chomsky07}). One leading idea of the Minimalist Programme
+is that LF and PF have no properties specific to them; rather, any
+apparent well-formedness conditions are due entirely to properties of
+the interfaces.
+
+Within the core domain of syntax, there seem to be several phenomena
+which bear on the issue of rules vs.~representations, and which appear
+to favor the latter -- because their analysis seems irreducibly
+representational. I will mention two different instances and then go
+on to two others in more detail. First, as just noted, the MP
+operation of Agree has to access a representation, in order to
+establish a relation between Probe and Goal (see also
+\sectref{sec:minimalism:features-mp}). Second, the approach to case marking
+known as `Dependent Case' (e.g.~\citealp{baker15}) calculates the case
+values of NPs by referring to larger structure -- the underlying
+intuition being that in a clause containing two NPs, a subject
+c-commanding an object, the marked case value of Accusative for the
+object is the value assigned to an NP c-commanded by another, and in a
+typologically different system, the marked case value of Ergative for
+the subject is the value assigned to an NP which c-commands
+another. Hence the computation of case values must refer to a
+structural representation.
+
+I now go in more depth into two instances which illustrate a different
+kind of representational condition -- a negative condition. It is
+difficult to imagine how such conditions could successfully be
+captured procedurally. Returning to the binding conditions of GB, for
+Principle A, there have been different proposals to reinterpret it
+derivationally, for instance \citet{lidzidsardi98},
+\citet{hornstein01} and \citet{boeckx07}, though others take a more
+traditional view, such as \citet{safir08} and
+\citet{charnavelsportiche16}. While Principle A requires two elements
+to have a certain relationship, Principle B forbids two elements from
+having a certain relationship -- it is a negative condition. A
+procedural reinterpretation does not seem directly possible for
+Principle B, as it requires disjointness (unless perhaps the system of
+recording contra-indexing of \citealp{chomsky80} is revived), though
+\citet{reuland11} presents a revised Binding Theory which refers to
+properties of predicates and semantic constraints on the
+interpretation of their arguments.
+
+Principles A and B as they apply to English are familiar. In some
+languages, with anaphoric systems more complex than that found in
+English, conditions on the various elements of the system may involve
+both positive and negative constraints -- such as in Norwegian
+(\citealp[279--288]{dalrymple01},
+\citealp[259--261]{BresnanEtAl2016}). Norwegian has four relevant
+anaphor/pronoun forms, shown in (\ref{norwegian}) with their LFG
+binding properties. The content of the binding properties is given in
+(\ref{binding}):
+
+\ea\label{norwegian}Featural analysis of Norwegian pronouns:
+\ea
+\makebox[5em][l]{seg}[$+$sbj, $-$ncl]
+\ex
+\makebox[5em][l]{ham}[$-$ncl]
+\ex
+\makebox[5em][l]{seg selv}[$+$sbj, $+$ncl]
+\ex
+\makebox[5em][l]{ham selv}[$-$sbj, $+$ncl]
+\z\z
+
+\ea\label{binding}\ea\relax
+[$+$sbj, $-$ncl] – The antecedent must be a subject in the minimal
+finite domain outside of the minimal nucleus containing the pronoun.
+\ex\relax
+[$-$ncl] – The antecedent must be outside of the minimal
+nucleus containing the pronoun. 
+\ex\relax
+[$+$sbj, $+$ncl] – The antecedent must be a subject in the minimal
+nucleus containing the pronoun. 
+\ex\relax
+[$-$sbj, $+$ncl] – The antecedent must be a nonsubject in the minimal
+nucleus containing the pronoun.
+\z\z
+
+The negative conditions here seem to refer crucially to
+representations -- to check that a relationship does not hold in a
+certain local domain, or to check that a relationship does hold, but
+not with a subject.
+
+A different consideration about the role of representations comes from
+the distribution of the depictive \textit{sisxoli} `alone' in Tsez, a
+language of the Caucasus which has an ergative-absolutive case
+marking system. The depictive may be associated with a preceding NP,
+but may not itself precede its NP associate
+(\citealp{polinsky00}). Hence the depictive has two possible
+associates in (\ref{tsez-1}a), one in (\ref{tsez-1}b), and none in (\ref{tsez-1}c).
+
+\ea\label{tsez-1} Tzez
+\ea
+\gll kid-b\={a}  ziya sisxoli bi\v{s}er-si\\
+girl-{\ERG} cow.{\ABS} alone feed-\textsc{pst.evid}\\
+\glt `The girl$_i$ alone$_i$ fed the cow.'\\
+`The girl fed the cow$_i$ alone$_i$.'
+\ex
+\gll kid-b\={a} sisxoli ziya bi\v{s}er-si\\
+girl-{\ERG} alone cow.{\ABS} feed-\textsc{pst.evid}\\
+\glt `The girl$_i$ alone$_i$ fed the cow.'\\
+{*}`The girl fed the cow$_i$ alone$_i$.'
+\ex[*]
+{\gll sisxoli kid-b\={a}  ziya bi\v{s}er-si\\
+alone girl-{\ERG} cow.{\ABS} feed-\textsc{pst.evid}\\}
+\z \z
+
+The linear precedence condition is reinterpreted as one of c-command in
+later discussions of these same examples in \citet{polipots06} and
+\citet{fukuda08} -- the associate must c-command the depictive.
+
+The distribution of the depictive becomes more interesting in the
+context of raising and control predicates. In Tsez the predicate
+\textit{yoq-} `begin' is ambiguous between control and raising, and in
+fact is a backward control predicate in its control use or a forward
+raising predicate in its raising use (\citealp{polipots06}). In LFG,
+the higher and lower \textsc{subj} values of control or raising are
+structure-shared in f-structure, and as discussed in
+\citet{sellssubsump} that f-structure property is consistent with
+c-structure expression of the relevant argument in the matrix clause
+(`forward') or in the embedded clause (`backward'). (\ref{b-c}a) is an
+interesting example regarding the syntax of the depictive, as it is
+grammatical even though the depictive apparently precedes its
+associate. \citet{polipots06} analyze this as a backward control
+structure: a null (absolutive) subject of `begin', indicated by
+$\emptyset$ in (\ref{b-c}b), controls the lower (ergative) subject of
+`feed'. $\emptyset$ is used here as a notation to suggest the analysis
+of the example, but it has no actual correspondent in the c-structure,
+as is standard in the LFG analysis of control and raising. In this
+example, it is the null matrix argument indicated by $\emptyset$ which
+is the associate of the depictive, and both are constituents of the
+main clause (see the f-structure in (\ref{fs-b-c}) below):
+
+\ea\label{b-c} Tzez
+\ea
+\gll sisxoli kid-b\={a} ziya  bi\v{s}ra  yoq-si (backward control)\\
+alone girl-{\ERG}  cow.{\ABS}  feed    begin-\textsc{pst.evid} {}\\
+\glt `The girl$_i$ alone$_i$ began to feed the cow.'\\
+{*}`The girl began to feed the cow$_i$ alone$_i$.'
+\ex
+\gll $\emptyset_i$ sisxoli [kid-b\={a}$_i$ ziya  bi\v{s}ra]  yoq-si\\
+{} alone [girl-{\ERG}  cow.{\ABS}  feed]    begin-\textsc{pst.evid} \\
+\z\z
+
+The other use of \textit{yoq-} is as a regular forward raising
+predicate. Its subject is in absolutive case as the predicate is not
+formally transitive, and the subject in the lower clause is the empty
+position, again indicated here by $\emptyset$. As seen in (\ref{f-r}a),
+with the syntactic analysis in (\ref{f-r}b), the same order of elements as
+in (\ref{b-c}a) is ungrammatical in this instance, as the depictive does
+indeed precede its associate:
+
+\ea\label{f-r} Tzez
+\ea[*]
+{\gll sisxoli kid [ziya  bi\v{s}ra]  yoq-si (forward raising)\\
+  alone girl-{\ABS}  [cow.{\ABS}  feed]    begin-\textsc{pst.evid} \\
+}
+\ex[*]
+{\gll sisxoli kid$_i$ [$\emptyset_i$ ziya  bi\v{s}ra]  yoq-si \\
+alone girl-{\ABS}  [{} cow.{\ABS}  feed]    begin-\textsc{pst.evid} \\
+}
+\z\z
+
+The LFG account of these data requires the concepts of f-command, which
+is like c-command but stated on f-structure, and of f-precedence (see
+Glossary for f-command and f-precedence). This latter concept makes
+reference to the c-structure expression(s) -- if any -- of f-structure
+elements. Crucially, an element such as a null argument which is
+present only in f-structure, but not in c-structure, has no
+(f-)precedence relations defined on it
+(\citealp[195]{bresnan2001lexical};
+\citealp[213]{BresnanEtAl2016}). The LFG analysis of the Tsez
+depictive can be stated simply as in (\ref{lfg-depict}):
+
+\ea\label{lfg-depict}\ea
+The associate and the depictive f-command each other.
+\ex
+The depictive must not f-precede the associate.
+\z\z
+
+\newpage
+(\ref{lfg-depict}a) is essentially a clause-mate condition, and (\ref{lfg-depict}b) is a
+negative condition. It does not require that the associate f-precede
+the depictive, but rather that the depictive does not f-precede the
+associate.
+
+The f-structure of (\ref{b-c}) is shown in (\ref{fs-b-c}), leaving out the
+case values of the arguments, which would formally conflict under
+straightforward structure-sharing (i.e.~formal equality in LFG
+terms). The case values require a slightly nuanced analysis, whatever
+the framework (see \citealp{polipots02}, \citealp{sellssubsump}). For
+presentational purposes, I assume here that the formal relation
+between depictive and associate is that they share an \textsc{index}
+value. Their GFs which f-command each other are indicated by the
+boldface GF names, in the matrix nucleus. The matrix \textsc{subj} is
+structure-shared with the embedded \textsc{subj} as the predicate is
+backward control. While there is a matrix \textsc{subj} in
+f-structure, it has no c-structure expression (there is no
+`$\emptyset$' in the c-structure); only the embedded subject is
+present in c-structure. Consequently, limited to the matrix
+f-structure in which the associate and depictive f-command each other,
+no precedence relation is defined on the boldface \textsc{subj}, and
+so the condition in (\ref{lfg-depict}b) is also satisfied.
+
+\vbox{%
+\ea\label{fs-b-c}
+F-structure of (\ref{b-c}), ignoring the case values. \textbf{\textsc{adj}}
+does not f-precede \textbf{\textsc{subj}}:\\
+\evnup[2pt]{\avm[style=fstr]{%\begin{avm}
+[  pred & `begin\arglist{(\UP \SUBJ)(\UP \XCOMP)}'\\  
+   tense & past\\ %\\
+   \textbf{subj} & \rnode{a}{[ \phantom{case}  & \phantom{abs} ]}\smallskip\\ %\\
+   \textbf{adj} & %\osort{$3$}
+          \rnode{c}%
+                 {[ pred & `alone'\\
+                      index & $i$ ]}\smallskip \\ %\\
+   xcomp & [ subj & \rnode{b}{[ pred & `girl'\\
+                                 pers & 3\\
+                                 num & sg\\
+                                 index & $i$\\
+                                 %\phantom{case} & \phantom{erg}
+                                 ]}\smallskip \\
+              obj & [ pred & `cow' ] \\
+              pred & `feed\arglist{(\UP \SUBJ)(\UP \OBJ)}'\\ 
+             ] \\ 
+]
+}%\end{avm}
+  }
+\CURVE[2]{-2pt}{0}{b}{-2pt}{0}{a}
+%\nccurve[ncurv=2]{b}{a}
+\z
+}
+  
+In contrast, for (\ref{f-r}), involving a forward raising use of the
+predicate, the  constraint in (\ref{lfg-depict}b) is not satisfied,
+because the \textsc{subj} is overt in the matrix clause, and so
+f-precedes the depictive \textsc{adj}.
+
+\vbox{%
+\ea\label{fs-f-r}
+F-structure of (\ref{f-r}), ignoring the case
+  conflict. \textbf{\textsc{adj}} f-precedes \textbf{\textsc{subj}}:\\ 
+\evnup[2pt]{\avm[style=fstr]{%\begin{avm}
+[  pred & `begin\arglist{(\UP \XCOMP)}(\UP \SUBJ)'\\ 
+   tense & past\\
+   \textbf{subj} & \rnode{a}{[ pred & `girl'\\
+                                 pers & 3\\
+                                 num & sg\\
+                                 index & $i$\\
+                                 %\phantom{case} & \phantom{erg}
+                                 ]}\smallskip\\
+   \textbf{adj} & \rnode{c}{[ pred & `alone'\\
+                      index & $i$ ]}\smallskip \\
+   xcomp & [ subj & \rnode{b}{[ \phantom{case}  & \phantom{abs} ]}\smallskip \\ 
+              obj & [ pred & `cow' ] \\
+              pred & `feed\arglist{(\UP \SUBJ)(\UP \OBJ)}'\\ 
+             ] \\ 
+]
+}%\end{avm}
+}
+\CURVE[2.5]{-2pt}{0}{b}{-2pt}{0}{a}
+%\nccurve[ncurv=1.8]{b}{a}
+\z
+}
+
+%\dashline
+%\nccurve{c}{a}
+
+The Minimalist account in \citet{polipots06} (see also
+\citealp{fukuda08}) is stated in terms of positive conditions, of
+which (\ref{mp-depict}b) is the important one.
+
+\ea\label{mp-depict}\ea
+The associate and the depictive are clause-mates.
+\ex
+The associate c-commands/binds ($\equiv$ precedes) the depictive.
+\z\z
+
+What is interesting about (\ref{mp-depict}b) is that it can only be successfully
+interpreted representationally. Suppose that at one point in the
+derivation, the associate (whether overt or covert) c-commands the
+depictive, and the relevant syntactic relationship is established,
+satisfying (\ref{mp-depict}b). However, what is to prevent some later operation
+which scrambles the depictive higher, so that it c-commands its
+associate, in violation of (\ref{mp-depict}b)? To prevent this possibility,
+(\ref{mp-depict}b) must be interpreted as an output condition on the ``final''
+representation, regardless of when during the derivation the relation
+between associate and depictive has been established. Hence even
+though (\ref{mp-depict}b) is a positive condition, not a negative one, it is
+necessarily representational.
+
+In the LFG analysis, (\ref{lfg-depict}b) is necessarily a negative
+condition, as the null subject in backward control is only represented
+in f-structure (\ref{b-c}), and so could never be evaluated against a
+positive precedence condition like (\ref{mp-depict}b). Evidence from other
+languages supports the position that null arguments are present in
+f-structure but absent from c-structure. Null pronouns in Malayalam
+are not sensitive to f-precedence conditions, unlike overt pronouns
+(\citealp[664--665]{mohanan83}). \citet{kameyama85} presents a similar
+argument for Japanese (summarized in \citealt[171ff.~and
+  288ff.]{dalrymple01}). For Malayalam, Mohanan observes that an overt
+pronoun may not precede its antecedent -- compare (\ref{malay-1}) and
+(\ref{malay-2}a) with (\ref{malay-2}b) -- while a null pronoun (indicated
+for presentational purposes by \textit{pro} in (\ref{malay-2}b)) may
+`precede' its antecedent:
+
+\ea\label{malay-1} Malayalam
+\ea
+\gll
+[ku\d{t}\d{t}iyute ammaye] awan \b{n}u\d{l}\d{l}i\\
+[child.\textsc{gen} mother.\textsc{acc}] he.\textsc{nom} pinched\\
+\glt `He$_i$ pinched the child$_i$’s mother.'
+\ex[*]
+{\gll [awante ammaye] ku\d{t}\d{t}i \b{n}u\d{l}\d{l}i\\
+[he.\textsc{gen} mother.\textsc{acc}] child.\textsc{nom} pinched\\
+\glt  `The child$_i$ pinched his$_i$ mother.'}
+\z\z
+
+\ea\label{malay-2} Malayalam
+\ea
+\gll
+{[}awan  aanaye \b{n}u\d{l}\d{l}iya\b{t}in{\textschwa} \={s}ee\d{s}am]
+ku\d{t}\d{t}i{$_i$} ura{\texteng}{\texteng}i\\
+{[}he.{\NOM} elephant.{\ACC} pinched.it after] child.{\NOM} slept\\
+\glt `The child$_i$ slept [after he$_{*i/j}$ pinched the elephant].'
+\ex
+\gll {[}\textit{pro} aanaye \b{n}u\d{l}\d{l}iya\b{t}in{\textschwa}
+  \={s}ee\d{s}am] ku\d{t}\d{t}i{$_i$} ura{\texteng}{\texteng}i\\
+{[} elephant.{\ACC}  pinched.it after] child.{\NOM} slept\\
+\glt `The child$_i$ slept [after he$_{i,j}$ pinched the elephant].'
+\z\z
+
+The overt pronoun `he' in (\ref{malay-2}a) may not take `child' as its
+antecedent, as the former precedes the latter, but this restriction is
+not there with the null pronoun in (\ref{malay-2}b). Why would overt and
+null pronouns have different precedence conditions on them?
+\citet[664]{mohanan83} proposes that the correct analysis is that a
+pronoun cannot precede its antecedent, where precedence is defined on
+c-structure elements, such as overt pronouns, but is not defined for
+null pronouns, which are present only in f-structure.
+% This condition has to be defined over a structure of arbitrary size.
+
+Consider the c-structure relationships of the relevant
+parts of the examples, shown in (\ref{malay-c-f}a), with the f-structure of
+the example shown in (\ref{malay-c-f}b). The subscript numbers show the
+c-to-f-structure correspondences:
+
+\ea\label{malay-c-f}
+\ea C-structure:\\
+\rnode{a}{(pronoun$_1$)}\hspace{50pt}\rnode{b}{pinched}$_2$\hspace{50pt}
+\rnode{c}{child}$_3$\\[-0.1em]
+%\vbox
+\ex
+F-structure:\\[.5em]
+{\avm[style=fstr]{%\begin{avm}
+[ subj&\id{3}{[pred&`child']}\smallskip\\
+   pred & `sleep\arglist{(\UP \SUBJ)}'\\ 
+   tense & past\\
+   adj& \id{2}{[ pred& `pinch'\\
+       subj& \id{1}{[pred & `pro' ]}\smallskip\\
+ \ldots & \ldots ]} ]
+}%\end{avm}
+}\z\z
+
+In both examples in (\ref{malay-2}), the adjunct clause 2 f-precedes
+3, `child', because the c-structure correspondent(s) of 2 precede the
+correspondent(s) of 3. However with regard to 1 and 3, 1 f-precedes 3
+only if 1 is present in c-structure, which is only the case in
+(\ref{malay-2}a). Hence the apparently different binding properties of
+pronouns reduce to their different properties in different parts of
+the syntactic analysis.
+
+The implications of this analysis are far-reaching: if certain
+syntactic elements can have a range of grammatical properties without
+being represented in phrase structure -- and the above is positive
+evidence that they are not represented in phrase structure -- then
+every aspect of grammatical analysis which can or must refer to those
+properties must also be independent of any phrase structure
+representation, including phenomena such as subjecthood, agreement,
+binding, and so on.
+
+Declarative frameworks have different dimensions of analysis -- such
+as c-structure and f-structure as described below -- but not different
+levels in the sense that GB had (e.g.~D-structure, S-structure). As
+there are no rules or operations, there are no conditions on rules,
+and so all conditions are stated over representations, as constraints.
+
+\section{Phrase Structure}
+\label{sec:minimalism:ps}
+\largerpage[2]
+\subsection{Heads and headed structures}
+\label{sec:minimalism:heads}
+
+LFG c-structures have some similarities with the S-structures of late
+GB. A canonical clause (for an SVO language) is structured around
+what I refer to as a `skeleton' with a `spine'
+(\citealp[17]{sellssao}). (\ref{skeleton}) below shows the skeleton,
+and the spine corresponds to all the non-argumental parts, V, I, C and
+their projections. These are separate categories which participate in
+the familiar clausal extended projection
+(\citealp[116ff.]{grimshaw00ep}; \citealp[100]{bresnan2001lexical}),
+often now referred to as the `Hierarchy of Projections'
+(\citealp{adger03}).
+
+The formal relation in the c-structure between V and I and C is
+usually developed from the idea of `extended projection' of
+\citet{grimshaw00ep}; see also \citet[100--101]{bresnan2001lexical},
+\citet[103]{BresnanEtAl2016}. The clausal categories are all
+projections of the category verb, which is specified by the
+traditional labels [$+$V, $-$N] (\citealp{chomsky1970remarks}).
+  
+\ea\label{ext-proj}
+Extended Projections
+\ea
+\makebox[2em][l]{V}\makebox[1em][l]{=}\makebox[7em][l]{[$+$V, $-$N, P0]} (the zeroth-level projection
+of V) 
+\ex
+\makebox[2em][l]{I}\makebox[1em][l]{=}\makebox[7em][l]{[$+$V, $-$N, P1]} (the first-level
+projection of V) 
+\ex
+\makebox[2em][l]{C}\makebox[1em][l]{=}\makebox[7em][l]{[$+$V, $-$N, P2]} (the second-level projection
+of V) 
+\z\z
+
+The outline clause structure has specifiers of CP and IP, and
+complement position(s) within VP, schematized here with the
+placeholder label Complement.
+
+\ea\label{skeleton}
+\begin{tabular}[t]{lll}
+\begin{forest}
+  for descendants={base=bottom}
+  [ \rnode{cp}{CP}
+    [ XP ]
+    [ \rnode{cb}{C$'$} [ \rnode{c}{C} ] 
+      [ \rnode{ip}{IP}
+        [ \rnode{s}{NP} ]
+        [ \rnode{ib}{I$'$}
+          [ \rnode{i}{I} ]
+          [ \rnode{vp}{VP}\hspace*{-12mm}\rdash [ \rnode{v}{V} ]
+            [ Comp\rlap{lement} ]
+          ]  
+        ]
+      ]
+    ]
+  ]
+\end{forest}
+& \phantom{more space} &
+\lower1em\hbox{\evnup[2pt]{\avm[style=fstr]{%\begin{avm}
+\rnode{fs}{[ subj&\rnode{sbj}{[\ldots ]}\\
+         {tense}&\ldots\\
+  pred&\ldots\\
+  \ldots & \ldots  ]}
+}%\end{avm}
+}}
+\end{tabular}
+\nccurve[linestyle=dashed,nodesepA=2pt,nodesepB=0pt,angleA={115},angleB={170},linewidth=.5pt]{->}{s}{sbj}
+\nccurve[linestyle=dashed,nodesepA=2pt,nodesepB=0pt,angleA={0},angleB={175},linewidth=.5pt]{->}{cp}{fs}
+\nccurve[linestyle=dashed,nodesepA=2pt,nodesepB=0pt,angleA={0},angleB={175},linewidth=.5pt]{->}{ip}{fs}
+%\nccurve[linestyle=dashed,nodesepA=2pt,nodesepB=0pt,angleA={0},angleB={175},linewidth=.5pt]{->}{cb}{fs}
+%\nccurve[linestyle=dashed,nodesepA=2pt,nodesepB=0pt,angleA={0},angleB={175},linewidth=.5pt]{->}{ib}{fs}
+\nccurve[linestyle=dashed,nodesepA=2pt,nodesepB=0pt,angleA={0},angleB={175},linewidth=.5pt]{->}{vp}{fs}
+\nccurve[linestyle=dashed,nodesepA=2pt,nodesepB=0pt,angleA={15},angleB={175},linewidth=.5pt]{->}{c}{fs}
+\nccurve[linestyle=dashed,nodesepA=2pt,nodesepB=0pt,angleA={15},angleB={175},linewidth=.5pt]{->}{i}{fs}
+\nccurve[linestyle=dashed,nodesepA=2pt,nodesepB=0pt,angleA={10},angleB={175},linewidth=.5pt]{->}{v}{fs}
+\z
+
+Each node in the c-structure is annotated as to how it contributes to
+the f-structure. The formal annotations on nodes are not shown in
+(\ref{skeleton}), for simplicity, but the dashed lines represent the way that
+information flows from the c-structure to the f-structure.
+
+Every node in the clausal spine contributes its information to the
+main f-structure, as can be seen from the several lines converging on
+the outer f-struc\-ture, which represents the grammatical information of
+the clause (again for simplicity, I omit lines from the X$'$ nodes).
+The other nodes, XP, NP, and Complement, have different annotations on
+them, as they contribute to parts of the overall f-structure. For
+instance, the annotation on the node NP would indicate that its
+contribution is as the subject -- in other words, NP as specifier of
+IP is the subject position. This is indicated by the dashed line going
+from NP in the c-structure to the value of \textsc{subj} in the
+f-structure.
+
+As far as clausal information is concerned, the verb itself
+contributes identically to the clause whether it is in V or in I or in
+C, a property usually referred to as `head mobility' (see
+e.g.~\citealp[126ff.]{bresnan2001lexical};
+\citealp[129ff.]{BresnanEtAl2016}). For instance, unless extra
+information is associated with the C node in (\ref{ex:Minimalism:25}b), both
+c-structures in (\ref{ex:Minimalism:25}) would determine the same f-structure:
+
+\ea\label{ex:Minimalism:25}\ea
+%\begin{tabular}[t]{lll}
+\begin{forest}
+ [IP
+   [ {(\UP\SUBJ)=\DOWN\\NP} [ Maria, roof ] ]
+   [ {\UP=\DOWN\\I$'$}
+    [ {\UP=\DOWN\\I} [ is ] ]
+    [ {\UP=\DOWN\\VP} [{(\UP\XCOMP)=\DOWN\\AP} [ {\UP=\DOWN\\A} [ happy ] ] ] ] ] ]
+\end{forest}
+b. % fake \ex
+\begin{forest}
+  [ CP
+    [ {\UP=\DOWN\\C$'$}
+      [ {\UP=\DOWN\\C} [ is ] ]
+      [ {\UP=\DOWN\\IP}   
+        [ {(\UP\SUBJ)=\DOWN\\NP} [ Maria, roof ] ]
+        [ {\UP=\DOWN\\I$'$}
+          [ {\UP=\DOWN\\VP} [{(\UP\XCOMP)=\DOWN\\AP} [ {\UP=\DOWN\\A} [ happy ] ] ] ] ] ] ] ]  
+\end{forest}
+%\end{tabular}
+\z\z
+
+Head mobility can be illustrated with the c-structures above. On the
+assumption that the only VP can be the c-structure complement of I,
+then for the example {\it Maria is happy\/} in (\ref{ex:Minimalism:25}a) the VP lacks a
+c-structure head V, for the verb \textit{is} is in I; and in (\ref{ex:Minimalism:25}b),
+for the string {\it Is Maria happy\/}, both IP and VP lack their
+X$^0$ heads. In these structures the finite form of {\it be\/}
+acts as an auxiliary verb, and so does not head a surface VP, but
+appears in a higher functional head position (in contrast {\it be\/}
+as a non-finite form would head VP, as in {\it Maria could [be
+    happy]\/}).
+
+Formally, the theory requires that every XP either has a c-structure
+head in the standard X$'$ sense, or that it maps to an f-structure
+shared with at least one YP which is headed in c-structure. Such a
+Y$^0$ is known as the `extended head' of XP (the notion is
+originally due to \citealp[221]{zaenen-kaplan1995}, revised to the
+formulation given here by \citealp[353]{bresnan00opt}). So in
+(\ref{ex:Minimalism:25}a), I is the extended head of VP, and in (\ref{ex:Minimalism:25}b), C is the
+extended head of IP and of VP, leading to the illusion that the head
+is ``moving''. Different verbal categories may be restricted, though,
+to particular c-structures positions: finite auxiliaries in English
+may only appear in I or C, not in V; finite non-auxiliaries must
+appear in V. Hence finite auxiliaries have the category [$+$V, $-$N,
+  P\textgreater0] and finite verbs have the category [$+$V, $-$N, P0].
+
+
+The discourse in the MP literature over the past 25 years as to
+whether head movement exists or whether it is part of `narrow
+syntax' (see e.g.~\citealp{roberts11}; \citealp{harigrib19} for
+overviews) is quite puzzling from the perspective of declarative
+frameworks such as LFG or HPSG, as heads are central to the syntactic
+analysis. The issue arose in the development of the MP as
+position-occupying head movement does not obey the Extension Condition
+of \citet{chomsky1995the-minimalist}, requiring that every operation
+of Merge extends the root node of the current tree. Head movement
+violates this condition, as it formally involves adjunction to a node
+lower than the root node (in contrast to XP adjunction, which does
+adjoin at the root). Consequently Chomsky raised the issue of the
+status of head movement (e.g.~\citealp[136--137]{chomsky00};
+\citealp[38]{chomsky01}) within the MP approach.
+
+As the mapping from c-structure to f-structure in LFG suggests, the
+crucial fact about a clausal spine is that head positions share
+information, each being a functional co-head (see
+e.g.~(\ref{ex:Minimalism:25})). This is directly evidenced in various core cases of
+multiple expresssion of the same grammatical information in a single
+domain, as first described in LFG by \citet{Nino1997}. The same
+properties of clausal information are expressed on more than one head
+(see also \citealp{Sells2004}, \citealp{Lodrup2014}). The Finnish
+examples in (\ref{135}) and (\ref{137}) \citep[135,~137]{Nino1997} show the
+phenomenon:
+
+\ea\label{135} Finnish\\
+\gll \"Al-k\"a\"a puhu-ko.\\
+\NEG.\IMP-\IMP.2.{\PL} speak-\IMP\\
+\glt `Don't (you pl.)\ speak!'
+\z
+% from nino97 135
+
+\ea\label{137} Finnish
+\ea
+\gll Ei ol-lut sano-ttu\\  %standard
+\NEG.3.{\SG} \PRF-\PST.\PTCP.{\SG} say-\PASS.\PST.\PTCP.{\SG}\\
+\glt `It has not been said.'
+\ex
+\gll Ei ol-ttu sano-ttu\\  %colloquial
+{\NEG}.3.{\SG} \PRF-\PASS.\PST.\PTCP.{\SG} say-\PASS.\PST.\PTCP.{\SG}\\
+\glt `It has not been said.'
+\z\z
+% from nino97 137
+
+(\ref{135}) involves a special form of negation restricted to
+imperatives, as well as imperative marking on both the auxiliary and
+the main verb. In (\ref{137}), singular marking appears on all three
+words: the negative, which is a kind of auxiliary; another auxiliary;
+and the main verb. These examples also indicate that `passive' is a
+feature in f-structure which can be accessed -- see also
+\citet{Lodrup2014} for evidence in Norwegian for the same conclusion.
+(\ref{137}b) is a colloquial variant of (\ref{137}a), in which the passive
+marking on the main verb also appears on the medial auxiliary. The c-
+and f-structure of (\ref{137}b) are shown in (\ref{ex:Minimalism:28}). It can easily be
+seen that the constraints coming from each of the words in (\ref{137}b)
+-- using the glosses as a guide -- are satisfied by this f-structure:
+
+\ea\label{ex:Minimalism:28}
+\begin{tabular}[t]{lll}
+\begin{forest}
+  for descendants={base=bottom}
+  [  \rnode{ip}{IP} [ \rnode{i}{I} [ ei ] ] 
+      [ \rnode{v1p}{VP}
+        [ \rnode{v1}{V} [ ol-ttu ] ]
+          [ \rnode{v2p}{VP} [ \rnode{v2}{V} [ sano-ttu ] ] ]
+      ]
+   ]    
+\end{forest}
+& \phantom{more space} &
+\lower1em\hbox{\evnup[2pt]{\avm[style=fstr]{%\begin{avm}
+      \rnode{fs}{[ subj&\rnode{sbj}{[ pers & 3\\
+                                        num & sg ]}\\
+  {tense} & pres \\
+  neg & + \\
+  asp & perf \\
+  pass & + \\
+  pred & \ldots  ]}
+}%\end{avm}
+}}
+\end{tabular}
+\nccurve[linestyle=dashed,nodesepA=2pt,nodesepB=0pt,angleA={0},angleB={175},linewidth=.5pt]{->}{ip}{fs}
+\nccurve[linestyle=dashed,nodesepA=2pt,nodesepB=0pt,angleA={0},angleB={175},linewidth=.5pt]{->}{v1p}{fs}
+\nccurve[linestyle=dashed,nodesepA=2pt,nodesepB=0pt,angleA={0},angleB={175},linewidth=.5pt]{->}{v2p}{fs}
+\nccurve[linestyle=dashed,nodesepA=2pt,nodesepB=0pt,angleA={-10},angleB={175},linewidth=.5pt]{->}{i}{fs}
+\nccurve[linestyle=dashed,nodesepA=2pt,nodesepB=0pt,angleA={15},angleB={175},linewidth=.5pt]{->}{v1}{fs}
+\nccurve[linestyle=dashed,nodesepA=2pt,nodesepB=0pt,angleA={0},angleB={175},linewidth=.5pt]{->}{v2}{fs}
+\z
+
+The co-head approach of LFG allows for different sources of the same
+constraint (e.g.~that the value of \NUM\ is \SG) which will be
+true of just a single object (e.g.~the subject). Hence feature
+exponence may be distributed or apparently multiplied. In the MP
+approach, each feature necessarily originates in only one position in
+the structure, and then must be copied or spread onto other positions,
+for data such as that above. In MP analyses, `imperative' corresponds
+to a high position in the clause, so the \textsc{imp} feature in
+(\ref{137}) must spread downwards. However in (\ref{137}b), the
+\textsc{pass} feature would originate on the lowest verb, the only one
+marked in (\ref{137}a), and so would have to spread upwards.
+
+The distribution of morphological exponence is probably not related to
+direction of spreading, but rather concerns morphological constraints
+on each type of word as to what features it must express, might
+express, or cannot express. This can be seen clearly in the examples
+in (\ref{liv-ex}) from Livonian \citep[131]{Nino1997}, which obey the
+generalizations in (\ref{liv}):
+
+\ea\label{liv}\ea
+verbs are marked for number
+\ex
+participles are not marked for person
+\z\z
+
+\ea\label{liv-ex} Livonian
+\ea
+\gll \"a-b u-m and-\^en-{$\emptyset$}\\
+\NEG-1 be-1.{\SG} give-\PST.\PTCP-{\SG}\\
+\glt `I have not given.'
+\ex
+\gll \"a-b \`u-om and-\^en-d\\
+\NEG-1 be-1.{\PL} give-\PST.\PTCP-{\PL}\\
+\glt `We have not given.'
+\ex
+\gll \"a-d \`u-od and-\^en-{$\emptyset$}\\
+\NEG-2 be-2.{\SG} give-\PST.\PTCP-{\SG}\\
+\glt `You have not given.'
+\ex
+\gll \"a-d \`u-ot and-\^en-d\\
+\NEG-2 be-2.{\PL} give-\PST.\PTCP-{\PL}\\
+\glt `You have not given.'
+\z\z
+
+(\ref{ex:Minimalism:31}) shows the c- and f-structure of (\ref{liv-ex}d). Again following
+the gloss, it can be seen that the \textsc{pers} value of the subject
+is identically constrained by the first two words, while the
+\textsc{num} value is constrained by the last two words:
+
+\ea\label{ex:Minimalism:31}% F-structure of \LLast[d]:\\
+\begin{tabular}[t]{lll}
+\begin{forest}
+  for descendants={base=bottom}
+  [  \rnode{ip}{IP} [ \rnode{i}{I} [ \"a-d ] ] 
+      [ \rnode{v1p}{VP}
+        [ \rnode{v1}{V} [ \`u-ot ] ]
+          [ \rnode{v2p}{VP} [ \rnode{v2}{V} [ and-\^en-d ] ] ]
+      ]
+   ]    
+\end{forest}
+& \phantom{more space} &
+\lower1em\hbox{\evnup[2pt]{\avm[style=fstr]{%\begin{avm}
+      \rnode{fs}{[ subj&\rnode{sbj}{[ pers & 2\\
+                                         num & pl ]}\\
+  {tense} & pres\\
+  neg & + \\
+  asp & perf \\
+  pred&\ldots\\
+  \ldots & \ldots  ]}
+}%\end{avm}
+}}
+\end{tabular}
+\nccurve[linestyle=dashed,nodesepA=2pt,nodesepB=0pt,angleA={0},angleB={175},linewidth=.5pt]{->}{ip}{fs}
+\nccurve[linestyle=dashed,nodesepA=2pt,nodesepB=0pt,angleA={0},angleB={175},linewidth=.5pt]{->}{v1p}{fs}
+\nccurve[linestyle=dashed,nodesepA=2pt,nodesepB=0pt,angleA={0},angleB={175},linewidth=.5pt]{->}{v2p}{fs}
+\nccurve[linestyle=dashed,nodesepA=2pt,nodesepB=0pt,angleA={-10},angleB={175},linewidth=.5pt]{->}{i}{fs}
+\nccurve[linestyle=dashed,nodesepA=2pt,nodesepB=0pt,angleA={15},angleB={175},linewidth=.5pt]{->}{v1}{fs}
+\nccurve[linestyle=dashed,nodesepA=2pt,nodesepB=0pt,angleA={0},angleB={175},linewidth=.5pt]{->}{v2}{fs}
+\z
+
+These patterns of multiple expresssion extend beyond simple clauses,
+into various kinds of complex predicate (see e.g.~\citealp{Sells2004},
+\citealp{Lodrup2014}), which might require a more nuanced syntactic
+analysis than simple embedding of f-structure nuclei -- as argued for
+on the basis of entirely different data by
+\citet{AndrewsManning1999}. The multiple expression data could
+profitably be analyzed in a realizational framework (as suggested in
+\citealp{Sells2004}) -- every informational element within a certain
+domain must have at least one rule of realization applying to it (this
+idea is formalized explicitly in \citealp{crysbona16}), but in certain
+circumstances one piece of information can be referred to more than
+once, as the generalizations in (\ref{liv}) suggest. Crucially, again,
+it is not that one piece of morphological exponence on a c-structure
+head is copied to another head, but rather that different (co-)heads
+are acting as exponents of the same grammatical information.
+
+\subsection{The MP approach to phrase structure: Merge}
+\label{sec:minimalism:merge}
+
+The legacy of the Government-Binding model of syntax into the MP is a
+procedural approach to structure and structure-building. Binary
+structures are built up by Merge of two elements, often known as
+External Merge or `first merge'. The GB idea of movement is
+reinterpreted in the MP as Internal Merge -- one element from within a
+given structure is (re-)merged near the top of the structure. As noted
+in \sectref{sec:minimalism:framework}, the argument structure of the
+predicate is represented in a vP-VP structure, above which there are
+further projections such as TP and CP. By the time the structure has
+built up at least to TP, this structure effectively codes clausal
+information.
+
+Strictly speaking, the syntactic derivation is abstract, with
+syntactic relationships referring to the structural notion of
+c-command but not linear order, which comes in the mapping from syntax
+to Phonetic Form (PF). The relevant terminal nodes of the structure
+are spelled out as words via the principles of Distributed Morphology
+(for an overview of this framework, see \citealp{harleynoyer03} or
+\citealp{embicknoyer07}). Consider the derivation in (\ref{awarded-1}) of the
+example {\it several prizes were awarded\/}, which will also feature
+later on:
+
+\ea\label{awarded-1}
+\resizebox{.9\textwidth}{!}{
+\begin{forest}
+  for descendants={base=top}
+ % [ \rnode{cp}{CP}
+    % [ XP ]
+  %  [ \rnode{cb}{C$'$} [ \rnode{c}{C} ] 
+      [ \rnode{ip}{TP}
+        [ \rnode{s}{DP}\\ {\cnom} [ {several prizes}, roof ] ]
+        [ \rnode{ib}{T$'$}
+          [ \rnode{i}{T} [ T\\ \fstackonefill ]
+            [ \rnode{tpass} Pass [ be ] ] ]
+          [ \rnode{vp}{PassP}
+            [ \rnode{pass}{Pass} [ \tr{be} ] ]
+            [ \rnode{vb}{vP}
+              [ \rnode{v}{v} [ v\\ {\inflpass} ]
+                              [ \rnode{vV}{V} [ award ] ] ]
+              [ \rnode{VP}{VP}
+                [ \rnode{V}{V} [ \tr{award} ]]
+                [ \rnode{ob}{DP} [ \tr{several prizes}, roof ] ]
+              ]
+            ] 
+          ]  
+         ]
+      ]
+%      ]
+% ]
+  \end{forest}
+\nccurve[ncurv=1.5,nodesepA=2pt,nodesepB=0pt,angleA={210},angleB={210},linewidth=.5pt]{->}{pass}{tpass}
+\nccurve[ncurv=1.3,nodesepA=2pt,nodesepB=0pt,angleA={210},angleB={210},linewidth=.5pt]{->}{V}{vV}
+\nccurve[ncurv=1.3,nodesepA=2pt,nodesepB=2pt,angleA={210},angleB={210},linewidth=.5pt]{->}{ob}{s}
+}
+\z
+
+The internal argument of a transitive verb is merged with V (a kind of
+root) within VP, at the lower right of the structure. The structure
+builds from the bottom up via successive applications of Merge. The VP is
+immediately the complement of a ``little v'' vP, which introduces the
+external argument in a canonical transitive. The particular example
+here is a passive, with the external argument suppressed. The two
+components of the verb, V and v, are combined by head movement of V to
+v, as the structure shows. The notation \tr{award} indicates the
+original position of V before movement.
+
+The passive is indicated here by PassP, following the analysis of
+English auxiliaries in \citet{adger03}. The Pass head {\it be\/}
+merges with vP as its complement. Next, above that, a T$'$ is created
+with a formative for past tense in its T head. The auxiliary verb {\it
+  be\/} also undergoes head movement, to combine with T. Finally,
+following X$'$-theory, T$'$ has a specifier which hosts the surface
+subject. In the case of a passive example, a DP is raised from a
+VP-internal position to fill the subject position.
+
+The arrows in (\ref{awarded-1}) indicate movement. Standardly in the
+Minimalist approach, movement leaves behind a ``copy'' of the moved
+constituent (\citealp{chomsky1995the-minimalist}), which the notation
+such as \tr{award} etc.\ is intended to convey. Principles of
+realization at PF determine which copy is overt (pronounced) --
+usually the highest copy, as in the earlier versions of
+transformational grammar where moved constituents leave behind a
+trace, which is by definition unpronounced. The formalization of MP
+syntactic derivations due to \citet{collstab16} captures the `copy'
+idea by treating each operation of movement as creating a
+multidominance structure from a single terminal element; that
+formalization is extended to head movement by
+\citet{bleaman21}. However, for presentational purposes, I show the
+more familiar movement-with-copies structures here.
+
+There are complex heads in T and v in (\ref{awarded-1}), both formed via head
+movement. They also have a representation of the various features
+which are present or which are valued during the course of the
+derivation (see \sectref{sec:minimalism:features-mp}). These complex heads
+will realize their lexical and featural information as the words {\it
+  were\/} and {\it awarded\/}.
+
+Hence, the phrase structure derivation in the Minimalist approach
+represents all the clausal information, somewhat like LFG's
+f-structure, which is then spelled out as the overt form, which
+corresponds to some extent to LFG's c-structure.
+
+\subsection{Phrase structures are not isomorphic to clausal
+  information}
+
+One difference between LFG and MP concerns how far the phrase
+structure is a direct representation of the clausal information. As
+just noted, the representation of clausal information in a Minimalist
+approach is encoded within the phrase structure (in its configuration
+and its derivation), while in LFG the relation between f-structure and
+c-structure is fundamentally more flexible.  The Mandarin Verb Copy
+Construction (\citealp{lithompson}, \citealp{huang82}) serves as a
+good example of how clausal information at f-structure can exist
+independently of any particular c-structure property. Postverbal
+arguments and adjuncts appear to be in competition within a single VP:
+in order to express an argument and an adjunct, the main verb must be
+duplicated to form a second VP, as in (\ref{piano}b).
+
+\ea\label{piano}Mandarin
+\ea[*]
+{\gll Zhangsan tan gangqin de hen hao\\
+Zhangsan play piano \textsc{lnk} very well\\
+\glt `Zhangsan plays piano very well'}
+\ex
+\gll Zhangsan tan gangqin tan de hen hao\\
+Zhangsan play piano play \textsc{lnk} very well\\
+\glt `Zhangsan plays piano very well'
+\z\z
+
+\citet{huang82} proposed a phrase structure filter which essentially
+disallows arguments and adjuncts in the same VP. \citet{fangsells07}
+note that both arguments of a ditransitive verb appear in the first VP
+(underlined in (\ref{ex:Minimalism:34}a)), and that an object may be displaced from
+within the first VP, otherwise preserving the phrase structure:
+
+\ea\label{ex:Minimalism:34} Mandarin
+\ea
+\gll wo   song \tightuline{ta} \tightuline{zhe\ jian\ liwu} song  de hen
+hao \\ 
+I give him {this \textsc{cl}~~~gift} give \textsc{lnk} very well \\
+\glt `I gave him this gift and it turned out to be a very good idea.'
+\ex
+\gll \tightuline{zhe\ jian\ liwu} wo song   ta   {\gapline} song de  hen hao\\
+{this\ \textsc{cl}~~~gift}   I give  him {\gapline} give   \textsc{lnk} 
+  very well\\
+\glt `This gift, I gave (it) him and (it turned out to be) very good.'
+\z\z
+
+ 
+However, if an object is displaced from a monotransitive VP, verb
+``copying'' is no longer an option (also see \citealp[53]{huang82}):
+
+\ea\label{piano-top} Mandarin
+\ea
+[*]
+{\gll \tightuline{{gangqin}}  Zhangsan tan {\gapline}   tan de  hen
+  hao\\ 
+piano Zhangsan play    {\gapline}    play    \textsc{lnk}  very    well\\}
+\ex
+\gll \tightuline{{gangqin}}  Zhangsan tan {\gapline} de  hen hao\\
+piano Zhangsan play    {\gapline}      \textsc{lnk}  very   well\\
+\glt `The piano, Zhangsan played (it) very well.'
+\z\z
+
+If we take (\ref{ex:Minimalism:36}) to be the basic f-structure of what should be
+expressed in one structure of (\ref{piano}), given the constraint that
+arguments and adjuncts cannot be in the same c-structure VP, it
+follows that (\ref{piano}b) is the only possible expression.
+
+\ea\label{ex:Minimalism:36}
+%\evnup[2pt]{
+{\avm[style=fstr]{%\begin{avm}
+  [ pred & `play\arglist{(\UP \SUBJ)(\UP \OBJ)}'\\ 
+   subj  &  [pred & `Zhangsan']\\
+   obj & [ {pred} & `piano' ]\\
+   adjunct & [pred & `very well']
+]    
+}%\end{avm}
+}
+\z
+
+On the other hand, if `piano' appears as a structural \textsc{topic},
+in clause-initial position, only a single VP is required to express
+the in-situ material, which consists of the \textsc{pred} and its
+\textsc{adjunct} in (\ref{ex:Minimalism:37}), as in example (\ref{piano-top}b). The
+identification of \textsc{topic} and \textsc{obj} takes place only at
+f-structure (\citealp{kaplzaen89}).
+
+\ea\label{ex:Minimalism:37}
+%\evnup[2pt]{
+\avm[style=fstr]{%\begin{avm}
+  [ {topic} & \rnode{a}{[pred & `piano' ]}\\
+    pred & `play\arglist{(\UP \SUBJ)(\UP \OBJ)}'\\ 
+   subj  &  [pred & `Zhangsan']\\
+{obj} & \rnode{b}{[ \phantom{pred} & \phantom{`piano'} ]}\smallskip\\
+  adjunct & [pred & `very well']
+]  
+}%\end{avm}
+%}
+\CURVE[1.6]{-2pt}{0}{a}{-2pt}{0}{b}
+\z
+
+Examples such as (\ref{piano-top}b) show that the competition between
+arguments and adjuncts for the same VP is a phrase-structure
+phenomenon, and is not relevant for the level of clausal grammatical
+information: a verb in Mandarin can perfectly well have a full array
+of arguments and any adjuncts, but only some of those can be expressed
+within a single VP. Following a careful survey of the research on this
+topic, \citet{bartos19} proposes an MP analysis which has to appeal to
+haplology of V to derive (\ref{piano-top}b) from (\ref{piano-top}a)
+(already suggested in \citealp[99]{huang82}), but this is merely
+symptomatic of an underlying misanalysis, for the core relations
+between a predicate and its arguments and adjuncts are not
+isomorphically represented in phrase structure.
+
+\section{Features and agreement}
+\label{sec:minimalism:features}
+
+\subsection{Feature theory and LFG}
+
+LFG is built on the foundation that featural specifications in
+morpho-syntax are of the form [attribute value], and that
+well-formedness requires every attribute in a given representation to
+have an appropriate value. The attribute-value format is used in LFG
+to represent functional structure, which represents the relational and
+featural content of a clause, but not constituent
+structure. F-structure is deliberately designed to not look like a
+phrase structure, to signify that it represents a different kind of
+syntactic information, and also that the parts within it are
+unordered. (The concept of f-precedence in LFG (see Glossary)
+crucially makes reference to the c-structure realization of
+f-structure elements.)
+
+\citet{adger10} considers features and the format of features in
+MP. He also concludes that features should be represented as
+attribute-value pairs, but rejects the idea that feature names can
+have structured values, because that re-creates the hierarchical
+structure within the phrase structure (e.g.~a structured value for
+\textsc{subj} corresponds to a DP in the phrase structure with
+internal constituency). Of course, there is no claim in LFG that
+every attribute in f-structure is the name of a feature -- `f' stands
+for `functional', not `feature'. Hence the closest comparison will be
+the atomically-valued attributes in f-structure, which will correspond
+most closely to features in MP, and which also accord with the general
+notion of morpho-syntactic features. More precisely, these will be the
+`syntactic' features identified by \citet{sadlspen01} (see also
+\citealp{spencer13}), which are the target of morpho-syntactic
+exponence (as in the discussion of Finnish and Livonian above in
+\sectref{sec:minimalism:heads}). In this subsection I compare the LFG and
+MP approaches to such features. An extended discussion of features in
+the MP in comparison to other frameworks can be found in
+\citet[409--420]{asudtoiv06}.
+
+Featural information associated with each word introduces constraints
+on the well-formed\-ness of the whole structure, within a `monotonic'
+system: information cannot be selectively ignored, nor can it be
+changed. Hence declarative frameworks such as LFG necessarily have a
+property which has come to feature in MP discourse -- the `No
+Tampering Condition' (\citealp{chomsky07}), which does not allow
+information on an item to be changed as it is merged in as part of the
+derivation (see also \sectref{sec:minimalism:conclusion}).
+
+For instance, (\ref{ex:Minimalism:38}) is ungrammatical as not all the constraints
+coming from the lexical items can be satisfied simultaneously, and no
+part of the information can be ignored:
+
+\ea[*]
+{You am happy.}\label{ex:Minimalism:38}
+\z
+
+In this example, \textit{you} will specify the value of
+\textsc{person} of the subject as 2, but \textit{am} will specify that
+same value as 1. There is no way to satisfy the requirements of these
+first two words in a single structure.
+
+LFG introduces featural information either via lexical items or by the
+rules which license phrase structure. Every well-formed feature
+specification in f-struc\-ture is of the form \mbox{\textsc[attribute value]}, by
+definition (see e.g.~\citealp[181--182]{kaplanbresnan82}). If any
+lexical item specifies a feature but without a value, that is an
+`unvalued feature'; some other element in the structure must introduce
+the value for that feature, or else the overall structure will be
+ill-formed. Unvalued features play a significant role in MP analyses
+(because their function goes beyond that of simply representing
+information; see \sectref{sec:minimalism:features-mp}); they also find
+their place in declarative analyses, as described below, although
+valued features tend to be the norm.
+
+The basic way for information to be specified is as a defining
+equation -- for instance the information carried by the appropriate
+lexical entries to give the f-structures in (\ref{heureuse}). There is
+another kind of informational contribution, the constraining equation
+of LFG. \citet[207--209]{kaplanbresnan82} motivate constraining
+equations with familiar facts such as those in (\ref{handing}), with their
+proposal for analysis in (\ref{pres-part}):
+
+\ea\label{handing}
+A girl is handing (*is hands, *is handed) the baby a toy.
+\z
+%
+\ea\label{pres-part}
+\textit{is}:\; (\UP\XCOMP\textsc{participle}) {=$_c$} \textsc{present}
+\z
+
+% \textit{handing} ({\UP} PARTICIPLE) = present
+
+The VP complement of \textit{is} has the grammatical function
+\textsc{xcomp} in the LFG analysis, and within that, the grammatical
+form \textit{handing} would provide the value `\textsc{present}' for the
+attribute \textsc{participle}. That fulfils the requirement in
+(\ref{pres-part}). The important move to a constraining equation over a
+defining one concerns the ungrammatical variants in
+(\ref{handing}). For instance, as a finite form, \textit{hands} is not
+specified at all for the attribute \textsc{participle}, and so does
+not provide the information that (\ref{pres-part}) needs. However, if that
+information in (\ref{pres-part}) were specified as defining information, it
+would be unified in with the information from \textit{hands}, and -- at
+least on that count -- the sequence \textit{*is hands} would not be
+ungrammatical, as nothing would be inconsistent. Kaplan and Bresnan
+note that in a unification-based system, constraining equations have
+the important consequence that negative-value specifications for
+otherwise unnecessary features can be avoided. (For more on features
+see \citealp{kaplan18}.)
+
+Accounts involving a constraining-type analysis are common. This is
+the situation that is modelled in MP analyses with an
+`uninterpretable' feature -- two elements between which there is
+some dependency have the same feature specifications, but only one
+such specification is the `real one'. An MP analysis of the English
+auxiliary system by \citet{aelbharw15} involves the same idea as in
+(\ref{pres-part}), proposing that uninterpretable but valued features
+match between the governed verb and the higher auxiliary which governs
+it.
+
+The use of a constraining equation can be further illustrated in the
+case of a strict Negative Polarity Item (NPI) -- an item that must appear
+in the context of negation, but is not the expression of negation
+itself. Such an NPI constrains its syntactic environment to have the
+\textsc{neg} feature with the value + (see e.g.~\citealp{sellsneg});
+this information must be present, but supplied by some other element,
+namely overt negation. From the MP perspective, \citet{zeijlstra15}
+discusses an analysis of NPIs in which they ``carry some
+uninterpretable negative feature [u\textsc{neg}] that must be checked
+against a higher, semantically negative element that carries an
+interpretable formal negative feature [i\textsc{neg}].''  Again, in
+the relevant sense, this is a valued feature which is contentful on
+one element, and is on another for the purpose only of establishing an
+abstract syntactic relation.
+
+Returning to the case of an attribute introduced without a value, this
+is an existential constraint on f-structure
+(see \citealp[210ff.]{kaplanbresnan82} and
+\citealp[112--114]{dalrymple01}). For instance, the complementizer {\it
+  that\/} in English introduces a clause which is tensed, but it
+places no restriction on the value of \textsc{tense}. Hence part of
+the functional information associated with {\it that\/} will be the
+existential constraint {(\UP\TENSE)}. This constrains the
+f-structure of the clause to have the attribute \TENSE, and any
+well-formed f-structure must have a value for that attribute. The
+value is not supplied by {\it that\/}, so that information must come
+from elsewhere in the clause introduced by {\it that\/}.
+
+In summary, the notions of `unvalued' and `uninterpretable' features
+which are important in MP analyses -- see immediately below -- have
+formalized equivalents in LFG, and in LFG, neither can by
+itself lead to a well-formed f-structure: an f-structure cannot
+contain an attribute without a value, and the contribution of a
+constraining equation must be matched by the contribution of a
+(valued) defining equation. In keeping with the character of the
+differences between the LFG and MP approaches, a clausal f-structure
+in LFG is never partial nor ill-formed, unlike stages in an MP
+derivation. Rather, each element in the c-structure in a given example
+contributes to a set of constraints which the overall f-structure must
+satisfy. If those constraints conflict, there is no f-structure which
+satisfies them, and the example is thereby ungrammatical.
+
+\subsection{Features in the MP}
+\label{sec:minimalism:features-mp}
+\largerpage[2]
+Features are put to at least three uses in MP analyses (see
+\citealp[200--212]{adger10}). The first is to represent information,
+the second is to establish a relationship, and the third is to make
+something happen. The representational aspect usually involves valued
+features, and might involve unvalued ones. The second use involves the
+notion of interpretable and uninterpretable features, which is the
+mechanism for establishing a relationship known as `Agree' between a
+Probe and a Goal (\citealp[101]{chomsky00}).
+
+For instance, \citet[189]{adger10} gives the following illustrative
+example of a feature that is unvalued, and also uninterpretable. The
+idea that some features are uninterpretable was originally introduced
+by \citet[277--278]{chomsky1995the-minimalist}. In (\ref{adger}), the
+first group of features are features of the subject DP, and the second
+group are features on the T head of TP.
+
+\ea\label{adger}\relax
+\{D, definite, plural\} \ldots\ \{T, past, \textit{u}plural\}
+\z
+
+The DP is definite and plural, and T is past and also marked as
+plural, but the prefix notation \textit{u} indicates that the plural
+feature, though present on T, is uninterpretable on it. Adger
+describes (\ref{adger}) as follows:
+\begin{quote}
+The idea is that a feature like [plural] only has an interpretation
+when specified on a category which can be potentially interpreted as
+plural (e.g.~on a noun), otherwise an instance of this feature will be
+uninterpretable: interpretability is detectable from a feature’s
+syntactic/semantic context. The formal property of features (the
+\textit{u} prefix) which enables them to enter into dependency relations
+is thus linked to the interpretation of features\ \ldots~ \citep[189]{adger10}
+\end{quote}
+The [plural] feature is not interpretable on T -- the interpretation
+of tense never makes reference to singular/plural -- but the matching
+occurence of [plural] on the subject DP establishes the {Agree}
+relation between these two groups of features. After it has been
+checked by a matching interpretable feature, [plural] is then
+eliminated on T.
+
+From the perspective of LFG, the equivalent of
+[\textit{u}plural] in (\ref{adger}) would be as in (\ref{ex:Minimalism:42}).
+
+\ea\label{ex:Minimalism:42}
+%\textit{is}:
+(\UP\SUBJ\NUM) {=$_c$} \PL
+\z
+
+
+\largerpage[2]
+Just as with (\ref{adger}), a structure described by (\ref{ex:Minimalism:42}) will
+only be well-formed if some other element (e.g.~the subject) specifies
+the \PL\ value for the feature, but it represents a different approach
+to the role of features. In (\ref{adger}), the feature on T is
+understood to convey ``I am plural'', which is uninterpretable; but
+the specification in (\ref{ex:Minimalism:42}) conveys ``my subject's number is
+plural'', which is actually straightforwardly interpretable.
+
+The third use of features in the MP is to trigger an operation. Such
+features do not seem to overlap with the features considered above,
+and exist solely to make something happen. The canonical example is
+the `EPP-feature' derived from GB, but used in different ways to
+force either XP movement or X$^0$ movement (head movement) in many
+MP analyses. This feature has been more recently cast as an `Edge
+Feature' (e.g.~\citealp{chomsky2005three}). It is not clear formally
+what kind of feature this is -- it must be satisfied, as an
+instruction for some structure to be built, and once satisfied, there
+are two options: either it becomes inactive, or it stays active,
+allowing for multiple specifiers (\citealp[11]{chomsky07}).
+
+
+\largerpage[2]
+I now show in more detail how (un)valued and (un)interpretable
+features participate in an MP derivation. What is shown here is based
+on the presentation in \citet[284ff.]{radford09}, though using a
+slightly different representational format which is more internally
+consistent and which will also be more transparent in the context of
+the LFG approach to features described above. There is in fact a close
+relation between valued and interpretable features, as will be evident
+in the structures below. However, the two notions are formally
+distinct and can play different roles in an overall syntactic analysis
+(see e.g.~\citealp{aelbharw15}). The structure in (\ref{awarded-4}) underlies
+the fragment {\it were awarded several prizes\/}, which is our
+illustrative example. The DP {\it several prizes\/} has interpretable
+features of person and number (it is 3rd person plural), and in the
+syntax it will have a value for case; but the case feature is
+initially unvalued, as the particular value of case will depend on the
+syntactic context of the DP. The v which ultimately hosts {\it
+award\/} has an Infl feature (sometimes referred to as {\sc vform} in
+LFG), which will also be valued according to the syntactic context of
+the verb. Finally, the head T is specified as past tense, and it also
+hosts agreement features for person and number, which are unvalued at
+this initial stage. In the structure, the features shown in bold are
+those which are interpretable, and they also are the ones which are
+valued.
+
+\ea\label{awarded-4}
+{\begin{forest}
+  for descendants={base=top}
+ % [ \rnode{cp}{CP}
+    % [ XP ]
+  %  [ \rnode{cb}{C$'$} [ \rnode{c}{C} ] 
+        [ \rnode{ib}{T$'$}
+          [ \rnode{i}{T} [ T\\ \fstackoneint ]
+            [ \rnode{tpass} Pass [ be\\{} ] ] ]
+          [ \rnode{vp}{PassP}%\rdash
+            [ \rnode{pass}{Pass} [ \tr{be} ] ]
+            [ \rnode{vb}{vP}
+              [ \rnode{v}{v}  [ v\\{\uinfl} ]
+                              [ \rnode{vV}{V} [ award ] ] ]
+              [ \rnode{VP}{VP}
+                [ \rnode{V}{V} [ \tr{award} ]]
+                [ \rnode{ob}{DP} [ {several prizes\\
+                                    \fstacktwoint}, roof ] ]
+              ]
+            ] 
+          ]  
+         ]
+%      ]
+% ]
+  \end{forest}
+\nccurve[ncurv=1.5,nodesepA=2pt,nodesepB=0pt,angleA={210},angleB={210},linewidth=.5pt]{->}{pass}{tpass}
+\nccurve[ncurv=1.3,nodesepA=2pt,nodesepB=0pt,angleA={210},angleB={210},linewidth=.5pt]{->}{V}{vV}
+}
+\z
+
+Formally, Agree establishes a relation between two nodes, a Probe and
+a Goal, one of which has an interpretable feature, with the other
+having a (matching) uninterpretable feature. In the simple example
+here, the uninterpretable features are the unvalued ones, and so they
+will become valued once Agree takes place. For instance, the Pass head
+{\it be\/} in (\ref{awarded-4}) enters into an Agree relation with v and
+values the Infl feature as Pass(ive). The T head enters into an
+Agreement relation with the DP {\it several prizes\/}, valuing the
+Case on DP as Nom, and at the same time taking the values of person
+and number from that DP. Hence, after these Agree relations are
+established, all features are valued, as in (\ref{awarded-5}), and these
+feature specifications will be relevant for morphological realization
+(e.g.\ the surface form of {\it be\/} will be {\it
+  were\/}). Nevertheless, the non-bold (formerly unvalued) features
+are classed as uninterpretable, and must delete by the end of the
+syntactic derivation, Logical Form. Finally, (\ref{awarded-5}) also shows one
+more feature on T, [EPP], which is discussed immediately below.
+
+
+\ea\label{awarded-5}
+{\begin{forest}
+  for descendants={base=top}
+ % [ \rnode{cp}{CP}
+    % [ XP ]
+  %  [ \rnode{cb}{C$'$} [ \rnode{c}{C} ] 
+        [ \rnode{ib}{T$'$}
+          [ \rnode{i}{T} [ T\\ \fstackthrchk \\ \fepp]
+            [ \rnode{tpass} Pass [ be\\{} ] ] ]
+          [ \rnode{vp}{PassP}%\rdash
+            [ \rnode{pass}{Pass} [ \tr{be} ] ]
+            [ \rnode{vb}{vP}
+              [ \rnode{v}{v}  [ v\\{[Infl:Pass]} ]
+                              [ \rnode{vV}{V} [ award ] ] ]
+              [ \rnode{VP}{VP}
+                [ \rnode{V}{V} [ \tr{award} ]]
+                [ \rnode{ob}{DP} [ {several prizes\\
+                                    \fstackfouchk}, roof ] ]
+              ]
+            ] 
+          ]  
+         ]
+%      ]
+% ]
+  \end{forest}
+\nccurve[ncurv=1.5,nodesepA=2pt,nodesepB=0pt,angleA={210},angleB={210},linewidth=.5pt]{->}{pass}{tpass}
+\nccurve[ncurv=1.3,nodesepA=2pt,nodesepB=0pt,angleA={210},angleB={210},linewidth=.5pt]{->}{V}{vV}
+}
+\z
+
+T in (\ref{awarded-5}) has the [EPP] feature mentioned above, which has the
+effect that at the next step of the derivation a specifier must be
+created. This feature, then, does not represent a `featural' property
+of the clause (unlike, say, `past tense'), but represents a structural
+property.  One option for satisfying this feature is to merge in an
+expletive placeholder, {\it there\/}:
+
+\ea\label{awarded-6}
+{\begin{forest}
+  for descendants={base=top}
+ % [ \rnode{cp}{CP}
+    % [ XP ]
+  %  [ \rnode{cb}{C$'$} [ \rnode{c}{C} ] 
+      [ \rnode{ip}{TP}
+        [ \rnode{s}{DP} [ there, roof ] ] % [ we, roof ] ]
+        [ \rnode{ib}{T$'$}
+          [ \rnode{i}{T} [ T\\ \fstackthrchk\\ \sepp ]
+            [ \rnode{tpass} Pass [ be\\{} ] ] ]
+          [ \rnode{vp}{PassP}%\rdash
+            [ \rnode{pass}{Pass} [ \tr{be} ] ]
+            [ \rnode{vb}{vP}
+              [ \rnode{v}{v}  [ v\\{[Infl:Pass]} ]
+                              [ \rnode{vV}{V} [ award ] ] ]
+              [ \rnode{VP}{VP}
+                [ \rnode{V}{V} [ \tr{award} ]]
+                [ \rnode{ob}{DP} [ {several prizes\\
+                                    \fstackfouchk}, roof ] ]
+              ]
+            ] 
+          ]  
+         ]
+      ]
+%      ]
+% ]
+  \end{forest}
+\nccurve[ncurv=1.5,nodesepA=2pt,nodesepB=0pt,angleA={210},angleB={210},linewidth=.5pt]{->}{pass}{tpass}
+\nccurve[ncurv=1.3,nodesepA=2pt,nodesepB=0pt,angleA={210},angleB={210},linewidth=.5pt]{->}{V}{vV}
+}
+\z
+
+Once the specifier is merged, the EPP feature is thereby satisfied,
+indicated in (\ref{awarded-6}) by the strikethrough. Another way of satisfying
+this feature from the stage in (\ref{awarded-5}) is to raise the object DP to
+the subject position, as a canonical passive:
+
+\ea\label{awarded-7}
+\hspace*{-5mm}\scalebox{.9}{\begin{forest}
+  for descendants={base=top}
+ % [ \rnode{cp}{CP}
+    % [ XP ]
+  %  [ \rnode{cb}{C$'$} [ \rnode{c}{C} ] 
+      [ \rnode{ip}{TP}
+        [ \rnode{s}{DP} [ {several prizes\\
+                                    \fstackfouchk}, roof ] ]
+        [ \rnode{ib}{T$'$}
+          [ \rnode{i}{T} [ T\\ \fstackthrchk\\ \sepp ]
+            [ \rnode{tpass} Pass [ be\\{} ] ] ]
+          [ \rnode{vp}{PassP}%\rdash
+            [ \rnode{pass}{Pass} [ \tr{be} ] ]
+            [ \rnode{vb}{vP}
+              [ \rnode{v}{v}  [ v\\{[Infl:Pass]} ]
+                              [ \rnode{vV}{V} [ award ] ] ]
+              [ \rnode{VP}{VP}
+                [ \rnode{V}{V} [ \tr{award} ]]
+                [ \rnode{ob}{DP} [ \tr{several prizes}, roof ] ]
+              ]
+            ] 
+          ]  
+         ]
+      ]
+%      ]
+% ]
+  \end{forest}
+\nccurve[ncurv=1.5,nodesepA=2pt,nodesepB=0pt,angleA={210},angleB={210},linewidth=.5pt]{->}{pass}{tpass}
+\nccurve[ncurv=1.3,nodesepA=2pt,nodesepB=0pt,angleA={210},angleB={210},linewidth=.5pt]{->}{V}{vV}
+\nccurve[ncurv=1.3,nodesepA=2pt,nodesepB=2pt,angleA={210},angleB={210},linewidth=.5pt]{->}{ob}{s}
+}
+\z
+
+\subsection{Agreement and the direction of Agree}
+\label{sec:minimalism:agreement}
+
+The second use of features in the MP noted above is that they
+participate in the process of Agree (\citealp{chomsky00}), which is a
+prerequisite to establishing a relation in the syntax. The exemplar
+syntactic relation is that of agreement -- say between a subject and a
+finite verb. As with canonical agreement (e.g.~\citealp{corbett06}),
+there is assumed to be a controller of agreement and a target for
+agreement, a directional or asymmetric relationship, formally
+instantiated as a Probe and a Goal in the MP. There is considerable
+debate in the MP literature as to the `directionality' of Agree -- is
+it upwards, or downwards? -- as well as to whether feature valuation
+passes from the higher element to the lower one, or vice versa. For
+instance, \citet{poliprem19} make a linguistic argument about the
+direction of agreement (specifically, $\phi$-feature agreement); they
+argue that agreement must be directional, looking downwards, but
+valuing features upwards. In contrast, \citet{bjorzeij19} argue for a
+more complex system in which a checking relation is first established,
+but only upwards, and then after that valuation can take place, in
+either direction. Some examples which bear on these issues are given
+below. These proposals are each `substantive' proposals, motivated by
+empirical observations, as there is nothing formally about the MP
+system which requires a given directionality for Agree.
+
+As noted above in \sectref{sec:minimalism:info-based}, there is no sense in
+LFG in which agreement can be directional, as ``agreement'' is the
+informal notion we apply to a situation where more than one element
+provides featural information about some (other) element. The Archi
+examples below show that the distinction between Controller and
+Target, or between Probe and Goal, cannot be sustained anyway.
+
+\citet{poliprem19} present examples such as (\ref{tsez}) from Tsez, to
+support their claim that a Probe looks downwards to find a Goal --
+that the Probe c-commands the Goal -- and the relevant feature values
+from the Goal are then valued upwards to the (previously incomplete)
+Probe. The key property of this example is that it involves
+long-distance agreement, in which the matrix verb does not agree with
+any local argument but rather agrees with the absolutive argument
+(object) of the embedded clause. Tsez has an ergative-absolutive
+case-marking system, and the verb agrees with an absolutive
+argument. The embedded absolutive in (\ref{tsez}) is `bread', class
+\textsc{iii}, and both the local predicate `eat' and the higher
+predicate `know' agree with it in class, shown in boldface in the
+gloss:
+
+\ea\label{tsez}
+Tsez\\%\vspace{-0.8em}
+\gll
+eni-r [u\v{z}-\={a} magalu b-\={a}c’-ru-{{\textbeltl}}i] b-iy-xo\\
+mother-\textsc{dat} [boy-\textsc{erg}
+bread.{\bf\textsc{iii}}\textsc{(abs)}
+{\bf\textsc{iii}}-eat-\textsc{pst.ptcp-nmlz}] 
+{\bf\textsc{iii}}-know-\textsc{pres}\\%\vspace{-0.9em}
+\glt`The mother knows that as for the bread, the boy ate it.'
+\z
+
+The particular argument that Polinsky and Preminger make is based on
+the observation that the opposite configuration appears to be
+unattested -- we never find a structure in which a verb in a lower
+clause agrees with an argument in a higher clause. To rule out this
+logical possibility, they argue that syntactic theory should only
+allow downwards Agree/upwards valuation. The detail of their argument
+is not crucial here -- what is relevant are the relative structural
+relations between the two elements in the agreement relationship. In
+(\ref{tsez}), as the absolutive controls agreement on the higher
+predicate `know', I will categorize this example as one in which the
+target must c-command the controller (hence, valuation is upwards).
+
+The rest of the examples in this section are taken from Archi, another
+language with an ergative-absolutive system. Archi has a wide range of
+potential targets for agreement, but the controller is always the
+absolutive. (\ref{behind}) from \citet[67]{boch16} shows various agreement
+targets (boldfaced in the gloss, each corresponding to the exponent
+\textit{d-}):
+
+\vbox{
+\ea\label{behind}Archi\\%\vspace{-0.8em}
+\gll
+[d-ez {\textchi}ir] d-e{$\scriptstyle\langle$}r{$\scriptstyle\rangle$}q\textsuperscript{\textrevglotstop}a-r-\v{s}i d-i\\
+[{\bf\textsc{ii.sg}}-\textsc{1sg.dat} behind]
+{\bf\textsc{ii.sg}}-\textsc{{$\scriptstyle\langle$}ipfv{$\scriptstyle\rangle$}}go-\textsc{ipfv-cvb} 
+{\bf\textsc{ii.sg}}-be.\textsc{pres}\\%\vspace{-0.9em}
+\glt`She follows me.' (male speaking)
+\z
+}
+
+
+\largerpage[2]
+Both the main verb and the auxiliary `be' show agreement with the
+absolutive for gender and number. The gender system in Archi consists
+of four noun classes, and in this example, the gender agreement is for
+class \textsc{ii}. The controller of agreement is not overt -- it is
+the implicit subject of the intransitive predicate, formally in
+absolutive case. In addition, the first singular pronoun \textit{d-ez}
+which is the object within the directional PP headed by `behind'
+agrees with the absolutive of its clause, even though the pronoun is
+not a direct co-argument of the absolutive in this example. The
+pronoun is itself first person singular, but it also has an `external
+agreement' slot for the clausal absolutive. Now that pronoun, inside
+the PP, cannot c-command anything outside that PP, and yet the
+intuition here is that it is the target of agreement: so for this
+example it must be the case that the controller (a null subject
+absolutive) c-commands the target. Valuation, if directional, should
+be downwards -- exactly reversed from the Tsez example (\ref{tsez}).
+
+The LFG analysis of Archi agreement in \citet{sadler16} codes each
+agreeing element for the relevant features of the notional agreement
+controller -- the argument in absolutive case. As the GF of that
+argument could be \textsc{subj} or \textsc{obj} depending on the
+transitivity of the predicate, Sadler uses the designator
+\textsc{piv}, proposed by \citet{falk06}. \citet[161]{sadler16} also
+uses the template approach (\citealp{dalrymple2004linguistic}) to
+schematize over different agreement combinations. For the form in
+(\ref{dez}), @\textsc{ii.sg} associates the gender and number agreement
+values with the word, as in the second commentary enclosed in [ ]:
+
+\ea\label{dez}\begin{tabular}[t]{ll}
+\textit{d-ez}, Pronoun & \\
+(\UP\textsc{pers}) = 1 & \\
+(\UP\textsc{num}) = sg & [it is a first singular pronoun] \\
+@\textsc{ii.sg}((\GF\UP)\,\textsc{piv}) &
+[its external agreement features are class \textsc{ii} singular]\\
+  \ldots
+  \end{tabular}
+\z
+
+For (\ref{behind}), (\GF\UP)\,\textsc{piv} instantiates as
+(\OBL\OBJ\UP)\,\SUBJ. The f-structure of the example is
+shown in (\ref{ex:Minimalism:50}), where the external agreement path for the first
+person pronoun -- the inner \mbox{[\textsc{pred~`pro'}]} -- follows this
+instantiation and specifies values for gender and number, shown in
+boldface:
+
+\vbox{
+  \ea\label{ex:Minimalism:50}
+  F-structure of (\ref{behind}); agreement of the pronoun with the
+  absolutive\\
+((\OBL\OBJ\UP)\,\SUBJ) 
+must be: \textsc{class\ ii, num} sg\\[0.5em]
+\avm[style=fstr]{%\begin{avm}
+    [ \textbf{\textsc{subj}} & [ pred & `pro' \\
+    pers & 3\\
+    \textbf{\textsc{num}} & \textbf{sg} \\
+   \textbf{\textsc{class}} & \textbf{\textsc{ii}}\\
+    case & abs ]\\
+  {tense} & pres\\
+   pred & `go\arglist{(\UP \SUBJ)(\UP obl)}'\\
+   \textbf{\textsc{obl}}  & [ pred & `behind\arglist{(\UP \OBJ)}'\\
+   \textbf{\textsc{obj}} & [ {pred} & {`pro'} \\
+             pers & 1\\
+            num & sg \\
+            case & dat ]
+            ] ]
+}%\end{avm}
+\z
+}
+
+
+\largerpage[2]
+Note that the first person pronoun itself does not have any
+``agreement slot'' within its own feature structure: it has no
+agreement feature specification which is supposed to match or be
+copied somewhere else in the (f-)structure.
+
+The informal notions of controller and target have no embodied
+representation, which ultimately proves to be an important fact about
+the LFG analysis -- because there are examples in which `controller'
+and `target' are the same single syntactic element. There are
+different types of example in Archi where an absolutive argument
+``agrees with itself'' -- a given syntactic element has an external
+agreement slot, to agree with the absolutive of its clause, but that
+element happens to be the absolutive itself. (See also
+\citealp[68--69]{corbett06}, \citealp[137]{borsley16}.) In these
+examples, the distinction between controller and target -- as two
+distinct elements in an asymmetric relationship -- is invalid, but on
+a co-description account of the kind illustrated by (\ref{dez}) the
+examples work out straightforwardly.
+
+(\ref{refl}) is one such example. A reflexive pronoun in Archi has two
+slots for agreement -- one for the features of its antecedent, as is
+familiar, and another one for the features of the absolutive of the
+clause. In (\ref{refl}) (from \citealp[70]{boch16}) the subject is the
+pronoun `I', in dative case, and the object is the reflexive, in
+absolutive case, and it is class \textsc{ii}, signifying a female
+referent. The subject pronoun, main verb and auxiliary verb each agree
+in class with the absolutive, as does one of the slots in the
+reflexive -- the whole form is \textsc{1sg}, agreeing with the subject
+antecedent, and there is also an infixed class \textsc{ii} agreement,
+again agreeing with the absolutive, which is the reflexive itself.
+%(Sadler 166)
+
+\ea\label{refl}Archi\\
+\gll d-ez zona{$\scriptstyle\langle$}r{$\scriptstyle\rangle$}u d-ak:u-r-\v{s}i d-i
+da{\textchi}on-n-a-\v{s}\\
+{\bf\textsc{ii.sg}}\textsc{-1sg.dat}
+\textsc{1sg.refl.abs}{$\scriptstyle\langle$}{\bf\textsc{ii.sg}}{$\scriptstyle\rangle$}
+{\bf\textsc{ii.sg}}-see-\textsc{ipfv-cvb}
+{\bf\textsc{ii.sg}}-be.\textsc{prs}
+mirror\textsc{(iv)-sg.obl-in-el}\\
+\glt `I am seeing myself in the mirror.'
+\z
+
+
+\largerpage[2]
+So here, (\GF\UP)\,\textsc{piv} instantiates as
+(\OBJ\UP)\,\OBJ, one of the logical possibilities. The
+f-structure is shown in (\ref{ex:Minimalism:52}):
+
+\vbox{
+\ea\label{ex:Minimalism:52}
+F-structure of (\ref{refl}); 
+agreement of the reflexive with the absolutive\\
+((\OBJ\UP)\,\OBJ) must be:
+      \textsc{class\ ii, num} sg\\[0.5em]
+\avm[style=fstr]{%\begin{avm}
+    [ subj & [ pred & `pro'\\
+            pers & 1\\
+          num & sg \\
+        class & \textsc{ii}\\
+    case & dat ]\\
+  {tense} & pres\\
+   pred & `see\arglist{(\UP \SUBJ)(\UP \OBJ)}'\\
+   \textbf{\textsc{obj}}  & [ pred & `pro'\\
+                  refl & + \\
+               pers & 1\\
+             \textbf{\textsc{num}} & \textbf{sg}\\
+             \textbf{\textsc{class}} & \textbf{\textsc{ii}} \\
+            case & abs ]\\
+  obl & [ & ``{mirror}''\phantom{e} ] ] %phantom to center `mirror'
+}%\end{avm}
+\z
+}
+  
+Like other aspects of the grammar, the correct account of
+``agreement'' does not involve moving something -- in this case,
+featural information -- from one place to another, but rather is a
+partial specification of featural information in a larger structure.
+
+\section{Conclusion}
+\label{sec:minimalism:conclusion}
+
+LFG takes up the challenges of accounting for human language precisely
+as Chomsky first articulated them, yet continuing with a view quite
+different from his as to what the core non-negotiable properties of
+the syntactic system should be. It was developed as a systematic and
+coherent framework for the representation of grammatical information,
+based on certain key design features. While these design features give
+these frameworks a very different character from a procedural
+framework such as the MP, many of the components of analysis which MP
+has developed are already present in declarative frameworks (see
+\sectref{sec:minimalism:features}), as is the convergence of interest in
+exploring `third factor' considerations (see (\ref{3factors})).
+
+As Chomsky has noted, the choice between grammatical frameworks can be
+understood in terms of the ``extra burdens'' that an over-exuberant
+approach will entail (\citealp[10--11]{chomsky07}). From a declarative
+perspective, any procedural approach creates such burdens, as the
+necessary mechanisms are either too powerful or are not well-founded.
+If those mechanisms can change or even delete syntactic information or
+syntactic substance, it is necessary to constrain those destructive
+operations with the `No Tampering Condition' -- indeed, a very natural
+property of a grammatical system, but one that should be intrinsic to
+it.
+
+The `copy theory' of movement (\citealp{chomsky1995the-minimalist}) is
+a way of expressing the intuition that some information is
+shared. However, copies involve duplication of substance, which
+amounts to more than the sharing of information.  The discussion of
+structure in \sectref{sec:minimalism:ps} provides a perspective on two
+kinds of further burden that necessarily arise in a copy-based
+approach. First, with regard to head mobility, the LFG view is that
+the issue is one of alternative positions, rather than successive
+positions which exist to provide hosts for position-occupying
+movement. The head is indeed only ``in'' one head position, but it
+makes the same contribution that it would have made from any of its
+alternative possible positions, and so might appear as if it were
+contributing from each position. The evidence from multiple expression
+of clausal information supports this view. A recent MP account of the
+syntax of heads by \citet{arrepiet20} associates only the
+informational part of a given head with several head positions,
+effectively recapitulating the LFG analysis of head mobility through
+various operations to create the right representations. Second, the
+facts of Mandarin verb copying show that certain parts of the
+syntactic analysis indeed call for a duplication of substance (when
+there are both in-situ arguments and adjuncts in Mandarin), while
+other parts involve more abstract syntactic information (the notion of
+a verb \textit{having} arguments and having adjuncts). If that abstract
+information is conflated with the phrase structure substance, the
+system generates too much, and then extra operations have to be
+invoked, pruning or conflating substance.
+
+The formalization of the MP by \citet{collstab16} is designed in part
+to address the No Tampering Condition, and the apparent duplication of
+substance. Instead of creating copies, in this formalization,
+successive movements of a given element create new multidominance
+relations from that single element, which therefore does not change
+during the derivation. Their formalization is extended to head
+movement by \citet{bleaman21}. This particular formalization might
+make MP derivations slightly closer in nature to f-structures, in that
+each object in the derivation is a single informational unit which may
+have multiple grammatical relations and phrase-structural relations
+(e.g.\ a topicalized object is both an object and a topic, but with
+just one overt realization, in topic position).
+
+A different kind of burden of potential complexity falls on the
+feature system of the MP, as features are used to do more than
+represent information (see \sectref{sec:minimalism:features}). It becomes
+necessary to posit ``bad'' feature specifications, such as
+uninterpretable features, which by design are not interpretable on
+their hosts, and which must be eliminated during the derivation. LFG
+has constraints of a different character for checking that certain
+grammatical relationships exist, and which do not involve recourse to
+local pockets of uninterpretability.
+
+\largerpage
+\section*{Acknowledgments}
+
+The content of this chapter has benefitted considerably
+  from the comments of three anonymous reviewers, whose contributions
+  I gratefully acknowledge; and thanks to Mary Dalrymple for her
+  continued guidance.
+
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}

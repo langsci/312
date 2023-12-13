@@ -1,0 +1,1042 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10186048}
+\title{LFG and Role and Reference Grammar}
+\author{Delia Bentley\affiliation{The University of Manchester}  and Nigel Vincent\affiliation{The University of Manchester}}
+\abstract{LFG and Role and Reference Grammar have in common the goals of developing a formal model for the grammars of natural languages that both accommodates typological diversity and avoids syntax-centred derivationality. That said, the two frameworks differ in their choice of conceptual primitives and in the way the different components interact. In the present chapter we explore those differences in particular with respect to core sentence structure, information structure, cross-linguistic patterns and variety, and diachrony.}
+
+\IfFileExists{../localcommands.tex}{
+  \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+  \input{../localpackages}
+  \input{../localcommands}
+  \input{../localhyphenation}
+  \togglepaper[43]%%chapternumber
+\boolfalse{bookcompile}
+}{}
+
+\begin{document}
+\maketitle
+\label{chap:RRG}
+
+\section{Historical Context}
+\label{sec:RRG:1}
+
+Both LFG and RRG emerged in the 1970's and 1980's in the context of the general reconsideration of possible models of grammar that took place at that time. These developments were driven in part by a concern to rethink the best way to capture the interaction between syntax, semantics and pragmatics, in part by a desire to reflect the typological diversity of natural languages and avoid a bias towards the sorts of structure found in `standard average European', and in part by considerations of psychological plausibility and computational tractability. At the same time, the two frameworks differ in the relative priority to be assigned to these different lines of argument and evidence.
+
+In the case of RRG the two principal motivating questions were the following: (a) What would a linguistic theory look like if it were based on the analysis of Lakhota, Tagalog and Dyirbal, instead of English? (b) How can the interplay of syntax, semantics and pragmatics in different grammatical systems best be captured and explained? \citep[704]{VanValin2010}. Constraining the framework are, therefore, not only the classic Chomskyan criteria of descriptive and explanatory adequacy (on which see \citealt{rizzi16}), but also those of typological and psychological adequacy, since in the words of \citet[263]{AustBres96} `theoretical economy and explanatory elegance are unreliable guides to truth'. Typological adequacy requires that the theory should grasp commonalities between different languages without attributing to a given language any features for which that language provides no evidence. Psychological adequacy, as formulated by \citet[248]{Dik1991}, states that a theory should be compatible with the results of psycholinguistic research on the acquisition, processing, production, interpretation and memorization of linguistic expressions. This is not to say that there are no postulated universal principles either in LFG or RRG, but rather that within neither framework is there the presumption of an innate, syntactically defined U(niversal) G(rammar).
+
+This concern for psycholinguistic plausibility was shared with LFG, as discussed for example by \citet{bresnan1982introduction}, where it was linked to issues about the length and complexity of syntactic derivations within the transformational approach. Whereas at that time generative syntax was  ---  and indeed still is  ---  built on an exclusively categorial set of primitives, LFG and RRG in their different ways sought to explore in addition the use of relational concepts. Influential here had been, on the one hand, Relational Grammar with its definition of structures in terms of changing grammatical functions like subject and object, albeit while still retaining a derivational approach, and, on the other hand, Fillmorean Case Grammar with its set of semantically defined roles like agent and patient. For LFG this led to a much reduced, monostratal categorial component (c-structure) linked to but not derived from a set of grammatical relations (f-structure). RRG, by contrast, goes a step further and in addition sets aside notions like subject and object as also being in danger of biassing the system towards particular types and families of languages and opting instead for a core set of semantically defined relations. Despite these differences, RRG and LFG have in common the fact that, once the analytical burden is shared between categories and relations, grammatical structures are no longer required to respect the principles of endocentricity and binary branching which have become key parts of current Minimalist, cartographic and nanosyntactic approaches. A sentence can be represented simply as S rather than needing to be CP, TP or the like and if a language does not provide ready evidence of configurational structure, none needs to be imposed (\citealt{AustBres96}; \citealt[Chapter~2]{VanValin1997}).
+
+We move now to an overview of RRG (\sectref{sec:RRG:2}) before returning to a more detailed comparison of the two frameworks (\sectref{sec:RRG:3}) and consideration of the way they deal with issues involving language change, processing and acquisition (Sections \ref{sec:RRG:4}, \ref{sec:RRG:5} and \ref{sec:RRG:6}).
+
+\section{RRG: An overview}
+\label{sec:RRG:2}
+
+For RRG, grammar is a system in a traditional structuralist sense. However, RRG is not only interested in the syntagmatic and paradigmatic relations that characterize syntax, but also in the combinatorial relations between units of meaning within and out of context. This framework is, thus, like LFG, a parallel architecture theory \citep[Chapter~5]{jackendoff2002foundations}, which relies on three independent, albeit interacting, levels of analysis: discourse, lexical semantics and syntax.\footnote{A striking comparison in this connection is Sadock's independent realisation that a language like Greenlandic calls for a parallel or `modular' architecture \citep[ix--xi]{Sadock91}, which in turn led to his own model of Autolexical Syntax.} Much of what other syntactic frameworks would explain in terms of syntactic derivation or movement is captured in RRG in terms of the mapping of these three dimensions. This reflects the assumption that grammatical structure can only be understood and explained with reference to the expressive and communicative functions of language.
+
+  Since it seeks explanation outside of the boundaries of syntax, RRG could thus be thought to lie on the functional side of the formalist-functional divide in theories of language \citep{Butler2005,Butler2005b,Mairal2012}, and indeed \citet[14-16]{Newmeyer1998} cites it as an example of what he calls `external functionalism', adducing the description by \citet[1]{VanValin1993} of RRG as a `structuralist-functionalist theory of grammar'. However, a preference for the explanation of linguistic phenomena in terms of meaning and external context by no means implies an absence of a formal notation. And indeed within RRG each of the levels of analysis is conceived of in terms of an articulated formalism and there are explicit constraints on the interaction of the three levels. In addition, in the last ten to fifteen years, an increasing number of scholars have attempted to apply RRG to language processing, both in the computational and the neurolinguistic domain. Such attempts have resulted in the development of new formalisms, which use the RRG framework as their basis (see \sectref{sec:RRG:5} below).
+
+  The basic architecture of RRG is illustrated in \figref{fig:RRG:1}. While the two arrows in the middle show the bidirectionality of the semantics-syntax linking, the position of discourse-pragmatics with respect to this mapping indicates that discourse can be relevant at every step in the linking (\citealt{Bentley2022a} and \sectref{sec:RRG:3.5} below). Specifically, discourse-related meaning (for example, the distinction between the information that has already been given and the new information that is provided with the utterance) is not only expressed syntactically, but also in prosody, morphology and even in lexical choices. In fact, the encoding of discourse-related meaning in syntax varies across languages in important ways and this variation has been the object of much research in RRG (see among others \citealt{VanValin1999}, \citealt{Shimojo1995,Shimojo2008,Shimojo2009,Shimojo2010,Shimojo2011}, \citealt{Bentley2008}).
+
+\begin{figure}
+% \includegraphics[width=\textwidth]{figures/RRG/picture1.png}
+\includegraphics[width=\textwidth]{figures/RRG/RRGfig1mod.pdf}
+\caption{Organization of RRG (based on \citealt[134]{VanValin2005})}
+\label{fig:RRG:1}
+\end{figure}
+
+\noindent We return to other properties of the linking at the end of \sectref{sec:RRG:2}.
+
+\subsection{The structure of the sentence and of reference phrases}
+\label{sec:RRG:2.1}
+
+There is a single syntactic representation for a sentence, which corresponds to the surface form of the sentence and appears in the Constituent Projection. As noted above, there is no requirement that the structure of the clause should be binary branching; the syntax of the sentence must be adequately represented in configurational and non-configurational, dependent-marking and head-marking languages alike. In clausal structure, a distinction is drawn between the semantically motivated positions, which are assumed to be universal, and other positions, which tend to be associated with particular pragmatic roles and are not universal. Together the two types of position form the Layered Structure of the Clause (see \figref{fig:RRG:2}).
+\begin{figure}
+  {\begin{forest}
+      [SENTENCE
+        [(PrDP),tier=clause [XP,tier=XP [,tier=word]]]
+         [ CLAUSE,tier=clause
+          [ (PrCS),tier=core [XP,tier=XP [,tier=word]]]
+            [ CORE,tier=core
+              [XP [,tier=word]]
+                [NUC [PRED [Y(P),tier=XP [,tier=word]]]]
+              [(XP) [,tier=word]]]
+          [(PoCS),tier=core [XP,tier=XP [,tier=word]]]]
+         [(PoDP),tier=clause [XP,tier=XP [,tier=word]]]]
+   \end{forest}}
+\caption{The Layered Structure of the Clause (from \citealt{VanValin2022a})}
+\label{fig:RRG:2}
+\end{figure}
+
+  There is no verb phrase in the Layered Structure of the Clause because not all languages offer evidence for it (for comparable considerations in LFG see \citealt[5-6]{BoNoSa19}). The Nucleus hosts the predicate, while the arguments drawn from the semantic representation of the predicate, called core arguments, figure within the Core and are labelled RPs (Reference Phrases).\footnote{\label{fn:RRG:2}Within core arguments, RRG distinguishes between direct core arguments, which are unmarked or marked by case alone, and oblique ones, which are adpositionally marked.} No phonologically null elements are allowed in RRG syntax.\footnote{\label{fn:RRG:3}Genuine zero anaphora, i.e., the complete failure of expression of an argument, whether as a pronoun or in inflection, is dealt with in a system of direct mapping from discourse to the semantic representation of the clause, and vice versa, with the argument being represented in both of these domains, but not in syntax (see \sectref{sec:RRG:3.5}). Zero morphemes are, however, admitted in RRG in morphological paradigms, the key difference between these and phonologically null syntactic elements being that the latter type of element is redundant, on the assumption that the linking can occur directly from the semantic representation to discourse.} Neither the Nucleus nor the RP nodes are restricted to any particular lexical category, given that in some languages, such as Nootka and Tagalog, expressions that are verbs in categorial terms can have a referential function in the clause, in which case they behave as arguments, while nouns can have a predicative function \citep[170]{VanValin2008}.\footnote{This is not to say that nouns and noun phrases have no status in RRG. On the contrary, nouns and verbs are taken to be universal lexical categories, by contrast with adjectives, which are not found in all languages.} In English too the predicate in the Nucleus can be an adjective, a noun phrase, or a prepositional phrase, although a verb is needed for the proper formation of the Nucleus of the clause. The Nucleus and the Core are taken to be universal positions because all languages predicate and refer. Any adjuncts that modify the nucleus, or the core, or indeed any of the more external syntactic layers figure in a Periphery as M(odifier) P(hrases). Every syntactic layer (Clause, Core, Nucleus) can have its own Periphery.
+
+  Both the core-internal positions and the peripheries of the various layers of the clause can host constituents with particular discourse roles. To give but one example, to the extent that they are overt, topical subjects normally occur in the core-initial pre-nuclear position in SVO languages. However, these positions are not defined in pragmatic terms, but rather in terms of the referential and predicative functions of language. The more external positions, instead, tend to be associated with pragmatically salient functions. The Pre- and Post-Core Slot normally host foci, although there can be language-specific restrictions on the kinds of foci that they admit. In a large number of languages the Pre-Core Slot hosts pre-verbal \textit{wh}{}-words and the same position has been claimed to be involved in contrastive focus fronting in some Romance languages \citep{Bentley2008}. The Pre-Core Slot hosts topics, as well as foci, in languages with a V2 constraint on word order \citep{Diedrichsen2008}. The Post-Core Slot is the position of secondary foci which non-canonically occur in post-verbal position in Japanese, a verb-final language \citep{Shimojo1995}. The Pre-Detached Position (formerly called Left-Detached Position) is the position of detached topics and can iterate, thus allowing the utterance to have several topics, while the Pre- and Post-Core Slot cannot be repeated.\footnote{This raises the question of the position of initial sequences of \textit{wh}{}-words in languages which allow them, for example Bulgarian, an issue which to our knowledge has only been addressed from an RRG perspective by \citet{Eschenberg1999}.} The Post-Detached Position (formerly called Right-Detached Position) hosts afterthoughts or topics.\footnote{The reason for the relabelling of the Left{}- and Right{}-Detached positions is that these names reflect a bias towards western~languages, which are written from left to right. The problem does not arise with Pre-Detached and Post-Detached, which reflect the before and after dimensions of speech.} The pragmatically salient positions are not universal: the languages that provide no evidence for these positions are not assumed to have them. The building blocks of the Layered Structure of the Clause are the building blocks of complex predicates and clauses, as will be explained in \sectref{sec:RRG:3.4}.
+
+  The structure of the RP and of adpositional phrases is built following the same principles as the structure of the clause (see \citealt{CortezRodriguez2022}, \citealt{Cerda2022}.). Thus, RPs have their own Constituent Projection, with Nucleus and Core, and their respective peripheries. RPs also have their Operator Projection, which defines the scope of the functional categories of definiteness, deixis, quantification, and number.
+
+  In RRG the functional markers of closed-class grammatical categories such as aspect, modality, tense and illocutionary force are not mapped to the Constituent Projection, but rather to the Operator Projection, and hence the framework does not incorporate an inventory of functional heads. The Operator Projection is the mirror image of the Constituent Projection because RRG assumes that the order of the morphemes that express grammatical categories is a function of their syntactic and semantic scope \citep{FoleyVanValin1984,Bybee1985}. Thus, the Nucleus comes first, in the Operator Projection, as the domain of aspect, nuclear negation and directionals. Core negation and root modality have scope over the Core. Finally, status (epistemic modality), tense, evidentials, and illocutionary force have scope over the Clause.
+
+\begin{figure}
+  \begin{tabular}{c@{\hspace*{3em}}l}
+    SENTENCE\\$|$\\
+    CLAUSE\\$|$\\
+    CORE\\$|$\\
+    NUCLEUS\\$|$\\
+    PRED\\$|$\\
+    \rnode{t0}V\\
+    \rnode{t1}{NUCLEUS} & \rnode{1}{\framebox{\parbox{8.5em}{Aspect\\Negation\\Directionals}}}\\[5ex]
+    \rnode{t2}{CORE} & \rnode{2}{\framebox{\parbox{8.5em}{Directionals\\Event quantification\\Modality\\Negation}}}\\[7ex]
+    \rnode{t3}{CLAUSE} & \rnode{3}{\framebox{\parbox{8.5em}{Status\\Tense\\Evidentials\\Illocutionary Force}}}\\
+    \rnode{t4}{SENTENCE}
+  \end{tabular}
+  \ncline[linewidth=.5pt,nodesepA=0pt,nodesepB=3pt,arrowsize=4pt 5]{->}{1}{t1}
+  \ncline[linewidth=.5pt,nodesepA=0pt,nodesepB=3pt,arrowsize=4pt 5]{->}{2}{t2}
+  \ncline[linewidth=.5pt,nodesepA=0pt,nodesepB=3pt,arrowsize=4pt 5]{->}{3}{t3}
+  \ncline[linewidth=.5pt,nodesepA=5pt,nodesepB=5pt]{t0}{t1}
+  \ncline[linewidth=.5pt,nodesepA=5pt,nodesepB=5pt]{t1}{t2}
+  \ncline[linewidth=.5pt,nodesepA=5pt,nodesepB=5pt]{t2}{t3}
+  \ncline[linewidth=.5pt,nodesepA=5pt,nodesepB=5pt]{t3}{t4}
+\caption{The operator projection in the layered structure of the clause}
+\label{fig:RRG:3}
+\end{figure}
+
+The Constituent Projection is not built incrementally in the linking. Rather, the syntactic structure of the clause, and of the RPs and PPs contained in it, are drawn as templates from the syntactic inventory of the given language at the relevant stage in the linking. The selection of syntactic templates in the linking is governed by the \textit{Syntactic Template Selection Principle} (\citealt[324]{VanValin1997}, \citealt[130]{VanValin2005}) and by discourse considerations (\sectref{sec:RRG:3.6}), to which we return below. The syntactic inventory of a language comprises all the templates that are necessary to form grammatical sentences in that language. It reflects universal linearization principles concerning the position of the extra clausal positions shown in \figref{fig:RRG:2}, as well as the word order preferences of the language: primarily, its branching directionality, in the sense of \citet{Dryer1992}. Broad typological properties, such as head and dependent marking, and configurationality, also play a role in word order. Instead, the position of the operators in the clause largely depends on their semantic scope (see \figref{fig:RRG:3}). The syntactic inventory complements the lexical inventory as well as an inventory of constructional schemas, to which we shall also return.
+
+  \subsection{Logical Structures, semantic roles and macroroles}
+  \label{sec:RRG:2.2}
+
+The lexicon is an important component of grammar in RRG, since the semantic representation of the clause is based on the semantic representation of the verb and any other predicating elements figuring in it, for example, any predicative adpositional phrases. The semantic representation, or Logical Structure, of a verb is based on a theory of lexical decomposition which relies on \citegen[97-121]{Vendler1967} Aktionsart types \textit{state}, \textit{activity}, \textit{achievement} and \textit{accomplishment}, to which Van Valin \& LaPolla add the distinction between plain and active accomplishment (see below) and \citet[32]{VanValin2005} adds the non-Vendlerian class of \textit{semelfactives} \citep[55-58]{Smith1997}. State and activity are the basic types upon which all the others are built. Both states and activities are [$-$telic] and [$-$punctual]. However, states describe static situations, whereas activities describe dynamic ones, that is, situations that involve change, albeit not of the type leading to a result state. We provide below the semantic representations of the states `red' and `know' and of the activities `march' and `sing'.
+
+\ea%1
+   \label{ex:RRG:1}
+   States
+   \ea \textbf{be$'$}(x, [\textbf{red$'$}]) `red'
+   \ex  \textbf{know$'$}(x, y) `know'
+   \z\z
+
+\newpage
+\ea%2
+   \label{ex:RRG:2}
+   Activities
+\ea \textbf{do$'$}(x, [\textbf{march$'$}(x)]) `march'
+\ex \textbf{do$'$}(x, [\textbf{sing$'$}(x, (y))]) `sing'
+\z\z
+
+\noindent Predicates are presented in bold, followed by a prime, and English is the metalanguage used to represent them;  \textbf{be$'$} figures in the Logical Structure of attributive, identificational and specificational states, alongside the constant identifying the given state. Instead, \textbf{do$'$} marks the Logical Structure of all activities.
+
+  Achievements and accomplishments are [+telic], which means that they describe change leading to the attainment of a result state. The former predicate type, being [+punctual], does not include a PROC(ess) component (cf.\ \REF{ex:RRG:3}), which instead characterises the latter (cf.\ \REF{ex:RRG:4}).\footnote{See \citet{Bentley2019} and \citet{VanValin2022a} for proposals on the differentiation of quantized and non-quantized change in the Logical Structure of accomplishments.}  PROC and the other Logical Structure components in capital letters are operators, or markers of templatic facets of meaning, which combine with the constants representing the idiosyncratic meaning of individual lexical items. The RRG theory of lexical decomposition stands out from others in differentiating accomplishments from active accomplishments (cf.\ \REF{ex:RRG:5}). These are built on the basis of the logical structures of an activity plus an accomplishment. The process that is part of the accomplishment is simultaneous with the activity, and both are followed by the attainment of a result state \citep{VanValin2018}. Simultaneity is represented with the notation $\wedge$, whereas the symbol \& stands for ``and then''.
+
+\ea%3
+   \label{ex:RRG:3} Achievements
+\ea  INGR \textbf{appear$'$}(x) `appear'
+\ex  INGR \textbf{be-at$'$}(x) `arrive'
+  \z\z
+
+\ea%4
+   \label{ex:RRG:4} Accomplishments
+   \ea PROC INGR \textbf{dead$'$}(x) `die'
+   \ex PROC INGR \textbf{know$'$}(x, y) `learn'
+   \z\z
+
+
+\ea%5
+   \label{ex:RRG:5} Active accomplishments
+   \ea [\textbf{do$'$}(x, [\mbox{\textbf{run$'$}(x)]) $\wedge$ PROC \textbf{cover.path.distance$'$}(x, (y))}] \& INGR \textbf{be-at$'$}(\textbf{path.endpoint}, x) `run to a location'
+   \ex [\textbf{do$'$}(x, [\mbox{\textbf{write$'$}(x, y)]) $\wedge$ PROC \textbf{create$'$}(y)}] \& INGR \textbf{exist$'$}(y) `write (tr.)'
+   \z\z
+
+  Semelfactives \citep[55–58]{Smith1997} describe repeatable punctual events, which may be [+static] or [+dynamic] (cf.\ \REF{ex:RRG:6a} vs. \REF{ex:RRG:6b}), and do not lead to a result state, as testified by the absence of result state participles of these verbs in attributive function in the noun phrase.
+
+\ea%6
+   \label{ex:RRG:6} Semelfactives
+\ea\label{ex:RRG:6a} SEML \textbf{see$'$}(x, y) `glimpse'
+\ex\label{ex:RRG:6b} SEML \textbf{do$'$}(x, [\textbf{cough$'$}(x)]) `cough'
+\z\z
+
+  There are standard diagnostics to determine the Aktionsart of the predicate of a clause, based on \citegen{Dowty1979} seminal work. No \textit{a priori} assumption is made as to whether verbs describing comparable eventualities should belong to the same Aktionsart type across languages, although it is acknowledged that there are striking cross-linguistic similarities of this kind, whose rationale can be captured on the basis of a system of lexical decomposition like the RRG one.
+
+  The predicate types discussed above have causative counterparts, which in principle combine any logical structure $\alpha$ with any logical structure $\beta$ by means of the operator CAUSE. The causal event may, however, remain unspecified, as is shown in \REF{ex:RRG:7b}, which is built upon \REF{ex:RRG:7a}.
+
+\ea%7
+   \label{ex:RRG:7}Accomplishment vs. causative accomplishment
+   \ea\label{ex:RRG:7a} PROC INGR \textbf{dead$'$}(x) `die'
+   \ex\label{ex:RRG:7b} [\textbf{do$'$}(x, $\emptyset$)] CAUSE PROC INGR \textbf{dead$'$}(y) `kill'
+   \z\z
+
+  Traditional thematic role labels, like \textit{theme} or \textit{patient}, are mere mnemonics for the position which an argument occupies in Logical Structure as determined by applying the standard tests for the Aktionsart of the predicate. It is purely on the basis of its position that a core argument derives its thematic role (\citealt{Jackendoff1976}; \citealt[82-138]{VanValin1997}). There are five relevant positions.
+
+\ea%8
+   \label{ex:RRG:8} Semantic positions which are relevant to the linking
+\begin{tabularx}{\textwidth-3em}{@{}l *5{>{\centering\arraybackslash}X}@{}}
+\midrule
+Arg of DO & 1st arg of & 1st arg of & 2nd arg of & arg of state\\
+& \textbf{do$'$}(x, ...) & \textbf{pred$'$}(x,y) & \textbf{pred$'$}(x,y) & \textbf{pred$'$}(x)\\
+\midrule
+\end{tabularx}
+   \z
+
+\noindent Following \citet{VanValinWilkins1996}, RRG draws a distinction between agentivity as an entailment and as an inference. The first argument of verbs which entail agentivity (e.g., \emph{murder}) is named `Arg of DO', whereas the first argument of verbs which merely lend themselves to inferences of agentivity (e.g., \emph{kill}) is represented as `1st arg of \textbf{do$'$}'.  These argument positions are found in the Logical Structure of activities, the latter one alone, the former in combination with the latter.  The other positions are found in the Logical Structure of bivalent (1st and 2nd argument of \textbf{predicate′}(x,y)) and monovalent (argument of state~\textbf{predicate}$′$(x)) states. As can be seen in \REF{ex:RRG:3} to \REF{ex:RRG:7} these positions combine with each other and with operators of cause, semelfactivity, process and change.
+
+  Importantly, the positions in \REF{ex:RRG:8} are not grammatically salient \textit{per se}, but only to the extent that they determine which generalized semantic role, or macrorole, an argument is assigned in the linking. The relation between argument positions and macroroles is captured by the Actor-Undergoer Hierarchy in \REF{ex:RRG:9}, while the macrorole assignment principles are spelled out in \REF{ex:RRG:10}.
+
+\ea\label{ex:RRG:9}
+The Actor - Undergoer Hierarchy and its mapping onto argument positions \citep[61]{VanValin2005}\\\
+\begin{tabularx}{\textwidth-3em}{@{}l *5{>{\centering\arraybackslash}X}@{}}
+\midrule
+ACTOR & & & &   UNDERGOER\\
+\rnode{l1}{\,} & & \multicolumn{1}{r}{\rnode{r1}{\,}} & &\\
+ & & \multicolumn{1}{l}{\rnode{l2}{\,}} & & \multicolumn{1}{r}{\rnode{r2}{\,}}\\
+Arg of DO & 1st arg of
+\textbf{do$'$}(x,...) &
+1st arg of \textbf{pred$'$}(x, y) &
+2nd arg of \textbf{pred$'$}(x, y) &
+Arg of state \textbf{pred$'$}(x)\\
+\midrule
+\end{tabularx}\\
+\ncline[linewidth=.5pt,nodesepA=0pt,nodesepB=3pt,arrowsize=4pt 5]{->}{l1}{r1}
+\ncline[linewidth=.5pt,nodesepA=0pt,nodesepB=3pt,arrowsize=4pt 5]{->}{r2}{l2}
+[`$\rightarrow$' = increasing markedness of realization of argument as macrorole]
+\z
+
+\ea\label{ex:RRG:10} Default Macrorole Assignment Principles \citep[63]{VanValin2005}
+\ea
+Number: the number of macroroles a verb takes is less than or equal to the number of arguments in its logical structure.
+\ea
+If a verb has two or more arguments in its logical structure, it will take two macroroles.
+\ex
+If a verb has one argument in its logical structure, it will take one macrorole.
+\z
+\ex\label{ex:RRG:10b}
+Nature: for verbs which take one macrorole,
+\ea\label{ex:RRG:10bi}
+If a verb has an activity predicate in its logical structure, the macrorole is actor.
+\ex
+If a verb has no activity in its logical structure, the macrorole is undergoer.
+\z\z\z
+
+  Actor and undergoer are the two primary arguments of transitive predications. Two-place verbs belonging to different Aktionsart types, say an active accomplishment (e.g., \textit{write a book}) and a state (e.g., \textit{know the answer}), are not differentiated in terms of macrorole assignment: both take an actor (the highest or leftmost argument in Logical Structure) and an undergoer (the lowest or rightmost argument in Logical Structure). There is, however, a fundamental asymmetry between the two macroroles, in that the highest core argument will always be the actor, whereas the lowest one is only the default choice for undergoer. Indeed, variable selection of the undergoer from the two lower arguments of three-place predicates is allowed in some languages. This is exemplified by English \textit{present} (as in \emph{present a gift/prize to someone}) in \REF{ex:RRG:11}. In addition, two-place predicates may be intransitive, in which case this is specified in the lexicon, as exemplified with English \textit{belong (to)} in \REF{ex:RRG:12}.
+
+\ea%11
+   \label{ex:RRG:11}
+\ea\label{ex:RRG:11a} [\textbf{do$'$}(x, $\emptyset$)] CAUSE [INGR \textbf{have$'$}(y, z)]
+\ex\label{ex:RRG:11b} x presents z to y
+\ex\label{ex:RRG:11c} x presents y with z
+\z\z
+
+\ea%12
+\label{ex:RRG:12}
+\textbf{have$'$}(x, y) [MR1] `belong (to)'
+\z
+
+\noindent In \REF{ex:RRG:11b} z is the undergoer, whereas in \REF{ex:RRG:11c} the undergoer is y. The actor is x in both cases. As for \REF{ex:RRG:12}, [MR1] lexically specifies that this verb only takes one macrorole despite being bivalent. Finally, whether the only core argument of a one-place predicate is an actor or an undergoer is established by the principles in \REF{ex:RRG:10b}.
+
+  An important claim of RRG is that no subcategorization requirements need to be specified for a verb, other than the argument positions in its Logical Structure and its transitivity, which is defined as the number of macroroles it takes. The prepositions that mark the oblique arguments required by some verbs (e.g., \textit{load x with y, load y on x}) are argued to be predictable from general principles, for which we refer to \citet[376-384]{VanValin1997}.
+
+  Macrorole assignment plays a key role in the linking, allowing RRG to capture how syntactically different, but semantically comparable, structures are related. Thus, starting from the assumption that languages with nominative-accusative alignment select the actor, whereas languages with ergative-absolutive alignment select the undergoer, as the default privileged grammatical relation (\sectref{sec:RRG:2.3}), passive and antipassive are constructions with the marked macrorole selection as the privileged grammatical relation: undergoer in the passive and actor in the antipassive. We return below to the notion of subject, which is not considered to be a universal of grammar in RRG.
+
+  Macrorole assignment, or failure thereof, also captures the different syntax of verbs with the same number of arguments. Consider \REF{ex:RRG:13a} and \REF{ex:RRG:13b}.
+
+\newpage
+\ea%13
+ \label{ex:RRG:13}Italian
+ \ea\label{ex:RRG:13a}
+ \gll Mario,  la  matematica,  l'   ha  sempre  amata.\\
+   Mario  the  maths.\textsc{fsg}  \textsc{acc.cl.fsg}  has  always  love.\textsc{ptcp.fsg}\\
+ \ex\label{ex:RRG:13b}
+    \gll (A  Mario),  la  matematica  gli  è  sempre  piaciuta.\\
+      to  Mario  the  maths.\textsc{fsg}  \textsc{dat.cl} is  always  please.\textsc{ptcp.fsg} \\
+   \glt `Mario, maths, he always loved/liked it.'
+\z\z
+
+\noindent The contrast between nominative and dative experiencer verbs (e.g., Italian \textit{ama\-re} `love' vs. \textit{piacere} `please, like') depends on whether both arguments are assigned a macrorole, with the result being a transitive structure, as testified by the accusative clitic and the perfect auxiliary `have' in \REF{ex:RRG:13a}, or the experiencer being denied macrorole status, in which case the structure has a single macrorole and is intransitive, as testified by the selection of a different auxiliary, `be', and the dative clitic in \REF{ex:RRG:13b}.
+
+\subsection{Grammatical relations}
+\label{sec:RRG:2.3}
+
+RRG rejects the traditional notions of subject and object as primitives or universals of syntactic theory. Following Durie's (\citeyear{Durie1985,Durie1987}) analysis of Acehnese, an Austronesian language, \citet[255-260]{VanValin1997} claim that there are languages which group arguments in terms of their macrorole status without assigning them a syntactic function. In Acehnese, all actors are marked in the same way, as illustrated by the proclitic pronoun in \REF{ex:RRG:14a}-\REF{ex:RRG:14b}, whereas undergoers are marked differently, as illustrated by the ungrammaticality of \REF{ex:RRG:14c} and the optional enclitic pronoun in its grammatical counterpart in \REF{ex:RRG:14d}.\footnote{The reader should note, on the one hand, that Acehnese is a head-marking language and, on the other, that the Logical Structure of the verb `go', in this and other languages, includes an activity. Therefore, the macrorole assigned to the direct core argument is actor, following \REF{ex:RRG:10bi}.}
+
+\ea%14
+   \label{ex:RRG:14}Acehnese \citep[255-256]{VanValin1997}
+\ea\label{ex:RRG:14a} \gll (Gopnan)  geu-mat  lôn.\\
+   (3\textsc{sg})  3-hold  1\textsc{sg}\\
+\glt `(S)he holds me.'
+\ex\label{ex:RRG:14b} \gll Geu-jak  (gopnyan).\\
+3-go  (3\textsc{sg})\\
+\glt `(S)he goes.'
+\ex\label{ex:RRG:14c} \gll *(Lôn)  lôn-rhët.\\
+     1\textsc{sg}   \textsc{1sg}{}-fall\\
+\ex\label{ex:RRG:14d} \gll Lôn  rhët(-lôn).\\
+1\textsc{sg}  fall-\textsc{1sg}\\
+\glt `I fall.'
+     \z\z
+
+\noindent  The contrast between \REF{ex:RRG:14a}-\REF{ex:RRG:14b} and \REF{ex:RRG:14c}-\REF{ex:RRG:14d} suggests that arguments are only grouped in terms of their macrorole, as is the case with active-vs.-inactive alignment, and there is no marking that defines a syntactic function. Acehnese also has no voice constructions, such as passive or antipassive, which follows from the absence of grammatical relations.
+
+  From this it also follows that if a grammatical relation is to be postulated for a given language or construction, evidence will be required of restricted neutralizations of semantic roles for grammatical purposes (see \citealt{LaPolla2022} for an in-depth discussion of this point). Such neutralizations can be, and indeed often are, found at the level of specific constructions, although the well-known Indo-European languages tend to be consistent across constructions. With reference to the Acehnese examples in \REF{ex:RRG:14a}-\REF{ex:RRG:14d}, the fact that the obligatory pre-verbal clitic only cross-references the actor indicates that this type of cross-referencing involves no such neutralization, but merely a restriction to actor.  Contrastingly, the controller of person and number agreement on the English verb can be characterized as a restricted neutralization, specifically [A, S, d(erived)-S], because only the actor of a transitive (cf.\ \REF{ex:RRG:15a}), the actor or undergoer of an intransitive (cf.\ \REF{ex:RRG:15b}-\REF{ex:RRG:15c}) or the derived intransitive S of a passive (cf.\ \REF{ex:RRG:15d}) can control this kind of agreement. The undergoer of a transitive structure cannot (contrast \REF{ex:RRG:15a}-\REF{ex:RRG:15d} with \REF{ex:RRG:15e}).
+
+\ea%15
+   \label{ex:RRG:15}
+\ea\label{ex:RRG:15a} Mary\textsubscript{i} (A) has\textsubscript{i} eaten all the biscuits\textsubscript{j} (U).
+\ex\label{ex:RRG:15b} Mary\textsubscript{i} (S\textsc{a}) has\textsubscript{i} eaten.
+\ex\label{ex:RRG:15c} Mary\textsubscript{i} (S\textsc{u}) has\textsubscript{i} fallen.
+\ex\label{ex:RRG:15d} All the biscuits\textsubscript{j} (d-S) were\textsubscript{j} eaten by Mary\textsubscript{i} (A).
+\ex\label{ex:RRG:15e} *Mary\textsubscript{i} (A) have\textsubscript{j} eaten all the biscuits\textsubscript{j} (U).
+   \z\z
+
+\largerpage[2]
+  The fact that the grouping [A, S, d-S] is insensitive to the distinction between S\textsc{a} and S\textsc{u} indicates that the control of person and number agreement on the English verb neutralizes the semantic role of the controller. The fact that the undergoer of a transitive (U) is banned from this syntactic function, and indeed a special voice construction, the passive, is needed for this argument to control agreement as a d-S, indicates that the neutralization under discussion is restricted. RRG calls this kind of restricted neutralization a privileged syntactic argument (PSA).\clearpage
+
+  Importantly, there are languages that provide no evidence for such restrictions. Thus, Mandarin Chinese \citep{LaPolla1990,LaPolla1993,LaPolla1995,LaPolla2022} has no conventionalized associations between syntactic position, agreement on the verb, case marking on the noun, etc. and particular semantic roles. The claim in RRG is, therefore, that Mandarin Chinese is a language which does not have any grammatical relations.
+
+  PSAs can have the syntactic functions of controller or pivot. The latter is the missing argument in a construction, whereas the controller is the argument that supplies its interpretation. Observe that the pivot of the English construction with \textit{want} is defined as [A, S, d-S].
+
+\ea%16
+\label{ex:RRG:16}
+\ea  Mary\textsubscript{i} [CONTROLLER] wants \GAP\textsubscript{i} [PIVOT, A] to eat the biscuits.
+\ex  Mary\textsubscript{i} [CONTROLLER] wants \GAP\textsubscript{i} [PIVOT, S\textsc{a}] to eat.
+\ex  Mary\textsubscript{i} [CONTROLLER] wants \GAP\textsubscript{i}  [PIVOT, S\textsc{u}] to die.
+\ex  Mary [CONTROLLER] wants \GAP\textsubscript{i} [PIVOT, d-S] to be loved.
+\ex *Mary\textsubscript{i} [CONTROLLER] wants you to love \GAP\textsubscript{i} [PIVOT, U].
+    \z\z
+
+
+  Similar considerations are valid for the missing argument in conjunction reduction. This suggests that English is consistent in how it constrains the PSA across constructions. Nonetheless, there are English constructions in which different restrictions apply. For instance, the controller of the non-finite complementation with \textit{persuade} is the undergoer, and cannot be the actor (cf.\ \REF{ex:RRG:17}).
+
+\ea%17
+   \label{ex:RRG:17}
+\ea\label{ex:RRG:17a}  Mary\textsubscript{j} persuaded
+Paul\textsubscript{i} [CONTROLLER] \GAP\textsubscript{i/*j} [PIVOT] to stay.
+\ex\label{ex:RRG:17b} Paul\textsubscript{i} [CONTROLLER] was persuaded by Mary\textsubscript{j} to \GAP\textsubscript{i/*j} [PIVOT] to stay.
+\z\z
+Given that there is a restriction in \REF{ex:RRG:17}, but no neutralization, this is a case of semantic control, comparable to the control of the pre-verbal clitic in Acehnese.
+
+  While being comparable to English, in that they have restricted neutralizations of the kind described above, other languages define the PSA differently. Thus, Kalkatungu, an Australian aboriginal language \citep{Blake1979}, provides evidence of the restricted neutralization [U, S, d-S], which defines ergative-absolutive alignment. The participial construction exemplified below illustrates this kind of PSA.
+
+
+\ea%18
+   \label{ex:RRG:18}Kalkatungu \citep[97-98]{VanValin2005}
+\ea\label{ex:RRG:18a}   \gll \b{T}uaṭu    pa-ji    maṛapai-$\emptyset$   icaji  [iŋka-ʎ{}-iŋka-cin-$\emptyset$]. \\
+    snake.\textsc{erg}  that-\textsc{erg}  woman-\textsc{abs}  bite  go-\textsc{lnk}{}-go-\textsc{ptcp-abs}\\
+   \glt `The snake bit the woman\textsubscript{i} [as \GAP\textsubscript{i} was walking along].
+\ex\label{ex:RRG:18b}  \gll [Jaṛikajan-ati-ɲin-tu]  caa  ŋa-\b{t}u  \b{l}aji  $\emptyset$\\
+hungry-\textsc{vblz-ptcp-erg}  here  \textsc{1sg-erg}  kill  3\textsc{sg.abs}\\
+\glt `[\GAP\textsubscript{i} Being hungry] I\textsubscript{i} killed it.'
+\ex\label{ex:RRG:18c} \gll Kuntu  caa  ḷuŋa-\b{n}a  $\emptyset$    [ŋa-\b{t}u  \b{l}a-ɲin-ka-$\emptyset$]\\
+\textsc{neg}   here  cry-\textsc{pst}  \textsc{3sg.abs}  \textsc{1sg-erg}  hit-\textsc{ptcp-suff-abs}\\
+\glt `He\textsubscript{i} didn't cry [when I hit \GAP\textsubscript{i}].'
+\ex\label{ex:RRG:18d} \gll *Nga-\b{t}u  ṇaɲa  macumpa-$\emptyset$  [aṛi-ɲin-$\emptyset$  ka\b{t}ir-$\emptyset$]\\
+\textsc{1sg-erg}  saw  kangaroo-\textsc{abs}  eat-\textsc{ptcp-abs}  grass-\textsc{abs}\\
+\glt `I saw the kangaroo\textsubscript{i} [\GAP\textsubscript{i} eating grass].'
+\z\z
+
+  The pivot or missing argument of the Kalkatungu participial construction can be an intransitive S (S\textsc{a} in \REF{ex:RRG:18a} and S\textsc{u} in \REF{ex:RRG:18b}) or a transitive U (cf.\ \REF{ex:RRG:18c}), but it cannot be the actor of a transitive structure (A) (cf.\ \REF{ex:RRG:18d}). Therefore, there is a neutralization of semantic macroroles in this construction and this is restricted to S and U, leaving out A. In fact, if the verb in the participial construction is antipassivized, then the construction is grammatical.
+
+\ea%19
+   \label{ex:RRG:19}Kalkatungu \citep[98]{VanValin2005}\\
+   \gll        Nga-\b{t}u   ṇaɲa  macumpa-$\emptyset$  [aṛi-li-ɲin-$\emptyset$    ka\b{t}ir-ku]\\
+      \textsc{1sg-erg}   saw  kangaroo-\textsc{abs}  eat\textsc{-antip-ptcp-abs}  grass-\textsc{dat}\\
+   \glt `I saw the kangaroo\textsubscript{i} [\GAP\textsubscript{i} eating grass].'
+   \z
+
+\noindent The data in \REF{ex:RRG:19} indicate that d-S is also admitted in the Kalkatungu participial construction. The PSA of this structure is thus to be defined as [U, S, d-S].
+
+  It should further be noted that some languages do not have special voice constructions, in which case they may have the restricted neutralizations [A,~S] or [U,~S], although the latter is claimed to be very rare. In addition, in other languages, the PSA need not be a macrorole argument. We refer to \citet[352-363]{VanValin1997} for relevant discussion.
+
+  The RRG conception of grammatical relations poses very strong constraints on the analysis of correspondences such as the ones that other frameworks conceive of as  relations between active objects and passive subjects or between transitive objects and unaccusative subjects. Not only is it not possible to rely on movement or derivation, but the very construct of object is not available either. As was briefly mentioned above, the passive, as well as the antipassive, are captured in terms of the PSA selection hierarchy that is at work in the linking in a given language, or a given construction. Starting from the ranking of arguments in \REF{ex:RRG:20}, which reflects the argument positions in Logical Structure (cf.\ \REF{ex:RRG:8} and \REF{ex:RRG:9}), the default PSA is selected in accordance with the two main principles in \REF{ex:RRG:21}.\footnote{The Logical Structure of the predicate in the clause is ascertained by applying a number of standard tests, which include \citegen{Dowty1979} ones, as mentioned above. Therefore, there are independent criteria to establish the status of the candidates for PSA-hood vis-à-vis the hierarchy in \REF{ex:RRG:20}.}
+
+\ea%20
+   \label{ex:RRG:20}
+   Arg of DO > 1st arg of \textbf{do$'$} > 1st arg of \textbf{pred$'$}(x,y) > 2nd arg of \textbf{pred$'$}(x,y) > arg of \textbf{pred$'$}(x)
+   \z
+
+\ea%21
+\label{ex:RRG:21}PSA Selection Principles
+\ea\label{ex:RRG:21a} Accusative construction: the default PSA is the highest-ranking direct core argument in terms of \REF{ex:RRG:20}.
+\ex\label{ex:RRG:21b} Ergative construction: the default PSA is the lowest-ranking direct core argument in terms of \REF{ex:RRG:20}.
+   \z\z
+
+\noindent The principle in \REF{ex:RRG:21a} captures the fact that, in English and many other languages, the actor is the PSA of a transitive construction, whereas \REF{ex:RRG:21b} captures the selection of undergoer as default PSA in Dyirbal transitive constructions. Conversely, the marked PSA selection found in the English passive is undergoer, while the marked PSA selection found in the antipassive is actor. The principles in \REF{ex:RRG:21} mention direct core arguments (see footnote~\ref{fn:RRG:2}), as opposed to macroroles, because of the existence of languages in which non-macrorole arguments can be PSAs (Icelandic, Georgian, Japanese, etc.). In the present context, however, we will not dwell on this difference.
+
+  At this point we should mention constructional templates or \textit{schemas} (\citealt[430-436]{VanValin1997}; \citealt[132-135]{VanValin2005}). These are constellations of syntactic, morphological, semantic and pragmatic instructions, which, while making reference to the general principles of grammar, complement them with the language-particular information that is necessary to form and parse the constructions of a given language. In the formation of the English passive, it is the passive constructional schema that specifies that the PSA is not chosen in accordance with the default PSA selection principle (cf.\ \REF{ex:RRG:21a}), usually owing to discourse-pragmatic factors. In addition, the constructional schema establishes that the actor cannot occur within the syntactic Core, although it can be expressed in a \textit{by}{}-phrase, and that the verb carries special, passive, morphology. In \textit{wh}{}-questions, it is a constructional schema that instructs the speaker on the default position of the \textit{wh}{}-word in the given language and whether the \textit{wh}{}-word is subject to any restricted neutralizations \citep[132-133]{VanValin2005}. In languages that have different PSAs in different constructions (for example Jakaltek), constructional schemas specify what the PSA is in the given construction.
+
+  To return to grammatical relations, in the absence of a notion of object, the correlation between the functions that in other frameworks are the transitive object and the unaccusative subject is captured in RRG in terms of the thematic properties of the PSA, with some unaccusative patterns being restricted to undergoers and others to the lowest ranking argument, regardless of whether this is assigned a macrorole or the status of PSA. Thus, unaccusative subjects in RRG are not underlying objects, but rather PSAs which are linked from the two rightmost positions in \REF{ex:RRG:20}, similarly to passive PSAs.\footnote{It would not be possible to review here to the wide range of crosslinguistic variation in unaccusativity. We refer to \citet{Centineo1986,Centineo1995}, \citet{VanValin1990}, \citet{Bentley2006}, among others, for some of the RRG treatments of this topic.}  It is to the linking that we now turn, as the final topic of \sectref{sec:RRG:2}.
+
+\subsection{The linking}
+\label{sec:RRG:2.4}
+
+As can be seen in \figref{fig:RRG:4}, the linking is bidirectional, to account for both language production and language comprehension, and includes both universal and language-specific steps. Whereas logical structures and macrorole assignment, which is based on the hierarchy in \REF{ex:RRG:9} and the principles in \REF{ex:RRG:10}, are universal, languages differ substantially in how arguments link to syntax.
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{figures/RRG/Picture2-new.pdf}
+\caption{The linking of semantic and syntactic representation \citep[177]{VanValin1997}}
+\label{fig:RRG:4}
+\end{figure}
+
+The linking is governed by the Completeness Constraint, which ensures that there is a match between the referring expressions in the clause and the arguments in the semantic representation of the clause.
+
+\ea%22
+   \label{ex:RRG:22} Completeness Constraint\\
+   All the arguments explicitly specified in the semantic representation of a sentence must be realized syntactically in the sentence, and all the referring expressions in the syntactic representation of a sentence must be linked to an argument position in a logical structure in the semantic representation of the sentence.
+   \z
+
+  The semantic representation of the sentence is built on the basis of the Logical Structures of the predicators in the clause (including the predicating adpositions of adjunct modifiers). These Logical Structures are drawn from the lexicon, although the semantics of the predicate is also subject to compositional rules, which we omit here for the sake of brevity.\footnote{We refer here to alternations between activities and active accomplishments which depend on whether the activity in the Logical Structure of the predicate combines with the Logical Structure of an adpositional phrase describing an endpoint.} In the mapping from semantics to syntax, the information in the semantic representation of the clause is key for the retrieval of the appropriate syntactic templates from the syntactic inventory. The selection of the core template is governed by the principle in \REF{ex:RRG:23a}.
+
+\ea%23
+\label{ex:RRG:23}
+\ea\label{ex:RRG:23a} Syntactic Template Selection Principle\\
+The number of syntactic slots for arguments and argument-adjuncts within the core is equal to the number of distinct specified argument positions in the semantic representation of the core.\footnote{An argument-adjunct is an adposition which introduces an argument of the verb, at the same time contributing its semantics to the clause. The locative adposition required by \textit{put} is an argument-adjunct, since it is part of the valence of the verb, and hence is an argument, but it can vary independently of the verb (e.g., \textit{put the book on/under/next to,} etc. \textit{the desk}) in the same way an adjunct can (e.g. \textit{dance on/next to/beside,} etc. \textit{the desk}). The semantic representation of \textit{x puts y in z} ([\textbf{do$'$}(x, [\textbf{act.on$'$}(x, y)])] CAUSE [INGR \textbf{be-in$'$} (z, y)]) reflects the argument sharing between the verb and the adposition in a way that the semantic representation of \textit{x} \textit{dances on y} does not: in \textbf{be-on$'$}(y, [\textbf{do$'$}(x, [\textbf{dance$'$}(x])])) the Logical Structure of the adjunct \textit{on} modifies the Logical Structure of \textit{dance} taking this as one of its arguments, but there is no argument sharing between the two predicates.}
+
+\newpage
+\ex\label{ex:RRG:23b} Language-specific qualifications of the Principle in (\ref{ex:RRG:23a}):
+\ea\label{ex:RRG:23bi} All cores in the language have a minimum syntactic valence of 1.
+\ex\label{ex:RRG:23bii} Argument-modulation voice constructions reduce the number of core slots by 1.
+\ex\label{ex:RRG:23biii} The occurrence of a syntactic argument in the Pre-/Post-Core Slot reduces the number of core slots by 1 (may override \ref{ex:RRG:23bi}).
+\z\z\z
+
+The Principle in \REF{ex:RRG:23a} follows from the Completeness Constraint and is universal, whereas the qualifications in \REF{ex:RRG:23b} are language-specific (though they all apply to English). An additional, universal, qualification of \REF{ex:RRG:23a} is needed to capture non-subordinate complex constructions, and we refer to \citet[546]{VanValin1997} and \citet{Paris2022} for this.
+
+  In the syntax to semantics linking the syntactic representation of the clause is created by a Parser on the basis of the overt syntactic structure of a sentence. The Parser appears alongside the syntactic inventory in the general architecture of RRG shown in \figref{fig:RRG:1} \citep[131]{VanValin2005}. The constructional schemas also appear in the RRG architecture, since they play a key role in providing language- and construction-specific information in both directions of the linking. The step-by-step procedures that characterize the linking, in both directions, are detailed in the Linking Algorithm(s), which are rather complex, to capture language-specific variation \citep[136-158]{VanValin2005}.
+
+  Having introduced how RRG is conceived and how the parts of the model fit together, in the next sections we shall engage in a more detailed comparison of the different ways things are done within RRG and LFG.
+
+\section{LFG and RRG compared}
+\label{sec:RRG:3}
+
+As noted above, both LFG and RRG fall within the class of linguistic models defined as parallel correspondence or level-mapping. There are nonetheless significant differences between them with respects to various dimensions of linguistic analysis and description. We consider some of these differences in a little more detail in the present section.
+
+\subsection{Grammatical relations and control}
+\label{sec:RRG:3.1}
+
+A, perhaps the, key difference between the two frameworks concerns the status of grammatical relations like subject and object. These are at the heart of LFG, where they constitute the ingredients of f-structure, a level which stands as a crucial point of intersection between lexical argument structure, sentential syntax and meaning. By contrast, as we have seen, RRG regards grammatical relations as construction and language particular instantiations of possible argument relations and as such to be defined at the level of individual grammars rather than as an intrinsic part of the cross-linguistically applicable theoretical framework. Within LFG this reliance on functional structure has meant that the inventory of functions has had to be extended to include (\textsc{x)comp} and \textsc{(x)adj} in order to accommodate the full range of embedded or subordinate clauses. Although the desirability of such as extended inventory has not gone unchallenged --- see for example the discussion of \textsc{comp} in \citet{patejuk2016reducing} --- the fact remains that some f-structural account of all the parts of a sentence is required in LFG but not in RRG, where the semantically defined primitives suffice.
+
+One place where this difference can be seen is in the treatment of control. The RRG treatment of these constructions has its roots in \citegen[307-308]{FoleyVanValin1984} theory of obligatory control, which is defined in semantic terms:
+
+\begin{enumerate}
+\item Causative and jussive verbs have undergoer control.
+\item All other (M-)transitive verbs have actor control.\footnote{M(acrorole-)transitivity is the number of macrorole arguments that a verb takes. It is syntactically more salient than S(yntactic-)transitivity, which is the number of direct core arguments a verb takes. The difference between the two is clear in the case of activity verbs with active accomplishment counterparts (\textit{eat/eat the cake}). Whereas the active accomplishments (\textit{eat the cake}) are M-transitive (and therefore also S-transitive), the activities can have an inherent argument that has no macrorole status (\textit{eat pasta}), in which case they are S-, but not M\nobreakdash-transitive.}
+\end{enumerate}
+
+\noindent Examples of causative verbs are \textit{make}, \textit{force} and \textit{cause}, whereas \textit{tell}, \textit{persuade} and \textit{order} are examples of jussive verbs, the latter group being distinct from the former in that it describes an eventuality that relies on verbal means. Examples with \textit{persuade} were provided in \REF{ex:RRG:17}. Here we provide an example with \textit{tell}. The fact that the controller remains the same regardless of passivization (cf.\ \REF{ex:RRG:24b}) indicates that this construction has a semantic controller (undergoer).
+
+\ea%24
+   \label{ex:RRG:24}
+   \ea\label{ex:RRG:24a} Mary told Paul\textsubscript{i} [CONTROLLER]\GAP\textsubscript{i} to leave.
+   \ex\label{ex:RRG:24b} Paul\textsubscript{i} [CONTROLLER] was told by Mary\textsubscript{j} \GAP\textsubscript{i/*j} to leave.
+   \z\z
+
+\noindent The control constructions with transitive verbs that are neither causative nor jussive also have a semantic controller, although here the controller is the actor:
+
+\ea%25
+   \label{ex:RRG:25}
+   Paul\textsubscript{i} [CONTROLLER] promised Mary\textsubscript{j} \GAP\textsubscript{i/*j} to leave.
+   \z
+
+\noindent  The intuition behind the theory of control introduced above is that the lexical semantics of the verbs providing the controller determines the type of semantic control. Indeed, the theory is also valid in syntactically ergative languages (for example, Dyirbal), languages with active-inactive alignment (Acehnese) and head-marking languages (Lakhota) \citep[241]{VanValin2005}. In addition, if a verb can have causative and non-causative or jussive and non-jussive semantics (see, for example, \textit{ask}) the semantics of the controller varies accordingly. If the verb providing the controller is intransitive, as for instance is the case with \textit{try}, there is no issue of selection.
+
+\ea%26
+   \label{ex:RRG:26}
+   Paul\textsubscript{i} [CONTROLLER] tried \GAP\textsubscript{i} to leave.
+   \z
+
+\noindent The controlled missing argument, or pivot, on the other hand, is a PSA in all of the constructions above, in that it is characterized by the restricted neutralization [A, S, d-S].
+
+\ea%27
+   \label{ex:RRG:27}
+   Mary told Paul\textsubscript{i} / Paul\textsubscript{i} promised Mary / Paul\textsubscript{i} tried \GAP\textsubscript{i} to leave / \GAP\textsubscript{i} to see a doctor / \GAP\textsubscript{i} to be seen by a doctor / *a doctor to see\GAP\textsubscript{i}.
+   \z
+
+  An important feature of control constructions is highlighted by the ungrammaticality of passivization of the first verb when this is neither causative nor jussive (cf.\ \REF{ex:RRG:28} vs.\ \REF{ex:RRG:24b}).
+
+\ea%28
+   \label{ex:RRG:28}
+   *Paul was promised by Mary to leave.
+   \z
+
+\noindent The finding in \REF{ex:RRG:28} is explained by the type of semantic control that the structure requires (actor), combined with the type of syntactic linkage that the structure involves. This is a non-subordinate core juncture (\sectref{sec:RRG:3.4}), which independently requires that an argument of the second core be shared with --- and realized within --- the first core. The latter requirement is the additional, universal, qualification of the Syntactic Template Selection Principle (cf.\ \REF{ex:RRG:23}), which was mentioned in passing above (\citealt[546]{VanValin1997}, \citealt[244-245]{VanValin2005}, \citealt{Paris2022}).
+
+\ea%29
+   \label{ex:RRG:29} Universal qualification of \REF{ex:RRG:23a}\\
+   The occurrence of a core as the linked core in a non-subordinate core juncture reduces the number of core slots by 1.
+   \z
+
+\newpage
+\noindent The actor of the passive is independently claimed not to occur within its core in RRG, and, therefore, the specific argument sharing required cannot take place in \REF{ex:RRG:28}. This results in a violation of the Completeness Constraint in the linking (cf.\ \REF{ex:RRG:22} in \sectref{sec:RRG:2}) and, hence, in ungrammaticality.
+
+Raising to subject/raising to object/Exceptional Case Marking constructions are called Matrix Coding constructions in RRG. We give an example of matrix coding as PSA in \REF{ex:RRG:30a} and of matrix coding as non-PSA in \REF{ex:RRG:30b}.\footnote{Although other epistemic predicates figure in matrix coding as PSA (for example, \textit{be likely, be certain}) this structure is not in principle limited to epistemic predicates: modality impersonal (\textit{be necessary, must}) and factitives (\textit{be sad, be fascinating}) are also known to figure in matrix coding crosslinguistically (\citealt{Kimenyi1980}; \citealt{Bentley2003}).}
+
+\ea%30
+   \label{ex:RRG:30}
+   \ea\label{ex:RRG:30a} Mary seems to like football.
+   \ex\label{ex:RRG:30b} John believes Mary to like football.
+   \z\z
+
+Although these structures are characterized by the sharing of an argument between two cores, similarly to control constructions, the shared argument is not a pivot. In matrix coding to PSA, the matrix verb is bivalent, but atransitive, which means that it takes no macroroles. An example is \textbf{seem$'$}(x, y) [MR0], where x is an optionally realized experiencer and y is a propositional argument. In English, if \textit{seem} is followed by a finite complement (\textit{It seems that Mary likes football}), a non-argumental expletive pronoun (\textit{it}) fills the initial position in the core of \textit{seem}, satisfying the language-specific requirement of a nominative-marked RP in that position.\footnote{The optionally expressed experiencer argument cannot satisfy this requirement because it is not a direct core argument and hence it cannot be marked with nominative.}
+
+Whether finite or non-finite, the propositional argument as such is not assigned a macrorole or a grammatical relation in RRG. Instead, the individual arguments within the propositional argument have macrorole status and play a key role in the linking in the matrix coding construction with a non-finite propositional argument (cf.\ \REF{ex:RRG:30a}). This construction coordinates two cores in the syntax: the core of \textit{seem} and that of \textit{like} in \REF{ex:RRG:30a} (see \sectref{sec:RRG:3.5} and \figref{fig:RRG:5}). The predicate in the second core contributes an argument to the first core in the linking. This takes the place of the direct core argument in the first core, satisfying the universal qualification in \REF{ex:RRG:29}, as well as the language-specific requirement of a nominative RP in the core-initial position. If an argument of the second core were not linked to the first core, the Completeness Constraint would be violated, given that, to satisfy \REF{ex:RRG:29}, an argument specified in the Logical Structure of the verb in the second core could not have any syntactic expression.
+
+\begin{figure}
+  \begin{forest}
+    [SENTENCE
+      [CLAUSE
+        [CORE [RP [Mary,tier=word]]
+          [NUC [V [seems,tier=word]]]]
+        [LM, no edge,name=lm [to,tier=word]]
+        [CORE, name=core [NUC [V [like,tier=word]]]
+          [RP [football,tier=word]]]]]
+          \draw[-LaTeX,thick](lm)--(core);
+  \end{forest}\\\medskip
+\textbf{seem$'$} ($\emptyset$, [\textbf{like$'$} (Mary, football)])
+\caption[Semantic and syntactic representations of \REF{ex:RRG:30a}]{Semantic and syntactic representations of \REF{ex:RRG:30a}{\footnotemark}}
+\label{fig:RRG:5}
+\end{figure}
+\footnotetext{LM in \figref{fig:RRG:5} and following figures stands for Linkage Marker.}
+
+
+  As for matrix coding to non PSA, the relevant verbs (\textit{believe}, \textit{expect, find, consider}, etc.) are M-transitive: an example is \textbf{believe$'$}(x, y). The second argument can be an NP or a proposition, i.e., a full clause (\textit{John believes that Mary likes football}) or a core (cf.\ \REF{ex:RRG:30b}). In the latter case, an argument provided in the Logical Structure of the verb in the second core is linked to the first core to satisfy \REF{ex:RRG:29}, again avoiding a violation of the Completeness Constraint.
+
+\begin{figure}
+  \begin{forest}
+    [SENTENCE
+      [CLAUSE
+        [CORE [RP [John,tier=word]]
+          [NUC [V [believes,tier=word]]]
+          [RP [Mary,tier=word]]]
+        [LM, no edge,name=lm [to,tier=word]]
+        [CORE, name=core [NUC [V [like,tier=word]]]
+          [RP [football,tier=word]]]]]
+          \draw[-LaTeX,thick](lm)--(core);
+  \end{forest}\\\medskip
+\textbf{believe$'$} (John, [\textbf{like$'$} (Mary, football)])
+\caption{Semantic and syntactic representations of \REF{ex:RRG:30b}}
+\label{fig:RRG:6}
+\end{figure}
+
+Therefore, in RRG, argument sharing in matrix coding is captured by an independent property of non-subordinate core junctures, i.e., \REF{ex:RRG:29}. The difference between the two matrix coding constructions is a function of the lexical properties of the verbs occurring in the first core. Matrix coding as PSA characterizes two-place verbs which have no direct core argument to satisfy the requirement of a nominative RP in core-initial position. With these verbs, \REF{ex:RRG:29} is satisfied by an argument from the predicate in the second core taking the function of PSA in the first core. The other type of matrix coding characterizes M-transitive verbs which provide an argument of their own as PSA. With these verbs, \REF{ex:RRG:29} is satisfied by an argument of the second core taking the second argument slot in the matrix core.
+
+In more general terms, the contrast between control and matrix coding constructions depends on the lexical properties of the verbs involved in them, with the function of the shared argument, as well as actor or undergoer control, being determined lexically.\footnote{The same is true of the structure that is commonly known as tough-movement. This involves matrix coding as PSA with propositional attitude adjectives, which only have a propositional argument (\textit{it is easy to please Mary, Mary is easy to please}), and control with psych action adjectives, which have a nominative RP of their own (\textit{Mary is eager to please}) (see \citealt[Chapter~9, exercise 6]{VanValin1997inst}).} Syntactically, all of these constructions are non-subor\-di\-nate core junctures and they all abide by the constraints on this type of linkage.
+
+By contrast, control in LFG makes fundamental use of the relations \textsc{subj} and \textsc{xcomp} (see \citealt[Chapter~15]{DLM:LFG} and \citetv{chapters/Control}). To take two classic instances, the entries in \REF{ex:RRG:31} are those proposed by \citet{bresnan1982control-complementation} for the functional control verbs \textit{seem} and \textit{try}, the difference between the two lying in the fact that for \textit{seem} the \textsc{subj} function is not at the same time a semantic argument whereas for \textit{try} it is. That said, the crucial equivalence of the embedded and matrix \textsc{subj} is formally the same in both cases.
+
+\ea%31
+   \label{ex:RRG:31}
+   \ea \catlexentry{seem}{V}{(\UP\PRED) = `seem\arglist{\XCOMP}\SUBJ'\\
+     (\UP\SUBJ) = (\UP\XCOMP\SUBJ)}
+   \ex \catlexentry{try}{V}{(\UP\PRED) = `try\arglist{\SUBJ, \XCOMP}'\\
+     (\UP\SUBJ) = (\UP\XCOMP\SUBJ)}
+   \z\z
+
+At the same time we should emphasise that in neither framework are the particular analyses necessarily unchallenged or unchallengeable. Although it would clearly go against the principles of LFG for an analysis not to be mediated by grammatical functions, just as it would not be consistent within RRG for direct reference to be made to subject or object, the preferred account may vary from scholar to scholar. Thus, \citet[561-566]{DLM:LFG} offer the alternative entry for \textit{try} as in \REF{ex:RRG:32}:
+
+\ea%32
+   \label{ex:RRG:32}
+   \catlexentry{try}{V}{(\UP\PRED) = `try\arglist{\SUBJ, \COMP}'\\
+     (\UP\COMP\SUBJ\PRED) = `pro'}
+   \z
+
+\noindent On this version, \textit{try} is considered to be an instance of obligatory anaphoric control rather than functional control, and hence the second argument is \textsc{comp} rather than \textsc{xcomp.} This in turn means that the \textsc{pred} value of the embedded subject is \textsc{pro;} in other words a kind of null function whose value is interpreted by reference to another argument in the clause. We return to the issue of null arguments in \sectref{sec:RRG:3.3} below.
+
+\subsection{Predicate types and theta roles}
+\label{sec:RRG:3.2}
+
+The presence vs.\ absence of grammatical relations is also evident in the different way the two models characterise the individual lexical predicates. In LFG the lexical entry for a given item includes mention of the grammatical relations with which it is associated, which in turn are related to the appropriate theta roles by means of lexical mapping. In RRG, by contrast, the lexical entries are stated directly in logico-semantic terms (see \sectref{sec:RRG:2}), and it is these which are then linked to the argument structure as indicated in \REF{ex:RRG:8} and \REF{ex:RRG:9} above. Moreover, RRG adopts a distinct theory of theta roles which incorporates the two macrocroles Actor and Undergoer, which are defined in terms of positions in Logical Structure. These are generalizations across argument types and have no direct analogue in LFG, or indeed in any other framework which we are familiar with. Macroroles constitute the primary interface between logical structure and syntax, and their assignment is governed by universal principles, and no further argument structure is postulated. Meanwhile, the logical structure based on Dowty's and Vendler's approach to Aktionsart types allows for a more fine-grained classification of predicates than is to be seen in LFG, while at the same time allowing the argument structure to emerge from the logical structure rather than having to be defined in a separate structural dimension.
+
+One consequence of the decision within RRG not to admit as theoretical primitives a separate set of grammatical functions means that the question of how to relate these to semantic roles does not arise. In short there is no RRG equivalent of lexical mapping theory.
+
+\subsection{Argument realization}
+\label{sec:RRG:3.3}
+
+So far we have discussed for the most part issues relating to the content side, whether syntactic or semantic, of arguments. There are, however, differences between the two approaches when it comes to the way those arguments and associated clausal structure are given realization. One case in point concerns the treatment of null arguments, or so-called pro-drop, as in the contrast between French \textit{il/elle arrive} beside Italian \textit{arriva} `he/she/it arrives'. Here LFG and RRG agree on rejecting the categorial solution but LFG has instead recourse to the null function seen above in the analysis of control. A verb form such as Italian \textit{arriva} will have \textsc{pro} as the value of its \textsc{subj} function with the person/number values being determined by the appropriate features which are independently required by the language's system of verbal inflection. Not surprisingly in the literature this kind of account has been labelled `pronoun incorporation' (\citealt[68-75]{BoNoSa19}, \citetv{chapters/Incorporation}). At the same time it is also possible for the same verb form to have an overt argument as in Italian \textit{arriva Giorgio} `George is arriving' and hence the \textsc{pro} value for the \textsc{subj} constitutes an optional part of the verb's lexical entry triggered only when there is no overt argument. In other languages such as Chiche\^wa this optionality also extends to the \textsc{obj}, but the formal mechanism is the same in both instances. For further discussion and exemplification, see \citet[179-85, 500-502]{DLM:LFG} and \citet[Chapter~8]{BresnanEtAl2016}.
+
+  In RRG, when the argument is not expressed independently of the verb, the verb inflection bearing its person/number features is linked to the Constituent Projection, similarly to the verbal affixes of head-marking languages \citep[331-332]{VanValin1997}. In cases of extensive discourse-driven zero anaphora, found in Thai, Mandarin and Japanese, pro-drop is dealt with as a direct linking from discourse to Logical Structure, and, following \citet[171-174]{VanValin2005}, \citegen{KampReyle1993} Discourse Representation Theory has been adopted to formalize this linking.
+
+A different issue concerns the treatment of long-distance dependencies as in \textit{wh}{}-questions. There is considerable cross-linguistic variation here (for a typological survey see \citealt{Mycock2006}) but the crucial point is that the questioned item need not occur in the position of the corresponding answer. Within derivational models this can be straightforwardly handled by a rule of \textit{wh-}movement which shifts the relevant item to the initial position in the clause in a language like English, while a language like Chinese has no such rule and therefore question and answer occupy the same slot. For RRG the position of the \textit{wh}{}-item depends on a language-specific aspect of the linking, which is specified in a constructional schema (\sectref{sec:RRG:2.3}), and is directly activated with the selection of an appropriate syntactic template (\sectref{sec:RRG:2.4}). LFG relies instead on a further function \textsc{focus} with the functional value of the questioned item being set as equivalent to the \textsc{focus} and therefore being realised in that slot wherever in the language that may occur. In this way it is possible to accommodate not only languages like English with a single initial slot or Chinese where the interrogative item remains \textit{in situ} but also languages like Bulgarian which allow several different \textit{wh}{}-items to occur in sequence at the beginning of the clause.
+
+More generally then, as we have noted in various places, LFG tends where possible to avoid the proliferation of functional heads which is a characteristic of cartographic and nanosyntactic approaches. Thus, for example, although recourse is standardly had to CP to label clauses with a fronted question word or an embedded complementizer, there is no automatic assumption that all simple main clauses are CP, nor is there any attempt to split C into separate functional heads to host topics and other fronted elements. And while some LFG accounts incorporate K as the category to be associated with items such as the Hindi-Urdu ergative particle \textit{ne} \citep[102-103]{DLM:LFG}, this is not the general practice (see \citealt{Vincent2021} and \citealt{PP2021} for further discussion and exemplification). By contrast, such analytical strategies have no analogue within RRG, where the categorial inventory is reduced to a minimum and functional heads do not figure at all.
+
+Finally, in this connection, an instructive case concerns the treatment of the phenomenon of co-subordination (on which see \sectref{sec:RRG:3.5} below). This is a concept unique to RRG and which has no analogue either in traditional grammar or in LFG, both of which distinguish simply co-ordination, marked by items such as \textit{and} and \textit{or}, and subordination, signalled by various kinds of finite and non-finite complementation patterns. \citet{Foley2010} argues against the necessity of postulating such a third mode of clause combining and offers instead an account within LFG based on a categorial distinction between the functionally headed IP and the plain S or small clause. A response by \citet{VanValin2021} argues against Foley's account and more generally against the postulation of categorial solutions to what are functional/semantic problems.
+
+\subsection{Syntax and configurationality}
+\label{sec:RRG:3.4}
+
+Another dimension of linguistic realization concerns constituency and configurationality. In the various versions of Minimalism and cartography all structures are by definition configurational, and thus data such as the following Warlpiri example (cited from \citealt{AustBres96}, example~\REF{ex:RRG:1}) are problematic.
+
+\ea%33
+   \label{ex:RRG:33}Warlpiri\\
+   \gll kurdu-jarra-rlu  =\textbf{ka-pala}    maliki   wajili-pi-nyi wita-jarra-rlu\\
+      child-\textsc{dual-erg}  \textsc{pres-3du.sbj}  dog-\textsc{abs}   chase-\textsc{npst} small-\textsc{dual-erg}\\
+   \glt `Two small children are chasing the dog.'
+   \z
+
+\noindent According to \citet{Hale83}, after whom this example is cited, native speakers accept any order of the words here provided that the auxiliary element (highlighted in bold) is cliticised to the first item. Moreover, the adjective `small' and the noun `child' may, but do not have to, go together and if they do they can count as a constituent and occupy first position before the cliticised auxiliary. A fully configurational model can only handle this kind of data by postulating one structure as underlying and deriving the other options by movements to predetermined slots, some of which will inevitably be unfilled. In addition, the arguments of the verb in Warlpiri may remain unexpressed if derivable from context. In that case the relevant position in the tree is still present but is filled by a null pro. However, in a model such as LFG, once f-structure and c-structure are separated and not required to map onto each other in a one-to-one fashion, as \citet{AustBres96} show, it is a straightforward matter to distinguish the argument structure from the way those arguments are realised in terms of linear order. Strict configurationality is then a requirement of particular languages such as English or Arabic, but it is not a property of universal grammar.
+
+Within RRG the thinking is very similar. Not only is endocentricity not a principle of RRG, but there is also no expectation that the components of individual constituents, or units of meaning within the clause, should be contiguous. The flat structure of the RRG Layered Structure of the Clause (\sectref{sec:RRG:2.1}), therefore, caters straightforwardly for non-configurational languages, as in its own way does LFG by not requiring all constituents to be endocentric and thus arriving at flat structures by a different but equally satisfactory route.
+
+\subsection{Predicate and clause linkage}
+\label{sec:RRG:3.5}
+
+The RRG theory of predicate and clause linkage relies on the key notions of nexus and juncture. Nexus is the relationship established between two layers of the Layered Structure of the Clause (\sectref{sec:RRG:2.1}): instead of the traditional coordination vs. subordination dichotomy, RRG makes a trifold distinction between coordination, co-subordination, and subordination. Each of these types of nexus can in principle occur at three levels of juncture, nucleus, core, or clause, as can be seen in \tabref{tab:RRG:1}, although it is not the case that all languages exhibit all the possible nexus-juncture types.
+
+\begin{table}
+\begin{tabular}{ll}
+\lsptoprule
+{Juncture} & {Nexus}\\\midrule
+Nucleus & Coordination\\
+& Co-subordination\\
+& Subordination\\\midrule
+Core & Coordination\\
+& Co-subordination\\
+& Subordination\\\midrule
+Clause & Coordination\\
+& Co-subordination\\
+& Subordination\\
+\lspbottomrule
+\end{tabular}
+\caption{Nexus-juncture combinations}
+\label{tab:RRG:1}
+\end{table}
+
+Nuclear junctures involve a single core containing two or more nuclei, core junctures normally feature two cores within a clause, and, finally, clausal junctures are typically characterised by two clausal nodes within a sentence. We discuss below some more complex constructions whereby a core joins with a clause. Since the operators expressing grammatical categories such as aspect, modality and tense are assumed to have scope over specific layers of the clause, operator scope is an important criterion to diagnose the level of juncture of a linkage.
+
+  We will not discuss each nexus-juncture type in detail (for exhaustive treatments see \citealt[441-492]{VanValin1997}, \citealt{Ohori2022}). Instead, we shall first deal with co-subordination, which is not a construct of LFG, and we shall contrast it with coordination, exemplifying at the same time the key diagnostics of linkage used in RRG. Then, we shall move on to subordination, which is subdivided into the complement and the adverbial type, in accordance with assumptions made in other frameworks.
+
+  The notion of co-subordination originated with scholarship on Papuan languages, where a type of clause linkage was found which can neither be analysed as coordination nor as subordination: on the one hand, the linked clauses cannot stand alone and are dependent on a matrix clause for the expression of clausal operators; on the other hand, they fail to exhibit the marking of subordination that obligatorily occurs elsewhere. We provide here some exemplification from Chuave \citep{Thurmann1975}.
+
+
+ \largerpage
+\ea%34
+   \label{ex:RRG:34}  Chuave (Papuan, \citealt[448]{VanValin1997})\\
+   \gll Yai  kuba  i-re  kei  si-re  fu-m-e. \\
+  man  stick  get-\textsc{seq.sp}  dog  hit-\textsc{seq.sp}  go-\textsc{3sg-ind}\\
+   \glt `The man got a stick, hit the dog, and went away.'
+   \z
+
+Although \REF{ex:RRG:34} translates as a coordination in English, it is not a coordination in Chuave because the first two clauses cannot stand alone, which would be expected if they were coordinated main clauses, and because they lack their own illocutionary force morpheme. Every independent utterance requires an illocutionary force marker in Chuave (see {}-\textit{e} in \REF{ex:RRG:34}, which is glossed as indicative), and the fact that this marker is shared by the clauses in \REF{ex:RRG:34} suggests that they are not coordinated, but rather stand in a dependence relation.
+
+  RRG thus distinguishes co-subordination from coordination, assuming that the former nexus type involves operator sharing. Specifically, the non-matrix unit(s) must depend on the matrix unit for the expression of at least one operator at the relevant level of juncture. An important corollary of this assumption is that when nuclei, cores, and clauses are joined together in a co-subordinate nexus, the first node that joins them is not of the higher type, but rather constitutes the same layer as the linked layers, as shown in \figref{fig:RRG:7}, which contrasts with \figref{fig:RRG:8}, representing coordination.
+
+
+\begin{figure}
+  \begin{tabular}{ccc}
+  \begin{forest}[Nuc,rectangle,draw [Nuc,rectangle,draw] [Nuc,rectangle,draw]]\end{forest} &
+  \begin{forest}[Core,rectangle,draw [Core,rectangle,draw] [Core,rectangle,draw]]\end{forest} &
+  \begin{forest}[Clause,rectangle,draw [Clause,rectangle,draw] [Clause,rectangle,draw]]\end{forest}
+  \end{tabular}
+\caption{Nuclear, core and clausal co-subordination}
+\label{fig:RRG:7}
+\end{figure}
+
+\begin{figure}
+  \begin{tabular}{ccc}
+  \begin{forest}[Core,rectangle,draw [Nuc,rectangle,draw] [Nuc,rectangle,draw]]\end{forest} &
+  \begin{forest}[Clause,rectangle,draw [Core,rectangle,draw] [Core,rectangle,draw]]\end{forest} &
+  \begin{forest}[Sentence,rectangle,draw [Clause,rectangle,draw] [Clause,rectangle,draw]]\end{forest}
+  \end{tabular}
+\caption{Nuclear, core and clausal coordination}
+\label{fig:RRG:8}
+\end{figure}
+
+  We refer to \citet[455]{VanValin1997} for exemplification of all the co-subordination and coordination linkages that are available in English. Here we should mention that since there are no sentence-level operators, sentences allow coordination and subordination \citep[192]{VanValin2005}, but not co-subordination. Sentential coordination and subordination can thus be added to the nexus-junc\-ture types shown in \tabref{tab:RRG:1}, although, again, it is not predicted that all languages will allow these types of linkage.
+
+  The contrast between co-subordination and coordination emerges in non-finite complementation. Compare the English constructions in \REF{ex:RRG:35}.
+
+\ea%35
+   \label{ex:RRG:35}
+\ea\label{ex:RRG:35a} Mary tried to open the door.
+\ex\label{ex:RRG:35b} Mary told Paul to open the door.
+\z\z
+
+In both cases the relevant level of juncture is the Core, as suggested by the fact that in neither structure do the two predicates share the nuclear, aspectual, operators: the perfect and progressive operators only have scope over \textit{try} and, respectively, \textit{tell}, in \REF{ex:RRG:36a} and \REF{ex:RRG:36b}.
+
+\ea%36
+   \label{ex:RRG:36}
+\ea\label{ex:RRG:36a} Mary has been trying to open the door.
+\ex\label{ex:RRG:36b} Mary has been telling Paul to open the door.
+\z\z
+
+Sharing of all the arguments, as evidenced by passivization, would also indicate a nuclear juncture, but in both constructions \textit{the door} is an argument of \textit{open} alone (\textit{*The door is tried to open by Mary, *The door is told Paul to open by Mary}).
+
+  The two predicates do share one argument (\emph{Mary} and, respectively, \emph{Paul}), which is suggestive of a Core juncture. Yet, there is a key difference between the two constructions. The non-matrix predicate depends on \textit{try} for the expression of deontic modality in \REF{ex:RRG:35a}, and, therefore, \REF{ex:RRG:37a} can be read as \REF{ex:RRG:37b}.
+
+\ea%37
+   \label{ex:RRG:37}
+\ea\label{ex:RRG:37a} Mary must try to open the door.
+\ex\label{ex:RRG:37b} Mary must open the door.
+\z\z
+
+Although \textit{must} cannot be embedded under \textit{tell} for independent reasons (it rejects the \textit{to} infinitive), importantly, the same operator sharing as in \REF{ex:RRG:37} does not apply to the structure with \textit{tell} in \REF{ex:RRG:35b}.
+
+\ea%38
+   \label{ex:RRG:38}
+Mary must tell Paul to open the door ${\neq}$ Mary must open the door.
+\z
+
+\noindent In light of the above evidence, the linkage with English \textit{try} is analysed in RRG as a case of core co-subordination, as opposed to the one with \textit{tell}, which is a case of core coordination.
+
+  Similarly to the construction in \REF{ex:RRG:35a}, the one in \REF{ex:RRG:39a} illustrates core co-subor\-di\-nation, as testified by operator sharing at the level of the core. Not only does the embedded predicate \textit{waiting} depend on the matrix predicate \textit{sit} for the expression of deontic modality (see \REF{ex:RRG:35b}), but a deontic modal operator and core negation with scope on the matrix predicate can also have scope on the embedded one (see \REF{ex:RRG:39c}-\REF{ex:RRG:39d}). In addition, the two predicates share one argument, \textit{Mary}.
+
+\ea%39
+   \label{ex:RRG:39}
+   \ea\label{ex:RRG:39a} Mary sat waiting for your call.
+   \ex\label{ex:RRG:39b} Mary sat (*must) wait(ing) for your call.
+   \ex\label{ex:RRG:39c} Mary must sit waiting for your call > Mary must wait for your call.
+   \ex\label{ex:RRG:39d} Mary didn't sit waiting for your call > Mary didn't wait for your call.
+   \z\z
+
+\noindent  In nuclear junctures all arguments of the linked predicates are pulled together as the arguments of a single nucleus. In Italian, this is evidenced by the occurrence of accusative or locative clitics to the left of the matrix predicate, even though such clitics express arguments of the second predicate. This structure is referred to as clitic climbing in frameworks which allow movement.
+
+\ea%40
+   \label{ex:RRG:40} Italian
+\ea\label{ex:RRG:40a}   \gll Maria  lo  è  tornata  a  prendere.\\
+   Mary  \textsc{obj.cl}  be.3\textsc{sg}  return.\textsc{ptcp}  to  get \\
+   \glt `Mary went back to get it.'
+\ex\label{ex:RRG:40b}   \gll Maria  ci  è  cominciata  ad  andare. \\
+      Mary  \textsc{loc.cl}  be.3\textsc{sg}  start.\textsc{ptcp}  to  go\\
+   \glt `Mary started to go there.'
+   \z\z
+
+  Since \citet{Rizzi1976}, the structures in \REF{ex:RRG:40a}-\REF{ex:RRG:40b} have been known to be monoclausal. In RRG, they must be considered to be nuclear junctures, since the two predicates share all their arguments. The selection of the perfect auxiliary \textit{essere} `be' in \REF{ex:RRG:40} would at first seem to suggest that these are nuclear co-subordinations, whereby the non-matrix predicate depends on the matrix one for the expression of the perfect operator. This is clearly the case with \REF{ex:RRG:40a}, since transitive \textit{prendere} `take' would otherwise select the perfect auxiliary \textit{avere} `have'.
+
+\ea%41
+   \label{ex:RRG:41} Italian\\
+\gll Maria  lo  ha  preso.\\
+  Mary   \textsc{obj.cl}  have.\textsc{3sg}  take.\textsc{ptcp}\\
+   \glt `Mary took it.'
+ \z
+
+  The case in \REF{ex:RRG:40b} is more puzzling, since it is \textit{andare} `go' that selects \textit{essere} `be' in the perfect, whereas \textit{cominciare} `begin, start' would select either auxiliary \textit{essere} `be' or \textit{avere} `have', when occurring alone, and, in fact, it would not occur with `be' with an animate PSA.
+
+\ea%42
+   \label{ex:RRG:42} Italian
+\ea   \gll Lui  è  cambiato?  --  Ha   cominciato. \\
+      he  be.3\textsc{sg}  change.\textsc{ptcp}  {}  have.3\textsc{sg}  started\\
+   \glt `Has he changed?' – `He has started.'
+\ex   \gll Il  film  è  cominciato.\\
+      the  film  be.\textsc{3sg}  start.\textsc{ptcp}\\
+   \glt `The film has started.'
+   \z\z
+
+  In \citet[82-83]{Bentley2006}, we proposed that the structure in \REF{ex:RRG:40b} is a case of ad(verbial)-nuclear subordination, where \textit{cominciare} `start' is not a predicate because it does not contribute any arguments of its own, but merely an aspectual operator. This is represented with a Nucleus which lacks a predicate node but links to the Operator Projection to contribute aspectual information (see \figref{fig:RRG:9}). In the Constituent Projection, this Nucleus occurs in the periphery of the predicative Nucleus of the clause.
+
+\begin{figure}
+  \begin{tabular}{cccl}
+    \multicolumn{3}{c}{\framebox{\textbf{Constituent Projection}}}\\[2ex]
+    & & \framebox{Core}\\
+    & & $|$\\
+    \rnode{per}{\framebox{Periphery}} & & \rnode{nuc1}{\framebox{Nuc}}\\
+    $|$ & & $|$\\
+    \framebox{Nuc} & \rnode{lm}{\framebox{LM}} & \framebox{Pred}\\
+    $|$ & & $|$\\
+    \framebox{V} & & \framebox{V}\\
+    $|$ & & $|$\\
+    \rnode{comi}{cominciata} & \rnode{ad}{ad} &   andare\\
+    & & $|$\\
+    & & \framebox{V} & \rdelim\}{3}{*}[\qquad\framebox{\textbf{Operator Projection}}]\\
+    & & $|$\\
+    \rnode{asp}{\framebox{ASP}} & & \rnode{nuc2}{\framebox{Nuc}}
+  \end{tabular}
+  \ncline[linewidth=.5pt,nodesepA=2pt,nodesepB=2pt]{comi}{asp}
+  \ncline[linewidth=.5pt,nodesepA=2pt,nodesepB=2pt]{lm}{ad}
+  \ncline[nodesepB=2pt]{->}{per}{nuc1}
+  \ncline[nodesepB=2pt]{->}{asp}{nuc2}  
+\caption{Ad-nuclear subordination with \textit{cominciare} `begin' in Italian}
+\label{fig:RRG:9}
+\end{figure}
+
+It is not uncommon for aspectuals, modals and indeed other classes of predicates to enter into more than one nexus-juncture type with other predicates in a given language.
+
+\hspace*{-3pt}RRG thus understands ad(verbial)-subordination as a structure whereby a given layer of the Layered Structure of the Clause has a peripheral modifier. While in \REF{ex:RRG:40b}, the peripheral modification occurs at the level of the Nucleus, clausal ad-subordination --- or ad-clausal subordination, as it is normally called --- is illustrated in \REF{ex:RRG:43}, which would also be analysed as a structure with an adverbial subordinate clause in other frameworks, including LFG. In this case, the subordinate clause \textit{because you arrived} occurs in the Periphery of the main clause \textit{Mary left}.
+
+\ea%43
+   \label{ex:RRG:43}
+   Mary left because/even though you arrived.
+   \z
+
+      
+
+  Observe that, in contrast with the cases of ad(verbia)-subordination illustrated above in \REF{ex:RRG:40}, the subordinate clause in \REF{ex:RRG:43} has a full-fledged predicate, which contributes its argument to the clause. It should not be assumed that by definition ad-subordination requires a modifier that lacks a predicate of its own. This can, but need not, be the case and it certainly is not the case with ad-clausal subordination.
+
+  Different semantic classes of verbs lend themselves to different nexus-juncture types (see \citealt{VanValin2005}:205-213 for a discussion of the rationale of the relevant patterns). To give but one important example: crosslinguistically, perception verbs lend themselves to forming less cohesive linkage types than causative verbs. No predictions are made in RRG on the exact nexus-juncture type that each predicate class will require in a given language. However, building upon \citet{Silverstein} and \citet{Givon1980}, RRG has developed the \textit{Interclausal Relations Hierarchy} (\citealt[481-483]{VanValin1997}, \citealt[209]{VanValin2005}), which juxtaposes a scale of semantic relations with a range of nexus-juncture types, both being arranged in decreasing order of cohesion. The mapping between the two sides of the Interclausal Relations Hierarchy is many to one. However, RRG makes the strong falsifiable prediction that the tightest syntactic linkage realizing a particular semantic relation in a given language should be higher than, or as high as, the tightest syntactic linkage realizing lower semantic relations on the hierarchy in the same language. Although this prediction has been tested in work on specific languages (see, e.g., \citealt{Casti2012} on Sardinian), it ought to be further investigated in future work.
+
+Where RRG has developed an innovative system of clausal organization and inter-clausal relations, LFG has remained more closely linked both to traditional grammar and work over the years in the generative tradition. Complex sentences involve the embedding of the c-structure of the subordinate clause within that of the matrix clause, but both are defined in terms of syntactic categories and in particular the concept of CP has been taken over wholesale from work in the Minimalist framework. It is true that the proliferation of functional heads within the clause has been avoided through recourse to the new grammatical relations \textsc{(x)comp} and \textsc{(x)adj,} but, as noted above, categorial structure is still central in a way that it is not within RRG.
+
+\subsection{Pragmatics and information structure}
+\label{sec:RRG:3.6}
+
+The treatment of information structure in RRG and LFG is comparable, insofar as both frameworks consider it to be a module of grammar in its own right, which is independent from, but interacts with, the other modules. Both RRG and LFG allow information structure to be encoded in syntax (the layered structure of the clause, and, respectively, c-structure), morphology \citep{Shimojo1995}, or prosody (see \citealt{Connor2006} for LFG and \citealt{OConnor2008} for RRG). In addition, in RRG, the organization of grammar explicitly acknowledges the pervasive role of information structure at all stages of the bidirectional linking (see \figref{fig:RRG:1}). Broadly defining information structure as the organization of information in grammar, in this section we will address two principal issues, placing particular emphasis on RRG: (a) which information structure notions are adopted, and how they are defined, and (b) the place of information structure in the architecture of grammar.
+
+  Starting with the key notions, \citetv{chapters/InformationStructure} draws a distinction between information structure proper, or the sentence-internal organization of information, and discourse structure, which is concerned with the packaging of information in larger textual units. This contrast does not find a parallel in RRG. While in both frameworks \citegen{Lambrecht} notions of presupposition and assertion play a key role in the definition of topic and focus (\citealt[68-73]{VanValin2005} and \citetv{chapters/InformationStructure}), various different feature decomposition analyses have been developed in LFG to capture the nuances of salience, topic-worthiness, and contrastiveness (see \citetv{chapters/InformationStructure} and references therein). RRG, instead, does not make use of feature decomposition, which is not to say that it does not attempt to capture the gradualness of the relevant notions, as will be explained in due course.
+
+  In RRG there is general consensus on which notions are relevant and how they should be labelled. The framework relies heavily on \citegen[49]{Lambrecht} distinction between relational and non-relational constructs in information structure. The non-relational constructs are concerned with the status of the denotata of the discourse referents in the minds of the discourse participants: whether a given referent is already established or new for the hearer or both interlocutors, and, if it is new, whether it can be uniquely individuated or, alternatively, related to other referents. Although a referent is by definition brand-new, when it is first introduced into discourse, it may be possible for the interlocutors to identify it, in which case it is normally encoded as definite, in languages with overt marking of definiteness (e.g., \textit{This morning I saw your sister / the Head of Department / the student you were taking about}). Otherwise it is unidentifiable and encoded as indefinite. Following \citet{Prince} and \citet{Chafe1987}, RRG assumes that unidentifiable discourse referents can be anchored, i.e., related to established referents (e.g., \textit{This morning I saw a student from the Physics Department)}, or, otherwise, unanchored (e.g., \textit{This morning I saw a student}). Once a referent has been introduced, it becomes identifiable: if it is in the current focus of attention, it will be active; otherwise, it can be textually, inferentially or situationally accessible, or, alternatively, temporarily outside the focus of attention. The last type of discourse status is called inactive. Researchers in RRG have over the years investigated the grammatical correlates of the aforementioned notions in a large variety of languages (see, for example, \citealt{Shimojo1995,Shimojo2009,Shimojo2010,Shimojo2011}; \citealt{Pavey2001}; \citealt{Belloro2004,Belloro2015}; \citealt{Matic2014}; \citealt{LatrouiteRiester2018}; \citealt{Balogh2021a}, among others). The set of non-relational constructs which are universally adopted in the RRG treatment of information structure is illustrated in \figref{fig:RRG:10}, although we should note that other pragmatic states have been investigated by individual RRG researchers, for example saliency, or persistence in discourse \citep{Shimojo2009}.
+
+\begin{figure}
+  \begin{forest}
+    [Referential
+      [identifiable
+        [active]
+        [accessible [textually] [situationally] [inferentially]]
+        [inactive]]
+      [unidentifiable
+        [anchored] [unanchored]]]
+  \end{forest}
+\caption{The cognitive states of referents in discourse \citep[201]{VanValin1997}}
+\label{fig:RRG:10}
+\end{figure}
+
+  As for the relational notions, following \citet{Gundel1988} and \citet{Lambrecht1986,Lambrecht,Lambrecht2000}, RRG defines topic as what the speaker wants to request information about, or increase the addressee's knowledge of, or get the addressee to act with respect to \citep[68]{VanValin2005}. The definition of topic is, therefore, inherently relational, in that it makes reference to the information unit about which new information is being requested or conveyed in the utterance. Importantly, the topic is also traditionally assumed to be part of the pragmatic presupposition, or the set of relevant propositions, and ultimately the information which is shared by speaker and hearer prior to the utterance. Drawing on \citet{Reinhart}, \citet{FH}, \citet{Cruschina2012}, among others, in recent years, a distinction has been introduced in the framework between referential and aboutness topics, the first type being referentially old and part of the presupposition, the latter being introduced anew with the utterance, but nonetheless relational, in that it can be defined as what the utterance increases the addressee's knowledge about (see \citealt{Bentley2015}, \citet{Bentley2022a}).
+
+  The gradualness of the notion of topic is captured in RRG at the interface with the non-relational notions mentioned above. In particular, it is assumed that topics align with active discourse referents, as can be seen in \figref{fig:RRG:11}.
+
+\begin{figure}
+\begin{tabularx}{.8\textwidth}{Xl}
+\lsptoprule
+Active & {\raggedleft Most acceptable}\\
+Accessible& \multirow{3}{*}{\rotatebox[origin=c]{90}{$\longleftrightarrow$}}\\
+Inactive \\
+Brand-new anchored\\
+Brand-new unanchored  & {\raggedleft Least acceptable}\\
+\lspbottomrule
+\end{tabularx}
+\caption{The Topic Acceptability Scale \citep[204]{VanValin1997}}
+\label{fig:RRG:11}
+\end{figure}
+
+The morphosyntactic correlates of the alignment shown in \figref{fig:RRG:11} are captured in \figref{fig:RRG:12}, which expresses the likelihood that the topic is marked by means of strategies that code referents in terms of their degree of accessibility.
+
+\begin{figure}
+\begin{tabularx}{\textwidth}{lQQQll}
+\lsptoprule
+Zero & Clitic/bound pronoun & Pronoun [$-$stress] & Pronoun [+stress] & Definite~NP & Indefinite~NP\\
+\rnode{l1}{\,} & & & \multicolumn{1}{r}{\rnode{r1}{\,}} \\
+\multicolumn{5}{l}{Markedness of occurrence as topic}
+\ncline[linewidth=.5pt,nodesepA=0pt,nodesepB=3pt,arrowsize=4pt 5]{->}{l1}{r1}\\
+\lspbottomrule
+\end{tabularx}
+\caption{Coding of referents as topic (adjusted from \citealt[205]{VanValin1997})}
+\label{fig:RRG:12}
+\end{figure}
+
+  Focus is defined in RRG as the part of a declarative utterance that is asserted (i.e., the component of that utterance whereby the assertion differs from the presupposition) or, in an interrogative utterance, the part that is questioned \citep[69]{VanValin2005}. The distinction between broad and narrow focus is made in the context of \citegen[221-238]{Lambrecht} theory of focus structure, which has been extremely influential in RRG scholarship.
+
+  Focus structure can be defined as the conventional association of information meanings with sentence forms or the way that presupposed and asserted information are packaged in the sentences of a given language. While all grammars have strategies to differentiate sentences which provide new information on an established topic from sentences which occur out of the blue, and would seem to be topicless, there is a great deal of crosslinguistic variation in such strategies, and such variation has received attention in connection with the broader issue of the relative language-specific flexibility of the syntactic positions of predicates and arguments, and of focal information units (\citealt{VanValin1999}, \citealt{Bentley2008}, etc.). Although \citegen{Lambrecht} tripartition into predicate-, argument- and sentence focus is generally adopted (argument focus being renamed as narrow focus), the assumption that sentence focus lacks a topic altogether has been challenged, in light of \citegen{Erteschik1997} theoretical work, which finds empirical support in the study of a number of seemingly topicless constructions, such as existentials and presentationals (\citealt{Bentley2015}, \citealt{Bentley2018}).
+
+  An important distinction made in RRG is that between the Potential Focus Domain, which is the syntactic domain in the sentence of a given language in which focus can occur, and the Actual Focus Domain, which is the syntactic component of a given sentence that is in focus. The Potential Focus Domain differs across languages, as is clearly shown by the comparison of languages that heavily rely on prosody for the encoding of focus (e.g., English, see \citealt{Vallduvi}, \citealt{VanValin1999}) with languages that rely on syntactic position (e.g., Sicilian) or on the constructional choices (e.g., French). The Actual Focus Domain differentiates the three principal types of focus structure mentioned above.
+
+  To conclude the discussion of the relational notions that have received attention in RRG, we should mention contrastiveness. This is orthogonal to the notions of topic and focus, in that the alternatives that are contrasted can be selected from the presupposition or introduced anew within the assertion. Importantly, topical and focal contrasted units exhibit the same marking in some languages, whether by syntactic or morphological means (see \citealt{Shimojo2009,Shimojo2010,Shimojo2011} for Japanese and \citealt{DeCia2019} for North-Eastern Italo-Romance). In Japanese, for example, contrastive units can be marked as topics with \textit{-wa}. To capture the inherent informational complexity of contrastiveness, \citet{Shimojo2011} borrows  \citeauthor{Erteschik1997}'s (\citeyear{Erteschik1997,Erteschik-Shir2007}) notion of subordinate f(ocus) structure. The essence of his claim is that \textit{-wa} marked contrastive units in Japanese are foci, because they are selected or highlighted from a finite set, but they are embedded in and selected from a topical, contextually available, set. A Japanese clause with contrastive \textit{-wa} marking of the argument is thus represented as follows \citep[275]{Shimojo2011}: [\{x\textsubscript{foc}, y\}\textsubscript{top}]-\textit{wa}\textsubscript{top} [predicate]\textsubscript{foc}.
+
+  As for the place of information structure in the architecture of grammar, RRG, similarly to LFG, considers information structure to be an independent module of grammar. In terms of how this view is represented in each framework, \citet{King1997} (cited in \citetv{chapters/InformationStructure}) introduced an information structure projection in LFG, i-structure, and various proposals were subsequently advanced to model the flow of information from the other modules to i-structure. Similarly to LFG, RRG has a separate Speech Act Projection, which, however, does not participate in the flow of information, but rather represents the Potential and Actual Focus domain, and hence the focus structure, of an utterance in a given language.
+
+  In RRG the accessibility status of the discourse referents is conventionally represented in Logical Structure, the idea being that this status is significant in the construction of the meaning of the sentence. To give but one example, we showed in \figref{fig:RRG:11} that an active referent lends itself more readily to the role of topic than an inactive or unidentifiable one. The topicworthiness of an active discourse referent may thus play a role in the selection of a specific lexical item as the predicate. Consider the lexical pair \textit{fear} vs. \textit{frighten}, or its rough Italian counterpart, \textit{temere} vs. \textit{spaventare}: an active stimulus will tend to be construed as the topic, which in turn will favour the choice of the \textit{frighten} member of the pair in language production.
+
+  The activation status of the discourse referents also plays a role in the construction of meaning in language comprehension. Consider the case of an utterance which lacks an overt expression for one of the arguments of the predicate. Zero marking suggests that the position of that argument in Logical Structure can only be filled with an argument value that denotes an active discourse referent, or a referent that is textually, inferentially or situationally accessible. This referent must be retrieved from discourse.
+
+\largerpage[-2]
+  The flow of information from the discourse context to linguistic expression is modelled in RRG by means of the tools offered by Discourse Representation Theory (\citealt{KampReyle1993}), particularly in the analysis of zero anaphora phenomena, such as pro-drop (\sectref{sec:RRG:3.3}), in the absence of relevant morphological exponence, but also in the case of the silent predicates of Japanese and other languages. Importantly, the flow is supposed to occur directly between discourse and Logical Structure, without the intervention of syntax (or the Constituent Projection), given that empty syntactic arguments and positions are disallowed in RRG.
+
+  As should be clear from \figref{fig:RRG:1}, information structure plays a key role in the bidirectional linking of RRG. This view has already been illustrated in the discussion of the lexical choices for predicators and the filling of silent positions in Logical Structures. PSA choice, alongside voice alternations, is also heavily affected by the informational status of the arguments, as is the morphological marking of topics and foci. To conclude, we will briefly mention the stage in the linking which requires the selection of a syntactic template for the sentence. This stage involves language-specific considerations regarding a number of pragmatically-motivated positions: the Pre- and Post-Core Slot and the Pre- and Post-Detached Position (see \sectref{sec:RRG:2.1} and \citealt{Balogh2021b} for further, lan\-guage-specific, positions of Hungarian).
+
+\subsection{Semantic structure}
+\label{sec:RRG:3.7}
+
+Both LFG and RRG pay explicit attention to sentence semantics and, unlike Minimalism, neither theory requires the meaning of a sentence to be constructed one-to-one off syntactic heads and phrases. However, they differ in the way semantic and syntactic structure are integrated and in the type of semantic framework deployed. Within LFG, there is a separate dimension of s(emantic)-structure, which connects directly to f-structure rather than via c-structure. Although there is no strict directionality involved, it is nonetheless the case that f-structures, in turn built on the basis of the functional representations associated with lexical items, are input to the meaning construction, which is similar to the way, as described above, lexical semantics within RRG determines both the structure and overall meaning of the clause. At the same time two differences between the frameworks stand out. First, as we have seen, RRG does not use grammatical functions as an intermediary point of analysis between argument structure and sentential meaning. Second, RRG relies solely on classical predicate logic and builds the semantic representation of a sentence in the lexical phase of the semantics-syntax (or syntax-semantics) linking, retrieving the meanings of the predicates from the lexicon and combining them without recourse to specific instructions other than the rules of predicate logic. There is no linear or resource logic equivalent to the role of Glue within LFG and thus RRG corresponds more closely to what \citet[346]{findlay2021} describes as the ‘pre-Glue’ stage in the development of LFG.
+
+\newpage
+\section{LFG, RRG and diachrony}
+\label{sec:RRG:4}
+
+Within LFG there has been relatively little historical work to date (for recent overviews see \citealt{borjars2017lexical} and \citetv{chapters/Historical}) and in RRG even less (though see \citealt{Ohori1992}, \citealt{Eschenberg2005}, and the contributions to \citealt{Kailuweit2008b} and \citealt{Matasovic2022}). However, both approaches have much to offer in the diachronic as well as the synchronic domain, as will be explored and exemplified in this section.
+
+Given the traditional distinction between linguistic form/\textit{signifiant} and content/\textit{signifié}, changes can be broadly classified into three types: changes in form, changes in content and changes in the relation between the two. As far as the first is concerned, simple change of form or sound change, neither LFG nor RRG have anything special to say. Let us start then with the last and in particular the way these changes play out in the development of the Romance causatives, and where we can detect some instructive differences in the LFG-based account in \citet[651-655]{borjars2017lexical} compared to the RRG version in \citet[79-83]{Kailuweit2008}. The basic facts are fairly straightforward. Most Romance languages have a causative construction invoving the \textsc{do} verb + infinitive (see \citealt{Labelle2017}, \citetv{chapters/Romance}) as in the French example \REF{ex:RRG:44}.
+
+\ea%44
+   \label{ex:RRG:44}French\\
+   \gll Je   ferai       manger  les   gâteaux   à   Jean\\
+      I   make.\textsc{fut.1sg}   eat.\textsc{inf}  the.\textsc{pl}  cake.\textsc{pl}   to   John\\
+   \glt `I'll make John eat the cakes'
+   \z
+
+
+This structure, which has parallels across the whole of Romance from the earliest attestations \citep{Vincent2016} is monoclausal, as evidenced among other things by the fact that if the arguments are clitics they precede the higher verb (\textit{je les lui ferai manger} `I will make him eat them') and that the structure cannot be iterated (*\textit{je ferai faire manger les gåteaux à Jean à ses enfants} – contrast the biclausal English causative \textit{I will make John make his children eat the cakes}). In other terms, what we have here is a complex predicate construction. There are similar examples in early Romance and late Latin texts.
+
+\newpage
+\ea%45
+   \label{ex:RRG:45} Old French (\textit{Chanson de Roland} 852, 12th cent.)\\
+   \gll en Sarraguce  fait      suner    ses  taburs\\
+    in  Saragossa  make.\textsc{prs.3sg}  sound.\textsc{inf}  his   drum.\textsc{pl}\\
+   \glt `in Saragossa he makes his drums sound'
+   \z
+
+
+\ea%46
+   \label{ex:RRG:46} Latin (\textit{Vulgate,} Numbers 11.24, late 4th cent.\ CE)\\
+   \gll quos      stare    fecit       circa   tabernaculum\\
+      who.\textsc{acc.mpl}  stand.\textsc{inf}  make.\textsc{pst.3sg}   around  tabernacle.\textsc{acc}\\
+   \glt `who he made stand around the tabernacle'
+   \z
+
+However, if we go back further to an earlier stage we find a biclausal accusative and infinitive construction as in:
+
+\ea%47
+   \label{ex:RRG:47} Latin (Lucilius 1224, 2nd cent.\ CE)\\
+   \gll purpureamque   uvam    facit      albam   pampinum  habere\\
+      purple.\textsc{acc-}and  grape.\textsc{acc}  make.\textsc{prs.3sg}  white.\textsc{acc}  vine.\textsc{acc}  have.\textsc{inf}\\
+   \glt `and it (the sun) causes the pale vine-shoot to have purple grapes'
+   \z
+
+That this is biclausal is evidenced by the fact that there are two accusatives here, one for the actor of the embedded clause and one for the undergoer, whereas in examples like \REF{ex:RRG:44} the embedded actor is marked by the preposition \textit{à}, that is to say the usual marker of the non-macrorole core argument of ditransitive verbs.
+
+Two questions now arise:
+\begin{enumerate}
+\item how do the two frameworks model such constructions?
+\item what diachronic trajectories do these synchronic analyses imply?
+\end{enumerate}
+For example \REF{ex:RRG:44}, \citet[Figure~28.13]{VanValin2010} proposes the following structure:\footnote{\citet[81]{Kailuweit2008} has essentially the same structure but with the verbal arguments dominated by [ARG [NP]] rather than, as here, by RP. Nothing of essence for the present issue hangs on this difference.}
+
+\newpage
+\ea
+\label{fig:RRG:13} Constituent projection of \REF{ex:RRG:44}:\\[1ex]
+  \begin{forest}
+    [SENTENCE [CLAUSE
+        [CORE          [RP [je,tier=word]]
+          [NUC [NUC [PRED [V [ferai,tier=word]]]]
+            [NUC [PRED [V [manger,tier=word]]]]]
+          [RP [les g\^ateaux,tier=word]]
+          [PP [\`a Jean,tier=word]]]]]
+  \end{forest}
+  \z
+
+By contrast, the LFG representation in c-structure would be:
+
+\ea
+\small
+\label{fig:RRG:14}C-structure of \REF{ex:RRG:44}:\begin{forest}
+    [S [NP [je,tier=word]]
+      [VP [V [V [ferai,tier=word]]
+          [V [manger,tier=word]]]
+        [NP [les g\^ateaux,tier=word]]
+        [PP [\`a Jean,tier=word]]]]        
+  \end{forest}
+  \z
+
+\noindent And to this would be linked an f-structure, where there is a single \textsc{pred} value for the verbal complex: \textsc{pred}~\textsc{`faire.manger\arglist{\SUBJ,\OBJ,\OBJTHETA}'} with the three arguments respectively \textit{je}.\textsc{subj,} \textit{les gâteaux.}\textsc{obj} and \textit{Jean.}\OBJTHETA. The most appropriate c-structure for Romance causatives has been a matter of some discussion within the LFG literature ever since the early work of \citet{Alsina1997} and is discussed in \citetv{chapters/Romance} and \citetv{chapters/ComplexPreds}. The structure in \REF{fig:RRG:14} is the one put forward in \citet[652]{borjars2017lexical} and is modelled on the proposal for Urdu complex predicates advanced by \citet{Butt1997}. The crucial property is that the `make' verb and its dependent infinitive constitute a complex lexical item within a monoclausal construction and in this way account for the non-iterability of Romance causatives when compared to their English counterparts.
+
+\largerpage[2]
+By contrast, the LFG tree for an example such as \REF{ex:RRG:47} would be as follows:
+
+
+\ea
+\label{fig:RRG:15} C-structure and f-structure of \REF{ex:RRG:47}: \resizebox{!}{4cm}{
+\vbox{\vspace*{-1.2em}\hspace*{19em}{\avm[style=fstr]{
+    [pred & `facere\arglist{\SUBJ,\COMP}'\\
+  \TOPIC & \rnode{top}{[pred & `uva'\\
+      case & acc\\
+      adj \{[pred & `purpurea']\}]}\\\\\medskip
+  \COMP & [pred & `habere\arglist{\SUBJ,\OBJ}'\\\smallskip
+    \SUBJ & \rnode{ssubj}{[pred & `pampinus'\\
+      case & acc\\
+      adj \{[pred & `alba']\}]}\\
+    \OBJ & \rnode{obj}{\strut}]]}}
+{\begin{forest}
+    [S  [\rnode{uvam}{NP} [purpureamque\\ uvam]]
+      [V [facit]]
+      [S 
+      [\rnode{albam}{NP} [albam\\ pampinum]]
+      [\rnode{habere}{V} [habere]]]]
+\end{forest}}}
+\CURVE[1]{0pt}{0}{top}{0pt}{0}{obj}
+\CONNECT{2pt}{40}{albam}{0pt}{190}{ssubj}
+\CONNECT{2pt}{20}{uvam}{0pt}{190}{top}
+}
+\z
+
+A comparison of the two LFG representations shows that the change here has been modelled at the level of f-structure; where in the Latin example there were two separate predicates \textit{facere} `do' and \textit{habere} `have', in French we have rather a single complex predicate \textit{faire manger}. In other words, there is a shift from a biclausal to a monoclausal pattern modelled through the changing functional structures of the relevant predicates. In the RRG account by contrast there is a change from core juncture to  nuclear juncture (see \sectref{sec:RRG:3.4}), that is to say a similar pattern of structural conflation but achieved without reference to grammatical functions.
+
+There are, then, parallels between the accounts within the two systems of both the earlier biclausal and the later monoclausal structures, but when it comes to describing and explaining the change from the one to the other over time there is a striking difference. As \citet[659]{borjars2017lexical} note, LFG has no inherent means of accounting for the directionality of change compared to for example the Minimalist framework. The latter includes a constraint that derivational movement, in the synchronic sense, is always upwards. Since the layers of functional structure always dominate the lexical layers, it follows that shifts can only be from lexical to functional exactly as the data from studies of grammaticalization predict. RRG by contrast, rather than relying on an abstract distinction between functional and lexical heads, incorporates the semantic-syntactic directionality directly into its overall structure via the Interclausal Relations Hierarchy (see \sectref{sec:RRG:3.4} and \citealt[209]{VanValin2005}, \citealt[Fig~28.20]{VanValin2010}, \citealt{Matasovic2008}). According to this view, there is an inherent link between semantic type and clausal structure. It is predicted therefore that a pattern containing the ingredients of causativity, if it is not already monoclausal, should move in that direction, exactly as the data we have reviewed above suggest. What neither model easily accounts for is the reversion to bicausality that is attested in some modern Romance varieties. The example in \REF{ex:RRG:48} is from the Piedmontese dialect of Borgomanero:
+
+\ea%48
+   \label{ex:RRG:48} Borgomanero \citep[155,~ex.~154d]{Tortora2014}\\
+   \gll al   farissa      vônga-ti      lü,   la   strija\\
+     \textsc{sbj.cl}  make.\textsc{cond.3sg}  see.\textsc{inf}{}-you.\textsc{sg}   he   \textsc{def}  witch \\
+   \glt `He would make you see the witch.'
+   \z
+
+In standard Italian or in French the clitic subject \textit{ti} `you' of `see' would precede the causative in a monoclausal construction, while the fact that is attached here to the embedded infinitive leads \citet{Tortora2014} to propose a biclausal account. \citet{Davies1995} adduces similar evidence from modern Spanish and contrasts it with the monoclausal patterns found in the earlier stages of the language. Changes such as this suggest that it is not necessary to expect all diachronic developments to follow from asymmetries built into particular analytic frameworks, but some changes may be due to independently motivated external factors.
+
+That said, diachrony does frequently show directionality, as is clear from the third type of change, namely those patterns that fall within the domain of grammaticalization. The emergence of grammatical markers such as tense/aspect auxiliaries, (in)definite articles and the like from former lexical items suggests that there are inherent links between different types of meaning, though the question remains open as to whether these should be attributed to forces external to language rather than to inherent properties of particular models. In this connection, \citet[Chapter~6]{Eschenberg2005}, basing herself on earlier work by \citet{Rankin2004}, documents a striking series of changes in a set of particles in Umo\textsuperscript{n}ho\textsuperscript{n} (Omaha), which serve as both articles within the NP and evidentials within the clause. Here is not the place to go into detail but \figref{fig:RRG:16} \citep[186]{Eschenberg2005} demonstrates the two functions of the item \textit{kʰ}\textit{e} as a marker of deixis and subsequently as indicating the evidential basis for the speaker's assertion.
+\begin{figure}
+  \scalebox{.8}{\begin{tabular}{ccccc@{\qquad}ccc}
+    & & & & & SENTENCE\\
+    & & & & & $|$\\
+ NP & & & & & \rnode{clause1}{CLAUSE}\\
+ $|$ & & & & & $|$\\
+ CORE\textsubscript{N} & & & & & CORE\\
+ $|$ & & & & & $|$\\
+ NUC\textsubscript{N} & & & & & NUC\\
+ $|$ & & & & & $|$\\
+ REF & & & & & PRED\\
+ $|$ & & & & & $|$\\
+ N & & & & \rnode{np2}{NP} & V\\
+ $|$ & & & & $|$ & $|$\\
+ Nuzhi\textsuperscript{n}ga & zho\textsuperscript{n} & kʰe. & & Nuzhi\textsuperscript{n}ga &  $\emptyset$-zho\textsuperscript{n} &kʰe.\\
+ boy & \rnode{3lie}{3.lie} & \rnode{the}{the} & & boy & 3-lie & \rnode{evid}{\textsc{evid}}\\
+ $|$ & & & & & $|$\\
+ N & & & & & V\\
+ $|$ & & & & & $|$\\
+ \rnode{nucn}{NUC\textsubscript{N}} & \rnode{q}{QUALITY} & & & & NUCLEUS\\
+  $|$ & & & & & $|$\\
+ CORE\textsubscript{N} & & & & & CORE\\
+  $|$ & & & & & $|$\\
+ \rnode{np1}{NP} & &  & \rnode{deictic}{DEICTIC} & & \rnode{clause2}{CLAUSE} & & \rnode{ev}{EVIDENTIALS}\\
+    \end{tabular}
+  \ncline[linewidth=.5pt,nodesep=3pt]{np2}{clause1}
+\ncline[linestyle=dashed,dash=1.5pt,linewidth=.5pt,nodesep=3pt]{q}{3lie}
+\ncline[linestyle=dashed,dash=3pt,linewidth=.5pt,nodesep=3pt,arrowsize=4pt 5]{->}{q}{nucn}
+\ncline[linestyle=dashed,dash=1.5pt,linewidth=.5pt,nodesep=3pt]{deictic}{the}
+\ncline[linestyle=dashed,dash=3pt,linewidth=.5pt,nodesep=3pt,arrowsize=4pt 5]{->}{deictic}{np1}
+\ncline[linestyle=dashed,dash=1.5pt,linewidth=.5pt,nodesep=3pt]{ev}{evid}
+\ncline[linestyle=dashed,dash=3pt,linewidth=.5pt,nodesep=3pt,arrowsize=4pt 5]{->}{ev}{clause2}}
+\caption{The marker \textit{kʰe} in Umo\textsuperscript{n}ho\textsuperscript{n} (Omaha) \citep[186]{Eschenberg2005}}
+\label{fig:RRG:16}
+\end{figure}
+She concludes that the structural parallels which an account along RRG lines suggests open up the potential for grammaticalization, though in fact no directionality is predicted and indeed over time some items within this class show a shift from auxiliary to article and back to auxiliary. The general conclusion, therefore, is that whatever the analytical framework, historical and synchronic data can and do complement each other.
+
+\section{Computational linguistics}
+\label{sec:RRG:5}
+
+Computational work has been a key component of LFG right from the outset (see the chapters in Part 5 of the present volume). By contrast, in the early stages the implementations of RRG were traditionally fewer, although there have been many relevant proposals in the last few years, and RRG now aims to offer an explanatory framework for the study of computational linguistics. While both approaches have been interested in parsing and sentence comprehension, the goal of developing more or less complete computational grammars of a range of languages has been a specific focus of LFG work, particularly but not exclusively via the ParGram project (\bookorchapter{\citetv[\ref{sec:pargram}]{chapters/ImplementationsApplications}}{\citetv[§3]{chapters/ImplementationsApplications}}).  The languages that figured within this project are typologically varied and in addition to the initial choice of English, French and German, the project has now been extended to include not only other Indo-European languages such as Norwegian, Polish, Urdu and Welsh but also a representative selection of languages from other families and parts of the world such as Georgian, Tigrinya, Japanese and Wolof. Comparable to the LFG ParGram project, albeit smaller in scale, are the RRG parbank project, a parallel treebank under development, which currently covers a small text corpus of German, English, Farsi, French, and Russian \citep{Arps2021} and the RRG Biblical Hebrew treebank project \citep{CanyHojgaaard2021}. Moreover, \citet{Guest2008} developed a parser which has been used to analyse a large corpus of English sentences and a somewhat smaller corpus of Dyirbal sentences (see also \citealt{Nolan2022}). In addition, the cognitive scientist John Ball has, in the last decade, applied RRG in various Artificial Intelligence domains (see \url{https://medium.com/pat-inc} for details).
+
+\section{Psycho- and neurolinguistics}
+\label{sec:RRG:6}
+
+Language acquisition and processing are domains in which RRG and LFG line up with each other in the sense that neither requires, nor finds evidence for, an innate UG (\citealt{Pinker1989}, \citealt{VanValin2002}, \citealt{Weist2022} and references therein). When it comes to acquisition both argue for the importance in the first instance of recurrent semantic patterns with syntactic structures only emerging at a later stage. \citet{Pinker1982,Pinker1989} in particular used LFG as a framework for the investigation and modelling of language acquisition, while \citet{VanValin1994,VanValin1998,VanValin2001,VanValin2002} offers case studies from the perspective of RRG.
+
+As for neurolinguistic research, RRG has been used as the grammar component of a sentence comprehension model developed in \citet{Bornkessel2004} and \citet{Bornkessel2006}. \citet{VanValin2022} uses the RRG machinery to explain the ability of split-brain patients to provide grammaticality judgements with their isolated right hemisphere, developing a proposal which could potentially also capture the decoupling of grammaticality judgements and interpretation in agrammatic aphasics. For an overview of the relevant LFG-inspired work see \citet[726-728]{DLM:LFG}. \citet{Jones2019} develops a new line of thinking for an `incremental' version of LFG which addresses issues in relation to language processing and artificial intelligence.
+
+\section{Concluding remarks}
+\label{sec:RRG:7}
+
+In our introduction we alluded to the fact that both RRG and LFG share a commitment to formal architectures involving parallel structures and no derivations. In terms of the threefold classification of models proposed by \citet{Francis2003}  ---  (a) derivational, (b) licensing, as with the various kinds of construction grammar, and (c) level-mapping, in which each level has its own structures and theoretical primitives  ---  LFG and RRG both fall into their third class. At the same time, in his comments on an earlier draft of this chapter, Van Valin observes that `RRG could be considered a kind of (generic) construction grammar, given its construction-specific theory of grammatical relations and use of constructional schemas to represent language-specific information'. That said, it must be noted that constructions are only deemed to be necessary in RRG when the general principles of the linking algorithm allow scope for variation, and thus can be applied in a construction-specific way. In similar vein, within LFG although proposals exist for integrating specific constructional types and idioms (see for example \citealt{asudeh2013constructions}), the model as a whole remains solidly based on words and phrases. The allusion to the sound-meaning link also suggests another dimension along which theories can be compared, namely the scale from syntax through semantics to pragmatics. At one extreme, there is cartography/nanosyntax with its insistence on the centrality of syntactic configurations and features while at the other there lies a purely pragmatics-driven model such as Dynamic Syntax \citep{KempsonCannGregoromichelakiChatzikyriakidis2016,KempsonCannGregoromichelakiChatzikyriakidis2017}, which was set beside LFG in the workshop reported in \citet{Vincent2009}. Both LFG and RRG fall between these two extremes, but with LFG, given the importance of c-structure and the grammatical functions of f-structure, sitting nearer the syntactic end of the spectrum while RRG is more firmly based in semantic territory. However, there are signs of moves towards a larger role for semantics within LFG, as evidenced by \citet[Chapter~8]{DLM:LFG} and \citetv{chapters/Glue} and in a different way by \citetv{chapters/TAG}. Only time will tell what the outcome of such a rapprochement might be.
+
+\section*{Acknowledgements}
+
+Our thanks to Robert Van Valin Jr., Adams Bodomo and a third (anonymous) reviewer for their comments and suggestions. Special thanks too to Mary Dalrymple for her advice and patience. Note that we provide full bibliographical references in this chapter on the RRG side whereas for LFG we often refer readers to the relevant chapter within the present volume.
+
+\section*{Abbreviations}
+
+Besides the abbreviations from the Leipzig Glossing Conventions, this
+chapter uses the following abbreviations.\medskip
+
+\noindent\begin{tabularx}{.45\textwidth}{lQ}
+\gloss{cl} & clitic\\
+\gloss{ingr} & ingressive\\
+\gloss{lnk} & linker\\
+\gloss{seq} & sequential\\
+\end{tabularx}
+\begin{tabularx}{.45\textwidth}{lQ}
+\gloss{proc} & process\\
+  \gloss{sp} & same PSA (privileged syntactic argument)\\
+\gloss{suff} & suffix\\
+\end{tabularx}
+
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}

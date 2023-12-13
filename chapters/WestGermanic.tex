@@ -1,0 +1,3090 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10186010}
+\title{LFG and Continental West-Germanic languages}
+\author{Gerlof Bouma\affiliation{University of Gothenburg}}
+\abstract{This chapter presents an overview of LFG work on Continental West-Germanic languages. It starts out by giving a broad characterization of the languages that are part of this group, with a special focus on their clause layout, that is, the placement of verbs and arguments in a clause. After this, the different LFG approaches to modelling this layout are discussed, followed by a selection of clausal and verbal domain topics such as topicalization and left-dislocation, asymmetric coordination, cleft constructions, and argument ordering and realization. The chapter concludes by reviewing LFG analyses of topics from the nominal domain, namely determiner-adjective declension, preposition-determiner contraction, case indeterminacy and possessive doubling.}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[31]%%chapternumber
+}{}
+
+\begin{document}
+\maketitle
+\label{chap:WestGermanic}
+
+\section{Introduction\label{sec:Germanic:intro}}
+
+This chapter is concerned with the Lexical-Functional Grammar
+treatment of the present-day West-Germanic languages \textit{sans}
+English or Scots. This group is sometimes referred to as Continental
+West Germanic \citep{zwart:2008}, as it is mostly comprised of
+Germanic languages\footnote{Unless it is relevant to the discussion, I
+will use the term \textit{language} in a broad sense that ignores
+matters like the language/language
+variety/regiolect/dialect/etcetera's political status, whether a
+language label covers a homogeneous or heterogeneous group of
+subvarieties, or whether it is mutually intelligible with languages
+that do not fall under the same label.} spoken in countries on the
+European mainland: from Belgium and the Netherlands, through
+Luxembourg and Germany, to Switzerland, the northernmost parts of
+Italy, and Austria; and in addition in smaller regions bordering these
+countries. In spite of the label `continental', the group of
+Continental West Germanic languages (henceforth: CWG) also contains
+languages like Yiddish (spoken in Israel, North America and elsewhere), Afrikaans (South Africa and Namibia), Dutch in the
+Antilles and Suriname (in terms of language politics part of the same
+standardization body as Belgium and the Netherlands), and German
+heritage variants in the Americas \citep{putnam:2011} and Siberia
+\citep{andersen:2016}, to name but a few group members outside of
+continental Europe.
+
+In terms of L1 speakers, the largest of these languages are the standard
+varieties of German and Dutch, with circa 75 and 25 million speakers,
+respectively.\footnote{Counts based on
+\citet{EberhardSimonsFennig2019}.}  Their status as standardized
+national languages in multiple countries also means they are supported
+by strong academic infrastructures. It is therefore not surprising
+that most of the work on CWG in LFG is done on these two
+languages. Standard German and Dutch\footnote{Unless the context requires otherwise,  I will use \textit{German} and \textit{Dutch} without further modification to refer to the standardized, national language varieties of these two CWG languages.} will figure prominently in this
+chapter. This is merely a reflection of their salience in the LFG
+literature, and should not be interpreted linguistically, for instance
+as a sign of them being more typical CWG languages than other members of the
+language group.
+
+A comprehensive inventory of West-Germanic languages with demographic
+and linguistic information can be found in
+Ethnologue\footnote{\url{https://www.ethnologue.com/subgroups/west-0},
+consulted July 2022} \citep{EberhardSimonsFennig2019}. Bibliographic
+data on West-Germanic can be found in
+Glottolog\footnote{\url{https://glottolog.org/resource/languoid/id/west2793},
+consulted July 2022} \citep{glottolog}. Note that neither of these
+resources distinguishes a CWG branch in their taxonomies. For an
+overview of the syntactic traits of Continental West Germanic, I refer
+the reader to \citet{zwart:2008}. An accessible description of how
+German is syntactically different from English and from the
+North-Germanic languages can be found in the introductory chapters of
+\citet{haider:2010}, with arguments that in many cases carry over to
+the other CWG languages.
+
+
+\subsection{A general picture of Continental West Germanic, with a focus on the clause}
+
+In this subsection we will discuss some of the syntactic traits of
+CWG. Our focus will be on the clause/verbal domain, since this has
+been the main interest of the LFG literature on CWG. We will discuss
+the nominal domain more briefly. The purpose of this subsection is
+twofold. First, it gives a very general impression of CWG syntax and
+indicates how it differs from its North- and
+West-Germanic neighbours. Secondly, it introduces some of the
+language-particular background needed to understand the individual LFG
+analyses discussed in the rest of the chapter.
+
+
+\subsubsection{Clause layout\label{sec:Germanic:clauselayout}}
+A prominent syntactic feature of CWG languages is the combination of
+\textit{asymmetric verb second} together with \textit{verb final}
+\citep{zwart:2008,haider:2010}. The former label characterizes a
+clause structure in which the finite verb in main clauses, but
+\textit{not} in subordinate clauses, is preceded by exactly one
+constituent, which can have a wide range of grammatical functions. The
+latter label covers the generalization that any verbal material that
+is not in second position -- finite verbs in subordinate clauses and
+non-finite verbs in general -- clusters together towards the end of
+the clause, potentially following arguments and adjuncts. As such, CWG
+contrasts with Modern English, which lacks both pervasive verb second
+in main clauses and verb finality, and follows a more rigid
+subject-verb-complement order. CWG also differs from the present-day
+North-Germanic languages, which can be characterized as combining verb
+second with subject-verb-complement order.\footnote{Two remarks are in
+order with respect to this characterization of CWG clause
+layout. First, as it can be used to demarcate CWG from English as well
+as from North-Germanic, it gives some linguistic substance to the
+pooling of CWG languages into one group, as we do in this
+chapter. Secondly, and somewhat weakening the first point, once we
+start to look closer at individual CWG languages, we find deviations
+from the general pattern. Modern Yiddish in particular fits the
+description poorly, both in terms of the verb-second pattern and the
+verb-final pattern. It is beyond the scope of this chapter to go into
+all the exceptions, but some of them will be discussed towards the end
+of this section and in the context of LFG analyses of these
+exceptions.}
+
+For the discussion of the layout of a CWG clause, it is helpful to
+make use of the so-called \textit{topological field model} of the
+clause, which can be found in traditional descriptions of German and
+Dutch and in reference grammars like
+\citet{zifonun-etal:1997:vol7} and \citet{haeseryn-ed:1997}. In this model, the
+layout of a clause is described in terms of linearly ordered fields,
+and different word order variants associated with different clause
+types are obtained by assigning constituents to different fields. The
+field schema we use in this chapter is given in~(\ref{ex:topmodel}).
+%
+\begin{exe}
+  \ex\label{ex:topmodel} lead $\|$ Vorfeld | left bracket | Mittelfeld | right bracket | Nachfeld  $\|$ tail
+\end{exe}
+%
+\largerpage
+In a main clause, the \textit{left bracket} (lb) and \textit{right
+  bracket} (rb) are reserved for verbal material: a single,
+second-position finite verb is in the left bracket, and any other
+verbs are in the verb cluster in the right bracket. Between the
+brackets there is the \textit{Mittelfeld} `middle field' (Mf), which
+may contain any number of constituents. The \textit{Vorfeld}
+`prefield' (Vf) is the designated place for the single constituent
+preceding the finite verb, whereas the \textit{Nachfeld} `postfield'
+(Nf) may contain several items, and is typically reserved for heavier
+constituents like clausal arguments, extraposed relative clauses and
+adverbial prepositional phrases. The \textit{lead} and
+\textit{tail} fields\footnote{The terminology around these last two fields is
+not as established as for the fields that are part of the clause
+proper. The lead is for instance also known as \textit{Vorvorfeld}
+`pre-prefield' or \textit{linkes Au{\ss}enfeld} `left outfield', and the
+tail as \textit{Nachnachfeld} `post-postfield' or \textit{rechtes
+  Au{\ss}enfeld} `right outfield'.} host material that is more loosely
+connected to the clause, such as vocatives and hanging topics. Note
+that not every field needs to contain material. Examples of different
+declarative main clause types are given in~(\ref{ex:WGerm:2}).
+
+%
+\begin{exe}
+  \ex\label{ex:WGerm:2} Dutch 
+  \begin{xlist}
+  \ex Subject-initial declarative:\\
+      {\glll
+        Vf\streep{3.25em} {}     lb\streep{1em}   Mf\streep{4.25em}    {}  rb\streep{2.5em}\\
+        De draken doen Doris dadelijk duizelen.\\
+           the dragons make.\PRS.\PL{} Doris immediately feel.dizzy.\INF{}\\}
+           \glt `The dragons immediately make Doris feel dizzy.'
+        
+   \ex Object-initial declarative:\\    
+      {\glll%
+        Vf\streep{1em}      lb\streep{1em}   Mf\streep{6.75em} {} {}  rb\streep{2.5em}\\
+        Doris doen de draken dadelijk duizelen.\\
+        Doris make.\PRS.\PL{} the dragons immediately feel.dizzy.\INF{}\\}
+   
+   \ex Sentence adverb-initial declarative:\\   
+      {\glll%
+        Vf\streep{2.15em}      lb\streep{1em}   Mf\streep{6em} {} {}  rb\streep{2.5em}\\
+        Dadelijk doen de draken Doris~ duizelen.\\
+        immediately make.\PRS.\PL{} the dragons Doris feel.dizzy.\INF{}\\}
+  \end{xlist}
+\end{exe}
+%
+The verb-second constraint is clear here: the finite verb is always in
+the left bracket and precedes its subject if a non-subject is in the
+Vorfeld~(\ref{ex:WGerm:2}b,c). The subject and object can appear in identical
+positions -- contrast the OVS order in~(\ref{ex:WGerm:2}b) with SVO
+in~(\ref{ex:WGerm:2}a). Linear order is therefore not fully determined by
+grammatical function, or vice versa. The Vorfeld is also the target of
+long-distance dependencies, like fronting of wh-constituents out of
+embedded clauses (not shown here). The Mittelfeld may contain a
+collection of (nominal) arguments and (simple) adverbials, which are
+typically local to the clause. The extent to which the order of material
+within the Mittelfeld is fixed differs between languages
+(see~\sectref{sec:Germanic:scrambling}). Grammatical-function assignment under
+word order variation, long-distance dependencies, and the order of
+elements in the Mittelfeld are all basic CWG phenomena that the LFG
+models discussed below must address.
+
+Other clause types have empty Vorfeld regions, such as the polar
+interrogative~(\ref{ex:WGerm:3}a), which is a verb-first construction, and the subordinate
+clause~(\ref{ex:WGerm:3}b), in which the left bracket is filled by the complementizer.
+
+\begin{exe}
+  \ex\label{ex:WGerm:3} Dutch 
+  \begin{xlist}
+    \ex  Polar interrogative:\\
+         {\glll%
+           lb\streep{1.25em}      Mf\streep{9.5em} {} {} {}  rb\streep{2.5em}\\    
+           Doen de draken {Doris} dadelijk duizelen?\\
+           make.\PRS.\PL{} the dragons Doris immediately feel.dizzy.\INF{}\\}
+    \ex Subordinate:\\
+        {\glll%
+          \phantom{\ldots}lb\streep{.375em}  Mf\streep{9.5em} {} {} {}  rb\streep{7.5em}\\
+          \ldots{}dat de draken Doris dadelijk doen duizelen.\\
+         \phantom{\ldots}\COMP{} the dragons Doris immediately make.\PRS.\PL{} feel.dizzy.\INF{}\\}
+  \end{xlist}
+\end{exe}
+%
+Example~(\ref{ex:WGerm:3}b) has the finite verb in the right bracket, in the verb
+cluster. This shows the asymmetry of the verb-second phenomenon:
+unlike in a main clause, the finite verb in a subordinate clause can
+be preceded by any number of constituents in the Mittelfeld. The
+topological model accommodates the complementary distribution of the
+finite verb of a main clause and the complementizer of a subordinate
+clause by locating both in the left bracket.
+
+The right bracket in~(\ref{ex:WGerm:3}b) contains two verbs: first the finite verb,
+then the non-finite verb. This is considered to be the default
+order in Standard Dutch, but there is considerable variation in this
+ordering, both between and within CWG languages. An extensive overview
+of ordering possibilities in CWG verb clusters is given
+in~\citet{wurmbrand:2004}.
+
+The topological schema based on the combination of verb second and
+verb final is widely applicable to the CWG languages, but, as with any
+generalization, there are cases where it does not apply. To start, we
+must keep separate the notion of main clause vs.\ subordinate clause
+\textit{word order} from the notion of unembedded and embedded clause
+\textit{uses}. This is because German, amongst others, allows embedded
+clauses to have verb second under bridge verbs in the absence of a
+complementizer (see~\sectref{sec:Germanic:top}); that is, it allows main clause
+word order for certain embedded clauses. Furthermore, the separation
+of non-verbal material in the Mittelfeld and verbal material in
+the right bracket is not always as clean as the topological model
+suggests, as languages may allow for material from the two fields to
+be mixed, blurring the border between them (see
+\sectref{sec:Germanic:mfrb}). Finally, Afrikaans and Yiddish have clause
+structures that deviate further. Spoken Afrikaans optionally allows
+the combination of a complementizer and verb second in subordinate
+clauses \citep{biberauer:2009}. Modern Yiddish has verb second in main
+as well as in subordinate clauses, and in addition its status as a
+verb-final language is debated \citep{diesing:1997}. Historical stages
+of Yiddish did however follow CWG's characteristic pattern more
+closely \citep{santorini:1992}.
+
+\subsubsection{Clause union}
+
+The examples in~(\ref{ex:WGerm:2}) and~(\ref{ex:WGerm:3}) each contain two verbs. We
+have discussed the topological model as a schema of the clause,
+without questioning whether we are dealing with mono-clausal
+structures here. Since \citet{bech:1955}, it is common to distinguish
+between \textit{coherent} and \textit{incoherent} verb
+combinations. The former describes a combination of two verbs into a
+single clause, \textit{clause union}, whereas the latter results in a
+biclausal structure. The contrast is illustrated below. In~(\ref{ex:WGerm:4}a),
+the coherently combining \textit{durfde} `dared' shares the verb
+cluster with its embedded verb \textit{te kopen} `to buy', and the
+embedded object sits in the Mittelfeld of the clause headed by
+\textit{durfde}.  Example~(\ref{ex:WGerm:4}b) contains the incoherently
+combining \textit{beloofd} `promised', and here we see that both the
+embedded verb and its object appear after the matrix verb, in the
+Nachfeld of the matrix clause. As shown in~(\ref{ex:WGerm:4}c), this word order
+is not available for the coherently combining \textit{durfde} `dared'.
+%
+\begin{exe}
+  \ex\label{ex:WGerm:4} Dutch
+  \begin{xlist}
+    \ex[]{\glll
+      \phantom{\ldots}lb\streep{1.625em}  Mf\streep{3.5em} {} {} rb\streep{5.5em}\\
+      \ldots{}omdat hij geen auto durfde {te kopen}.\\
+      \phantom{\ldots}because he no car dared buy.\textsc{teinf}\footnotemark\\
+      \glt `\ldots because he didn't dare to buy a car.'}
+    \footnotetext{The abbreviations \textsc{teinf} and \textsc{zuinf}
+      in the glosses are used for the verb forms in Dutch and German
+      that combine the infinitive marker (\textit{te} in Dutch,
+      \textit{zu} in German) with an infinitive. Unlike corresponding
+      forms in for instance English, these combinations are generally
+      not separable.}
+    \ex[]{\glll
+      \phantom{\ldots}lb\streep{1.625em} Mf rb\streep{2.5em} Nf\streep{6.75em}\\
+      \ldots{}omdat hij beloofde geen auto {te kopen}.\\
+      \phantom{\ldots}because he promised no car buy.\textsc{teinf}\\
+      \glt `\ldots because he promised not to buy a car.'}    
+    \ex[*]{\gll \ldots{}omdat hij durfde geen auto {te kopen}.\\
+      \phantom{\ldots}because he dared no car buy\\}
+  \end{xlist}
+\end{exe}
+%
+The second sign that we are dealing with one clause in~(\ref{ex:WGerm:4}a) and two
+in~(\ref{ex:WGerm:4}b) is the scope of the negation, as evident from the
+translations. In both examples, negation is marked on the embedded object through the
+negative determiner but it nevertheless scopes over the finite verb
+in~(\ref{ex:WGerm:4}a). The same negation marking in the biclausal~(\ref{ex:WGerm:4}b)
+yields a narrow scope negation.
+
+A third phenomenon associated with clause union is the potential to trigger
+\textit{infinitivus pro participio} (IPP; German:
+\textit{Ersatzinfinitiv} `replacement infinitive'). IPP refers to the
+realization of a verb in the infinitive when a participle is expected
+on the basis of the selecting auxiliary. For this to occur, the clause itself
+must also contain a further, lower verb in the
+infinitive.\footnote{Further conditions may apply, for instance on the
+order of the auxiliary and the middle verb.} The occurrence of IPP is
+therefore evidence of the middle and lower verb combining
+coherently. Below, IPP is triggered in~(\ref{ex:dutchipp}a), affecting the
+coherently combining \textit{durven} `dare', but not in~(\ref{ex:dutchipp}b) for
+the incoherently combining \textit{beloofd} `promised'.
+%
+\begin{exe}
+  \ex \label{ex:dutchipp}Dutch\footnote{A note on the use of brackets and parentheses in examples in this chapter: I will use curly brackets to indicate choice. The choice is either between several forms in one position, such as in the current example~(\ref{ex:dutchipp}), or between several positions for one form, such as in the example in~(\ref{ex:particleclimbing}). Square brackets delimit constituents when this is relevant, such as in~(\ref{ex:germannested}). Parentheses indicate optionality as usual.}
+  \begin{xlist}
+    \ex[]{\gll Hij heeft geen auto $\{$durven / *gedurfd$\}$ {te kopen}.\\
+      he has no   car  \phantom{$\{$}dare.\INF{} {} \phantom{*}dare.\PTCP{}  buy.\textsc{teinf}\\
+      \glt `He didn't dare to buy a car.'}
+    \ex[]{\gll Hij had $\{$beloofd / *beloven$\}$ geen auto {te kopen}.\\
+      he had \phantom{$\{$}promise.\PTCP{} {} \phantom{*}promise.\INF{} no car buy.\textsc{teinf}\\
+    \glt `He promised not to buy a car.'}
+  \end{xlist}
+\end{exe}
+%
+Example~(\ref{ex:dutchipp}a) additionally shows that a clause can contain more
+than two verbs. In principle, there is no limit to the number of verbs 
+involved in clause union, since the same couple of coherently
+combining verbs can appear at multiple levels of
+embedding.\footnote{In practice, it seems that three-verb combinations are common, but more complex clauses are rare. For instance, \citet{cousse-bouma:2022} report numbers for a mixed corpus of written and spoken Dutch: about 3\% of coherence domains contain three verbs, but only 0.1\% contain four verbs.}
+
+A wide range of verbs allow for coherent combination. For instance, for Dutch, 
+the reference grammar \citet{haeseryn-ed:1997} lists over 100
+verbs that always combine coherently, and an additional 20 that do
+so optionally. In this list we find auxiliaries; evidential, modal and aspectual
+verbs; but also verbs with a clearer lexical contribution such as
+causal and perceptual verbs, and for instance verbs corresponding to
+\textit{help}, \textit{learn}, \textit{try} or \textit{forget}. In
+theoretical syntactic work, combining behaviour is commonly taken to
+be an underived, lexical property of the embedding 
+verb, but see \citet{cook:2001:revdiss} for an
+explanation of coherence in German in
+terms of information structure.
+
+\subsubsection{Crossing dependencies\label{sec:Germanic:xingdeps}}
+
+When we have coherently combining verbs that also introduce their own
+object, we can end up with a clause in which a sequence of objects in
+the Mittelfeld is followed by a corresponding sequence of verbs in the
+cluster. In languages like German or West Frisian, the
+unmarked order of the objects is by increasing order of embedding
+O$_1$O$_2$\ldots{}O$_n$, whereas the order of verbs is by decreasing
+order of embedding V$_n$\ldots{}V$_2$V$_1$. This gives rise to a
+pattern of nested dependencies between the objects and their
+verbs~(\ref{ex:germannested}).
+%
+\begin{exe}
+  \ex \label{ex:germannested}Standard German\\
+      {\glll
+        {} {} \phantom{$[$}O$_1$ {} \phantom{$[$}O$_2$ {} V$_2$ V$_1$\\
+        \ldots{}dass wir $[$dem Hans$]$ $[$das Haus$]$ streichen halfen\\
+        \phantom{\ldots}\textsc{comp} we \phantom{$[$}the.\textsc{dat} Hans \phantom{$[$}the.\textsc{acc} house paint helped\\
+          }
+    \glt `\ldots that we helped (V$_1$) Hans (O$_1$) paint (V$_2$) the house (O$_2$).'
+
+\end{exe}
+%
+In Dutch and Swiss German, however, objects and verbs can \textit{both} be
+ordered by increasing level of embedding O$_1$O$_2$\ldots{}O$_n$ and
+V$_1$V$_2$\ldots{}V$_n$. This creates cross-serial
+dependencies between objects and verbs, as in~(\ref{ex:germancross}).
+%
+\begin{exe}
+\ex \label{ex:germancross}Swiss German \citep[§2, example~1]{Shieber1985}\\
+    {\glll
+       {} {} \phantom{$[$}O$_1$ {} \phantom{$[$}O$_2$ {} V$_1$ V$_2$\\
+      \ldots{}das mer $[$em Hans$]$ $[$es huus$]$ hälfed aastriiche.\\
+            \phantom{\ldots}\textsc{comp} we \phantom{$[$}the.\textsc{dat} Hans \phantom{$[$}the.\textsc{acc} house helped paint\\}
+\end{exe}
+%
+The phenomenon of cross-serial dependencies has received ample interest in the literature, because
+it requires more than context-free power to model
+\citep{BKPZ:Dutch,pullum-gazdar1982,Shieber1985}.
+
+\subsubsection{In and around the nominal domain}
+
+We end the overview of CWG syntax by briefly discussing the main
+characteristics of the nominal domain and, even more briefly,
+adpositions. This is to give a general sense of what these domains
+look like in CWG languages. Most of what is discussed below resembles
+what we find in the North-Germanic languages and English.
+
+The nominal domain in CWG generally follows a
+determiner--adjective--noun pattern, with further adnominal material
+(relative clauses, PPs, etc.) realized postnominally. This is exemplified
+in~(\ref{ex:WGerm:8}).
+%
+\begin{exe}
+  \ex  Dutch\label{ex:WGerm:8}\\{\gll de mooiste plek van Europa\\
+    the beautiful.\textsc{superlative} place of Europe\\
+    \glt `the most beautiful place in Europe'}
+\end{exe}
+%
+Present-day CWG languages have at most four cases (\NOM, \GEN, \DAT
+and \ACC; for example Standard German), but many make fewer case distinctions (see \citealp{kasper:2014} for a compact description of the situation in German varieties and references), and  several have only a subject-object form distinction
+remaining in the pronominal paradigm (for example, Afrikaans, Dutch, and West Frisian).\footnote{See \url{taalportaal.org} for linguistic descriptions of Afrikaans, Dutch, and West Frisian. Consulted September 2022.} There are two numbers (\SG, \PL). Any of three genders
+(\M, \F and \N; Alemannic\footnote{The term
+Alemannic (German) covers amongst others Alsace German, Swabian and Swiss German.}, Low Saxon,\footnote{Low
+Saxon is used interchangeably with Low German by some authors. Our use
+of the term here comprises regional languages of the north of Germany
+and the east/north-east of the Netherlands. Our choice for the term
+Low Saxon is partly driven by the fact that LFG work on this language
+uses this term: see~\sectref{sec:Germanic:posslowsax}.}, Standard German, West Flemish), two
+genders (\textsc{common} gender and \N; Dutch, West Frisian) or no distinction
+(Afrikaans) may occur. Gender agreement distinctions only show up in the
+singular. The different paradigm sizes with respect to gender are
+illustrated in~(\ref{ex:WGerm:9}). Note the form contrasts in the definite
+determiners.
+%
+\begin{exe}
+  \ex \label{ex:WGerm:9}
+  \begin{xlist}
+    \ex Alemannic\\
+        {\gll d Frau \hspace{2.25em} dr Maa \hspace{2.25em} s Chind\\
+              the.\F.\NOM{} woman {} the.\M.\NOM{} man {} the.\N.\NOM{} child\\}
+    \ex West Frisian\\
+    {\gll de frou \hspace{1.225em} de man \hspace{1.4em} it bern\\
+         the.\textsc{common} woman {} the.\textsc{common} man {} the.\N{} child\\} 
+    \ex Afrikaans\\
+        {\gll die vrou  \hspace{4.96875em} die man  \hspace{5.1875em} die kind\\
+          the woman {} the man {} the child\\}
+  \end{xlist}
+\end{exe}
+
+Adjectives can be associated with multiple inflectional paradigms --
+see \sectref{sec:Germanic:dquant_aquant} for a discussion of these
+\textit{declension classes} in Standard German.  Even in languages
+with more elaborate paradigms, there is typically a great level of
+syncretism between forms across inflectional dimensions for
+determiners, pronouns, adjectives and nouns. The consequences of
+syncretism for grammatical modelling are discussed
+in~\sectref{sec:Germanic:indeterminacy}.
+
+Adpositions are overwhelmingly prepositional~(\ref{ex:WGerm:10}a), but the sporadic
+postposition~(\ref{ex:WGerm:10}b) and circumposition~(\ref{ex:WGerm:10}c) occur as well.
+%
+\begin{exe}
+  \ex\label{ex:WGerm:10} Gronings (Low Saxon)
+  \begin{xlist}
+    \ex {%
+      \gll \textbf{op} de grìns\\
+      on the border\\
+      \glt `on the border'}
+    \ex {%
+      \gll t haile joar \textbf{deur}\\
+      the whole year through\\
+      \glt `the whole year through'}
+    \ex {\gll \textbf{om} de provìnzie \textbf{tou}\\
+              around the province around\\
+         \glt `around the province'}
+  \end{xlist}
+\end{exe}
+
+
+\subsection{Overview of the rest of the chapter}
+
+Thus far, I have talked about the geographic distribution and the
+syntactic characteristics of the Contintental West-Germanic languages,
+to define the scope of the chapter, and to give a background for what
+is to come below.
+
+The remainder of this chapter is devoted to LFG analyses of different
+aspects of CWG syntax. In~\sectref{sec:Germanic:clausverb}, I discuss LFG
+accounts of the clause and the verbal domain, and
+in~\sectref{sec:Germanic:nom}, I discuss LFG studies of the nominal
+domain. These sections are structured in a parallel fashion: they
+start with analyses of the overall structure of their respective
+domains, and then continue with a discussion of more specific LFG
+accounts organized by topic. In the LFG literature on CWG, the clausal
+and verbal domains have received by far the most attention, which
+means that the corresponding section dominates this chapter in terms
+of size.
+
+The chapter ends with concluding remarks in~\sectref{sec:Germanic:conclude},
+in which I briefly touch upon some LFG and LFG-related work that was not
+included in detail here, and give pointers for further reading.
+
+\section{LFG analyses in the clausal and verbal domains\label{sec:Germanic:clausverb}}
+
+This section deals with phenomena at the level of the clause. I will
+start in~\sectref{sec:Germanic:overall} with a discussion of the variety of
+ways in which the overall shape of the clause has been modelled, mostly in
+terms of c-structure. I then look at specific topics that have been
+prominent in the LFG literature on CWG languages. The topics are
+divided into thematic sections. Phenomena at the left and right
+periphery are discussed in~\sectref{sec:Germanic:leftperi}
+and~\sectref{sec:Germanic:rightperi}, respectively. Studies dealing with the
+ordering of dependents are discussed
+in~\sectref{sec:Germanic:ordering}. Finally, mapping-based analyses of areas of
+CWG clause syntax are presented in~\sectref{sec:Germanic:mapping}.
+
+
+\subsection{The overall shape of the clause\label{sec:Germanic:overall}}
+
+The discussion of the different LFG conceptions of the overall
+shape of the clause is organized according to the topological field
+model. I first consider the top level of the clause
+(directly containing the Vorfeld and left bracket)
+in~\sectref{sec:Germanic:vflb}, and then the lower level of the clause (the Mittelfeld and right bracket) in~\sectref{sec:Germanic:mfrb}. The Nachfeld
+is discussed in~\sectref{sec:Germanic:nf}.
+
+\subsubsection{Vorfeld and left bracket\label{sec:Germanic:vflb}}
+
+\citet{berman-frank:1996}, \citet{Choi1999},
+\citet{Berman2003}, and \citet{frank:2006} model the
+German verb-second clause as a CP. The finite verb sits in C irrespective of
+whether the initial position is occupied by the subject of a
+declarative clause~(\ref{ex:WGerm:11}a) or by some other element, like the object in~(\ref{ex:WGerm:11}b). The
+complementary distribution between the finite verb and the
+complementizer in the left bracket follows as well: the complementizer can
+only appear in C, and when it is realized, the finite verb must occur
+in another, lower position~(\ref{ex:WGerm:11}c).
+%
+\newcommand{\gllx}{}
+%
+\begin{exe}
+  \ex\label{ex:cpshape}\label{ex:WGerm:11} German
+  \begin{xlist}
+    \ex\label{ex:cpshape:subjinit}%
+    \begin{forest}
+      [CP
+        [\rulenode{(\UP\SUBJ)=\DOWN\\DP}
+          [{\gll
+              Annie\\
+              Annie\\}]
+        ]
+        [\rulenode{\UP=\DOWN\\\BAR{C}}
+          [\rulenode{\UP=\DOWN\\C}
+            [{\gll
+                hat\\
+                has\\}]]
+          [\rulenode{\UP=\DOWN\\\ldots}
+            [{\gll
+                die Kinder gelobt.\\
+                the children praised\\},roof]
+          ]
+        ]
+      ]
+    \end{forest}
+    %
+    \ex\label{ex:cpshape:objinit}%
+    \begin{forest}
+      [CP
+        [\rulenode{(\UP\DF)=\DOWN\\DP}
+          [{\gll
+              Die Kinder\\
+              the children\\}, roof]
+        ]
+        [\rulenode{\UP=\DOWN\\\BAR{C}}
+          [\rulenode{\UP=\DOWN\\C}
+            [{\gll
+                hat\\
+                has\\}]
+          ]
+          [\rulenode{\UP=\DOWN\\\ldots}
+            [{\gll
+                Annie gelobt.\\
+                Annie praised\\} ,roof]
+          ]
+        ]
+      ]   
+    \end{forest}
+    %
+    \ex\label{ex:cpshape:subord}%
+    \begin{forest}
+      [CP
+        [\rulenode{\UP=\DOWN\\C}
+          [{\gll
+              dass\\
+              \COMP{}\\}]
+        ]
+        [\rulenode{\UP=\DOWN\\\ldots}
+          [{\gll
+              Annie die Kinder gelobt hat.\\
+              Annie the children praised has\\},roof]
+        ]
+      ]   
+  \end{forest}
+  \end{xlist}
+\end{exe}
+%
+The nature of Comp-CP, the node
+dominating the combined Mittelfeld and right bracket, differs between
+these authors, however, and will be discussed
+below. \Citet{vanderbeek:2005} and \citet{jones:2020:lfg}, on Dutch,
+consider only main clauses, which they posit to be IPs.
+
+\citeauthor{zaenen-kaplan1995}
+\citetext{\citeyear{zaenen-kaplan1995}, on Dutch;
+  \citeyear{ZaenenKaplan2002:Subsumption} on German} prefer a slightly
+flatter structure, exemplified in~(\ref{ex:sbarshape:subjinit}). The
+label `S|VP', a convention from the cited papers, is used to show that
+the authors do not wish to choose between these categories. 
+%
+\begin{exe}
+  \ex\label{ex:sbarshape:subjinit} Dutch\\
+  \begin{forest}
+    [\BAR{S}
+      [\rulenode{(\UP\SUBJ)=\DOWN\\DP}
+        [{\gll
+            Annie\\
+            Annie\\}]
+      ]
+      [\rulenode{\UP=\DOWN\\V}
+        [{\gll
+            heeft\\
+            has\\}]
+      ]
+      [\rulenode{\UP=\DOWN\\S|VP}
+        [{\gll
+            de kinderen geprezen.\\
+            the children praised\\} ,roof]
+      ]
+    ]
+  \end{forest}
+\end{exe}
+%
+\citeauthor{zaenen-kaplan1995}'s subordinate clauses are isomorphic to those
+in~(\ref{ex:cpshape:subord}), but are labelled \BAR{S} instead of CP.
+
+An even flatter structure appears in the computational grammar fragment
+discussed in \citet{clement-etal:2002:lfg}, who model the topological
+field schema directly in LFG. All topological fields
+are c-structure nodes and direct descendants of the MD node (`main
+domain') that represents the whole
+sentence. Example~(\ref{ex:topfield}) gives a somewhat simplified
+tree, using the abbreviations for the topological fields which I introduced
+in~\sectref{sec:Germanic:clauselayout}.
+%
+\begin{exe}
+  \ex\label{ex:topfield}
+  \begin{forest}
+           [MD
+             [\rulenode{\UP=\DOWN\\Vf}
+               [\rulenode{(\UP\SUBJ)=\DOWN\\DP}
+                 [{\gll
+                     Annie\\
+                     Annie\\}]
+               ]
+             ]
+             [\rulenode{\UP=\DOWN\\lb}
+               [\rulenode{\UP=\DOWN}\\V
+                 [{\gll
+                     hat\\
+                     has\\}]
+               ]
+             ]
+             [\rulenode{\UP=\DOWN\\Mf}
+               [\rulenode{(\UP\XCOMP*\,\OBJ)=\DOWN\\DP}
+                 [{\gll
+                     die Kinder\\
+                     the children\\}, roof]
+               ]
+             ]
+             [\rulenode{\UP=\DOWN\\rb}
+               [\rulenode{(\UP\XCOMP)=\DOWN\\VC}
+                 [{\gll
+                     gelobt\\
+                     praised\\}, roof]
+               ]
+             ]
+           ]
+  \end{forest}
+\end{exe}
+%
+A very similar flat structure can be found in
+\citet{rohrer:1996}.\footnote{\citet{rohrer:1996}, however, also writes
+``Diese flache Struktur lä{\ss}t sich problemlos in eine binäre
+rechtsverzweigende Struktur umwandeln. [\ldots] Wir behalten das
+flache Mittelfeld hier primär aus expositorischen Gründen bei'' (p96,
+fn 3). [This flat structure can be converted to a binary
+  right-branching structure without problems. We maintain the
+  flat Mittelfeld here primarily for reasons of exposition.]}
+
+
+\subsubsection{Mittelfeld and right bracket\label{sec:Germanic:mfrb}}
+
+The Mittelfeld and right bracket form the lower c-structure level in
+the clause. This is the unlabelled Comp-CP in~(\ref{ex:cpshape}) and
+the S|VP node in~(\ref{ex:sbarshape:subjinit}). All authors agree that
+this part of the tree does \textit{not} involve an IP.\footnote{In
+fact, in LFG, the assumption of an IP anywhere in CWG c-structure is
+rare. We mentioned \Citet{vanderbeek:2005} and \citet{jones:2020:lfg},
+on Dutch, who use it as the category at the top level, for the whole
+V2 declarative clause. The choice is not further motivated in these
+works, and moreover it is peripheral to the respective
+discussions. \citet{BresnanEtAl2016} posit that Comp-CP contains an IP
+in one of the book's exercises on German. However, since this is a textbook, it is
+unclear whether the authors are theoretically committed to this
+choice, or whether it was made for other reasons, for instance
+pedagogical ones.} This choice against an intermediate IP can also be
+found in analyses of German in the Chomskyan tradition, for instance
+in the line of work summarized in \citet[see §2.2 therein for an
+  overview of the arguments]{haider:2010}.
+
+A salient question in the analysis of this part of the clause is the
+order of the verbs and the arguments, and the concomitant contrast
+between nested versus cross-serial dependencies. We will focus first
+on the two polar opposites: verbs ordered after increasing level of
+embedding (cross-serial dependencies) and verbs ordered after
+decreasing level of embedding (nested dependencies). The following pair, a variation on~(\ref{ex:germannested}--\ref{ex:germancross}) above, illustrates the difference with three verbs in the verb cluster: 
+%
+\begin{exe}
+  \ex
+  \begin{xlist}
+  \ex Standard German\\
+      {\gll
+        \ldots{}dass wir $[$die Kinder$]$ $[$dem Hans$]$ $[$das Haus$]$ streichen helfen lassen\\
+        \phantom{\ldots}\textsc{comp} we \phantom{$[$}the.\ACC{} children \phantom{$[$}the.\DAT{} Hans \phantom{$[$}the.\ACC{} house paint help let\\
+          }
+    \glt `\ldots that we let the children help Hans paint the house.'
+\ex Swiss German \citep[§2, example~5]{Shieber1985}\\
+    {\gll
+      \ldots{}das mer $[$d' Chind$]$ $[$em Hans$]$ $[$es huus$]$ lönd hälfe aastriiche.\\
+        \phantom{\ldots}\textsc{comp} we \phantom{$[$}the.\ACC{} children \phantom{$[$}the.\DAT{} Hans \phantom{$[$}the.\ACC{} house let help paint.\\}
+  \end{xlist}
+\end{exe}
+%
+As mentioned in the introduction, there is considerable variation in
+the order of the verbal elements beyond these two opposites, and there
+is even variation in the extent to which the nominal material in the
+Mittelfeld and verbal material in the right bracket is kept separated,
+both between and within CWG languages. This variation will be
+briefly discussed at the end of this subsection.
+
+\subsubsubsection{Cross-serial dependencies} An early LFG analysis of Dutch
+cross-serial dependencies is found in \citet{BKPZ:Dutch}, which was a
+prominent demonstration of how LFG's formalism has the power needed
+for linguistically valid analyses of such dependencies.\footnote{The
+paper played a central role in the discussion of the context-freeness
+of natural language syntax. See e.g. \citet{pullum-gazdar1982} and
+\citet{Shieber1985} for more discussion of the issues involved and the
+kind of evidence considered.} Starting from a proposal by
+\citet{evers:1975}, schematically in~(\ref{ex:xs:evers}), with a flat
+Mittelfeld and a right-branching verb-cluster, \citeauthor{BKPZ:Dutch}
+argue that a structured Mittelfeld is to be preferred, as
+in~(\ref{ex:xs:bresnan}).
+
+\begin{exe}
+  \ex
+  \begin{xlist}
+  \ex\label{ex:xs:evers}
+    \begin{forest}
+      [S %, s sep=2pt
+        [DP\\(S) [Mf\streep{10em}, no edge, l=11em, tier=fields]]
+        [DP\\(O$_1$)]
+        [DP\\(O$_2$)]
+        [DP\\(O$_3$)]
+        [{\vphantom{DP}}, edge={dotted, line width=.75pt}]
+        [\BAR{V}
+          [V$_1$ [rb\streep{4em}, no edge, tier=fields]]
+          [\BAR{V} [V$_2$]
+            [\BAR{V} [V$_3$]
+              [\vphantom{V},edge={dotted, line width=.75pt}]
+            ]
+          ]
+        ]
+      ]
+    \end{forest}
+  \ex\label{ex:xs:bresnan}
+    \begin{forest}
+      [S %, s sep=3.5pt
+        [DP\\(S) [Mf\streep{11em}, no edge, l=14em, tier=fields]]
+        [VP [DP\\(O$_1$)]
+          [VP [DP\\(O$_2$)]
+            [VP [DP\\(O$_3$)]
+              [\vphantom{DP},edge={dotted, line width=.75pt}]
+            ]
+          ]
+          [\BAR{V}
+            [V$_1$ [rb\streep{4em}, no edge, tier=fields]]
+            [\BAR{V}
+              [V$_2$]
+              [\BAR{V} [V$_3$]
+                [\vphantom{V},edge={dotted, line width=.75pt}]
+              ]
+            ]
+          ]
+        ]
+      ]
+    \end{forest}
+  \end{xlist}
+  \end{exe}
+% 
+The tree in~(\ref{ex:xs:bresnan}) contains two parallel embedding structures: one
+for the objects in the Mittelfeld and one for the verbs
+in the right bracket. This is captured in the c-structure
+definitions in~(\ref{ex:bresnanetal1982:cstr}).
+
+\pagebreak 
+\begin{exe}
+\ex\label{ex:bresnanetal1982:cstr}\begin{xlist}
+  \ex \phraserule{S}{\rulenode{DP\\(\UP\SUBJ)=\DOWN} \rulenode{VP\\\UP=\DOWN}}
+  \ex \phraserule{VP}{\optrulenode{DP\\(\UP\OBJ)=\DOWN} \optrulenode{VP\\(\UP\XCOMP)=\DOWN} \optrulenode{\BAR{V}\\\UP=\DOWN}}
+  \ex \phraserule{\BAR{V}}{\rulenode{V\\\UP=\DOWN} \optrulenode{\BAR{V}\\(\UP\XCOMP)=\DOWN}}
+  \end{xlist}
+\end{exe}
+%
+For the objects, each level of VP embedding adds a level of \XCOMP
+embedding at f-structure. For the verbs, each level of \BAR{V}
+embedding does the same. A compatible stacking of \XCOMP{}s is thus
+built up in both parts of the tree. The optionality of the object DP
+in~(\ref{ex:bresnanetal1982:cstr}b) allows for verbs that do not introduce their own
+object. It is essential that an \XCOMP{} level is introduced for these
+in both parts of the tree, too, to maintain the parallel structure.
+
+The accusative with infinitive verbs involved in the cross-serial
+construction are analyzed as raising-to-object verbs. The inflected
+verb form \textit{zag} `saw', for instance, receives a lexical entry
+along the lines of~(\ref{ex:bresnanetal1982:lex}).
+%
+\begin{exe}
+  \ex\label{ex:bresnanetal1982:lex} \catlexentry{zag}{V}{%
+    (\UP\PRED)=\mbox{`\rm see\arglist{\SUBJ,\XCOMP}\OBJ'}\\
+    (\UP\XCOMP\,\SUBJ)=(\UP\OBJ)\\
+    (\UP\XCOMP\,\textsc{form})=\textsc{inf}\\
+    (\UP\SUBJ\,\NUM)=\SG\\
+    (\UP\TENSE)=\PST}\\
+\end{exe}
+%
+Complemented with rules for DPs and additional lexical entries, this
+grammar fragment gives us analyses like the one
+in~(\ref{ex:zagtweeberen}). 
+%
+
+\begin{exe}
+  \ex\label{ex:zagtweeberen}
+  \begin{xlist}
+    \ex Dutch\\
+        {\glll
+                 {}  S \phantom{$[$}O$_1$ {} O$_2$ V$_1$ V$_2$\\
+          \ldots{}dat ik $[$twee beren$]$ broodjes zag smeren.\\
+          \phantom{\ldots}\COMP{} I \phantom{$[$}two bears sandwiches saw spread\\
+            \glt `\ldots that I saw (V$_1$) two bears (O$_1$) prepare (V$_2$) sandwiches (O$_2$).'
+        }
+    \ex\hspace{9.25em}\attop{%
+    %  If this ^^^^^^ is changed...      
+      \avm[style=fstr,pic,picname=smeren1f]{
+        \rnode{w}{
+          [ pred  & `{\upshape see}\arglist{\SUBJ,\XCOMP}\OBJ' \\
+            tense &  pst \\
+            subj  & \rnode{wsu}{[pred & `{\upshape pro}'\\
+                             num & sg]}\vspace{\smallskipamount} \\
+          obj   & \rnode{wob}{[pred & `{\upshape bear}' \\
+                            spec & [pred & `{\upshape two}'] \\
+                            num & pl]}\vspace{\smallskipamount}            \\
+          xcomp & \rnode{wxc}{[pred & `{\upshape spread}\arglist{\SUBJ,\OBJ}' \\
+                   form & inf \\
+                   subj & \rnode{wxcwsu}{\strut}\\
+                   obj & \rnode{wxcwob}{[pred & `{\upshape sandwich}'\\
+                          num & pl]}]}~~\\
+          ]}
+      }
+% 
+\CURVE[1.8]{-2pt}{0}{wob}{0pt}{0}{wxcwsu}
+    }\\
+    \hspace*{-3em}\begin{forest}
+    %...this ^^^^ should change accordingly 
+      [\BAR{S}
+         [C
+           [{\gll
+               dat\\
+               \COMP{}\\}]
+         ]
+         [\rnode{s}{S}
+           [{\rnode{dp}{DP}}
+             [{\gll
+                 ik\\
+                 I\\}, roof]]
+           [\rnode{vp1}{VP}
+             [\rnode{dp1}{DP} [{\gll
+                   twee beren\\
+                   two bears\\}, roof]]
+             [\rnode{vp2}{VP}
+               [\rnode{dp2}{DP} [{\gll
+                     broodjes\\
+                     sandwiches\\}, roof]]]
+             [\rnode{vbar1}{\BAR{V}}
+               [\rnode{v1}{V} [{\gll
+                     zag\\
+                     saw\\}]]
+               [\rnode{vbar2}{\BAR{V}}
+                 [\rnode{v2}{V}
+                   [{\gll
+                       smeren\\
+                       spread\\}]]
+               ]
+             ]
+           ]
+         ]
+       ]
+     \end{forest}
+     % top level verbal spine
+     \nccurve[linewidth=.5pt,
+       ncurvA=.5, nodesepA=1pt, angleA=0,
+       ncurvB=2.5, nodesepB=0pt, angleB=180
+     ]{->}{s}{w}
+     \nccurve[linewidth=.5pt,
+       ncurvA=.31250, nodesepA=1pt, angleA=0,
+       ncurvB=2, nodesepB=0pt, angleB=180
+     ]{->}{vp1}{w}
+     \nccurve[linewidth=.5pt,
+       ncurvA=.5, nodesepA=1pt, angleA=0,
+       ncurvB=1.40625, nodesepB=0pt, angleB=180
+     ]{->}{vbar1}{w}
+     \nccurve[linewidth=.5pt,
+       ncurvA=1, nodesepA=1pt, angleA=0,
+       ncurvB=1.53125, nodesepB=0pt, angleB=180
+     ]{->}{v1}{w}
+     % top level arguments
+     \nccurve[linewidth=.5pt,
+       ncurvA=.25, nodesepA=1pt, angleA=180,
+       ncurvB=1.375, nodesepB=0pt, angleB=180, offsetB=-1.5ex
+     ]{->}{dp}{wsu}     
+     \nccurve[linewidth=.5pt,
+       ncurvA=.25, nodesepA=1pt, angleA=180,
+       ncurvB=1, nodesepB=0pt, angleB=180, offsetB=-2ex
+     ]{->}{dp1}{wob}
+     % subclause verbal spine
+     \nccurve[linewidth=.5pt,
+       ncurvA=.625, nodesepA=1pt, angleA=0,
+       ncurvB=.625, nodesepB=0pt, angleB=0, offsetB=2ex
+     ]{->}{vp2}{wxc}
+     \nccurve[linewidth=.5pt,
+       ncurvA=.25, nodesepA=1pt, angleA=0,
+       ncurvB=.75, nodesepB=0pt, angleB=0, offsetB=2ex
+     ]{->}{vbar2}{wxc}
+     \nccurve[linewidth=.5pt,
+       ncurvA=.5, nodesepA=1pt, angleA=0,
+       ncurvB=.75, nodesepB=0pt, angleB=0, offsetB=2ex
+     ]{->}{v2}{wxc}
+     % subclause argument
+     \nccurve[linewidth=.5pt,
+       ncurvA=.25, nodesepA=1pt, angleA=180,
+       ncurvB=.87500, nodesepB=0pt, angleB=180, offsetB=-1.5ex
+     ]{->}{dp2}{wxcwob}
+
+  \end{xlist}
+\end{exe}
+
+
+However successful in capturing cross-serial dependencies, this
+analysis runs into descriptive problems if taken more generally as a
+model of the Dutch sentence. \citet{zaenen-kaplan1995} give the
+example in~(\ref{ex:Germ:19}), which involves the coordination of two \BAR{V}s that
+each require a different level of \textsc{xcomp} embedding for the
+object supplied in the Mittelfeld.
+
+\pagebreak
+\begin{exe}
+  \ex\label{ex:Germ:19} Dutch \citep[§2.3, example~9]{zaenen-kaplan1995}\\
+  \gll \ldots{}dat Jan een liedje {$[ [_{\BAR{\scriptsize V}}$ schreef$\,]$} en {$[_{\BAR{\scriptsize V}}$ trachtte} {$[_{\BAR{\scriptsize V}}$ te verkopen$]]]$.}\\
+       \phantom{\ldots}\COMP{} Jan a song \phantom{$[ [_{\BAR{\scriptsize V}}$ }wrote and \phantom{$[_{\BAR{\scriptsize V}}$ }tried \phantom{$[_{\BAR{\scriptsize V}}$}sell\textsc{.teinf}\\
+      
+%      \gll dat Jan een liedje $[_\mathrm{\BAR{V}}$ schreef en trachtte te verkopen$]$.\\
+%          Jan a song write and tried sell\\
+      \glt `\ldots that Jan wrote and tried to sell a song.'
+\end{exe}
+%
+Since different levels of \textsc{xcomp} embedding of the object
+correspond to different c-structures in the model of
+\citet{BKPZ:Dutch}, example~(\ref{ex:Germ:19}) cannot receive an analysis if we use the standard treatment of constituent coordination in LFG. It would
+require the shared material to receive two different c-structures at
+the same
+time. \citeauthor{zaenen-kaplan1995}'s~(\citeyear{zaenen-kaplan1995})
+alternative relies on functional uncertainty to connect the objects to
+predicates at the required level of \textsc{xcomp} embedding, and on
+functional precedence rules to make sure that the linear order of
+objects reflects their level of embedding. They replace the
+VP and \BAR{V} rules of~(\ref{ex:bresnanetal1982:cstr}) with those
+in~(\ref{ex:zk95:vprules}).
+%% \footnote{If we call the \OBJ{} of an \XCOMP{} to an
+%% embedded object, then the functional uncertainty expression
+%% \mbox{\XCOMP{}* \OBJ} describes the set of paths to unembedded objects
+%% or embedded objects at any level of embedding, and \mbox{\XCOMP{}$^+$
+%%   \OBJ} describes embedded objects at any level of embedding (so not
+%% unembedded objects). The operator $<_f$ in~(\ref{ex:zk95:vprules}b)
+%% marks the f-precedence relation, which holds between two f-structures
+%% if the c-structure material projecting to the first f-structure
+%% precedes the c-structure material projecting to the second. (See the
+%% chapter on ``Core concepts of LFG'' in Part I of this volume for a
+%% detailed discussion of both functional uncertainty and f-precendence.)
+%% The constraint \neg\big((\UP\XCOMP{}$^+$ \OBJ) $<_f$ (\UP\OBJ)\big)
+%% can thus be paraphrased as: it should not be the case that I have an
+%% embedded object, at any level of embedding, whose c-structure precedes
+%% that of my object.}
+%
+\begin{exe}
+  \ex\label{ex:zk95:vprules}
+  \begin{xlist}
+    \ex\label{ex:zk95:vprulesa} \phraserule{VP}{\rulenode{DP*\\(\UP\XCOMP{}* \OBJ)=\DOWN} \rulenode{\BAR{V}\\\UP=\DOWN}}
+    \ex\label{ex:zk95:vprulesb} \phraserule{\BAR{V}}{\rulenode{V\\\UP=\DOWN} \optrulenode{\BAR{V}\\(\UP\XCOMP)=\DOWN\\$\neg$\big((\UP$\XCOMP^+$ \OBJ) $<_f$ (\UP\OBJ)\big)}}
+  \end{xlist}
+\end{exe}
+%
+This analysis abandons the nested c-structure of the VP in favour of a
+flat one, which moves us back in the direction
+of~(\ref{ex:xs:evers}). The functional uncertainty equation on the
+object DP in~(\ref{ex:zk95:vprulesa}) allows connecting the object to a predicate at
+any depth of \XCOMP embedding, and the general principles of f-structure
+coherence and completeness make sure each object is matched to exactly
+one predicate. The functional precedence constraint on the \BAR{V} node 
+in~(\ref{ex:zk95:vprulesb}) prevents more embedded objects from preceding less
+embedded ones. Together, these f-structure
+constraints force the same relation between Mittelfeld objects and right bracket verbs as the
+c-structures subtrees in \citeauthor{BKPZ:Dutch}'s analysis. Moreover,
+the interaction between functional uncertainty and the standard LFG
+approach to constituent coordination lets us handle sentences
+like~(\ref{ex:Germ:19}) correctly.
+
+\citet{zaenen-kaplan1995} also apply the
+combined use of functional uncertainty and functional precedence to
+Zürich German, where cross-serial dependencies are observed as well.
+
+\subsubsubsection{Nested dependencies\label{sec:Germanic:nesteddep}} The analyses of the structures that
+would give rise to consistently nested dependencies all come from LFG
+work on Standard German. However, explicit discussion of constructions
+with multiple objects at different levels of embedding is rare in this
+part of the literature -- perhaps because the modelling of these
+dependencies is not seen as particularly problematic. We therefore do
+not always fully know how the relevant nested dependencies are to
+be derived in these LFG models.
+
+Some authors assume nested VPs, which rather naturally correspond to
+nested dependencies between objects and verbs, even when this
+consequence is not a central concern. One example is the grammar
+fragment of \citet{netter:1988}, who gives annotated c-structures like
+the one in~(\ref{ex:vpcenter}).
+%
+\begin{exe}
+  \ex\label{ex:vpcenter}
+  \begin{xlist}
+    \ex German \citep[§1, example C4]{netter:1988}\\
+    \gll \ldots{}dass Leo sie {zu kommen} gebeten hat.\\
+    \phantom{\ldots}\COMP{} Leo her come.\textsc{zuinf} asked has\\
+    \glt `\ldots that Leo asked her to come.'
+
+    \ex
+    \begin{forest}
+      [S
+        [\rulenode{(\UP\SUBJ)=\DOWN\\DP}
+          [{\gll
+              Leo\\
+              Leo\\}
+            [Mf\streep{7em}, no edge, tier=fields]
+        ]]
+        [\rulenode{(\UP\XCOMP)=\DOWN\\VP}
+          [\rulenode{(\UP\OBJ)=\DOWN\\NP}
+            [{\gll
+                sie\\
+                her\\}]]
+          [\rulenode{(\UP\XCOMP)=\DOWN\\VP} [\rulenode{\UP=\DOWN\\V}
+              [{\gll
+                  {{zu kommen}}\\
+                  come.\textsc{zuinf}\\}, l sep=0pt
+                [rb\streep{12em}\hspace*{4em}, no edge, tier=fields]
+          ]]]
+            [\rulenode{\UP=\DOWN\\V}
+              [{\gll
+                  gebeten\\
+                  asked\\}]]
+        ]
+          [\rulenode{\UP=\DOWN\\V}
+            [{\gll
+                hat\\
+                has\\}]]
+      ]
+    \end{forest}
+  \end{xlist}
+\end{exe}
+%
+We also find nested VPs in \citet{Choi1999}, where the combined
+Mittelfeld and verb cluster of the subordinate clause in~(\ref{ex:WGerm:22}a) would
+get the structure given in~(\ref{ex:WGerm:22}b).\footnote{\citet{Choi1999} does
+not provide a tree for this exact sentence, but does show a more
+complex example with a comparable structure. In addition,
+\citet{Choi1999} never explicitly motivates the specific c-structure
+associated with embedded verbs in the VP. Nevertheless, we can infer the
+structure given here from the examples and discussion there.}\pagebreak
+
+\begin{exe}
+  \ex\label{ex:WGerm:22} German
+  \begin{xlist}
+    \ex \gll \ldots{}dass der Junge dem Mann geholfen hat.\\
+    \phantom{\ldots}\COMP{} the.\NOM.\SG{} boy the.\DAT.\SG{} man helped has\\
+    \glt `\ldots that the boy has helped the man.'
+  \ex
+  \begin{forest}
+    [S
+      [NP
+        [{\gll
+           der Junge\\
+           the.\NOM.\SG{} boy\\}, roof
+          [Mf\streep{14.5em}\hspace*{6em}, no edge, tier=fields]
+        ]
+      ]
+      [VP
+        [VP
+          [\BAR{V}
+            [NP
+              [{\gll
+                  dem Mann\\
+                  the.\DAT.\SG{} man\\}, roof]
+            ]
+            [V [{\gll
+                  geholfen\\
+                  helped\\}, l sep=0pt
+                [rb\streep{6em}\hspace*{3em}, no edge, tier=fields]
+              ]
+            ]
+          ]
+        ]
+        [V
+          [{\hspace*{2em}{\gll
+                hat\\
+                has\\}\hspace*{2em}}
+          ]
+        ]
+      ]
+    ]
+  \end{forest}
+  \end{xlist}
+\end{exe}
+%
+In addition to a nested VP structure, the tree in~(\ref{ex:WGerm:22}b) shows the
+subject appearing in S and the object inside the VP. Any deviations
+from the canonical word order implied by this structure are
+modelled using optional adjunction of objects to higher
+positions. \citet{Choi1999} motivates this partially
+configurational structure for German by appealing to contrasts like
+the following: a verb and its object can be realized together in the
+Vorfeld~(\ref{ex:vptop}a), whereas -- it would appear -- a verb and its
+subject cannot~(\ref{ex:vptop}b).
+%
+\begin{exe}
+  \ex German\label{ex:vptop}\citep[§2.1, example 12]{Choi1999}
+  \begin{xlist}
+    \ex[]{\gll $[$Dem Mann geholfen$]$ hat der Junge.\\
+    \phantom{$[$}the.\DAT.\SG{} man helped has the.\NOM.\SG{} boy\\
+    \glt `Help the man, the boy did.'\\}
+    \ex[*]{\gll $[$Der Junge geholfen$]$ hat dem Mann.\\
+    \phantom{$[$}the.\NOM.\SG{} boy helped has the.\DAT.\SG{} man\\}
+  \end{xlist}
+\end{exe}
+%
+Under \citeauthor{Choi1999}'s analysis, this contrast follows
+straightforwardly by assuming that a VP, unlike an S, can be put in
+the Vorfeld.
+
+These analyses with nested VPs, which in principle could
+directly yield the pattern of nested dependencies we find in German,
+do \textit{not} have a single node containing the whole right bracket
+and nothing else. Put differently, they do not include the verb
+cluster as such. This contrasts with the analyses we saw for the
+cross-serial dependency languages (Dutch, Zürich German) above, where
+the verb cluster exactly matched a \BAR{V} node.
+
+Proposals for Standard German that have a c-structure node corresponding to the
+verb cluster do exist in the LFG literature. One prominent such proposal is made by 
+\citet{Berman2003}, who rejects \citeauthor{Choi1999}'s claim that the
+German VP includes the object but excludes the subject, on the basis
+of data like~(\ref{ex:WGerm:24}), which, in contrast to~(\ref{ex:vptop}b), is a successful example of Vorfeld
+realization of a verb with its subject.
+%
+\begin{exe}
+  \ex German\label{ex:WGerm:24} \citep[§3.2.3.2, example 28a]{Berman2003}\\
+   \gll $[$Kinder gespielt$]$ haben hier noch nie.\\
+    \phantom{$[$}children played have here yet never\\
+    \glt `Children have never played here.'\\
+\end{exe}
+%
+Instead of assuming that there are canonical positions for subjects
+and objects in S and VP respectively, and that only scrambled objects
+are adjoined, \citeauthor{Berman2003} does away with S completely, and
+always adjoins Mittelfeld arguments to VP. Furthermore,
+\citeauthor{Berman2003} posits that verbs in the verb cluster are
+combined by head adjunction. The structure of~(\ref{ex:vptop}a) under this
+model is then~(\ref{ex:compcp:berman}).
+%
+\begin{exe}
+  \ex\label{ex:compcp:berman}
+  \begin{forest}
+    [VP
+      [DP
+        [{\gll
+            der Junge\\
+            the.\NOM.\SG{} boy\\}, roof
+          [Mf\streep{13.5em}\hspace*{6em}, no edge, tier=fields]
+        ]
+      ]
+      [VP
+        [DP
+          [{\gll dem Mann\\
+              the.\DAT.\SG{} man\\}, roof]
+        ]
+        [VP
+          [V$^0$
+            [V$^0$
+              [{\gll
+                  geholfen\\
+                  helped\\}, l sep=0pt
+                [rb\streep{6em}\hspace*{3em}, l=0pt, no edge, tier=fields]
+              ]
+            ]
+            [V$^0$
+              [{\gll
+                  hat\\
+                  has\\}]
+            ]
+          ]
+        ]
+      ]
+    ]
+  \end{forest}
+\end{exe}
+%
+Since the association of arguments with their predicates can no longer
+rely on positional grammatical function annotations,
+\citet{Berman2003} argues that case is responsible for this
+association in German. This is modelled using the standard approach of
+conditional expressions that relate specific cases to specific
+functions, for instance,
+(\DOWN\CASE)=\ACC$\Rightarrow$(\UP\OBJ)=\DOWN. 
+However, \citeauthor{Berman2003} does not discuss how this standard
+approach should be extended to allow embedded objects of coherently
+combined verbs in general, and it is not clear how one would correctly
+constrain the projection of multiple Mittelfeld objects onto f-structures that
+are embedded under one or more layers of \XCOMP{} without resorting
+to nested VPs or functional uncertainty.\footnote{\citet{Berman2003}
+partially sidesteps the issue by (tacitly) assuming that auxiliaries
+add features and do not create \XCOMP embeddings. This means that, for
+instance, \textit{lobte} `praised' and \textit{hat gelobt} `has
+praised' both have their objects directly in the containing
+f-structure as \OBJ{}s. However, since not all coherently combining
+verbs can be analysed as auxiliaries and some clearly have enough
+lexical content to warrant their own \PRED values, this does not
+completely address the problem.}
+
+We have seen that the (idealized) Dutch and German patterns are mirror images
+in terms of the order of the verbs in the verb cluster. The approach
+of \citet{ZaenenKaplan2002:Subsumption} capitalizes on this by taking
+the mirror image of the \BAR{V} rule for Dutch in~(\ref{ex:zk95:vprules}b) as
+the basis for their analysis of the German verb cluster~(\ref{ex:zk02:vprules}).
+%
+\begin{exe}
+    \ex \label{ex:zk02:vprules}\phraserule{\BAR{V}}{\optrulenode{\BAR{V}\\(\UP\XCOMP)=\DOWN\\$\neg$((\UP$\XCOMP^+$\,\OBJ) $<_f$ (\UP\OBJ))} \rulenode{V\\\UP=\DOWN}}
+\end{exe}
+%
+As before, in the proposal for Dutch, the highest \BAR{V} node
+corresponds directly to the right bracket and functional uncertainty
+solves the relation of Mittelfeld material to embedded verbs without
+having to assume nested VPs.
+
+\subsubsubsection{Variation} I already mentioned at the beginning of this subsection that
+characterizing languages as having either cross-serial or nested
+dependencies is an oversimplification. For instance, both German and
+Dutch allow further variation in the ordering of elements in the
+verbal cluster. Moreover, in Zürich German -- amongst other CWG languages --
+Mittelfeld and right bracket material can mix to some extent.\largerpage[-1]
+
+In German, \textit{Oberfeldumstellung} (\citealt{bech:1955}: Vol I, §62–§66; an alternative term is auxiliary flip) can occur with three-verb combinations where V$_1$ is a
+perfect or passive auxiliary, and V$_2$ is itself a coherently
+combining verb that selects an infinitive. In this construction, the
+verb cluster has the order V$_1$V$_3$V$_2$, and IPP is triggered for
+V$_2$. Contrast the ``regularly ordered''~(\mex{1}a) with the
+Oberfeldumstellung in~(\mex{1}b).\footnote{\textit{Oberfeldumstellung} also occurs with longer
+verb clusters. Furthermore, there is a (possibly regional)
+construction called \textit{Zwischenstellung} that has
+V$_3$V$_1$V$_2$. See~\citet{cook:2001:revdiss} for empirical
+discussion and an analysis.}
+
+\begin{exe}
+  \ex German \citep[§1.4, example 1.31]{cook:2001:revdiss}
+  \begin{xlist}
+    \ex{\gll \ldots{}dass ich dich kommen gesehen habe.\\
+      \phantom{\ldots}\COMP{} I you.\ACC.\SG{} come.\INF{} seen have.\PRS{}\\
+      \glt `\ldots that I have seen you come.'}
+    \ex{\gll \ldots{}dass ich dich habe kommen sehen.\\
+      \phantom{\ldots}\COMP{} I you.\ACC.\SG{}  have.\PRS{} come.\INF{} see.\INF{}\\}
+  \end{xlist}
+\end{exe}
+%
+This word order variant is problematic for the nested VP models
+mentioned above \citep[namely,][]{netter:1988,Choi1999}, since the verb
+cluster-initial finite verb ``interrupts'' the embedded VP. Models in which a
+c-structure node corresponds to the verb cluster
+\citep[namely,][]{ZaenenKaplan2002:Subsumption,Berman2003,clement-etal:2002:lfg}
+have an easier time capturing such variation. An analysis of this
+variation can be found in~\citet[in terms of
+  c-structure]{clement-etal:2002:lfg} and in \citet[in terms of the
+  interaction between syntax and information
+  structure]{cook:2001:revdiss}. An OT-LFG analysis of verb order in
+Swiss German dialects is outlined in \citet{seiler:2007}.
+
+Dutch verb clusters have so-called \textit{participle climbing} and
+\textit{particle climbing}, which refer to the realization of
+participles and particles to the left of the position expected from
+the principle of ordering by increasing embedding. Example~(\mex{1})
+shows the different positions a particle can occupy in a three-verb
+cluster.
+%
+\begin{exe}
+  \ex\label{ex:particleclimbing} Dutch\\
+  \gll \ldots{}dat Jan {het liedje} \{mee\} zal \{mee\} hebben \{mee-\}gezongen.\\
+       \phantom{\ldots}\COMP{} Jan {the song} \phantom{(}along will \phantom{(}along have \phantom{(}along-sung\\
+       \glt `\ldots that Jan will have sung along to the song.'
+  %% \ex\label{ex:creep:participle}
+  %% \gll \ldots{} dat Jan {het liedje} (gezongen) zal (gezongen) hebben (gezongen).\\
+  %%      {} \COMP{} Jan {the song} {\phantom{(}sung} will \phantom{(}sung have {\phantom{(}sung}\\
+  %%      \glt \ldots that Jan will have sung to the song.
+\end{exe}
+%
+\citet{KaplanZaenen2003} adapt their earlier model of the
+Dutch Mittelfeld and verb-cluster to allow these and further variants,
+and to capture the IPP effect. \citet{poortvliet:2015:lfg} is a
+further development of this model.
+
+Zürich German has cross-serial dependencies, like Dutch, but in
+addition allows the nominal and verbal material to mix, as in~(\mex{1}).
+\begin{exe}
+  \ex Zürich German\\
+  \gll \ldots{}das er sini chind wil mediziin la schtudiere.\\
+       \phantom{\ldots}\COMP{} he his children wants medicine let study\\
+       \glt `that he wants to let his children study medicine.'
+  \end{exe}
+%
+\citet{zaenen-kaplan1995} use the combination of functional precedence
+and functional uncertainty developed for Dutch to capture these
+data. Another case of mixing verbal and non-verbal material can be
+found in Standard German, which allows a variant of Oberfeldumstellung
+where $V_1$ precedes a collocational nominal complement of $V_3$. An
+analysis of this construction can be found
+in~\citet{cook:2001:revdiss}.
+
+
+\subsubsection{Nachfeld\label{sec:Germanic:nf}}
+
+The two options for adding Nachfeld material to the different
+c-structures of the clause given above are 1) adjunction to any of the
+nodes at the right periphery and 2) inclusion of one or more optional
+daughters on the right-hand side of the relevant c-structure
+rules. Adjunction is used by \citet{Berman2003}, who assumes Nachfeld
+occupants (typically PPs, VPs or CPs) are right-adjoined at the VP
+level. \citet{rohrer:1996}, \citet{clement-etal:2002:lfg} and
+\Citet{vanderbeek:2005} model the Nachfeld as an optional daughter in
+the node covering the whole clause. \citeauthor{zaenen-kaplan1995}
+(\citeyear{zaenen-kaplan1995,ZaenenKaplan2002:Subsumption}), and
+\citet{KaplanZaenen2003} insert the optional daughter in the node
+covering the Mittelfeld/right bracket.
+
+In Dutch and German, the non-finite complement of an incoherently
+combining verb appears in the Nachfeld. In Dutch, Mittelfeld placement of such a complement is ruled out~(\mex{1}), but in German it is allowed (see for
+  instance \citealt{rohrer:1996} for examples).
+%
+\begin{exe}
+  \ex Dutch\\
+      {\glll
+        Vf\streep{.25em} lb\streep{.5em} \phantom{\{*}Mf\streep{6.5em} {} {} rb\streep{2em} \phantom{\{}Nf\streep{6.75em}\\
+        Hij\hspace*{1pt} had \{*geen auto {te kopen}\} beloofd \{geen auto {te kopen}\}.\\
+        he had \phantom{\{*}no car buy.\textsc{teinf} promised \phantom{\{}no car buy.\textsc{teinf}\\
+        \glt `He had promised not to buy a car.'}
+\end{exe}
+%
+To facilitate lexical specification of whether a verb combines
+coherently or not, and the formulation of placement restrictions on
+the non-finite verbal complement, \citet{rohrer:1996},
+\citeauthor{zaenen-kaplan1995}
+(\citeyear{zaenen-kaplan1995,ZaenenKaplan2002:Subsumption}), and
+\citet{KaplanZaenen2003} associate coherence with selecting an
+\XCOMP{} and incoherence with selecting a \COMP{}. The relevant
+c-structure rule from \citet{KaplanZaenen2003} is an extension of
+(\ref{ex:zk95:vprules}a) and is given here in slightly simplified form
+as~(\mex{1}).
+
+\begin{exe}
+    \ex \phraserule{VP}{%
+      \rulenode{DP*\\(\UP\XCOMP{}* (\COMP) \OBJ)=\DOWN}
+      \rulenode{\BAR{V}\\\UP=\DOWN}
+      \optrulenode{VP\\(\UP\XCOMP{}* \COMP)=\DOWN}
+    } 
+\end{exe}
+%
+The optional rightmost daughter contains a non-finite complement in the
+Nachfeld, assigned \COMP{}.\footnote{The distinction between \COMP{}
+and \XCOMP{} is that of complements that supply their own subject
+(closed complements) and complements that do not supply their own
+subject (open complements). Since non-finite \COMP{s} do not have an
+overt subject, they therefore must have an f-structure subject $\PRED
+\mbox{ `pro'}$, whose interpretation is equated to one of the
+arguments of the selecting verbs using anaphoric control. See
+\citet[Chapter 12, §3]{dalrymple01} for a discussion of anaphoric
+control.}
+
+The rule in~(\mex{0}) also allows for the so-called \textit{third
+  construction}, a marked construction in Dutch and German in which a
+dependent of an incoherently combined non-finite complement in the
+Nachfeld is realized in the Mittelfeld of the containing clause. In
+terms of word order, this construction therefore mixes properties of
+coherent and incoherent combination. An example of the third
+construction is presented in~(\mex{1}). Note that the lack of an IPP effect on
+\textit{geprobeerd} `tried' shows that we are dealing with incoherent
+combination.
+
+\begin{exe}
+      \ex Dutch\\{\gll Hij had een auto geprobeerd {te kopen}.\\
+      he had a car tried buy.\textsc{teinf}\\
+    \glt `He had tried to buy a car.'}
+\end{exe}
+%
+The c-structure rule in~(\mex{-1}) captures the third construction by
+the functional uncertainty-based grammatical function assignment of
+DPs in the Mittelfeld: the optional \COMP{} in the path allows it to
+reach into an incoherently combined
+complement.\footnote{\citet{KaplanZaenen2003} are not concerned with
+CP complements -- that is, finite complement clauses -- but if these
+are assigned \COMP as well, the analysis of the third construction
+sketched here will need to be further constrained to prevent lifting
+dependents from finite subordinate clauses into the Mittelfeld.} 
+LFG analyses of the the German third construction are discussed in
+\citet{rohrer:1996} and \citet{KaplanZaenen2003}.%\citet{ZaenenKaplan2002:Subsumption}.
+
+\subsection{Topics related to the left periphery\label{sec:Germanic:leftperi}}
+
+\subsubsection{Topicalization\label{sec:Germanic:top}}
+
+In the context of the verb-second CWG languages, 
+topicalization refers to Vorfeld placement of material, in particular material
+that is \textit{not} put there by default. Roughly, then,
+topicalization is Vorfeld placement of anything but the local
+subject. The term topicalization is used irrespective of whether the
+Vorfeld occupant is a topic or not.  In both German and Dutch, the
+Vorfeld may be occupied by a categorially and functionally wide range
+of constituents. It is also a target position for material extracted
+from embedded clauses and phrases.
+
+\citet[Chapter 6]{Berman2003} formally distinguishes two different
+types of topicalization for German, depending on whether the Vorfeld
+constituent is local to the matrix clause or whether a long-distance
+dependency is involved. \citeauthor{Berman2003} introduces this
+distinction on the basis of observations from weak cross-over, which
+will be discussed in~\sectref{sec:Germanic:weakxover}, below. In either case,
+the Vorfeld is Spec-CP, and its definition is part of the
+straightforward c-structure rule in~(\mex{1}).
+
+\begin{exe}
+  \ex \phraserule{CP}{%
+    \rulenode{XP\\(\UP\DF)=\DOWN}
+    \rulenode{\BAR{C}\\\UP=\DOWN}
+    }
+\end{exe}
+%
+When material local to the f-structure projected from CP is put in the
+Vorfeld, \citeauthor{Berman2003} assumes information like case and
+agreement drives the association with grammatical function, just as it
+does in the Mittelfeld -- see the earlier discussion of
+\citeauthor{Berman2003}'s model in~\sectref{sec:Germanic:mfrb}, around
+example~(\ref{ex:compcp:berman}). For long-distance dependencies,
+\citeauthor{Berman2003} posits the presence of a trace at the
+extraction site, annotated with an inside-out functional uncertainty
+equation to incorporate the f-structure of the Vorfeld constituents --
+which by~(\mex{0}) is the \DF of the f-structure of the whole clause -- 
+into the extraction site's f-structure.\footnote{See
+\citetv{chapters/LDDs} for more
+information on modelling long-distance dependencies using inside-out
+functional uncertainty.}
+
+German has embedded verb-second clauses with bridge verbs, provided the
+complementizer is absent, as in~(\mex{1}a). Extraction out of such
+embedded clauses is also allowed, on the condition that none of the
+clauses involved in the long-distance dependency has material in
+Spec-CP (that is, no intermediate clause has a Vorfeld occupant). This is shown in the
+contrast~(\mex{1}b,c).
+%
+\begin{exe}
+  \ex German \citep[b,c from][§6.2.4, examples 23, 24]{Berman2003}
+  \begin{xlist}
+    \ex[]{\gll Ich glaube, (*dass) der Hans sagte gestern, (*dass) die Maria hat den Peter eingeladen.\\
+      I believe \phantom{(*}\COMP{} the.\NOM{} Hans said yesterday,  \phantom{(*}\COMP{} the.\NOM{} Maria has the.\ACC{} Peter invited\\
+      \glt `I think Hans said yesterday that Maria invited Peter.'}
+    \ex[]{\gll
+      Den Peter glaube ich, sagte der Hans gestern, hat die Maria eingeladen.\\
+       the.\ACC{} Peter think I said the.\NOM{} Hans yesterday has the.\NOM{} Maria invited \\
+    }
+    \ex[*]{\gll
+      Den Peter glaube ich, gestern sagte der Hans, hat die Maria eingeladen.\\
+      the.\ACC{} Peter think I yesterday said the.\NOM{} Hans has the.\NOM{} Maria invited \\
+    }
+  \end{xlist}
+\end{exe}
+%
+\citeauthor{Berman2003} captures this restriction with an off-path constraint \mbox{$\neg(\rightarrow\DF)$} on the functional
+uncertainty equation for extractions. Since only Spec-CP introduces \DF{} in \citeauthor{Berman2003}'s model,\footnote{\label{fn:dfnosubj}For this to hold, we need to understand \DF as not
+including \SUBJ, since subjects can be introduced in other positions in
+the clause, too. Indeed, as the example shows, there is no ban on subjects occurring
+anywhere in the path of a long-distance dependency, as long as they do
+not occur in the Vorfeld. An unfortunate side effect of taking \DF as not including \SUBJ would be that the special Vorfeld privileges of subjects, see \sectref{sec:Germanic:vfsubobjasym}, remain unmodelled.} this effectively rules out examples like (\mex{0}c).\footnote{However, consider the following data:
+%
+\begin{exe}
+  \ex
+  \begin{xlist}
+    \ex {\gll
+      Ich denke hier, Sie sollten etwas präziser sein.\\
+      I think here you should somewhat precise.\textsc{comparative} be\\
+      \glt `I think here(:) you should be a bit more precise.'}
+  \ex Hier denke ich, Sie sollten etwas präziser sein.
+
+  \end{xlist}
+  \ex
+  \begin{xlist}
+    \ex Ich denke, Sie sollten hier etwas präziser sein.
+    \glt   `I think(:) you should be a bit more precise here.'
+  \ex Hier denke ich, sollten Sie etwas präziser sein.
+  \end{xlist}
+\end{exe}
+%
+Although the off-path constraint against \DF{}s gets rid of the form
+(i$\,$b) as a realization of the meaning of~(ii), it does not block
+(ii$\,$b) as a realization of the meaning of (i). In other words, the
+off-path constraint itself leaves unexplained why the embedded V1 of
+(ii$\,$b) signals that it is involved in an extraction. A possible
+line of defence against this criticism is to appeal to a form of
+Economy of Expression: the embedded V1 is a slightly more complex
+structure than embedded V2, a complexity that is not needed for the
+relational information expressed in~(i).}
+
+In non-LFG work, \citet{reis:1996} argues that sentences
+like~(\mex{0}b) are only apparent cases of extraction, and that they
+involve parenthetical constructions, instead. An LFG analysis of
+German parentheticals with bridge verbs is given in
+\citet{fortmann:2006:lfg}, although he does not consider the exact
+type of sentence discussed here.
+
+German allows topicalization of VPs (as discussed above
+in~\sectref{sec:Germanic:nesteddep}, example \ref{ex:vptop}) and, in the case
+of coherent combination, topicalization of partial VPs. For instance,
+in~(\mex{1}), the main verb and its accusative object are realized in
+the Vorfeld, whereas the dative object is in the Mittelfeld.
+%
+\begin{exe} 
+  \ex{German (similar to \citealt[3a]{Nerbonne94a})\\
+  \gll Ein Märchen erzählen wird er ihr.\\
+    a {fairy tale} tell.\INF{} will he her.\DAT{}\\
+  \glt `He will tell her a story.'}
+\end{exe}
+%
+VP topicalization can in principle be modelled using the
+standard mechanisms. For instance, under the assumption that
+coherently combined verbal complements are \XCOMP{}s and if we use
+outside-in functional uncertainty, a c-structure rule like
+in~(\mex{1}) implements topicalization of coherently combined VPs. 
+%
+\begin{exe}
+  \ex \phraserule{CP}{%
+    \rulenode{VP\\(\UP\TOPIC)=\DOWN\\(\UP$\XCOMP^+$)=\DOWN}
+    \rulenode{\BAR{C}\\\UP=\DOWN}
+    }
+\end{exe}
+%
+If the rule for VPs allows partial VPs, rule~(\mex{0}) says very
+little about which material is required to be present in the fronted
+VP and which material can be left to be realized in-situ. Potentially,
+then, this also captures partial VP
+topicalization. \citet{ZaenenKaplan2002:Subsumption} problematize two
+aspects of such a straightforward implementation: First, in the case
+of partial VP topicalization, the resulting f-structure for the whole
+VP contains the combined topicalized and in-situ material, and
+therefore there is no way to see at f-structure which part of the VP
+was topicalized. This is problematic for approaches to information
+structure that associate information status with
+f-structures. Secondly, the approach would erroneously allow examples
+like~(\mex{1}).
+%
+\begin{exe}
+  \ex[*]{%
+    \gll $[$Ihr ein Märchen$]$ wird er erzählen.\\
+         \phantom{$[$}her.\DAT{} a {fairy tale} will he tell.\INF{}\\
+    \glt `He will tell her a fairy tale.'
+         }
+\end{exe}
+%
+The preverbal material is here analysed as a headless VP, which is
+generally only allowed postverbally.\footnote{I am aware that this
+claim is too broad. See for instance \citet{muller-etal:2012}, who use
+headless Vorfeld VPs in their analysis of apparent multiple fronting
+in German. However, a discussion of exceptions to this rule would take
+us too far away from the main topic here.}
+
+\citet{ZaenenKaplan2002:Subsumption} solve these problems by replacing
+unification with \textit{subsumption} in the functional uncertainty
+annotation of Spec-CP, along the lines of~(\mex{1}).
+%
+\begin{exe}
+  \ex \phraserule{CP}{%
+    \rulenode{VP\\(\UP\TOPIC)=\DOWN\\\DOWN$\sqsubseteq$\,(\UP$\XCOMP^{+})$}
+    \rulenode{\BAR{C}\\\UP=\DOWN}
+    }
+\end{exe}
+%
+This directly solves the first problem, since the information in
+\TOPIC{} now no longer contains the f-structure for the whole VP, but
+only information projected from the material in the Vorfeld. It also
+solves the second problem, since, as shown in~(\mex{1}), the f-structure for
+the example in~(\mex{-1}) under \TOPIC{} now no longer meets LFG's \textit{coherence} condition
+-- it contains arguments but no predicate to select them.
+\newpage
+\begin{exe}
+  \ex F-structure for (\mex{-1}), which violates the coherence condition:\\[.5ex]
+  \attop{\avm[style=fstr,pic,picname=ihreinmaerchen]{
+        [ topic & \node{a}{%
+            [ obj$_{\theta}$ & [pred & `{\upshape pro}']\vspace{\smallskipamount}\\
+              obj & [pred & `{\upshape fairy tale}']
+            ]
+          }\vspace{.25ex}\\
+          pred & `{\upshape will}\arglist{\XCOMP}\SUBJ{}'\\
+          subj & \rnode{b}{[pred & `{\upshape pro}']}\vspace{\smallskipamount}\\
+          xcomp & \node{c}{
+            [ pred & `{\upshape tell\arglist{\SUBJ,\OBJ,\OBJTHETA}}'\\
+              subj & \rnode{d}{\vphantom{x}}\\
+              obj$_{\theta}$ & [pred & `{\upshape pro}']\vspace{\smallskipamount}\\
+              obj & [pred & `{\upshape fairy tale}']
+            ]
+          }\hspace{.5ex}
+  ]}}%
+  \CURVE[3.25]{-2pt}{0}{b}{1pt}{0}{d}
+  \begin{tikzpicture}[remember picture,overlay]
+    \draw[-{Stealth[length=3.75pt,width=2.5pt]}, rounded corners=6, line width=.5pt] (ihreinmaerchen-a.east) +(-2pt,0) -- ++(1.5,0) |- (ihreinmaerchen-c.east) node[pos=.25, fill=white] {$\sqsubseteq$} ;
+  \end{tikzpicture}
+\end{exe}
+%
+Finally, a reformulation of the \textit{completeness} condition to
+take subsumption relations into account\footnote{``An f-structure $g$
+is complete if and only if each of its subsidiary f-structures is
+either locally complete or subsumes a subsidiary f-structure of $g$
+that is locally complete'' \citep[{[24]}]{ZaenenKaplan2002:Subsumption}.}
+allows the f-structures resulting from topicalizing a partial VP, as
+illustrated in (\mex{1}).
+%
+
+  \begin{exe}
+  \ex
+  \begin{xlist}
+  \ex{\gll Ein Märchen erzählen wird er ihr.\\
+    a {fairy tale} tell.\INF{} will he her.\DAT{}\\
+  \glt `He will tell her a story.'}
+  \ex{%
+    \attop{\avm[style=fstr,pic,picname=einmaerchenerzaehlen]{
+        [ topic & \node{a}{%
+            [ pred & `{\upshape tell\arglist{\SUBJ,\OBJ,\OBJTHETA}}'\\
+              obj & [pred & `{\upshape fairy tale}']
+            ]
+          }\vspace{.25ex}\\
+          pred & `{\upshape will}\arglist{\XCOMP}\SUBJ{}'\\
+          subj & \rnode{b}{[pred & `{\upshape pro}']}\vspace{\smallskipamount}\\
+          xcomp & \node{c}{
+            [ pred & `{\upshape tell\arglist{\SUBJ,\OBJ,\OBJTHETA}}'\\
+              subj & \rnode{d}{\vphantom{x}}\\
+              obj$_{\theta}$ & [pred & `{\upshape pro}']\vspace{\smallskipamount}\\
+              obj & [pred & `{\upshape fairy tale}']
+            ]
+          }\hspace{.5ex}  
+    ]}}
+    \CURVE[3.25]{-2pt}{0}{b}{1pt}{0}{d}
+    \begin{tikzpicture}[remember picture,overlay]
+    \draw[-{Stealth[length=3.75pt,width=2.5pt]}, rounded corners=6, line width=.5pt] (einmaerchenerzaehlen-a.east) +(-2pt,0) -- ++(1.5,0) |- (einmaerchenerzaehlen-c.east) node[pos=.25, fill=white] {$\sqsubseteq$} ;
+  \end{tikzpicture}}
+
+\end{xlist}
+\end{exe}
+
+\citet[§3.3]{Berman2003} solves the ungrammaticality of examples
+structurally similar to~(\mex{-3}) by appealing to the endocentricity
+principles as formulated for LFG, which include the constraint that
+every lexical category must have an extended head
+\citep[§7.2]{BresnanEtAl2016}. In~(\mex{-3}), neither the main verb
+\textit{erzählen} nor the auxiliary \textit{wird} c-command the
+material in the Vorfeld VP, which leaves the fronted VP without an
+extended head. Note that this solution would not be compatible with
+\citeauthor{ZaenenKaplan2002:Subsumption}'s conception of the German
+clause, as they do not assume the German VP is necessarily
+endocentric.\footnote{As mentioned in~\sectref{sec:Germanic:overall}, above,
+\citeauthor{ZaenenKaplan2002:Subsumption} use the label S|VP for this
+category.}
+
+
+
+\subsubsection{The Vorfeld subject-object asymmetry\label{sec:Germanic:vfsubobjasym}}
+
+In both German and Dutch, the main clause subject is privileged when it
+comes to realization in the Vorfeld. In LFG work, this can be modelled
+directly by annotating the Vorfeld position at c-structure explicitly
+with (\UP\SUBJ)=\DOWN\ \citep{theiler-bouma:2012:lfg}, or by
+annotating it with (\UP\DF)=\DOWN, under the assumption that the
+grammaticalized discourse functions include the subject
+\citep[§3.2.1]{Berman2003}.\footnote{I refer, however, to the comment in footnote~\ref{fn:dfnosubj}, where I point out that the analysis of German embedded verb-second clauses discussed there relies on the contradicting assumption that \SUBJ is \textit{not} part of \DF.} In an OT-LFG setting, \citet{Choi2001} posits
+a high-ranking constraint \textsc{Subject-Left} that prefers early
+realization of the subject, which includes realization in the Vorfeld.
+
+One of the reflexes of this special relation between the Vorfeld and the main clause
+subject is a contrast like the following:
+%
+\begin{exe}
+  \ex German \citep{meinunger:2007:li}\\
+  Wo ist das Geld?
+  \glt `Where is the money?'
+  \begin{xlist}
+    \ex[]{%
+      \gll Es liegt auf dem Tisch.\\
+           it lies on the table\\
+      \glt `It is on the table.'
+    }
+    \ex[*]{%
+      \gll Es hat Bernd auf den Tisch gelegt.\\         
+           it has Bernd on the table put\\
+      \glt `Bernd (has) put it on the table.'
+    }
+  \end{xlist}
+\end{exe}
+%
+Although the referent of the weak pronoun \textit{es} has the same
+information status in both cases, it appears it can only occur in the
+Vorfeld as a subject, and not as an object. This would fit in with any
+of the approaches sketched above: being a subject alone is enough
+reason to be allowed in the Vorfeld, but -- apparently -- the weak
+pronoun \textit{es} is incompatible with any of the other information
+structural functions of Vorfeld constituents.
+
+The ban on object \textit{es} in the Vorfeld is not categorical,
+however. \citeauthor{meinunger:2007:li} (\citeyear{meinunger:2007:li}, and references therein)  gives many
+examples, and shows that the conditions under which object \textit{es}
+can appear in the Vorfeld coincide with the conditions for the use of
+the homonymic Vorfeld expletive used in the presentational
+construction. In particular, the subject of the clause should not be
+topic~(\ref{ex:WGerm:42}).
+%
+\begin{exe}
+  \ex\label{ex:WGerm:42}
+  \begin{xlist}
+    \ex[]{%
+      \gll Es hat \{jemand / *er\} geklaut\\
+           it has \phantom{\{}someone {} \phantom{*}he stolen\\
+      \glt `Someone / *he has stolen it'}
+    \ex[]{%
+      \gll Es hat \{jemand / *er\} das Geld geklaut\\
+           \textsc{expl} has  \phantom{\{}someone {} \phantom{*}he the money stolen\\
+      \glt `Someone / *he has stolen the money.'}
+  \end{xlist}
+\end{exe}
+%
+\citet{theiler-bouma:2012:lfg} capture this behaviour by assuming that
+the common source of sentences with a Vorfeld object and of those with
+Vorfeld expletive \textit{es} is the latter, the presentational
+construction. The presence of \textit{es} in the Vorfeld signals exactly that
+the main clause subject is not topic. This construction is modelled using
+a c-structure rule that explicitly mentions the form of its first
+daughter.
+%
+\begin{exe}
+  \ex \phraserule{CP}{%
+    \rulenode{NP\\%
+      (\DOWN\textsc{form})\,=$_c$\,\textsc{es}\\%
+      ((\UP\SUBJ)$_{\sigma}$\,\DF)\,$\neq$\,\TOPIC\\%
+      $\big($(\UP\XCOMP*\OBJ)=\DOWN$\big)$}
+    \rulenode{\BAR{C}\\\UP=\DOWN}
+  }
+\end{exe}
+The optional assignment to object anywhere in the coherence domain of the
+clause is what allows object \textit{es} to appear in the
+Vorfeld, under the same circumstances as the presentational
+construction's expletive. Expletive \textit{es} also shows up in other
+situations; see~\sectref{sec:Germanic:subjectless} below.
+ 
+
+\subsubsection{Left dislocation}
+
+Thus far, we have not considered the \textit{lead} field, which is
+positioned before the Vorfeld in the topological model
+given in~(\ref{ex:topmodel}) and which we characterized as reserved for
+material more loosely connected to the clause proper. We can
+distinguish several \textit{left dislocation} phenomena that target
+the lead.\footnote{We can likewise talk of right-dislocated
+material, positioned in the tail, but since we are not aware of
+any LFG discussions of right dislocation, we will ignore this phenomenon in this chapter.} Two questions raised by this broadened
+view of the clause are 1) how tightly left-dislocated material is
+coupled to the clause, and 2) whether there are phenomena that we have treated
+as Vorfeld occupation that are better analysed as left dislocation
+with an empty Vorfeld?
+
+The first question is central in \citet{zaenen:1996}, who studies
+contrastive left dislocation~(\ref{ex:WGerm:44}b) in Dutch and Icelandic, and
+asks whether this should be treated as topicalization~(\ref{ex:WGerm:44}a) or
+as a hanging topic~(\ref{ex:WGerm:44}c). The former counts as a well-integrated
+part of the clause, the latter has a looser relation to the
+clause.\largerpage[-1]\pagebreak
+
+\begin{exe}
+\ex\label{ex:WGerm:44} Dutch
+  \begin{xlist} 
+  \ex \gll Jan wil ik hier nooit meer zien.\\
+           Jan want I here never again see\\
+  \ex \gll Jan die wil ik hier nooit meer zien.\\
+           Jan \DEM{} want I here never again see\\          
+  \ex \gll Jan, ik wil hem hier nooit meer zien.\\
+           Jan  I want him here never again see\\
+  \glt `Jan, I never want to see (him) here again'
+  \end{xlist}
+\end{exe}
+%
+On the basis of categorial constraints on different kinds of
+left-dislocated material and on the basis of binding data,
+\citeauthor{zaenen:1996} concludes that contrastive left-dislocation
+patterns with topicalization in both languages. She proposes an
+analysis in which the contrastively left-dislocated material is
+connected to the clause using the same functional uncertainty
+equations we normally assume for topicalized material in the
+Vorfeld. The pronominal element in the Vorfeld in a contrastive
+left-dislocation is taken to be an (f-structure) adjunct to the
+left-dislocated material, and does not itself engage in the
+long-distance dependencies directly.
+
+The second question underlies the discussion in
+\citet[§7.4]{Berman2003}, which revolves around the
+contrast illustrated in~(\ref{ex:WGerm:45}).
+
+\begin{exe}
+  \ex\label{ex:WGerm:45} German \citep[§7.4, examples 58--61]{Berman2003}
+  \begin{xlist}
+    \ex \gll Dass die Erde rund ist, (das) hat ihn gewundert.\\
+             \COMP{} the earth round is \phantom{(}\DEM.\NOM{} has him.\ACC{} surprised\\
+        \glt `That the earth is round(, that) surprised him.'
+    \ex \gll {Dass die Erde rund ist,} (das) hat er nicht gewusst.\\
+     {} \phantom{(}\DEM.\ACC{} has he not known\\
+    \glt `That the earth is round, (that) he didn't know.'
+    \ex \gll {Dass die Erde rund ist,} *(dessen) war sie sich nicht bewusst.\\
+    {} \phantom{*(}\DEM.\GEN{} was she \REFL{} not aware\\
+    \glt `That the earth is round, of that she wasn't aware.'
+    \ex \gll {Dass die Erde rund ist,} *(darüber) hat sie sich gewundert.\\
+    {} \phantom{*(}about.\DEM{} has she \REFL{} surprised\\
+    \glt `That the earth is round, that she was surprised about.'
+  \end{xlist}
+\end{exe}
+
+In~(\ref{ex:WGerm:45}a,b), the fronted CP appears to alternate between being
+left-dislocated (with resumption) and appearing in the Vorfeld
+(without), whereas in~(\ref{ex:WGerm:45}c,d), the fronted CP must be
+left-dislocated. \citeauthor{Berman2003} gives an LFG
+interpretation of an existing approach in which this alternation is
+only apparent, and the CP is \textit{always} left-dislocated. The
+difference in~(\ref{ex:WGerm:45}a,b) is that in German, nominative and accusative
+topics may be dropped from the Vorfeld. Whether the resumptive
+demonstrative pronoun is realized at c-structure or not, its
+f-structure presence is constant, and it is this which is assigned a
+grammatical function. The left-dislocated CP is connected
+anaphorically to the resumptive pronoun.
+
+
+\subsubsection{Split NPs\label{sec:Germanic:splitnps}}
+
+The split NP construction in German involves multiple NPs at
+different positions in the clause which together describe one argument. The
+first NP occurs in the Vorfeld of the top level clause, and a further NP occurs
+somewhere further down in the Mittelfeld of a possibly embedded
+clause. An example is~(\ref{ex:WGerm:46}a).
+%
+\begin{exe}
+  \ex\label{ex:WGerm:46} German \citep[§1]{kuhn2001}
+  \begin{xlist}
+  \ex%
+  \gll $[$Ein Schwimmbad$]$ hat er sich noch $[$keins$]$ gebaut.\\
+  \phantom{$[$}a {swimming pool} has he \REFL{} yet \phantom{$[$}none built.\\
+      \ex%
+      \gll Er hat sich noch $[$kein Schwimmbad$]$ gebaut.\\
+      he has \REFL{} yet  \phantom{$[$}no {swimming pool} built\\
+      \glt `He hasn't built a swimming pool yet.'
+  \end{xlist}
+  \end{exe}
+%
+A striking property of the two NPs \textit{ein Schwimmbad} and
+\textit{keins} is that they both have the form of complete NPs: the
+first NP includes a determiner for the head count noun, the second NP
+involves the independent form \textit{keins} `none', rather than the form
+\textit{kein} `no', which is used when a nominal head is realized in the
+NP itself~(\ref{ex:WGerm:46}b).
+
+\citet{kuhn2001} proposes a solution in terms of an LFG variant
+with linear logic-based semantics. Semantically, the clause-internal
+NP is a regular elliptical NP; the job of the Vorfeld NP is to supply a
+property as antecedent. By assuming that the form of the NP can be
+syntactically determined completely in terms of c-structure, treating
+the two NPs as c-structurally independent, but projecting to the same
+f-structure, the form-related characteristics of the NPs can be made to
+follow.
+
+\subsubsection{Asymmetric coordination}
+
+\citet{frank:2006} gives an analysis of asymmetric coordination puzzles in German, like the \textit{subject gap with fronted finite verb} (SGF) coordination in~(\ref{ex:WGerm:47}a).
+\largerpage[-1]\pagebreak
+
+\begin{exe}
+  \ex\label{ex:WGerm:47} German \citep[§3.2]{frank:2006}
+  \begin{xlist}
+    \ex[]{%
+      \gll In den Wald $[$ging der Jäger] und [fing einen Hasen]\\
+           in the.\ACC{} forest \phantom{$[$}went the.\NOM{} hunter and  \phantom{$[$}caught a.\ACC{} hare\\
+      \glt `The hunter went into the woods and caught a hare.'
+    }
+    \ex[*]{%
+      \gll In den Wald ging der Jäger und einen Hasen fing.\\
+           in the.\ACC{} forest went the.\NOM{} hunter and a.\ACC{} hare caught\\
+    }
+  \end{xlist}
+\end{exe}
+%
+At first sight, this looks like a run-of-the-mill symmetric \BAR{C}
+coordination. However, this is not the case, since the PP in the
+Vorfeld is unambiguously a directional PP, which is incompatible with
+the verb in the second conjunct. Furthermore, what \textit{is} shared
+between the two conjuncts is the subject in the Mittelfeld of the
+first conjunct, which is not in a c-structural position that would
+lead us to expect this possibility.
+
+\citeauthor{frank:2006} models SGF coordination using an optional
+annotation on the rule for symmetric CP coordinations, which shares the
+(grammaticalized) discourse function of the first conjunct with the
+coordination as a whole, and therefore, with the second
+conjunct.\footnote{Here, too, the grammaticalized discourse functions
+include the subject. In fact, in this construction, the shared
+material will always turn out to be the subject.}
+%
+\begin{exe}
+  \ex \phraserule{CP}{%
+    \rulenode{CP\\$\uparrow\in\downarrow$\\$\big((\UP\,\textsc{gdf})=(\DOWN\,\textsc{gdf})\big)$}
+    \rulenode{Coord\\\UP=\DOWN}
+    \rulenode{CP\\$\uparrow\in\downarrow$}
+  }
+\end{exe}
+%
+This extra annotation makes sure the completeness requirements in the
+second conjunct can be met. \citeauthor{frank:2006} also shows
+that this approach makes correct predictions with respect to the
+interpretation of the scope of quantified subjects in an SGF
+coordination. However, the formal account leaves unexplained why the
+second conjunct cannot have a fronted object, like the
+ungrammatical~(\ref{ex:WGerm:47}b). For this, \citeauthor{frank:2006}
+appeals to the discourse structure of SGF coordination: the second
+conjunct is conceptualized as part of the discourse-functional domain
+of the first. If the second conjunct were to have a Vorfeld \TOPIC or
+\FOCUS, this would indicate that it sets up its own discourse-functional
+domain.
+
+\subsection{Topics related to the right periphery\label{sec:Germanic:rightperi}}
+
+\subsubsection{Clefts}
+
+The it-cleft construction in Dutch involves a neuter weak pronoun
+(typically \textit{het} `it'), a copula, focused material, and a
+backgrounded finite
+clause in the Nachfeld. \Citet[Chapter~2]{vanderbeek:2005} shows that, with these
+ingredients, there are in fact two distinct cleft constructions: the
+intransitive cleft (an existential copula with extraposed complement
+clause, \ref{ex:WGerm:49}a) and the transitive cleft (an identificational copula
+with extraposed relative clause, \ref{ex:WGerm:49}b).
+%
+\begin{exe}
+  \ex\label{ex:WGerm:49} Dutch \Citep[Figures~2.4 and~2.1]{vanderbeek:2005}
+  \begin{xlist}
+    \ex \gll Het is aan hem dat ze denkt.\\
+             \textsc{expl}  is on him \COMPL{} she thinks.\\
+        \glt `It is of him that she is thinking.'
+    \ex \gll Het zijn jouw kinderen die huilen.\\
+             it  are  your children \REL{} cry\\
+         \glt `It is your children who are crying.'
+  \end{xlist}
+  \end{exe}
+%
+\Citeauthor{vanderbeek:2005} shows that the two cleft types differ
+further in whether they involve an expletive or referential neuter
+pronoun, whether they tolerate pseudo-copulas like \textit{bleken}
+`seem', or only forms of the verb \textit{zijn} `be', and whether the
+neuter pronoun is obligatorily the cleft subject or not.
+
+\Citeauthor{vanderbeek:2005} models both cleft types with dedicated
+c-structure rules to capture the fixed position of the backgrounded
+clause, and to introduce the construc\-tion-specific annotations. This
+ensures, for instance, that the clause must be in the Nachfeld, and cannot
+be realized as one constituent with the pronoun or the focused
+material. In the intransitive cleft, both the expletive and the complement
+clause project to the \SUBJ{}'s f-structure, and the focused material is
+linked to an adjunct or oblique position in f-structure (\textit{aan hem} `on him' in \ref{ex:WGerm:49}a). In the
+transitive cleft, the relative clause is an adjunct of the referential
+weak neuter pronoun, which is the construction's \TOPIC, and which is
+subject or object depending on properties of the focused material. The
+top level c-structure rules for the two constructions are given
+in~(\ref{ex:WGerm:50}). 
+%
+\begin{exe}
+  \ex\label{ex:WGerm:50}
+  \begin{xlist}
+    \ex intransitive cleft:\\
+    \phraserule{IP}{
+      \rulenode{NP\\(\UP\SUBJ)=\DOWN}
+      \rulenode{CP\\%
+        (\UP\SUBJ)=\DOWN\\%
+        (\DOWN\textsc{type})\,=$_c$\,\textsc{that}\\%
+        (\UP\FOCUS)=(\UP\XCOMP*\,\{\,\ADJ\,${\in}\mid$\,\OBLTHETA\})}
+    }
+    \ex transitive cleft:\\
+    \phraserule{IP}{
+      \rulenode{NP\\(\UP\SUBJ)=\DOWN}
+      \rulenode{\BAR{I}\\\UP=\DOWN}
+      \rulenode{CP\\%
+        \DOWN$\in$\,(\UP\TOPIC\ADJ)\\
+        (\UP\TOPIC\textsc{prontype})=\textsc{cop}\\
+        (\DOWN\textsc{type})\,=$_c$\,\textsc{rel}\\
+        (\UP\FOCUS)=(\UP\{\SUBJ|\OBJ\})}}
+    
+  \end{xlist}
+\end{exe}
+%
+The \textsc{type} feature of the CP-projected f-structures
+distinguishes relative clauses from complement clauses headed by
+\textit{dat} `that'. The \textsc{prontype}=\textsc{cop} restriction
+singles out a class of special copular pronouns which are \N.3\SG{}
+in form, but which show a wider range of agreement, whose existence
+can be argued for on independent grounds.
+
+\subsubsection{Correlative \textit{es} and extraposed CPs}
+
+The constructions discussed in \citet{berman-etal:1998:lfg} and
+\citet[Chapter~8]{Berman2003} also contain a neuter pronoun and a
+finite clause in the Nachfeld. In this case, the pronoun and the finite
+clause realize a propositional argument of the clause's main verb, and
+they can either appear on their own~(\ref{ex:WGerm:51}a,b) or
+together~(\ref{ex:WGerm:51}c), in which case the pronoun is referred to as a
+\textit{correlative pronoun}.
+%
+\begin{exe}
+\ex\label{ex:WGerm:51} German \citep[§1, examples 1 and 2]{berman-etal:1998:lfg}
+\begin{xlist}
+  \ex {\gll
+    Hans hat bedauert, da{\ss} er gelogen hat.\\
+    Hans has regretted that he lied has\\
+    \glt Hans regretted that he lied.} 
+  \ex {\gll
+    Hans hat es bedauert.\\
+    Hans has it regretted\\
+    \glt Hans regretted it.}
+  \ex {\gll
+    Hans hat es bedauert, da{\ss} er gelogen hat.\\
+    Hans has it regretted that he lied has\\}
+  \end{xlist}
+ \end{exe}
+%
+The central modelling assumptions made in both analyses are that the
+pronoun is referential -- whether it occurs on its own or as a
+correlative together with the finite clause -- and that the pronoun
+and the finite clause when they appear alone~(\ref{ex:WGerm:51}a,b), are
+\OBJ{}s. In the correlative pronoun construction~(\ref{ex:WGerm:51}c), however,
+it is the pronoun that has this grammatical function.  The finite
+clause is then either seen as supplying further semantic restrictions
+to the interpretation of this pronoun \citep[see also
+  \sectref{sec:Germanic:splitnps} above]{berman-etal:1998:lfg} or as an
+apposition to the pronoun \citep{Berman2003}. 
+
+\citet{Berman2003} also goes on to show that there is a range of
+correlative \textit{es} data, and that despite superficial
+resemblances, different syntactic analyses are called for. For
+instance, \citeauthor{Berman2003} argues that in contrast to the data
+above, the psych verb \textit{stören} `disturb' in~(\ref{ex:WGerm:52}) has a
+different argument structure for the cases with correlative
+\textit{es}: it either takes the finite clause as subject when the
+correlative is absent, or it takes \textit{es} as subject and the
+finite clause as object when the correlative is present.
+%
+\begin{exe}
+  \ex\label{ex:WGerm:52} German \citep[§8.1, example 2d]{Berman2003}\\
+      {\gll
+        \ldots{}weil (es) mich stört, dass sie den Hans liebt.\\
+        \phantom{\ldots}because \phantom{(}\textsc{expl} me bothers \COMP{} she the.\ACC{} Hans loves.\\
+        \glt `\ldots because it bothers me that she loves Hans.'}
+\end{exe}
+
+
+\subsection{Topics related to the ordering of dependents\label{sec:Germanic:ordering}}
+
+\subsubsection{Scrambling\label{sec:Germanic:scrambling}}
+
+Material in the Mittelfeld can be reordered to a certain extent. For
+instance, Dutch allows different orders of object and
+adverb~(\ref{ex:WGerm:53}). 
+%
+\begin{exe}
+  \ex\label{ex:WGerm:53} Dutch\\
+    \gll Anna heeft \{de was\} gisteren \{de was\} gedaan.\\
+    Anna has \phantom{\{}the laundry yesterday  \phantom{\{}the laundry done\\
+    \glt `Anna did the laundry yesterday.'
+\end{exe}
+%
+In German, the order of arguments themselves is free, as
+well. Example~(\ref{ex:WGerm:54}) shows one order for the arguments of a
+ditransitive, but the other five possible argument orders are
+grammatical, too.
+%
+\begin{exe}
+    \ex\label{ex:WGerm:54} German \citep[§1, example~1]{haider-rosengren:2003}\\
+    \gll \ldots{}dass $[$das Objekt$]$ $[$dem Subjekt] $[$den ersten Platz] {streitig macht}.\\
+             \phantom{\ldots}\COMP{} \phantom{$[$}the.\NOM{} object \phantom{$[$}the.\DAT{} subject \phantom{$[$}the.\ACC{} first place competes.for \\
+        \glt `\ldots that the object competes for first position with the subject.'
+\end{exe}
+%       
+In general, both scrambling over adjuncts and scrambling of arguments
+is sensitive to information structural effects, and -- related to this
+-- things like the referential form of the material involved.
+\citeauthor{Choi1999}~(\citeyear{Choi1999,Choi2001}) explains German scrambling and
+clause-local fronting facts using an OT-LFG model in which constraints
+on canonical ordering of grammatical functions conflict with
+constraints on information structurally induced ordering. An
+information structural account of clause-local word order variation
+and quantifier scope in German is given in
+\citet{CookPayne}. The explanation given by
+\citet{cook:2006:benjamins} for a deviating unmarked
+word order in a small group of ditransitives is discussed below,
+in~\sectref{sec:Germanic:mappingvariation}.
+
+As far as the order of arguments in the Mittelfeld is concerned, Dutch
+is much more restricted than German. Nevertheless there is some
+variation. An OT account of the Dutch dative alternation, which also
+covers variation in the ordering of direct object and indirect object, is
+presented in \Citet{vanderbeek:2005}. \citet{zaenen:1989:techreport}
+discusses scrambling of objects over subjects with Dutch experiencer
+verbs and passives of ditransitives, and argues for an effect of
+thematic role.
+
+The cross-serial dependency pattern comes about
+when objects and verbs are in separate groups and both are ordered in
+the same fashion according to level of embedding. The verb cluster
+rule given in~(\ref{ex:zk95:vprules}) above \citep{zaenen-kaplan1995},
+sorts embedding verbs before embedded ones, and explicitly forces the
+same order on the objects with the help of an f-precedence
+constraint. In her work on the order of objects in Dutch,
+\Citet[§3.8]{vanderbeek:2005} argues that this constraint should be
+treated as a violable OT constraint. An optionally higher ranking constraint prefers early realization
+in the Mittelfeld of a third person, inanimate pronoun. This constraint
+explains examples like~(\ref{ex:WGerm:55}), in which the object pronoun
+belonging to the embedded verb precedes the object belonging to the
+finite verb.
+%
+\begin{exe}
+  \ex\label{ex:WGerm:55} \gll Ik zag$_{\text{\OBJ:1}}$ 't$_2$ Jo$_1$ doen$_{\text{\OBJ:2}}$.\\
+  I saw it Jo do\\
+  \glt `I saw Jo do it.'
+\end{exe}
+%
+As with all scrambling, this type of scrambling is less constrained in
+German, and may also apply to full NPs, and even involve scrambling of
+an embedded object over the main clause subject. I am however not aware of
+any LFG-related work on this.\footnote{The term \textit{embedded
+  object shift} is \citeauthor{vanderbeek:2005}'s term for this type
+of word order variation. In the literature on German, the phenomenon
+is sometimes discussed as a kind of \textit{long(-distance)
+  scrambling}, that is, scrambling across clause boundaries, although
+the view that the embedded object leaves its clause goes against the
+conception of coherent combining as clause union. In fact, in
+\citet{lee-schoenfeld:2007:benjamins}, this type of scrambling is
+taken as one of the hallmarks of coherence and thus of monoclausality.}
+ 
+
+\subsubsection{Weak cross-over\label{sec:Germanic:weakxover}}
+
+In German, scrambling and topicalization interact with binding between
+arguments, which results in data like~(\ref{ex:weakxover}). Note that the
+grammaticality judgements are relative to the co-indexations given in
+the examples.
+%
+\begin{exe}
+  \ex \label{ex:weakxover}German (\citealp{Berman2003}, §5.2, examples 10a, 11b, 10d, 11d, 27, 31{;} examples a--d below originally from \citealp{choi:1995:lsa})
+  \begin{xlist}
+    \ex[]{%
+      \gll \ldots{}dass jeden$_i$ seine$_i$ Mutter mag.\\
+            \phantom{\ldots}\COMP{} everyone.\ACC{} his mother likes\\
+      \glt `\ldots that their$_i$ mother likes everyone$_i$.'\footnote{English seems to require the passive to achieve the intended bindings. The intended reading in~(\ref{ex:weakxover}a--d) is therefore more naturally given as \textit{(that) everyone is liked by their own mother}.}
+    }      
+    \ex[]{\gll
+      Jeden$_i$ mag seine$_i$ Mutter.\\
+      everyone.\ACC{} likes his mother\\
+      \glt `Their$_i$ mother likes everyone$_i$.'}
+    \ex[*]{\gll
+      \ldots{}dass seine$_i$ Mutter jeden$_i$ mag.\\
+      \phantom{\ldots}\COMP{} his mother everyone.\ACC{} likes\\}
+    \ex[*]{\gll
+      Seine$_i$ Mutter mag jeden$_i$.\\
+      his mother likes everyone.\ACC{}\\}
+    \ex[]{%
+      \gll Jeden$_i$ sagte sie, habe seine$_i$ Mutter getröstet.\\
+           everyone.\ACC{} said she has.\SBJV{} his mother consoled\\
+      \glt `Everyone$_i$, she said their$_i$ mother had consoled.'
+    }
+    \ex[*]{%
+      \gll Jeden$_i$ sagte seine$_i$ Mutter, habe sie getröstet.\\
+           everyone.\ACC{} said his mother has.\SBJV{} she consoled\\
+      \glt `Everyone$_i$, their$_i$ mother said she had consoled.'
+     }
+  \end{xlist}
+\end{exe}
+%
+Between dependents of the same predicate, an object may bind into the
+subject, provided it precedes it. It does not matter whether it
+precedes it in the Mittelfeld~(\ref{ex:weakxover}a) or by being moved into the
+Vorfeld~(\ref{ex:weakxover}b), even from an embedded clause~(\ref{ex:weakxover}e). However,
+as~(\ref{ex:weakxover}f) shows, an object cannot bind into an upstairs subject,
+even when it precedes it.
+
+\citet{Berman2003}, using the framework of \citet{Bresnan1998} and
+observations from \citet{choi:1995:lsa}, shows that the data
+in~(\ref{ex:weakxover}a--d) is straightforwardly explained by assuming that to
+bind a pronoun, an operator must either outrank it in terms of
+grammatical function -- this isn't the case in any of these examples
+-- or linearly precede it. The linear precedence constraint is
+satisfied in~(\ref{ex:weakxover}a,b), but not in~(\ref{ex:weakxover}c,d). However,
+example~(\ref{ex:weakxover}f) is problematic under this simple account, since the
+operator precedes the pronoun, but cannot bind it.
+
+\hspace*{-3.8pt}\citeauthor{Berman2003} therefore proposes to analyse long-distance
+dependencies using a trace, and to interpret the linear precedence
+requirement as if it includes this trace. The sentences in~(\ref{ex:weakxover}e,f)
+are then as in~(\ref{ex:wxotrace}).\footnote{\citet{Berman2003} assumes that
+local arguments are adjoined to VP, in any order. This also applies to
+traces -- the object trace may therefore appear before its clause-mate
+subject. In the examples in~(\ref{ex:wxotrace}) we have inserted the
+trace as early as c-structurally possible.}
+%
+\begin{exe}
+  \ex\label{ex:wxotrace}
+  \begin{xlist}
+    \ex[]{%
+      \gll Jeden$_i$ sagte sie, habe ~$\epsilon_i$~ seine$_i$ Mutter getröstet.\\
+      everyone.\ACC{} said she has.\SBJV{} {} his.\NOM{} mother consoled\\
+      }
+    \ex[*]{%
+      \gll Jeden$_i$ sagte seine$_i$ Mutter, habe ~$\epsilon_i$~ sie getröstet.\\
+      everyone.\ACC{} said his.\NOM{} mother has.\SBJV{} {} she consoled\\
+    }
+  \end{xlist}
+\end{exe}
+%
+In~(\ref{ex:wxotrace}a), the operator's trace precedes the bound pronoun, so
+that the linear order requirement is met. In~(\ref{ex:wxotrace}b), however, the trace follows the pronoun, which -- under \citeauthor{Berman2003}'s definition -- means the operator as a whole does not precede it
+This results in the unavailability of the indexed reading.
+
+\citet[§9.5]{BresnanEtAl2016} discuss the same data using a near-identical framework. Although the difference in linear order of the
+bound pronoun and the operator trace between~(\ref{ex:wxotrace}a) and~(\ref{ex:wxotrace}b)
+is noted, the ungrammaticality of~(\ref{ex:wxotrace}b) is ultimately explained
+by taking the binding domain of the operator to be the f-structure for
+the predicate \textit{getröstet} `consoled', irrespective of the
+operator's \DF role in the matrix f-structure.\footnote{In contrast,
+\citet[§5.2.6]{Berman2003} explicitly considers the binding domain of
+the operator to be ``extended to the matrix clause'' because ``it
+functions as a discourse function in the matrix clause'' (p.~86).} There
+is therefore no need to refer to the position of the trace to explain
+the long-distance dependency data. Under that analysis, it would
+appear that weak cross-over in German alone is not a reason to assume
+long-distance dependencies involve traces.
+
+\citet{dalrympleetal2001}\footnote{This paper is a response to
+the trace-based proposals of
+\citet{Bresnan1998} and \citet{Berman2003}. The latter was also
+published/circulated on earlier occasions, which explains the apparent
+anachronism.} give a trace-less account of the German cross-over
+data. Rather than considering the linear order of the binding operator
+and the bound pronoun, they consider f-precedence between two
+f-structures that are dependents of the same predicate, such that one
+contains the operator and the other the pronoun. In~(\ref{ex:weakxover}f), these
+f-structure siblings are the \SUBJ (containing the pronoun) and the
+\COMP (containing the operator) of \textit{sagte}. Since the latter
+does not f-precede the former, the linear precedence requirement on
+binding is not met.
+
+\subsection{Topics related to mapping\label{sec:Germanic:mapping}}
+
+\subsubsection{Sentences ``without a subject'' in German\label{sec:Germanic:subjectless}}
+
+A recurring debate in German clausal syntax concerns the existence of
+true subjectless sentences. \citet[Chapter~4]{Berman2003} points out
+that it would appear that German has such sentences, given that 1)
+under her analysis, German does not have a dedicated subject position,
+2) there are no oblique subjects in German (a common view, following
+for instance \citealp{ZMT85:Case}, but contra the later
+\citealp{barthdal05}) and 3) there are sentences without
+nominatives, such as~(\ref{ex:WGerm:58}). 
+%
+\begin{exe}
+  \ex\label{ex:WGerm:58} German \citep[§4.2, examples 10a, 16b, 10d{;} indication of optionality of expletive mine]{Berman2003}
+  \begin{xlist}
+    \ex \gll \ldots{}weil (*es) getanzt wurde.\\
+             \phantom{\ldots{}}because \phantom{(*}\textsc{expl} danced was\\
+        \glt `\ldots{}because people were dancing.'
+    \ex \gll \ldots{}weil (*es) dem Mädchen geholfen wurde.\\
+             \phantom{\ldots{}}because \phantom{(*}\textsc{expl} the.\DAT{} girl helped was\\
+        \glt `\ldots{}because the girl was being helped.'
+    \ex \gll \ldots{}weil (es) mich friert.\\
+        \phantom{\ldots{}}because \phantom{(}\textsc{expl} me.\ACC{} freezes\\
+        \glt `\ldots{}because I'm cold.'
+  \end{xlist}
+\end{exe}
+%
+Note that each of these \textit{can} occur without the expletive pronoun
+\textit{es}, and the first two \textit{must} occur without it.
+
+\citeauthor{Berman2003} models clauses without a subject using
+argument structures without a \SUBJ, and shows that these cases can be given
+an analysis in terms of Lexical Mapping Theory (LMT).\footnote{See
+\citetv{chapters/Mapping} for more information
+on Lexical Mapping Theory.} For the
+predicates involved in the examples above, we have the following LMT
+derivations:
+%
+\begin{exe}
+  \ex
+  \begin{xlist}
+    \ex getanzt \arglist{%
+      \begin{tabular}[t]{@{}c@{}}{\rm\textit{agent}}\\$[-o]$\\$\emptyset$\end{tabular}%
+    } \hfill (lit.\ `danced', impersonal passive)
+    \ex geholfen \arglist{%
+      \begin{tabular}[t]{@{}c@{}}{\rm\textit{agent}}\\$[-o]$\\$\emptyset$\end{tabular}, %
+      \begin{tabular}[t]{@{}c@{}}{\rm\textit{beneficiary}}\\$[+o]$/\DAT\\\OBJTHETA\end{tabular}%
+    } \hfill (`helped', passive, lexical case)
+    \ex frieren \arglist{%
+      \begin{tabular}[t]{@{}c@{}}{\rm\textit{experiencer}}\\$[+o]$/\ACC\\\OBJTHETA\end{tabular}%
+    } \hfill (`be cold', active intransitive, lexical case)
+  \end{xlist}
+\end{exe}
+%
+The question remains, then, why the expletive is not allowed
+in~(\ref{ex:WGerm:58}a,b), whereas it is in
+(\ref{ex:WGerm:58}c). \citeauthor{Berman2003} adopts the analysis that
+German verbal agreement morphology is distinct enough to contribute
+subject features. Thus, the f-structures for the sentences
+in~(\ref{ex:WGerm:58}) all contain subjects. This way, German can be analysed
+as meeting the \textit{Subject Condition}, which says that every
+f-structure with a predicate must contain a \SUBJ.\footnote{This
+Subject Condition formulation pertains to f-structure. In other
+contexts, for instance in \citet[§14.4]{BresnanEtAl2016}, the
+Subject Condition is taken to be a constraint on argument
+structures. It is clear that under Berman's view such a constraint
+does not hold for German.} Inserting a subject expletive would then be
+ruled out as a violation of Economy of Expression. It follows that
+the optional \textit{es} in cases like (\ref{ex:WGerm:58}c) is selected for:
+verbs like \textit{frieren} have an alternative specification like the
+one in~(\ref{ex:WGerm:60}).
+%
+\begin{exe}
+  \ex\label{ex:WGerm:60} \lexentry{frieren}{%
+    (\UP\PRED) = `{\rm be-cold}\arglist{\OBJTHETA}\SUBJ'\\
+    (\UP\SUBJ\textsc{form}) =$_c$ \textsc{es\_}}
+\end{exe}
+
+
+\subsubsection{Mapping explanations of variation\label{sec:Germanic:mappingvariation}}
+\citet{zaenen93} is concerned with (the nature of) the
+unaccusative/unergative distinction in Dutch.  One of the challenges
+in the characterization of unaccusativity in Dutch is that it not only
+applies to intransitives, but also to a subset of transitive
+experiencer verbs. Consider the examples in~(\ref{ex:WGerm:61}), which shows two
+intransitives, two transitives with the experiencer as the object, and
+a transitive with the experiencer as the subject. The selection of a
+form of \textit{zijn} `be' instead of \textit{hebben} `have' as the
+perfect auxiliary is given here as the reflex of unaccusativity.
+%
+\begin{exe}
+  \ex\label{ex:WGerm:61} Dutch
+  \begin{xlist}
+    \ex \gll Zij *is / heeft gewerkt.\\
+             she \phantom{*}is {} has worked\\
+    \ex \gll Zij is / *heeft gestorven.\\
+             she is {} \phantom{*}has died\\
+    \ex \gll Zij *zijn / hebben haar geirriteerd.\\
+             they \phantom{*}are {} have her irritated\\
+    \ex \gll Zij zijn / *hebben haar bevallen.\\
+             they are {} \phantom{*}have her pleased\\
+    \ex \gll Zij *is / heeft hen gevreesd.\\
+             She \phantom{*}is {} has them feared.\\
+  \end{xlist}
+\end{exe}
+%
+\citeauthor{zaenen93} shows that it is possible to give
+semantic correlates of unaccusativity, and discusses which phenomena
+can be related directly to unaccusativity in Dutch (namely, auxiliary
+selection, prenominal attributive use of perfect participle) and which only relate
+indirectly (impossibility of impersonal passive). Her analysis is
+formalized in terms of a variant of LMT that does not rely on thematic
+roles to determine the intrinsic classifications of a predicate's
+arguments. Instead, \citeauthor{zaenen93} incorporates
+\citeauthor{Dowty1991}'s~(\citeyear{Dowty1991}) proto-roles into LMT
+using the following simple rule: a participant that has more
+proto-agent than proto-patient properties is marked $[-o]$, otherwise
+the participant is marked $[-r]$. The LMT alternative is further
+spelled out to allow derivation of grammatical function assignments
+for the data in~(\ref{ex:WGerm:61}): the subjects in examples
+(\ref{ex:WGerm:61}a,c,e), with \textit{hebben} `have', come from intrinsic
+$[-o]$ markings, whereas the subjects in~(\ref{ex:WGerm:61}b,d), with
+\textit{zijn} `be', come from intrinsic $[-r]$. The choice of
+auxiliary can be correctly modelled by referring to the intrinsic
+markings of the subject. \citet{Kordoni2003} discusses analysing the German locative
+alternation in terms of \citeauthor{zaenen93}'s mapping account.\footnote{It should be noted
+that \citet{Dowty1991} talks about the \textit{English} locative alternation
+in terms of proto-roles in depth.}
+
+Another variation which is shown to be driven by lexical semantic
+differences that affect mapping are the so-called ``high'' versus ``low''
+datives in German. Although arguments in the German Mittelfeld are
+readily scrambled, there is an unmarked order, which can be detected
+by studying information structural and quantifier scoping
+properties. Between objects, the unmarked order is generally \DAT
+before \ACC~(\ref{ex:WGerm:62}; ``high dative''). However, a smaller number of
+verbs show \ACC before \DAT~(\ref{ex:WGerm:63}; ``low dative''), and for a
+couple of verbs both orders appear to be unmarked. In the examples,
+superscript {\scriptsize{}M} marks the marked variant.
+%
+\begin{exe}
+  \ex\label{ex:WGerm:62} German \citep[§1, examples~1--2]{cook:2006:benjamins}
+  \begin{xlist}
+    \ex[]{%
+      \gll Es hat ein Mann $[$einem Kind$]$ $[$ein Buch$]$ geschenkt.\\
+           \textsc{expl} has a.\NOM{} man \phantom{$[$}a.\DAT{} child  \phantom{$[$}a.\ACC{} book given\\
+      \glt `A man gave a book to a child (as a present).'
+    }
+    \ex[$^{\mbox{\scriptsize{}M}}$]{Es hat ein Mann $[$ein Buch$]$ $[$einem Kind$]$ geschenkt.}
+  \end{xlist}
+  \ex\label{ex:WGerm:63}
+  \begin{xlist}
+    \ex[$^{\mbox{\scriptsize{}M}}$]{%
+      \gll Es hat ein Polizist $[$einer Gefahr$]$ $[$einen Zeugen$]$ ausgesetzt.\\
+           \textsc{expl} has a.\NOM{} policeman \phantom{$[$}a.\DAT{} danger \phantom{$[$}a.\ACC{} witness exposed\\
+      \glt `A policeman has exposed a witness to a danger.'
+    }
+    \ex[]{Es hat ein Polizist  $[$einen Zeugen$]$ $[$einer Gefahr$]$ ausgesetzt.}
+  \end{xlist}
+\end{exe}
+%
+\citet{cook:2006:benjamins} demonstrates that the different unmarked
+orders can be related to differences in lexical semantics, which in
+turn give rise to thematic alternations. For the alternating verbs, it
+is shown that the different word orders prefer different readings in
+line with the general lexical semantic observations. All
+meanings/word orders involve an agent and a patient/theme, which under
+standard LMT assumptions are mapped to \SUBJ and (accusative) \OBJ,
+respectively. In addition, the \DAT-\ACC order is associated with a
+bene-/maleficiary role, which is mapped to a (dative) \OBJTHETA. The
+\ACC-\DAT order, however, involves a third participant which is a goal
+or a location and which gets mapped to a (dative)
+\OBLTHETA. \citeauthor{cook:2006:benjamins} argues that the unmarked
+order of complements in the German Mittelfeld is
+\OBJTHETA-\OBJ-\OBLTHETA. The apparent word order variation is thus a
+fixed word order seen in the light of the unmarked order of
+grammatical functions. \citeauthor{cook:2006:benjamins} extends her
+account to explain the compatibility of the different datives with the
+\textit{kriegen}-passive, which can be used with a selection of verbs
+to promote the dative argument to subject.
+
+\subsubsection{Transitivity of reflexives}
+
+Lexically conditioned reflexives in German and Dutch show up in a
+range of situations. The simplex reflexives \textit{sich} in German
+and \textit{zich} in Dutch appear for instance in clauses with transitive verbs
+with co-referring arguments~(\ref{ex:WGerm:64}a)/(\ref{ex:WGerm:65}a),\footnote{The class
+of grooming verbs is part of a larger class of transitive verbs that,
+exceptionally, allows the simplex reflexive. In
+general, the complex reflexive, \textit{zichzelf} /
+\textit{sich selbst} is available to realize reflexive objects with
+transitive verbs. This exception is what justifies treating these
+reflexives as being lexically specified.} in
+anticausatives~(\ref{ex:WGerm:64}b)/(\ref{ex:WGerm:65}b), and in inherent
+reflexives~(\ref{ex:WGerm:64}c)/(\ref{ex:WGerm:65}c).
+%
+\begin{exe}
+  \ex\label{ex:WGerm:64}
+  \begin{xlist}
+    \ex\label{ex:Germ:64a} \gll Max rasiert sich.\\
+             Max shaves \REFL{}\\ 
+         \glt `Max shaves himself.'
+    \ex \gll Die Tür öffnet sich.\\
+             the door opens \REFL{}\\
+        \glt `The door opens.'
+    \ex \gll Max schämt sich.\\
+             Max is.ashamed \REFL{}\\
+        \glt `Max is ashamed.'
+  \end{xlist}
+  \ex\label{ex:WGerm:65}
+  \begin{xlist}
+    \ex\label{ex:Germ:65a} \gll Max scheert zich.\\
+        Max shaves \REFL{}\\ 
+    \ex \gll De deur opent zich.\\
+    the door opens \REFL{}\\
+    \ex \gll Max schaamt zich.\\
+    Max is.ashamed \REFL{}\\
+  \end{xlist}
+\end{exe}
+%
+\largerpage
+In a contrastive study of reflexivization, \citet{Sells1987-xz}
+distinguish three kinds of transitivity: 1) c-structure transitivity
+-- the reflexive is an independent constituent, 2) f-structure
+transitivity -- the syntactic predicate selects an \OBJ, 3) semantic
+transititivity -- the referential identity of the arguments is
+accidental.  Interestingly, German and Dutch simplex reflexives receive
+different analyses: they are both considered to be transitive in terms
+of c-structure, and intransitive in terms of semantics, but
+\citeauthor{Sells1987-xz} analyse the German reflexives as f-structurally
+intransitive, and the Dutch reflexives as f-structurally transitive. This
+is based upon the contrast in~(\ref{ex:WGerm:66}): the German reflexive can
+appear in an impersonal passive, whereas the non-reflexive counterpart
+is ruled out. The reflexive thus patterns with intransitives. The
+Dutch counterpart is not well-formed, which would suggest Dutch
+reflexives pattern with transitives.
+%
+\begin{exe}
+  \ex\label{ex:WGerm:66}
+  \begin{xlist}
+    \ex[]{German \citep[§2.4, example~74]{Sells1987-xz}\\\gll Jetzt wird \{sich / *ihn\} aber gewaschen!\\
+    now   is  \phantom{\{}\REFL{} {} \phantom{*}him however washed\\
+    \glt `But now it is time to wash yourself!'\\
+    Not: `\ldots to wash him!'}
+    \ex[{{\raisebox{-2.8125ex}[0pt][0pt]{*}}}]{Dutch\\ \gll Nu wordt (er) \{zich / hem\} gewassen!\\
+                  now is \phantom{(}\textsc{expl} \phantom{\{}\REFL{} {} him washed\\
+    }
+  \end{xlist}
+\end{exe}
+%
+\citet{Sells1987-xz} model reflexives like~(\ref{ex:Germ:64a}),~(\ref{ex:Germ:65a}) with a lexical rule which maps a
+transitive verb (in all the three senses above) to a reflexive
+verb. For German, this involves leaving out the object slots, and 
+marking the predicates with `[a] feature F, forcing them to combine
+with the reflexive element.'\footnote{The reflexive itself carries a
+constraining equation checking this feature F to make sure it is only
+combined with predicates that have undergone reflexivization. It is
+not spelled out in the article how the presence of the reflexive would
+be enforced technically, however. One solution is to let
+the verb and the reflexive be co-heads that check for the presence of
+each other using constraining equations.} The resulting intransitive
+can then serve as input for the lexical rule for the impersonal
+passive. For Dutch, the reflexivization rule involves moving the
+thematic object to a non-thematic object slot, marked to be filled by
+a simplex reflexive.
+
+The analysis of \citeauthor{Sells1987-xz} crucially relies on the use of
+lexical rules to take care of mapping. Modern LFG work would
+rely on a variant of LMT. Data like those in~(\ref{ex:WGerm:66}) then
+also receive a different status, as LMT does not model the
+(impersonal) passive as a rule to be applied on the output of another
+rule. \citet{AlencarKelling2005} propose an analysis of the whole
+range of data in~(\ref{ex:WGerm:64}a--c) in terms of LMT, and explicitly
+reject the importance of the contrast in~(\ref{ex:WGerm:66}). Instead, they offer
+additional data to support the conclusion that the German reflexive \textit{is}
+transitive at f-structure. Their LMT analysis of the data in~(\ref{ex:WGerm:64}), above,
+is summarized in~(\ref{ex:WGerm:67}).
+%
+\begin{exe}
+  \ex\label{ex:WGerm:67}
+  \begin{xlist}
+    \ex rasieren/öffnen
+    \arglist{%
+      \begin{tabular}[t]{@{}c@{}}{\rm\textit{agent}}\\$[-o]$\\\SUBJ\end{tabular}, %
+      \begin{tabular}[t]{@{}c@{}}{\rm\textit{theme}}\\$[-r]$\\\OBJ\end{tabular}%
+    } \hfill (`shave'/`open', transitive)
+    \ex (sich) rasieren
+    \arglist{%
+      \begin{tabular}[t]{@{}c@{}}{\rm\textit{agent$_i$}}\\$[-o]$\\\SUBJ{}$_i$\end{tabular}, %
+      \begin{tabular}[t]{@{}c@{}}{\rm\textit{theme$_i$}}\\$[-r]$\\\OBJ{}$_i$\rlap{$[$\REFL{}$]$}\end{tabular}%
+    } \hfill (`shave', reflexive of transitive)
+    \ex (sich) öffnen \arglist{%
+      \begin{tabular}[t]{@{}c@{}}{\rm\textit{theme$_i$}}\\$[-r]$\\\SUBJ{}$_i$\end{tabular}%
+    }%
+      \begin{tabular}[t]{@{}c@{}}{\_$_i$}\\$[-r]$\\\OBJ{}$_i$\rlap{$[$\REFL{}$]$}\end{tabular}%
+      \hfill (`open', anticausative)
+    \ex (sich) schämen \arglist{%
+      \begin{tabular}[t]{@{}c@{}}{\rm\textit{theme$_i$}}\\$[-r]$\\\SUBJ{}$_i$\end{tabular}%
+    }%
+      \begin{tabular}[t]{@{}c@{}}{\_$_i$}\\$[-r]$\\\OBJ{}$_i$\rlap{$[$\REFL{}$]$}\end{tabular}
+    \hfill (`be ashamed', inherent reflexive)
+  \end{xlist}
+\end{exe}
+%
+In the last two cases, the reflexive is an expletive.\footnote{The notation with indices to indicate reflexivity is taken from the paper. Note that, as they are also on expletives, these indices should not be interpreted as semantic co-reference.}
+
+\section{LFG analyses in the nominal domain\label{sec:Germanic:nom}}
+
+\subsection{Overall shape of nominal constituents}
+
+The CWG nominal domain has received a lot less attention than the
+clausal domain in LFG. The authors that have concerned themselves with
+the nominal domain in more detail all assume a DP analysis
+(\citealp{berman-frank:1996}, Part~I, Chapter~3; \citealp{dipper03},
+Chapter~7; \citeauthor{strunk04}, \citeyear{strunk04,Strunk05}). The
+general shape of the nominal constituent is characterized by the
+familiar representation in~(\ref{ex:WGermanic:68}).
+%
+\begin{exe}
+  \ex\label{ex:WGermanic:68}\begin{forest}
+           [DP
+             [\hspace*{1em}\ldots\hspace*{1em}]
+             [\rulenode{\UP=\DOWN\\\BAR{D}}
+               [\rulenode{\UP=\DOWN\\D}]
+               [\rulenode{\UP=\DOWN\\NP}
+                 [\hspace*{1em}\ldots\hspace*{1em}]
+                 [\rulenode{\UP=\DOWN\\\BAR{N}}
+                   [\rulenode{\UP=\DOWN\\N}]
+                   [\hspace*{1em}\ldots\hspace*{1em}]
+                 ]
+               ]
+             ]
+           ]
+  \end{forest}
+\end{exe}
+%
+In Spec-DP, elements like pre-determiners (Dutch: \textit{\textbf{al} die mensen} `all those people'), prenominal genitives (that
+is, non-pronominal possessives; German: \textit{\textbf{Karls} Auto} `Karl's car'), and non-genitive prenominal possessors (Low Saxon: \textit{\textbf{de'n Jung} sien Vadder}, lit.\ `the boy his father') can occur. We refer to the discussion of possessives
+in~\sectref{sec:Germanic:posslowsax} below for more elaborate examples. D holds determiners
+and pronouns, although \citet{dipper03} assigns pronouns
+proper (in contrast to determiner-like pronouns) to a category Pron,
+which is the single daughter of \BAR{D}.
+
+The NP contains mostly lexical material. In \citet[Chapter~7, the
+  theoretical discussion]{dipper03}, the class of adjectival
+quantifiers (see \sectref{sec:Germanic:dquant_aquant}, below) appears in Spec-NP,
+whereas other attributive adjectives appear as sisters to
+N. \citet{berman-frank:1996}, however, assume that attributive
+adjectives are left-adjoined to NP (not shown in the schematic tree),
+whereas oblique and clausal complements are in Comp-NP, on the right.
+
+This overall picture is slightly different in \citet[Chapter~8, the
+  computational implementation]{dipper03} and  \citet{Dipper05}, which describe a flat DP/\BAR{D}, under which
+predeterminers, determiners, prenominal genitives and adjectival
+quantifiers (that is, the material in Spec-DP, D, and Spec-NP
+in~\ref{ex:WGermanic:68} above) all appear as sisters of NP.\footnote{This
+analysis has the explicit goal of ``serv[ing] as the base of a robust
+and efficient implementation'' \citep[101]{Dipper05}, but its
+status as a theoretical claim remains a bit unclear. The question of
+whether a deeper/different analysis would have been preferred in a
+more theoretically oriented analysis and whether this flat structure
+should mostly be seen as an operationalization of a deeper structure,
+is unfortunately not discussed.}
+
+\subsection{Topics in noun phrase syntax}
+
+\subsubsection{Possessives in Low Saxon\label{sec:Germanic:posslowsax}}
+
+Low Saxon has, amongst others, the range of possessive constructions illustrated in~(\ref{ex:WGermanic:69}--\ref{ex:WGermanic:71}).
+%
+\begin{exe}
+  \ex\label{ex:WGermanic:69} Low Saxon \citep[§2.2, examples~2.52 and~2.84]{strunk04}
+    \begin{xlist}
+      \ex \gll sienen Weg\\
+               his.\M.\SG.\ACC{} way\\
+          \glt `his way'
+      \ex \gll jeedeen Oort kreeg $[$sienen$]$, [\ldots].\\
+                every kind got \phantom{$[$}his.\M.\SG.\ACC{}\\
+           \glt `Every kind got its own, [\ldots].'
+    \end{xlist}
+  \ex\label{ex:WGermanic:70} Low Saxon \citep[§2.3, examples~2.112 and~2.177]{strunk04}
+    \begin{xlist}
+      \ex \gll de'n Jung sien Vadder\\
+               the.\M.\SG.\ACC{} boy his.\M.\SG.\NOM{} father\\
+      \glt `the boy's father'
+    \ex \gll Korl sien\\
+             Korl his.\N.\SG.\NOM{}\\
+             \glt `Korl's'
+               \end{xlist}
+  \ex\label{ex:WGermanic:71} Low Saxon \citep[§6, example~61]{Strunk05}\label{ex:lowsaxonprenomgen}\\
+    \gll $[$Hinnerk=s Huss$]$ iss groote den $[$Antje=s$]$.\\
+             \phantom{$[$}Hinnerk=\POSS{} house is bigger than \phantom{$[$}Antje=\POSS{}\\
+        \glt `Hinnerk's house is bigger than Antje's.'
+\end{exe}
+%
+Example~(\ref{ex:WGermanic:69}a) contains a possessive pronoun in combination with
+a noun expressing the possessum. The possessor is anaphorically given
+as the referent of the possessive pronoun. Example~(\ref{ex:WGermanic:70}a) is a
+case of \textit{possessive doubling}: as before, we have a possessive
+pronoun and a noun, but now the possessive pronoun is directly
+preceded by a nominal in the accusative, which explicitly supplies the
+possessor. Finally, the first possessive expression in~(\ref{ex:WGermanic:71}) is
+an instance of an \textit{-s} marked nominal realizing the possessor,
+followed by the unmarked possessum. Examples~(\ref{ex:WGermanic:69}b),~(\ref{ex:WGermanic:70}b),
+and the second possessive in~(\ref{ex:WGermanic:71}) show that the possessum can be
+elided in each of these constructions.
+
+\citet{Strunk05}\footnote{\citet{strunk04} is an
+earlier version of this work, which contains a wealth of material on
+Low Saxon possessives.} models the three constructions in a unified
+way, crucially relying on optionally specified \PRED~`pro' values to
+capture the differing amounts of explicitly realized referential
+information. He assumes entries for possessive pronouns along the
+lines of~(\ref{ex:WGermanic:72}a) and the possessive clitic in~(\ref{ex:WGermanic:72}b), as well as the
+top level rule for the DP in~(\ref{ex:WGermanic:72}c).
+%
+\begin{exe}
+  \ex\label{ex:WGermanic:72}
+  \begin{xlist}
+    \ex \catlexentry{sien}{D}{%
+      $\big($(\UP\PRED) = \mbox{\rm`pro-of\arglist{\POSS}'}$\big)$\\
+      (\UP\AGR) = \M.\SG\\
+      (\UP\CASE) = \NOM\\
+      $\big($(\UP\POSS\PRED) = \mbox{\rm`pro'}$\big)$\\
+      (\UP\POSS\,\textsc{marking}) = {+}\\
+      (\UP\POSS\AGR) = \M.3\SG\\
+      (\UP\POSS\CASE) = \ACC\\
+    }
+    \ex \catlexentry{=s}{D}{%
+      $\big($(\UP\PRED)= \mbox{\rm`pro-of\arglist{\POSS}'}$\big)$\\
+      (\UP\POSS\,\textsc{marking}) = {+}
+    }
+    \ex \phraserule{DP}{%
+      \rulenode{DP\\(\UP\POSS)=\DOWN\\
+        (\UP\POSS\,\textsc{marking}) =$_c$ {+}}
+      \rulenode{\BAR{D}\\\UP=\DOWN}
+    }
+  \end{xlist}
+\end{exe}
+%
+The entry for a possessive pronoun constrains two ``regions'', the
+first constraining the f-structure \UP for the DP it heads -- the
+possessum -- and the second constraining the f-structure (\UP\POSS)
+for the possessor. Both regions have agreement constraints, \UP from
+inflectional morphology, (\UP\POSS) from the choice of the pronominal
+root. The two regions also each have an optional equation defining
+\PRED to be a pro-form. The four ways to satisfy these constraints
+correspond to the four cases in~(\ref{ex:WGermanic:69}) and~(\ref{ex:WGermanic:70}). Finally,
+\citet{Strunk05} analyses possessive \textit{-s} as a clitic which
+also sits in D. Like the possessive pronoun this clitic can be
+realized with or without a possessum in NP. Unlike the pronoun it must
+be preceded by a DP that supplies a possessor, which explains the
+absence of an optional \mbox{(\UP\POSS\PRED)=\mbox{`pro'}} in this
+entry.
+
+\hspace*{-2.5pt}\citet{berman-frank:1996} and \citet{dipper03} discuss the standard
+German prenominal genitive possessive construction, exemplified
+in~(\ref{ex:WGermanic:73}a). In contrast to the clitic-in-D analysis given above for
+the (perhaps only superficially) similar Low Saxon possessive
+\textit{-s}, these authors put the prenominal material completely in
+Spec-DP.  \citet{berman-frank:1996} also treat the colloquial German
+possessive doubling construction, which involves a prenominal
+dative,\footnote{\citet[58--59]{kasper:2014} calls the prenominal dative possessive a
+``non-standard German [construction] that is completely absent from
+the standard but can be found in almost all regional
+varieties/ dialects''. \citet{berman-frank:1996} discuss the
+prenominal dative together with the prenominal genitive, and note that
+the former ``allerdings eher in der gesprochenen Sprache auftritt''
+[is however more likely to occur in spoken language] (p.~59).} found
+in~(\ref{ex:WGermanic:73}b). As in the analysis proposed for the Lower Saxon
+counterpart above, the (now dative-marked) possessor is located in
+Spec-DP, and the possessive pronoun in D.
+%
+\begin{exe}
+  \ex\label{ex:WGermanic:73} German \citep[§3.1.2, example 136, 141]{berman-frank:1996}
+  \begin{xlist}
+    \ex {\gll
+      Peters (*das) Haus\\
+      Peter's \phantom{(*}the house\\
+      \glt `Peter's house'}
+    \ex {\gll
+      der Frau *(ihr) Haus\\
+      the.\F.\SG.\ACC{} woman \phantom{*(}her house\\
+      \glt `the woman's house'}
+  \end{xlist}
+  \end{exe}
+%
+In the analysis put forward by \citeauthor{berman-frank:1996}, the
+main \textit{structural} difference between the the German prenominal genitive
+and prenominal dative is that the former requires D to be
+empty~(\ref{ex:WGermanic:73}a), whereas the latter requires D to be
+filled~(\ref{ex:WGermanic:73}b). A binary feature on head realization is used to
+control this.
+
+\subsubsection{Declension and the status of quantifiers\label{sec:Germanic:dquant_aquant}}
+
+Inside the German DP, determiners, adjectives and nouns show agreement
+with respect to gender, number and case. \textit{Declension}
+is another agreement dimension, found between determiners and
+adjectives. Determiners have inherent declension: they can be
+categorized as inflected (strong declension), uninflected or mixed. In the latter
+case some cells are inflected/strong and others are
+not. Inflected adjectives, on the other hand, have strong (more
+distinctive morphology) and weak (less distinctive morphology)
+declension paradigms. Adjective declension agrees with the inherent declension
+of the determiner in the following way:
+%
+\begin{exe}
+  \ex inflected (strong) determiner: weak adjective\\
+      uninflected or no determiner: strong adjective
+\end{exe}
+%
+This phenomenon is illustrated in~(\ref{ex:WGermanic:75}--\ref{ex:WGermanic:76}). For reasons of
+exposition, the inflection is made explicit and we use a zero morpheme
+to mark the lack of inflection. Note that \textit{ein} is a member of
+the mixed declension class and appears both inflected (\ref{ex:WGermanic:75}b) and uninflected (\ref{ex:WGermanic:76}b).
+\begin{exe}
+  \ex\label{ex:WGermanic:75} German \citep[data from][§3.2, presentation/glosses changed]{Dipper05}
+  \begin{xlist}
+    \ex \gll d-er sü{\ss}-e rot-e Wein\\
+        the-\M.\SG.\NOM{} sweet-\textsc{weak}.\SG.\NOM{} red-\textsc{weak}.\SG.\NOM{} wine(\M)\\
+    \ex \gll ein-em sü{\ss}-en Wein\\
+             a-\M.\SG.\DAT{} sweet-\textsc{weak}.\SG.\DAT{} wine(\M)\\
+    \end{xlist}
+  \ex\label{ex:WGermanic:76}
+  \begin{xlist}
+    \ex \gll sü{\ss}-er rot-er Wein\\
+        sweet-\textsc{strong}.\M.\SG.\NOM{} red-\textsc{strong}.\M.\SG.\NOM{} wine(\M)\\
+    \ex \gll ein-$\emptyset$ sü{\ss}-er Wein\\
+             a-\M.\SG.\NOM{} sweet-\textsc{strong}.\M.\SG.\NOM{} wine(\M)\\
+    \end{xlist}
+\end{exe}
+Determiners that do not inflect at all (for instance, \textit{allerlei} `every kind', \textit{solcherlei} `such') are not of
+the strong declension, and adjectives that do not inflect at all
+(\textit{lila} `purple', \textit{rosa} `pink') are ambiguous between
+strong/weak declension.
+
+\citet{Dipper05} models the facts about declension in the
+following way: The f-structure projected from the DP has a feature
+\textsc{decl}, whose value
+is equated with \textsc{st-det} in strong determiners and with \textsc{st-adj} in strong
+adjectives.  This captures the fact that
+these two are never seen together. Weak adjectives constrain their containing DP's f-structure by 
+$\textsc{decl}=_{c}\textsc{st-det}$, and therefore
+only co-occur with strong determiners. Uninflected adjectives and
+determiners do not constrain the \textsc{decl} feature at all.
+
+As seen in~(\ref{ex:WGermanic:75}a) and~(\ref{ex:WGermanic:76}a), when the DP/NP contains
+multiple adjectives, they show identical declension. \citet{Dipper05}
+uses this fact to address the issue of the categorial status of
+quantifiers like \textit{alle} `all' and \textit{mehrere} `multiple',
+for which it is difficult to decide whether they are determiners or
+adjectives. By inspecting the declension of adjectival material in the
+presence of a quantifier, \citeauthor{Dipper05} is able to clearly
+distinguish determiner-like and adjective-like quantifiers.
+
+
+
+\subsubsection{Preposition-determiner contractions}
+
+German has a number of lexical preposition-determiner (P-D) contractions, such as \textit{zum} `to the', and \textit{vom} `of the', shown in~(\ref{ex:WGermanic:77}). 
+%
+\begin{exe}
+  \ex\label{ex:WGermanic:77}
+  \begin{xlist}
+    \ex[]{\gll zum König\\
+      to.the.\M.\SG.\DAT{} king\\
+    \glt `to the king'}
+    \ex[]{\gll vom Bürgermeister seinem Gehalt\\
+      of.the.\M.\SG.\DAT{} mayor his.\N.\SG.\DAT{} salary\\
+    \glt `of the mayor's salary'}
+  \end{xlist}
+\end{exe}
+%
+In \citet{berman-frank:1996}, P-D contractions are treated as
+prepositions that not only constrain their object DP in a P-like manner -- it
+must have a given case -- but also in a D-like manner -- it is marked
+definite and has certain agreement features. Most importantly, the
+object DP may not itself realize its own D. This is enforced using the
+binary head realization feature also used in the analysis of possessives,
+sketched in~\sectref{sec:Germanic:posslowsax} above.
+
+The example in~(\ref{ex:WGermanic:77}b) shows that this picture is too simplistic:
+here, the D-like properties do not constrain the object DP, but the
+prenominal dative of this DP. It is inside this prenominal dative that
+D is left unrealized, and not in the object DP itself, which has
+\textit{seinem} in D. The correct generalization about P-D
+contractions must therefore include that the D inherent in the
+contraction corresponds to a D leftmost in the object DP, and need not
+be the object DP's head. \citet{wescoat2007} gives an analysis in
+terms of lexical sharing that addresses exactly these points. In
+\citeauthor{wescoat2007}'s lexical sharing model, one lexical terminal
+can correspond to multiple adjacent preterminals. A slightly
+simplified analysis of~(\ref{ex:WGermanic:77}b) is given in~(\ref{ex:WGermanic:78}).
+%
+\begin{exe}
+  \ex\label{ex:WGermanic:78}
+  \hspace*{-3mm}\begin{forest}
+    [PP
+      [\rulenode{\UP=\DOWN\\(\DOWN\OBJ\CASE)=\DAT\\(\DOWN\PRED)=`von\arglist{\OBJ}'\\P},name=P
+        [{\hspace*{3.5em}{\gll
+              vom\\
+            of.the.\M.\SG.\DAT{} \\}\hspace*{-3.5em}}, name=notvom, no edge, tier=lex]]
+      [\rulenode{(\UP\OBJ)=\DOWN\\DP}
+        [\rulenode{(\UP\POSS)=\DOWN\\DP}
+          [\rulenode{\UP=\DOWN\\(\DOWN\SPEC)=\textsc{the}\\(\DOWN\CASE)=\DAT\\(\DOWN\AGR)=\M.\SG\\D}, name=D [{}, no edge]]
+          [\rulenode{\UP=\DOWN\\NP} [{\gll
+                Bürgermeister\\
+                mayor\\}, tier=lex]]
+        ]
+        [\rulenode{\UP=\DOWN\\\BAR{D}}
+          [\rulenode{\UP=\DOWN\\D} [\hspace{.9em}{\gll
+                seinem\\
+                his.\N.\SG.\DAT{}\hspace*{-4em}\\}\hspace*{.9em}, tier=lex]]
+          [\rulenode{\UP=\DOWN\\NP} [{\gll
+                Gehalt\\
+                salary\\}, l=8em, tier=lex]]
+        ]
+      ]
+    ]
+    \path (notvom) -- +(1em,.6em) node (vom) {\rule{0pt}{1.25em}};
+    \draw (vom.north)--(P.south);
+    \draw (vom.north)--(D.south);
+  \end{forest}
+\end{exe}
+%
+The fact that the preterminals projected from \textit{vom} need to be
+adjacent solves the problem noted above that the generalization about
+P-D contractions needs to include reference to the left edge of the
+object DP. In the paper, \citeauthor{wescoat2007} describes
+further constraints on the function of the projected D inside the
+object DP.
+
+\subsubsection{Indeterminacy of case\label{sec:Germanic:indeterminacy}}
+\largerpage
+The German nominal inflection paradigms show pervasive
+syncretism. These syncretic forms can either be ambiguous or
+indeterminate. Ambiguous forms can be used in different contexts, but
+they can only be in one paradigmatic cell at a time. So \textit{sie}
+in~(\ref{ex:WGermanic:79}), which in isolation is ambiguous between plural `they'
+and feminine singular `she', can be used in either way~(\ref{ex:WGermanic:79}a,b), but not as both at once (\ref{ex:WGermanic:79}c). Indeterminate forms \textit{can}
+function as if they are in different cells simultaneously. For
+instance, \textit{Papageien} `parrots', which is indeterminate for
+case, can at the same time be selected as an accusative object and a
+dative object~(\ref{ex:WGermanic:80}).
+%
+\begin{exe}
+  \ex\label{ex:WGermanic:79}
+  \begin{xlist}
+    \ex[]{\gll Sie hilft Papageien.\\
+      she helps parrots\\}
+    \ex[]{\gll Sie helfen Papageien.\\
+      they help parrots\\}
+    \ex[*]{Sie hilft und helfen Papageien.}
+  \end{xlist}
+  \ex\label{ex:WGermanic:80}
+  \begin{xlist}
+    \ex{\gll Sie hilft Papageien.\\
+    she helps parrots.\DAT{}\\}
+    \ex{\gll Sie findet Papageien.\\
+    she finds parrots.\ACC{}\\}
+    \ex{Sie findet und hilft Papageien.}
+  \end{xlist}
+\end{exe}
+%
+Although a simple disjunctive defining equation for a feature suffices
+for the ambiguous cases, this is not enough to achieve indeterminacy,
+since a disjunction does not change the fact that a feature can only
+have one value at a time. \citet{DKS:Indeterminacy} represent
+indeterminate features as bundles of binary features, one for each of
+the values in the paradigmatic dimension. Compatibility with values is
+given as a disjunction of \textit{positive} specifications,
+incompatibility as \textit{negative} specifications. Two example lexical specifications are given in~(\ref{ex:WGermanic:81}).
+%
+\begin{exe}
+  \ex\label{ex:WGermanic:81}
+  \begin{xlist}
+    \ex \lexentry{Papageien}{(\UP\CASE\,\{\NOM|\GEN|\DAT|\ACC\}) = {+}}
+    \ex \lexentry{Männer}{(\UP\CASE\,\{\NOM|\GEN|\ACC\}) = {+}\\(\UP\CASE\DAT) = ${-}$}
+  \end{xlist}
+\end{exe}
+%
+These specifications state that \textit{Papageien} is completely
+indeterminate with respect to case~(\ref{ex:WGermanic:81}a), whereas \textit{Männer} is
+non-dative, but otherwise indeterminate with respect to case~(\ref{ex:WGermanic:81}b).
+
+A selecting element then expresses its case requirements in positive terms only. The entries in~(\ref{ex:WGermanic:82}) illustrate this.
+%
+\begin{exe}
+  \ex\label{ex:WGermanic:82}
+  \begin{xlist}
+    \ex \lexentry{hilft\textup{\footnotemark}}{(\UP\OBJ\CASE\DAT) = +}
+    \ex \lexentry{findet}{(\UP\OBJ\CASE\ACC) = +}
+  \end{xlist}
+\end{exe}
+%
+\footnotetext{We follow here the presentation in the paper and gloss over
+  the fact that \textit{helfen} `help' might be better analysed as taking an
+  \OBJTHETA rather than an \OBJ, which would complicate modelling the
+  coordination.}%
+%
+Since the case feature bundles for \textit{Papageien} defined
+in~(\ref{ex:WGermanic:81}a) can satisfy both these requirements at the same time,
+we can capture the coordination
+of~(\ref{ex:WGermanic:80}c). \citeauthor{DKS:Indeterminacy} show that this approach
+can also deal with additional material in the DP like adjectives, which further
+constrain the case value, and with verbs which themselves are
+indeterminate about their case requirements on selected arguments.
+
+\section{Concluding remarks}\label{sec:Germanic:conclude}\largerpage[2]
+
+This chapter has presented an overview of Lexical-Functional Grammar
+studies of Continental West Germanic languages. The majority of the
+work discussed here has dealt with German clausal syntax,
+followed by discussions of Dutch clausal syntax. This reflects the status of the 
+LFG field as a whole -- the nominal domain has received less attention than the 
+clausal\slash verbal domain, an overview of LFG work on the former is given in 
+\citetv{chapters/Nominal} – but it also
+reflects the fact that the other CWG languages -- possibly, but not
+only, minority, regional, and/or non-standardized languages -- do not
+feature prominently in the LFG literature. I hope that the discussion
+of existing work on the syntax of the two ``big'' CWG languages in the
+current chapter may inspire further application of LFG to the other
+members of the family.
+
+Obviously, not every LFG study that touches upon CWG has been
+mentioned in this chapter. There are some larger blind-spots that I
+wish to mention here.
+%
+\begin{itemize}
+\item \citet{Boegel2015} develops an LFG model of the
+  prosody-syntax interface. Recent papers contain applications to
+  Swabian \citep{BoegelRaach2020,boegel:2021:languages} and
+  Standard German \citep{Boegel2020}. See also \citetv{chapters/Prosody} for a 
+  discussion of the syntax-prosody interface in LFG.
+\item A number of authors have used OT in combination with LFG,
+  especially in the domain of word order variation and information
+  structure. Examples are
+  \citet{Choi1999,Choi2001}, \citet{cook:2001:revdiss}, \citet{CookPayne},\Citet{vanderbeek:2005}, and \citet{seiler:2007}. These
+  have been mentioned in the text, but were not discussed in any
+  detail. OT-LFG is dealt with in \citetv{chapters/OT}, and information structure is treated in \citetv{chapters/InformationStructure}.
+\item German is blessed with a wide-coverage LFG grammar,
+  implemented in the context of the ParGram project. This grammar can be
+  queried in the interactive XLE-WEB interface.\footnote{\url{https://clarino.uib.no/iness/xle-web}, consulted July 2022} The project page for the
+  ParGram project in Germany,\footnote{\url{https://www.ims.uni-stuttgart.de/en/research/projects/pargram}, consulted July 2022}
+  contains older references. The research activities in and around
+  this project have resulted in a long list of publications. Some of
+  that work has already been discussed above. I will here list a small
+  selection of further papers that also have direct relevance for
+  theoretical debates:
+  \citet{forst-rohrer:2009:lfg} and \citet{kuhn-etal:2010:lfg} discuss problems in
+  the analysis of German VP coordination;
+  \citet{rehbein-van-genabith:2006:german} and \citet{forstetal10} deal
+  with the implementation of particle verbs; \citet{forst06} is
+  a ``grammar writer's'' contribution to the \COMP-debate.  The desire
+  for parallel structures in the context of ParGram is one of the
+  forces behind the auxiliaries-as-features style of syntactic
+  analysis in LFG. An early contribution and implementation can be
+  found in \citet{butt-etal1996-coling}. Computational work on LFG is
+  the topic of several chapters in Part~V of this volume.
+\end{itemize} 
+%
+Omitting these studies from the main text was a conscious choice, intended to
+keep the chapter accessible by not introducing too much conceptual
+machinery and too many problem domains. I made this choice with the
+knowledge that their topics would be touched upon in other
+chapters. At the same time, I wish to underline their importance,
+because exactly the fact that they span multiple domains and methods
+means that they are excellent demonstrations of the flexibility and
+precision that LFG offers.
+
+
+\section*{Acknowledgements}
+
+I thank Bozhil Hristov and two anonymous reviewers for the detailed
+and valuable comments that greatly helped to improve this
+chapter. Moreover, I am grateful to Mary Dalrymple for editing this
+volume, inviting me to contribute, and her extraordinary patience
+during the writing process.
+
+\section*{Abbreviations}
+
+Besides the abbreviations from the Leipzig Glossing Conventions, this
+chapter uses the following abbreviations.\medskip
+
+\noindent
+\begin{tabularx}{.45\textwidth}{@{}lQ}
+CWG & Continental West Germanic\\
+\textsc{expl} & expletive\\
+IPP & infinitivus participio\\
+lb & left bracket\\
+Mf & Mittelfeld\\
+Nf & Nachfeld\\
+\end{tabularx}
+\begin{tabularx}{.45\textwidth}{lQ@{}}
+OT  & Optimality Theory\\
+rb & right bracket\\
+\textsc{teinf} & (Dutch) infinitive with marker \textit{te}\\
+Vf & Vorfeld\\
+\textsc{zuinf} & (German) infinitive with marker \textit{zu}
+\end{tabularx}
+
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}

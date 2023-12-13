@@ -1,0 +1,798 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10185960}
+\title{Pronoun incorporation}
+\author{Ida Toivonen\affiliation{Carleton University}}
+\abstract{In LFG, so-called `pro-drop’ is analyzed as pronoun incorporation, where the person and number marking on the head is the pronoun.  The morphology on the head thus serves a dual function: it is an agreement marker when an independent noun or pronoun is present in the clause, and it is an incorporated pronoun when no independent nominal element is present. This chapter spells out the basic analysis of the interplay between pronoun incorporation and agreement marking in LFG. The analysis is illustrated with examples from subject, object, and possessive marking in multiple languages. The chapter also discusses cases where the agreement marker displays markedly different characteristics than the homophonous incorporated pronoun.}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[13]%%chapternumber
+}{}
+
+\begin{document}
+\maketitle
+\label{chap:Incorporation}
+
+\section{Introduction}
+
+
+In LFG, \textsc{pro-drop}   is analyzed as pronoun incorporation.  The term   pro-drop    (from the longer \textsc{pronoun/pronominal dropping})   refers  to  certain instances where  a morphologically independent  pronoun  is  not pronounced even though the sentence involves a pronominal interpretation.  The pro-drop example in    (\ref{Incorporation:1}) is  from  Italian,  a language that allows subject pro-drop     (the example is  from \citealt[92]{Burzio1986}):
+
+\ea \label{Incorporation:1} Italian\\
+\gll Ho  mangiato bene.  \\
+  have.1\textsc{sg} eaten well   \\
+\glt `I  have  eaten well.'
+\z
+ English  is not  a pro-drop language, and  pronouns cannot be left  unpronounced   like subject pronouns can in Italian. 
+However, possible pronoun omission is not an all-or-nothing phenomenon. \citet{haegeman90}  and \citet{weir08}  discuss  the restricted    omission  of  subjects which  can occur in  certain registers in  English (especially so-called  `diary  drop'), and   \citet{cardinaletti14} shows  that there is variation within Italian dialects regarding  when   pronouns  can be dropped.   The generalization   remains  that   pronouns   are  omitted quite freely  in  most languages (e.g., Italian,  Arabic, Chiche\^{w}a), although  some languages resist it (e.g., English, French). 
+ 
+\hspace*{-1.5mm}The  Italian example in (\ref{Incorporation:1}) illustrates what is  traditionally called pro-drop,  where pronoun omission   goes hand-in-hand with  rich agreement marking on the  verb (see, e.g., \citealt{chomsky1981lectures}).  The   person, number and sometimes gender of  the  subject  is   indicated by the  morphology  on the verb,   rendering the   independent  pronoun in  a sense superfluous.   This  type of pro-drop is analyzed as pronoun incorporation in LFG: the agreement morpheme doubles as an incorporated pronoun.
+ 
+\sectref{sec:basics}   spells out the basics of this  incorporation analysis of pro-drop, where the so-called agreement marker  is in fact ambiguous between an agreement morpheme and a  pronoun. When the independent pronoun is absent (`dropped'), the morpheme  is analyzed as a pronoun whose form is  morphologically incorporated into the head. When the independent pronoun is present, the morpheme merely agrees with it.
+
+\sectref{sec:variation} provides examples of  pro-drop that illustrate the richness of the phenomenon.    The term pro-drop is    often used  to refer exclusively  to the omission of a  subject pronoun,  as in Italian,  but the  phenomenon is in fact not  limited to subjects of finite verbs:  any instance of  \textsc{index}  agreement    (\citetv{chapters/Agreement}, \citealt{WechslerZlatic:Agreement2003})   can involve pronoun incorporation. 
+ 
+ 
+\sectref{sec:grammaticalization}  discusses  the LFG analysis of pro-drop in light of the standard view of  how agreement marking emerges through language change.  The section reviews previous work which argues that the standard LFG analysis, positing ambiguity between agreement markers and pronouns, is natural given the   grammaticalization path from independent  pronoun to bound agreement morpheme. 
+
+\sectref{sec:splits} explores ambiguous forms that have grown apart beyond their mere  status as pronoun or agreement marker. Many puzzling agreement phenomena  from a variety of languages can be explained by the insight that   the pronoun/agreement ambiguity assumed in LFG pro-drop analyses   can lead to  more radical differences between  lexical  entries that share a form. 
+
+Finally, \sectref{sec:othertypes}   turns to a brief discussion of \textsc{discourse pro-drop} and \textsc{topic drop}. These  two   types of pro-drop have received less attention in the LFG literature, and, it seems, in the linguistics literature more generally. These types of pro-drop  are not tied to   rich agreement and therefore   tend to be analyzed with  different syntactic mechanisms  than the Italian-style pro-drop that is the main concern of this chapter. 
+
+ Reflecting the majority of LFG research concerned with pro-drop, this chapter focuses on the morphosyntactic aspects of pronoun incorporation.    However,  discourse-pragmatic factors are also  highly relevant for a full understanding of the phenomenon.   In cases where pro-drop is   syntactically optional,  the distribution of pronouns is determined by discourse factors.   This is illustrated by the  Spanish examples in (\ref{spa})  provided by  \citet{peskova13}.  In (\ref{spa1}), the independent subject \textit{yo} of the second verb  is obligatorily expressed, but in (\ref{spa2}),  the  inclusion of a subject before the second verb would be infelicitous on the intended interpretation where \textit{Pedro} is the subject of both verbs:
+
+ \ea\label{spa}Spanish
+ \ea\label{spa1}
+ \gll Juan habla checo, pero yo hablo eslovaco. \\
+John speak.\textsc{3sg.pres.ind}   Czech but I.\textsc{nom} speak.\textsc{1sg.pres.ind}   Slovak \\
+\glt`John speaks Czech, but I speak Slovak.'
+\ex \label{spa2}
+\gll Pedro canta y  toca la guitarra. \\ 
+Peter sing.\textsc{3sg.pres.ind}  and  play.\textsc{3sg.pres.ind}  the guitar \\
+\glt `Peter sings and plays the guitar.' 
+\z\z
+
+\noindent Example (\ref{spa1}) differs from (\ref{spa2}) in that  the subject of the second verb in  (\ref{spa1})  is a contrastive topic, and contrastive topics are cross-linguistically often marked by emphatic forms or stress.   In Spanish  and many other languages,  pro-drop only occurs when  an  appropriate  antecedent  is readily accessible  in the  discourse  context.    However, establishing  what  counts   as an appropriate  antecedent  is non-trivial and seems to vary across languages and  dialects   (see \citealt{AlonsoAvalleAl2002}; \citealt{holmberg10}; and references provided in those works).
+
+
+The pragmatic aspect of pro-drop has  been addressed within the LFG literature. For example, \citet[Chapters 4--5]{dahlstrom91}  shows that  Plains Cree  independent pronouns are only included when they are used contrastively.  A few other LFG  proposals that address pro-drop at the discourse-pragmatic level are referred to in \sectref{sec:othertypes}. However, unlike the morphosyntax of  incorporation-style pro-drop (the Italian, Spanish and Finnish type), there is no  unique analysis of the discourse factors that is uniformly adopted across the LFG community, and the  important question of exactly when ``optional'' pronouns are expressed will therefore  not be discussed in  detail. 
+
+ 
+
+ 
+ 
+
+
+\section{Pronoun incorporation and agreement in LFG} \label{sec:basics}
+
+The standard analysis\footnote{Alternative analyses of pro-drop have been proposed within LFG; see \citet{Alsina2020} for a recent example.} of  pro-drop in LFG posits that  the  person and number morphology   on the  head (which is typically a verb)  \textit{is} the pronoun. The ``agreement'' morphology can  thus  be thought of  as an incorporated  pronoun  when no   corresponding independent  pronoun  or  NP is  present in the string.   This  has  been the basic  analysis of regular  pro-drop  in LFG  since   \citet{FassiFehri1984, FF, FF93} and \citet{BM87}. However, the insight predates   Fassi Fehri,  Bresnan and Mchombo and indeed the LFG framework.  The same underlying idea has long been  adopted by some traditional grammarians describing languages with prolific pro-drop.  It is, for example,  implicity assumed by \citet{ashton44}, who notes in her Swahili grammar ``...in a Bantu language function is more important than form, and one affix often has more than one function'' (\citeyear[8]{ashton44}).
+
+The formal LFG analysis  of  pro-drop  does not  actually involve dropping  or  deleting  a  pronoun.    There is no phonologically  null pronoun present in the phrase  structure.  There is also no movement   involved: the  pronominal information  is not assumed to have moved  into the verbal  position in order to be  incorporated into the verb.   
+
+The  separation  of constituent  structure (c-structure)  and  functional structure (f-structure) is key to understanding how   LFG  models   pro-drop.   
+   C-structure and  f-structure concern different aspects of syntactic structure.  C-structure is   typically modeled  using phrase structure trees  and displays information about syntactic category  (e.g., noun, verb), word order  and  constituency. F-structure  is modeled as feature structures  (attribute-value matrices, AVMs) that contain  information about formal features  such  as  tense and case.   Importantly, LFG also   models syntactic functions  (e.g.,  \textsc{subject, adjunct}) using f-structures. 
+   
+ 
+The basic  LFG analysis of  pro-drop    is described in  \citetv{chapters/Agreement} and will  also be illustrated here  with the help of   example (\ref{Incorporation:4})  from   Finnish (Finno-Ugric):\footnote{The examples given here are from standard   Finnish,  which is the  variety used in formal settings and in writing. Pro-drop is in fact less common  in  informal Finnish. Moreover, the discussion here  only    covers first and second person pronouns; third person pro-drop in Finnish is more constrained \citep{holmberg20}.} 
+
+\ea \label{Incorporation:4}Finnish\\
+\gll
+Join  kahvia.  \\
+drink.\textsc{past.1sg} coffee.\textsc{part} \\
+\glt`I drank coffee.'
+\z
+
+Finnish verbs inflect for three persons and two  numbers.  The full  past tense paradigm   for  \textit{juoda}  `to drink'  is given in  (\ref{table1x}):
+ 
+ 
+\ea\label{table1x}\begin{tabularx}{11em}[t]{lrl}
+  \multicolumn{3}{c}{\textit{juoda} `to drink' (Finnish)} \\
+\textsc{sg} &  1 & \textit{join}  \\
+& 2  &  \textit{joit}   \\
+&  3   & \textit{joi}  \\
+\textsc{pl} &  1 & \textit{joimme}  \\
+&  2  & \textit{joitte}   \\
+& 3  & \textit{joivat}  \\
+  \end{tabularx}
+ \z
+The verb forms   provide information  about   the subject's person  and number. In an example like (\ref{Incorporation:4}), there is no syntactically independent subject.  A standard  LFG analysis would postulate  that the morphological  information  concerning the subject on  the  verb  \textit{is} the subject.    The c-structure and f-structure of (\ref{Incorporation:4}) are given in (\ref{Incorporation:5}):
+
+\ea \label{Incorporation:5} C-structure and f-structure for (\ref{Incorporation:4})  \\[1ex]
+\begin{forest}[S [VP,baseline, [V [Join]] [NP [kahvia]]]]\end{forest}\qquad
+    {\avm[style=fstr]{[pred & `drink\arglist{subj, obj}'\\
+          tense & past\\
+          obj & [pred & `coffee'\\
+            num & sg\\
+            pers & 3\\
+            case & partitive]\\
+          subj & [pred & `pro'\\
+            num & sg\\
+            pers & 1]]}}
+    \z
+    
+\noindent   The verb \textit{join} in (\ref{Incorporation:4})  is not formed  in  c-structure or f-structure; it is fully formed in the lexicon.\footnote{The  modular architecture of  LFG  is  compatible with different theories of morphology    (\citealt[Chapter 12]{dalrymple15, DLM:LFG};   \citealt{Bond2016}).}  The  c-structure does not have  access to the  internal structure of \textit{join}: the terminal nodes  in  the phrase structure  are morphologically  complete words. 
+
+The  mapping between  c-structure and  f-structure is not  necessarily  one-to-one; it allows for mismatches.   Several f-structures  can therefore  receive featural information from the same word.  In  a   sentence such  as  (\ref{Incorporation:4}), the   main  f-structure of the  sentence (the  outer f-structure)    and  the subject f-structure both  receive  information from the verb \textit{join}: 
+ 
+ \ea \label{6aa}  Mapping between  c-structure and f-structure, example (\ref{Incorporation:4})  \\
+\begin{forest}[\rnode{s}{S} [\rnode{vp}{VP},baseline, [\rnode{v}{V} [Joi-{\Circlenode[radius=1ex]{aff}{n}}]] [\rnode{np}{NP} [kahvia]]]]\end{forest}\qquad
+    {\avm[style=fstr]{\rnode{f}{[pred & `drink\arglist{subj, obj}'\\
+          tense & past\\
+          obj & \rnode{obj}{[pred & `coffee'\\
+            num & sg\\
+            pers & 3\\
+            case & partitive]}\smallskip\\
+          subj & \rnode{subj}{[pred & `pro'\\
+            num & sg\\
+            pers & 1]}]}}}
+\CONNECT{0pt}{-10}{s}{0pt}{180}{f}\CONNECT{0pt}{0}{vp}{0pt}{180}{f}\CONNECT{0pt}{0}{v}{0pt}{180}{f}
+\CONNECT{0pt}{0}{np}{0pt}{185}{obj}\CONNECT{0pt}{20}{aff}{0pt}{190}{subj}
+\z
+ 
+Information from several different  words can also  map onto  the same f-struc\-ture. For example, in the Finnish sentence (\ref{Incorporation:6}), information about  the subject comes from both the   pronoun \textit{min\"{a}} and the agreement morphology on the verb.
+
+
+\ea \label{Incorporation:6} Finnish\\
+\gll Min\"{a} join  kahvia.  \\
+  I.\textsc{nom} drink.\textsc{past.1sg} coffee.\textsc{part} \\
+\glt `I drank coffee.'
+\z
+The c-structure and f-structure  for  (\ref{Incorporation:6})  are  provided in  (\ref{Incorporation:7}):
+
+
+\ea \label{Incorporation:7} Mapping between  c-structure and f-structure, example  (\ref{Incorporation:6})  \\
+\begin{forest}[\rnode{s}{S} [\rnode{np}{NP} [N [Min\"a]]] [\rnode{vp}{VP},baseline, [\rnode{v}{V} [joi-{\Circlenode[radius=1ex]{aff}{n}}]] [{NP} [kahvia]]]]\end{forest}\qquad
+    {\avm[style=fstr]{\rnode{f}{[pred & `drink\arglist{subj, obj}'\\
+          tense & past\\
+          obj & \rnode{obj}{[pred & `coffee'\\
+            num & sg\\
+            pers & 3\\
+            case & partitive]}\smallskip\\
+          subj & \rnode{subj}{[pred & `pro'\\
+            num & sg\\
+            pers & 1\\case & nom]}]}}}
+\CONNECT{0pt}{0}{np}{0pt}{170}{subj}\CONNECT{0pt}{20}{aff}{0pt}{170}{subj}
+\z
+In  sum, in Finnish and other  subject pro-drop languages, the  pronominal subject  information can be provided by  the     morphology  on the   verb alone (as in  (\ref{Incorporation:4})) or from the subject  and the verb  jointly (as in (\ref{Incorporation:6})).  
+
+According to the LFG analysis  outlined  above, the first  person  singular  ending \textit{-n} has a different function in (\ref{Incorporation:4}) than in (\ref{Incorporation:6}).   In (\ref{Incorporation:4}),  the ending  is  the  pronoun, but in (\ref{Incorporation:6})  it is a mere agreement marker. In pro-drop  languages, the    agreement morphology thus   doubles  as     pronominal incorporation. Central to capturing this  dual function formally is  the   \textsc{pred} feature:  pronouns  have a \textsc{pred} feature and  agreement markers do not.     The       \textsc{pred}  feature  value  is  a \textsc{semantic  form} and is  therefore of a  different  nature  than other feature values:\footnote{Formal syntactic  features such as  \textsc{tense} and \textsc{num}  take symbols such as \textsc{past} and \textsc{plural} as values.  Features can  also   take   feature structures as values.  For  example,  the values  of   grammatical function attributes (e.g.,  \textsc{subj, obj}) are  feature structures. Different types of  features  are  illustrated  in  the  f-structures above. }  it is  an  indicator of the semantics of  the form  and it also contains information about its possible  argument structure  \citep[Chapter  4]{BresnanEtAl2016}, although fuller treatment of  these aspects  is  given  at  the independent grammatical levels of argument structure and  semantic structure.\footnote{For  more  references and  discussion of  the \textsc{pred} feature, see \citet[Section~8.2]{DLM:LFG}.}  The \textsc{pred} feature  also differs  from other features  in  that   its value  is unique  and can therefore not unify with another \textsc{pred} feature, even if it is identical. This characteristic is  crucial for understanding  pro-drop  in LFG, as will be  illustrated    below. 
+ 
+   The     lexical entry for the Finnish first  person  singular ending \textit{-n} is  provided  here: 
+ 
+ \ea \label{8aa} 
+ \lexentry{-n}{ 
+($\uparrow$ \textsc{subj  num}) $=$   \textsc{sg}  \\  
+($\uparrow$ \textsc{subj  pers}) $=$ 1 \\
+(($\uparrow$ \textsc{subj  pred}) $=$  `pro')}
+ \z
+The first two  lines of the lexical entry indicate  that the subject of  the verb  hosting the ending \textit{-n}   is  singular and first person.  The third line  states that a \textsc{pred}  feature with the value `pro'  (a pronominal  referential feature)   is  optionally contributed to the subject.    The parentheses indicate the optionality.    The optional feature in effect yields two very similar yet not identical lexical entries,  one with a \textsc{pred} feature and one without:
+
+ \ea\label{Incorporation:9}\begin{tabular}[t]{llllll ll} 
+  (a) & \textit{-n}$_1$
+      &  ($\uparrow$ \textsc{subj  num}) $=$   \textsc{sg}
+      &
+  (b) &  \textit{-n}$_2$
+      &  ($\uparrow$  \textsc{subj  num} )$=$   \textsc{sg} \\
+ &    & ($\uparrow$  \textsc{subj  pers}) $=$ 1    
+      &
+      &
+      &  ($\uparrow$ \textsc{subj  pers}) $=$ 1   \\
+ &    & ($\uparrow$  \textsc{subj  pred}) $=$  `pro'
+      & \hspace{.1in}  &
+      &
+      &   \end{tabular}
+\z 
+The  ending  \textit{-n} maps  onto the \textsc{subj} f-structure  and  cannot  combine  with  an  independent  subject that is not first  person  singular, as  that  would  violate  the LFG principle of \textsc{uniqueness}.  Uniqueness states  that  every attribute  has a  unique value. Since  LFG allows feature unification, the \textit{-n$_2$} ending in (\ref{Incorporation:9}b) can combine its  \textsc{pers} and \textsc{num}    values  with  those of the independent pronoun \textit{min\"{a}} where there is  no  feature  conflict, but not  with those of the pronoun \textit{te} `you (plural)',  for example.  The lexical entries for  \textit{min\"{a}} and \textit{te}  are  given  in (\ref{Incorporation:8}) and  (\ref{8a}),  respectively: 
+
+ \ea
+ \ea\label{Incorporation:8} 
+ \lexentry{min\"{a}}{($\uparrow$  \textsc{pred}) $=$  `pro'  \\ 
+($\uparrow$ \textsc{num}) $=$   \textsc{sg}  \\  
+   ($\uparrow$   \textsc{pers}) $=$ 1  \\
+   ($\uparrow$ \textsc{case}) $=$ \textsc{nom}}
+   \ex \label{8a}
+ \lexentry{te}{($\uparrow$  \textsc{pred}) $=$  `pro'  \\ 
+($\uparrow$  \textsc{num}) $=$   \textsc{pl}  \\  
+   ($\uparrow$  \textsc{pers}) $=$ 2  \\
+   ($\uparrow$  \textsc{case}) $=$ \textsc{nom}}
+\z
+\z
+The  second person plural pronoun \textit{te}  will not co-occur  with the  first  person  singular \textit{-n}  because of the mismatch in   features.    The first person  singular  \textit{min\"{a}} does co-occur  with \textit{-n}  (see  (\ref{Incorporation:6}), for example). There is no mismatch  in \textsc{pers}  or  \textsc{num}, and \textit{min\"{a}} can occur with   the agreement marking ending in (\ref{Incorporation:9}b).   However,    as mentioned above,  each \textsc{pred}  value    is  assumed to be unique, and  the pronoun  \textit{min\"{a}} can therefore not  map onto  the same  f-structure  as  the pronominal \textit{-n}  ending in (\ref{Incorporation:9}a), which  itself  contributes a \textsc{pred} feature.   The \textsc{pred} feature  of  \textit{min\"{a}}  would also  be \textsc{`pro'}, but   since every \textsc{pred} feature value is   unique,   the two cannot combine. The single quotes around the semantic form indicate that it is unique. The  uniqueness is sometimes also indicated  with a subscript notation.  
+
+
+Again, the  agreement marker   \textit{-n}$_2$  in (\ref{Incorporation:9}b)  can co-occur with \textit{min\"{a}}:   \textit{-n}$_2$  has no  \textsc{pred} feature that could clash with the  \textsc{pred} feature of \textit{min\"{a}},   the  \textsc{pers} and \textsc{num}  features  match and  can unify, and the \textsc{case} feature is contributed by \textit{min\"{a}}  alone.
+In fact,  \textit{-n}$_2$    would  have to co-occur with  some  lexical entry in  the string   contributing a \textsc{pred} feature, otherwise the f-structure of the  sentence would end up containing  a \textsc{subj} feature  without  a \textsc{pred}.  This  is  only acceptable for syntactic  arguments that are not semantic arguments (e.g., expletives).     Each semantic argument needs a \textsc{pred} feature, by the     LFG principle of completeness.   The  following formulation  of completeness is provided by \citet[62]{BresnanEtAl2016}:
+  
+  \ea \label{completeness} \textsc{completeness:}  
+  \begin{itemize}
+  \item[i.  ]   Every  function designated by a \PRED\  must be  present  in the f-structure by  that \PRED.
+  \item[ii. ] If a designator ($\uparrow$ \textsc{gf}) is associated with a semantic role by the \textsc{pred}, the f-structure element satisfying the designator must itself contain a semantic feature $[$\textsc{pred} \textit{v}$]$.
+  \end{itemize}
+\z
+ The features provided by  \textit{min\"{a}} will map onto the \textsc{subj} function at f-structure by the regular mapping principles between c-structure and f-structure \citep[Chapter  4]{BresnanEtAl2016}, and so will the features provided by  \textit{-n}$_1$.  In  terms of feature   content, the only difference between   \textit{min\"{a}} and  \textit{-n}$_1$ is that  \textit{min\"{a}}   has a nominative \textsc{case} feature.   The  two entries are strikingly different in form: one is  an independent word and  the  other a bound morpheme, and they also differ  phonologically. However, the  entries  are  nevertheless almost identical in terms of  the feature  content  they contribute   to  f-structure.   Since both    \textit{min\"{a}} and  \textit{-n}$_1$ have a \textsc{pred} feature `pro', they    both function as pronouns, despite the  differences in morphophonological realization.      The LFG  parallel architecture allows for  the possibility  that forms look different at c-structure but nevertheless  have the same function   at f-structure. 
+ 
+ 
+ LFG also allows for mismatches in the other direction: same form, different function. This is illustrated by the ambiguity  of the \textit{-n} form.  The  optionality of the \textsc{pred} feature has an important effect on the function of  the   \textit{-n} morpheme:     \textit{-n}$_1$, with a \textsc{pred} `pro'  feature, is a  pronoun,  and the ending \textit{-n}$_2$, without a \textsc{pred}  feature, is an agreement marker. 
+
+
+
+
+The examples considered  concern subjects.  The  pronominal possessors  in standard  Finnish also display  pro-drop, as  illustrated  in  (\ref{auto}). The possessive suffix (\textit{-ni} for first person singular) is obligatory but the independent pronoun is optional:\footnote{However, there are varieties of Finnish where  the  example  in  (\ref{auto}b),  without the  suffix,  is  grammatical. }
+
+
+\ea \label{auto} Finnish\\   
+\ea \gll  (Minun) auto-ni  on  vanha.   \\
+  { }my car-1\textsc{sg.Px}  is  old    \\
+\glt `My  car  is  old.'
+\ex  \gll *Minun auto  on  vanha.   \\
+  { }my car  is  old\\     
+\z\z
+ 
+
+
+\noindent Just like   subject pro-drop,  the  analysis of   possessor  pro-drop   relies on  the \textsc{pred} feature  of  the possessive  suffix \textit{-ni}. The   suffix contributes a \textsc{pred} `pro'  feature  when it  stands alone, and  it lacks  a \textsc{pred} feature  when it  is doubled  by the independent  pronoun \textit{minun}. 
+
+Examples of object pro-drop are also attested cross-linguistically.  Object pro-drop  is common across the Bantu languages, for example  (\citealt{BM87,  hualde89,  keach95,  riedel09},~a.o.).   The  examples  below,  adapted  from  \citet{hualde89},  are from the Bantu language KiRimi (also known as Nyaturu):\footnote{FV in the gloss stands for ``final vowel''. This ``final vowel'' in Bantu  has received some attention in the literature for reasons not relevant here. }
+
+\ea \label{kirimi1} KiRimi\\  
+\ea \gll  N-a-kU-on-aa (veve).  \\
+  1-\textsc{tns}-\textsc{om}-saw-\textsc{fv} { }you   \\
+\glt `I  saw  you.'
+\ex   {*N-a-on-aa veve.} 
+\z\z
+
+\noindent  Parallel  to the Finnish  subject  and possessor  examples above,  the object markers that  agree  with independent  pronouns  in  KiRimi are obligatory, while  the independent pronouns  themselves are  optional. The analysis presented above  can be applied  in this case as well:  the prefix  \textit{-kU-}  has an optional  \textsc{pred}  `pro' feature  and  contributes  its  \textsc{pred} feature only when \textit{veve}  is absent.  
+
+
+
+ 
+
+
+\section{Pronominal marking across languages} \label{sec:variation}
+
+This section explores some of the different ways languages make use of morphology on the head  to  provide information about dependents. The previous section presented the  standard LFG analysis  of pro-drop, which  rests  on the insight that  the  morpheme  on the head has a dual function  as an agreement  marker and an incorporated pronoun.   Of course, this  does not mean  that agreement morphemes \textit{must} be able  to double  as  pronouns.   The English third  person singular marker on present  tense verbs (\textit{-s} in  \textit{Mia walks}) functions solely as  an  agreement  marker, for example.   Like  English, French does  not         allow pro-drop, even though French verbs display more detailed   subject  agreement marking  than  English, especially in the written forms.   The paradigm for the verb \textit{finir}  `to end, to finish'  in  (\ref{fr}) serves as an illustration:
+
+\ea\label{fr}\begin{tabularx}{13.5em}[t]{lrl}
+  \multicolumn{3}{c}{\textit{finir}  `to end,  to finish' (French)} \\
+\textsc{sg}  & 1  & \textit{finis} \\
+& 2  &  \textit{finis} \\
+& 3  &  \textit{finit} \\
+\textsc{pl}  & 1  & \textit{finissons} \\
+& 2   & \textit{finissez} \\
+&  3  &  \textit{finissent}  \\   \end{tabularx}
+\z
+In  LFG terms, the subject    endings on French  and English  verbs   are mere   agreement  markers  that do not  have \textsc{pred} features, not  even  optional  ones.  Rich agreement without pro-drop is cross-linguistically very rare \citep{siewierska99}.
+
+Conversely,  an incorporated pronoun does  not  necessarily double as an agreement  marker.  For  example, \citet{BM87}  argue   that object  markers in the Bantu language   Chiche\^{w}a  are   unambiguously incorporated pronouns.\footnote{\citet{BM87}  use the term \textsc{anaphoric agreement}  for markers that have a pronominal function and  \textsc{grammatical agreement} for markers that have a mere agreement marking function and no  referential properties.} Chiche\^{w}a  object markers are  exemplified by   the morpheme  \textit{chí}  in (\ref{ch3}) (Bresnan \& Mchombo's example (12)):
+
+
+\ea \label{ch3}Chiche\^wa\\ \gll Fîsi  anadyá  chímanga.  Á-tá-chí-dya,
+anapítá ku San  Francîsco.  \\
+hyena  ate corn(7) he-\textsc{serial}-it(7)-eat he-went to San Francisco   \\
+\glt `The  hyena ate the  corn. Having  eaten it, he  went  to  San Francisco.'
+\z
+
+\noindent    The  object marker  \textit{chí} is specified as noun class seven,\footnote{Bantu languages are well-known for their rich noun class (gender) system; see \citet{katamba03} for an extensive overview.    Chiche\^{w}a has 18 noun classes that are listed in \citet[Table 1]{BM87}.  Agreement markers and pronouns reflect the class of the noun they agree with or refer to.}  and is  naturally  interpreted  as  referring back to  `corn' in (\ref{ch3}).
+  It  is  possible  to also  include a free-standing  pronoun as in  (\ref{ch4}) (Bresnan \& Mchombo's example (13)) below, but   the pronoun is  then not  interpreted as referring back  to  the `corn' object  from the previous  sentence:
+  
+\ea \label{ch4}Chiche\^wa\\ \gll Fîsi  anadyá  chímanga.  Á-tá-chí-dya icho, anapítá ku San  Francîsco.  \\
+hyena  ate corn(7) he-\textsc{serial}-it(7)-eat it he-went to San Francisco   \\
+\glt `The  hyena ate the corn. Having  eaten it (something  other than  corn), he  went  to  San Francisco.'
+\z
+The grammatical object in the second sentence of  (\ref{ch4}) is   the object marker, and  the independent  pronoun \textit{icho}  is   a  topic  anaphorically linked to the  object.    In  Chiche\^{w}a,  independent  pronouns are  used  only  for introducing  new  topics or for contrast  \citep[748]{BM87}.   
+ 
+ 
+ 
+ Object markers  can also co-occur  with NPs headed  by non-pronominal nouns: 
+  
+  \ea \label{ch2}Chiche\^wa\\ \gll Njâchi  zi-ná-wá-lúm-a  alenje. \\
+    bees  \textsc{sm}-\textsc{past}-\textsc{om}-bite-\textsc{indic} hunters   \\
+  \glt `The bees bit  them, the hunters.'
+  \z
+  
+ \noindent In  (\ref{ch2}) (Bresnan \& Mchombo's example (2)),  \textit{alenje}  is a floating  topic  linked to  the object  marker  \textit{wá}, which is  an incorporated pronoun.  However, if  the  full  NP  is a regular object  with no special discourse status, the object  marker  does not appear:
+ 
+  \ea \label{ch1}Chiche\^wa\\ \gll Njâchi  zi-ná-lúm-a  alenje. \\
+    bees  \textsc{sm}-\textsc{past}-bite-\textsc{indic} hunters  \\
+  \glt `The bees bit  the hunters.'
+  \z
+  
+ \noindent  The object marker  cannot  co-occur  with a regular  object  as  that would result  in  a `\textsc{pred}  clash': they would  both contribute a \textsc{pred} feature value  and thus  violate   the uniqueness principle.   
+ 
+ 
+\citet{BM87}  provide  ample evidence  based  on  word order, intonation,   tonal marking and other phenomena   showing that the  Chiche\^{w}a  pronominal object  markers differ  from subject markers.  Chiche\^{w}a subjects display regular pro-drop.  The subject markers are  obligatory, unlike object  markers.   A subject marker    can be  an agreement marker  as in (\ref{ch1}) above or an   incorporated  pronoun  as in  (\ref{ch5}):
+ 
+ 
+\ea \label{ch5}Chiche\^wa\\
+\gll   Zi-ná-lúm-a alenje. \\
+  \textsc{sm(10)}-\textsc{past}-bite-\textsc{indic} hunters   \\
+\glt `They bit  the hunters.'
+ \z
+ 
+The Chiche\^{w}a data show that different  classes of morphemes (subject markers and object  markers)  can  display different  pro-drop   characteristics within  a  single language. While   the object  marker functions as an  incorporated  pronoun only,  the subject  marker has a dual  function  as an  agreement  marker  and  a pronoun.  
+
+
+Agreement marking  often shows   sensitivity to animacy.  Specifically, nouns that refer to entities higher on the animacy scale are more likely to trigger agreement.  This effect is observed in many   Bantu languages \citep{riedel09}, for example Swahili  \citep{keach95} and KiRimi \citep{hualde89}. 
+ KiRimi  object markers  agree with  animate but not inanimate objects \citep{hualde89}.
+ 
+ KiRimi object pro-drop was illustrated in   (\ref{kirimi1})  in \sectref{sec:basics}, and is further illustrated  in  (\ref{kirimi2}).  The   KiRimi  examples  in (\ref{kirimi2}--\ref{kirimi9}) and (\ref{kirimi4}) are   from \citet{hualde89}.
+ 
+ 
+  
+ \ea   \label{kirimi2}KiRimi\\
+ \ea\label{kirimi2a} \gll  N-a-{\bf mU}-on-aa Maria.   \\
+1-\textsc{tns}-\textsc{om}-saw-\textsc{fv}  Maria    \\
+\glt `I saw Maria.'
+\ex \label{kirimi2b}   \gll   N-a-{\bf mU}-on-aa.   \\
+1-\textsc{tns}-\textsc{om}-saw-\textsc{fv}       \\
+\glt `I saw her.'
+ \z\z
+
+Like Chiche\^{w}a subjects,  the KiRimi animate object marker   has  a dual function as an agreement marker  (\ref{kirimi2a}) and a  pronoun (\ref{kirimi2b}).  This is captured here with  an optional \textsc{pred} `pro' in the lexical entries for animate object markers.  Inanimate object markers, on the other hand,  cannot co-occur with independent objects: 
+ 
+\ea  \label{kirimi9}KiRimi\\
+ \ea\label{kirimi9b}    \gll  N-a-{\bf ki}-on-aa. \\
+   1-\textsc{tns}-\textsc{om}-saw-\textsc{fv}       \\
+\ex\label{kirimi9a} \gll *N-a-{\bf ki}-on-aa kItabu. \\
+ { }1-\textsc{tns}-\textsc{om}-saw-\textsc{fv} book\\    
+ \glt `I saw it.'  
+\z\z 
+Inanimate object markers can function as pronouns (\ref{kirimi9b}), but they cannot agree with an object (\ref{kirimi9a}).    KiRimi inanimate object markers   thus have an obligatory \textsc{pred} feature,  like the  object markers in Chiche\^{w}a.  The lexical entry for the noun class 7 object marker  \textit{-ki-} is  given  in  (\ref{kirimi6}):
+ 
+  
+ \ea \label{kirimi6}  
+\lexentry{-ki-}{($\uparrow$ \textsc{obj pred}) $=$  `pro'  \\
+  ($\uparrow$  \textsc{obj animate}) $=$  $-$ \\
+  ($\uparrow$ \textsc{obj pers})  $=$  3 \\
+ ($\uparrow$ \textsc{obj def})  $=$  $+$ }
+\z
+
+ \noindent    The  presence of an  agreeing object  marker  further indicates a definite interpretation of the object.  This is shown in  (\ref{kirimi4a}) and (\ref{kirimi4b}), where the  difference in interpretation     is indicated  by the  translation:  
+  
+ \ea \label{kirimi4}KiRimi\\
+ \ea\label{kirimi4a} \gll  N-a-{\bf mU}-on-aa mwalimu.  \\
+   1-\textsc{tns}-\textsc{om}-saw-\textsc{fv}  teacher   \\
+ \glt `I  saw  the teacher.'
+ \ex \label{kirimi4b} \gll  N-a-on-aa mwalimu. \\
+   1-\textsc{tns}-saw-\textsc{fv}  teacher   \\
+ \glt `I  saw  a teacher.'
+ \z\z
+ 
+ The object in example (\ref{kirimi4a}) with the  object marker receives  a definite  interpretation, whereas the object  in  (\ref{kirimi4b}) without  an  object  marker receives an  indefinite interpretation.  The lexical  entry  for the noun class 1 object marker \textit{-mU-} is provided  in (\ref{kirimi3}):
+ 
+  
+ \ea  \label{kirimi3}
+ \lexentry{-mU-}{(($\uparrow$ \textsc{obj pred})  $=$  `pro')    \\
+($\uparrow$  \textsc{obj def})  $=$  $+$  \\
+($\uparrow$ \textsc{obj animate})  $=$  $+$   \\
+($\uparrow$ \textsc{obj pers})  $=$  3}
+\z
+
+  \noindent  The \textsc{pred} feature for animate \textit{-mU-}   is  optional:  the feature is  present  when  the object marker is  pronominal and absent  when the  object marker  functions as an agreement marker. Both the pronoun and  the agreement marker are definite:    personal pronouns  are in general  definite,  and  the agreement  marker  ensures a definite interpretation of non-pronominal  objects.
+  
+  The generalizations that KiRimi object markers only double objects that are both definite and animate are captured here with simple lexical specifications  and   the  LFG principle of uniquess. The analysis is straightforward, but it does not explain the fact that the  KiRimi  facts follow certain cross-linguistic generalizations: dependents that are definite and high in  animacy are cross-linguistically more likely to trigger agreement on the head.  We will return to this point in \sectref{sec:grammaticalization}.\footnote{An anonymous reviewer points out that   there might be noun classes with both animates and inanimates.    \citet{hualde89} does not address this possibility, but  the description of KiRimi noun classes in \citet{olson64} indicates that noun classes 9--10 and possibly  12--13 (diminutives) include both animates and inanimates. This is corroborated by   \citegen{BeletskiyDiyammi2019} notes on noun classes in the closely related dialect/language Isanzu. I have not found a discussion of what the agreement data are in these noun classes. Hualde  makes the categorical claim  that only definite animates trigger agreement. If this is correct, then each relevant prefix is best represented with two quite different lexical entries and are thus   examples of \textsc{lexical splits}  (discussed below in \sectref{sec:splits}).  However, \citet[171]{olson64} provides a few examples where  inanimate objects from class 9  (`gardens', `beehive', `meat')   cooccur with an object marker.   This would indicate  that nouns referring to biological  inanimates from class 9   carry   a grammatical $[$$+$\textsc{animate}$]$ feature. For other  examples  of misalignment between biological animacy and  grammatical animacy, see  \citet{BayanatiToivonen19} and references cited therein.  } 
+  
+  
+   
+
+
+
+
+ 
+  
+
+Like KiRimi, Irish   shows that there can be differences with respect to pronouns and agreement marking   within a  single paradigm. However,  in Irish, the variation is not  governed by definiteness or animacy,  the pattern  instead seems idiosyncratically determined by form.  In Irish, some  verb forms (synthetic forms) provide   person-number information about the subject that other forms (analytic forms) do not.  The following  conditional paradigm  from Ulster Irish is  from \citet{McCloskeyHale1984}:
+ 
+
+\ea\label{irish}\begin{tabularx}{22em}[t]{lrl}
+  \multicolumn{3}{c}{\textit{cuir}  `to put' (Irish)} \\
+\textsc{sg}  & 1  & \textit{chuirfinn} \\
+& 2  &  \textit{chuirfeá} \\
+& 3  &  \textit{chuirfeadh s\'{e} }  \textsc{(masc}),   \textit{chuirfeadh sí }  \textsc{(fem}) \\
+\textsc{pl}  & 1  & \textit{chuirfimis} \\
+& 2   & \textit{chuirfeadh sibh} \\
+&  3  &  \textit{chuirfeadh siad}   \\   \end{tabularx}
+\z
+The synthetic  forms  \textit{chuirfinn, chuirfeá} and \textit{chuirfimis}  contain information about the pronominal subjects, but   \textit{chuirfeadh} does not. The analytic   \textit{chuirfeadh} allows the subject to be expressed independently  as a pronoun (\textit{s\'{e},  sí, sibh,} or \textit{siadh} in (\ref{irish})) or a full NP.   The synthetic forms cannot co-occur with independent pronouns,  as evidenced by the ungrammaticality of   (\ref{irish2}) from  \citet{McCloskeyHale1984}:
+
+\ea{ \label{irish2}Irish:\\
+\gll *Chuirfinn m\'{e} isteach ar an phost sin. \\
+    { }put.\textsc{cond.1sg} I in on that job   \\
+ \glt  `I would apply for that job.' (intended)
+ }
+ \z
+The fact that independent subject pronouns are ruled out    indicates that  the pro\-nom\-i\-nal \textsc{pred} features in the lexical entries of  the  synthetic forms   \textit{chuirfinn,  chuirfeá}  and \textit{chuirfimis} are obligatory, unlike the  optional  subject \textsc{pred} `pro' features   in Finnish and Chiche\^{w}a.  The \textsc{pred} features contributed by the synthetic verb forms cannot unify with the \textsc{pred} features of independent pronouns. In  second person plural and third person singular and plural, however, the verb form does not contain any information about the subject. This information is instead contributed by independent pronouns.   For more examples and discussion of variation within Modern Irish, see \citet{McCloskeyHale1984}. For detailed LFG analyses,  see \citet{Andrews90} and \citet{Sulger2010}.
+
+This brief overview  provides a   sample of the   variety of  patterns that  pro-drop languages put on display cross-linguistically.  
+The cross-linguistic differences are captured lexically  in LFG: an incorporated pronoun has a \textsc{pred} `pro' feature,  an agreement marker has no \textsc{pred} feature, and morphemes that lead a double life as pronouns and  agreement markers  have an optional \textsc{pred} feature. The data we have examined here illustrate  that languages vary  with respect to how they employ these possibilities.  The data  also illustrate  that  there can be  differences within the same language between paradigms and, perhaps surprisingly, also within paradigms.  
+
+
+For more    LFG analyses of pro-drop,  drawn from a wide variety of languages and also a variety of types of pro-drop, see  \citet[Chapter~5]{dahlstrom91} for Plains Cree subjects and objects, \citet{sadler97}  for Welsh subject and object clitics,   \citet{Toivonen:FinnPoss, Toivonen2001b}   for Finnish infinitives,  \citet{strunk04, Strunk05} for nominal possessive constructions in Low Saxon,   \citet{RakosiLaczko2011} for Hungarian spatial particles,  \citet{bayram13} for Turkish subjects and possessors,   \citet{Laczko17}  for Hungarian possessors, and  \citet{Dione19Clause}  for subjects in Wolof.  
+
+
+
+\section{Grammaticalization} \label{sec:grammaticalization}
+
+
+   
+A   stage where an affix is ambiguous between an agreement marker and a pronoun is unsurprising in  light of the typical   grammaticalization path  of pronoun to  agreement  marker  \citep{givon1976, mithun1988, hopper_traugott_2003, vangelderen2011}:
+     
+ 
+     \ea \label{path} 
+       independent pronoun $>$  weak pronoun $>$   clitic pronoun $>$    agreement affix $>$   fused agreement marker 
+       \z
+The naturalness of  pronoun/agreement  ambiguities    given  the grammaticalization cline in (\ref{path})   has been noted in many previous analyses of pro-drop, including  \citet{FassiFehri1984, BM87,   AustBres96, Toivonen2001b,  Morimoto:LFG2002, butt07, CoppockWechsler2010},  \citet{BarbuToivonen2018} and  \citetv{chapters/Agreement}.   These authors and others  have  pointed out that when   pronouns   transition into agreement affixes, there can be a stage where the forms are not immediately reanalyzed as wholesale agreement, but instead are  agreement markers when they double an NP and pronouns when they do not. 
+ 
+
+
+The grammaticalization cline in (\ref{path}) conflates multiple linguistic dimensions.  One such dimension   regards the function:   Does the marker have  pronominal referential capacity or is it a mere agreement marker? This is modeled at f-structure in LFG.   Other dimensions concern   the morphophonological realization as an independent word, a clitic,   a bound agglutinative morpheme, or  a  fused morpheme.  This is modeled at c-structure, m-structure and p(rosodic)-structure in LFG. A lexical entry can in principle be ambiguous between a pronoun and an agreement marker regardless of its morphophonological  realization. 
+
+The grammaticalization path in (\ref{path})  therefore   conflates   common sequences of changes that are often but not always parallel.   One sequence concerns   c-structural realization:
+
+ 
+         \ea \label{path1} 
+projecting word  $>$ non-projecting word  $>$ true clitic $>$ affix $>$ fused affix
+\z
+
+\noindent A projecting word is a word that projects a phrase and a non-projecting word is a morphologically and phonologically independent word that does not project a phrase.  A ``true clitic''  is here intended to refer to  a form that  does not project a phrase and is phonologically dependent on a host, but is not a bound morpheme. Projecting words can also be phonologically dependent on a host, which illustrates  that prosody has  in fact  its own relevant dimension which could be separated from  (\ref{path1}).  \citet[45]{Toivonen:NonProj}  provides examples of different types of projecting and non-projecting words and clitics.  See also  \citet{lowe:16a} for a   detailed treatment of clitics in LFG.   
+
+ 
+ 
+ 
+ 
+
+Another  relevant scale concerns  referential capacity:
+
+ 
+             \ea \label{path2} 
+    noun $>$   pronoun $>$   ambiguous pronoun/agreement marker $>$  agreement marker   $>$ transitivity marker
+ \z
+   The prosodic or phrase-structural  realization  in (\ref{path1})  is orthogonal to the scale in (\ref{path2}), which is a nominal scale of referential strength. This is modeled here  to a large extent with the \textsc{pred} feature.    As seen in the sections above, nouns, pronouns and agreement markers  differ in their  \textsc{pred} feature:   nouns have a contentful nominal \textsc{pred} feature, pronouns have the \textsc{pred} feature `pro', and agreement markers have no \textsc{pred} feature at all.   A transitivity marker is referentially very weak, as it simply indicates that there \textit{is} an object and does not say anything about what the object refers to. 
+ 
+   
+
+     
+Changes along the cline in (\ref{path1}) tend to be closely tied to changes along (\ref{path2}).  In  \citegen{siewierska99}  survey of 272 languages, most pronouns (forms with obligatory \textsc{pred} `pro') are independent words; ambiguous forms (optional \textsc{pred}) are small words, clitics or affixes; and  pure agreement markers are affixes.    However,  the  scales in  (\ref{path1})  and  (\ref{path2})  are not inherently connected.   This  disconnect is  carefully argued for  in  \citet{rijn2016},  who draws on a sample of  personal possessors from 39 different languages.   She concludes that ``loss of referentiality correlates with a loss in form, but in a relative rather than an absolute sense [...] function and form evolve in the same direction, but need not evolve at the same pace'' (\citeyear[233]{rijn2016}). 
+
+The insight that function and form can change independently of each other is not difficult to capture within LFG, since the framework models different types of linguistic information at distinct levels such as c-structure, p-structure and f-structure.  The changes are also not difficult to formalize,   and in fact the  directionality of change seems natural within the framework.  As explained   in \citet{BM87}, the step from pronoun to optional agreement marker is modeled by the \textsc{pred} feature changing from obligatory to optional.  The step from ambiguous pronoun/agreement marker to pure agreement marker is modeled by the loss of the \textsc{pred} feature. It is important to note, however, that even though this grammaticalization path is naturally modeled formally within LFG, the LFG framework does not dictate   the directionality of the change. An explanation for this directionality needs to come from a substantive theory of language change. I will not provide such a theory here, but I will refer to  a few insights  from the previous  literature. 
+
+ As indicated by the hierarchies above, independent pronouns can be incorporated into the verb. Such a change does not necessarily occur, and it is not predictable exactly when it will occur.  However, it is   not surprising that such incorporation is common, given the fact that pronouns are typically unstressed and often positioned close to the verb.  Pronouns are also often doubled by a full NP or a stressed pronoun, sometimes marked by some  special morphology or intonation: \textit{(As for) Carina, I really love her.}  It is easy to see how such   topic/focus NP $+$ pronoun   could come to be reanalyzed   as  argument NP $+$ agreement marker.  For example, recall that Chiche\^{w}a object markers are incorporated pronouns that can double an object that is a discourse topic   \citep{BM87}.  The string \textsc{subject} verb-\textit{pronoun} \textsc{topic}  (where the \textsc{topic} and the pronominal \textsc{object} are co-referential, e.g., (\ref{ch2})) could  then in principle easily be reanalyzed as \textsc{subject} verb-\textit{agreement} \textsc{object}.  \citet{BM87} indicate that this is  precisely what has happened in  some other Bantu languages, for example Makua.   In light of this, it also makes sense that many  agreement markers cross-linguistically agree exclusively with arguments that are high in topicality \citep{comrie81, woolford99, CoppockWechsler2010, DN}: it follows from the observation that the pronouns that were reanalyzed as agreement markers  originally doubled topics. Since topics tend to be animate  (\citealt[225]{comrie81}; \citealt{arnold13}, among others), it is also unsurprising that animates are more likely to agree than inanimates.
+ 
+ Other cross-linguistic observations follow from the  very fact that agreement markers used to be pronouns.  Agreement marking is often restricted to definite or specific arguments (see, e.g., the discussion of Romanian below).  Personal pronouns are in general inherently definite and specific, so it is easy to see how   such restrictions could remain when the markers lose their pronominal status. 
+ 
+ Several cross-linguistic tendencies thus follow from an understanding of the history of agreement marking: agreement can be restricted to topics and to nominals with animate, definite or specific reference. It is important to note that although these generalizations can be readily captured with the LFG formalism, the formalism  itself neither predicts nor dictates these tendencies.  In LFG, it would be just as easy to formally specify  that only  indefinites   agree in a given language, for example. However, given what  research in historical linguistics and psycholinguistics has shown us, it would be  unlikely for such a system to emerge. 
+ 
+ 
+ One further important cross-linguistic generalization concerns the asymmetry between subjects and objects: object agreement marking is less common than subject agreement.  In fact, \citet{siewierska99} argues that there is no pure object agreement marking.  According to Siewierska,   apparent examples  of object agreement    are actually   cases of ambiguous marking: the agreement morphemes double as pronouns. \citet{siewierska99} offers some possible explanations for this asymmetry,  but stresses that those explanations are tentative.   In LFG, it  is  formally  no harder to model object agreement than it is to model subject agreement.  The forms  would simply  lack a \textsc{pred} feature, like the English and French subject agreement markers mentioned in \sectref{sec:variation}.  The explanation for Siewierska's generalization thus does not come from the LFG formalism.   
+ 
+ In general, I assume that insights  about language use and change are largely independent of the formal tools  that are used to model grammar.  However,  it  is  in principle  possible  to formulate a substantive theory  of language change that is compatible with the LFG framework and  that might shed light on    attested cross-linguistic generalizations.  
+ 
+ 
+Up until now, we have mainly  focused on the role of the \textsc{pred} feature. However, other features are also involved and those features can change and erode as well.  \citet{CoppockWechsler2010} carefully detail the loss of \textsc{pred}  features alongside changes affecting  other features such as \textsc{pers, num, topicality} and \textsc{definiteness} in different ways in the Finno-Ugric languages Northern and Eastern Ostyak (Khanty) and Hungarian. \citet{Toivonen2001b} similarly traces the change of various features that lead to differences in the possessive systems of different dialects of Finnish and Saami.  These works trace historical changes that  target features other than \textsc{pred} features, and such changes can lead to differences  that reach beyond the \textsc{pred} feature when a morpheme is at the ambiguous stage.  The next section is devoted to examples  where the  pronominal morpheme is quite different from the agreement marker, even though they are identical in form. 
+ 
+ 
+
+
+
+\section{Lexical splits} \label{sec:splits}
+
+
+  The LFG approach  to pro-drop  presented above relies on the insight that  a form can have  a dual function  as an agreement  marker and an incorporated pronoun.   This duality opens the door to  the  possibility that the morphemes  might  grow  further apart  due to  language change: since the morphological form corresponds  to   two  similar but distinct lexical  entries (one with and one without a \textsc{pred} feature), the two entries might develop  separately.  This     is  in  fact  cross-linguistically common, and several  examples  will be given in this section. 
+  
+ One of the first languages for which the LFG theory of pro-drop was developed was  Arabic. Abdelkader  Fassi Fehri explored the subject agreement system in Modern Standard Arabic  as well as local varieties of Arabic in several talks and papers. \citet{FF}  shows   that some of the affixes are exclusively pronominal  (this is the case for the  first and second person affixes) and others are ambiguous between pronouns and agreement markers.  He further argues that  in some cases the pronominal  affix is remarkably different from   the agreement marking affix, which indicates that their lexical entries differ beyond the \textsc{pred} feature. 
+ 
+ \citegen{FF} analysis of feminine subjects in MSA will be reviewed here.  Fassi Fehri   shows that the affix \textit{-at} (also sometimes \textit{-ati} in Fassi Fehri's examples)  is ambiguous.   In its pronominal use,  it is a third person feminine singular.  However, as an agreement marker, the same affix is less restricted.  For example,  \textit{-at} (here \textit{-ati}) agrees with a plural subject in (\ref{arabic1}):
+ 
+ \ea \label{arabic1} Modern Standard Arabic\\
+ \gll ja:\textglotstop-ati l-bana:tu \\
+   came-\textsc{fem.sg} the-girls   \\
+ \glt `The girls came.' 
+ \z
+\noindent  \citet{FF} proposes the   lexical entries  in (\ref{aic6rab}) for the  \textit{-at}  affix, indicating that the agreeing affix is only constrained by gender.
+  
+ \ea  \label{aic6rab}\begin{tabular}[t]{llllllll }
+{Pronoun:} &&&&{Agreement:} &&& \\
+($\uparrow$ \textsc{subj pred}) & $=$ & `pro'  &\\
+ ($\uparrow$ \textsc{subj  gend}) & $=$ &  \textsc{fem} & {\hspace{.2in} } &($\uparrow$ \textsc{subj gend}) & $=$ &  \textsc{fem}  \\
+ ($\uparrow$ \textsc{subj  num}) & $=$ &  \textsc{sg}   &&   \\
+($\uparrow$ \textsc{subj pers}) & $=$ &    3   &&   
+ \end{tabular}
+\z
+ \citet{FF}  further proposes  that   strong forms of pronouns are never directly assigned subcategorized functions in Arabic.  Instead,  they are always assigned the \textsc{focus} function, which is a grammaticalized discourse function.  As such, emphatic pronouns in MSA  do not co-occur with the agreement marking version of  \textit{-at} even when they are feminine.  It would result in a coherence violation:  neither the emphatic pronoun nor the agreement marker contributes a \textsc{pred} feature to the \textsc{subj}.  
+ 
+ The  \textit{-at}  ending  can be  contrasted with the third person feminine plural affix \textit{-na}, which, unlike \textit{-at}, is a pronoun only and cannot agree: 
+ 
+    \ea \label{arabic3} Modern Standard Arabic\\
+    \ea
+    \gll   ji:{\textglotstop}-na  \\
+      came-\textsc{fem.pl.hum}       \\
+    \glt `They came.'
+    \ex  \label{arabic2}
+    \gll *ji:{\textglotstop}-na l-bana:tu \\
+   came-\textsc{fem.pl.hum} the-girls \\
+ \z\z
+The feminine plural pronoun \textit{-na}  can  only  co-occur with independently expressed nouns when  they are topics: 
+  
+  
+\ea \label{arabic4}  Modern Standard Arabic\\
+\gll  al-bana:tu ji:{\textglotstop}-na  \\
+ the-girls came-\textsc{fem.pl.hum}       \\
+\glt `As for the girls, they came.'
+     \z
+  In (\ref{arabic4}), the pronominal affix \textit{-na} is the true subject. The noun \textit{al-bana:tu} is a topic, as evidenced in part by the word order: the unmarked word order in Standard Arabic is VSO.  When  \textit{al-bana:tu} precedes the verb,  \textit{-at} is not felicitous:
+ 
+ 
+   \ea \label{arabic5}  Modern Standard Arabic\\
+   \gll  *al-bana:tu ja:{\textglotstop}-at  \\
+     the-girls came-\textsc{fem.sg}       \\
+   \glt (intended) `As for the girls, they came.'
+ \z
+  The pronominal \textit{-at}  is singular and cannot refer to the plural  \textit{al-bana:tu}.  The agreement marking   \textit{-at} does not contribute a \textsc{pred} feature.   As the \textsc{topic}, the NP   \textit{al-bana:tu} also does not contribute a \textsc{pred} feature to the \textsc{subj}. The agreement marker cannot alone correspond to the \textsc{subj} function, since the subject needs a \textsc{pred} feature due to the LFG  completeness condition, provided in (\ref{completeness}) above.   In these specific examples, the verb `to come' requires a subject with a semantic role, and that subject needs a \textsc{pred}.     In  (\ref{arabic1}),  \textit{l-bana:tu} is the subject, and provides the \textsc{pred} feature. In  (\ref{arabic3}) and  (\ref{arabic4}), the pronominal affix \textit{-na} contributes a  pronominal \textsc{pred} feature to the \textsc{subj} f-strucure. 
+  In (\ref{arabic5}), \textit{al-bana:tu} provides a \textsc{pred} feature to the \textsc{topic} function, not the \textsc{subj} function.   The agreement marking affix on the verb does not provide a \textsc{pred} feature at all.  
+
+ 
+  \citet{FF}  introduces further lexical entries and also specific rules to   cover  the complex pronominal and agreement system in  Standard Arabic.  Additional examples accompanied by discussions of computational implementations of Arabic agreement are provided by \citet{hoyt04} and \citet{attia08-agr}.  Crucial to the point here is that   already one of the first treatments of pro-drop in LFG pointed out that  an  agreement affix can diverge from a homophonous pronominal affix in features other than just the \textsc{pred} feature.  The agreement marking \textit{-at}  differs from the pronominal version of the same form, and Fassi Fehri captures the differences straightforwardly with the lexical  entries. 
+  
+Next we consider so-called `clitic doubling' in Romanian.   In Romanian,    objects can  be `doubled' by  a morpheme that agrees in person, number and  gender. This morpheme is typically referred to as a clitic, but its morphophonological status   is controversial \citep{dobrovie1994, monachesi98, popescu2000, luis2004}.    Romanian clitic doubling is exemplified in (\ref{rom2}),  where the object \textit{pe  b\u{a}iat} is doubled by the clitic \textit{l-}:
+   
+ 
+\ea \label{rom2} Romanian:\\
+\gll   L-am v\u{a}zut pe b\u{a}iat. \\
+3\textsc{sg.m.acc}-have.1\textsc{sg} seen \textsc{acc} boy  \\
+\glt `I saw the boy.'
+ \z
+ In some dialects of Romanian, all definite objects are doubled (\citealt[Chapter~4]{tomic2006}; \citealt[84]{tomic2008}; \citealt{hill2013}, \citealt{BarbuToivonen2018}).     This is the case in  the Aromanian dialect  (spoken in Albania, Macedonia, Romania, Bulgaria, Serbia and Croatia) and the  Megleno-Romanian dialect  (spoken in Greece and Macedonia).  Since the relevant pronouns are inherently definite, these dialects can be  analyzed in LFG  with an optional \textsc{pred} feature in the lexical entry for the clitic, just like  most of the pro-drop examples discussed above. 
+ 
+However, in other dialects of Romanian, including the standard variety,  doubling is restricted to \textit{pe}-marked, human, definite objects. For example, the non-human direct object  `snail' in (\ref{melc}) cannot be doubled by a clitic: 
+
+\ea \label{melc}Romanian:\\
+\ea \gll  Am v\u{a}zut   melcul. \\
+ have.1\textsc{sg} seen  snail.\textsc{def}   \\
+\glt `I saw the snail.'
+\ex   \gll *L-am v\u{a}zut (pe) melc. \\
+3\textsc{sg.m}-have.1\textsc{sg} seen \textsc{acc} snail   \\
+\z\z
+
+The clitic   can refer to non-humans when it stands alone.  For example, the \textit{l-} in (\ref{rom3}) can refer back to \textit{melcul}, the snail: 
+
+\ea \label{rom3} Romanian:\\
+\gll   L-am v\u{a}zut. \\
+3\textsc{sg.m.acc}-have.1\textsc{sg} seen   \\
+\glt `I saw it/him.'
+ \z
+The clitic in (\ref{rom3}) could also refer to a human participant.
+
+The restrictions on doubling  in  this variety of Romanian indicate that the agreement marking clitic and the pronominal clitic differ beyond the presence or absence of the \textsc{pred} feature. \citet{BarbuToivonen2018} spell out the details of such an analysis, and their account is summarized here.    They follow the   Romanian tradition of treating  \textit{pe} as an accusative case  marker (e.g., \citealt{cornilescu2000})  that  is  specified for  human animacy, and they posit the lexical entries in (\ref{romanianLex}) for the pronominal and agreement-marking clitics. 
+
+ 
+ 
+\ea\label{romanianLex}\begin{tabular}[t]{llllllll }
+{Pronoun:} &&&&{Agreement:} &&& \\
+($\uparrow$ \textsc{pred}) & $=$ & `pro'  &\\
+ ($\uparrow$ \textsc{pers}) & $=$ & $\alpha$ & {\hspace{.2in} } &($\uparrow$ \textsc{pers}) & $=$ & $\alpha$  \\
+ ($\uparrow$ \textsc{num}) & $=$ &  $\beta$  &&  ($\uparrow$ \textsc{num}) & $=$ &  $\beta$ \\
+($\uparrow$ \textsc{gend}) & $=$ &   $\gamma$   &&($\uparrow$ \textsc{gend}) & $=$ &   $\gamma$  \\
+ ($\uparrow$ \textsc{case}) & $=$ &  \textsc{acc}    && ($\uparrow$ \textsc{case}) & $=$$_c$ &  \textsc{acc}   \\
+ ($\uparrow$ \textsc{def}) & $=$  &  $+$ && ($\uparrow$ \textsc{def}) & $=$  &  ${+}$  
+ \end{tabular}
+ \z
+ The variables $\alpha$,  $\beta$ and $\gamma$ simply stand for different \textsc{pers, num} and \textsc{gend} features that vary according to which form is used:  \textit{m\u{a}/m-} for first person singular,  \textit{te} for second person singular,  \textit{îl/l-} for third person singular masculine, etc.
+ 
+ The  two entries in (\ref{romanianLex})  only differ very slightly.  The pronouns have a \textsc{pred} `pro' feature and the agreement markers do not, just like  we have seen in several examples above.  However, there is one small but important further difference: the \textit{case} is specified as a defining equation for the pronoun and a constraining equation for the agreement marker.  The regular defining equation of the pronoun directly  contributes a  \textsc{$[$case acc$]$} feature to the object  f-structure.  The constraining equation requires a  \textsc{$[$case acc$]$}  feature,  but does not itself provide it.  If  the feature is not provided in some other way, the agreement marker is illicit.  The marker \textit{pe} provides   the \textsc{acc} feature that is needed. This explains why the clitic cannot  occur without  \textit{pe}.  When \textit{pe}  functions as a case marker (\textit{pe}  has an additional function as  the  preposition `on'), it  is also specified for human animacy, and this indirectly explains why only objects with human reference can be doubled.  
+ 
+ \citet{tigau2010, tigau2014} reports that some speakers of Romanian allow clitic doubling with indefinites:
+   
+ 
+
+\ea  \label{rom5}Romanian:\\
+  \gll Petru (l-)a vizitat  pe un prieten. \\
+ Peter 3\textsc{sg.m}-have.3\textsc{sg}  visited \textsc{acc} a friend\\
+ \glt `Peter visited a friend.' 
+ \z
+Even the speakers who allow doubling with indefinite objects   allow it only sometimes. \citet{tigau2010, tigau2014} argues that   doubled indefinite objects get a \textit{specific} interpretation  (see also \citealt[Chapter 3]{aoun81}). 
+
+The difference between the  standard variety of Romanian  (captured by    (\ref{romanianLex})) and the indefinite-doubling dialect described by Tig\u{a}u  is captured by the lexical entries in (\ref{indef-doub}): 
+      
+ 
+  \ea \label{indef-doub}\begin{tabular}[t]{llllllll }
+{Pronoun:} &&&&{Agreement:} &&& \\
+($\uparrow$ \textsc{pred}) & $=$ & `pro'  &\\
+ ($\uparrow$ \textsc{pers}) & $=$ & $\alpha$ & {\hspace{.2in} } &($\uparrow$ \textsc{pers}) & $=$ & $\alpha$  \\
+ ($\uparrow$ \textsc{num}) & $=$ &  $\beta$  &&  ($\uparrow$ \textsc{num}) & $=$ &  $\beta$ \\
+($\uparrow$ \textsc{gend}) & $=$ &   $\gamma$   &&($\uparrow$ \textsc{gend}) & $=$ &   $\gamma$  \\
+ ($\uparrow$ \textsc{case}) & $=$ &  \textsc{acc}    && ($\uparrow$ \textsc{case}) & $=$$_c$ &  \textsc{acc}   \\
+ ($\uparrow$ \textsc{def}) & $=$  &  $+$ &&   ($\uparrow$ \textsc{specific}) & $=$  &    $+$  \\
+ \end{tabular}
+ \z
+     In this dialect, the pronoun is the same as  in the  standard dialect, but the agreement marker    is marked for specificity instead of definiteness.   
+
+ 
+ In two  of the dialects of Romanian that have been considered here,  the difference between the agreement marking clitic and   the pronominal clitic goes  beyond the \textsc{pred} feature.  Again, this kind of `split' is not unexpected under the LFG account of pro-drop, since the optional \textsc{pred} feature in effect means there are two lexical entries: one agreement marker and one pronoun. 
+ 
+ Romanian is not the only Romance language in which the agreement marking clitic and pronominal clitic are markedly distinct.  Varieties of Spanish display clitic systems very similar to that of Romanian (see, e.g., \citealt{mayer17}). \citet{Andrews90}  and  \citet{Estigarribia2013}      analyze Rioplatense Spanish within an \textsc{lfg} framework, and they both propose entries for pronominal clitics that differ from the agreement clitics beyond the \textsc{pred} feature.  \citeauthor{Estigarribia2013} specifically proposes that the agreement marker  has   a specificity  feature that the pronominal clitic lacks, which would indicate that   Rioplatense Spanish clitics  are very  similar to the Romanian clitics  represented in  (\ref{indef-doub}). 
+ 
+Finnish possessive suffixes  provide  yet another example of `lexical splits'.  Pro\-nom\-i\-nal possessors in  standard Finnish are marked by an independent pronoun and a suffix on the possessed noun or by  a suffix alone (\ref{fi1}):
+
+\ea \label{fi1} Finnish\\
+\gll Jukka n\"{a}kee  (minun) yst\"{a}v\"{a}-ni. \\
+Jukka sees  { }my friend-1\textsc{sg}    \\
+ \glt `Jukka  sees my   friend.'
+\z
+ 
+In first and second person, the independent pronoun is optional, and our basic LFG pro-drop analysis can be employed:  first and second person possessive suffixes have an optional \textsc{pred} \textsc{`pro'}.
+
+The optionality of the \PRED \textsc{`pro'} in Finnish possessive suffixes was already mentioned in \sectref{sec:basics}.  However, the third person suffix displays a more significant split.  When a third person independent pronoun is  omitted and possession is marked by just a third person suffix, the possessor is necessarily bound by a subject within the minimal finite clause:
+
+\ea  \label{fi2a}Finnish\\
+\gll  Jukka$_i$ n\"{a}kee  yst\"{a}v\"{a}-ns\"{a}$_{i/*j}$. \\
+  Jukka sees  friend-3    \\ 
+\glt `Jukka sees his (own) friend.'
+\z
+
+  Conversely, when an independent pronoun is present, the possessor \textit{cannot} be bound by a subject:
+  
+  \ea \label{fi2}Finnish\\
+  \gll Jukka$_i$ n\"{a}kee h\"{a}nen$_{*i/j}$ yst\"{a}v\"{a}-ns\"{a}. \\
+Jukka sees his/her friend-3   \\
+  \glt `Jukka sees his/her friend.'
+  \z
+In  \citeauthor{Toivonen:FinnPoss}'s (2000) analysis,  the suffix  in (\ref{fi2a}) is an anaphoric pronoun with  a \textsc{pred} feature, and  the   suffix  in (\ref{fi2})  is an agreement marker without a \textsc{pred} feature. The   entries further  differ in that the agreement suffix is restricted to agreement with human personal pronouns (\ref{fi3}--\ref{fii4}), even though the pronominal suffix can be bound by   both nouns and pronouns with human or non-human referents (\ref{fi4}):
+
+\newpage
+ \ea Finnish\\
+ \ea\label{fi3}  \gll 
+    Jukka  n\"{a}kee  Pekan yst\"{a}v\"{a}n. \\
+ Jukka sees Pekka's  friend.\textsc{acc}   \\ 
+ \glt `Jukka sees Pekka's friend.'
+  \ex   
+\gll  *Jukka  n\"{a}kee  Pekan yst\"{a}v\"{a}-ns\"{a}. \\
+{ }J. sees Pekka's  friend-3\textsc{Px}      \\
+
+ \ex  \label{fii3} \a.    \gll Jukka  n\"{a}kee  sen h\"{a}nn\"{a}n. \\
+ Jukka sees  its  tail.\textsc{acc}  \\ 
+ \glt `Jukka sees its tail.'
+\ex \label{fii4}      \gll *Jukka  n\"{a}kee  sen h\"{a}nt\"{a}\"{a}-ns\"{a}. \\
+{ }Jukka sees its  tail-3\textsc{Px}    \\
+ \ex  \label{fi4}  \gll Se/koira$_i$  heiluttaa    h\"{a}nt\"{a}\"{a}-ns\"{a}$_i$. \\
+ It/dog wags   tail.\textsc{part}-3\textsc{Px}    \\
+ \glt `It/the dog is wagging its tail.'
+\z\z
+
+The Finnish pronominal possession system thus provides a further example  where pro-drop involves two homophonous but syntactically quite distinct lexical entries: one agreement marker and one pronoun. In the case of Finnish third person possessive suffixes, the pronoun is anaphorically bound  and has no animacy restrictions. The agreement marker agrees only with personal, human pronouns that are not anaphorically bound.  For a lexical formalization similar to the analyses of Arabic  subject markers and Romanian  object clitics  outlined above,  see  \citet{toivonen96, Toivonen:FinnPoss}.  For a different analysis, and also  more data and references as well as  a critique of the LFG analysis,   see \citet{HuhmarniemiBrattico2015}. 
+
+ The final language we will consider in this section is   Pakin Lukunosh Mortlockese.  The Mortlockese data and generalizations come from       \citet{odango2014}.   Odango argues that the third person singular object marker in  this Micronesian language   shows a split between incorporated pronoun and   transitivity marker.    He further shows that other object suffixes (the first and second person suffixes and the third person plural suffix)    do not involve a split; they function exclusively as  incorporated object pronouns (Odango uses  the term `anaphoric agreement', following \citealt{BM87}).  Example  (\ref{pakin1})  illustrates the second person singular object suffix, which cannot co-occur with an independent pronoun: 
+ 
+ \newpage
+ 
+ \ea   \label{pakin1}Mortlockese\\
+ \gll I=aa wor-o-k (*een). \\
+   \textsc{1sg.sbj-realis} see-\textsc{th-2sg.obj} \textsc{2sg}  \\
+ \glt `I see you.'
+ \z
+The third person singular marker is  also an incorporated pronoun   when there is no independent object:
+  
+ \ea   \label{pakin0}Mortlockese\\
+ \gll  anga-i-tou mwo \\
+  take-3\textsc{sg.obj}-downward please  \\
+ \glt `Please take it down.'
+ \z
+The   object marker is translated here as \textit{it}, but it can also be  translated as \textit{him} or \textit{her}.  The pronominal third person singular marker has a \textsc{pred} feature `pro'. 
+  
+Unlike the other object suffixes, the  third person singular   suffix  can   co-occur with an object.  When it does, there are no   number  restrictions on the object.    Odango argues that the suffix is a  \textit{general transitivity marker} when it co-occurs with an object.    In (\ref{pakin2}),  the suffix agrees with a third person plural object:
+ 
+ 
+\ea   \label{pakin2} Mortlockese\\
+\gll  Ngaan i=sán mwo shuu-\{nge-i/*nge-er\} mwáán=kewe. \\
+ \textsc{1sg.emph} \textsc{1sg.sbj=neg.pot} yet meet-\textsc{th-3sg.obj/th-3pl.obj} man=\textsc{dist.pl}  \\
+ \glt `As for me, I have not yet met those men.'
+  \z
+  
+ \noindent    Note that the third person plural marker is not admissible in (\ref{pakin2}), because it functions solely as a pronoun with a \textsc{pred} `pro' and can therefore not  co-occur with  the object  \textit{mwáán=kewe}.
+ 
+ According to Odango, the transitivity marking suffix is generally limited to third person for many speakers, but some speakers also accept examples  where the transitivity marker co-occurs with a first or second person independent pronoun.\footnote{The independent pronouns only appear  with  borrowed verbs and a few verbs that  cannot be inflected \citep{odango2014}.}  He provides the   following example, which is accepted by some  younger speakers:
+ 
+ 
+ \newpage
+
+ \ea   \label{pakin3}Mortlockese\\
+ \gll  R-aa w\'{e}r-e-i kiish.  \\
+ \textsc{3pl.subj-realis} see-\textsc{th-3sg.obj}  \textsc{1pl.incl}  \\
+ \glt `They see us (incl.).'
+\z
+
+ 
+ 
+ For most speakers, however, it seems that the transitivity marker is restricted to third person.  \citet{odango2014}    reports on one further restriction on the use of the transitivity marker: it seems to be restricted either for definiteness or specificity.  Odango also points to interesting age and geographical variation regarding the exact use of the marker. The variation details are interesting,   but they will nevertheless be set aside here. 
+ 
+ The basic  generalization that the third person singular object marker has split into a pronominal suffix and a transitivity marker is clear.    \citet{odango2014}  ties his discussion  to   \citet{BM87}, but he does not provide a formal analysis of  Mortlockese.  However, the generalizations he provides evidence for can be captured by the   following  lexical entries for the   marker  \textit{-i}:   
+ 
+   \ea \label{transitivity}\begin{tabular}[t]{llllllll }
+{Pronoun:} &&&&{Transitivity marker:} &&& \\
+($\uparrow$ \textsc{obj  pred}) & $=$ & `pro'  &  {\hspace{.2in} } &($\uparrow$ \textsc{obj definite}) & $=$ & $+$  \\
+ ($\uparrow$ \textsc{obj  pers}) & $=$ &  3 &  {\hspace{.2in} } &($\uparrow$ \textsc{obj pers}) & $=$ &  3 \\ 
+ ($\uparrow$ \textsc{obj  num}) & $=$ &  \textsc{sg}  &&  
+ \end{tabular} 
+ \z
+ 
+The lexical entries in (\ref{transitivity}) are tentative but serve to illustrate the relevant  lexical split.  The pronominal version of the third person singular suffix is straightforward.  Since it provides a \textsc{pred} feature, it cannot co-occur with an independent object.  However, the transitivity marker version of the suffix \textit{requires} an independent object.  The  presence of  ($\uparrow$~\textsc{obj}) features ensures the presence of an \textsc{obj} function  in the  f-structure corresponding to the verb that the ending is attached to. This object function needs a \textsc{pred} feature because of  the completeness condition, and this feature is provided by   an appropriate object in the c-structure.    The   lexical entry for the transitivity marker  includes a third person object feature. However, for  speakers that allow it to co-occur with first and second person pronouns (see (\ref{pakin3})),  the lexical entry will not include a \textsc{pers} feature.    I assume here that the transitivity marker is specified for  definiteness, but  Odango hints that it is unclear whether the relevant feature is definiteness or specificity.  It is possible that this point is also a matter of speaker variation. In any event, the transitivity marking entry can be modified to include a specificity feature instead of a definiteness feature. 
+
+Although the  Pakin Lukunosh Mortlockese data involve variations and  points to be further investigated, it is clear that the third person singular object marker involves a split.  Odango argues that the split is between a pronoun and a transitivity marker.   From a historical perspective, the emergence of this split is unsurprising:  object markers often grammaticalize into transitivity markers, sometimes via object agreement marking \citep{lehmann02, mayer17, widmer18}. 
+
+ 
+
+In sum,  a pro-drop analysis where an incorporated morpheme is assumed to have a dual function  and correspond to both an agreement marker and a pronoun  leads to the  prediction that the two versions of the morpheme can    change independently  and grow further apart.  This section has considered multiple examples that indicate that such cases do, in fact, occur.  The examples we have considered come from Standard Arabic subject marking,  Romanian object clitic doubling, Finnish possessive marking, and Mortlockese object marking. In the first three cases, the pronominal version of a morpheme displays  different characteristics than the corresponding agreement-marking morpheme. In the Mortlockese case,   we adopted Odango's proposal that the non-pronominal version of the third person singular incorporated pronoun is a transitivity marker. 
+   
+ 
+
+
+\section{Pro-drop without agreement marking}  \label{sec:othertypes}
+
+ 
+
+The focus  of this chapter has been on cases where information about the dropped arguments is encoded on the head as an incorporated pronoun. However, sometimes pronouns are omitted even though there is no corresponding  morphology on the  head.  This is the case in \textsc{discourse pro-drop}.     Some LFG work on this type of pro-drop will be briefly reviewed in this section, even though it does not involve morphological pronoun incorporation. 
+
+ Chinese and Japanese     lack morphological agreement marking but nevertheless  allow   argument omission.  A Cantonese   example, originally from  \citet{LukeBodomoNancarrow2001},   is  given in (\ref{Incorporation:2}):    
+
+ 
+ \ea \label{Incorporation:2} Cantonese  (Talking about dogs) \\
+ \gll  wui5-m4-wui5 beng6 gaa3 \\
+   will-not-will ill \textsc{part}   \\
+ \glt `Would (they $=$  the  dogs) get ill?'
+\z
+This  kind  of  pronoun omission is referred to as   \textsc{discourse pro-drop}  or \textsc{radical pro-drop}. Discourse pro-drop is substantially different from    pro-drop  linked to  agreement  \citep{NeelemanSzendroi07, sigurdsson2011, irgens2017},\footnote{Discourse pro-drop has  been argued to  in fact  resemble general  nominal ellipsis more than pro-drop \citep{irgens2017}.}  although they occur under similar  pragmatic conditions, which are also conditions under which omission of weak pronouns occur in the Germanic languages \citep[and references therein]{sigurdsson2011, rosen1998}. Focussing on  omitted subjects,  \citet{LukeBodomoNancarrow2001}    analyze   Cantonese discourse pro-drop  in LFG.  They propose specific discourse-pragmatic criteria to explain how empty subjects receive an interpretation.   They  also  posit an empty subject node in the c-structure, which renders their analysis unusual from a mainstream LFG perspective, where empty c-structure material is  avoided since it is   deemed unnecessary and computationally costly.
+
+  \citet{rosen1998} develops a different LFG analysis for Vietnamese.  Vietnamese allows  the subject, object and second object (\textsc{obj}$_{\theta}$) to be dropped, even though there is no morphology on the head   to indicate the characteristics of the omitted element.  Two examples from  \citet[146]{rosen1998} are given in (\ref{vietnamese}):
+  \ea \label{vietnamese}Vietnamese
+  \ea    \gll \u{A}n  ít cỏ  l\'{\u{a}}m. \\
+eat few grass very  \\ 
+ \glt `(It) eats very little grass.'
+\ex       \gll {\^Ong Ba} t\u{\d{a}}ng  m\^{\d{o}}t b\'o hoa hồng h\^om n\d{o}. \\
+Mr.~Ba give one bunch flower pink day other  \\ 
+ \glt `Mr.~Ba gave (her) a bunch of roses the other day.'
+ \z\z
+In \citeauthor{rosen1998}'s analysis, the dropped pronouns (\textit{it} and \textit{her} in the examples above) are not represented in the  c-structure. In the f-structure, they are represented as the relevant grammatical functions.  The \textsc{pred} `pro' features are contributed by optional equations in the phrase structure rule for S for the \textsc{subj} and the VP rule for \textsc{obj} and \OBJTHETA.  The f-structures of Vietnamese examples with pro-drop will thus look quite similar to examples where  the c-structure does contain expressed pronouns, and also similar to the f-structures of Italian-style pro-drop languages, where other morphology provides the pronominal information.  A difference is that the f-structures for the pro-dropped grammatical functions in Vietnamese do not contain person and number information.   The key to understanding how empty pronouns  assign reference in Vietnamese lies in semantic structure (s-structure) and discourse structure (d-structure), according to  \citeauthor{rosen1998}. Like the f-structure information, the semantic schemata needed for the s-structure of the unpronounced pronoun are contributed by the c-structure rules. These schemata include basic semantic information, such as  specifications regarding the  argument-function mapping. 
+
+ \citet{rosen1998}  stresses that the interpretation of the dropped pronouns does not depend on guessing.    According to   \citet[Chapter~7]{rosen1998},    one condition for pronoun omission is  \textsc{referential givenness}, meaning the existence of a presupposition of unique reference.  Another important condition is  \textsc{relational givenness:}  the intended referent is clear with relation to the verb in context.\footnote{According to  Ros\'{e}n's formal analysis of the discourse conditions,  empty pronouns must always be part of the \textsc{tail} value at d-structure, where the \textsc{tail} is understood as the s-structure of the sentence minus the value of the \textsc{link} and the \textsc{focus}.}  This is, for example, the case when the verb is the same as in an immediately preceding context.  In this case, the  participants of the event referred to  by the verb remain the same and can be omitted. For example, if someone asks  \textit{Did Sarah cook the meat?} and the response repeats the verb \textit{cooked}, no pronouns are included in Vietnamese as it is clear that the participants remain the same. Another example of relational givenness would be \textit{Sarah bought some meat and (she) cooked (it)}, where in the Vietnamese equivalent      both the subject and the object pronoun can be omitted. The use of empty pronouns signals that the speaker is sure that the propositional content makes clear which referents to supply for the  arguments  \citep[137]{rosen1998}.
+
+
+\citet{BK00} show that pro-drop in  Hindi/Urdu is not necessarily tied to agreement, and like Ros\'{e}n, they argue for a discourse-based account. They argue that pronouns can only be omitted if they are  continuing topics or backgrounded information, and they model their analysis on the independent linguistic level of i(nformation)-structure.\footnote{\citet{rosen1998} uses the label d(iscourse)-structure   and \citet{BK00} use i(nformation)-structure to  formalize the same type of phenomena.  \citetv{chapters/InformationStructure} provides a comprehensive overview of LFG research on i-s and d-s in LFG. She reserves the term i-s for sentence-internal information, and d-s for larger units of discourse.} \citet{butt07} extends   \citeauthor{BK00}'s analysis to   Punjabi.   The analyses developed by   Butt \& King (2000),  \citet{LukeBodomoNancarrow2001}  and  \citet{rosen1998}  differ significantly from each other, and  this indicates that  there is room for more (perhaps cross-linguistic)  research on discourse pro-drop within LFG.   In general,    discourse structure   has received less attention in LFG than other levels of linguistic representation, but see       \citet{kingzaenen}, \citet{DalrympleAl17}, and references cited in those works for important proposals.
+
+
+   Yet  another type of pronoun  omission is \textsc{topic  drop}, which  is  found in several Germanic languages  and   illustrated in the  Swedish example in  (\ref{Incorporation:3}): 
+
+   \ea \label{Incorporation:3}Swedish\\
+   \gll Kommer kanske att sakna det.  \\
+     come perhaps to miss it  \\
+   \glt `[I/We/They...] will perhaps miss it.' 
+\z
+Swedish verbs bear  no  agreement  and the  interpretation of  the  dropped elements  is  provided by the context.    In these  two respects, topic  drop  is  similar to discourse pro  drop.  However,  topic  drop  is  more restricted and  only elements in the left  periphery of the sentence can  be dropped \citep{NeelemanSzendroi07, SigurdssonMaling08, sigurdsson2011}.  Topic drop has not been treated extensively in LFG, but \citet{berman96} provides an    analysis  of the phenomenon  in German. 
+
+ 
+
+\section{Summary}
+
+ The focus of this chapter has  been the LFG theory of pronominal incorporation and the interactions between nouns, independent pronouns, incorporated pronouns, and agreement markers.  The analysis of regular pro-drop centers on the person, number and gender marking on the head, which is  often ambiguous between  an agreement marker and a pronoun.  In other words, the marker is an incorporated pronoun, or else it simply agrees with an independent pronoun or noun.  
+ 
+ Languages  vary with respect to  exactly how pronominal information is expressed morphosyntactically, and many different systems have been captured with LFG analyses that take the basic agreement marker-pronoun ambiguity as its starting point.   The overview of  the literature provided in this chapter illustrates how the typological  diversity  can be formally understood by appealing to  features, feature unification  and  the mappings between independent linguistic levels.  
+ 
+ The LFG theory of pronoun incorporation and pro-drop aligns well with  the research on the grammaticalization of pronominal forms and agreement marking. In \sectref{sec:grammaticalization} it was argued that although   LFG   does not technically    offer  substantive historical explanations,  the framework provides formal tools which are  suitable for modelling the attested diachronic changes and  trends. 
+ 
+% The
+Ambiguity between agreement marker and pronoun  can give rise to  changes that further differentiate between   pronominal and agreement morphemes.   Such drifts are not uncommon, as illustrated by the examples in \sectref{sec:splits}.  Many languages have agreement morphemes that differ in clear and significant ways from incorporated pronouns.  For example, the Finnish third person possessive suffix is restricted to non-anaphoric human personal pronouns in its agreement use, but it has no animacy restrictions and must be anaphorically bound in its pronominal use.
+
+Finally, \sectref{sec:othertypes} of this chapter briefly reviewed some LFG accounts of pro-drop that do not involve pronominal incorporation or any morphology indicating the person and number of the omitted discourse participant. These cases are interesting for many reasons. First, they illustrate the importance of discourse-pragmatic principles for pronominal  interpretation.  Second,    these cases pose an interesting challenge  for the theory of LFG f-structure. The principle of completeness dictates that a semantic argument needs a \textsc{pred} feature, and  it is not obvious where that feature comes from in cases of discourse pro-drop, where the participant  does not  have a phonological realization in the linguistic string.  
+
+In conclusion, the basic  LFG theory of pronominal incorporation and agreement that was first formulated by \citet{FassiFehri1984,FF} and \citet{BM87} is still adopted today. Over the past  four decades, that theory has  been used as a tool to gain insight about the details of pro-drop in a large number of languages. 
+
+\section*{Acknowledgements}
+I would like to thank three anonymous reviewers for very thorough and insightful comments. I also want to thank Raj Singh,     Victoria Ros\'{e}n,  Mary Dalrymple, Roxana-Maria  Barbu and Katie Van Luven for their helpful comments on earlier versions of this chapter.  The paper has been much improved thanks to the feedback that I have received, but  I want to stress that all remaining mistakes and misunderstandings are my own. 
+ 
+
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+ 
+\end{document}

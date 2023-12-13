@@ -1,0 +1,1518 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10186018}
+\title{LFG and Scandinavian languages}
+\author{Helge Lødrup\affiliation{University of Oslo}}
+\abstract{This chapter gives an overview of some of the LFG literature on the Scandinavian languages: Danish, Swedish, Norwegian, Icelandic and Faroese. LFG has been used to investigate these languages ever since the framework was launched in the eighties. Important work has been done by researchers both inside and outside Scandinavia.}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+ \input{../localpackages}
+ \input{../localcommands}
+ \input{../localhyphenation}
+ \togglepaper[36]%%chapternumber
+}{}
+
+\begin{document}
+\maketitle
+\label{chap:Scandinavian}
+
+\section{Introduction to the Scandinavian languages}
+
+The North Germanic languages are referred to in English as the Scandinavian languages. The modern languages are usually divided into Mainland Scandinavian: Danish, Swedish\footnote{The variety spoken in Älvdalen in Sweden, known as \textit{älvdalska} in Swedish, and Elfdalian or Övdalian in English, is often considered a separate language \citep{Garbacz09}. It has hardly been mentioned in the LFG literature, and it is not discussed in this chapter.} and Norwegian, and Insular Scandinavian: Icelandic and Faroese. The literature on Faroese is limited, and Icelandic will usually have to represent Insular Scandinavian in this chapter.
+
+ In Danish, Swedish and Norwegian, the term \textit{skandinavisk} is often used in a different way, to denote only Danish, Swedish and Norwegian. The English use will be applied in this chapter.
+
+ Danish, Swedish and Norwegian are by and large mutually intelligible. When Danes, Swedes and Norwegians talk to each other, they can come a long way using their own language. Danish, Swedish and Norwegian are grammatically similar in many respects, but there are also differences that can be more or less subtle.
+
+ Mainland Scandinavian and Insular Scandinavian are not mutually intelligible. There are a number of grammatical differences. For example, morphological case on nouns and agreement on finite verbs can be found in Insular Scandinavian, but not in Mainland Scandinavian (except for relics in archaic dialects).
+
+ Older forms of the Scandinavian languages will be mentioned occasionally. In medieval times, the most important dividing line was between Eastern Scandinavian: Old Danish and Old Swedish, and Western Scandinavian: Old Norwegian and Old Icelandic. The latter two are sometimes referred to together as Old Norse.
+
+ There is an interesting LFG literature on various topics in the Scandinavian languages. For more general overviews of their syntax (independently of LFG), the following can be recommended: \citet{Faarlund04} on Old Norse, \citet{TPJH04} on Faroese, \citet{Thrainsson07} on Icelandic, and \citet{Faarlund19} on Mainland Scandinavian.
+
+\section{C-structure phenomena}
+
+\subsection{Basic sentence structure: V2}
+
+The architecture of LFG gives an excellent point of departure for studying c-structure. With parallel levels of representation, insights about c-structure can be obtained without necessarily involving the analysis of phenomena that could be argued to belong to other levels.
+
+ The Scandinavian languages have a relatively rigid word order, with the well known V2 requirement: the finite (auxiliary or main) verb must be in second position in main clauses.\footnote{The concept of finiteness is discussed and refined in \citet{Sells07} and \citet{Heinat12}.} This is a classical topic within various approaches to syntax.
+
+ Examples of V2 are \REF{ex:Scandinavian:1} and \REF{ex:Scandinavian:2}.\footnote{The source of example sentences is indicated when available. Examples that do not indicate a source have been provided by the author.}\ Example \REF{ex:Scandinavian:1} has the subject in the initial position, while example \REF{ex:Scandinavian:2} has an adverb in the initial position, and the subject following the finite verb.
+
+
+\ea\label{ex:Scandinavian:1} Swedish \citep[34]{sellssao}\\
+ \gll
+ {Anna} {läste} {bok-en.}\\
+ Anna read book-\textsc{def}\\
+\glt `Anna read the book.'
+\z
+
+\newpage
+\ea\label{ex:Scandinavian:2} Swedish (\citealt[34]{sellssao}, modified)\\
+\gll
+ {Igår} {läste} {hon} {bok-en.}\\
+ Yesterday read she book-\textsc{def}\\
+ \glt `Yesterday she read the book.'
+ \z
+
+\noindent In Mainland Scandinavian, there is no V2 requirement in subordinate clauses. An example is \REF{ex:Scandinavian:3}.
+
+
+
+\ea\label{ex:Scandinavian:3} Swedish\\
+\gll
+ {Om} {Anna} {inte} {läser} {bok-en} $\ldots$\\
+ if Anna not reads book-\textsc{def}\\
+ \glt `If Anna doesn't read the book $\ldots$'
+ \z
+
+\noindent Icelandic usually has V2 in subordinate clauses \citep[58--64]{Thrainsson07}, while Faroese subordinate clauses are in the process of changing from V2 to non-V2 \citep{HSHWV12}.
+
+ V2 was an important motivation for the field grammar that Paul Diderichsen proposed for Danish \citep{Diderichsen46}. His approach was later taken up by \citet{Ahrenberg92}, who proposed an LFG-like system in which the c-structure is given in the format of a field grammar.
+
+ Functional categories were used in LFG from the nineties. They were inspired by work in the Principles and Parameters framework, but the architecture of LFG made a more restricted use possible. A common Principles and Parameters assumption was that all main clauses in Scandinavian have a CP - IP - VP structure, with C as the designated V2 position.
+
+ \citet{sellssao} is an important work on Swedish c-structure in LFG.\footnote{\citet{sellssao} includes a component with restrictions stated in Optimality Theory, like some of the work that proposes alternatives to his analysis \citep{BEA03,Andreasson:PhD,A10}. For simplicity, these aspects of the analyses are put aside here.} The account proposed by Sells is based on the general principles that a subject is typically in SpecIP, and a constituent associated with a discourse function typically in SpecCP. He assumes that subject initial sentences are IPs (when the subject does not have a discourse function), while other sentences are CPs. This means that there is no designated V2 position -- the finite verb is either in I or in C in main clauses.
+
+ This analysis might seem to allow sentences with more than one main verb. This is not the case, however. CP and IP are functional projections, which correspond to the same f-structure as VP, and this f-structure can only have one \textsc{pred}.
+
+ The c-structure trees for examples \REF{ex:Scandinavian:1}--\REF{ex:Scandinavian:2} are from \citet[34]{sellssao}. Note that the tree for \REF{ex:Scandinavian:1} is an IP with the finite verb in I, while the tree for \REF{ex:Scandinavian:2} is a CP with the finite verb in C.
+
+
+ \ea\label{ex:Scandinavian:4}
+          {\begin{forest}baseline
+              [IP [NP [Anna]]
+                [I$'$ [I [läste]]
+                  [VP [NP [boken]]]]]
+              \end{forest}}
+ \z
+
+\ea\label{ex:Scandinavian:5}
+{\begin{forest}baseline
+              [CP [AdvP [igår]]
+                [C$'$ [C [läste]]
+                  [IP [NP [hon]]
+                    [I$'$ [VP [boken]]]]]]
+              \end{forest}}
+\z
+
+\subsection{Object shift}
+\label{sec:Scandinavian:2.2}
+
+Another c-structure phenomenon that has often been discussed is object shift in Mainland Scandinavian. Examples are \REF{ex:Scandinavian:6}--\REF{ex:Scandinavian:7}.
+
+
+
+\ea\label{ex:Scandinavian:6} Swedish \citep[54]{sellssao}\\
+\gll
+ {Anna} {såg} {den} {inte.}\\
+ Anna saw it not\\
+ \glt `Anna didn't see it.'
+ \z
+
+
+
+\ea\label{ex:Scandinavian:7} Swedish \citep[54]{sellssao}\\
+\gll
+ {Såg} {Anna} {den} {inte?}\\
+ saw Anna it not\\
+\glt `Didn't Anna see it?'\z
+
+\noindent Object shift means that a weak pronominal object is not realized in the regular object position within the VP, but in a position closer to a finite main verb.\footnote{Icelandic also allows object shift with full nominal phrases \citep[31--37]{Thrainsson07}. This will not be discussed further here.} It can then precede a sentence adverb, as in \REF{ex:Scandinavian:6}--\REF{ex:Scandinavian:7}. Object shift requires that the main verb is not in the VP, but in a higher functional projection. This is often called ``Holmberg's generalization'' \citep{Holmberg99}. When the non-finite main verb is in VP, as in \REF{ex:Scandinavian:8}, then object shift cannot apply.
+
+
+
+\ea\label{ex:Scandinavian:8} Swedish\\
+\gll
+ {Anna} {har} {inte} {sett} {den.}\\
+ Anna has not seen it\\
+\glt `Anna has not seen it.'\z
+
+ \noindent \citet[54--56]{sellssao}  assumes that a weak pronoun does not project in syntax. He assumes that a shifted pronoun adjoins to the I node. The adjunction is syntactic, and not morphological or phonological incorporation.
+
+ Below are the c-structure trees for \REF{ex:Scandinavian:6}--\REF{ex:Scandinavian:7}, from \citet[62]{sellssao}. The finite verb is in I, as in \REF{ex:Scandinavian:9}, or in the higher C position, as in \REF{ex:Scandinavian:10}. When the verb is in C, the pronoun is still under I, following the post-verbal subject.\footnote{The reader might find it strange that the pronoun is the only element under I when the verb is in C, as in \REF{ex:Scandinavian:10}. This follows from the adjunction rule X $\rightarrow$ X Y, combined with the optionality of phrase structure nodes and an economy principle which requires ``tree pruning''}\ Negation and other sentence adverbs are under I$'$.\footnote{Negation is always expressed outside the VP. An interesting effect of this is that an argument with a negative quantifier cannot be inside VP, cf. the contrast (i)--(ii). This is discussed in \citet{sellsneg} and \citet[93--101]{sellssao}.
+
+
+\ea\label{ex:Scandinavian:i} Swedish \citep[93]{sellssao}\\
+\gll
+{Jag} {såg} {ingen.}\\
+I saw nobody\\
+\glt`I saw nobody.'
+\z
+
+
+\ea\label{ex:Scandinavian:ii} Swedish \citep[93]{sellssao}\\
+\gll
+{*Jag} {har} {sett} {ingen.}\\
+~~I have seen nobody\\
+\glt`I have seen nobody.' [intended]
+\z
+}
+
+
+ \ea\label{ex:Scandinavian:9}
+          {\begin{forest}baseline
+              [IP [NP [Anna]]
+                  [I$'$ [I [I [såg]]
+                      [PronWeak [den]]]
+                    [Neg [inte]]]]
+   \end{forest}}
+ \z
+
+
+
+\ea\label{ex:Scandinavian:10}
+         {\begin{forest}baseline
+             [CP [C [såg]]
+               [IP [NP [Anna]]
+                 [I$'$ [I [PronWeak [den]]]
+                   [Neg [inte]]]]]
+           \end{forest}
+           }
+\z
+
+\noindent Restrictions on object shift have been discussed several times, see e.g. \citet{A08,A10}, \citet{Oersnes13}, and \citet{EZ20}.
+
+\subsection{How much hierarchy?}
+\label{sec:Scandinavian:2.3}
+
+Some researchers have argued that the c-structure proposed by Sells is more hierarchical than necessary, and inconsistent with the principle of Economy of expression (see \citealt[90]{BresnanEtAl2016} for this principle). They propose a basic sentence structure with one functional category above VP. The head position of this functional category is then the V2 position. The category is called IP in \citet{Dyvik00} (on Norwegian), and FP -- Finiteness Phrase -- in \citet{BEA03} and \citet{Andreasson:PhD,A10} (on Swedish). The structure they propose is as in \REF{ex:Scandinavian:11}.
+
+
+
+\ea\label{ex:Scandinavian:11}
+         {\begin{forest}baseline
+             [FP [XP]
+               [F$'$ [F]
+                 [YP*]
+                 [VP]]]
+           \end{forest}
+         }
+\z
+
+\noindent F is the position of the finite verb. An initial subject has the same position as an initial non-subject, namely SpecFP. In the middle field between F and the VP there can be a subject (when not in SpecFP), one or more sentence adverbs, and pronominal objects.
+
+ One motivation for this kind of structure is the relative flexibility of the constituent order in the middle field. Sentence adverbs can precede or follow the subject, conditioned by scope and information structure. Examples are \REF{ex:Scandinavian:12}, with the subject scoping over the sentence adverb, and \REF{ex:Scandinavian:13}, with the sentence adverb scoping over the subject.
+
+
+
+\ea\label{ex:Scandinavian:12} Swedish \citep[54]{BEA03}\\
+\gll
+ {Då} {skulle} {alla} {grod-or-na} {antagligen} {dö}\textsc{.}\\
+ then should all frog-\textsc{pl-def} probably die\\
+\glt `All the frogs should probably die then.'\z
+
+
+
+\ea\label{ex:Scandinavian:13} Swedish \citep[54]{BEA03}\\
+\gll
+ {Då} {skulle} {antagligen} {alla} {grod-or-na} {dö}\textsc{.}\\
+ then should probably all frog-\textsc{pl-def} die\\
+\glt `All the frogs should probably die then.'\z
+
+\noindent Example \REF{ex:Scandinavian:12}, with the subject preceding the adverb, requires that frogs have been mentioned in the discourse. There is no such requirement in example \REF{ex:Scandinavian:13}, with the adverb preceding the subject.
+
+ With the FP analysis, a sentence with object shift such as \REF{ex:Scandinavian:14} would have the c-structure tree \REF{ex:Scandinavian:15}.
+
+
+
+\ea\label{ex:Scandinavian:14} Swedish \citep[54]{sellssao}\\
+\gll
+ {Igår} {såg} {Anna} {den} {inte.}\\
+ yesterday saw Anna it not\\
+\glt `Yesterday, Anna didn't see it.'\z
+
+
+
+\ea\label{ex:Scandinavian:15}
+         {\begin{forest}baseline
+             [FP [AdvP [igår]]
+               [F$'$ [F [såg]]
+                 [NP [Anna]]
+                 [PronWeak [den]]
+                 [Adv [inte]]]]
+           \end{forest}
+           }
+\z
+
+\subsection{Is Icelandic different?}
+
+While the clausal hierarchy of Mainland Scandinavian has been discussed within LFG, there has been no parallel discussion of Insular Scandinavian. All newer LFG work on Icelandic seems to assume a c-structure that has one functional category above VP, e.g. Sells (\citeyear[190--92]{sellssao}, \citeyear{Sells03,Sells05}), \citet{Booth17}, \citet{Booth18}. This analysis is also given for Old Norse in \citet[69]{Kristoffersen96}. Icelandic then has the same basic structure that is assumed for Mainland Scandinavian in the work discussed in \sectref{sec:Scandinavian:2.3} above (the name of the functional projection aside).
+
+ Only Sells (\citeyear[190--92]{sellssao}, \citeyear{Sells03,Sells05}) assumes that Icelandic is different from Mainland Scandinavian concerning its basic sentence structure. His motivation seems to be that Icelandic differs from Mainland Scandinavian in being a ``symmetric'' V2 language with embedded V2. Sells here follows ideas from \citet{Diesing90}, which cannot be discussed further in this context.
+
+\subsection{Expletives}
+\label{sec:Scandinavian:2.5}
+
+The Scandinavian languages have several constructions that involve expletives. However, Icelandic expletives are very different from those of Mainland Scandinavian. Expletives in Mainland Scandinavian have the c-structure properties of subjects, preceding or following the finite verb in main clauses. Examples \REF{ex:Scandinavian:16}--\REF{ex:Scandinavian:17} show expletives preceding and following the finite verb.
+
+
+
+\ea\label{ex:Scandinavian:16} Norwegian\\
+\gll
+ {Det} {ble} {danset} {til} {midnatt.}\\
+ \textsc{expl} became danced to midnight \\
+\glt `People danced until midnight.'\z
+
+
+\newpage
+\ea\label{ex:Scandinavian:17} Norwegian\\
+\gll
+ {Ble} {det} {danset} {til} {midnatt?}\\
+ became \textsc{expl} danced to midnight \\
+\glt `Did people dance until midnight?'\z
+
+\noindent Some Mainland Scandinavian varieties distinguish between expletive \textit{det} `it' and \textit{der} `there' in a way comparable to expletive \textit{it} and \textit{there} in English \citep{Larsson14}. This is the case in Danish and in some dialects of Swedish and Norwegian. Other varieties use only \textit{det} `it'.
+
+ Icelandic also has one expletive only, namely \textit{það} `it' (see \citealt{Booth18} for an LFG account of Icelandic expletives). This expletive can occur in the first position of the clause, but it cannot follow the finite verb. Examples are \REF{ex:Scandinavian:18}--\REF{ex:Scandinavian:19}.
+
+
+
+\ea\label{ex:Scandinavian:18} Icelandic \citep[310]{Thrainsson07}\\
+\gll
+ {það} {var} {dansað} {til} {miðnættis.}\\
+ \textsc{expl} was danced to midnight \\
+\glt `People danced until midnight.'\z
+
+
+\ea\label{ex:Scandinavian:19} Icelandic \citep[312]{Thrainsson07}\\
+\gll
+ {Var} {(*það)} {dansað} {til} {miðnættis}\textsc{?}\\
+ was (*\textsc{expl)} danced to midnight \\
+\glt `Did people dance until midnight?'\z
+
+\noindent The position following the finite verb should be considered the basic subject position in Scandinavian main clauses, in the sense that only this position is reserved for subjects. The fact that the Icelandic expletive cannot occur there motivates the common view -- inside and outside LFG -- that it is not a subject.
+
+ \citet{Sells05} gives a different analysis in which the expletive is treated as a subject. He shows that the Icelandic expletive is not limited to the first position of a main clause. It can occur in the first position in an embedded clause. Some speakers also allow it as a raised subject in the subject-to-object raising construction, as in \REF{ex:Scandinavian:20}.
+
+
+
+\ea\label{ex:Scandinavian:20} Icelandic \citep[481--2]{Thrainsson79}\\
+\gll
+ {Jón} {telur} {(það)} {vera} {mýs} {í} {baðker-inu.}\\
+ Jón believes \phantom{(}\textsc{expl} be mice in bathtub-\textsc{def} \\
+\glt `Jón believes there to be mice in the bathtub.'\z
+
+\newpage
+\noindent In Sells' analysis, the expletive is a subject without a \textsc{pred}. There can be another subject in the sentence, as in \REF{ex:Scandinavian:21}.
+
+
+
+\ea\label{ex:Scandinavian:21} Icelandic \citep[327]{Thrainsson07}\\
+\gll
+ {Það} {höfðu} {einhverjir} {stúdentar} {stolið} {smjör-inu.}\\
+ \textsc{expl} had some students stolen butter-\textsc{def} \\
+ \glt `Some students had stolen the butter.'\z
+
+\noindent Both the expletive and the logical subject then map to subject in f-structure, where the expletive is only reflected by a feature such as [\textsc{expl} +] (see also \sectref{sec:Scandinavian:3.4}).
+
+\subsection{Verbal particles}
+
+The Scandinavian languages differ as to the placement of verbal particles \citep{Lundquist14b}. Particles precede the object in Swedish, while they follow the object in Danish. Norwegian and Icelandic allow both word orders. Swedish and Danish examples are \REF{ex:Scandinavian:22} and \REF{ex:Scandinavian:23}.
+
+
+
+\ea\label{ex:Scandinavian:22} Swedish \citep[160]{Toivonen:NonProj}\\
+\gll
+ {Vi} {släppte} {ut} {hund-en.}\\
+ we let out dog-\textsc{def}\\
+\glt `We let the dog out.'\z
+
+
+
+\ea\label{ex:Scandinavian:23} Danish \citep[160]{Toivonen:NonProj}\\
+\gll
+ {Vi} {slap} {hund-en} {ud.}\\
+ we let dog-\textsc{def} out\\
+\glt `We let the dog out.'\z
+
+\noindent \citet{Toivonen:NonProj} discusses Swedish verbal particles. They precede the object, as mentioned. To be more exact, they follow the verb, and precede all other VP-internal constituents. Toivonen argues that these particles are non-projecting words in c-structure. They are adjoined to V, which explains the word order. The c-structure for \REF{ex:Scandinavian:22} is then as in \REF{ex:Scandinavian:24}, where the ``hat'' on P means that it is non-projecting \citep[21--22]{Toivonen:NonProj}. Note that the finite verb is in I in \REF{ex:Scandinavian:24}.
+
+
+
+\ea\label{ex:Scandinavian:24}
+         {\begin{forest}baseline
+             [IP [NP [vi]]
+               [I$'$ [I [släppte]]
+                 [VP [V [{\NONPROJ[100000]{P}}[ut]]]
+                   [NP [hunden]]]]]
+           \end{forest}
+           }
+\z
+
+\noindent It was mentioned above that the other Scandinavian languages are different with respect to the position of the particle. Toivonen proposes that Danish differs from Swedish in that words such as `out' have a different status in Danish. They are prepositions that project a PP, and PPs generally follow objects.
+
+ Norwegian and Icelandic would be more difficult to account for within Toivonen's proposal, since they allow particles to either precede or follow the object. The Norwegian situation is analysed in \citet{dyvikEtAl2019}. They consider particles a c-structure category, and particles can precede or follow the object. Particle verbs have lexical entries in which the verb and the particle are represented as one \textsc{pred}. For example, the particle verb \textit{skrive} \textit{opp} `write up' has the \textsc{pred} \REF{ex:Scandinavian:25}.
+
+
+
+ \ea\label{ex:Scandinavian:25}
+ \textsc{pred} `skrive*opp \arglist{(${\uparrow}$\textsc{subj}) (${\uparrow}$\textsc{obj})}'
+\z
+
+\noindent The presence of the relevant particle is secured by a requirement in the lexical entry of the particle verb. A constraining equation requires a feature contributed by the relevant particle. This equation is independent of the position of the particle in c-structure.
+
+\subsection{The structure of nominal phrases}
+
+Nominal phrases in modern Scandinavian have a rigid word order. Old Norse is very different, with free word order in nominal phrases.
+
+ \citet{Borjarsetal16} study the development of nominal phrases from Old Norse to Modern Faroese. They argue that the Old Norse nominal phrase is a non-configurational NP. There are no syntactic constraints on word order, but the first position is information structurally privileged. The rest of the phrase has a flat structure. They give the schematic c-structure tree \REF{ex:Scandinavian:26} \citep[e17]{Borjarsetal16}.
+
+
+
+ \ea\label{ex:Scandinavian:26}
+          {\begin{forest}baseline
+              [NP [XP]
+                [NOM [Dem]
+                  [N]
+                  [AP]
+                  [{NP[\textsc{gen}]}]]]
+            \end{forest}
+            }
+ \z
+
+\noindent In Modern Faroese -- as in the other modern Scandinavian languages -- the word order is no longer free. The first position in a referential nominal phrase contains an element that marks it as ±\textsc{definite}, such as an indefinite or definite article, a demonstrative, or a noun with the bound definiteness marker.
+
+ \citet{Borjarsetal16} argue that what has happened between Old Norse and Modern Faroese is that a category D has developed, which heads a DP. The c-structure tree for Modern Faroese \textit{ein} \textit{ungur} \textit{maður} `a young man' is then as in \REF{ex:Scandinavian:27} \citep[e25]{Borjarsetal16}.
+
+
+
+ \ea\label{ex:Scandinavian:27}
+          {\begin{forest}baseline
+              [DP [D$'$ [D [ein]]
+                  [NP [AP [ungur]]
+                    [N$'$ [N [maður]]]]]]
+              \end{forest}}
+ \z
+
+\noindent This is a change from a non-configurational to a configurational nominal phrase.
+
+\subsection{Non-projecting possessive pronouns}
+
+Standard Swedish and Danish have one position for possessive pronouns in the nominal phrase, preceding the noun and AP (if any). In other Scandinavian varieties, possessive pronouns in addition have the option of immediately following the noun. Examples are \REF{ex:Scandinavian:28}--\REF{ex:Scandinavian:29}.
+
+
+
+\ea\label{ex:Scandinavian:28} Norwegian\\
+\gll
+ {min} {ny-e} {bil}\\
+ my new-\textsc{def} car\\
+\glt `my new car'\z
+
+
+\ea\label{ex:Scandinavian:29} Norwegian\\
+\gll
+ {den} {ny-e} {bil-en} {min}\\
+ the new-\textsc{def} car-\textsc{def} my\\
+\glt `my new car'\z
+
+\noindent \citet{Lodrup11pp} gives a lexicalist analysis of postnominal possessive pronouns in Norwegian, where the main point is that they are non-projecting weak pronouns. They are adjoined to N in syntax, comparable to the weak object pronouns that are adjoined to I in Sells' analysis (see \sectref{sec:Scandinavian:2.2}). A noun preceding a possessive pronoun always has the definite form. The noun is either under N, as in \REF{ex:Scandinavian:29}, or in the higher head position D, as in \REF{ex:Scandinavian:30} (following \citealt{HM02}).
+
+
+
+\ea\label{ex:Scandinavian:30} Norwegian\\
+\gll
+ {bil-en} {min}\\
+ car-\textsc{def} my\\
+\glt `my car'\z
+
+\noindent The c-structure trees for \REF{ex:Scandinavian:29} and \REF{ex:Scandinavian:30} are given in \REF{ex:Scandinavian:31} and \REF{ex:Scandinavian:32}.
+
+
+
+\ea\label{ex:Scandinavian:31}
+         {\begin{forest}baseline
+             [DP [D [den]]
+               [NP [AP [nye]]
+                 [NP [N [N [bilen]]
+                     [PronWeak [min]]]]]]
+           \end{forest}
+           }
+\z
+
+
+
+\ea\label{ex:Scandinavian:32}
+         {\begin{forest}baseline
+             [DP [D [bilen]]
+               [NP [N [PronWeak [min]]]]]
+           \end{forest}
+           }
+\z
+
+\section{F-structure phenomena}
+
+\subsection{Oblique subjects in Icelandic}
+\label{sec:Scandinavian:3.1}
+
+The relation between morphological case and syntactic function is complicated in some languages. The situation in Icelandic has been the object of interesting discussion within different grammatical frameworks. Especially the fact that a number of verbs take an oblique (i.e. non-nominative) subject has been the topic of much attention. Some examples are \REF{ex:Scandinavian:33}--\REF{ex:Scandinavian:36}.
+
+
+
+\ea\label{ex:Scandinavian:33} Icelandic \citep[461]{Andrews82}\\
+\gll
+ {Bát-inn} {rak} {á} {land}\textsc{.}\\
+ boat-\textsc{def.acc} drifted to land.\textsc{acc}\\
+\glt `The boat drifted to shore.'\z
+
+
+\ea\label{ex:Scandinavian:34} Icelandic \citep[461]{Andrews82}\\
+\gll
+ {Dreng-ina} {vantar} {mat.}\\
+ boys-\textsc{def.acc} lack food.\textsc{acc}\\
+\glt `The boys lack food.'\z
+
+
+
+\ea\label{ex:Scandinavian:35} Icelandic \citep[462]{Andrews82}\\
+\gll
+ {Barn-inu} {batnaði} {veik-in.}\\
+ child-\textsc{def.dat} recovered.from disease-\textsc{def.nom.}\\
+\glt `The child recovered from the disease.'\z
+
+
+
+\newpage
+\ea\label{ex:Scandinavian:36} Icelandic \citep[100]{ZMT85:Case}\\
+\gll
+ {Henni} {hefur} {alltaf} {þótt} {Ólaf-ur} {leiðinleg-ur.}\\
+ she.\textsc{dat} has always thought Ólaf\textsc{{}-nom} boring\textsc{{}-nom}\\
+\glt `She has always found Ólaf boring.'\z
+
+\noindent The verbs that take an oblique subject are all non-agentive. There are some tendencies concerning the correlation between verb meaning and subject case, but the option of an oblique subject must be seen as idiosyncratic. Important groundwork on oblique subjects was carried out within the framework of LFG. The very first mention of the phenomenon was in \citet{Andrews76:VP}; an LFG analysis was later proposed in \citet{Andrews82}. His proposal is to treat an oblique subject in a way that resembles the treatment of a lexically selected preposition. There is an extra ``layer'' in their f-structure, in the sense that e.g. a dative subject is the value of the attribute \DAT, and this f-structure is the value of \textsc{subj}. Below is the simplified f-structure that \citet[472]{Andrews82} gives example \REF{ex:Scandinavian:35}.
+
+\eabox{\label{ex:Scandinavian:37}
+         {\avm[style=fstr]{[pred & `batna\arglist{subj~dat,obj}'\\
+               subj & [dat & [pred & `barn'\\
+                 case & dat\\
+                 def & +]]\\
+               obj & [pred & `veik'\\
+                 def & +]]
+             }}
+}
+
+\noindent One argument for this analysis is that an oblique subject doesn't trigger agreement the way a nominative subject does. Regular agreement is blocked by the extra layer. In sentences without a nominative argument, such as \REF{ex:Scandinavian:33}--\REF{ex:Scandinavian:34} above, the verb occurs in the default third person singular. In sentences with a nominative object, the object can agree with the verb. An example is \REF{ex:Scandinavian:38}, with a singular oblique subject and a plural nominative object that triggers agreement.
+
+
+
+\ea\label{ex:Scandinavian:38} Icelandic \citep[156]{Thrainsson07}\\
+\gll
+ {Mér} {hafa} {alltaf} {leiðst} {þessir} {kjölturakk-ar.} \\
+ me\textsc{.dat} have.\textsc{pl} always bored these poodle\textsc{{}-nom}.\textsc{pl}\\
+\glt `I have always found these poodles boring.'\z
+
+\noindent Another classic article on non-nominative subjects is \citet{ZMT85:Case}, who discuss case-preservation in passive sentences. Consider \REF{ex:Scandinavian:39}--\REF{ex:Scandinavian:40}.
+
+
+
+\ea\label{ex:Scandinavian:39} Icelandic \citep[96]{ZMT85:Case}\\
+\gll
+ {Ég} {hjálpaði} {honum.}\\
+ I helped him\textsc{.dat}\\
+\glt `I helped him.'\z
+
+
+
+\ea\label{ex:Scandinavian:40} Icelandic \citep[98]{ZMT85:Case}\\
+\gll
+ {Honum} {var} {hjálpað.}\\
+ him\textsc{.dat} was helped\\
+\glt `He was helped.'\z
+
+\noindent \citet{ZMT85:Case} show how various syntactic criteria for subjecthood give evidence for non-nominative subjects in passive sentences such as \REF{ex:Scandinavian:40}. They also compare Icelandic to German. German has superficially similar sentences, but \citet{ZMT85:Case} show that the non-nominative arguments in question do not show subject properties.
+
+ \citet{ZMT85:Case} assume that idiosyncratic case is assigned to arguments at the level of a-structure. One important reason for this assumption is that idiosyncratic case is preserved independently of the syntactic function that realizes the argument position. It is not affected by valency alternations such as passive or raising, as can be seen in \REF{ex:Scandinavian:40}.
+
+ The diachrony of oblique subjects in Icelandic is discussed in \citet{SBK15} and \citet{Booth17}.
+
+\subsection{Control and complementation in Icelandic}
+\label{sec:Scandinavian:3.2}
+
+Control and complementation have been important research topics in LFG since \citet{bresnan1982control-complementation}. These topics are intertwined in some ways. LFG distinguishes between two main types of control. One is anaphoric control of a PRO subject (an f-structure subject with a pronominal \textsc{pred}). The other is functional control, in which the subordinate subject is structure shared with the subject or the object of the governing verb. Functional control is restricted in several ways. It is limited to complements with the function \textsc{xcomp} and adjuncts with the function \textsc{xadj}. This means that if an infinitive can be shown to have a syntactic function other than \textsc{xcomp} or \textsc{xadj}, control must be anaphoric.
+
+ \citet{Andrews82} assumes that finite \textit{that}{}- and \textit{wh}{}-clauses in Icelandic have the external syntactic properties of nominal phrases, realizing nominal syntactic functions such as subject and object (following \citealt{Thrainsson79}). Andrews argues that this is also true of infinitival clauses with the infinitival marker \textit{að}. This analysis gives a prediction about how the subject of these infinitival clauses is controlled. Because they are subjects or objects, there must be anaphoric control of a PRO subject.
+
+ An interesting question is what case a PRO subject can have. Icelandic verbs can take oblique subjects, as was discussed in \sectref{sec:Scandinavian:3.1}. One should expect, then, that PRO can be oblique when required by the infinitival verb. This expectation is true, as can be seen from example \REF{ex:Scandinavian:41}.
+
+
+
+\ea\label{ex:Scandinavian:41} Icelandic \citep[474]{Andrews82}\\
+\gll
+ {Ég} {vonast} {til} {að} {vanta} {ekki} {ein-an} {í} {tím-anum.}\\
+ I.\textsc{nom} hope toward to lack not alone-\textsc{acc} in class-\textsc{def}\\
+\glt `I hope not to be the only one missing from class.'\z
+
+\noindent The main verb \textit{vonast} `hope' takes a regular nominative subject, while the infinitive \textit{vanta} `lack' requires an accusative subject. In \REF{ex:Scandinavian:41}, the case of PRO can be seen from the case on \textit{einan} `alone.\textsc{acc}{}', which is an \textsc{xadj} that agrees with the subject. If control were functional in \REF{ex:Scandinavian:41}, the accusative subject of \textit{vanta} would have to structure share with the nominative subject of \textit{vonast} `hope'. This would be impossible, however, because structure sharing shares all grammatical properties, and the values for CASE would be incompatible.
+
+\subsection{Control and complementation in Mainland Scandinavian}
+
+The function and control of complement clauses have also been discussed for Mainland Scandinavian. \citet{DL00} proposed that a finite complement is an object if it shares external syntactic properties with nominal objects, and a \textsc{comp} if it doesn't. (See \citealt{AMM05} for criticism.)
+
+\hspace*{-3pt} Icelandic is a language with finite complements that are objects (see \sectref{sec:Scandinavian:3.2}). Examples of languages that have both types of finite complements are English and Swedish \citep{DL00}. Norwegian also shows this split, even if object complements represent the dominant option \citep{Lodrup04}. For example, Norwegian \textit{bevise} `prove' takes a complement that alternates with a nominal phrase, and corresponds to a subject in the passive. Its complement is then assumed to be an object. The verb \textit{anse} `consider', on the other hand, takes a complement that lacks these properties, and it is therefore assumed to be a \textsc{comp}. Examples \REF{ex:Scandinavian:42}--\REF{ex:Scandinavian:45} show the differences.
+
+
+
+\ea\label{ex:Scandinavian:42} Norwegian \citep[65]{Lodrup04}\\
+\gll
+ {Han} {har} {endelig} {bevist} {[at} {jord-en} {er} {rund]} {/} {dette}\\
+ he has finally proved \phantom{[}that earth\textsc{{}-def} is round / this\\
+\glt `He has finally proved that the earth is round / this.'
+\z
+
+
+\ea\label{ex:Scandinavian:43} Norwegian \citep[65]{Lodrup04}\\
+\gll
+ {[At} {jord-en} {er} {rund]} {er} {endelig} {blitt} {bevist.}\\
+ \phantom{[}that earth\textsc{{}-def} is round is finally become proved\\
+\glt `That the earth is round has finally been proved.'\z
+
+
+
+\ea\label{ex:Scandinavian:44} Norwegian\\
+\gll
+ {Komitee-en} {anser} {[at} {fordel-ene} {oppveier} {ulemp-ene]} {/} {*dette} \\
+ committee\textsc{{}-def} considers \phantom{[}that advantage\textsc{{}-pl.def} compensate disadvantage\textsc{{}-pl.def} / this\\
+\glt `The committee considers that the advantages compensate for the disadvantages / this.'\z
+
+
+
+\ea\label{ex:Scandinavian:45} Norwegian\\
+\gll
+ {*[At} {fordel-ene} {oppveier} {ulemp-ene]} {blir} {ansett.}\\
+ \phantom{*[}that advantage\textsc{{}-pl.def} compensate disadvantage\textsc{{}-pl.def} becomes considered\\
+ \glt
+ \z
+
+\noindent \citet{Lodrup04} shows that infinitival complements in Norwegian also show this split, with object complements as the dominant option. For example, the infinitival complement of \textit{akseptere} `accept' alternates with a nominal object, as shown in \REF{ex:Scandinavian:46}, and it corresponds to a subject in the passive, as shown in \REF{ex:Scandinavian:47}.
+
+
+
+\ea\label{ex:Scandinavian:46} Norwegian (\citealt[70]{Lodrup04}, modified)\\
+\gll
+ {De} {har} {akseptert} {[å} {betale} {høyere} {skatt]} {/} {dette} \\
+ they have accepted \phantom{[}to pay higher tax / this\\
+\glt `They have accepted to pay higher taxes / this.'\z
+
+
+
+\ea\label{ex:Scandinavian:47} Norwegian \citep[71]{Lodrup04}\\
+\gll
+ {[Å} {betale} {høyere} {skatt]} {er} {blitt} {akseptert}\textsc{.}\\
+ \phantom{[}to pay higher tax is become accepted \\
+\glt `To pay higher taxes has been accepted.'\z
+
+\noindent As for Icelandic (see \sectref{sec:Scandinavian:3.2}), the object analysis implies that the infinitival complements have a PRO subject, and not functional control with structure sharing. In the active \REF{ex:Scandinavian:46}, the controller of the infinitival subject is the subject of \textit{akseptere} `accept'. In the passive \REF{ex:Scandinavian:47}, on the other hand, the infinitive has no controller. This situation rules out functional control, because there is nothing that the subject of the infinitive can structure share with. PRO, on the other hand, can do without a controller, so the infinitive must be assumed to have a PRO subject. A corresponding analysis of the Danish verb \textit{forsøge} `try' is given in \citet{orsnes2006}.
+
+\subsection{Subject vs object in presentational sentences}
+\label{sec:Scandinavian:3.4}
+
+All the Scandinavian languages have what could be called a presentational construction, in which a verb takes an expletive and a so-called logical subject. Examples are \REF{ex:Scandinavian:48} and \REF{ex:Scandinavian:49}.
+
+
+
+\ea\label{ex:Scandinavian:48} Norwegian\\
+\gll
+ {Det} {kom} {fire} {studenter} {på} {forelesning-en} {i} {går.}\\
+ \textsc{expl} came four students on class-\textsc{def} in yesterday \\
+\glt `Four students came to class yesterday.'\z
+
+
+
+\ea\label{ex:Scandinavian:49} Icelandic \citep[310]{Thrainsson07}\\
+\gll
+ {\MakeUppercase{þ}}{að} {kom-u} {fjór-ir} {nemend-ur} {í} {tím-ann} {í} {gær.}\\
+ \textsc{expl} came-\textsc{3plur} four-\textsc{nom} students-\textsc{nom.pl} in class-\textsc{def} in yesterday \\
+\glt `Four students came to class yesterday.'\z
+
+\noindent The grammatical properties of the presentational construction are rather different in Mainland Scandinavian and Icelandic, and there is some discussion concerning its analysis.
+
+ For the Icelandic construction, there seems to be agreement that the logical subject is a grammatical subject. As mentioned in \sectref{sec:Scandinavian:2.5}, Icelandic expletives are usually assumed not to be subjects. They can occur in first position, but not in the subject position following the finite verb, as shown in \REF{ex:Scandinavian:50}.
+
+
+
+\ea\label{ex:Scandinavian:50} Icelandic \citep[313]{Thrainsson07}\\
+\gll
+ Kom-u {(*\MakeUppercase{þ}}{að)} {fjór-ir} {nemend-ur} {í} {tím-ann} {í} {gær?}\\
+ came-\textsc{3plur} (\textsc{expl)} four-\textsc{nom} student-\textsc{nom.pl} in class-\textsc{def} in yesterday \\
+\glt `Did four students come to class yesterday?'\z
+
+\noindent However, \citet{Sells05} assumes that the expletive and the logical subject both map to subject in f-structure. The expletive has no \textsc{pred}, and no other features that cannot unify with those of the logical subject. Its only reflex in f-structure is then a feature such as [\textsc{expl} +].
+
+\hspace*{-3.8pt}The Mainland Scandinavian presentational construction is rather different from the Icelandic one. The expletive can occur in all subject positions in c-structure, including the position following the finite verb, as shown in \REF{ex:Scandinavian:51}.
+
+
+
+\ea\label{ex:Scandinavian:51} Norwegian\\
+\gll
+ {Kom} {det} {fire} {studenter} {på} {forelesning-en} {i} {går?}\\
+ came \textsc{expl} four students on class-\textsc{def} in yesterday \\
+\glt `Did four students come to class yesterday?'\z
+
+\noindent The logical subject has the same c-structure position as a regular object. The grammatical status of the logical subject has been discussed several times, both inside and outside LFG. \citet{Lodrup99c,Lodrup20}  argues that it is an object in f-structure, following \citet{Askedal82}, \citet{Platzack83} and others. This view has been criticized by \citet{BV05}, \citet{ZEM17}, and \citet{HB20}. \citet{BV05} propose the same kind of analysis for Swedish that \citet{Sells05} gives for Icelandic: both the expletive and the logical subject correspond to the subject in f-structure. \citet{ZEM17} are more agnostic concerning the correct analysis.
+
+ Arguments have been given for both subject and object analyses of the logical subject. The presentational construction is not possible with a syntactically realized object role in Mainland Scandinavian, as shown in \REF{ex:Scandinavian:52}.
+
+
+
+\ea\label{ex:Scandinavian:52} Norwegian\\
+\gll
+ {Det} {spiser} {mange} {studenter} {(*pølser)} {i} {denne} {kafe-en.}\\
+ \textsc{expl} eats many students (sausages) in this cafeteria-\textsc{def}\\
+\glt `Many students eat (sausages) in this cafeteria.'\z
+
+\noindent This gives an argument for the object analysis, which assumes that the direct object function (LFG's \textsc{obj}) is taken by the logical subject. Icelandic, on the other hand, allows transitive verbs, see example \REF{ex:Scandinavian:21} above.
+
+ Another argument for the object analysis is given by subject-to-object raising. Consider \REF{ex:Scandinavian:53}.
+
+
+
+\ea\label{ex:Scandinavian:53} Swedish \citep[268]{ZEM17}\\
+\gll
+ {Johan} {anser} {det} {ha} {varit} {för} {många} {hästar} {på} {kyrkogård-en}\textsc{.}\\
+ Johan considers \textsc{expl} have been too many horses in churchyard-\textsc{def}\\
+\glt `Johan considers there to have been too many horses in the churchyard.'\z
+
+\noindent Subject-to-object raising leaves the logical subject in the embedded object position, as shown by \REF{ex:Scandinavian:53}. It is the expletive that raises. This gives an argument that the expletive must be the f-structure subject of `to have been'.
+
+ Reflexive binding has been used as argument that the logical subject is a grammatical subject. The logical subject not only allows, but seems to require a co-referring proform to be reflexive. An example is \REF{ex:Scandinavian:54}, in which the reflexive possessive \textit{sin} is acceptable, while the non-reflexive \textit{hans} is not.
+
+
+
+\ea\label{ex:Scandinavian:54} Swedish \citep{BV05}\\
+\gll
+ {Det} {kom} {en} {man} {med} {sin} {/} {*hans} {fru}\textsc{.}\\
+ \textsc{expl} came a man with \textsc{refl.poss} \textsc{/} his wife\\
+\glt `There came a man with his (own) wife.'\z
+
+\noindent The arguments that have been given for the competing analyses of presentational sentences are discussed by \citet{Lodrup20} who concludes that there are no acceptable arguments for the subject analysis.
+
+\subsection{Auxiliaries -- verbs or functional heads?}
+
+The analysis of auxiliary verbs has often been discussed, both outside and inside LFG. In early LFG, they were treated as raising verbs \citep{Falk84}. In newer LFG, the tendency has been to see them as functional heads without a \textsc{pred}. With this analysis, they only contribute grammatical features \citep{butt-etal2004,FrankZaenen2004}. The f-structures \REF{ex:Scandinavian:56} and \REF{ex:Scandinavian:57} show the different analyses of example \REF{ex:Scandinavian:55}, with an auxiliary that expresses future tense.
+
+
+
+\ea\label{ex:Scandinavian:55} Norwegian\\
+\gll
+ {Jeg} {skal} {komme.}\\
+ I shall come \\
+\glt `I will come.'
+ \z
+
+ \eabox{\label{ex:Scandinavian:56}
+          {\avm[style=fstr]{[pred & `skulle\arglist{xcomp}subj'\\
+                subj & \rnode{s1}{[pred & `pro'\\
+                  pers & 1\\
+                  numb & sg\\
+                  case & nom]}\smallskip\\
+                  xcomp & [pred & `komme\arglist{subj}'\\
+                    subj & \rnode{s2}{~}\\
+                    form & infinitive]\\
+                  tense & future]}}
+          \ncangles[angle=0,armA={2},linearc=.15,nodesep=-2pt,linewidth=.5pt]{s1}{s2}
+ }
+
+
+
+ \eabox{\label{ex:Scandinavian:57}
+ {\avm[style=fstr]{[pred & `komme\arglist{subj}'\\
+                subj & [pred & `pro'\\
+                  pers & 1\\
+                  numb & sg\\
+                  case & nom]\\
+                  tense & future]}}
+ }
+
+\noindent The analysis of auxiliaries raises several difficult questions, and it is not clear that all verbs that are traditionally called auxiliaries should get the same analysis \citep{Falk08}. \citet{dyvik99} discusses Norwegian modals, and criticizes the functional head analysis. His point of departure is the status of f-structure as a grammatical level of representation. He rejects the idea that semantics gives an argument for parallel f-structure representations of morphological and periphrastic expression of, for example, the future.
+
+ If one accepts the functional head analysis, there are phenomena that must be accounted for in a different way than in traditional LFG. For example, an auxiliary restricts the form of its dependent verb. When the auxiliary selects an \textsc{xcomp}, it can restrict the form of the verb heading the \textsc{xcomp} with the equation (${\uparrow}$\textsc{xcomp} \textsc{form}) = \textsc{infinitive}. To account for this kind of phenomena with the functional head analysis, \citet{butt-etal2004} propose a separate morphological projection, m-structure, (see also \citealt{FrankZaenen2004}). However, \citet{WO03} argue that a simpler description is possible, using the so-called restriction operator. They also use the restriction operator in their account of VP-topicalization \citep{WO04}.
+
+\subsection{ ``\textit{do}{}-support'' in Scandinavian}
+
+The Scandinavian languages differ from English in not having \textit{do}{}-support in interrogative and negative sentences. There is, however, a kind of \textit{do}{}-support that is used in three contexts: When the main verb VP is topicalized, as in \REF{ex:Scandinavian:58}, elided, as in \REF{ex:Scandinavian:59}, or pronominalized as in \REF{ex:Scandinavian:60}. The support verb in these examples is the present form of (Danish) \textit{gøre} `do\textsc{{}'}.
+
+
+
+\ea\label{ex:Scandinavian:58} Danish \citep[410]{Oersnes11}\\
+\gll
+ {Venter} {gør} {han} {ikke}\textsc{.}\\
+ waits does he not\\
+\glt `He doesn’t wait.'\z
+
+
+
+\ea\label{ex:Scandinavian:59} Danish \citep[410]{Oersnes11}\\
+\gll
+ {Han} {venter.} {Nej,} {han} {gør} {ej}\textsc{.}\\
+ he waits no he does not \\
+\glt `He’ll wait. No he won’t.'\z
+
+
+
+\ea\label{ex:Scandinavian:60} Danish \citep[410]{Oersnes11}\\
+\gll
+ {Han} {venter.} {Nej,} {det} {gør} {han} {ikke}\textsc{.}\\
+ he waits no that does he not \\
+\glt `He is waiting. No he is not.'\z
+
+\noindent A VP is pronominalized with the pronoun \textit{det} `it/that' \citep{Lodrup94}. This construction often corresponds to VP ellipsis in English, which is a rather restricted option in Scandinavian.
+
+\citet{Oersnes11}  discusses the use of the non-finite form of the support verb. A non-finite support verb is optional when a VP or a VP anaphor is topicalized. An example of the former is \REF{ex:Scandinavian:61}.
+
+
+
+\ea\label{ex:Scandinavian:61} Danish \citep[420]{Oersnes11}\\
+\gll
+ {Hørt} {efter} {har} {han} {aldrig} {(gjort)}\textsc{.}\\
+ listened \textsc{particle} has he never done \\
+\glt `Listen! he never did that.'\z
+
+\noindent \citet{Oersnes11}  shows that the non-finite support verb in Danish can be obligatory with a post-verbal VP anaphor in some cases, as in \REF{ex:Scandinavian:62} (see also \citealt{Oersnes13}).
+
+
+
+\ea\label{ex:Scandinavian:62} Danish \citep[419]{Oersnes11}\\
+\gll
+ {Peter} {plejer} {aldrig} {??/*(at} {gøre)} {det}\textsc{.}\\
+ Peter used never \phantom{??/*(}to do that \\
+\glt `Peter never used to do that.'\z
+
+\noindent The support verb is considered an auxiliary in \citet{Lodrup90,Lodrup94}. \citet{Oersnes11}  argues against auxiliary status. A difference from regular auxiliaries is that the support verb cannot take a verbal complement in its complement position. Another difference is that it does not impose restrictions on the shape of its complement. This can be seen in examples \REF{ex:Scandinavian:58} and \REF{ex:Scandinavian:61} above; a topicalized VP can have its head in the infinitive or in the same form as the support verb (with some variation within Scandinavia). \citet{Oersnes11} sees the support verb as a main verb -- a subject-to-subject-raising verb that takes an object complement.
+
+\subsection{Varieties of raising and control}
+
+Raising and control have been importent research topics within LFG. They are related phenomena, and the border between them can be thin (see e.g. \citealt{Lodrup08}). This section will illustrate how raising can be more constrained in Scandinavian as compared to English, and show how the analysis of raising and control has  been applied to other constructions in Scandinavian. Note that the discussion of passives in \sectref{sec:Scandinavian:3.8} also covers two constructions that have been given a raising analysis: pseudopassives and complex passives.
+
+\subsubsection{Raising to object with \textit{believe} type verbs}
+
+Norwegian is traditionally assumed not to have raising to object with \textit{believe} type verbs (sometimes called the ECM construction). \citet{Lodrup08b}  shows that even if sentences such as \REF{ex:Scandinavian:63} are possible, sentences such as \REF{ex:Scandinavian:64} are not.
+
+
+
+\ea\label{ex:Scandinavian:63} Norwegian\\
+\gll
+ {Dette} {antar} {jeg} {å} {være} {en} {menneskelig} {forsvarsmekanisme}\textsc{.}\\
+ this assume I to be a human defense.mechanism \\
+\glt `This I assume to be a human defense mechanism.'\z
+
+
+
+\ea\label{ex:Scandinavian:64} Norwegian\\
+\gll
+ *{Jeg} {antar} {dette} {å} {være} {en} {menneskelig} {forsvarsmekanisme}\textsc{.}\\
+ ~~I assume this to be a human defense.mechanism \\
+\glt `I assume this to be a human defense mechanism.' [intended]\z
+
+\noindent The relevant difference between \REF{ex:Scandinavian:63} and \REF{ex:Scandinavian:64} is that the raised object is in the canonical object position in \REF{ex:Scandinavian:64}, and in SpecCP in \REF{ex:Scandinavian:63}. Norwegian requires that the raised object be in a topic or focus position. This constraint was called the Derived Object Constraint in \citet{Postal74} (see also \citealt{Kayne81}). In \citet{Lodrup08b} the relevant verbs are equipped with a constraint in the lexicon which says that the raised object is realized as a discourse function.
+
+ Danish and Swedish are not exactly like Norwegian concerning raising to object with \textit{believe} type verbs. In Danish, it seems to be rather marginal \citep[26]{Brandt95}. In Swedish, on the other hand, this kind of raising seems to be somewhat less restricted, at least in writing \citep[576--78]{SAG3}.
+
+ Passive raising sentences with \textit{believe} type verbs, such as \REF{ex:Scandinavian:65}, are not affected by the Derived Object Constraint.
+
+
+
+\ea\label{ex:Scandinavian:65} Swedish \citep[583]{Ramhoj16}\\
+\gll
+ {Hon} {säg-s} {vara} {en} {utpräglad} {målskytt.} \\
+ she says-\textsc{pass} be a specialized goal-scorer \\
+\glt `She is said to be a specialized goal scorer.'\z
+
+\noindent However, these passive sentences also raise some questions.
+
+ First, there is a restriction on the realization of the passive. Mainland Scandinavian has two ways of realizing the passive -- with a suffix or with an auxiliary and a participle. Passive raising sentences with \textit{believe} type verbs differ from other passives in being reluctant to take the periphrastic passive, cf. \REF{ex:Scandinavian:66}.
+
+
+
+\ea\label{ex:Scandinavian:66} Swedish \citep[583]{Ramhoj16}\\
+\gll
+ {*Hon} {blir} {sagd} {vara} {en} {utpräglad} {målskytt.} \\
+ ~~she becomes said be a specialized goal-scorer \\
+\glt `She is said to be a specialized goal scorer.'\z
+
+Second, there are passive \textit{believe} type raising sentences that do not correspond to actives, in the sense that there is no acceptable equivalent active with the passive subject as an object. An example is \REF{ex:Scandinavian:65} above. These properties could be taken to indicate that the relevant sentences should not be seen as passives of raising sentences with \textit{believe} type verbs. However, \citet{Ramhoj16} argues that they should.
+
+\subsubsection{Copy raising}
+
+\citet{AshT:12} discuss so-called copy raising in Swedish and English. An example is \REF{ex:Scandinavian:67}.
+
+
+
+\ea\label{ex:Scandinavian:67} Swedish \citep[323]{AshT:12}\\
+\gll
+ {Tina} {verkar} {som} {om} {hon} {har} {hittat} {choklad-en.}\\
+ Tina seems as if she has found chocolate-\textsc{def}\\
+\glt `Tina seems as if she has found the chocolate.'\z
+
+\noindent Copy-raising differs from regular subject to subject raising in that there is a finite complement clause with a pronominal representation of the raised subject. In the analysis of \citet{AshT:12}, the \textit{som} \textit{om} `as if' complement is an \textsc{xcomp} whose subject is raised. This raised subject anaphorically binds the copy pronoun in the complement.
+
+\subsubsection{Pseudocoordination as control}
+
+A favorite topic in both traditional and modern Scandinavian grammar is so-called pseudocoordination (see e.g. \citealt{Lodrup19} and references there). An example is \REF{ex:Scandinavian:68}.
+
+
+
+\ea\label{ex:Scandinavian:68} Norwegian\\
+\gll
+ {Da} {satt} {han} {og} {arbeidet}\textsc{.}\\
+ then sat he and worked \\
+\glt `Then he sat working.'\z
+
+\noindent A pseudocoordination contains two verbs with the same inflectional form, and the conjunction \textit{og} `and' between them. The first verb is often a posture verb, as in \REF{ex:Scandinavian:68}, but some verbs of other types are also possible. A pseudocoordination has grammatical properties that distinguish it from a coordination of two verbs or verb phrases \citep{Lodrup19}. Two important properties are the following:
+
+The two verbs cannot occur together in the V2 position in a sentence such as \REF{ex:Scandinavian:69}.
+
+\ea\label{ex:Scandinavian:69} Norwegian\\
+\gll
+ {*Da} {satt} {og} {arbeidet} {han.}\\
+ ~~then sat and worked he\\
+\glt `Then he sat working.' [intended]\z
+
+\noindent The first verb in a pseudocoordination allows the presentational construction without involving the second verb, cf. \REF{ex:Scandinavian:70}.
+
+
+
+\ea\label{ex:Scandinavian:70} Norwegian \citep[92]{Lodrup19}\\
+\gll
+ {Nå} {sitter} {det} {en} {mann} {her} {og} {skriver} {om} {en} {ny} {type} {maskin.}\\
+ now sits \textsc{expl} a man here and writes about a new type machine \\
+\glt `A man is sitting here now, writing about a new type of machine.' \z
+
+\noindent \citet{Lodrup02} discusses the analysis of pseudocoordination, and argues that most pseudocoordinations are complement constructions with functional control of the complement headed by the second verb. In \citet{Lodrup17} this analysis is revised, with anaphoric instead of functional control. When the second verb heads a verbal complement, the properties illustrated in \REF{ex:Scandinavian:69} and \REF{ex:Scandinavian:70} above follow. In true coordination two verbs can occur in the V2 position, but in pseudocoordination, the first verb cannot `bring with it' the second verb since it is the head of its complement. In \REF{ex:Scandinavian:70}, the object \textit{en} \textit{mann} `a man' can be understood as the subject of the second verb because it is the controller of its PRO subject.\footnote{The observant reader will notice that the author here takes sides in the discussion of the analysis of the presentational  construction, calling the controller an object (see \sectref{sec:Scandinavian:3.4}).} With true coordination, a presentational construction involving the first verb only is not possible. The reason is that a preceding object cannot be understood as a subject of a second coordinated VP -- only a preceding subject can.
+
+\subsubsection{The preposition \textit{med} `with' as a control predicate}
+
+The preposition \textit{med} `with' (and to some extent \textit{uten} `without') has interesting control properties. \citet{Lodrup99b} showed that it must be assumed to select a subject in one of its uses. His argument was based upon example \REF{ex:Scandinavian:71}, which requires a subject in the complement of \textit{med} to bind the reflexive.
+
+
+
+\ea\label{ex:Scandinavian:71} Norwegian \citep[376]{Lodrup99b}\\
+\gll
+ {En} {dame} {med} {en} {hund} {foran} {seg} {kom} {løpende.}\\
+ a lady with a dog in.front.of \textsc{refl} came running\\
+\glt `A lady with a dog in front of her came running.'\z
+
+\noindent The preposition \textit{med} `with' in \REF{ex:Scandinavian:71} takes a subject, a non-thematic object and an \textsc{xcomp}. \citet{Haug09} argues that \textit{med} can take a subject also when there is no \textsc{xcomp}. The argument is again based upon binding. Haug gives example \REF{ex:Scandinavian:72}, in which the object `car' must be interpreted as the possessor of the prepositional object `tank'.
+
+
+
+\ea\label{ex:Scandinavian:72} Norwegian \citep[343]{Haug09}\\
+\gll
+ {Han} {leverte} {bil-en} {med} {full} {tank.}\\
+ he returned car-\textsc{def} with full tank\\
+\glt `He returned the car with the tank full.'\z
+
+\noindent In Norwegian, this kind of null possessor is generally bound in the same way as a simple reflexive (\citealt{Lodrup99b,Lodrup10}, see also \sectref{sec:Scandinavian:3.11}). This means that it cannot be bound by an object \citep[95]{Lodrup10}, so it is necessary to assume that \textit{med} takes a subject.
+
+ The subject of \textit{med} is always an anaphorically bound PRO. The controller is often an argument of the matrix verb, but other controllers are also possible -- even a participant implied by a verbal noun, as in example \REF{ex:Scandinavian:73}.
+
+
+
+\ea\label{ex:Scandinavian:73} Norwegian \citep[340]{Haug09}\\
+\gll
+ {Fødsel-en} {foregår} {med} {ski} {på} {bein-a.}\\
+ birth-\textsc{def} takes.place with skis on legs-\textsc{def}\\
+\glt `The birth takes place with (the mother or the baby) wearing skis.'\z
+
+\noindent \citet{Haug09} gives a semantic account of \textit{med} using Glue semantics.
+
+\subsubsection{``Backward'' possessor raising}
+\label{sec:Scandinavian:3.7.5}
+
+\citet{Lodrup09,Lodrup18}  discusses Norwegian sentences such as \REF{ex:Scandinavian:74}, with a body part noun and a possessor with the preposition \textit{på} `on'. This construction corresponds to the dative external possessor construction, which is found in e.g. French and German, cf. \REF{ex:Scandinavian:75}.
+
+
+\ea\label{ex:Scandinavian:74} Norwegian\\
+\gll
+ {Jeg} {brekker} {arm-en} {på} {ham.}\\
+ I break arm-\textsc{def} on him\\
+\glt `I break his arm.'\z
+
+
+
+\ea\label{ex:Scandinavian:75} French\\
+\gll
+ {Je} {lui} {casse} {le} {bras.}\\
+ I him.\textsc{dat} break \textsc{def} arm\\
+\glt `I break his arm.'\z
+
+\noindent In the French and German dative external possessor construction, the external possessor is understood to be affected by the verbal action. The external possessor is not included in the verb's basic valency, however. This means that the dative external possessor realizes an ``extra'' thematic role that must be added by a lexical rule.
+
+ The dative external possessor construction is often seen as possessor raising -- the dative \textsc{obj}\textsubscript{${\theta}$} is structure shared with the possessor function in the body part noun phrase. Alternatively, the relation between the possessor and the body part noun could be seen as binding, see e.g. \citet{Deal17}.
+
+ Old Norse had the dative external possessor construction. In Modern Norwegian, there is no dative case, and the possessor is expressed as a PP. This construction is rather similar to the dative external possessor construction, but there is one important difference: The PP can be a part of the body part noun phrase, due to reanalysis \citep{Lodrup09,Lodrup18}. Example \REF{ex:Scandinavian:74} can have `the arm on him' as one or two constituents.
+
+ The two constituent construction can be analyzed in the same way as the dative external possessor construction, when the PP is considered an \textsc{obj}\textsubscript{${\theta}$}. The one constituent construction is more challenging. \citet{Lodrup18} proposes that the noun phrase-internal possessor should be considered a so-called prominent internal possessor (see e.g. \citealt{Ritchie17}). The possessor is structure shared with the verb's \textsc{obj}\textsubscript{${\theta}$} function. This could be considered a case of ``backward'' possessor raising. It could be compared to cases of raising and control in which a shared subject is realized in the lower subject position \citep{polipots06}, schematically as in \REF{ex:Scandinavian:76}.
+
+
+
+ \ea\label{ex:Scandinavian:76}
+ tried [John to leave]
+\z
+
+\noindent The structure sharing equation on the main verb accounts for both forward and backward raising. The lexical entry of the verb in example \REF{ex:Scandinavian:74} is given in \REF{ex:Scandinavian:77}.
+
+
+
+\ea\label{ex:Scandinavian:77}
+`break <(${\uparrow}$\textsc{subj}) (${\uparrow}$\textsc{obj}\textsubscript{affected}) (${\uparrow}$\textsc{obj})>'\\
+(${\uparrow}$\textsc{obj}\textsubscript{affected}) = (${\uparrow}$\textsc{gf} \textsc{poss}), where \textsc{gf} is a local function
+\z
+
+\subsubsection{Possessor raising with unergatives}
+
+A different type of possessor raising with body part nouns can be found with transitive and unaccusative verbs in many languages. An example is \REF{ex:Scandinavian:78}.
+
+
+\newpage
+\ea\label{ex:Scandinavian:78} Norwegian \citep[562]{Lodrup19b}\\
+\gll
+ {Hun} {vasket} {baby-en} {i} {ansikt-et.}\\
+ she washed baby-\textsc{def} in face-\textsc{def}\\
+\glt `She washed the baby's face.'\z
+
+\noindent The possessor is raised from the prepositional object, and realized as an \textsc{obj} with transitive verbs, or as a subject with unaccusatives. This kind of possessor raising can also be seen as structure sharing -- the \textsc{obj} is structure shared with the possessor function in the prepositional object. (As mentioned in \sectref{sec:Scandinavian:3.7.5}, the relation between an external possessor and a body part noun could alternatively be seen as binding. See e.g. \citealt{Deal17}.)
+
+\citet{Lodrup99,Lodrup19b} shows that sentences seemingly similar to \REF{ex:Scandinavian:78} also occur with unergative verbs in Norwegian. An example is \REF{ex:Scandinavian:79}.
+
+
+
+\ea\label{ex:Scandinavian:79} Norwegian \citep[563]{Lodrup19b}\\
+\gll
+ {Hun} {spyttet} {ham} {i} {ansikt-et.}\\
+ she spat him in face-\textsc{def}\\
+\glt `She spat in his face.' \z
+
+\noindent This option is completely productive. The only restriction is the same for transitive and unergative verbs: they must denote some form of physical contact. \citet{Lodrup19b} sees the raised argument with unergatives as a thematic object. It realizes the same role as the PP with \textit{på} `on' in sentences such as \REF{ex:Scandinavian:74} above. Example \REF{ex:Scandinavian:79} can alternatively take this PP, cf. \REF{ex:Scandinavian:80}.
+
+
+
+\ea\label{ex:Scandinavian:80} Norwegian \citep[563]{Lodrup19b}\\
+\gll
+ {Hun} {spyttet} {i} {ansikt-et} {på} {ham.}\\
+ she spat in face-\textsc{def} on him\\
+\glt `She spat in his face.' \z
+
+\largerpage[-2]
+\noindent However, the raised argument shows the syntactic properties of an \textsc{obj}, and not of an \textsc{obj}\textsubscript{${\theta}$} in sentences such as \REF{ex:Scandinavian:79} \citep{Lodrup19b}. We see, then, that the affected role can be realized as either an \textsc{obj}\textsubscript{${\theta}$} PP or an \textsc{obj} DP/NP with unergatives. The \textsc{obj} option follows from the syntactic features assigned to arguments by Lexical Mapping Theory. The affected role will usually be treated as a secondary patientlike role by Lexical Mapping Theory. It then gets the syntactic feature [$+o$], and is realized as an \textsc{obj}\textsubscript{${\theta}$}. However, with an unergative verb, the affected role can alternatively be treated as a regular patientlike role. It then gets the syntactic feature [$-r$], and is realized as a direct object. This option does not exist with unaccusatives or transitives. The reason is that their subject is [$-r$], and a verb can only take one [$-r$] argument in Norwegian, as in many other languages \citep{BresMosh90}.
+
+\subsection{Varieties of the passive}
+\label{sec:Scandinavian:3.8}
+
+The passive has been a favorite topic in lexicalist frameworks. Scandinavian has a rich and interesting variety of passives. Mainland Scandinavian has two ways of realizing the passive: a periphrastic passive with an auxiliary and a participle, or a morphological passive with a suffix (see e.g. \citealt{Engdahl06}). Icelandic only has periphrastic passives \citep[10--11]{Thrainsson07}. Icelandic passives with oblique subjects were mentioned in \sectref{sec:Scandinavian:3.1}.
+
+\subsubsection{Different passives of ditransitives}
+
+Norwegian, Swedish and to a lesser extent Danish allow both internal arguments of a ditransitive verb to be realized as the passive subject, as shown in \REF{ex:Scandinavian:81}--\REF{ex:Scandinavian:83}.
+
+
+
+\ea\label{ex:Scandinavian:81} Norwegian\\
+\gll
+ {De} {overrakte} {ham} {medalj-en.}\\
+ they presented him medal-\textsc{def}\\
+\glt `They presented him with the medal.' \z
+
+
+
+\ea\label{ex:Scandinavian:82} Norwegian\\
+\gll
+ {Han} {ble} {overrakt} {medalj-en.}\\
+ he became presented medal-\textsc{def}\\
+\glt `He was presented with the medal.' \z
+
+
+
+\ea\label{ex:Scandinavian:83} Norwegian\\
+\gll
+ {Medalj-en} {ble} {overrakt} {ham.}\\
+ medal-\textsc{def} became presented him\\
+\glt `The medal was presented to him.' \z
+
+\noindent These data create problems for theories of the mapping of arguments in passives. It is generally assumed that only one of the internal arguments can correspond to a passive subject. Lexical Mapping Theory assumes that only one internal argument can be classified as an unrestricted function, and thus be realized as a passive subject. \citet{BresMosh90} show that some Bantu languages are ``symmetrical'' in the sense that either object role can correspond to a passive subject. \citet{Lodrup95} argues that their analysis cannot be transferred to Mainland Scandinavian, because objects in ditransitives are not symmetrical outside the passive. However, no solution to the problem is presented.
+
+ Icelandic is both similar and different from Norwegian and Swedish concerning the passivization of ditransitives \citep{ZMT85:Case}. The central group of ditransitives are those that take a dative object and an accusative object, such a \textit{gefa} `give'. They allow both internal arguments to be realized as the passive subject, as shown in \REF{ex:Scandinavian:84} and \REF{ex:Scandinavian:85}. When the dative is realized as a subject, as in \REF{ex:Scandinavian:84}, the object gets nominative case and can trigger agreement on the verb (compare example \REF{ex:Scandinavian:38} above).
+
+
+
+\ea\label{ex:Scandinavian:84} Icelandic \citep[460]{ZMT85:Case}\\
+\gll
+ {Konung-inum} {voru} {gef-nar} {ambátt-ir.} \\
+ king-\textsc{def.dat} were given-\textsc{pl} female.slave-\textsc{nom.pl}\\
+\glt `The king was given female slaves.'\z
+
+
+
+\ea\label{ex:Scandinavian:85} Icelandic \citep[460]{ZMT85:Case}\\
+\gll
+ {Ambátt-in} {var} {gef-in} {konung-inum.}\\
+ female.slave\textsc{{}-def.nom.sg} was given.\textsc{sg} king-\textsc{def.dat}\\
+\glt `The female slave was given to the king.'\z
+
+\noindent \citet{ZMT85:Case} argue that both internal objects with these verbs can be either object or second object [i.e. \textsc{obj} or \textsc{obj}\textsubscript{${\theta}$}]. The option of being an object makes it possible for them to change to subject by the (then current) lexical rule of passive, which replaces \textsc{obj} by \textsc{subj} in the linking of roles and functions in the verb's lexical entry.
+
+ Ditransitives with other case frames only allow the linearly first internal argument to be realized as a subject.
+
+\subsubsection{Pseudopassives}
+
+The Mainland Scandinavian languages all have pseudopassives, i.e. passives in which the subject corresponds to the object of a preposition in the active; \citet{EL15} show that claims to the contrary are not correct. An example is \REF{ex:Scandinavian:86}.
+
+
+
+\ea\label{ex:Scandinavian:86} Norwegian \\
+\gll
+ {Skildringer} {av} {norsk} {natur} {se-es} {ofte} {ned} {på.}\\
+ depictions of Norwegian nature see-\textsc{pass} often down on\\
+\glt `People often look down upon depictions of Norwegian nature.'\z
+
+\noindent \citet{bresnan1982the-passive} pointed out that pseudopassives create a potential problem for a lexical treatment of the passive. She proposed a rule which incorporates the verb and the preposition into one complex verb \citep[50--59]{bresnan1982the-passive}. This analysis accounts for the fact that the verb and the preposition behave as a unit in English pseudopassives. The preposition must be adjacent to the verb, and it can be a part of a derived participle-based adjective. Examples are \REF{ex:Scandinavian:87}--\REF{ex:Scandinavian:88}.
+
+
+
+\ea\label{ex:Scandinavian:87} English \citep[54]{bresnan1982the-passive}
+
+ {*Everything} {was} {paid} {twice} {for.}\z
+
+
+ \ea\label{ex:Scandinavian:88} English \citep[53]{bresnan1982the-passive}
+
+ {Each} {unpaid} {for} {item} {will} {be} {returned.}\z
+
+ \noindent Scandinavian pseudopassives are different from the English ones. The preposition does not have to be adjacent to the verb, as \REF{ex:Scandinavian:86} shows, and derived adjectives with a preposition following the verb do not exist. Scandinavian grammarians have therefore been skeptical of preposition incorporation (see e.g. \citealt{Christensen86}).\footnote{These arguments rule out an analysis in which the verb and the preposition are one lexical item. However, given later developments within LFG, one could imagine a different analysis that makes the verb and the preposition one unit. They could be one \textsc{pred} in f-structure in the same way as complex predicates consisting of two verbs (see the discussion following example \REF{ex:Scandinavian:90} below).} \citet{Lodrup91} proposes a raising to subject analysis, in which the subject and the prepositional object are structure shared (see also \citealt{Alsina09}).
+
+\subsubsection{Complex passives}
+
+The so-called complex passive is exemplified in \REF{ex:Scandinavian:89}.
+
+
+
+\ea\label{ex:Scandinavian:89} Danish \citep{orsnes2006}\\
+\gll
+ {Bil-en} {bed-es} {flyttet.}\\
+ car-\textsc{def} ask-\textsc{pass} moved\\
+\glt `You are asked to move your car.'\z
+
+\noindent This construction has a passive verb followed by a passive or unaccusative participle. One of its interesting properties is that there is no directly corresponding active sentence. It is impossible to realize the theme argument \textit{bilen} `car.\textsc{def'} as the object of the active verb \textit{bede} `ask'.
+
+ The complex passive is possible with a small number of first verbs in Danish and Norwegian. It is more marginal in Swedish. \citet{orsnes2006} gives an LFG account in which the complex passive is a subject-to-subject raising construction.
+
+\subsubsection{Long passives}
+
+Another type of passive that involves two verbs is exemplified in \REF{ex:Scandinavian:90}.
+
+
+
+\ea\label{ex:Scandinavian:90} Norwegian\\
+\gll
+ {Dette} {forsøk-es} {å} {gjør-e(-s).}\\
+ this try-\textsc{pass} to do-\textsc{inf}(-\textsc{pass)}\\
+\glt `One tries to do this.'\z
+
+\noindent This construction can be found in Norwegian, Swedish and Danish, even if speakers' intuitions vary. It sounds best with a passive second verb \citep{Lodrup2014lp}. The subject of \REF{ex:Scandinavian:90} realizes the internal argument of the second verb. This is a passive of a complex predicate consisting of two verbs (\citealt{Butt1995,alsina1996the-role,Sells2004}, \citetv{chapters/ComplexPreds}), a so-called long passive \citep{Lodrup2014lp}.
+
+ There is independent evidence for the complex predicate analysis. Verbs that take the long passive also allow verbal feature agreement in the active, in the sense that a second verb takes on the form of the preceding verb, instead of the expected infinitive. Verbal feature agreement is a complex predicate phenomenon, for reasons discussed in \citet{Nino1997} and \citet{Sells2004}. Mainland Scandinavian can (to varying degrees) have this kind of agreement with imperatives and participles, as in \REF{ex:Scandinavian:91}--\REF{ex:Scandinavian:92} \citep{Havnelid15,Aagaard16}.
+
+
+
+\ea\label{ex:Scandinavian:91} Norwegian\\
+\gll
+ {Forsøk} {å} {gjør} {ditt} {beste.}\\
+ try.\textsc{imp} to do.\textsc{imp} your best \\
+\glt `Try to do your best.' \z
+
+
+
+\ea\label{ex:Scandinavian:92} Norwegian\\
+\gll
+ {Hadde} {forsøk-t} {å} {gjor-t} {samtal-en} {kort.}\\
+ had try-\textsc{ptcp} to do-\textsc{ptcp} conversation-\textsc{def} short \\
+\glt `(I) would have tried to make the conversation short.' \z
+
+\subsubsection{The new passive/impersonal construction}
+
+Icelandic has a construction that has been called the new passive construction or the new impersonal construction (see \citealt{MS02}). An example is \REF{ex:Scandinavian:93}.
+
+
+
+\ea\label{ex:Scandinavian:93} Icelandic \citep{KM15}\\
+\gll
+ {Loks} {var} {fund-ið} {stelp-una} {eftir} {mikla} {leit}.\\
+ finally was found-\textsc{n}.\textsc{sg} girl.(\textsc{f)}{}-\textsc{def}.\textsc{acc} after great search\\
+\glt `They finally found the girl after a long search.'\z
+
+\noindent This construction seems to have passive morphology. There is no realized subject. (There can be an expletive in first position, but these are usually not considered subjects, see \sectref{sec:Scandinavian:2.5}.) The external role cannot be realized as a subject, and there is no ``promotion to subject'' of an internal role.
+
+ The analysis of this construction has been discussed several times, but the only LFG discussion is in \citet{KM15}. Some authors see it as a real passive (e.g. \citealt{Eythorsson08}). Maling and her co-authors argue that despite its morphology, the construction is not a passive. They see it as an impersonal active construction, comparable to the Irish autonomous form and the Polish -\textit{no/to} construction. This means that the verbal morphology introduces a PRO subject with an unspecified, typically human interpretation. This PRO is argued to behave like other subjects syntactically. For example, it can control a subject-oriented adjunct, as shown in \REF{ex:Scandinavian:94}.
+
+
+
+\ea\label{ex:Scandinavian:94} Icelandic \citep[125]{MS02}\\
+\gll
+ {Það} {var} {kom-ið} {skellihlæjandi} {í} {tím-ann.} \\
+ \textsc{expl} was come-\textsc{n.sg} laughing.out.loud into class-\textsc{def} \\
+\glt `People came into class laughing out loud.'\z
+
+\subsection{Directed motion -- rules or constructions}
+
+\citet{Toivonen02} and \citet{asudeh2013constructions} discuss the Swedish directed motion construction, in which a verb takes a reflexive and a directional PP. An example is \REF{ex:Scandinavian:95}.
+
+
+
+\ea\label{ex:Scandinavian:95} Swedish \citep[13]{asudeh2013constructions}\\
+\gll
+ {Sarah} {armbågade} {sig} {genom} {mängd-en.}\\
+ Sarah elbowed \textsc{refl} through crowd-\textsc{def}\\
+\glt `Sarah elbowed her way through the crowd.'\z
+
+\noindent \citet{Toivonen02} discusses how this kind of sentence should be described, with a construction or with a lexical rule. An argument for using a construction is that ``it is difficult to pin its meaning to any one of its individual parts'' \citep[342]{Toivonen02}. The relevant sentences denote traversal, but the verb does not need to be a motion verb. There is no special word or morpheme that is uniquely associated with the construction.
+
+ \citet{asudeh2013constructions} discuss this and similar expressions further. They point out that assuming a directed motion construction would violate the Lexical Integrity Principle:
+
+ \begin{quote}
+   ``Morphologically complete words are leaves of the c-structure tree and each leaf corresponds to one and only one c-structure node.'' \citep[92]{BresnanEtAl2016}
+ \end{quote}
+
+This principle entails that units smaller or bigger than words cannot be inserted in c-structure. \citet{asudeh2013constructions} propose templates to factor out grammatical information that can be invoked by words or construction-specific phrase structure rules. This makes it possible to capture the constructional effects, without giving up the Lexical Integrity Principle.
+
+\subsection{Definiteness and pronouns}
+
+\subsubsection{Double definiteness}
+
+So-called double definiteness can be found in Norwegian, Swedish and Faroese, but not in Danish and Icelandic. Examples are \REF{ex:Scandinavian:96}--\REF{ex:Scandinavian:97}.
+
+
+
+\ea\label{ex:Scandinavian:96} Norwegian\\
+\gll
+ {denne} {hest-en} {/} {??hest}\\
+ this horse-\textsc{def} \textsc{/} \phantom{??}horse\\
+\glt `this horse' \z
+
+
+
+\ea\label{ex:Scandinavian:97} Norwegian\\
+\gll
+ {den} {hvit-e} {hest-en} {/} {??hest}\\
+ the white-\textsc{def} horse-\textsc{def} \textsc{/} \phantom{??}horse\\
+\glt `the white horse' \z
+
+\noindent Double definiteness means that the definiteness of the nominal phrase is expressed by two elements: both the determiner and the definite suffix on the noun.\footnote{The definite (or ``weak'') form of the adjective in \REF{ex:Scandinavian:98} is conditioned by the definiteness of the nominal phrase. This will not be discussed further here.} In \REF{ex:Scandinavian:97}, the adjective makes the determiner \textit{den} obligatory. When there is no adjective, a definite noun such as \textit{hesten} `horse.\textsc{def'} can be a nominal phrase on its own.
+
+ Double definiteness is usually obligatory in the colloquial language. There are, however, certain options for semantic differences with and without double definiteness, especially in literary style. Some researchers assume that the two definite elements give different semantic contributions to the phrase (e.g. \citealt[35--44]{Julien05}).
+
+ The LFG formalism makes it easy to account for double definiteness by letting both definite elements introduce [\textsc{def} +]. A problem is then how to avoid double definiteness in languages where it is ungrammatical, such as Danish. Cf. example \REF{ex:Scandinavian:98}.
+
+
+
+\ea\label{ex:Scandinavian:98} Danish\\
+\gll
+ {den} {hvid-e} {hest} {/} {*hest-en}\\
+ the white-\textsc{def} horse / \phantom{*}horse-\textsc{def}\\
+\glt `the white horse' \z
+
+\noindent One way of accounting for Danish is to use so-called instantiated values \citep[213--14]{Strahan08}. The Danish determiner \textit{den} `the' is then specified as [${\uparrow}$ \textsc{def} = +\_], where the underscore indicates that this specification cannot unify with anything else. The Danish definite noun \textit{hesten} `horse.\textsc{def'} also has this specification, so \REF{ex:Scandinavian:98} is ruled out with a definite noun.
+
+ A different analysis of double definiteness can be found in \citet{Romero15}. He assumes that the determiner is the only element that has definiteness as an inherent property, while the noun simply agrees with it. The definite form of the noun then carries a constraining equation [${\uparrow}$ \textsc{def} =$_{c}$ +]. This analysis gives raise to a problem with nominal phrases such as \textit{hesten} `horse.\textsc{def',} which can be used in all argument positions. Romero's solution is that \textit{hesten} is really \textit{den} \textit{hesten} `the horse.\textsc{def',} where the elements undergo lexical sharing (in the sense of \citealt{wescoat2002}).
+
+ \citet{BorjarsHarries08} discuss the history of double definiteness, and make the following remark on its analysis:
+
+ \begin{quotation}
+   All analyses of the difference between double and single definiteness appear to be somewhat stipulative [ $\ldots$ ] This may be because it is a relatively superficial phenomenon, not associated with deep semantic properties, and hence there may not be any fundamental principled explanation. \citep[341]{BorjarsHarries08}
+   \end{quotation}
+
+\subsubsection{Pronominal demonstratives}
+
+Norwegian and Danish can use a pronoun as a demonstrative in sentences such as \REF{ex:Scandinavian:99}--\REF{ex:Scandinavian:100}.
+
+
+
+\ea\label{ex:Scandinavian:99} Norwegian \citep[193]{Strahan08}\\
+\gll
+ {Se} {på} {han} {mann-en!}\\
+ look at he.\textsc{nom} man-\textsc{def}\\
+\glt `Look at that man!'\z
+
+
+
+\ea\label{ex:Scandinavian:100} Danish \citep[193]{Strahan08}\\
+\gll
+ {Se} {på} {ham} {mand-en!}\\
+ look at he.\textsc{acc} man-\textsc{def}\\
+\glt `Look at that man!'\z
+
+\noindent \citet{Johannessen08} says that the use of the demonstrative is linked to what she calls psychological distance, and names it the pronominal psychological demonstrative. The form of the pronoun is invariable in each language, not depending upon the function of the nominal phrase. Norwegian always uses the nominative, while Danish uses the accusative. It is striking that Danish can have the definite form of the noun in this construction when double definiteness is not allowed otherwise.
+
+ A nominal phrase with a pronominal demonstrative always has specific reference (while the regular distal demonstrative \textit{den} is neutral in this respect). \citet{Strahan08} sees the relation between the specificity of the pronominal demonstrative and the definiteness of the noun as a kind of agreement.
+
+ A difference between Norwegian and Danish is that Danish needs a determiner following the pronominal demonstrative when there is an adjective preceding the noun, as in \REF{ex:Scandinavian:101}. The noun is then indefinite. The Norwegian equivalent cannot have this determiner following the pronominal demonstrative, as shown in \REF{ex:Scandinavian:102}.
+
+
+
+\ea\label{ex:Scandinavian:101} Danish \citep[213]{Strahan08}\\
+\gll
+ {Det} {er} {ham} {den} {store} {mand.}\\
+ it is he.\textsc{acc} the big-\textsc{def} man\\
+\glt `It is that big man.'\z
+
+
+
+\ea\label{ex:Scandinavian:102} Norwegian\\
+\gll
+ {Det} {er} {han} {(*den)} {store} {mann-en.}\\
+ it is he.\textsc{nom} the big-\textsc{def} man-\textsc{def}\\
+\glt `It is that big man.'\z
+
+\noindent This difference between Norwegian and Danish shows that the pronominal de\-mon\-stra\-tive must be at different levels in c-structure in the two languages. \citet{Strahan08} assumes that it is under NP in Norwegian, and under DP in Danish.
+
+ Varieties of Swedish are similar to Danish in allowing sentences parallel to \REF{ex:Scandinavian:101}. On the other hand, Swedish is like Norwegian in using the nominative form of the pronoun.
+
+\subsubsection{Nominative and accusative of Danish pronouns}
+
+Personal pronouns in Danish have, like English, the accusative form as the default form, while the nominative is reserved for subjects. \citet{Oersnes02} discusses a special feature of Danish: The nominative is only used for local subjects, as in \REF{ex:Scandinavian:103}. A non-local subject is realized in the accusative form, as in \REF{ex:Scandinavian:104}.
+
+
+
+\ea\label{ex:Scandinavian:103} Danish \citep{Oersnes02}\\
+\gll
+ {Peter} {tror} {han} {vinder.}\\
+ Peter thinks he.\textsc{nom} wins\\
+\glt `Peter thinks he is going to win.'\z
+
+\ea\label{ex:Scandinavian:104} Danish \citep{Oersnes02}\\
+\gll
+ {Ham} {/} {*han} {tror} {Peter} {vinder.}\\
+ he.\textsc{acc} / he.\textsc{nom} thinks Peter wins\\
+\glt `Peter thinks he is going to win.'\z
+
+\noindent \citet{Oersnes02} gives the following conditions for nominative and accusative pronouns:
+
+\begin{description}
+  \item[Nominative] The DP is the subject of the immediately containing f-structure.
+\item[Accusative] The DP is \textit{not} the subject of the
+  immediately containing f-structure (but possibly the subject of an
+  embedded f-structure).
+\end{description}
+
+The constructive case formalism \citep{nordlinger1998constructive} makes it possible to state these conditions in a simple way. \citet{Oersnes02} proposes that the accusative \textit{ham} is equipped with the restriction \REF{ex:Scandinavian:105}, and the nominative \textit{han} with \REF{ex:Scandinavian:106}.
+
+\ea\label{ex:Scandinavian:105}
+  \lexentry{ham}{\{${\lnot}$ (\textsc{subj} ${\uparrow}$) ${\vee}$\\
+  ((\textsc{comp}\textsuperscript{+} \textsc{subj}~${\uparrow}$) \DF) $=$ ${\uparrow}$ \}}
+\z
+
+
+\ea\label{ex:Scandinavian:106}
+    \lexentry{han}{(\textsc{subj} ${\uparrow}$)\\
+    ((\textsc{comp}\textsuperscript{+} \textsc{subj}$~{\uparrow}$) \textsc{df}) $\not=$ ${\uparrow}$}
+ \z
+
+ \subsection{Reflexive binding}
+ \label{sec:Scandinavian:3.11}
+
+\subsubsection{The classical LFG approach}
+
+The basic facts about binding of reflexives are rather similar in the Mainland Scandinavian languages (but see \citealt{Lundquist14} for some nuances).
+
+ Norwegian data has played an important role in the development of binding theory in LFG. \citet{dalrymple1993} was influenced by the pioneer work of \citet{Hellan88} (see also \citealt{Hestvik91}). Her work is followed up in \citet[227--85]{BresnanEtAl2016}. Two general introductions to LFG also discuss binding in Norwegian and Swedish: \citet[173--91]{falk2001lexical} and \citet[152--175]{BoNoSa19}.
+
+ Anaphoric elements in Norwegian give a nice illustration of different kinds of binding requirements. Their properties are shown in table 1 (from \citealt[34]{dalrymple1993}). A nucleus is a \textsc{pred} and the functions that it selects. A complete nucleus is a nucleus that contains a \textsc{subj}.
+
+
+
+\begin{table}
+  \begin{tabularx}{\textwidth}{llQ}
+    \lsptoprule
+{}& Bound to:& Disjoint from:\\\midrule
+\textit{seg} \textit{selv} & subject in coargument domain & ---\\
+% \tablevspace
+\textit{ham} \textit{selv} &argument in minimal complete nucleus &subject in minimal complete nucleus\\
+% \tablevspace
+\textit{seg}& subject in minimal finite domain& subject in minimal complete nucleus\\
+% \tablevspace
+\textit{sin}& subject in minimal finite domain & ---\\
+\lspbottomrule
+\end{tabularx}
+
+\caption{Anaphoric elements in Norwegian}
+\end{table}
+
+
+Examples are \REF{ex:Scandinavian:107}--\REF{ex:Scandinavian:110}.
+
+
+
+\ea\label{ex:Scandinavian:107} Norwegian (\citealt[29]{dalrymple1993}, from \citealt[67]{Hellan88})\\
+\gll
+ {Jon} {fortalte} {meg} {om} {seg} {selv.}\\
+ Jon told me about \textsc{refl} \textsc{self}\\
+\glt `Jon told me about himself.'\z
+
+
+
+\ea\label{ex:Scandinavian:108} Norwegian (\citealt[29]{dalrymple1993}, from \citealt[104]{Hellan88})\\
+\gll
+ {Vi} {fortalte} {Jon} {om} {ham} {selv.}\\
+We told Jon about him \textsc{self}\\
+\glt `We told Jon about himself.' \z
+
+
+\ea\label{ex:Scandinavian:109} Norwegian (\citealt[31]{dalrymple1993}, from \citealt[73]{Hellan88})\\
+\gll
+ {Jon} {hørte} {oss} {snakke} {om} {seg.}\\
+ Jon heard us talk about \textsc{refl} \\
+\glt `Jon heard us talk about him.'\z
+
+\newpage
+
+
+\ea\label{ex:Scandinavian:110} Norwegian (\citealt[33]{dalrymple1993}, from \citealt[75]{Hellan88})\\
+\gll
+ {Jon} {ble} {arrestert} {i} {sin} {kjøkkenhave.}\\
+ Jon became arrested in \textsc{refl.poss} kitchen-garden\\
+\glt `Jon was arrested in his kitchen garden.'
+\z
+
+\noindent Dalrymple shows how anaphoric elements can be equipped with binding requirements in their lexical entries. Binding is described as an inside-out phenomenon in f-structure. Intuitively, we start at the anaphoric element, and go outwards to find a possible binder to co-index with. The path outward is restricted in different ways for different elements. For example, \textit{seg} \textit{selv} is bound to the subject in its coargument domain, which means that the path cannot go through an f-structure that contains a subject. Possessive \textit{sin} is bound to a subject in a minimal finite domain, which means that the path cannot go through an f-structure that contains \textsc{tense}.
+
+ The relation between the anaphoric element and the binder can be non-local, as shown by the long distance use of the simple reflexive \textit{seg} (example \REF{ex:Scandinavian:109}). This is a case of functional uncertainty.
+
+\subsubsection{Some questions of data and interpretation}
+
+The Norwegian binding data used by Dalrymple have been the basis of theoretical discussion within different frameworks. They are not without their problems, however. The Hellan/Dalrymple assumptions were criticized in \citet{Lodrup99b,Lodrup07,Lodrup08c}.  Three problems for the Hellan/Dalrymple assumptions will be mentioned here: object binders, the status of the simple reflexive \textit{seg}, and binding into a finite clause.
+
+\subsubsubsection{Object binders} Hellan and Dalrymple assume that only subjects are possible binders. This might be considered a somewhat brutal idealization of the data, because speakers accept object binders as well in some cases, such as \REF{ex:Scandinavian:111} \citep{Lodrup08c}.
+
+
+
+\ea\label{ex:Scandinavian:111} Norwegian\\
+\gll
+ {Regl-ene} {er} {til} {for} {å} {beskytte} {dem} {mot} {seg} {selv.}\\
+ rules-\textsc{def} are \textsc{particle} for to protect them against \textsc{refl} \textsc{self}\\
+\glt `The rules exist to protect them against themselves.' \z
+
+\subsubsubsection{The status of the simple reflexive \textit{seg}} Hellan and Dalrymple assume that the simple reflexive \textit{seg} is not used in local binding, only in long distance binding as in example \REF{ex:Scandinavian:109} above. A difficult question concerns the status of the simple reflexive when it is not long distance bound. It is uncontroversial that it can be a non-argument, e.g. with inherently reflexive verbs (such as \textit{skynde} \textit{seg} `hurry'). The problem concerns sentences such as \REF{ex:Scandinavian:112}, in which the simple reflexive seems to be locally bound.
+
+
+
+\ea\label{ex:Scandinavian:112} Norwegian\\
+\gll
+ {Jon} {vasker} {seg}\textsc{.}\\
+ Jon washes \textsc{refl}\\
+\glt `Jon is washing himself.'\z
+
+\noindent In the Hellan/Dalrymple approach, one has to say that this is not an argument reflexive, but a lexical reflexive that is used to detransitivize the verb. \citet{Lodrup99b,Lodrup07} argues that the simple reflexive is a thematic object in sentences such as \REF{ex:Scandinavian:112}. He claims that a locally bound simple reflexive is possible in what he calls a physical contexts (see also \citealt[279--282]{BresnanEtAl2016}). This means that the reflexive is the object of a verb that denotes an action directed towards the body of the subject, or the object of a locational preposition.
+
+
+ Physical contexts are also the contexts that allow body part nouns and other nouns in the ``personal domain'' to occur in the definite form without a possessive pronoun, as in \REF{ex:Scandinavian:113} \citep{Lodrup99b,Lodrup10}. The subject is then understood as the possessor. This use of the definite form is independent of the regular conditions on definiteness, such as being previously known or mentioned.
+
+
+
+
+\ea\label{ex:Scandinavian:113} Norwegian\\
+\gll
+ {Jon} {vasker} {ansikt-et}\textsc{.}\\
+ Jon washes face-\textsc{def}\\
+\glt `Jon is washing his face.'\z
+
+
+\noindent Lødrup assumes that both simple reflexives and the relevant group of definite nouns can be bound in physical contexts. Outside physical contexts, the complex reflexive is required -- and a body part noun needs a possessive pronoun (or a definite form that satisfies the regular conditions on definiteness). This is shown in \REF{ex:Scandinavian:114}-\REF{ex:Scandinavian:115}.
+
+
+
+
+\ea\label{ex:Scandinavian:114} Norwegian\\
+\gll
+ {Jon} {elsker} {seg} {*(selv)}\textsc{.}\\
+ Jon loves \textsc{refl} \textsc{(self})\\
+\glt `Jon loves himself.'\z
+
+
+
+\ea\label{ex:Scandinavian:115} Norwegian\\
+\gll
+ {Jon} {elsker} {ansikt-et} {*(sitt)}\textsc{.}\\
+ Jon loves face-\textsc{def} (\textsc{refl.poss})\\
+\glt `Jon loves his face.'\z
+
+\subsubsubsection{Binding into a finite clause} Mainland Scandinavian allows
+non-local binding into a non-finite clause, as in example
+\REF{ex:Scandinavian:109} above. Varieties of Mainland Scandinavian also allow
+binding into a finite clause to some extent. \citet{Lodrup09b} shows that this can be acceptable when the subject of the embedded clause is low prominent: expletive, non-animate or non-specific. Examples are \REF{ex:Scandinavian:116}-\REF{ex:Scandinavian:117}. Note that the complex reflexive is used in \REF{ex:Scandinavian:117}.
+
+
+
+\ea\label{ex:Scandinavian:116} Norwegian \citep[116]{Lodrup09}\\
+\gll
+ {Alle} {kan} {føle} {det} {er} {en} {del} {av} {seg}$\ldots$\\
+ {all} {can} {feel} {it} {is} a {part} {of} \textsc{refl}\\
+\glt `Everybody can feel that it is a part of them.'\z
+
+\ea\label{ex:Scandinavian:117} Norwegian \citep{Lundquist14c}\\
+\gll
+ {Folk} {leser} {vel} {bare} {de} {brev-ene} {som} {er} {til} {seg} {selv.}\\
+ people read presumably only the letters-\textsc{def} that are to \textsc{refl} \textsc{self}\\
+ \glt `People presumably only read the letters which are for them.'\z
+
+ \noindent The Norwegian \REF{ex:Scandinavian:117} is accepted by a majority of informants, and the same is true of its Swedish equivalent \citep{Lundquist14c}.
+
+ The conditions on binding into a finite clause in Mainland
+ Scandinavian seem to be complicated, and there has been some
+ discussion about their nature \citep{Strahan:LFG09,Strahan11,Lodrup09b,Lundquist14c,Lundquist14d,Julien20}.
+
+\subsubsection{Long distance binding in Insular Scandinavian}
+
+Icelandic allows binding into a finite clause when the subordinate verb is subjunctive \citep{Thrainsson76}. Icelandic long distance reflexives are usually considered logophoric (see e.g. \citealt{Maling84}). An example is \REF{ex:Scandinavian:118}.
+
+
+
+\ea\label{ex:Scandinavian:118} Icelandic \citep{Thrainsson76}\\
+\gll
+ {Jón} {segir} {að} {María} {elsk-i} {sig.}\\
+ Jón says that María loves-\textsc{sbjv} \textsc{refl}\\
+\glt `Jón says that María loves him.'\z
+
+\noindent Sentences corresponding to \REF{ex:Scandinavian:118} are also possible in Faroese \citep{Strahan11}, even though this language does not have a subjunctive mood.
+
+\citet{Strahan:LFG09,Strahan11}  compares long distance binding in Mainland and Insular Scandinavian, and discusses the formalization of relevant binding conditions. An original idea is the use of outside-in (in addition to inside-out) functional uncertainty, to account for the role of the binder as a perspective-holder
+
+\subsection{Binding of distributive possessors}
+
+The Scandinavian languages can use prenominal distributive possessors to express distance distributivity. Examples are \REF{ex:Scandinavian:119}--\REF{ex:Scandinavian:120}.
+
+
+
+\ea\label{ex:Scandinavian:119} Swedish\\
+\gll
+ {Vi} {har} {ätit} {varsitt} {äpple.}\\
+ we have eaten each.3.\textsc{refl.poss.neut} apple \\
+\glt `We have eaten one apple each.' \z
+
+
+
+\ea\label{ex:Scandinavian:120} Eastern Norwegian\\
+\gll
+ {Vi} {har} {spist} {hver-t} {vår-t} {eple.}\\
+ we have eaten each-\textsc{neut} 1.\textsc{refl.poss-neut} apple \\
+\glt `We have eaten one apple each.' \z
+
+\noindent These distributive elements are composed of a distributive quantifier and a reflexive possessor (at least from a historical point of view). \citet{LST19} compare the grammar of these expressions in Standard Swedish and Eastern Norwegian, and find a number of differences. Eastern Norwegian has agreement that is lacking in Standard Swedish: The distributive quantifier agrees with the following noun in number and gender, and the possessor agrees with the subject in person and number. Another difference is that the Eastern Norwegian expression follows standard binding requirements, while this is not always necessary in Swedish.
+
+ \citet{LST19} give an analysis which is based upon an idea from \citet{Vangsnes02}: The Swedish \textit{varsitt} `each.3.\textsc{refl.poss.neut}{}' is a single lexical unit, while its Eastern Norwegian correspondent is syntactically complex. They also give a semantic analysis in which the distributive possessor has the semantics of a Skolemized Choice Function.
+
+ \section{Computational work}
+
+Computational approaches to Scandinavian grammar are not covered in this chapter. It could be mentioned, however, that seminal work on Norwegian grammar within LFG has been conducted in several computational linguistics projects at the University of Bergen. NorGram is a broad-coverage LFG grammar for Norwegian implemented on the XLE platform (\citealt{Dyvik00}, see also \citetv{chapters/ImplementationsApplications}). Extensive online documentation of NorGram covers inter alia basic clause structure, lexical categories, phrase structure categories, and f-structure features.\footnote{\url{https://clarino.uib.no/iness/page?page-id=norgram\_documentation}} NorGram has been used in the construction of the LFG treebank NorGramBank (\citealt{dyvikEtAl2016}, see also \citetv{chapters/Treebanks}). For the treebank there is detailed documentation (in Norwegian) on how to search for various grammatical phenomena; it~provides not only c- and f-structures, but also comments on the analyses.\footnote{\url{https://clarino.uib.no/iness/page?page-id=norgram-soek}}
+
+\section{Conclusion}
+
+There is a rich LFG literature on various aspects of the Scandinavian languages, and it was impossible to do justice to it all in this chapter. Scandinavian data have played a role in the development of LFG, for example when it comes to binding conditions and functional categories. Chomskyan approaches have had a dominating position in Scandinavian syntax, and research in LFG has given alternative perspectives. It has produced results that are important both for Scandinavian and international linguistics.
+
+\section*{Acknowledgments}
+
+For thorough and constructive comments I would like to thank the three
+anonymous reviewers, the editor, and Nigel Vincent. Thanks are also due to Victoria Rosén.
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+
+\end{document}

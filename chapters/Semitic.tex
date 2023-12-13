@@ -1,0 +1,2208 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10186020}
+\title{LFG and Semitic languages}
+\author{Louisa Sadler\affiliation{University of Essex}}
+\abstract{This chapter surveys the work in LFG on the Semitic languages of  Arabic, Hebrew and Maltese.  
+The overview is structured around a number of  themes and topics  where there is LFG work on one or more of the Semitic languages. Successive sections look at  basic clause structure, verbal complementation (including temporal and aspectual auxiliaries, phasal verbs, and perceptual report verbs), copula constructions, construct state nominals, mixed categories, negation and unbounded dependency constructions.}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[36]%%chapternumber
+}{}
+
+\begin{document}
+\maketitle
+\label{chap:Semitic}
+
+\section{Introduction}
+
+The Semitic languages are part of the Afro-Asiatic family  and the genus includes  Arabic, Amharic, Tigrinya, Hebrew, Tigr\'{e}, Maltese, Mehri and Jibbali {\em inter alia}.  Of these, Arabic (including its many modern vernaculars, and the codified, formal variety Modern Standard Arabic ({\sc msa}))  is spoken over a very extensive geographical area with in the order of 250--300 million native language speakers, while Amharic, Tigrinya, Hebrew and Tigr\'{e} all have numbers of speakers in excess of 1 million.  Most work in LFG on this family is on (Modern) Hebrew, Arabic (Modern Standard ({\sc msa}) and the modern vernaculars)  and Maltese (a mixed language with a Maghrebi/Siculo-Arabic stratum).  \citet{Kifle07}  and \citet{amlesomkinfe2011} are concerned respectively with differential object marking and the applicative construction in Tigrinya, a Semitic language of Eritrea and Ethiopia; see \citetv{chapters/African} for further discussion of Tigrinya.\footnote{Example sentences in this chapter have been taken from a number of different sources. In each case, the examples are given using the author's own transcription, with the exception of long vowels, where the notation has been standardised. On the other hand, some standardisation of glossing has been adopted to increase transparency.}
+
+
+\section{Basic clause structure}
+
+Word order is relatively free in Arabic: there are two basic word orders  generally claimed for {\sc msa} ({\sc svo} and {\sc vso}), while {\sc svo} structures predominate in the spoken vernaculars.     Beyond LFG, a considerable literature has addressed the question of whether the preverbal position in {\sc svo} structures is a genuine subject position or alternatively a dislocated or topicalised position, in particular in connection with {\sc msa} which exhibits full agreement in the {\sc svo} order and partial agreement in the {\sc vso} order.    While none of the LFG work on Arabic has a primary focus on matters of constituent structure (unlike quite a considerable volume of the theoretical work in other frameworks), basic clause structure for Arabic is covered to some extent in the theses  by \citet{Alsharif:PhD} ({\sc msa}), \citet{Alotaibi14Conditional} (Hijazi), \citet{ElSadek:PhD} (Egyptian),  \citet{Alruwaili:PhD} (Turaif)   and \citet{Camilleri:PhD16} (Maltese).  This work generally reflects the view that Arabic has two structural subject positions, $[$Spec, IP$]$  and a lower position, and places the tensed verb in I.
+
+
+\citet{Alsharif:PhD} adopts an I+S (subject-predicate) analysis for the two basic word orders of {\sc msa}, in which the subject appears in a different position in each word order, as shown in (\ref{msa-alsharif}) \citep[49--50]{Alsharif:PhD},\footnote{\citet{Alsharif:PhD} claims that for {\sc msa}  the subject in Spec of IP is associated with additional pragmatic information, but this is not explored further. The agreement asymmetry between SVO and VSO structures in {\sc msa} where we find full agreement in SVO structures and partial agreement (person and gender) in VSO structures is  not discussed but see \citet{FF} for an early discussion of this issue. Many vernacular varieties lack this agreement asymmetry, but this is not the place to discuss this somewhat complex issue.} and a similar position is adopted for {\sc vso} and {\sc svo}   structures in Hijazi Arabic in \citet{Alotaibi14Conditional}.
+
+\ea  {\sc msa} \citep[49;50]{Alsharif:PhD}
+\ea \label{yashrab-tense}
+\gll ya-šrab-u Ali-un al-qahwat-a\\
+{\sc 3m}-drink.{\sc ipfv-sg.ind} Ali-{\sc nom} {\sc def}-coffee-{\sc acc}\\
+\glt `Ali drinks the coffee.'
+\ex
+\gll Ali-un ya-šrab-u  al-qahwat-a\\
+Ali-{\sc nom} {\sc 3m}-drink.{\sc ipfv-sg.ind}  {\sc def}-coffee-{\sc acc}\\
+\glt `Ali drinks the coffee.'
+\z\z
+
+
+
+\ea \label{msa-alsharif}
+\begin{forest}
+[IP
+[I$'$\\{\UP=\DOWN}
+  [I\\{\UP=\DOWN}
+    [yašrabu ]]
+  [S\\{\UP=\DOWN}
+    [NP\\{(\UP\SUBJ)=\DOWN} [{Aliun},roof]]
+    [VP\\{\UP=\DOWN}
+         [NP\\{(\UP\mbox{\sc obj})=\DOWN} [{alqahwata},roof]]
+]]]]
+\end{forest}
+\begin{forest}
+[IP
+  [NP\\{(\UP\SUBJ)=\DOWN} [{Aliun},roof]]
+[I$'$\\{\UP=\DOWN}
+  [I\\{\UP=\DOWN}
+    [yašrabu ]]
+   [S\\{\UP=\DOWN}
+   [VP\\{\UP=\DOWN}
+    [NP\\{(\UP\mbox{\sc obj})=\DOWN}  [{alqahwata},roof]]
+        ]] ]]
+\end{forest}
+\z
+
+
+In a slight variant, both \citet{ElSadek:PhD} and \citet{Alruwaili:PhD} assume an I+VP structure for  the basic neutral {\sc svo} word order in Egyptian Arabic and  Turaif Arabic respectively.\footnote{As with many other vernaculars, {\sc vso} is a possible but less common variant in Turaif Arabic.}
+
+
+
+\ea Egyptian Arabic \citep[90]{ElSadek:PhD} \\
+\gll {ʔ}el-walad  katab el-gaw\={a}b\\
+{\sc def}-boy write.{\sc pfv.3m.sg} {\sc def}-letter\\
+\glt `The boy wrote the letter.'
+\ex Turaif Arabic \citep[100]{Alruwaili:PhD} \\
+\gll ʕali kit{\textepsilon}b l-w\={a}\v{g}ib\\
+Ali write.{\sc pfv.3m.sg} {\sc def}-homework\\
+\glt `Ali wrote the homework.'
+\z
+
+
+\ea \label{eca-tree}
+\begin{forest}
+[IP
+  [NP\\{(\UP\SUBJ)=\DOWN} [{{ʔ}el-walad},roof]]
+[I$'$\\{\UP=\DOWN}
+  [I\\{\UP=\DOWN}
+    [katab ]]
+      [VP\\{\UP=\DOWN}
+    [NP\\{(\UP\mbox{\sc obj})=\DOWN}  [{el-gaw\={a}b},roof]]
+        ]] ]]
+\end{forest} \hfill{\citep[91]{ElSadek:PhD} }
+\z
+
+
+In all of this work, an important motivation for the assumption that the verb expressing tense is in I is the fact that the very same (perfective and imperfective) forms express aspectual information when they occur in a lower position, in the compound tenses of Arabic (the examples (\ref{yashrab-tense}) and (\ref{kana}) provide a simple illustration of this property). There is some discussion of compound tenses in Arabic (involving forms of the `be' verb as a temporal auxiliary)  in a number of LFG  sources and this literature includes both Aux-feature and Aux-{\sc pred} analyses for broadly comparable data across the dialects.
+
+\citet{Alsharif:PhD} adopts  a single-tier or Aux-feature analysis for    {\sc msa}  examples such as  (\ref{kana}), and a fuller development of
+this approach to compound tense formation in {\sc msa} is given in \citet{AlsharifSadler:09}.\footnote{In the simple tenses of Arabic, the imperfective and perfective forms of the lexical verb are associated with {\sc tense}.  The compound tenses of Arabic and Maltese are formed by combining imperfective and perfective verb forms of the auxiliary `be' (associated with {\sc tense}) with  perfective and imperfective forms of the lexical verb, which are then associated with {\sc aspect}. Note that these forms still show subject agreement in their (embedded) aspectual use.}
+
+
+\ea   \label{kana}  {\sc msa} \citep[52]{Alsharif:PhD} \\
+\gll k\={a}na Ali-un ya-šrab-u al-qahwat-a\\
+be.{\sc pfv.3m.sg} Ali-{\sc nom} {\sc 3m}-drink.{\sc ipfv-sg.ind} {\sc def}-coffee-{\sc acc}\\
+\glt `Ali was drinking the coffee.'
+\z
+
+\newpage
+
+\ea {\sc msa} \citep[18]{AlsharifSadler:09}\\
+\gll
+ kun-tu {ʔ}aktub-u t-taqr\={\i}r-a\\
+be.{\sc pfv}-{\sc 1sg} write-{\sc ipfv}.{\sc 1sg} the-report-{\sc acc}\\
+\glt `I was writing the report.'
+\z
+
+
+
+\eabox{
+\avm[style=fstr]{
+[ pred  & `write\arglist{\SUBJ,\OBJ}'     \\
+  asp & prog\\
+ tense &  [past &  +  ] \\
+  subj  &  [pers &  1  \\ num & sg ]
+]} \hfill{\citep[18]{AlsharifSadler:09}}
+}
+
+
+
+
+The Aux-feature account is also adopted by \citet{Alotaibi14Conditional}  for Hijazi (Taif) Arabic  and \citet{Alruwaili:PhD} for Turaif Arabic, and by \citet{Camilleri:PhD16} for Maltese. In (\ref{malt-ta}) the auxiliary elements {\em kont} `be.{\sc pfv.1sg}' and {\em qed}  respectively contribute {\sc tense}={\sc past} and {\sc aspect}={\sc prog} to the f-structure of the predicate {\em wash}.
+
+
+\ea Hijazi (Taif) Arabic \citep[37]{Alotaibi14Conditional}\\
+\gll {ʔ}a{\hwithstroke}mad k\={a}n yi\v{g}ri f\={\i} al-{\hwithstroke}ad\={\i}qah {ʔ}ams\\
+Ahmad be.{\sc pfv.3m.sg} run.{\sc ipfv.3m.sg} in {\sc def}-garden yesterday\\
+\glt `Ahmad was running in the garden yesterday.'
+\z
+
+
+\ea \label{malt-ta}  Maltese  \citep[19]{Camilleri:PhD16}\\
+\gll Kon-t qed n-a-{\hwithstroke}sel il-karozza\\
+be.{\sc pfv-1sg} {\sc prog} 1-{\sc frm.vwl}-wash.{\sc ipfv.sg} {\sc def}-car\\
+\glt `I was washing the car.'
+\z
+
+
+
+
+On the other hand, \citet{ElSadek:PhD} presents some arguments in  favour of the  Aux-{\sc pred} analysis for Egyptian Arabic, in which the tense-aspect auxiliary {\em k\={a}n} is treated as a raising verb taking a VP {\sc xcomp} complement. The c-structure for (\ref{ea-c}) and f-structure for (\ref{ea-fs}) below illustrate this approach.  In work on the aspectual system of Libyan Arabic, \citet{BoerjarsGhadgoudPayne16} also provide arguments in support of an Aux-{\sc pred} approach to the facts which they discuss.
+
+
+%\begin{exe} Egyptian Arabic \citep[89]{ElSadek:PhD}
+%\gll {ʔ}el-walad  bi-yekteb el-gaw\={a}b\\
+%{\sc def}-boy {\sc bi}-write.{\sc ipfv.3m.sg} {\sc def}-letter\\
+%\glt `The boy writes/is writing the letter.'
+%\z
+
+
+\ea \label {ea-c} Egyptian Arabic \citep[91]{ElSadek:PhD} \\
+\gll {ʔ}aħmad  k\={a}n bi-yẖattat el-hug\={u}m \\
+Ahmed be.{\sc pfv.3m.sg} {\sc bi}-plan.{\sc ipfv.3m.sg} {\sc def}-attack\\
+\glt `Ahmed  was planning  the attack.'
+\z
+
+\ea\begin{forest}
+[IP
+  [NP\\{(\UP\SUBJ)=\DOWN} [{{ʔ}aħmad},roof]]
+[I$'$\\{\UP=\DOWN}
+  [I\\{\UP=\DOWN}
+    [k\={a}n ]]
+      [VP\\{(\UP\XCOMP)=\DOWN}
+      [V\\{\UP=\DOWN}
+        [bi-yẖattat]]
+    [NP\\{(\UP\mbox{\sc obj})=\DOWN}  [{el-hug\={u}m},roof]]
+        ]] ]]
+\end{forest} \hfill{\citep[91]{ElSadek:PhD} }
+\z
+
+
+
+\ea \label{ea-fs}  Egyptian Arabic \citep[90]{ElSadek:PhD} \\
+\gll konna {\hwithstroke}a-nm\={u}t\\
+be.{\sc pfv.1pl} {\sc fut}-die.{\sc ipfv.1pl}\\
+\glt `We were going to die.'
+\z
+
+
+\eabox{
+\avm[style=fstr]{
+[ pred  & `be\arglist{\XCOMP} \SUBJ'     \\
+ tense &  past  \\
+  subj  &  \rnode{a}{[pers &  1  \\ num & pl ]}\smallskip\\
+xcomp & [ pred & `die\arglist{\SUBJ}'\\
+aspect & prosp\\
+subj & \Rnode{b}{~}\\
+]
+  ] }
+\ncangles[armA=2.4,linearc=.25,nodesepA=-4pt,angleA=0,nodesepB=0pt,angleB=0,linewidth=.5pt]{b}{a}
+\hfill{\citep[90]{ElSadek:PhD}}
+}
+
+\section{Aspects of verbal complementation}
+\largerpage
+
+Various  further aspects of verbal complementation in the Arabic vernaculars are discussed in the LFG literature. \citet{Camilleri:PhD16} provides a detailed exploration of temporal and aspectual auxiliation in Maltese, articulating an unusually large set of features and values for this domain at f-structure. She also explores the use of the pseudo-verbs {\em g{\hwithstroke}odd-} `almost' {\em il-} `to' and {\em g{\hwithstroke}ad-} `still'  as aspectual  auxiliaries expressing the {\sc perfect} aspect.  The term pseudo-verb is used descriptively in work on the Arabic vernaculars to refer to a form which plays the role of a finite verb  in the syntax but which is derived from
+a participle, preposition or nominal stem and usually retains many aspects of morphosyntactic realization reflecting this origin, such as exhibiting non-canonical forms of subject agreement.  These forms raise many interesting issues for analysis, not least regarding their synchronic categorial identity.   Camilleri  argues that the universal perfect and the perfect of recent past are expressed syntactically in Maltese by the pseudo-verbs {\em il-} and {\em g{\hwithstroke}ad-} respectively (see (\ref{il-ex}) and (\ref{ghad-ex})), while {\em g{\hwithstroke}odd} provides an avertive construction. Applying a range of standard tests, she argues  for an Aux-{\sc pred}, raising analysis of these forms, along the lines shown in (\ref{ghad-ex-fs}) and (\ref{ghodd-ex-fs}) for (\ref{ghad-ex}) and (\ref{ghodd-ex}) respectively. Note that Maltese, like Arabic, lacks an infinitival form, and makes use of the imperfective form of the verb in these non-finite complements.
+
+
+
+
+\ea   \label{il-ex} Maltese \citep[205]{Camilleri:PhD16} \\
+\gll Il-ni   n-i-kteb mis-7\\
+to-{\sc 1sg.acc}  1-{\sc frm.vwl}-write.{\sc ipfv.sg} from.{\sc def}-7\\
+\glt `I have been writing since 7 o'clock.'
+\ex  \label{ghad-ex} Maltese \citep[213]{Camilleri:PhD16}\\
+\gll Kon-t g{\hwithstroke}ad-ni qed n-i-kteb\\
+be.{\sc pfv-1sg} still-{\sc 1sg.acc} {\sc prog} 1-{\sc frm.vwl}-write.{\sc ipfv.sg}\\
+\glt `I was still writing.'
+\ex
+\label{ghodd-ex} Maltese \citep[213]{Camilleri:PhD16} \\
+\gll Kon-t g{\hwithstroke}odd-ni xtraj-t il-libsa\\
+be.{\sc pfv-1sg} almost-{\sc 1sg} buy.{\sc pfv-1sg} {\sc def}-dress\\
+\glt `I had almost bought the dress.'
+\z
+
+
+\eabox{ \label{ghad-ex-fs} \avm[style=fstr]{ [ pred &
+    `g\textsc{\hwithstroke}adni\arglist{\XCOMP}\SUBJ' \\ tense & past \\ aspect &
+    perfect\\ subj & \rnode{A} {[ pred & `pro'\\ pers & 1 \\ num & sg
+    ] }\smallskip\\ xcomp & [pred & `nikteb\arglist{\SUBJ}'\\ subj &
+      \rnode{B}{~}\\ aspect & prog] ] }
+\CURVE[2.5]{-2pt}{0}{A}{-2pt}{0}{B}
+\hfill{\citep[214]{Camilleri:PhD16}}
+}
+
+
+\eabox{ \label{ghodd-ex-fs}
+\avm[style=fstr]{
+[ pred  & `g\textsc{\hwithstroke}oddni\arglist{\XCOMP}\SUBJ'    \\
+ cl-type & avertive\\
+tense &  past  \\
+  subj  & \rnode{A} {[  pred & `pro'\\
+pers &  1  \\ num & sg ] }\smallskip\\
+xcomp & [pred & `xtrajt\arglist{\SUBJ,\OBJ}'\\
+subj & \rnode{B}{~}\\
+aspect & perfective\\
+obj & [ pred `libsa'\\
+def & + ]
+]
+  ] }
+\CURVE[3]{-2pt}{0}{A}{-2pt}{0}{B} \hfill{\citep[214]{Camilleri:PhD16}}
+}
+
+
+
+
+The  syntax and morphosyntax of phasal verbs, that is verbs which denote the inception, duration, continuation, completion or  termination of a state or event  (such as (\ref{eca-ph})), in the Arabic vernaculars is addressed in \citet{AACES:LFG13} (see also  \citealt{Camilleri:PhD16}  and \citealt{ElSadek:PhD} for more extensive discussion of Maltese and  Egyptian respectively). These verbs take verbal complements (or, particularly in Modern Standard Arabic, nominalised verbal complements)  and  typically disallow intervening material between the aspectual verb and its verbal complement (which generally lacks a complementising particle).  The
+aspectual verb and the embedded verb
+have the same subject, which is not expressed as an NP in the lower
+clause. The  embedded verb shows subject agreement and is usually an
+imperfective form (Arabic lacks an infinitive form). Using standard
+tests, \citet{AACES:LFG13} show that a raising analysis is motivated
+for these verbs in examples such as (\ref{eca-ph}) and (\ref{ha-mtall}) below.\footnote{In addition to occurring in a raising structure, some of the class of phasal verbs also occur in a `subjectless' variant with a default {\sc 3m.sg} phasal verb and a subject expressed  within the embedded complement, a structure which provides an expletive subject counterpart to the raising structure.}
+
+
+
+\ea \label{eca-ph} Egyptian Arabic  \citep[17]{AACES:LFG13}\\
+\ea \label{neg1}
+\gll el-walad ma-badaʔ-š  ya-kul \\
+{\sc def-}boy {\sc neg}-start.{\sc pfv.3m.sg.neg} {\sc 3}-eat.{\sc ipfv.m.sg}  \\
+\glt `The boy didn't start to eat.'
+\ex \label{neg2}
+\gll el-walad bada{ʔ} ma-ya-kul-š \\
+{\sc def-}boy start.{\sc pfv.3m.sg} {\sc neg}-{\sc 3}-eat.{\sc ipfv.3m.sg.neg}  \\
+\glt `The boy started to  not eat.'
+\z\z
+
+\newpage
+
+
+\ea \label{ha-mtall}
+\ea \label{ha-mt}  Hijazi Arabic  \citep[20]{AACES:LFG13}\\
+%\ex
+%\gll bada ya-{\u{g}}amiʕ al-maḥṣ\={u}l\\
+%start.\textsc{pfv.3m.sg} {\sc 3}-gather.\textsc{ipfv.m.sg} {\sc def}-harvest \\
+%\glt `He started gathering the harvest.'
+\gll al-maḥṣ\={u}l bada ya-n-{\u{g}}imʕ\\
+{\sc def}-harvest start.\textsc{pfv.3m.sg} {\sc 3}-{\sc pass}-gather.\textsc{ipfv.m.sg} \\
+\glt `The harvest started being gathered.'
+%\end{xlist}
+%\z
+%\ea
+\ex \label {mt-ph}  Maltese \citep[20]{AACES:LFG13}\\
+\gll L-iltiema bde-w j-i-n-\.{g}abr-u\\
+{\sc def}-orphans begin.{\sc pfv}.3-{\sc pl} 3-{\sc frm.vwl-pass}-gather.{\sc ipfv-pl}\\
+\glt `The orphans started being gathered (together).'
+\z\z
+
+
+
+%\enumsentence{\label{beg1}\gll Beda ji-{\.g}bor l-iltiema\\
+%begn.{\sc pfv.3m.sg} 3-gather.{\sc ipfv.m.sg} {\sc def}-orphans\\
+%He started gathering the orphans.  \hfill{\sc mt}}
+
+
+%\enumsentence{\label{beg2}
+%\gll  el-wel\={a}d bada{ʔ}-u ya-kl-u \\
+%{\sc def-}boy.{\sc pl} start.{\sc pfv-3pl} 3-eat.{\sc ipfv}-{\sc pl}  \\
+%The boys started to eat. \hfill{\sc eca}}
+
+
+
+\citet{CES:LFG14} discuss  perceptual report predicates  in {\sc msa} and in Maltese. The {\sc msa} verb  {\em yabd\={u}}  `seem, appear' occurs in an expletive subject (or `subjectless')  construction taking a complement introduced by the declarative complementising particle {\em {ʔ}anna}.  While it does not  permit subject raising ({\sc ssr}) they argue that it  does permit copy raising ({\sc cr}) with the complementising particle {\em ka{ʔ}anna} `as if'.  In the {\sc cr} construction, the copy pronoun is not restricted to the embedded {\sc subj} role and  may occur in a wide range of nominal {\sc gf}s in the embedded complement.
+
+
+In Maltese the perceptual report predicates include
+the verb
+{\em deher} `seem/appear' and the pseudo-verbs {\em donn}+{\sc prn} (diachronically the imperative
+of `believe/think')  and  {\em qis}+{\sc prn}, both  meaning  `seem/appear/taste/sound
+as.though/as.if'.    (\ref{ex:semitic:expl}) exemplifies the expletive construction with the verb  {\em deher}, in which the verb appears in the default {\sc 3m.sg} form and the subject is expressed only in the embedded {\sc comp}.  In (\ref{raiseb}) the subject is in the matrix clause and both matrix and embedded verbs agree with it.
+\citet{CES:LFG14} argue that evidence from standard tests for raising (idiom chunks, meaning preservation under passivisation, expletives, etc)
+suggests that (\ref{raiseb}) and similar examples are {\sc ssr}.
+
+
+
+
+
+
+%(\ref{expl}) is an expletive subject example: any aspect of the eventuality
+%(including the individuals) may serve as {\sc psource}:
+
+\ea
+\label{ex:semitic:expl} Maltese \citep[191]{CES:LFG14} \\
+\gll J-i-dher  t-tfal sejr-in tajjeb\\
+3-{\sc frm.vwl}-appear.{\sc ipfv.m.sg} {\sc def-}children going.{\sc act.ptcp-pl} good.{\sc m.sg}\\
+\glt `It seems  the children are doing well.'
+\z
+
+
+%(\ref{raiseb}) is putatively a {\sc ssr} example, again in which any aspect of the eventuality
+%(including the individuals) may serve as {\sc psource}.   It does not permit an overt pronominal or non-pronominal
+%subject in the embedded clause.
+
+
+\ea
+\label{raiseb}
+Maltese  \citep[191]{CES:LFG14} \\
+\gll It-tfal dehr-u qed j-ieħd-u gost\\
+{\sc def-}children appear.{\sc pfv.3-pl}  {\sc prog} 3-take.{\sc ipfv-pl} pleasure\\
+\glt `The children seem (as though) they are enjoying themselves (lit: taking
+pleasure).'
+\z
+
+
+
+\newpage
+ However, Maltese {\em deher} also occurs in what looks like a copy raising ({\sc cr})  construction, in which a pronominal coreferential with the  {\sc subj} of the  raising predicate {\em deher} occurs as an argument within  the embedded complement. This is illustrated in (\ref{mario1}) where the {\sc obj} pronominal inflection {\em -ha} in the form {\em we\.{g}\.{g}ag{\hwithstroke}-ha} `hurt.{\sc caus.pfv.3m.sg-3f.sg.acc}' is coreferential with the (inflectionally-expres\-sed)  matrix {\sc subj} (indicated by the dashed line between anaphor and antecedent in (\ref{mariofd})).
+
+\ea
+\label{mario1} Maltese  \citep[195]{CES:LFG14} \\
+\gll
+ Marija t-i-dher  we{\.g}{\.g}agħ-ha sew, Mario\\
+Mary {\sc 3-frm.vwl}-appears.{\sc f.sg}  hurt.{\sc caus.pfv.3m.sg-3f.sg.acc} well Mario\\
+\glt `Mary seems as though Mario hurt her a lot.'
+\z
+
+
+
+\eabox{  \label{mariofd}
+\avm[style=fstr]{
+[ pred  & `seem\arglist{\COMP}\SUBJ'    \\
+   subj  & \rnode{A} {[  pred & `Marija'\\
+num & sg\\
+gend & fem\\
+pers & 3 ] }\smallskip\\
+comp & [pred & `hurt\arglist{\SUBJ,\OBJ}'\\
+subj & [ pred `mario']\\
+ obj & \rnode{B}{[ pred & `pro']}
+]
+  ] }
+\DOTCURVE[1.6]{-2pt}{0}{B}{-2pt}{0}{A} \hfill{\citep[196]{CES:LFG14}}
+}
+
+
+
+
+The analysis which \citet{CES:LFG14}
+develop of the syntax and semantics of these perceptual report predicates builds on \citegen{AshT:12} work on English and Swedish.  Because Maltese (and Arabic in general) is both a pro-drop language and
+ uses the imperfective form of the verb in non-finite complement  clauses (lacking an infinitive form),  examples such as (\ref{raiseb}) could   in principle involve either raising or copy raising.  They  argue that there is a clear contrast between {\sc ssr} examples such as  (\ref{raiseb}), in which any aspect of the eventuality can be the perceptual source, and {\sc cr} examples such as (\ref{wk}) in which it is the raised
+{\sc subj} itself that is necessarily the individual {\sc psource}. In the Maltese {\sc cr} construction, the pronominal copy can correspond to a very wide range of embedded functions.  It is also not limited to the immediately embedded {\sc comp} but within the topmost embedded {\sc comp} it is restricted to non-subject functions.
+
+\newpage
+
+\ea \label{wk} Maltese \citep[192]{CES:LFG14}\\
+\gll T-i-dher {\.g}a ta-w-ha xebgħa xogħol x't-a-għmel!\\
+3-{\sc frm.vwl}-seem.{\sc ipfv.f.sg} already give.{\sc pfv.3-pl-3f.sg.acc} smacking work what.3-{\sc frm.vwl}-do.{\sc ipfv.f.sg}\\
+\glt `She$_{i}$ seems like they already gave her$_{i}$ a whole load of work
+to do!'
+\z
+
+
+While \citet{CES:LFG14} are  concerned with canonical verbal perceptual report predicates in {\sc msa} and Maltese,   \citet{ES:LFG15} look at the  expression of perceptual reports in Egyptian Arabic  using the active participle {\em b\={a}yen} `show, appear' and in particular at the use of the  (noun-derived) pseudo-verb {\em šakl} ($>$`form, shape') as a perceptual report predicate.  {\em b\={a}yen} can occur in a construction in which the  active participle  is followed by a PP which expresses the (visible) individual {\sc psource}
+ with either the standard sentential complementiser {\em {ʔ}in} (corresponding to the {\sc msa} complementiser {\em {ʔ}anna})
+or the `evidential' complementiser {\em ka{ʔ}in} (cognate with {\sc msa} {\em ka{ʔ}anna}).  The active participle must be in the default form but a temporal auxiliary may agree with the nominal {\sc psource} in the PP, as illustrated in (\ref{agr-again}), in what may be a case of parasitic or miscreant agreement.
+
+\ea  \label{agr-again}  Egyptian Arabic \citep[92]{ES:LFG15}\\
+\gll konti b\={a}yen ʕal\={e}-ki ʔinn-ik mabs\={u}t-a\\
+be.{\sc pfv.2f.sg} show.{\sc act.pctp.m.sg} on-{\sc 2f.sg} that-{\sc 2f.sg} happy.{\sc pass.ptcp.sg-f}\\
+\glt `You seemed happy.'
+\z
+
+
+With {\em šakl}, there is rather clearer evidence of raising.
+(\ref{wait}) illustrates a very common means of expressing a perceptual report.  It involves what appears morphosyntactically to be a  nominal form {\em šakl} `form, shape' with a dependent `possessor' corresponding to the individual about whom the report is made. Notice in (\ref{wait}) that it is the dependent `possessor' (the pronominal affix) which controls agreement on the {\sc act.ptcp}, and similarly in an example such as  (\ref{kaan}). Synchronically, this form appears to operate as a pseudo-verb here, in a raising structure.
+
+
+
+\ea \label{wait} Egyptian Arabic \citep[95]{ES:LFG15}\\
+\gll šakl-ohom mestaney-\={\i}n ħ\={a}ga mohemma\\
+form-{\sc 3pl} wait.{\sc act.ptcp-pl} thing important\\
+\glt `They seem to be waiting for an important thing.' \\
+`It seems they're waiting for an important thing.'
+\z
+
+
+\ea \label{kaan} Egyptian Arabic \citep[98]{ES:LFG15}\\
+\gll šakl el-wel\={a}d k\={a}nu biyitderbo\\
+form {\sc def}-boys be.{\sc pfv.3pl} beat.{\sc bi.ipfv.pass.3pl}\\
+\glt `The boys seem to have been (being) beaten.'
+\z
+
+
+In structures such as (\ref{wait}) and (\ref{kaan})  the dependent NP or pronoun is not obligatorily interpreted as the individual {\sc psource}. In a different structure, illustrated in (\ref{boys}), we find a sentential complement introduced by the complementising particle {\em ka{ʔ}in}, with no requirement that the dependent NP/pronoun be co-referential with the  subject of the (embedded) predication, and these structures {\em are}  associated with a clear individual {\sc psource} interpretation.
+
+
+
+
+\ea  \label{boys} Egyptian Arabic \citep[98]{ES:LFG15}\\
+\gll šakl el-wel\={a}d kaʔenn-aha darabet-hom\\
+form {\sc def}-boys as.if-{\sc 3f.sg} beat.{\sc pfv.3f.sg}-{\sc 3pl}\\
+\glt `The boys seem as if she's beaten them.'
+\z
+
+Other work on  aspects of complementation includes the following.  \citet{ElSadek:PhD} discusses the causative {\em {\textchi}alla} `make', aspectual/phasal verbs and modal verbs, proposing  analyses involving functional and anaphoric control.  \citet{AACES:LFG13} concerns the description and analysis of
+experiencer-object psychological predicates ({\em frighten} or {\em
+  please} class -- {\sc eopv}s) in Hijazi Arabic, Egyptian Arabic  and Maltese
+and proposes that the interaction of {\sc eopv}s with aspectual
+raising predicates involves copy raising ({\sc cr}).   An analysis of aspectual object marking  in Libyan Arabic is provided in \citet{BoerjarsGhadgoudPayne16}.
+ In Libyan Arabic,  the presence of the preposition {\em fi} before the direct object of a transitive verb in the imperfective form provides a continuous or habitual aspectual value to the clause (see (\ref{lib})), which \citet{BoerjarsGhadgoudPayne16}  model by means of a clause feature {\sc interior}=+.
+
+\ea \label{lib} Libyan Arabic \citep[126]{BoerjarsGhadgoudPayne16} \\
+\ea \gll a{\hwithstroke}med kle el-koski\\
+Ahmed eat.{\sc pst.3m.sg} {\sc def}-couscous\\
+\glt `Ahmed ate couscous.'
+\ex \gll a{\hwithstroke}med y\={a}kil fi el-koski\\
+Ahmed eat.{\sc ipfv.3m.sg} {\sc fi} {\sc def}-couscous\\
+\glt `Ahmed eats/is eating couscous.'
+\z\z
+
+
+\section{Copula sentences}
+
+Both Hebrew and Arabic have copula sentences without an overt copula head, as well as copula sentences with a `pronominal copula', and a variety of copula-type elements which mark existential constructions of various sorts.
+Predicative (copula) sentences with no  copula receive present tense interpretations, while an appropriate form of {\em be} signals other temporal interpretations.
+The examples in (\ref{cop1-heb}) illustrate this alternation between  the `null' and overt copula in Hebrew with  adjectival, nominal and prepositional predicates.
+
+\ea \label{cop1-heb}
+\ea Hebrew \citep[227]{Falk04} \\
+\gll Pnina nora xamuda/ tinoket/ b-a-bayit\\
+Pnina awfully cute.{\sc f}/  baby.{\sc f}/ in-{\sc def}-house\\
+\glt `Pnina is awfully cute/a baby/in the house.'
+\ex \gll Pnina hayta nora xamuda/ tinoket/ b-a-bayit\\
+Pnina be.{\sc pst.3f.sg} awfully cute.{\sc f}/  baby.{\sc f} in-{\sc def}-house\\
+\glt `Pnina was awfully cute/a baby/in the house.'
+\z\z
+
+
+
+As well as the zero realisation in the predicative clauses in  (\ref{cop1-heb}), the  so-called pronominal copula also occurs with predicative complements in Hebrew, as well as  with a definite NP complement in an equative copula construction, in paradigmatic opposition  with forms of {\em be}  giving temporal interpretations other than the present.\footnote{The distribution of the null copula and the pronominal copula strategy in Arabic is similar, but not identical. For example, in Hebrew examples with predicative nominals and PPs are well-formed in the complement of the pronominal copula, but these structures are not found in (most) Arabic vernaculars.
+\ea Hebrew \citep[296]{Sichel:1997} \\
+\gll Rina hi talmid-a/xaxam-a/b-a-bayit\\
+Rina  {\sc pron.3f.sg} student-{\sc f}/intelligent-{\sc f}/in-{\sc def}-house\\
+\glt `Rina is a student/intelligent/at home.'
+\z
+}
+
+
+
+
+
+
+\ea \label{cop2-heb}
+\ea
+Hebrew \citep[227]{Falk04}\\
+\gll  Pnina hi nora xamuda/ ha-tinoket\\
+Pnina {\sc pron.3f.sg} awfully cute.{\sc f}/  {\sc def}-baby.{\sc f}\\
+\glt `Pnina is awfully cute/the baby.'
+\ex \gll  Pnina hayta nora xamuda/ ha-tinoket\\
+Pnina be.{\sc pst.3f.sg} awfully cute.{\sc f}/  {\sc def}-baby.{\sc f}\\
+\glt `Pnina was awfully cute/the baby.'
+\z\z
+
+The pronominal copula forms of Hebrew and Arabic have received considerable analytic attention outside LFG.  Within LFG, \citet{Falk04} develops a mixed category analysis of  the pronominal copula  {\em hi} and its inflectional counterparts in Hebrew, taking it to be categorially nominal but functionally verbal.  It is argued to have categorially mixed properties in taking `verbal' complements (e.g.\ accusative objects) and heading a constituent with a clausal distribution, but occurring in an N position.\footnote{In Hebrew, the sentential negator
+{\em lo} appears before a verb but
+  between the pronominal copula and the following predicative
+  element, which is taken to support the conclusion that the pronominal copula  is not a V in c-structure.}
+(\ref{lex-pcop}) is the lexical entry for the copula use of {\em hi}; the  c-structure and f-structure  for (\ref{cop2-heb}) are shown in (\ref{cop2-heb-tree}) and (\ref{fs-pcop}) respectively.\footnote{Note that although this is a mixed category analysis, because \citet{Falk04} assumes an NP  node dominating the N {\em hi},  the N is not the extended head of VP and AP, according to the standard definition of extended head \citep[136]{BresnanEtAl2016}. } The final line in (\ref{lex-pcop}) is satisfied if the category VP is a member of the set of c-structure nodes mapping to the f-structure denoted by \UP. This requirement is satisfied in the c-structure shown in (\ref{cop2-heb-tree}).
+
+%\footnote{Throughout this section, arguments within {\sc pred} value lexical forms  are notated as  given as in source. e.g.\ (\UP \POSS) rather than \POSS.}\textsuperscript{,}
+
+
+
+\ea \label{lex-pcop}
+\catlexentry{hi}{N}{\feqs{(\UP\PRED)=\gloss{`be\arglist{\SUBJ,\textsc{predlink}'}}\\(\UP\TENSE)=\textsc{pres}\\
+(\UP\SUBJ\GEND)=\textsc{f}\\
+(\UP\SUBJ\NUM)=\SG\\
+VP $\in$ CAT(\UP)
+}}  \hfill{\citep[233]{Falk04}  }
+\z
+
+
+
+
+\ea \label{cop2-heb-tree}
+\begin{forest}
+[S
+  [NP
+    [Pnina]]
+[NP
+  [NP
+      [N [hi] ] ]
+  [VP
+     [AP [{nora xamuda},roof]]  ] ] ]
+      \end{forest}
+\z
+
+
+
+\eabox{ \label{fs-pcop}
+\avm[style=fstr]{
+[ pred  & `be\arglist{\SUBJ, \textsc{predlink} }'    \\
+ tense & pres\\
+  subj  & [  pred & `Pnina'\\
+gend & f\\
+ num & sg\\
+] \\
+predlink & [pred & `cute'\\
+adj & \{ [ ``awfully'']\}\\
+]
+  ] } \hfill{ \citep[234]{Falk04}}
+}
+
+
+
+
+
+
+
+While the pronominal copula is treated as a {\sc pred}-bearing element with a {\sc predlink} complement (see (\ref{lex-pcop}) above), giving a closed, two-tier analysis of these copula sentences, those with no copula are treated as simple single-tier predications (``such sentences are most naturally analysed as involving an exocentric S, with direct predication by the non-verbal element''  \citep[235]{Falk04}).  The analysis of an example such as (\ref{cop1-heb}a) which lacks the pronominal copula is along the lines shown in (\ref{zerocop-heb-tree}--\ref{fs-zerocop}).  On this analysis, non-verbal predicational elements which appear in both the null copula and the pronominal copula constructions must be associated with two lexical entries, the predicational (i.e.\ {\sc subj}-subcategorising) {\sc pred} value (for the null copula construction) being a lexical extension of the non-predicational one (as can be seen by comparing the relevant {\sc pred} values in (\ref{fs-pcop}) and (\ref{fs-zerocop}) respectively).
+
+\ea \label{zerocop-heb-tree}
+\begin{forest}
+[S
+  [NP
+    [Pnina]]
+[AP
+  [AdvP
+      [Adv [nora] ] ]
+  [AP
+     [A  [xamuda  ]]  ] ] ]
+      \end{forest}
+\z
+
+
+%\enumsentence{
+%tree[sent]{S}{%
+%\tree[nps]{NP}{\le{Pnina} }
+%\tree{AP}{\tree{AdvP}{\tree{Adv}{\le{nora} } }
+%\tree{AP}{\tree{A}{\le{xamuda } }
+%}
+%}
+%}  \hfill{\citet[235]{Falk04}}  }
+
+
+\eabox{ \label{fs-zerocop}
+\avm[style=fstr]{
+[  tense & pres\\
+  subj  & [  pred & `Pnina'\\
+gend & f\\
+ num & sg\\
+] \\
+pred & `cute\arglist{\SUBJ}'    \\
+adj & \{ [ ``awfully'']\}\\
+]
+  } \hfill{\citep[235]{Falk04}}
+}
+
+
+
+An interesting consequence of this analysis is that the  distinction between individual level predication and stage-level predication is reflected in f-structure.  Individual level predication uses the
+pronominal copula  and therefore is associated with a two-tier analysis, while stage-level predication (with no copula) is associated with a single simple f-structure \citep[236]{Falk04}. This contrast in interpretation is illustrated in (\ref{ind-stage}).
+
+
+
+\ea \label{ind-stage} Hebrew \citep[236--237]{Falk04} \\
+\ea
+\gll ha-dinozaur hu v{s}ikor\\
+{\sc def}-dinosaur {\sc pron.m.sg} drunk.{\sc m.sg}\\
+\glt `The dinosaur is a drunkard.'
+\ex
+\gll ha-dinozaur v{s}ikor\\
+{\sc def}-dinosaur drunk.{\sc m.sg}\\
+\glt `The dinosaur is drunk.'
+\z
+\z
+
+Copula clauses with forms of the verb {\em haya} `be'  are functionally equivalent to both
+the zero and the pronominal copula  constructions, as shown in (\ref{cop1-heb}b) and (\ref{cop2-heb}b) above. This means that the lexical entry for {\em haya} must have an optional {\sc pred} value (see  (\ref{lex-becop})). As a consequence, a sentence such as (\ref{pnina}) will be associated with one c-structure and the two f-structure analyses shown in (\ref{fs-hayta-zero}) and (\ref{fs-hayta-pcop}), that is, it will be analysed as functional ambiguous.
+
+
+\ea  \label{lex-becop}
+\catlexentry{hayta}{N}{\feqs{
+((\UP\PRED)=\gloss{`be\arglist{\SUBJ, \textsc{predlink}'}})\\
+(\UP\TENSE)=\textsc{past}\\
+(\UP\SUBJ\GEND)=\textsc{f}\\
+(\UP\SUBJ\NUM)=\textsc{sg} }  }
+\z
+
+%%%(\UP\PRED)=\gloss{`be\arglist{\SUBJ,\textsc{predlink}'}}\\(\UP\TENSE)=\textsc{pres}\\
+
+
+
+\ea\label{pnina} Hebrew \citep[227]{Falk04}\\
+\gll  Pnina hayta nora xamuda\\
+Pnina be.{\sc pst.3f.sg} awfully cute.{\sc f}\\
+\glt `Pnina was awfully cute.'
+\z
+
+
+
+
+\eabox{ \label{fs-hayta-zero}
+\avm[style=fstr]{
+[  tense & past\\
+  subj  & [  pred & `Pnina'\\
+gend & f\\
+ num & sg\\
+] \\
+pred & `cute\arglist{\SUBJ}'    \\
+adj & \{ [ ``awfully'']\}\\
+]
+  } \hfill{\citep[237]{Falk04}}
+}
+
+
+
+\eabox{ \label{fs-hayta-pcop}
+\avm[style=fstr]{
+[ pred  & `be\arglist{\SUBJ, \textsc{predlink} }'    \\
+ tense & past\\
+  subj  & [  pred & `Pnina'\\
+gend & f\\
+ num & sg\\
+] \\
+predlink & [pred & `cute'\\
+adj & \{ [ ``awfully'']\}\\
+]
+  ] } \hfill{\citep[237]{Falk04} }
+}
+
+
+
+
+
+
+
+For {\sc msa}, \citet{attia08} discusses predicative and locational copula clauses lacking an overt copula form and associates a {\em be} {\sc pred} with the absence of a copula, treating the predicative complement as a {\sc predlink}.
+His contention is that the adjective cannot be the head because the subject and the adjective both take what is considered to be default nominative case, while in the presence of an overt copula the adjective will have accusative case. (\ref{msa1}) and (\ref{msa2}) show this contrast.
+
+
+
+
+
+\ea\label{msa1} {\sc msa} \citep[94]{attia08}\\
+\gll al-mar{ʔ}at-u  kar\={\i}mat-un\\
+{\sc def}-woman.{\sc f.sg-nom} generous.{\sc f.sg-nom}\\
+\glt `The woman is generous.'
+\z
+
+\ea \label{msa2} {\sc msa}  \citep[100]{attia08}\\
+\gll k\={a}na ar-ra\v{g}ul-u kar\={\i}m-an\\
+was {\sc def}-man.{\sc m.sg-nom} generous.{\sc m.sg}-{\sc acc}\\
+\glt `The man was generous.'
+\z
+
+
+
+
+While  agreement between the adjective and the clausal subject could be captured simply and transparently by a local {\sc subj} agreement statement on a two-tier analysis with an open predicational complement (that is, an  {\sc xcomp} analysis along the lines of a raising predicate) this mechanism is not available on the (closed complement)  {\sc predlink} analysis, since the {\sc predlink} does not contain a {\sc subj}.  \citet{attia08} suggests that agreement specifications should be associated with the c-structure rules, as in (\ref{predlink-cop-rule}), adapted from \citet[104]{attia08}.
+
+
+
+\eabox{ \label{predlink-cop-rule}
+\resizebox{11.8cm}{!}{\small
+\textphraserule{S}{
+\tightrulenode{NP\\ (\UP\SUBJ)=\DOWN}
+\rulecatdisj{\tightrulenode{VCop\\ \UP=\DOWN }}{
+\tightrulenode{$\epsilon$\\ (\UP\PRED)=`{\sc null-be}\arglist{{\sc subj}, {\sc predlink}}' \\ (\UP {\sc tense})={\sc pres}}}
+\rulenode{\rulecatdisj{NP}{AP}\\(\UP\PREDLINK)=\DOWN\\
+(\DOWN\GEND)=(\UP\SUBJ\GEND)\\
+(\DOWN\NUM)=(\UP\SUBJ\NUM)
+}} %\hfill{\citet[104]{attia08}}
+}
+}
+
+
+
+
+\normalsize
+ The f-structure of a simple predicative copula sentence such as (\ref{talib}) is (\ref{talib-fs}) on this analysis.
+
+\ea \label{talib}  {\sc msa} \citep[107]{attia08} \\
+\gll huwa ṭ\={a}lib-un\\
+he student.{\sc nom}\\
+\glt `He is a student.'
+\z
+
+
+
+
+
+\eabox{ \label{talib-fs}
+\avm[style=fstr]{
+[ pred  & `null-be\arglist{\SUBJ, \textsc{predlink} }'    \\
+ tense & pres\\
+  subj  & [  pred & `he'] \\
+predlink & [pred & `student'
+]
+  ] } \hfill{ \citep[107]{attia08}}
+}
+
+
+
+The `null-be\arglist{{\sc subj}, {\sc predlink}}' analysis is not adopted across the board for the Arabic copula clause.  \citet{Alsharif:PhD} treats verbless predication in {\sc msa} with a single-tier analysis and no `null-be' {\sc pred}, as does \citet{Alruwaili:PhD} for Turaif Arabic. In these analyses the lack of an overt verb is associated simply with {\sc tense}={\sc pres}.  \citet{Alruwaili:PhD} treats the  Arabic pronominal copula of equational sentences, illustrated in (\ref{hi-cop}),  as an element in I with the {\sc pred} value `hi\arglist{\SUBJ,\OBJ}', though without providing much discussion of this analytic choice.
+
+\ea \label{hi-cop} Turaif Arabic \citep[109]{Alruwaili:PhD}\\
+\gll huda h\={\i} l-mud\={\i}r-a\\
+Huda {\sc cop.3f.sg} {\sc def}-director-{\sc f.sg}\\
+\glt `Huda is the director.'
+\z
+
+
+
+
+\section{Construct state nominals}
+\largerpage[-2]
+A considerable theoretical literature addresses the syntax of the {\em construct state nominal} (or {\em construct})  ({\sc csn}) in Modern Hebrew and Arabic, a construction of central importance in the grammar of these languages. This construction, illustrated in (\ref{sp-place})--(\ref{basic-syr}), has a range of distinctive properties: it is left-headed, the head cannot be inflected for definiteness and may occur in a bound form,  the {\em construct state}, depending on language and inflectional class. In {\sc msa} the dependent is genitive. A further key property is lack of interruptibility of the head-dependent construction,  so that any adjectival modifiers of the head noun follow the entire construct (including any modifiers of the non-head dependent itself), as in example (\ref{adj-heb}).
+A range of different relations may hold between the head and the non-head or dependent, including possession, partitivity, kinship, identity, measurement and composition, though the range of the construction differs between languages and dialects.\footnote{\label{leb-mod}There are also modificational constructs which get a kind reading as in (\ref{ex:Semitic:fn9}).  These are not discussed in any detail in the LFG literature.
+
+\ea\label{ex:Semitic:fn9} Lebanese Arabic \citep[77]{Ouwayda}\\
+\gll abbouʕet sherti\\
+hat cop\\
+\glt `a cop's type of hat'
+\z
+}
+
+
+
+\ea
+\label{sp-place} Hebrew \citep[106]{Falk07} \\
+\gll mamlexet norvegia\\
+kingdom.{\sc constr} Norway\\
+\glt `the kingdom of Norway'
+\z
+
+
+\ea \label{car} Lebanese Arabic \citep[77]{Ouwayda}\\
+\gll sayyaret l-estez\\
+car.{\sc f.sg.constr}  {\sc def}-teacher\\
+\glt `the teacher's car'
+\z
+
+
+
+
+
+
+\ea\label{basic-syr} Syrian Arabic  \citep[258]{Hallman:DOC}\\
+\gll  ʕamm l-ʕr\={a}us \\
+uncle {\sc def}-bride \\
+\glt `the uncle of the bride'
+%\enumsentence{{\bf a MSA example perhaps}  }
+\z
+
+
+\ea \label{adj-heb} Hebrew \citep[106]{Falk07} \\
+ \gll dodat ha-balšan ha-generativi ha-zkena\\
+aunt.{\sc constr} {\sc def}-linguist {\sc def}-generative.{\sc m} {\sc def}-old.{\sc f}\\
+\glt `the generative linguist's old aunt'
+\z
+
+\ea \label{jdiid} Jordanian Arabic \citep[152]{Alhailawani:PhD}\\
+\gll bait il-mara il-jd\={\i}d\\
+mouse.{\sc m.sg} {\sc def}-woman.{\sc f.sg} {\sc def}-new.{\sc m.sg}\\
+\glt `the woman's new house'
+\z
+
+As well as the  {\sc csn}, Hebrew and the Arabic vernaculars have an analytic or free state genitive construction with a distribution which partially overlaps that of the {\sc csn}. The following examples illustrate (note that a variety of different ``linking elements'' are found in the various Arabic vernaculars).
+
+
+\ea \label{fs-leb}  Lebanese Arabic \citep[77]{Ouwayda}\\
+\gll l-sayyara taba{ʔ} l-estez\\
+{\sc def}-car of {\sc def}-teacher\\
+\glt `the teacher's car'
+\z
+
+
+
+\ea
+\label{Sem:lp} Hebrew \citep[104]{Falk07} \\
+\gll ha-doda ha-zkena šel ha-balšan\\
+{\sc def}-aunt {\sc def}-old of {\sc def}-linguist\\
+\glt `the old aunt of the linguist'
+\z
+
+\citet{Falk01actnom}  provides a detailed examination of the constituent structure of NPs containing a {\em construct} in Hebrew, concluding that despite the closely bound nature of the {\sc csn}\footnote{The construct state (of the head noun) is a morphophonological form limited to occurrence within this construction, and within compounds.} the N+possessor/dependent  does not form a constituent to the exclusion of the head-modifying AP; the c-structure proposed for  (\ref{heb-garden}) is thus
+(\ref{heb-garden-tree}).\footnote{\citet{Falk07} assumes that any  PP modifiers or arguments of the head N are adjoined to the NP, citing a similar proposal developed  for Welsh NP structure in \citet{Sadler00}.}
+The c-structure rule is shown in (\ref{csn-rule}):  the \DOWN$\in$(\UP\ADJ) annotation is for the sort of modificational example noted in footnote \ref{leb-mod} above which also occur in Hebrew e.g.\  {\em bigdey yeladim} `clothing.{\sc constr} children' (children's clothing), and is not directly relevant to our discussion below.
+
+\ea \label{heb-garden} Hebrew \citep[85]{Falk01actnom}\\
+\gll ginat ha-more ha-metupax-at\\
+garden({\sc f}).{\sc constr} {\sc def}-teacher({\sc m}) {\sc def}-cared.for-{\sc f.sg}\\
+\glt `the teacher's tended garden'
+\z
+
+
+
+
+
+\ea
+\label{heb-garden-tree}
+\begin{forest}
+[NP
+  [N\\{\UP=\DOWN}
+     [ginat\\{garden(\textsc{f}).\textsc{constr} }  ]]
+ [NP\\{(\UP\POSS)=\DOWN}\\{(\UP\ {\sc dom})=\DOWN }
+     [  N\\{\UP=\DOWN}
+      [hamore\\{\textsc{def}.teacher} ] ] ]
+[AP\\{\DOWN $\in$ (\UP\ADJ) }
+      [hametupaxat\\{ \textsc{def}.cared.for.\textsc{fsg} }  ]  ]
+     ]
+\end{forest} \hfill{\citep[85]{Falk01actnom}}
+\z
+
+
+\newpage
+
+\ea  \label{csn-rule}
+\phraserule{NP}{
+\rulenode{N\\ \UP=\DOWN}
+\rulenode{NP\\ (\UP\ {\sc dom})=\DOWN\\
+\{ (\UP\POSS)=\DOWN  $|$ \\ \DOWN $\in$ (\UP\ADJ) \}  }
+\rulenode{AP*\\ \DOWN\ $\in$ (\UP\ADJ)
+}}\hfill{\citep[91]{Falk01actnom}}
+\z
+
+
+
+
+
+
+
+
+
+The c-structure rule annotations state that the dependent NP is the value of both a {\sc poss} function and a {\sc dom} attribute.
+Nouns are treated as optionally subcategorising for a {\sc poss}, which may be expressed by means of the dependent NP in a {\sc csn}, or by means of the alternative free genitive construction.
+The basic property of the construct form is the tight bond it forms with the dependent (reflected in the choice of a particular variant form of the head noun).  Modelling his analysis in part on \citegen{Wintner:Def} use of a {\sc dep} attribute in his {\sc hpsg} analysis, Falk introduces a {\sc dom} attribute associated with the immediately post-head constituent. The dependency between the  head in the construct state and the dependent NP is thus captured in the f-structure --  the construct form (and only this form)  selects a {\sc dom} attribute, which is also the value of the {\sc poss} feature (the f-description \mbox{(\UP\sc dom)} is an existential constraint, requiring the presence of a {\sc dom} attribute in the satisfying f-structure). Construct forms cannot occur in other syntactic environments.
+In a {\sc csn} the definiteness value of the construction as a whole  is ``inherited'' from the dependent nominal.  This is captured in the lexical entry shown in (\ref{lex-ginat}) for the construct form of the noun {\em gina} `garden', i.e.\ {\em ginat} by the f-description {(\UP\sc def)=(\UP\sc dom def)}.  The f-structure is shown in (\ref{anal1-heb}). In contrast to nouns in construct form,  free form nouns are specified as {$\neg$(\UP\sc dom)}.
+
+
+
+\ea\label{lex-ginat}
+\lexentry{ginat}{\feqs{
+(\UP\PRED)=`garden\arglist{({\sc poss})}'\\
+(\UP\NUM)={\sc sg}\\
+(\UP\GEND)={\sc f}\\
+(\UP\ \textsc{dom})\\
+(\UP\ \textsc{def})=(\UP\ \textsc{dom def})
+}  }\hfill{\citep[92]{Falk01actnom}}
+\z
+
+
+
+\eabox{  \label{anal1-heb}
+\avm[style=fstr]{
+[  pred & `garden\arglist{\POSS}'\\
+gend &  f\\
+num & sg\\
+def  & +\\
+ poss & \rnode{T}{[
+ case & poss\\
+pred &  `teacher'\\
+def  & +\\
+gend & m\\
+  num  &  sg ] }   \\
+ dom & \rnode{B}{~}\\
+adj  & \{[ pred &  `old'] \} ]
+}
+  \CURVE[.5]{-2pt}{0}{T}{-2pt}{0}{B}
+\hfill{\citep[92]{Falk01actnom}}
+}
+
+
+
+Adjectival modifiers in Hebrew and Arabic show definiteness agreement, in addition to agreement in more canonical agreement features such as \NUM and \GEND.  In a {\sc csn}  the definiteness value of the construction as a whole is determined by that of the \POSS or dependent NP, as   illustrated in (\ref{adj-heb}), (\ref{jdiid}) and (\ref{heb-garden}) above.
+Definiteness agreement is simply captured by associating the relevant inside-out statement
+(e.g.\ (({\sc adj} \UP) \textsc{def}=+) with the attributive adjective.
+
+
+Simply put, the essence of \citegen{Falk01actnom}  analysis is a lexical distinction between construct forms of nouns, which are specified as {(\UP\sc dom)} and free forms, which are {$\neg$(\UP\sc dom)} by default, a special  {\sc ps} rule which takes care of the adjacency requirement,  and the association of the dependent NP with the {\sc poss} function.  Notice that the occurrence of a {\sc poss} function and the use of the construct form are not co-extensive: some dependent NPs are {\sc adj}, rather than {\sc poss} functions, as noted above, and some {\sc poss} functions are realised by means of the free genitive construction illustrated in (\ref{Sem:lp}) above. It is for this reason that Falk's account separates the requirement for a dependent ({\sc dom}) from the function of the dependent (normally {\sc poss}).
+
+
+
+%%also develops the ADJ use
+\citet{Falk07} further develops the analysis of the {\sc csn} presented in \citet{Falk01actnom}, providing more extensive discussion of the distribution of the `short' (i.e {\sc csn}-internal) and `long' (i.e.\ {\em šel}-PP) possessor constructions (i.e.\ examples such as (\ref{Sem:lp}) above).
+For example, while both constructions are available for relational nouns, true possession in Hebrew is normally expressed by using the {\em šel} construction (use of the {\sc csn}  being limited to more formal registers). By contrast, for naming places and periods of time, Hebrew uses only the short construction (see (\ref{sp-place})).    There are two main theoretical developments, concerning the identification of grammatical functions and  the treatment of definiteness and definiteness inheritance.
+
+
+\largerpage[-1.5]
+While \citet{Falk01actnom} calls the grammatical function of the dependent NP {\sc poss}, \citet{Falk07} offers a more articulated account, replacing this function by $\widehat{\textsc{gf}}$.  The notation
+$\widehat{\textsc{gf}}$ stands for the most prominent argument in an f-structure (typically the {\sc subj} in a clausal f-structure);  \citet{falk06} introduces this notation, arguing that the grammatical function {\sc subj} should be deconstructed into the most prominent function, notated $\widehat{\textsc{gf}}$ and an `overlay' function,  {\sc pivot}, a function of cross-clausal connection.   The dependent in examples such as  (\ref{aunt-heb}) involving a relational noun then is treated as the $\widehat{\textsc{gf}}$ (rather than {\sc poss}), and the overlay function is argued to be {\sc def} (replacing the {\sc dom} of the earlier account), licensed through structure-sharing (with $\widehat{\textsc{gf}}$) as stated in (\ref{fu-heb}).  As noted above, the head noun in a construct nominal cannot itself be inflected for definiteness and it is the possessor, or $\widehat{\textsc{gf}}$ dependent  which determines the definiteness of the construction as a whole.   (\ref{csn-rule}) is replaced by (\ref{cs-rule}), but expresses essentially the same analysis.\footnote{The annotation ($w$ ({\LSTAR}) {\sc morphtype})={\sc bnd}  on the dependent NP specifies
+ that the left sister of the NP's word structure is a bound form.}
+
+
+%The construct forms are also used in morphologically bound environments, such as in compounds and with derivational affixes. The annotation on the dependent NP specifies
+
+
+
+
+\largerpage
+\ea
+\label{aunt-heb}   Hebrew \citep[104]{Falk07} \\
+\gll dodat ha-balšan ha-zkena\\
+aunt.{\sc constr} {\sc def}-linguist {\sc def}-old.{\sc f}\\
+\glt `the  linguist's old aunt'
+\z
+
+\ea
+\label{cs-rule} \phraserule{NP}{
+\rulenode{N\\ \UP=\DOWN}
+\rulenode{NP\\ (\UP\ {\sc def})=\DOWN\\($w$ ({\LSTAR}) {\sc morphtype})={\sc bnd}  }
+\rulenode{AP*\\ \DOWN\ $\in$ (\UP\ADJ)
+}} \hfill{\citet[113]{Falk07}}
+\z
+
+
+
+\eabox{
+\label{f-sp}
+\avm[style=fstr]{
+[  pred & `aunt\arglist{$\widehat{\textsc{gf}}$}'   \\
+gend &  f\\
+num & sg\\
+$\widehat{\textsc{gf}}$  & \Rnode{T}{~}\smallskip\\
+def & \rnode{B}{[
+pred &  `teacher'\\
+def  & +\\
+  num  &  sg ]   }\smallskip\\
+ adj  & \{ [ pred &  `old'] \} ]
+}
+  \CURVE[1.2]{-2pt}{0}{B}{-2pt}{0}{T}
+\hfill{\citep[92]{Falk01actnom}}
+}
+
+
+
+
+
+\ea  \label{fu-heb}
+(\UP {\sc def})=(\UP $\widehat{\textsc{gf}}$) $|$ (\UP\OBLROLE{con}) $|$ (\UP\OBLROLE{theme})  $|$ (\UP\OBLROLE{name}) \hfill{\citep[120]{Falk07} }
+ \z
+
+
+
+The re-entrancy stated in (\ref{fu-heb}) takes account of the range of functions which can be expressed within the {\sc csn} (replacing the {\POSS} of the previous analysis).  An example such as (\ref{coffee}) is associated with an \OBLROLE{con} function (as well as being the value of {\sc def}): other functions which can be expressed by the dependent nominal in a {\sc csn} are \OBLROLE{name} and \OBLROLE{theme} -- the latter for concrete nouns with a Theme argument as in (\ref{translation}).
+
+\ea
+\label{coffee}  Hebrew \citep[117]{Falk07}\\
+\gll kos kafe\\
+cup coffee\\
+\glt `a cup of coffee'
+\z
+
+
+\ea
+\label{translation} Hebrew \citep[122]{Falk07}\\
+\gll targumey ha-odisea šel ha-sifriya\\
+translation.{\sc constr}  {\sc def}-Odyssey of {\sc def}-library\\
+\glt `the library's translation of the Odyssey'
+\z
+
+
+
+
+
+\section{Mixed categories}
+An analysis of the Hebrew action nominal  (and NP structure more generally) is offered in \citet{Falk01actnom} and further developed in   \citet{Falk07}.  These papers treat action nominals such as (\ref{verbal-real}) as displaying a `verbal' mapping to arguments, signalled by the existence of the {\sc acc}-marked {\sc obj}, while others display a purely nominal mapping. In the `verbal' action nominal, the agent argument is realized within the {\sc csn} (i.e.\ as a `short' possessor) or in a {\em šel}-PP (`long' possessor).  In each case, it is argued that the c-structure of the action nominal is mixed.
+
+\ea
+\label{verbal-real}  Hebrew \citep[117]{Falk07}
+\ea \gll sgirat ha-mankal  [et ha-misrad]\\
+closure.{\sc constr} {\sc def}-director \phantom{[}{\sc acc} {\sc det}-office\\
+\glt `the director's closure of the office'
+\ex \gll ha-sgira šel ha-mankal  [et ha-misrad]\\
+{\sc def}-closure of {\sc def}-director \phantom{[}{\sc acc} {\sc det}-office\\
+\glt `the director's closure of the office'
+\z
+\z
+
+
+The analysis of an example such as (\ref{verbal-real}a) in \citet{Falk01actnom} is as follows.    The nominal has a mixed c-structure captured in (\ref{mixed-lex}), where $\lambda$ is the category labelling function. A c-structure with both NP and VP projections is required to satisfy this set of constraints, motivating the c-structure rule in (\ref{head-sharing-rule}).  Alongside this is the assumption that Hebrew actional nominals have the specification \mbox{(\UP\POSS)=(\UP\SUBJ)} and hence the f-structure in (\ref{an-verb-fs}) arises for the accusative Hebrew actional nominal such as (\ref{verbal-real}a) (given the treatment of dependent NP within the {\sc csn} developed in \citealt{Falk01actnom}). The fundamental insight concerning the f-structure of `verbal' action nominals is that they have a verbal argument structure mapping (e.g.\ to {\sc subj} and {\sc obj}) but realise their {\sc subj} as a {\sc poss}.\footnote{The argument mapping for  (\ref{verbal-real}b) will be similar although there will be no {\sc dom} feature because the {\sc poss} is not realized within a {\sc csn}.} The c-structure proposed by Falk for the `verbal' action nominal is shown in (\ref{closure-tree-cs}).\footnote{As a technical aside, note that although this is a mixed category analysis, according to the standard definition of extended head \citep[136]{BresnanEtAl2016} the N is not the extended head of the VP, because of the intervening NP node which dominates the {\sc csn}, a matter which is not discussed in \citet{Falk01actnom,Falk07}.}
+
+
+
+
+\ea
+\label{mixed-lex}
+(\UP {\sc pred})=`close$<$ $<x, y>_{v} >_{n}$
+\hfill{ \citep[96]{Falk01actnom}\\
+$v$:  VP $\in$ $\lambda$ ($\phi^{-1}$ (\UP ) )\\
+$n$:  NP $\in$ $\lambda$ ($\phi^{-1}$ (\UP) )}
+\z
+
+
+\ea \label{head-sharing-rule} \phraserule{NP}{
+\rulenode{NP\\ \UP=\DOWN}
+\rulenode{VP\\ \UP=\DOWN }
+} \hfill{\citep[94]{Falk01actnom}}
+\z
+
+
+\eabox{
+\label{an-verb-fs}
+\avm[style=fstr]{
+[  pred &  `close\arglist{\arglist{x,y}${_v}$} $_{n}$'\\   %%`close $<$  $<$ $x, y$ $>_{v} >_{n} $'\\
+gend & f\\
+num & sg\\
+def & +\\
+dom & \rnode{A}{[
+pred &  `director'\\
+def  & +\\
+gend & m\\
+  num  &  sg ]   }\\
+poss &  \Rnode{B}{~}\\
+subj &  \Rnode{C}{~}\\
+obj  &  [ pred &  `office']
+]
+}
+  \CURVE[.83]{-2pt}{0}{A}{-2pt}{0}{B}
+  \CURVE[3.95]{-2pt}{0}{B}{-2pt}{0}{C}
+\hfill{\citep[96]{Falk01actnom}}
+}
+
+
+
+
+\ea \label{closure-tree-cs}
+\begin{forest}
+[NP
+   [NP  [N  [sgirat]]
+          [NP [{hamankal}, roof ] ]  ]
+  [VP  [KP
+          [K [et]  ]
+          [NP  [{hamisrad}, roof ] ]
+]  ]  ]
+   \end{forest}
+\z
+
+
+
+
+
+
+As well as the `verbal' mapping (with an {\sc acc}-marked {\sc obj}), Hebrew action nominals may realize their arguments as shown in (\ref{nominal-map}).
+In   (\ref{cs-obj-ex}) the arg2 or theme is the dependent NP in the construct state nominal, and hence corresponds to a {\sc poss} (on the analysis of \citealt{Falk01actnom}).
+ This variant has a purely nominal mapping in which the other argument (if present) is an {\sc obl}.  Hence the {\sc pred} value is as shown in (\ref{nominal-pred-an}).
+%%Although the prose is somewhat inconclusive, the intention and implication would appear to be that the f-description (\up {\sc poss})=(\up {\sc subj}) does not figure in the lexical description of the purely nominal variant.
+
+\ea
+\label{nominal-map} Hebrew \citep[94, 118]{Falk01actnom}
+\ea
+\label{cs-obj-ex}
+\gll sgirat ha-misrad (alyedey ha-mankal)\\
+closure.{\sc constr} {\sc def}-office \phantom{(}by  {\sc det}-director\\
+%%\glt `the closure of the office by the director'
+\newpage
+\ex
+\gll ha-sgira  šel ha-misrad (alyedey ha-mankal)\\
+{\sc def}-closure of {\sc def}-office \phantom{(}by  {\sc det}-director\\
+\glt `the closure of the office by the director'
+\z
+\z
+
+
+\ea \label{nominal-pred-an}
+(\UP {\sc pred})=`close\arglist{(\OBLROLE{ag}), \POSS} \hfill{\citep[97]{Falk01actnom}}
+\z
+
+
+
+
+
+
+
+Evidence that the purely nominal variant  also has a mixed c-structure comes from the observation that it can be modified by AdvP as well as by AP, as shown in (\ref{nom-mod}).\footnote{Although there is less discussion, \citet{Falk01actnom} also provides examples showing AP modification of the verbal variant (with the {\sc poss/subj} expressed as a  {\em šel} PP), as well as modification by AdvP.}
+
+%\footnote{The N {\em ibud} is not glossed with {\sc .constr} -- presumably this is because this word does not take a special form.}$^{,}$
+
+
+\ea \label{nom-mod} Hebrew \citep[98]{Falk01actnom} \\
+\ea \gll ibud ha-kolot yadanit alyedey ha-mumxim\\
+processing {\sc def}-votes manually by {\sc def}-experts\\
+\ex \gll  ibud ha-kolot ha-yadani alyedey ha-mumxim\\
+processing {\sc def}-votes {\sc def}-manual by {\sc def}-experts\\
+\glt `the manual processing of the votes by the experts'
+\z
+\z
+
+In summary,  Falk argues that both ``verbal'' and ``nominal'' action nominals in Hebrew have a mixed c-structure.  In \citet{Falk01actnom} the NP realized as the dependent within a {\sc csn} nominal (or as a {\em šel} phrase in the case of `long' possession)  is analysed as a {\sc poss}, leading to the mappings shown in  (\ref{falk-gf1}) for the action nominal.  \citet{Falk07} develops a more articulated view of the range of {\sc gf}s associated with the {\sc csn}, as discussed in the previous section,  leading to the mappings show in (\ref{falk-gf2}) for the action nominals.
+
+\ea \label{falk-gf1}
+\begin{tabular}[t]{lll}
+& subcategorisation  & additional functions (in {\sc csn}) \\
+& lexical description & from the {\sc ps} rules \\
+\midrule
+verbal mapping &\arglist{{\sc subj}, {\sc obj}} &  {\sc poss}={\sc dom}\\
+ & {\sc subj}={\sc poss} \\
+nominal mapping &\arglist{\OBLROLE{ag}, {\sc poss}} & {\sc poss}={\sc dom}\\
+\end{tabular}
+ \z
+
+
+\ea \label{falk-gf2}
+\begin{tabular}[t]{lll}
+& subcategorisation  & additional functions \\
+& lexical description & from the {\sc ps} rules \\
+\midrule
+verbal mapping &\arglist{ $\widehat{\textsc{gf}}$, {\sc obj}} &  $\widehat{\textsc{gf}}$={\sc def}\\
+nominal mapping &\arglist{\OBLROLE{ag}, $\widehat{\textsc{gf}}$ } &  $\widehat{\textsc{gf}}$={\sc def}\\
+\end{tabular}
+\z
+
+
+
+
+There is relatively little detailed discussion in the LFG literature of the corresponding Arabic NPs, which are  headed by maṣdars. The  {\sc msa} examples  (\ref{msa-vmas}) and (\ref{msa-limas}) illustrate  the `verbal' and `nominal' mappings respectively.\footnote{The occurrence of {\sc acc} case  in (\ref{msa-vmas}) is often taken to indicate a mixed categorial status for this construction, with the `verbally-marked' dependent(s) appearing within a VP node.}
+
+\ea \label{msa-vmas} {\sc msa} \citep[49]{BMP:LFG15}\\
+\gll {ʔ}akl-u l-walad-i it-tuf\={a}hat-a\\
+eat.{\sc msd-nom}  {\sc def}-boy-{\sc gen} {\sc def}-apple-{\sc acc}\\
+\glt `the boy's eating the apple'
+\z
+
+\ea \label{msa-limas} {\sc msa} \citep[55]{BMP:LFG15} \\
+\gll {ʔ}akl-u l-walad-i as-sar\={\i}ʕ-u li-t-tuf\={a}hat-i\\
+eat.{\sc msd-nom} {\sc def}-boy-{\sc gen} {\sc def}-fast-{\sc nom} of-{\sc def}-apple-{\sc gen}\\
+\glt `the boy's fast eating of the apple'
+\z
+
+In connection with his treatment of negation in maṣdar-headed structures in {\sc msa}, \citet{Alsharif:PhD} adopts \citegen{Falk01actnom} analysis of the {\sc csn} dependent as a {\sc poss}
+(re-entrant with the {\sc dom} feature) and using the additional functional equation \POSS=\SUBJ\ for cases in which the head N is a maṣdar, and a mixed category c-structure (at least for the `verbal' maṣdar structures). However he argues for a structure in which  the {\sc csn} is recognised as a constituent to the exclusion of any adjectival modifiers, as shown in (\ref{alsharif}) (in contrast to  Falk's (\ref{csn-rule}) above). \citet{BMP:LFG15} provide agreement data from {\sc msa} in support of the same conclusion.
+
+
+
+
+\ea\label{write} {\sc msa} \citep[291]{Alsharif:PhD} \\
+\gll kit\={a}bat-u l-walad-i l-jam\={\i}lat-u\\
+write.{\sc msd}-{\sc nom} {\sc def}-boy-{\sc gen} {\sc def}-beautiful-{\sc nom}\\
+\glt `the boy's beautiful writing'
+\z
+
+
+\ea
+\label{alsharif}
+\begin{forest}
+[N$'$
+  [N$'$  [N [kit\={a}bat-u]]
+  [NP  [{l-walad-i}, roof]  ]  ]
+  [AP  [l-jam\={\i}lat-u ]
+]
+]
+\end{forest}
+\z
+
+
+In contrast to the mixed category analysis of Hebrew action nominals developed in \citet{Falk01actnom,Falk07}, \citet{BMP:LFG15}  propose a purely nominal c-structure, reflecting the fact that the maṣdar has nominal morphosyntax and may have the external distribution of a NP.  The  {\sc gen} and {\sc acc} NPs in the transitive `verbal' maṣdar  are both sisters of N -- the idea is essentially that of extending the constituent containing the {\sc cs} to include {\sc acc} objects in the case of the `verbal' mapping (all {\sc rhs} categories are to be interpreted as optional in this rule).\footnote{\citet{BMP:LFG15} do not provide an analysis of definiteness inheritance (from the genitive dependent) for the general case of construct state nominals.  For the maṣdar-headed structures of {\sc msa} which they are concerned with in this paper they assume the equation \mbox{(\UP\DEF)=(\UP\SUBJ\DEF)} in the lexical entry of the maṣdar. }  The nominal structure in (\ref{msa-limas}) is more
+hierarchical, with the {\em li-}PP (corresponding to the second argument of the verb `eat')  adjoined at a higher level  NP constituent in the structure  as an {\sc obl}, and the AP also licensed as an {\sc adj}unct  by a recursive NP $\rightarrow$ NP XP rule.
+
+\ea \label{csrule-bmp}
+\phraserule{NP}{
+\rulenode{N\\ \UP=\DOWN}
+\rulenode{NP\\ (\DOWN\CASE)={\sc gen}\\ (\UP\SUBJ)=\DOWN }
+\rulenode{NP\\ (\DOWN\CASE)={\sc acc}\\ (\UP\OBJ)=\DOWN }
+\rulenode{NP\\ (\DOWN\CASE)={\sc acc}\\ (\UP\OBJTHETA)=\DOWN }
+} \\\citep[53]{BMP:LFG15}
+\z
+
+
+
+
+\citet{Lowe19b} points out a number of empirical problems with this analysis, notably in relation to ensuring the correct ordering of any AP and AdvP modifiers in the nominal maṣdar constructions and in ruling out the occurrence of adjectival modifiers in the `verbal' maṣdar structures;  and also takes issue with it on theoretical grounds. He argues for an approach to mixed category constructions in which internal syntax, rather than morphosyntax or external distribution, is taken to be a sufficient criterion for syntactic categorisation. This leads to a mixed projection  (VP over NP) analysis for both types of maṣdar construction (the VP node is motivated by the presence of an {\sc obj} under  the `verbal' mapping  and the possibility of adverbial modifiers under both `nominal' and `verbal' mappings).  The structures which he proposes, (\ref{msda-lowe}) and (\ref{msdb-lowe}), are rooted in a VP node, despite the nominal nature of the external distribution of these structures.\footnote{To address this issue, \citet[333]{Lowe19b} proposes the use of a complex category V$_{[msd]}$ and a metacategory in the phrase structure rules to capture the distributional similarity between NPs and maṣdar-headed VPs. Recall that the meta-category label does not itself give rise to a node in the tree representation, being merely an abbreviatory device.
+
+\ea
+ NomP $\equiv$  \{NP $|$ VP$_{[msd]}$ \}
+\hfill{\citep[333]{Lowe19b}  }
+\z
+}
+
+\ea {\sc msa} \citep[49]{BMP:LFG15}\\
+\gll tans\={\i}q-u =h\={a} iz-zuh\={o}r-a mu{{ʔ}}a{\textchi}{\textchi}aran\\
+arrange.{\sc msd-nom} her {\sc def}-flowers-{\sc acc} recently\\
+\glt `her arranging the flowers recently'
+\z
+
+
+
+
+\ea  \label{msda-lowe}
+\begin{forest}
+[VP
+   [VP\\{\UP=\DOWN}
+  [NP\\{\UP=\DOWN}
+        [N\\{\UP=\DOWN} [tans\={i}qu]  ]
+         [NP\\{(\UP \SUBJ)=\DOWN} [pro\\{\UP=\DOWN} [h\={a} ] ]  ]  ]
+  [(V)\\{\UP=\DOWN}]
+  [ NP\\{(\UP \OBJ)=\DOWN} [{iz-zuh\={o}ra}, roof ] ] ]
+[AdvP\\{\DOWN $\in$ (\UP \ADJ)} [mu{ʔ}a{\textchi}{\textchi}aran]
+]
+ ]
+\end{forest}
+\z
+
+%\tree[sent]{VP}{%
+%\tree{\treenode{ \up =\down \\VP}}{
+ %           \tree{\treenode{\up=\down\\NP}}{
+  %                                  \tree{\treenode{\up=\down\\N}}{ \le{tans\={\i}qu} }
+   %                                  \tree{\treenode{(\up {\sc subj})=\down\\NP}} {  \tree{\treenode{\up=\down\\pro}}{ \le{h\={a}} }  } }
+   %          \le{\treenode{\up =\down\\ (V)} }
+   %           \tree{\treenode{(\up {\sc obj})=\down\\NP}}{\tri{iz-zuh\={o}ra} }
+%}
+%\tree{\treenode{\down $\in$ (\up  {\sc adj})\\AdvP}}{ \le{mu{ʔ}a{\textchi}{\textchi}aran} }
+%}
+%\hfill{\citet[332]{Lowe19b}}
+%}
+
+\ea
+{\sc msa} \citep[55]{BMP:LFG15}\\
+\gll tans\={\i}q-u =h\={a} il-mutqan-u li-z-zuh\={o}r-i mu{{ʔ}}a{\textchi}{\textchi}aran\\
+arrange.{\sc msd-nom} her {\sc def}-perfect-{\sc nom} of-{\sc def}-flowers-{\sc gen} recently\\
+\glt `her perfect arranging of the flowers recently'
+\z
+
+
+
+
+\ea \label{msdb-lowe}
+\begin{forest}
+[VP
+   [VP\\{\UP=\DOWN}
+  [NP\\{\UP=\DOWN}
+        [N\\{\UP=\DOWN} [tans\={i}qu]  ]
+         [NP\\{(\UP \SUBJ)=\DOWN} [pro\\{\UP=\DOWN} [h\={a} ] ]  ]
+         [AdjP\\{\DOWN $\in$ (\UP\ADJ)} [il-mutqanu] ]
+  ]
+  [(V)\\{\UP=\DOWN}]
+  [ PP\\{(\UP \OBL)=\DOWN} [{li-z-zuh\={o}ri}, roof ] ] ]
+[AdvP\\{\DOWN $\in$ (\UP \ADJ)} [mu{ʔ}a{\textchi}{\textchi}aran]
+]
+ ]
+\end{forest}
+\z
+
+
+
+
+\section{Negation}
+
+Sentential negation in {\sc msa} is expressed by means of the particles {\em m\={a}}, {\em l\={a}}, {\em lan} and {\em lam} and the inflecting form {\em laysa} which occurs with both verbal and non-verbal predicates (see (\ref{laysa}) and (\ref{teacher})).  {\em laysa} (and its inflectional variants) gives rise to present tense interpretations and shows partial agreement when it precedes the subject and full agreement with a preceding subject, typical verbal behaviour. Accordingly, \citet{AlsharifSadler:09} treat {\em laysa}  as a negative (present) tensed verbal element in I.
+
+\ea
+\label{laysa} {\sc msa}  \citep[10]{AlsharifSadler:09}
+\ea
+\gll al-awlad-u lays-\={u} ya-ktub-\={u}n\\
+the-boys-{\sc nom} {\sc neg-3m.pl} {\sc 3m-}write.{\sc ipfv}-{\sc
+  3m.pl-ind}\\
+\glt `The boys do not write.'
+\ex
+\gll  lays-a al-awlad-u ya-ktub-\={u}n\\
+ {\sc neg-3m.sg} the-boys-{\sc nom} {\sc 3m-}write.{\sc ipfv}-{\sc
+  3m.pl-ind}\\
+\glt `The boys do not write.'
+\z
+\z
+
+
+\newpage
+
+ \ea  \label{teacher} {\sc msa}  \citep[53]{Benmamoun:funct}\\
+\gll laysa ʔah̬ii muʕallim-an.\\
+{\sc neg.3m.sg} brother.my teacher-{\sc acc}\\
+\glt `My brother is not a teacher.'
+\z
+
+
+ The particles  {\em l\={a}}, {\em  lam} and {\em  lan} are strictly verb-adjacent, and do not exhibit agreement with the subject. While  {\em l\=a} occurs with a verb in the indicative imperfective,   {\em lam} occurs with the
+jussive imperfective expressing negation in the past, and {\em lan}
+  with the subjunctive imperfective, expressing negation in the
+  future: thus {\em lam} and {\em lan} are  negative particles
+  which carry temporal information.
+
+
+
+
+
+\ea {\sc msa} \citep[95]{Benmamoun:funct}\
+\ea
+\gll ṭ-ṭull\={a}b-u laa ya-drus-uu-n\\
+the-students {\sc neg} {\sc 3m}-study.{\sc ipfv}-{\sc 3m.pl-ind}\\
+\glt `The students do not study/are not studying.'
+\ex
+\gll
+lan ya-ḏhab-a ṭ-ṭull\={a}b-u \\
+  {\sc neg.fut} {\sc 3m}-go.{\sc ipfv}-{\sc m.sg.sbjv} the-students-{\sc nom}
+\\
+\glt `The students will not go.'
+\ex
+\gll ṭ-ṭull\={a}b-u lam ya-ḏhab-uu\\
+the-students-{\sc nom}  {\sc neg.pst} {\sc 3m}-go.{\sc ipfv}-{\sc m.pl.juss}\\
+\glt `The students did not go.'
+\z
+\z
+
+
+
+
+\largerpage[-6]%there is a very large tree 2 pages down the road, so we can as well put the white space here
+\citet{AlsharifSadler:09} analyse these negative particles as non-projecting
+words of category I (notated \NONPROJ[100000]{I}) in the sense of  \citet{Toivonen:NonProj}, forming a small construction with the immediately following verbal element. The notion of non-projecting word captures the uninterruptibility of the Neg+V sequence, but still treats the negative marker and the verb as separate morphological words.  The particles
+{\em lam} and {\em lan} contribute  {\sc past} and {\sc fut} tense values respectively (and select (tenseless) forms of the verb in a dependent mood), while {\em l\=a} cannot co-occur with {\sc past} tense. The negative particle {\em lan} can also occur as a non-projecting word under V where it contributes not {\sc fut} but {\sc prosp} aspect. They consider the interaction of these negative particles with both simple and compound tenses in {\sc msa}.\footnote{A complex {\sc tense} feature with boolean-valued attributes {\sc past} and {\sc fut} is adopted in this approach because of the compositional nature of certain periphrastic verb forms. For example, a future tense may be formed periphrastically by combining the imperfective indicative form (which otherwise received a present tense interpretation), with the preverbal particle {\em sawfa} as in (i), and hence the imperfective indicative is associated with the (underspecified) {\sc tense~past}=$-$.
+
+\ea{\sc msa}  \citep[82]{FF93} \\
+\gll sawfa l\=a y-aḥdur-u\\
+{\sc fut} {\sc neg} {\sc 3m-}present.{\sc ipfv}-{\sc 3m.sg.ind}\\
+\glt `He will not come.'
+\z
+}
+
+
+
+\ea
+\phraserule{I}{
+  \makebox[5em]{\rulenode{\NONPROJ[100000]{I}\\ \UP=\DOWN}}
+  \makebox[5em]{\rulenode{I\\ \UP=\DOWN\  }}}
+\hfill{\citep[14]{AlsharifSadler:09}}
+\z
+
+
+
+
+\ea\label{lex-lam}
+\catlexentry{lam}{\NONPROJ[100000]{I}}{
+(\UP\sc tense past)=+ \\
+(\UP\sc pol)=\sc neg\\
+(\UP\sc mood) =$_{c}$ {\sc juss}}
+ \hfill{\citep[16]{AlsharifSadler:09}}
+\z
+
+
+
+
+
+
+
+
+
+As for {\sc msa} {\em m\={a}}, this marker of sentential negation occurs in sentences with both verbal and non-verbal predicates. It  always precedes the predicate but  is not required to be immediately adjacent to it. \citet{Alsharif:PhD} argues that it is a negative complementiser (Arabic has a reasonably extensive range of complementising particles), so that (\ref{maher}) is associated with the c-structure shown in (\ref{maher-cs}).
+
+
+%\eenumsentence{
+%\item m\={a} \.{g}\={a}dar-a zayd-un al-mad\={\i}nat-a\\
+%{\sc neg} leave.{\sc pfv-3m.sg} Zayd-{\sc nom} {\sc def}-city-{\sc acc}\\
+%Zayd did not leave the city.
+
+
+
+
+\ea\label{maher} {\sc msa} \citep[169]{Alsharif:PhD} \\
+\gll m\={a} qal-a maher-un l-{\hwithstroke}aqq-a\\
+{\sc neg} say.{\sc pfv-3m} Maher-{\sc nom} {\sc def}-truth-{\sc  acc}\\
+\glt `Maher did not say the truth.'
+ \z
+
+\ea\label{writer}  {\sc msa} \citep[132]{Alsharif:PhD} \\
+\gll m\={a} mohammad-un k\={a}tib-un\\
+{\sc neg} Mohammad-{\sc nom} writer-{\sc nom}\\
+\glt `Mohammad is not a writer.'
+\z
+
+
+
+
+
+\pagebreak
+\ea \textsc{msa} \citep[170]{Alsharif:PhD}\label{maher-cs}\\
+\begin{forest}
+[C$'$
+[C\\{\UP=\DOWN} [m\={a}] ]
+[ IP\\{\UP=\DOWN}
+ [I$'$\\{\UP=\DOWN}
+ [I\\{\UP=\DOWN} [qala] ]
+  [ S\\{\UP=\DOWN}
+          [NP\\{(\UP\SUBJ)=\DOWN}  [{maher-un}, roof]  ]
+          [VP\\{\UP=\DOWN}
+                [NP\\{(\UP\OBJ)=\DOWN}   [{l-{\hwithstroke}aqq-a}, roof]
+] ] ] ] ] ]
+\end{forest}
+\z
+
+
+
+
+Adopting the idea that it may mark some sort of contrastive focus as well as negation, (see  \citealt{Ouhalla:93} and \citealt{Benmamoun:funct}, {\em inter alia})),
+\citet{Alsharif:PhD} also argues that in examples such as (\ref{knife}), the focussed element immediately following the negative complementiser, is in
+$[$Spec,IP$]$  (in (\ref{knife}) this is the PP {\em bi-s-sikk\={\i}n-i}) (hence this position must host various discourse functions, including that of {\sc subj}).
+
+
+\ea\label{knife}  {\sc msa} \citep[173]{Alsharif:PhD}\\
+\gll m\={a}  bi-s-sikk\={\i}n-i jara{\hwithstroke}-a {\textchi}\={a}lid-un bakr-an\\
+{\sc neg} {\sc p}-{\sc def}-knife-{\sc gen} wound.{\sc pfv-3m.sg} Khalid-{\sc nom} Bakr-{\sc acc}\\
+\glt `It is not with a knife that Khalid wounded Bakr.'
+\z
+
+
+
+
+
+\newpage
+The Arabic vernaculars typically use {\em m\={a}} for negation in verbally-headed sentences, and a set of forms which combine {\em m-} with pronominal affixes for sentential negation in non-verbal sentences.\footnote{The occurrence of verbal negation with many pseudo-verb forms, as in (\ref{ex:Sem:fn20}), where the literal, prepositional meaning of {\em l-} is `to',  shows that their reanalysis from their original category into a verbal category is well advanced.
+
+\ea \label{ex:Sem:fn20} Turaif Arabic \citep[121]{Alruwaili:PhD}\\
+\gll  ṭ-ṭull\={a}b m\={a} l-hum {\textchi}aṣam\\
+{\sc def}-student.{\sc plm} {\sc neg} have-{\sc 3m.pl.gen} discount\\
+\glt `The students do not have a discount.'
+\z
+}
+
+A  major split  is found across the dialects  (roughly between Eastern and Western) according to whether they use a single negative element or bipartite negation, combining an {\em m-} form with a second marker {\em -š/-x} which
+ results from
+grammaticalisation  of an earlier
+form corresponding to \emph{{š}ayʔ}  `thing'
+ in Classical Arabic.
+
+
+ The vernacular verbal negative marker {\em m\={a}} illustrated in (\ref{ma-turaif}) is treated as a non-projecting word in \citet{Alsharif:PhD} (for Hijazi)  and \citet{Alruwaili:PhD} (for Turaif Arabic), that is, as a syntactic element appearing strictly adjacent to a verbal element.\footnote{Clearly, an affixal analysis of the negative markers might be argued to be appropriate for some other dialects.}
+
+
+
+
+
+\ea\label{ma-turaif} Turaif Arabic \citep[162]{Alruwaili:PhD} \\
+\gll ʕali m\={a} kit{\textepsilon}b l-w\={a}\v{g}ib\\
+Ali {\sc neg} write.{\sc pfv.3m.sg} {\sc def}-homework\\
+\glt `Ali did not write the homework.'
+\z
+
+
+
+
+\ea
+\begin{forest}
+[I\\{\UP=\DOWN}
+ [\NONPROJ{\textrm{Neg} }\\{\UP=\DOWN } [{m\={a}} ] ]
+[I\\{\UP=\DOWN}  [{kit{\textepsilon}b }]
+]
+]
+\end{forest}
+\hfill{Turaif Arabic \citep[162]{Alruwaili:PhD} }
+\z
+
+
+
+
+\citet{Alruwaili:PhD} shows that {\em m\={a}} can occur before either the
+the auxiliary ({\em k\={a}n} `be.{\sc pfv}') or the lexical verb  in compound tenses (and hence can form a small construction with either I or V), and argues in favour of the ternary branching  rule (\ref{rah-neg-ps}) as the negator must precede the tense/aspect particle {\em r\={a}{\hwithstroke}} when they co-occur.  As a marker of sentential negation, {\em m\={a}} specifies {\sc eneg}=+ (eventuality negation, see \citealt{przepiorkowski2015two}).
+
+
+
+
+\ea Turaif Arabic \citep[166]{Alruwaili:PhD} \\
+\gll huda m\={a} r\={a}{\hwithstroke} t-s\={a}far bukra\\
+Huda {\sc neg} {\sc fut} 3{\sc f.sg}-travel.{\sc ipfv} tomorrow\\
+\glt `Huda will not travel tomorrow.'
+
+\z
+
+
+
+
+
+\ea\label{rah-neg-ps}
+\phraserule{I$'$}{
+\rulenode{\NONPROJ{Neg} \\ \UP=\DOWN }
+\rulenode{\NONPROJ[100000]{I} \\ \UP=\DOWN }
+\rulenode{I \\ \UP=\DOWN}
+}
+\z
+
+
+
+
+The example in (\ref{nothome}) illustrates the marker of sentential negation for non-verbal predicates (and in equational sentences).    Both \citet{Alsharif:PhD} and \citet{Alruwaili:PhD} treat this marker (and its inflectional variants) as a negative copula (the lexical entry in (\ref{lex-mu}) is from \citet[170]{Alruwaili:PhD}).
+
+
+
+\ea\label{nothome} Turaif Arabic \citep[169]{Alruwaili:PhD} \\
+\gll huda m\={u}/mahi fi l-b\={e}t\\
+Huda {\sc neg.cop}/{\sc neg.cop.3f.sg} in {\sc def}-house\\
+\glt `Huda is not in the house.'
+\z
+
+
+\ea\label{lex-mu}
+\catlexentry{m\={u}} {I}{
+{(\UP\sc eneg)\,=\,$+$}\\
+VP $\notin$ CAT(\UP)\\
+{(\UP\sc tense)={\sc pres}}
+} \hfill{Turaif Arabic \citep[170]{Alruwaili:PhD} }
+\z
+
+
+\citet{camilleri-sadler:2017}
+look at sentential negation in Maltese and the syntactic behaviour of a group of negative sensitive indefinite items (n-words, {\sc nsi})  in Maltese.  In common with many Western dialects of Arabic, Maltese is a language with bipartite negation, as can be seen in the double marking {\em ma ...-x} in (\ref{not-read}).   Synchronically, they argue for Maltese that it is {\em m-/ma} which realizes negation in Maltese, while the {\em -x} is essentially some sort of {\sc nsi}.  The strategies for sentential negation of clauses with verbal and non-verbal predicates (including the active participle) respectively are shown in (\ref{not-read}) and (\ref{ptcpneg}) respectively.
+
+
+
+
+\ea\label{not-read} Maltese \citep[147]{camilleri-sadler:2017}\\
+\gll Ma qraj-t-x il-ktieb.\\
+{\sc neg} read.{\sc pfv-1sg-neg} {\sc def-}book\\
+\glt `I didn't read the book.'
+\z
+
+
+
+
+\ea\label{ptcpneg} Maltese \citep[147]{camilleri-sadler:2017} \\
+\gll Mhux $\sim$ mhumiex sejr-in.\\
+{\sc neg.3m.sg.neg} $\sim$ {\sc neg.3pl.neg} go.{\sc act.ptcp-pl}\\
+\glt `They are not going.'
+\z
+
+
+
+The paper proposes an analysis of  the {\em xejn} `nothing' series of negative indefinites (including {\em {\hwithstroke}add} `no one', {\em ebda} `no(ne)' and {\em imkien} `nowhere') which occur in negative sentences.
+As the examples in (\ref{strictmt})  show, the negative marker {\em ma} is required to express sentential negation, irrespective of the linear order of
+the n-word  vis-{\`a}-vis the predicate. This behaviour,  and  the fact that these n-words may  provide negative fragment answers,   supports the view that Maltese
+ is a strict negative concord language and the classification of these indefinites as  simple {\sc nci}s.
+However, although Maltese uses the bi-partite ({\em ma} ...{\em -x}) strategy for
+negation, as shown in (\ref{not-read}) above, -\emph{x} is in fact incompatible with these n-words in the same clause, as shown in (\ref{noxa}).
+
+
+
+
+
+\ea \label{strictmt} Maltese \citep[150]{camilleri-sadler:2017} \\
+\ea
+\gll Ilbieraħ {\hwithstroke}add *(ma) {\.g}ie.\\
+yesterday no.one \phantom{*(}{\sc neg} come.{\sc pfv.3m.sg}\\
+\glt `No one came yesterday.'
+\ex
+\gll Ilbieraħ *(ma) {\.g}ie {\hwithstroke}add.\\
+yesterday \phantom{*(}{\sc neg} come.{\sc pfv.3m.sg} no.one\\
+\glt `No one came yesterday.'
+ \z
+\z
+
+
+
+
+
+\ea\label{noxa} Maltese \citep[151]{camilleri-sadler:2017} \\
+\gll It-tifla ma ra-t(*-x) xejn.\\
+{\sc def-}girl {\sc neg} see.{\sc pfv-3f.sg-{\sc x}} nothing\\
+\glt `The girl saw nothing.'
+\z
+
+
+Long-distance licensing of n-words is felicitous in Maltese (depending on the nature of the subordinate clauses), as in (\ref{pairaa}), and  the same incompatibility with the suffix {\em -x} is observed.\footnote{As an alternative to (\ref{pairaa}),  bi-partite negation and a positive  proform  (replacing  {\em xejn} `nothing' by {\em xi ha\v{g}a} `something' in (\ref{pairaa})),  is also grammatical,  retaining the same interpretation.}
+
+
+\newpage
+
+
+
+\ea\label{pairaa}  Maltese \citep[153]{camilleri-sadler:2017} \\
+\gll Ma smaj-t [li qal-u [li qal-t-i-l-hom [li għand-hom j-i-xtr-u xejn. ]]]\\
+{\sc neg} hear.{\sc pfv-1sg} \phantom{[}{\sc comp} say.{\sc pfv.3-pl} \phantom{[}{\sc comp} say.{\sc pfv-3f.sg-epent.vwl-dat-3pl} \phantom{[}{\sc comp} have-{\sc 3pl.gen} 3-{\sc frm.vwl}-buy.{\sc ipfv-pl} nothing\\
+\glt `I didn't hear that they said  she told them they have to buy anything.'
+\z
+
+
+
+
+
+\citet{camilleri-sadler:2017} argue that the n-word proforms like {\em xejn} are not in fact simply {\sc nci}s but have the broader distribution of  weak {\sc npi}s, a view supported by the fact that they occur in a range of non-veridical contexts, as shown in (\ref{question}), and unlike {\sc nci}s are not limited to negative or anti-veridical contexts.
+Equally, the {\em -x} of bipartite negation shares the wider distribution of an {\sc npi}, occurring in a range of contexts including conditionals, interrogatives,  rhetorical interrogatives,  embedded interrogatives and counterfactuals.
+
+
+\ea\label{question} Maltese \citep[154]{camilleri-sadler:2017} \\
+\gll Kil-t xejn {\.c}ikkulata?\\
+eat.{\sc pfv-2sg} nothing chocolate\\
+\glt `Did you eat any chocolate?'
+\z
+
+
+
+
+
+As part of the analysis they provide an approach to bi-partite negation in Arabic dialects (primarily found in the dialects westward from the Levant to Morocco).
+There is both a  dependency and an essential
+asymmetry in the distribution of \emph{ma} and -\emph{{x}}:  \emph{ma}
+realizes sentential negation but requires the presence of either
+-\emph{x} or one or more {\sc nci} items within an appropriate domain, while {\em -x} itself is incompatible with the presence of (other) {\sc nci} items within that domain.  Following \citet{przepiorkowski2015two}, \citet{camilleri-sadler:2017} propose that {\em ma}  introduces an {\sc eneg} feature. Because {\em ma}  cannot stand alone  it also introduces a constraining equation requiring a positive value of a {\sc nvm} (for non-veridical marker) feature within an appropriate domain, which can be satisfied by a strictly local  {\em -x} or by {\sc nc} items in the N-series, within a certain domain.\footnote{Because both {\em -x} and the N-series proforms occur in the wider set of non-veridical contexts they cannot simply be associated with an inside-out statement limiting them to contexts containing {\sc eneg}=+.}
+The lexical entry  for the sentential negation marker {\em ma} is in (\ref{ma2}). The first line provides a value for the sentential negation feature {\sc eneg}, treating it as a feature with instantiated values, with the consequence that it is required to be uniquely contributed, so expressed only once. The somewhat complicated uncertainty statement requires that there either be a feature {\sc nvm}=+ in the local f-structure  (which will be introduced by {\em -x}, see example (\ref{not-read}) and the entry for {\em -x} in (\ref{x-rep2}))
+or that some dependent within the domain specified by the functional uncertainty path be specified as {\sc nvm}=+  (e.g.\ examples (\ref{strictmt}a), (\ref{pairaa}), where {\sc nvm}=+ is associated with an n-word  dependent, see the entry for {\em xejn} in (\ref{ent3})).  This path rules out {\em ma} satisfying its requirement for a {\sc nvm}=+ dependent in a subordinate negative domain, ruling out (\ref{2negs-rev}).
+The non-veridicality affix {\em -x} defines {\sc nvm}=+ and is incompatible with {\sc nvm}=+ on any local  dependent or any more deeply embedded dependent which is not itself inside an f-structure marked as {\sc eneg}=+, thus ruling out (\ref{less-simple}). The entry for an N-series word simply defines the {\sc nvm}  feature in the local f-structure, as in (\ref{ent3}).
+
+
+
+
+\ea\label{ma2}
+\catlexentry{ma}{{\sc eneg} } {\feqs{ ($\uparrow$ {\sc eneg})=+$\textsubscript{\_}$\\
+\{ (\UP  \{{\sc xcomp$|$comp$|$adj}\}* {\sc gf}$^{+}$
+ {\sc nvm})  $|$ (\UP  {\sc nvm}) \}=\textsubscript{c} +\\
+~~~~~~~~~~  $\neg$($\rightarrow$ {\sc eneg})  }  } \hfill{\citep[159]{camilleri-sadler:2017} }
+\z
+
+
+
+\ea\label{x-rep2}
+\lexentry{\em -x}{ \feqs{
+(\UP {\sc nvm})=+\\
+$\neg$($\uparrow$ \{ {\sc xcomp$|$comp$|$adj}\}* {\sc gf}%$|${\sc adj} $\in$
+\textsuperscript{+} {\sc nvm})=+ \\
+~~~~~~~~~  $\neg$($\rightarrow$ {\sc eneg})  }  } \\
+\citep[159]{camilleri-sadler:2017}
+\z
+
+
+
+
+
+
+
+
+\ea\label{ent3}
+\catlexentry{xejn}{\sc n} {\feqs{($\uparrow$ {\sc nvm})=+} }
+\hfill{\citep[159]{camilleri-sadler:2017} }
+\z
+
+
+
+
+\ea\label{2negs-rev} Maltese \citep[159]{camilleri-sadler:2017} \\
+\gll
+*Ma semma [li {\bf{ma}} ra-x [li darb-u lil ebda ra{\.g}el.]]\\
+{\sc neg} say.{\sc pfv.3m.sg} \phantom{[}{\sc comp} {\sc neg} see.{\sc pfv.3m.sg-x} \phantom{[}{\sc comp} injure.{\sc pfv.3-pl} {\sc acc} some man\\
+\glt `He didn't say that he didn't see that they injured any man.'
+\z
+
+
+\ea\label{less-simple}  Maltese \citep[159]{camilleri-sadler:2017} \\
+\gll *It-tifla ma ra-t-x  xejn.\\
+{\sc def-}girl {\sc neg} see.{\sc pfv-3f.sg-{\sc x}} nothing\\
+\glt Intended: `The girl saw nothing.'
+\z
+
+
+
+An example such as (\ref{pairaa}) will have the f-structure shown
+schematically in (\ref{pairaa-f}) \citep[161]{camilleri-sadler:2017}.
+
+\eabox{\label{pairaa-f}
+\avm[style=fstr]{
+[ eneg & +\\
+pred  & `hear\arglist{\SUBJ,\COMP}'     \\
+  comp  &  [\ldots  &  \\
+     [ comp  & [pred  & `buy\arglist{\SUBJ,\OBJ}'     \\
+                       obj & [ pred & `nothing'\\
+                                  nvm  & +]
+]
+]
+]
+]}
+}
+\citet{AlruwailiSadler:2018} look at negation, n-words and the combination of negation and coordination in a construction similar to the English {\em neither~...~nor} construction  in the vernacular Arabic of Turaif in the Northern region of Saudi Arabia. Turaif Arabic does not use the bipartite negation illustrated above for Maltese.  Also unlike  Maltese, the n-words which can occur as fragment answers, including the negative proform {\em m\={a}had} `no one' and the scalar focus particle {\em wala} `not even one' can occur ({\em preverbally}) without the negation marker, giving rise to a negative interpretation, as shown in (\ref{mahad}a).  Hence a preverbal n-word in combination with
+the sentential negation marker {\em m\={a}} results in a double negation reading, as in (\ref{nostudent}). \citet{AlruwailiSadler:2018} treat these negative arguments as contributing {\sc cneg} adopting the distinction between {\sc eneg} and {\sc cneg} introduced by  \citet{przepiorkowski2015two}, and proposing the f-structure in (\ref{eneg-fs}) for (\ref{nostudent}).\footnote{The feature {\sc sfoc} is associated with the scalar focus determiner {\em wala}.}
+
+
+
+
+
+\ea \label{mahad} Turaif Arabic \citep[30]{AlruwailiSadler:2018}\\
+\ea
+\gll
+m\={a}ħad   \v{g}a l-y\={o}m\\
+no.one come.{\sc pfv.3m.sg} {\sc def}-today.{\sc m.sg}\\
+\glt `No one came today.'
+\ex
+\gll
+m\={a} \v{g}a {ʔ}aħad l-y\={o}m\\
+{\sc neg} come.{\sc pfv.3m.sg} one {\sc def}-today\\
+\glt `No one  came today.'
+\z\z
+
+
+
+\ea\label{nostudent}  Turaif Arabic \citep[30]{AlruwailiSadler:2018}\\
+\gll
+ wala ṭ\={a}lib m\={a} \v{g}-a  l-y\={o}m\\
+{\sc neg.sfp} student.{\sc m.sg} {\sc neg} come.{\sc pfv-3m.sg}  {\sc def}-today\\
+\glt `Every student came today.'  \\
+ (= Not even a single student didn't come today.)
+\z
+
+
+
+\eabox{ \label{eneg-fs}
+\avm[style=fstr]{
+[pred & `come\arglist{\SUBJ}'  \\
+ eneg & +\\
+ subj & [ pred & `student'\\
+cneg & +\\
+ num &  sg\\
+ sfoc &  + ]\\
+ adj & \{[
+ pred  &  `today' ] \}
+]
+}
+\hfill{\citep[31]{AlruwailiSadler:2018} }
+}
+
+
+The main focus of this paper is on the bipartite negative coordination marker {\em l\={a}} ... {\em wala} illustrated in (\ref{s-nn}b)   (and found across many dialects of Arabic).
+
+
+\ea  \label{s-nn} Turaif Arabic \citep[32--33]{AlruwailiSadler:2018} \\
+\ea
+\gll
+mans\={o}r m\={a} gaʕad min n-n\={o}m,  w  ʕali m\={a}  \v{g}a min d-daw\={a}m\\
+Mansour {\sc neg} wake.{\sc pfv.3m.sg} from {\sc def}-sleep, {\sc conj} Ali {\sc neg} come.{\sc pfv.3m.sg} from {\sc def}-work\\
+\glt `Mansour did not wake up and  Ali didn't  come (back) from work.'
+\ex
+\gll
+l\={a} mans\={o}r gaʕad min n-n\={o}m, wala ʕali \v{g}a min d-daw\={a}m\\
+ {\sc neg} Mansour wake.{\sc pfv.3m.sg} from {\sc def}-sleep, {\sc neg.conj} Ali come.{\sc pfv.3m.sg} from {\sc def}-work\\
+\glt `Mansour did not wake up and nor did Ali come (back) from work.'
+ \z
+\z
+
+
+
+\citet{AlruwailiSadler:2018} analyse both  the negative conjunction {\em wala} (which rather transparently combines the conjunction {\em wa} and a negative formative) and the negative marker  {\em l\={a}} as elements which adjoin to (and mark) a conjunct, postulating special coordination schema for {\em neither~...~nor} coordination -- the rules in (\ref{special}) and (\ref{conjxp}) \citep[38]{AlruwailiSadler:2018}  illustrate for sentential coordination.
+
+
+% marks the following conjunct as {\sc eneg}=+ (in the case of sentential coordination) and cannot  occur on the initial conjunct, where we find either {\em m\={a}} (the standard negative marker) or
+
+
+\ea
+\label{special} {\em Negative Coordination Schema}\\[1ex]
+\phraserule{XP}{
+\makebox[12em]{\rulenode{XP\\ \DOWN\ $\in$ \UP\\ (\DOWN\ {\sc eneg})  =$_{c}$ +\_\\
+(\DOWN\ {\sc conjform} ) $\neq$ {\sc wala}} }
+%\rulenode{CONJ}
+\makebox[12em]{\rulenode{XP$^{+}$\\ \DOWN\ $\in$ \UP\\ (\DOWN\ {\sc conjform}) =$_{c}$ {\sc wala}\\
+%(\UP\ {\sc conjtype} ) = {\sc and}
+}}}
+\z
+
+
+
+
+\ea \label{conjxp}
+\phraserule{XP}{
+\rulenode{Neg\\ \UP=\DOWN\\  ($\in$ \UP)}
+\makebox[12em]{\rulenode{XP\\ \UP=\DOWN
+}}} %%\hfill{\citep[38]{AlruwailiSadler:2018}}
+\z
+
+
+\newpage
+
+\ea  \label{wala-pred-lex2}
+\catlexentry{wala}{Neg}{\feqs{
+(\UP {\sc conjform})={\sc wala}\\
+(\UP {\sc eneg})=+\_\\
+%%(\UP {\sc conjtype}) = {\sc and}
+(($\in$ \UP) {\sc conjtype})={\sc and}
+}} \hfill{\citep[38]{AlruwailiSadler:2018}}
+\z
+
+
+
+
+
+
+
+\ea \label{laa-pred}
+\catlexentry{l\={a}}{Neg}{\feqs{
+(\UP {\sc conjform})={\sc l\={a}}\\
+(\UP {\sc eneg})=+\_\\
+(($\in$ \UP) {\sc conjtype})={\sc and}
+} } \hfill{\citep[39]{AlruwailiSadler:2018}}
+\z
+
+
+The f-structure for (\ref{basic-v}) on this analysis is shown in (\ref{fs1w}), from \citet[38]{AlruwailiSadler:2018}.
+
+\ea \label{basic-v} Turaif Arabic \citep[32]{AlruwailiSadler:2018}\\
+\gll
+mans\={o}r {\bf m\={a}} akal l-ruz {\bf wala} šarab l-gahwa\\
+Mansour.{\sc m} {\sc neg} eat.{\sc pfv.3m.sg} {\sc def}-rice {\sc neg.conj}  drink.{\sc pfv.3m.sg} {\sc def}-coffee\\
+\glt `Mansour neither ate the rice nor drank the coffee.'
+\z
+
+
+
+
+
+
+\eabox{ \label{fs1w}
+\avm[style=fstr]{
+[conjtype  & and\\
+\{{
+[pred & `eat\arglist{\SUBJ,\OBJ}'  \\
+ eneg & +\_\\
+ subj & \rnode{A}{[ pred & `Mansour'  ] }\smallskip\\
+ obj & [
+ pred  &  `rice' ]  ]}\smallskip \\
+{
+[pred & `drink\arglist{\SUBJ,\OBJ}'\\
+eneg & +\_\\
+conjform & wala\\
+obj & [pred & `coffee' ]\\
+subj & \rnode{B}{~} ]  }
+\}
+ ] }  \CURVE[1.7]{-2pt}{0}{A}{-2pt}{0}{B}
+}
+
+
+
+ The {\em neither} ... {\em nor}  construction may also be used to coordinate arguments, where it shows the weak {\sc nci} behaviour noted above for negative elements such as {\em ma{\hwithstroke}ad} `no one' and determiner {\em wala}. That is, occurring preverbally, it expresses negation (and hence can give rise to double negation readings) while postverbally, it behaves like a {\sc nci}.\largerpage[1.5]
+
+
+\ea \label{res} Turaif Arabic \citep[34,40]{AlruwailiSadler:2018}\\
+\ea
+\gll
+ l\={a} {ʔ}aħmad wala mhammad \v{g}-aw\\
+ {\sc neg} Ahmad {\sc neg.conj} Mohamamd come.{\sc pfv-3m.pl}\\
+\glt `Neither Ahmad nor Mohammad came.'
+\ex
+\gll
+ l\={a} {ʔ}aħmad wala mhammad {\bf m\={a}}  \v{g}-aw\\
+{\sc neg} Ahmad {\sc neg.conj} Mohammad {\sc neg} come.{\sc pfv-3m.pl}\\
+\glt `Both Ahmad and Mohammad came.'%\hfill{Turaif Arabic: \citet[34]{AlruwailiSadler:2018}}
+\ex  \label{dep-nc}
+\gll
+m\={a} \v{g}-aw l\={a} {ʔ}aħmad  wala ʕali\\
+{\sc neg} come.{\sc pfv-3m.pl} {\sc neg} Ahmad.{\sc m} {\sc neg.conj} Ali.{\sc m}\\
+\glt `Neither Ahmad nor Ali came.'% \hfill{Turaif Arabic: \citet[40]{AlruwailiSadler:2018}}  }  }
+\z
+\z
+
+
+
+
+
+
+
+
+
+In previous work,  \citet{przepiorkowski2015two}
+associate the Polish strict {\sc nci} {\em nikt} `nobody' with an inside-out constraint requiring {\sc eneg}=+ to be defined in the appropriate containing f-structure. Building on this approach, \citet{AlruwailiSadler:2018} formulate a complex lexical constraint to capture the dependency between  the {\sc cneg}/{\sc nci} alternation and the existence and linear position of a {\sc eneg} marker.
+
+
+
+
+
+
+
+\section{Unbounded dependency constructions}
+
+Hebrew and Arabic both make extensive use of resumptive strategies as well as gap strategies in unbounded dependency constructions, and formalisation of the resumptive strategy for Hebrew is a major concern of \citet{Asudeh12}, the most important reference for this section (see also \citealt{Asudeh10}).   \citet{Falk2002} also discusses the resumptive strategy for Hebrew {\sc udc}s.  \citet{CamSad11:LFG} looks at restrictive relative clauses and resumption in Maltese (see also \citealt{CamSad:NRRC}), building on Asudeh's approach to resumption.
+Further work on Maltese is descriptively oriented \citep{CamSad:2015,CamSad:FRC}.
+
+
+
+
+Hebrew resumptives occur in all NP positions except that of the highest subject.  (\ref{rina}) illustrates an optional {\sc obj} resumptive and (\ref{cnp}) illustrates a resumptive within a complex NP island (note that there is no {\em wh-}item in these Hebrew relative clauses).
+
+
+
+\ea
+\label{rina} Hebrew \citep[220]{Borer:84}\\
+\gll ra{ʔ}iti {ʔ}et ha-yeled she/{ʔ}asher rina {ʔ}ohevet ({ʔ}oto)\\
+saw.{\sc 1sg} {\sc acc} {\sc def}-boy {\sc comp} Rina love.{\sc 3f.sg} him\\
+\glt `I saw the boy that Rina loves.'
+\z
+
+
+\ea  \label{cnp} Hebrew \citep[221]{Borer:84} \\
+\gll ra{ʔ}iti {ʔ}et ha-yeled she-/asher dalya makira {ʔ}et ha-{ʔ}isha she-{ʔ}ohevet {ʔ}oto\\
+saw-I {\sc acc} {\sc def}-boy {\sc comp} Dalya knows {\sc acc} {\sc def}-woman {\sc comp}-loves him \\
+\glt `I saw the boy that Dalya knows the woman who loves him.'
+  \z
+
+
+
+
+ It is well established in the literature beyond LFG  that the resumptives of Hebrew have the interpretational properties of pronouns rather than those of gap.
+The diagnostics distinguishing those  which are interpretationally identical to gaps from those which behave semantically as pronouns
+include differences in behaviour with respect to island phenomena, weak crossover, across-the-board extraction, parasitic gaps and reconstruction \citep[106]{McCloskey:2006}.  In line with this work,  \citet{Asudeh10,Asudeh12} distinguishes two
+types of true resumptives, which he refers to as {\em syntactically active resumptives} ({\sc sar}s)  and {\em
+  syntactically inactive resumptive} ({\sc sir}s). Both types of
+resumptive receive the same treatment in the syntax-semantics
+interface, that is, they are removed by a manager resource. {\sc sar}s  do not
+display gap-like properties in the syntax and  are simply anaphorically bound
+pronouns in the syntax: the {\sc rp}s of Hebrew are of this type, as shown in (\ref{heb-f}).
+On the other hand,  {\sc sir}s are
+syntactically gap-like (i.e.\ they are  functionally controlled): the {\sc rp} is treated as  the bottom
+of a filler-gap dependency by restricting out the pronominal  {\sc pred}, so that syntactically, the {\sc rp} is equivalent to a gap (this analysis is given for Swedish in \citealt{Asudeh12}).
+
+
+
+On the view that Asudeh develops, Hebrew resumptives are pronouns at f-structure, and  are licensed in the complementiser system of Hebrew.\footnote{An alternative view of the resumptive pronouns is taken in \citet{Falk2002}, namely that pronouns may lack a {\sc pred} value just in case they are functionally identified with a discourse function: functional identification is introduced lexically (by the pronoun itself) and mediated by reference to a $p$ projection containing the referential elements in the discourse as shown in (\ref{ex:fn25}).
+
+\ea\label{ex:fn25}
+$f$  $\in$ $p^{-1}$(\UP$_{p}$)  $\wedge$ ({\sc df} $f$) $\Rightarrow$ \UP=$f$
+\hfill {\citep[163]{Falk2002} }
+\z }
+
+  That is, members of the class of C elements are lexically associated
+with the (optional) information shown in (\ref{comp-rp-lex}).
+
+\ea
+\label{comp-rp-lex}
+\lexentry{C}{
+\% RP=(\UP {\sc gf$^{+}$})\\
+(\UP {\sc udf})$_{\sigma}$=(\%RP$_{\sigma}$ {\sc antecedent})\\
+@MR(\%RP)\\
+ @RELABEL(\%RP) } \hfill{\citep[221]{Asudeh12}}
+\z
+
+
+
+
+Abstracting away from many technical details, (\ref{comp-rp-lex})  states an equality between the semantics of a discourse function (\UP {\sc udf}) in the f-structure which contains the complementiser and the value of the {\sc antecedent} attribute of some grammatical function within the structure (identified by means of the local name \%RP). The template call in the third line introduces the semantic resource which removes the surplus pronominal resource in the course of semantic composition, using the Resource Management Theory of Resumption developed in \citet{Asudeh12}.  The example in (\ref{rina}) with the resumptive has the f-structure in (\ref{heb-f}) \citep[227]{Asudeh12}.\footnote{Asudeh does not represent the subcategorised arguments within the {\sc pred} value, which is a simple, argument-less semantic form.} The (standard) CP rule is shown in (\ref{heb-udc-rule}) \citep[224]{Asudeh12}
+ where $\epsilon$ is not an empty node in the c-structure but the absence of a node associated with the collection of constraints specified.
+
+
+
+\eabox{ \label{heb-f}
+\avm[style=fstr]{
+[pred & `boy'\\
+ spec & [pred & `the'] \\
+case & acc\\
+ adj & \{[
+ pred  &  `love' \\
+udf & \id{a}{\rnode{A}{[pred & `pro']}}\\
+ subj & [ pred & `Rina' ]\\
+obj & \id{p}{\rnode{P}{[pred & `pro'\\
+pers & 3\\
+num & sg\\
+gend & masc]}}
+]
+ \}
+]
+}\quad
+\avm[style=fstr]{
+\id{p_{\sigma}}{\rnode{PS}{[antecedent & \id{a_{\sigma}}{\rnode{AS}{[~]}}]}}}
+%%% \CURVE[2]{-2pt}{0}{A}{-2pt}{0}{AS}
+\nccurve[nodesepA=-2pt,nodesepB=0pt,angleA={0},angleB={180},linewidth=.5pt]{->}{P}{PS}
+\nccurve[nodesepA=-2pt,nodesepB=0pt,angleA={0},angleB={110},linewidth=.5pt]{->}{A}{AS}
+%% \CURVE[2]{-2pt}{0}{P}{-2pt}{0}{PS}
+}
+
+
+
+
+
+\ea
+\label{heb-udc-rule} \phraserule{CP}{
+\rulenode{\{}
+\rulenode{XP  $|$ \\ {(\UP\sc udf)=\DOWN}}
+\rulenode{$\epsilon$ \\ {(\UP\sc udf pred)={\sc `pro'}}\\ ({\sc adjunct} $\in$ \UP )\\ {\em REL}$_{\sigma}$}
+\rulenode{\} }
+\rulenode{C$'$\\ \UP=\DOWN}
+}
+\z
+
+
+
+\citet{Asudeh12} provides detailed coverage of many aspects of the syntax of Hebrew {\sc udc}s. For example (\ref{front}) contains a fronted resumptive and no complementiser. The former is treated as an adjunction to C and the latter by means of a lexical entry for a null complementiser. {\em {ʔ}ašer} is a complementiser which can only appear in relative clauses, a restriction which is captured by an inside-out constraint in the lexical entry (\ref{asher})
+
+
+
+
+
+\ea \label{front}  Hebrew \citep[220]{Borer:84}\\
+\gll ra{ʔ}iti {ʔ}et ha-yeled {ʔ}oto rina {ʔ}ohevet \\
+saw.{\sc 1sg} {\sc acc} {\sc def}-boy him Rina love.{\sc 3f.sg}\\
+\glt `I saw the boy that Rina loves.'
+\z
+
+
+
+\ea \label{head-adjunction} \phraserule{C}{
+\rulenode{C\\ \UP=\DOWN}
+\rulenode{\NONPROJ{D}\\ (\UP\ {\sc gf})=\DOWN }   } \hfill{\citep[223]{Asudeh12}}
+\z
+
+
+
+
+
+\ea  \label{asher}
+\catlexentry{{ʔ}asher}{C}{\feqs{
+({\sc adjunct} $\in$ \UP)  } } \hfill{\citep[223]{Asudeh12}  }
+\z
+
+
+\citet{CamSad11:LFG} provide an analysis of Maltese restrictive relative clauses.   In Maltese a resumptive is not permitted in the highest subject function or, in relative clauses with definite or quantified heads, the highest object position.  They
+suggest the underlying distribution of resumptive and gap is essentially free but subject to some additional restrictions (for example, only a resumptive is possible as the argument of a preposition).
+
+\ea \label{datobj} Maltese \citep[113]{CamSad11:LFG}\\
+\gll	Ir-ra\.{g}el		li		bgħatt-(lu)		l-ittra		we\.{g}ib-ni\\
+	{\sc def}-man	{\sc comp}	send.{\sc pfv}.{\sc 1sg}.(-{\sc
+         dat.3m.sg})	{\sc def}-letter	respond.{\sc pfv}.{\sc 3m.sg}-{\sc 1sg.acc}\\
+	\glt `The man that I sent (him) the letter responded.'
+\z
+
+
+As well as complementiser-introduced relatives such as (\ref{datobj}),  Maltese also has  {\em wh-}relatives, which involve a gap rather than a resumptive pronoun, although these are subject to quite severe restrictions. (\ref{minobj2}) is an example.
+
+
+\ea
+\label{minobj2} Maltese \citep[114]{CamSad11:LFG}\\
+\gll
+It-tifel		 {'l min}		n(a)-ħseb	j-għallem-*u\\
+{\sc def}-boy	{\sc acc}.who	{\sc 1sg}-think.{\sc ipfv}		3-teach.{\sc ipfv}.{\sc
+3m.sg}-{\sc 3sg.acc}\\
+\glt `the boy  who I think he teaches'
+\z
+
+
+
+
+
+
+Building on standard assumptions, \citet{CamSad11:LFG} provide a syntactic analysis of both complementiser and {\em wh-} relatives.  The example in (\ref{exrrc}) with either a complementiser or a {\em wh-}item is
+associated with the f-structure in (\ref{basicppmalt})  (assuming the {\sc pred}  value of {\em 'l min} is {\sc `pro'}).
+
+
+\ea\label{exrrc} Maltese \citep[116]{CamSad11:LFG} \\
+\gll	Rajt		lit-tifel			li /{'l min}		j-af		Pawlu	  \\
+	see.{\sc pfv}.{\sc 1sg}	{\sc acc.def}-boy		{\sc comp} /who	{\sc 3m.sg}-know.{\sc ipfv}	Paul\\
+	\glt `I saw the boy that Paul knows.'
+\z
+
+
+
+\eabox{\label{basicppmalt}
+\avm[style=fstr]{
+[pred & `boy'\\
+ def  & +\\
+adj & \{
+[ pred & `know\arglist{\SUBJ,\OBJ}'  \\
+compform & decl\\
+subj & [pred & `Paul'\\
+             pers & 3\\
+            num & sg\\
+           gend & masc ] \\
+topic & \rnode{A}{[pred & `pro']}\\
+obj & \Rnode{B}{~}   ] \}
+]}
+\CURVE[1.8]{-2pt}{0}{A}{-2pt}{0}{B}\\
+\citep[116]{CamSad11:LFG}
+}
+
+
+
+
+
+
+
+ \citet{CamSad11:LFG}
+ show that Maltese also has true resumptives (as opposed to intrusive pronouns), and that the available tests indicate that (in the terminology of \citealt{Asudeh12}) they are {\sc sar}s and hence anaphorically bound pronouns in the syntax. For example, they can be used felicitously in circumstances which would induce weak crossover violations. In  (\ref{wh-wco}) the dependency
+between the antecedent ({\em ir-ra\.{g}el}\/) (or the {\sc topic}) and
+the {\sc rp} `crosses over' the possessive in {\em martu} (`his wife'),
+but the sentence is completely grammatical, while the corresponding sentence with a gap would be ungrammatical, despite the fact that {\sc rp}s are normally excluded in wh-relatives in Maltese. Note that the {\sc  poss} function is not accessible
+to relativisation by the wh-strategy and so it is clear that
+(\ref{wh-wco}) involves relativisation on the {\sc obj}, and therefore
+constitutes a case of crossover. (\ref{wco}) provides a similar example using the less restricted complementiser strategy for relativisation.
+
+\ea \label{wh-wco} Maltese \citep[19]{CamSad11:LFG} \\
+\gll
+Ir-ra\.{g}el    {'l min}       n-af                   li         t-elq-it-u                    l-mara/mart-*(u)\\
+{\sc def}-man {\sc acc}.who {\sc 1sg}-know.{\sc ipfv}      {\sc comp} {\sc 3f.sg}-leave.{\sc pfv}-{\sc 3m.sg.acc} {\sc def}-woman/woman-{\sc 3m.sg.acc}\\
+\glt `the man who I know that his wife left him'
+\z
+
+
+
+
+
+
+\ea \label{wco} Maltese  \citep[19]{CamSad11:LFG} \\
+\gll
+Ir-ra\.{g}el
+       li              n-af               li
+ħallie-t-u                  mart-*(u) baqa'        ma     hari\.{g}-x
+mid-dar  \\
+{\sc def-}man {\sc comp} {\sc 1sg}-know.{\sc ipfv}  {\sc comp}    leave.{\sc pfv}-{\sc 3f.sg-3m.sg.acc}
+wife-{\sc 3m.sg.acc}  stay.{\sc pfv}.{\sc 3m.sg} {\sc neg} {go out}.{\sc 3m.sg}-{\sc neg} from.{\sc def}-house\\
+\glt `The man who I know that his wife left him, has not left the house since.'
+\z
+
+
+
+
+
+(\ref{sem:cnpc}) illustrates the
+Complex Noun Phrase Constraint, with a (second) relative dependency into a {\sc
+  cnp} created by relativisation: although the relativised position is
+one which is normally accessible to the gap strategy, the resumptive
+is obligatory here as a gap would cause a syntactic constraint
+violation.\footnote{The distribution of resumptives in Maltese does raise some potentially puzzling issues. \citet{CamSad11:LFG} show that there may be evidence from the distribution of gaps and {\sc rp}s in across-the-board constructions that Maltese also has {\em syntactically inactive resumptives} ({\sc sir}s) (functionally controlled {\sc rp}s or `audible' gaps)  since gaps and resumptives occur together in {\sc atb} constructions, but that simply assuming that {\sc atb} constructions in Maltese (and in Arabic more widely) involve {\sc sir}s rather than {\sc sar}s is also problematic.}
+
+
+
+
+\ea
+\label{sem:cnpc} Maltese \citep[120]{CamSad11:LFG}\\
+\gll Raj-t ir-ra\.{g}el              li              n-af
+mara        li               t-af-u u  għid-t-l-u                                j-selli-l-i                                       għali-ha\\
+see.{\sc pfv}-{\sc 1sg}    {\sc def}-man  {\sc comp}  {\sc 1sg}-know.{\sc ipfv}   woman
+{\sc comp}
+{\sc 3f.sg}-know.{\sc ipfv}-{\sc 3m.sg.acc} and  tell.{\sc pfv}-{\sc 1sg}-{\sc dat}-{\sc
+3m.sg}  {\sc 3m.sg}-{send regards.{\sc ipfv}}-{\sc dat}-{\sc 1sg}   for-{\sc 3f.sg.acc} \\
+\glt `I saw the man who I know a woman that knows him, and told him to send her my regards.'
+\z
+
+
+
+
+
+
+
+
+\section{Other work}
+
+\citet{Alotaibi14Conditional} looks at  conditional sentences in Hijazi Arabic and provides an LFG analysis of the syntax of these constructions.  \citet{ACTA:dat} discusses the  dative alternation in Hijazi Arabic, {\sc eca} and Maltese and develops an  account of the mapping to {\sc gf}s using the mapping approach of \citet{Kibort:08}. \citet{CamSad:LFG12} looks at non-selected datives in Maltese.  \citet{Alzaidi:2010} on gapping constructions in Hijazi (Taif) Arabic.  \citet{Sadler:NomMod} provides an analysis of  mixed agreement in adjectival relatives in {\sc msa}.  Clausal possession in Hebrew is discussed in  \citet{Falk04}.
+For an early discussion of agreement in {\sc msa} see \citet{FF}.  \citet{camilleri-sadler-2:2017} discusses the grammaticalisation of a progressive construction in the Arabic vernaculars from a posture verb {\sc act.ptcp}  and also provides a synchronic account of the progressive construction.
+\citet{CamilleriSadler:LFG2018}  concerns the grammaticalisation of both the  universal perfect (see also \citealt{Camilleri:PhD16})  and the progressive in Arabic.
+
+
+
+\section*{Acknowledgements}
+I am grateful to the reviewers  for their very helpful comments on earlier versions of  this chapter.
+
+\section*{Abbreviations}
+
+Besides the abbreviations from the Leipzig Glossing Conventions, this
+chapter uses the following abbreviations.\medskip
+
+\noindent\begin{tabularx}{.45\textwidth}{lQ}
+\gloss{conj} & conjunction\\
+\gloss{constr} & construct form \\
+\gloss{epent.vwl} & epenthetic vowel \\
+\gloss{frm.vwl} & formative vowel \\
+\end{tabularx}
+\noindent\begin{tabularx}{.45\textwidth}{lQ}
+\gloss{juss} & jussive\\
+\gloss{msd} & maṣdar \\
+\gloss{prn} & pronoun \\
+\gloss{sfp} & scalar focus particle \\
+\end{tabularx}
+
+
+{\sloppy\printbibliography[heading=subbibliography,notkeyword=this]}
+
+\end{document}

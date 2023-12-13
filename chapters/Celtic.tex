@@ -1,0 +1,819 @@
+\documentclass[output=paper,colorlinks,citecolor=brown]{langscibook}
+\ChapterDOI{10.5281/zenodo.10186004}
+\title{LFG and Celtic languages}
+\author{Jenny Graver\affiliation{University of Oslo}}
+\abstract{This chapter presents an overview of LFG studies on grammatical phenomena in two of the Celtic languages, Irish and Welsh. While there is less work on the Celtic languages in LFG compared to other theories, the studies we have touch on important topics in any linguistic theory or language study, such as word order, grammatical functions, agreement and verbs of existence. The chapter is structured accordingly, and discusses issues such as the presence or absence of a VP, impersonal and passive verb forms, relative clauses and unbounded dependencies, verbal agreement, and the syntax of the Irish copula verb. The Celtic languages are minority languages, and the chapter is framed by reflections on the challenges inherent in studying languages in that situation.}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[35]%%chapternumber
+   \boolfalse{bookcompile}
+}{}
+
+\begin{document}
+\maketitle
+\label{chap:Celtic}
+
+\section{Introduction}
+\label{sec:Celtic:1}
+
+\subsection{The Celtic languages}
+\label{sec:Celtic:1.1}
+
+Historically the Celtic languages are divided into Continental Celtic and Insular Celtic. For the Continental Celtic languages such as Gaulish and Celtiberian, very little is attested. Insular Celtic is normally divided into two branches, the Gaelic or Goidelic group containing Irish, Scottish-Gaelic and Manx, and the British or Brythonic group consisting of Welsh, Breton and Cornish. The Goidelic and Brythonic languages are sometimes referred to as Q Celtic and P Celtic respectively, reflecting the development of Indo-European */k\textsuperscript{w}/ into /k/ in the Goidelic languages and /p/ in the Brythonic languages \citep[68]{Schmidt2002}.
+
+All the modern-day Celtic languages are minority languages influenced by the strong presence of either English or French as the majority language. While there are movements to revive Cornish and Manx, these languages have no known traditional native speakers alive.
+
+In minority languages like these, with potentially more speakers who are second language learners than there are native speakers, it is important for a researcher in any linguistic field to be aware of which variety of the language she is working with. For example, Irish is estimated to have 141,000 L1 users and 1,030,000 L2 users \citep{EberhardSimonsFennig2019}. This means that there are for all intents and purposes two Irish language communities, the rural communities of the official Irish-speaking areas called the \emph{Gaeltacht} (plural \emph{Gaeltachtaí}), and urban communities of second-language learners who go on to raise their children in what seems to be developing into new varieties of the language. \citet{McCloskey2003} describes some of the issues involved in working with Irish in this situation. As McCloskey points out, even the question of which variety to study for the purpose of theoretical syntax is fraught with the potential to be felt painfully by the speakers in question. Kennard's (non-LFG) studies on Breton word order \citep{Kennard2014}, and on an impersonal construction and initial mutation\footnote{See \sectref{sec:Celtic:1.2}.} in Breton \citep{Kennard2019}, are other excellent examples of some of the complexities involved in studying minority languages like these.
+
+Another issue to be aware of is the differences between the spoken and literary varieties in these languages, a distinction which is particularly prominent in Welsh, but also relevant for Irish. Areas where different varieties come into play in this chapter are among others Irish verbal agreement (dialect, register and diachronic development, \sectref{sec:Celtic:4.2}) and Irish numerals (``school'' language vs. spoken language, \sectref{sec:Celtic:4.3}).
+
+\subsection{On the selection of topics in this chapter}
+\label{sec:Celtic:1.2}
+
+Relatively little work has been done on the Celtic languages in LFG compared to in other theories, and the studies we have cover very different topics. It has been my goal to write an overview chapter that shows some of this breadth. This means that there has not been sufficient room to present all the relevant theory or all the relevant language structures in detail. References to theoretical and grammatical resources are provided, including to other chapters in this Handbook. I encourage the reader to consult the referenced works.
+
+Often the works presented in this chapter are single studies on a single grammatical phenomenon in a single language. What do these studies contribute to our understanding of LFG and of the Celtic languages? What is the theoretical context of the study? I highlight where there remains work to be done in LFG through comparisons with studies on the Celtic languages in other frameworks, and through introducing relevant grammatical phenomena in the Celtic languages that are still unaccounted for in LFG. It is my hope that this may be useful for researchers down the road who want to help fill the gaps in our LFG-theoretical understanding of the Celtic language family, or otherwise study the Celtic languages within the framework of LFG. 
+
+The system of initial mutation is a striking example of a central phenomenon in the Celtic languages that has received little attention in LFG. All the Celtic languages have a system of initial mutation in which phonological changes to the initial segment of words are triggered by lexical, morphosyntactic or syntactic conditions. Taking Irish as an example, there are two initial mutations in the language, called lenition and eclipsis. Some examples of how these mutations affect consonants are provided below. In these examples the acute accent denotes a palatalised as opposed to a velarised consonant, called ``slender'' and ``broad'' respectively in traditional grammars.
+
+\ea\label{ex:Celtic:1} Some initial mutations in Irish, spelling and pronunciation \citep[109]{MacEoin2002}\\
+\centering\begin{tabular}{llllll}
+  \multicolumn{2}{l}{Radical} &\multicolumn{2}{l}{Lenited} & \multicolumn{2}{l}{Eclipsed}\\
+c & /k/, /k$'$/ & ch & /x/, /\c{c}/ & gc & /g/, /g$'$/\\
+d & /d/, /d$'$/ & dh & /\textramshorns/, /j/ & nd & /N/, /N$'$/\\
+f & /f/, /f$'$/ & fh & (silent) & bhf & /w/, /v$'$/\\
+s & /s/, /s$'$/ & sh & /h/, /\c{c}/ & N/A
+\end{tabular}
+\z
+Initial mutation is perhaps one of the most studied Celtic phenomena in general (see \citealt{Harlow1989}, \citealt{BallMuller1992}, \citealt{Tallerman2006} among many others). This might be one reason why it is hard to find LFG studies on this topic beyond computational approaches such as \citegen{mittendorfsadler06} analysis of Welsh initial mutation using the XLE grammar development environment and the associated finite state and tokenisation tools. However, initial mutation is frequently mentioned when it interacts with the grammatical phenomenon under discussion, such as the Irish relative sentences discussed in \sectref{sec:Celtic:3.4}.
+
+
+\section{Word order}
+\label{sec:Celtic:2}
+
+\subsection{Introduction}
+\label{sec:Celtic:2.1}
+
+The Celtic languages show basic VSO word order. As pointed out for example by \citet[16]{Fife2002}, the Celtic languages are VSO not only in terms of basic word order -- they also show the features proposed by Joseph Greenberg to be implications of basic VSO word order: they are prepositional; they can be said to show SVO as an alternate order through fronting of non-verbal constituents, possibly more correctly described as XVO; they have initial interrogative particles, pre-verbal \emph{wh}-words and the main verb after the auxiliary; and as a main rule, they show post-head modifications.
+
+This section is centered on an LFG analysis of basic VSO word order at the clausal level, with the main issue being the presence of a VP in the Celtic languages. As will be seen, \citet{sadler97} and \citet{bresnan2001lexical} analyse the VSO word order of Welsh in order to develop and illustrate some very central concepts of LFG.
+
+\subsection{Is there a VP or not?}
+\label{sec:Celtic:2.2}
+
+A central theoretical discussion concerning the Celtic languages has been the presence or absence of a VP. Early work on this question in other theories than LFG include \citet{Sproat} for Welsh, \citet{McCloskey1983} for Irish and \citet{AndersonChung1977} for Breton.
+
+As previously mentioned, the Celtic languages show various surface word orders in addition to VSO in different types of clauses. \citet[22--23]{Tallerman1998} distinguishes between what she calls ``two major word order patterns in finite clauses in Celtic''. The first pattern has the finite lexical verb in initial position followed by the subject, object and any optional material -- in other words, the standard VSOX order, as illustrated in (\ref{ex:Celtic:2}) for Welsh and (\ref{ex:Celtic:3}) for Irish.
+
+\ea\label{ex:Celtic:2} Welsh \citep[23]{Tallerman1998}\\
+\gll Rhoddais  i afal i'r bachgen ddoe.\\
+{give.\PST.1\SG} I apple to.\textsc{def} boy yesterday\\
+\glt`I gave an apple to the boy yesterday.'
+\z
+
+\ea\label{ex:Celtic:3} Irish \citep[205]{OSiadhail1989}\\
+\gll Labhrann Mícheál Gaeilge le Cáit go~minic.\\
+{speak.\PRS} Mícheál Irish to Cáit often\\
+\glt`Mícheal often speaks Irish to Cáit.'
+\z
+The other unmarked word order referred to by \citet[22--23]{Tallerman1998} is a periphrastic construction with an initial finite auxiliary verb, followed by the subject and a non-finite verb and its complement, followed by any optional material. Examples are provided in (\ref{ex:Celtic:4}) for Welsh and (\ref{ex:Celtic:5}) for Irish, both of which illustrate the progressive construction.
+
+\ea\label{ex:Celtic:4} Welsh \citep[23]{Tallerman1998}\\
+\gll Mae  o'n  adeiladu tai  ym Mangor.\\
+{be.\PRS} {he.\PROG} build  houses in Bangor\\
+\glt`He's building houses in Bangor.'
+\z
+
+\ea\label{ex:Celtic:5} Irish \citep[131]{MacEoin2002}\\
+\gll Tá  m\'e ag  baint fh\'eir.\\
+{be.\PRS} I {\PROG} cut grass.\GEN\\
+\glt`I am cutting grass.'
+\z
+It is possible to front the non-finite verb and its complement in this construction using the cleft construction, illustrated in (\ref{ex:Celtic:6}) for Welsh.
+
+As we will see, this is taken as one indication of the presence of a VP in Welsh.
+
+\ea\label{ex:Celtic:6} Welsh \citep[128]{bresnan2001lexical}\\
+\gll Adeiladu tai  ym Mangor a  wnaeth o.\\
+build  houses in Bangor {\REL} {do.\PST.3\SG} he\\
+\glt`He built houses in Bangor.' (VP focus) 
+\z 
+(\ref{ex:Celtic:6}) shows the periphrastic construction with the finite auxiliary verb `do'; the non-finite verb `build' and its complement is fronted. Similar fronting is found in Irish, as shown with the periphrastic construction in (\ref{ex:Celtic:7}):
+
+\ea\label{ex:Celtic:7} Irish (from \citealt{McCloskey1983}, quoted in \citealt[14]{Carnie2005}):\\
+\gll Má's  ag  cuartughadh leanbh do dhearbhrathra a tá tú ...\\
+{if.\COP} {\PROG}  seek  child your brother  {\REL} {be.\PRS} you ...\\
+\glt`If it's seeking your brother's child that you are ...'
+\z
+Another argument frequently posited in favour of a VP in VSO languages is the presence of structure-dependent subject/object asymmetries such as anaphoric binding \citep[5--6 and references therein]{CarnieGuilfoyle2000}. The examples in (\ref{ex:Celtic:8}) illustrate anaphoric asymmetries for Welsh:
+
+\ea\label{ex:Celtic:8} Welsh \citep[476]{Borsley2006}\\
+\ea\gll Welodd Gwyn  ei  hun.\\
+{see.\PRS.3\SG}  Gwyn 3\SG.{\M} self\\
+\glt`Gwyn saw himself.'
+\ex
+\gll *Welodd ei  hun Megan.\\
+{see.\PRS.3\SG}  {3\SG.\F\footnotemark} self Megan\\
+\footnotetext{This is glossed `\M' in \citet[476]{Borsley2006}.}
+\glt Intended: `Megan saw herself.'
+\z\z
+If, as in LFG, binding constraints are taken to be a matter for f-structure (\citetv{chapters/Anaphora}), examples such as the above are, however, not an argument in favour of a VP in VSO languages.
+
+Based on examples such as (\ref{ex:Celtic:6}) and (\ref{ex:Celtic:7}) above, \citet[126--131]{bresnan2001lexical}, in line with \citet{sadler97}, argues in favour of a VP for Welsh as shown in the trees in (\ref{ex:Celtic:9}).\footnote{See \citet{Carnie2005} for a discussion of Irish copula clauses as a possible counter-argument to this type of analysis of VSO languages.} For \citet[126ff]{bresnan2001lexical}, this argument is a matter of showing an example of what she calls ``the noncompositionality of f-structures in c-structures'', or more specifically for Welsh and the other Celtic languages that a finite VP can be discontinuous and with a head appearing external to the rest of the phrase. Crucially, this places the analysis of the word order of the Celtic languages in the context of central LFG concepts and analyses such as structure-function mapping and endocentricity and extended heads (see \citetv{chapters/CoreConcepts}). 
+\ea\label{ex:Celtic:9} Welsh word order
+\ea `John saw a dragon.' \citep[2]{Broadwell2005}
+\begin{forest}
+ [IP
+ [{I\\\UP=\DOWN} [{gwelodd\\see.3\SG.\PST}]]
+ [{S\\\UP=\DOWN}
+ [{NP\\(\UP\SUBJ)=\DOWN} [Si\^on\\John]]
+ [{VP\\\UP=\DOWN} 
+ [{NP\\(\UP\OBJ)=\DOWN} [ddraig\\dragon]]]]]
+ \end{forest}
+
+ \newpage
+\ex `John saw a dragon.' \citep[128]{bresnan2001lexical}
+\begin{forest}
+ [IP
+ [{I\\\UP=\DOWN} [{gwnaeth\\do.\PST.3\SG}]]
+ [{S\\\UP=\DOWN}
+ [{NP\\(\UP\SUBJ)=\DOWN} [Si\^on\\John]]
+ [{VP\\\UP=\DOWN} 
+ [{V\\\UP=\DOWN} [weld\\see]]
+ [{NP\\(\UP\OBJ)=\DOWN} [ddraig\\dragon]]]]]
+ \end{forest}
+\z\z
+In this analysis the V in the I(nfl) position is the extended head of the VP. The tree in (\ref{ex:Celtic:9})a illustrates standard VSO order, whereas (\ref{ex:Celtic:9})b shows a Welsh periphrastic construction with the finite auxiliary verb `do' in the initial position followed by the subject, a non-finite verb and its complement.
+
+More broadly this analysis deals with several very central questions in any linguistic theory: what is the status of the VP? Is it desirable to maintain a unified analysis of different constructions in a language? Compare for example \citet{Borsley2006}, who argues against a head-raising account/discontinuous VP for finite, non-periphrastic clauses in Welsh. Borsley acknowledges the possibility of a VP in periphrastic constructions, but argues that it does not follow that there is a VP in finite, non-periphrastic clauses.
+
+There is much more work to be done on the word order of the Celtic languages, both in general and in LFG, for example in light of Breton apparently showing verb-second effects (\citealt{Schafer1995}, \citealt[22]{Tallerman1998}, \citealt[400]{Stephens2002}) and the development of SVO vs. V2 structure in modern Breton (\citealt{Timm1989}, \citealt{Kennard2014}, etc.). See also \citet[1779--1783]{Sadler2006} for a discussion of Welsh constituent structure.
+
+\subsection{Some other patterns of word order}
+\label{sec:Celtic:2.3}
+
+Within LFG there are so far relatively few studies of Celtic word order beyond clausal VSO structure. One important exception is \citegen{Sadler1998} article ``Welsh NPs without head movement'', on the structure of Welsh noun phrases. Her starting point is the similarity between nominal and clausal structure in Welsh, which has led to head movement type of analyses of Celtic noun phrases in which the head N raises to a functional category position, parallel to the extended head analyses described for VSO clauses. Sadler argues against this type of analysis for Welsh noun phrases for both conceptual and empirical reasons. She proposes instead an analysis in which Welsh nouns lack complements, and that what appears to be complements of the noun, are instead adjuncts. This removes the need for a head raising account for this data.
+
+These similarities between NPs and VPs in the Celtic languages are another area that would benefit from further study. The issues raised are broader than the Celtic languages: as \citet[2]{Sadler1998} points out, the head raising account of Celtic noun phrases is modelled on analyses of Semitic noun phrases, which show similarities with the Celtic structures.
+
+In the introduction to this section, I mentioned some salient typological features of the Celtic languages that correspond to a VSO word order. One of these is fronting, or clefting. The Celtic pattern of fronting (see \citealt[31--34]{Tallerman1998}, etc.) is illustrated below using Irish and Welsh. The basic structure of the Irish cleft construction is copula + clefted phrase + relative particle + the remainder of the sentence. This is illustrated in (\ref{ex:Celtic:10}) through (a) a standard VSO sentence, (b) fronting of the subject, and (c) fronting of an adverb:
+
+\ea\label{ex:Celtic:10} Irish \citep[571]{Sulger09}:
+\ea
+\gll L\'eigh an múinteoir leabhar inn\'e.\\
+{read.\PST} {\textsc{def}} teacher book yesterday\\
+\glt`The teacher read a book yesterday.'
+\ex
+\gll Is  \'e an múinteoir a l\'eigh an leabhar inn\'e.\\
+{\COP}  {\AGR} \textsc{def} teacher {\REL} {read.\PST} \textsc{def} book yesterday\\
+\glt`It is the teacher who read a book yesterday.'
+\ex
+\gll Is inn\'e  a l\'eigh an múinteoir an leabhar.\\
+{\COP} yesterday {\REL} {read.\PST} \textsc{def} teacher \textsc{def} book\\
+\glt`It is yesterday that the teacher read a book.'
+\z\z
+In Welsh, the corresponding construction does not have a copula, leaving the relative particle as the only marker of clefting \citep[336--337]{Watkins2002}:
+
+\ea\label{ex:Celtic:11} Welsh \citep[337]{Watkins2002}\\
+\gll y bachgen a welodd y dyn\\
+\textsc{def} boy  {\REL} {see.\PST.3\SG} \textsc{def} man\\
+\glt`It was the boy who saw the man.'
+\z
+The cleft construction in the Celtic languages has received relatively little attention in LFG, but see \citet{Sulger09} for an analysis that builds on analyses of the Irish copula.\footnote{Compare also \citet{Borsley2020}, a comparative analysis in HPSG of \emph{wh}-interrogatives, free relatives and cleft sentences. Borsley suggests that the Welsh cleft construction involves identity predication. As mentioned, the copula does not appear in Welsh cleft sentences today. This leads Borsley to suggest that the identity predication is associated with the construction in Modern Welsh, whereas in Middle Welsh, where the copula did appear, the identity predication of the cleft sentence was associated with the copula.} 
+
+\section{Arguments}
+\label{sec:Celtic:3}
+
+\subsection{Introduction}
+\label{sec:Celtic:3.1}
+
+This section starts with an analysis of the Modern Irish so-called ``autonomous'' verb form and its diachronic development from a passive verb, which is then contrasted briefly with the Welsh impersonal verb form. These analyses deal with a crucial topic in any grammatical theory, namely mapping between verbal semantics and syntactic functions. The autonomous verb is followed by a description of a pattern in Welsh in which an adjective phrase is said to select for an object. The authors in question argue that this analysis raises wider issues about how best to understand grammatical functions in areas outside of verbal subcategorisation. Finally, there is a brief discussion of Irish relative clauses in the context of LFG analyses of unbounded dependencies.
+
+\subsection{Passives and impersonals}
+\label{sec:Celtic:3.2}
+
+All the Celtic languages contain a verb form in their paradigm called ``auton\-o\-mous'' or ``impersonal'' \citep[14]{Fife2002}. There are two PhD theses dealing with this verb form within the framework of LFG, \citet{Graver2010} for the Irish autonomous verb and \citet{Arman2015} for the Welsh ``impersonal passive'' as well as another type of Welsh passive called the \textsc{get}-passive. Both make use of Lexical Mapping Theory (LMT) as revised by \citet{Kibort2007,kibort14} (see \citetv{chapters/Mapping}).
+
+Some classic studies of the Modern Irish autonomous verb are \citet{Stenson1989} and \citet{McCloskey2007}. Their main conclusion is that the Modern Irish autonomous verb is an active verb with an impersonal subject comparable in semantics to French \emph{on}, etc. In Irish, this subject is phonologically null. Drawing on this conclusion, \citet{Graver2010,Graver2011} presents an LFG analysis of the Modern Irish autonomous verb and its diachronic development.
+
+Examples of the Modern Irish autonomous verb are provided in (\ref{ex:Celtic:12}):
+
+\ea\label{ex:Celtic:12} Irish
+\ea\gll Tugadh  an corp  chun na reilige agus cuireadh  \'e.\\
+bring.\PST.\textsc{aut} \textsc{def} corpse to \textsc{def} graveyard and put.\PST.\textsc{aut} it\\
+\glt`The corpse was brought to the graveyard and it was buried.' \citep[4]{Graver2010}
+
+\ex
+\gll Deir siad go gcuirfear ar ath-chúirt \'e.\\
+{say.\PRS} they that put.\FUT.\textsc{aut} on re-court it\\
+\glt`They say that it will be appealed.' \citep[9]{Graver2010}
+\z\z
+As will be shown in \sectref{sec:Celtic:4.2}, the Modern Irish verbal paradigm contains a mixture of so-called synthetic forms, which express person and number, and analytic forms, which are used with separate pronouns. The autonomous form can thus be interpreted as a synthetic form expressing a subject with impersonal meaning, similar to a third person singular subject, etc.
+
+The agent phrase is ungrammatical with the autonomous verb. This is an argument in favour of an active, impersonal analysis instead of a passive analysis. Assuming an analysis of the agent phrase as an oblique rather than an adjunct, this ungrammaticality is predicted by analysing the autonomous verb as an active, synthetic form, since the first argument of the verb is mapped to the impersonal subject and is thus unavailable for mapping to the agent phrase.\footnote{See \citet[60--61 and references therein]{Graver2010} for arguments in favour of analysing the agent phrase as an oblique as opposed to an adjunct.} The ungrammaticality of the agent phrase with an autonomous verb is illustrated in (\ref{ex:Celtic:13}).
+
+\ea\label{ex:Celtic:13} Irish \citep[382]{Stenson1989}\\
+\gll *buaileadh  Ciarraí \{ag, le\} Gaillimh\\
+beat.\PST.\textsc{aut} Kerry \phantom{\{}by, with Galway\\
+\glt Intended: `Kerry was beaten by Galway.' [in a hurling match or similar]
+\z
+Another argument in support of the same conclusion is object marking on the patient argument (\emph{\'e} `it' in (\ref{ex:Celtic:13})). Stenson illustrates this as follows, showing the ungrammaticality of the subject pronoun \emph{siad} `they' instead of the object pronoun \emph{iad}:
+
+\newpage
+\ea\label{ex:Celtic:14} Irish (\citet[384]{Stenson1989}\\
+\gll buaileadh  aríst iad/*siad\\
+beat.\PST.\textsc{aut} again them/*they\\
+\glt`They were beaten again.'
+\z
+What is more, the autonomous verb may be used with more or less all verbs including intransitive and unaccusative verbs. I refer to the abovementioned references for additional data in favour of an active impersonal analysis.
+
+\citet{Kibort2007} reformulates the principles for mapping between arguments and grammatical functions compared to classic LMT, and suggests the following mapping principle.
+
+\ea\label{ex:Celtic:15} Mapping principle \citep[16]{Kibort2007}
+
+The ordered arguments are mapped onto the highest (i.e. \emph{least} marked) compatible function on the markedness hierarchy. [emphasis original]
+\z
+The markedness hierarchy referred to in (\ref{ex:Celtic:15}) is the classic hierarchy provided in (\ref{ex:Celtic:16}), which again is based on the feature decomposition of f-structure functions shown in (\ref{ex:Celtic:17}):
+
+\ea\label{ex:Celtic:16} Partial ordering of syntactic functions in terms of markedness (\citet[309]{bresnan2001lexical}\\
+\centering \SUBJ ~ < ~ \OBJ, \OBLTHETA ~ < ~ \OBJTHETA
+\z
+\ea\label{ex:Celtic:17} Feature decomposition of f-structure functions \citep[308]{bresnan2001lexical}\\[1ex]
+\textsc{\begin{tabular}{ccc}
+ & [$-r$] & [$+r$]\\\hline
+[$-o$] & \SUBJ & \OBLTHETA\\\hline
+[$+o$] & \OBJ & \OBJTHETA
+\end{tabular}}
+\z
+Thus, the mapping between a- and f-structure will simply look as follows for a transitive autonomous verb, where \emph{impers} is shorthand for ``impersonal'' -- this mapping is similar to a regular active, transitive verb with any kind of subject. 
+
+\ea\label{ex:Celtic:18} Mapping, transitive autonomous verb \citep[62]{Graver2010}\\[1ex]
+\begin{tabular}{ccccc}
+verb [aut.trans.] & \textlangle &  arg1 & arg2 &\textrangle\\ 
+& & \textsc{[$-o$]} & \textsc{[$-r$]}\\
+& & \textsc{[$-r$]} & \textsc{[$+o$]}\\\cline{3-4}
+& & \SUBJ{\emph{impers}} & \OBJ 
+\end{tabular}
+\z
+Three different morphosyntactic operations can be formulated to account for passivisation with and without an agent phrase, and with the second argument mapped to either the subject function (canonical passive) or the object function (impersonal passive). All of these operations result in passive verbs, the mapping of which is incompatible with the analysis of the autonomous verb as active with an impersonal subject as shown in (\ref{ex:Celtic:18}).
+
+When the agent phrase is not present in a passive sentence, arg1
+undergoes mapping to zero/$\emptyset$ \citep[310]{bresnan2001lexical}. When the agent phrase is present, it undergoes mapping to {\OBLTHETA} \citep[17--19]{Kibort2007}. In a canonical passive, arg2 maps to \SUBJ as the least marked compatible function. In an impersonal passive, an operation called object preservation applies to map arg2 to \OBJ, which entails an increase in the markedness of the mapping.
+
+Where these mapping relations really turn out to be of use according to \citet{Graver2010,Graver2011} is in the analysis of the diachronic development of the Modern Irish autonomous verb. In Old Irish, the properties of the autonomous verb appear contradictory in terms of the above mappings. \citet[179]{Graver2010} sums this up as follows:
+
+\ea\label{ex:Celtic:19} Properties of the Old Irish autonomous verb:
+\ea It is found included in the paradigm for practically any verb in every category of tense/aspect/mood, including intransitive and unaccusative verbs such as the substantive verb (\sectref{sec:Celtic:5.1}) and verbs of inherently directed motion. (See Graver (\citeyear[62--63]{Graver2010} and references therein) on passivisation and unaccusativity in LFG in the context of the Irish autonomous verb.)
+\ex A third person patient is marked as subject, by nominative case on nouns, agreement in number with the verb and by the verb itself if the patient is a pronoun.
+\ex There is object marking on first and second person patients, with infixed pronouns.
+\ex The agent phrase is possible with transitive verbs.
+\z\z
+The development from the above situation to the Modern Irish active impersonal can be summarised in terms of the markedness inherent in \citegen{Kibort2007} theory: due to general changes in the morphological system of the Irish language, the patient of the Old Irish ``passive'' verb is reanalysed as the object rather than the subject of the verb. The resulting impersonal passive is predicted by the theory to be more marked than the original canonical passive, since an additional morphosyntactic operation/increase in markedness, object preservation, has applied.
+
+The resulting subjectless, impersonal passive can be considered an unstable category, and for example \citet[480--481 and references therein]{Blevins2003} suggests that subjectless impersonal passives tend to have an indefinite human agent interpretation, and that a subjectless impersonal passive thus would be practically indistinguishable from an active impersonal and consequently susceptible to reanalysis. When the autonomous verb in Irish is reanalysed as containing an impersonal active subject, there is no longer any need for the morphosyntactic increase in markedness -- but see \citet[200--203]{Graver2010} for a discussion of the difficulties of pinpointing the exact causes of such a diachronic change.
+
+In other words, the status of the Old Irish autonomous verb could be termed contradictory or unclear in terms of the morphosyntactic operations illustrated above and the resulting impersonal and passive constructions. A comparable situation appears to apply in Modern Welsh: for example, the Welsh impersonal verb form can occur both with an agent phrase and unaccusative verbs. This phenomenon is analysed in terms of LFG by \citet{Arman2015}. Arman does not conclude whether the Welsh ``impersonal'' verb is in fact passive or active, but suggests that LFG, and particularly the revised mapping theory, is flexible enough to account for the Welsh data \citep[paragraph~7.3]{Arman2015}. The strength of Arman's approach is the large amount of data, the comparisons with other passives in the language and, in particular, the detailed analysis of the interaction of the impersonal verb form with different semantic verb classes (chapter 6). A similar LFG analysis of the autonomous verb in Old Irish would be highly interesting.
+
+\subsection{A Welsh adjectival construction}
+\label{sec:Celtic:3.3}
+
+\citet{MittSadl08} analyse a Welsh adjective phrase construction containing a noun phrase as a constituent. They call this the \emph{in-respect-of} construction, illustrated in (\ref{ex:Celtic:20}), where the adjectives \emph{byr} `short' and \emph{trwm} `heavy', respectively, are followed by noun phrases containing a possessive clitic pronoun, here \emph{ei} `her':
+
+\ea\label{ex:Celtic:20} Welsh \citep[2]{MittSadl08}
+\ea
+\gll byr  ei thymer\\
+short her temper\\
+\glt`short-tempered'
+\ex
+\gll trwm ei chlyw\\
+heavy her hearing\\
+\glt`hard of hearing'
+\z\z
+\citet[19--20]{MittSadl08} suggest that the main theoretical contribution of their analysis of this Welsh construction is a call for more specific descriptions of the grammatical functions of LFG, particularly outside of the area of verbal subcategorisation.
+
+Mittendorf \& Sadler show that the construction occurs in similar environments to adjective phrases, as shown in (\ref{ex:Celtic:21}) for attributive and predicative use respectively.
+
+\ea\label{ex:Celtic:21} Welsh \citep[9]{MittSadl08}
+\ea
+\gll merch fyr ei thymer\\
+girl  short her temper\\
+\glt`a short-tempered girl'
+\ex
+\gll Mae'r ferch  yn fyr ei thymer.\\
+{be.\PRS.\textsc{def}} girl  {\PRED} short her temper\\
+\glt`The girl is short-tempered.'
+\z\z
+They go on to provide evidence, following apparently unpublished work by \citet{Jones2002}, in favour of analysing the adjective-NP sequence as one constituent, which is headed by the adjective. Phenomena in favour of this analysis include coordination --- the NP in the sequence can be coordinated, which indicates that it is a subconstituent \citep[3]{MittSadl08} --- and the way that the adjective in the sequence can be modified as expected by regular adverbials and other types of intensifiers.
+
+Initial mutation occurs in Welsh on an adjective modifying a feminine singular noun. The \emph{in-respect-of} construction behaves as expected for an adjective when it modifies a singular feminine noun, as illustrated in (\ref{ex:Celtic:22}), where the adjective \emph{mawr} `big' is lenited and becomes \emph{fawr} following the feminine singular noun \emph{athrawes} `(female) teacher':
+
+\ea\label{ex:Celtic:22} Welsh \citep[6]{MittSadl08}\\
+\gll athrawes fawr ei pharch\\
+teacher big her respect\\
+\glt`a highly-respected (female) teacher'
+\z
+Having established that the adjective-noun sequence is a constituent headed by the adjective, Mittendorf \& Sadler's main question is: what is the correct f-structure analysis of the noun phrase contained in the adjective phrase? What is its grammatical function? They review and reject analyses in which the noun phrase is a \SUBJ and \textsc{adjunct}, and tentatively conclude that the noun phrase is an \OBJ.
+
+They provide the f-structures in (\ref{ex:Celtic:23}) for attributive and predicative use of the construction \citep[12]{MittSadl08}:
+
+\ea\label{ex:Celtic:23} F-structures, the \emph{in-respect-of} construction \citep[12]{MittSadl08}
+\ea attributive use:\\[1ex]
+{\avm[style=fstr]{
+[pred & `girl'$_i$\\
+adj & \{[pred & `short\arglist{obj}'\\
+obj & [pred & `temper\arglist{poss}'\\
+poss & [pred & `pro'$_i$]]]\}]
+}}
+\ex predicative use:\\[1ex]
+{\avm[style=fstr]{
+[pred & `short\arglist{subj, obj}'\\
+subj & [pred `girl'$_i$]\\
+obj & [pred & `temper\arglist{poss}'\\
+poss & [pred & pro$_i$]]]
+}}
+\z\z
+Mittendorf \& Sadler suggest that it might sound surprising that an adjective selects for an object, but propose that this is a reasonable analysis given the resources of the theoretic arsenal of LFG, as well as some cross-linguistic support from Swedish among other languages \citep[18]{MittSadl08}. However, their main argument in support of an \OBJ analysis of the noun in this construction is a comparison with a very similar Welsh \emph{tough} construction and the mandatory presence of the noun.  See \citetv[\bookorchapter{\sectref{tough}}{§5}]{chapters/LDDs} on the \emph{tough} construction in English in the context of long-distance dependencies.  The \emph{tough} construction in Welsh is illustrated below, with a verbal noun as the \COMP of the adjective \emph{treulio}, verbal noun of `to digest' in the example below, and the mandatory presence of the noun, which argues against an adjunct analysis.
+
+\ea\label{ex:Celtic:24} Welsh \emph{tough}-construction \citep[14]{MittSadl08}\\
+\gll bwyd anodd ei dreulio\\
+food difficult its digest\\
+\glt`food difficult to digest'
+\z
+
+\subsection{Unbounded dependencies -- the Irish relative clause}
+\label{sec:Celtic:3.4}
+
+What happens when an argument of the verb is taken out of its normal position through relativisation? Irish has two relativisation strategies that conform with the Accessibility Hierarchy \citep{keenan1977noun}. One of the earliest descriptions of these facts is \citet{McCloskey79}. For an analysis of the more complicated Welsh data, see for example \citet{Tallerman1990} and \citet{Borsley2013}.
+
+In traditional grammar (such as \citealt{Brothers2002}), the two Irish relativisation strategies are called the direct and the indirect relative. The direct relative is a gap strategy, whereas the indirect relative uses a resumptive pronoun.
+
+The direct relative is used when the relative constituent is the subject or the object. It uses a relative particle that lenites.\footnote{Lenition and eclipsis are the two initial mutations in Irish, as explained in \sectref{sec:Celtic:1.2}. They are glossed L for lenition and N for nasalisation, the latter a traditional -- but imprecise -- term for eclipsis.}
+
+\ea\label{ex:Celtic:25} Irish: the direct relative \citep[5--6]{McCloskey79}
+\ea Relativised subject\\
+\gll an fear a dhíol  an domhan\\
+\textsc{def} man {\REL}\textsuperscript{\tiny L} {sell.\PST} \textsc{def} world\\
+\glt`the man who sold the world'
+
+\ex Relativised object\\
+\gll an scríbhneoir a mholann na mic~l\'einn\\
+\textsc{def} writer {\REL}\textsuperscript{\tiny L} {praise.\PRS} \textsc{def} students\\
+\glt`the writer whom the students praise'
+\z\z
+The direct relative is obligatory with a relativised subject and the most common with a relativised object \citep[6]{McCloskey79}. However, since the VSO word order gives rise to potential ambiguity in examples like (\ref{ex:Celtic:25})b, the indirect relative with a resumptive pronoun is possible in these cases:
+
+\ea\label{ex:Celtic:26} Irish: indirect relative with a relativised object \citep[6]{McCloskey79}\\
+\gll an scríbhneoir a molann na mic~l\'einn \'e\\
+\textsc{def} writer {\REL}\textsuperscript{\tiny N} {praise.\PRS} \textsc{def} students him\\
+\glt`the writer whom the students praise'
+\z
+Going further down the Accessibility Hierarchy, the Indirect Relative is obligatory with objects of prepositions and possessors: 
+
+\ea\label{ex:Celtic:27} Irish: the indirect relative \citep[6]{McCloskey79}
+\ea Relativised prepositional object\\
+\gll an fear a dtabharann tú an t-airgead d\'o\\
+\textsc{def} man {\REL}\textsuperscript{\tiny N} {give.\PRS} you \textsc{def} money to.him\\
+\glt`the man to whom you give the money'
+
+\ex Relativised possessor\\
+\gll an fear a bhfuil a mháthair san  otharlann\\
+\textsc{def} man {\REL}\textsuperscript{\tiny N} {be.\PRS} his mother in.\textsc{def} hospital\\
+\glt`the man whose mother is in the hospital'
+\z\z
+These core Irish facts, as well as some more peripheral patterns described by \citet{McCloskey:2002}, are analysed in detail by Asudeh in his book \emph{The Logic of Pronominal Resumption} \citep[chapter~7]{Asudeh12}. The chapter on long distance dependencies in this volume (\citetv{chapters/LDDs}) provides a brief description of Asudeh's analysis in the context of the development of LFG analyses of the explicit marking of f-structures in the domain of a long distance dependency -- though it should be noted that Kaplan restricts himself to examples with the direct relative, in comparison with sentences with the Irish complementiser \emph{go}\textsuperscript{\tiny\textit N} `that' -- which introduces complements that are not in the domain of a long distance dependency.
+
+
+\section{Agreement}
+\label{sec:Celtic:4}
+
+\subsection{Introduction}
+\label{sec:Celtic:4.1}
+
+There are many agreement issues in the Celtic languages that remain untouched within the LFG framework. In this section I present analyses of Irish verbal conjugation and a Welsh conjunct agreement pattern, before moving on to agreement between cardinal numbers and numerals in Welsh and Irish respectively. There are clear similarities in these areas between the two languages discussed, but also interesting differences that lack thorough analyses.
+
+\subsection{Various issues of verbal agreement}
+\label{sec:Celtic:4.2}
+
+\tabref{tab:Celtic:2} shows parts of the standard conjugation of the Irish verb \emph{mol} `to praise'.\footnote{Welsh is quite different from Irish in this respect (see \citealt[9--10]{BorsleyTallermanWillis2007}). Welsh shows complete paradigms of synthetic verbal morphology. Literary Welsh permits null subjects; colloquial Welsh does not.} There is variation between analytic forms, which take a separate pronoun (or noun) subject, and synthetic forms (marked in bold) which are conjugated for person and number.
+
+\begin{table}
+  \begin{tabular}{llll}
+  \lsptoprule
+    & Present tense & Past tense & Imperfect\\\hline
+    1\SG & \textbf{molaim} & mhol m\'e & \textbf{mholainn}\\
+    2\SG & molann tú & mhol tú  & \textbf{mholtá}\\
+    3\SG & molann s\'e/sí & mhol s\'e/sí & mholadh s\'e/sí\\
+    1\PL & \textbf{molaimid} & \textbf{mholamar} & \textbf{mholaimis}\\
+    2\PL & molann sibh & mhol sibh  & mholadh sibh\\
+    3\PL & molann siad  & mhol siad  & \textbf{mholaidís}\\
+    \lspbottomrule
+  \end{tabular}
+\caption{Irish conjugations (\citealt[95]{Brothers2002}, emphasis added)}
+\label{tab:Celtic:2}
+\end{table}
+There has been a general development in Irish towards more analytic forms, but as e.g. \citet[182--185]{OSiadhail1989} points out, there is a mixture of synthetic and analytic forms in all the dialects, with a tendency for the most synthetic forms in the south and the fewest in the north of the country.
+
+There are two important descriptive generalisations associated with Irish verbal agreement. First, as a general rule, the synthetic forms are incompatible with a pronoun or noun subject, as shown in (\ref{ex:Celtic:28}).
+
+\ea\label{ex:Celtic:28}
+\gll *molaim  m\'e\\
+{praise.\PRS.1\SG} I\\
+\z
+Second, when the paradigm contains a synthetic form, the analytic form is unavailable (though see below for a potential exception).
+
+Irish data such as these are used by \citet{Andrews90} as a basis for formulating the Morphological Blocking Principle. The main intuition behind this principle is that if there is a highly specified form in the Lexicon, a less highly specified one cannot be used \citep[508]{Andrews90}.
+
+\citet{Andrews90} shows first of all that it follows from general LFG architecture that a synthetic verb form cannot occur together with a noun phrase or pronoun.  Synthetic verb forms are taken to specify the value of the \PRED of the subject as `\textsc{pro}'. A subject NP would contribute a different \PRED value than that to the subject, and this is ruled out by the Uniqueness Condition (see \citetv[\bookorchapter{\sectref{sect:uniqueness}}{§3.4.1}]{chapters/CoreConcepts}).
+
+However, as \citet[516]{Andrews90} points out, the Uniqueness Condition is not sufficient to rule out the presence of a pronoun with a synthetic verb form, since the specification of the \PRED value of the subject as `\textsc{pro}' from both the verb form and the pronoun would not appear to be contradictory. To solve this, Andrews refers to the principle of Predicate Indexing, which he suggests ``causes each \PRED-value introduced in a lexical item to receive a unique index, which distinguishes it from all other \PRED-values in the structure'' \citep[516]{Andrews90}. This principle makes a synthetic verb form and a pronoun subject mutually exclusive, since the \textsc{`pro'} values contributed by a synthetic verb form and a subject pronoun respectively would carry separate indices, which in its turn would violate the Uniqueness Condition.
+
+Finally, to account for the ungrammaticality of an analytic verb form with a pronominal subject when there is a synthetic form available, \citet{Andrews90} formulates the Morphological Blocking Principle:
+\begin{quote}
+Suppose the structure S has a preterminal node P occupied by a lexical item l$_1$, and there is another lexical item l$_2$ such that the f-structure determined by the lexical entry of l$_1$ properly subsumes that determined by the lexical entry of l$_2$, and that of l$_2$ subsumes the f-structure associated with P in S (the complete structure, after all unifications have been carried out). Then S is blocked.  \citep[519]{Andrews90}
+\end{quote}
+Building on this, \citet{Sulger2010} offers a computational LFG analysis of Irish verbal agreement facts. As a part of his analysis, \citet[169--170]{Sulger2010} criticises the Morphological Blocking Principle in computational terms, suggesting that this principle has the consequence that the lexicon needs to be checked for a corresponding synthetic form every time an analytic form occurs. If there is a synthetic form, the analytic form is blocked. \citet[170]{Sulger2010} argues, from a computational grammar viewpoint, that this approach is inefficient and that it is questionable whether it is adequate for larger-scale grammars.
+
+\citet[491--492 and {\textsection}6]{McCloskeyHale1984} point out that there is greater variation in the Irish paradigms than described above (see also \citealt[182--185]{OSiadhail1989}), and that in certain cases the same person-number combination can be expressed both by a synthetic and an analytic form. Some of their examples are included in (\ref{ex:Celtic:29}):
+
+\ea\label{ex:Celtic:29} Irish \citep[491]{McCloskeyHale1984}
+\ea\gll chuirfidís\\
+put.\COND.3\PL\\
+\ex\gll chuirfeadh  siad\\
+put.{\COND} they\\
+\z\z
+This matter seems to involve both dialect and register variation as well as historical developments, and is so far an understudied topic within the framework of LFG. \citet[531]{McCloskeyHale1984} indicate morphological blocking as potentially the most fruitful line of enquiry going forward.
+
+\citet{Sadler1999} discusses another agreement phenomenon in Welsh, a single conjunct agreement pattern illustrated in (\ref{ex:Celtic:30}):
+
+\ea\label{ex:Celtic:30} Welsh \citep[2]{Sadler1999}
+\ea
+\gll Daeth Si\^{o}n a minnau.\\
+{come.\PST.3\SG} Si\^{o}n and 1\SG\\
+\glt`Si\^{o}n and I came.'
+\ex
+\gll Daethost ti a minnau/Si\^{o}n.\\
+{come.\PST.2\SG} {2\SG} and 1\SG/Si\^{o}n\\
+\glt`You and I/Si\^{o}n came.'
+\ex
+\gll Roedd Mair a fi i briodi.\\
+{be.\PST.3\SG} Mair and {1\SG} to marry\\
+\glt`Mair and I were to marry.'
+\ex
+\gll Roeddwn i  a Mair i briodi.\\
+{be.\PST.1\SG} {1\SG} and Mair to marry\\
+\glt`I and Mair were to marry.'
+\z\z 
+All these examples have a plural coordinate subject.\footnote{See \citet{Sadler2006} for a discussion of other coordination patterns in Welsh within the framework of LFG.} When the first conjunct is a pronoun, the verb agrees with the pronoun in person and number. When the first conjunct is non-pronominal, the verb is in the unmarked third singular form. An identical asymmetrical agreement pattern shows up both in nominal structures containing possessor phrases and with objects of prepositions.
+
+\citet[3--4]{Sadler1999} suggests that a similar agreement pattern is found in Irish, based on data from \citet{McCloskey1986}. Some of McCloskey's examples are provided in (\ref{ex:Celtic:31}): 
+
+\ea\label{ex:Celtic:31} Irish \citep[248]{McCloskey1986}
+\ea
+\gll Bhíos  f\'ein agus Tomás ag  caint le ch\'eile.\\
+{be.\PST.1\SG} self and Tomás {\PROG} talk with each.other\\
+\glt`Tomás and I were talking to one another.'
+
+\ex
+\gll Bhíos  -sa  agus Pádraig \'O Guithín le p\'osadh.\\
+{be.\PST.1\SG} -\textsc{contr} and Pádraig \'O Guithín to marry\\
+\glt`Pádraig \'O Guithín and I were to marry.'
+\z\z
+Note the elements \emph{f\'ein} and -\emph{sa} here; these are emphatic/contrastive elements that are mandatory in the above coordination pattern.\footnote{See \citealt[493--496]{McCloskeyHale1984} for a thorough discussion of these and other elements and arguments why they are not pronouns.}
+
+\citet[522--523]{Andrews90} mentions this Irish pattern of agreement. He suggests that it presents significant difficulties for an LFG analysis and chooses to leave them aside in the context of his paper on morphological blocking. This type of pattern is also not restricted to the Celtic languages; it appears to be found in for example Czech, Latin and Palestinian Arabic (\citealt[4]{Sadler1999} and references therein).
+
+The interesting difficulty with the Welsh data is, as \citet[15]{Sadler1999} puts it, that ``morphosyntactic and semantic agreement come apart under coordination'': the only difference between the structure illustrated above and other coordinate structures is the agreement between the first, pronominal conjunct and the verb. On the other hand, data such as predicate agreement seem to indicate that semantic feature resolution appears to operate on coordinate structures in Welsh independent of whether the coordinate structure includes pronouns or not.
+
+\citet{Sadler1999} describes two main features of the classic LFG view of agreement: agreement features such as person, number, gender and case are an f-structure phenomenon, and agreement is a matter of constraints on the same structure rather than matching between features on different structures (see \citetv{chapters/Agreement} on agreement). The crucial question then is this: can this view of agreement be reconciled with the single conjunct agreement pattern illustrated above? \citet{Sadler1999} argues that these data show that it is difficult to maintain a simple and homogenous view of what agreement is.
+
+\subsection{Noun phrase agreement: numerals}
+\label{sec:Celtic:4.3}
+
+\citet[21]{Fife2002} lists as ``a common feature of Celtic nominal syntax'' the use of singular forms (and/or special forms) following cardinal numerals. \citet{MittSadl05} make use of the \NINDEX/\CONCORD distinction (referencing \citegen{WechslerZlatic2000} HPSG analysis and \citet{kingdalrymple04} in LFG) to account for the resulting agreement mismatch in Welsh noun phrases.
+
+The \NINDEX/\CONCORD distinction describes two sets of nominal agreement features: \CONCORD features relate to agreement between the noun and any determiners or adjectives, whereas \NINDEX features are related to the semantics of the noun and agreement between the noun phrase and a bound pronoun and often also verb agreement (see \citetv[\bookorchapter{\sectref{sec:indexconcord}}{§3}]{chapters/Agreement} for further details).
+
+In Welsh, numerals require the singular form of the noun, as shown below in the examples `five dogs' and `three cats', where the noun in both cases is in the singular form:
+
+\ea\label{ex:Celtic:32} Welsh \citep[6]{MittSadl05}
+\ea
+\gll pum ci\\
+five dog.\M.{\SG}\\
+\glt`five dogs'
+\ex
+\gll tair  cath\\
+three.{\F} cat.\F.{\SG}\\
+\glt`three cats'
+\z\z
+What is more, if the noun is modified by an adjective with a distinct plural form, the singular form is used. In (\ref{ex:Celtic:33}), the adjective \emph{arall} `other' is used in the plural form \emph{eraill} in the phrase `other dogs', but in the singular form \emph{arall} when a numeral is added:
+
+\ea\label{ex:Celtic:33} Welsh \citep[6]{MittSadl05}
+\ea
+\gll c\^wn  eraill\\
+{dog.\M.\PL} other.\PL\\
+\glt`other dogs'
+
+\ex
+\gll pum ci  arall\\
+five {dog.\M.\SG} other.\SG\\
+\glt`five other dogs'
+\z\z
+Demonstratives on the other hand are always plural when a noun with a plural premodifier is involved. In the below examples, the singular (feminine) form \emph{hon} `this' is used in the phrase `this cat', whereas the plural form \emph{hyn} is used in `these three cats':
+
+\ea\label{ex:Celtic:34} Welsh \citep[6]{MittSadl05}
+\ea
+\gll y gath  hon\\
+\textsc{def} {cat.\F.\SG} this.\F.{\SG}\\
+\glt`this cat'
+\ex
+\gll y tair cath  hyn\\
+\textsc{def} three {cat.\F.\SG} this.\PL\\
+\glt`these three cats'
+\z\z
+At the same time, the noun phrase behaves overall as plural, as shown in (\ref{ex:Celtic:35}), where the noun phrase `the five men' controls a pronominal anaphor:
+
+
+\ea\label{ex:Celtic:35} Welsh \citep[7]{MittSadl05}\\
+\gll Roedd  y pum dyn  yn gweld eu hunain yn y drych.\\
+be.\IPFV.3\textsc{s} \textsc{def} five {man.\M.\SG} {\PROG} see {3\PL}  {self.\PL} in \textsc{def} mirror\\
+\glt`The five men saw/were seeing themselves in the mirror.'
+\z
+\citet{MittSadl05} suggest that these distinctions can be most usefully described as an \NINDEX/\CONCORD mismatch: specifically, the numeral contributes the \NINDEX \NUM feature, which will be plural. This accounts for the example in (\ref{ex:Celtic:35}), where the noun phrase `the five men' controls a plural anaphor. What is more, it accounts for the plural demonstrative \emph{hyn} if Welsh demonstratives show \NINDEX agreement. On the other hand, the singular noun following the numeral will contribute a singular \CONCORD \NUM feature. This accounts for the requirement that adjectives modifying the noun be in the singular form, since adjectives are taken to show \CONCORD agreement.
+
+The f-structure for the noun phrase \emph{tri dyn} `three men' is shown in (\ref{ex:Celtic:36}) to illustrate:
+
+\ea\label{ex:Celtic:36} Welsh \citep[11]{MittSadl05}\\
+\gll tri  dyn\\
+three.{\M} man.\M.{\SG}\\
+\glt`three men'\\[1ex]
+{\avm[style=fstr]{
+[pred & `man'\\
+index & [num & pl]\\
+concord & [num & sg]\\
+adj & \{[pred & `three']\}]
+}}
+\z 
+Irish numerals show agreement patterns of the same type as Welsh, in that numerals, as a main rule with certain exceptions described below, are followed by a noun in the singular. How this system interacts with adjective agreement lacks analysis in LFG for Irish.
+
+Describing what he calls the ``traditional'' system, \citet{OSiadhail1982} shows that the main rule also in Irish is that the unmarked, singular form of the noun is used after cardinal numerals:
+
+\ea\label{ex:Celtic:37} Irish
+\ea
+\gll trí  chnoc\\
+three hill.\M.{\SG}\\
+\glt`three hills' \citep[99]{OSiadhail1982}
+
+\ex
+\gll dhá chnoc  d(h)\'eag\footnotemark\\
+two {hill.\M.\SG} ten\\
+\glt`twelve hills' \citep[100]{OSiadhail1982}
+
+\ex
+\gll trí  chnoc  fhichead\\
+three {hill.\M.\SG} twenty.\GEN\\
+\glt`twenty-three hills' \citep[101]{OSiadhail1982}
+\z\z\footnotetext{Whether the form has undergone mutation or not (\emph{d\'eag} vs. \emph{dh\'eag}) is a matter of dialectal variation (see \citealt[100]{OSiadhail1989}).}
+The ``traditional'' system referred to above is a system based on multiples of twenty:
+
+\ea\label{ex:Celtic:38} Irish
+\ea
+\gll deich lá fichead\\
+ten  day twenty.\GEN\\
+\glt`thirty days' \citep[101]{OSiadhail1982}
+\ex
+\gll naoi lá dh\'eag is fiche\\
+nine day ten and twenty\\
+\glt`thirty-nine days' \citep[101]{OSiadhail1982}
+\ex
+\gll lá is dá fhichead\\
+day and two twenty.\GEN\\
+\glt`forty-one days' \citep[102]{OSiadhail1982}
+\z\z
+However, as \citet[101]{OSiadhail1982} points out, what he calls the ``school system'' has introduced numerals in a decimal system, such as \emph{tríocha} `thirty', \emph{ceathracha} `forty', etc.\footnote{The terms used by \'O Siadhail when he makes the distinction between ``traditional'' and ``school'' system, highlight the need for linguists to be aware of the sociolinguistic nuances of the language under study, in order to be certain of which linguistic system we are describing and analysing at a given time. \citet[118--119]{MacEoin2002} suggests that the decimal system is in fact a survivor from the literary language, whereas the vigesimal system has prevailed in the spoken language. He goes on to state that ``[t]he promotion of the decimal system in the schools during the last seventy years has not diminished the popularity of the vigesimal system in ordinary speech'' \citep[119]{MacEoin2002}.} This latter system is considered standard today, and is illustrated in (\ref{ex:Celtic:39}) with examples from the school grammar book \emph{New Irish Grammar} by the Christian Brothers:
+
+\ea\label{ex:Celtic:39} Irish \citep[76]{Brothers2002}
+\ea
+\gll trí  chapall is tríocha\\
+three horse and thirty\\
+\glt`thirty-three horses'
+\ex
+\gll seacht gcapall is caoga\\
+seven horse and fifty\\
+\glt`fifty-seven horses'
+\z\z
+The numerals three to ten are however used with certain nouns in the plural. This holds for both number systems. As illustrated in the examples above, the `-teen' part of the numeral phrase -- whether the abovementioned multiples of twenty or the school system numerals -- is placed after the modified noun while the numbers 1--10 are placed before the noun. Consequently, the exception to the singular rule is relevant for the number system in general and not just when counting to ten.
+
+Nouns used in the plural with numerals can be divided into different groups, including nouns that express a unit of measure \citep[102--104]{OSiadhail1982} and ``words inherent to the counting system'' such as \emph{ceann} `head/one' vs. \emph{trí cinn} `three' (literally `three heads') \citep[167]{OSiadhail1989}
+
+There is in other words significant variation in the Irish numeral system, depending on whether you are dealing with the traditional or standard written language or the traditional spoken language with its many dialects. We may perhaps also expect to see that the use of the singular form of nouns following numerals is on the way out in the urban varieties of Irish, on the pattern of English.
+
+\section{The copula}
+\label{sec:Celtic:5}
+
+\subsection{Introduction}
+\label{sec:Celtic:5.1}
+
+All the Celtic languages show or have shown a distinction between two `be' verbs, usually labelled the substantive verb (Irish: \emph{bí}) and the copula (Irish: \emph{is}) \citep[19--20, etc.]{Fife2002}. In LFG it is mainly the Irish copula that has been studied, and thus Irish will be the focus here.\footnote{Welsh has one copula verb \emph{bod}, which appears to share properties with both the Irish copula and the Irish substantive verb (see \citealt{Borsley2019}). A comparative LFG analysis of the Irish and Welsh copula systems would be interesting.} This means that Irish copula predication has not been studied in its entirety in LFG. In theoretical terms, the Irish copula and the Irish substantive verb are both copulas, but I will use the traditional labels.
+
+For the Irish copula, it is customary in traditional grammar to distinguish between two types of copula sentences, classificatory and identificatory (e.g. \citealt[224]{OSiadhail1989}). Some examples are provided below, as context for the following theoretical discussion:
+
+\ea\label{ex:Celtic:40} Irish \citep[224]{OSiadhail1989}
+\ea
+\gll Is scoláire m\'e.\\
+{\COP} scholar I\\
+\glt`I am a scholar.'
+\ex
+\gll Is múinteoir í  Cáit.\\
+{\COP} teacher \AGR.3\SG.{\F} Cáit\\
+\glt`Cáit is a teacher.'
+\z\z
+
+\ea\label{ex:Celtic:41} Irish \citep[227]{OSiadhail1989}
+\ea
+\gll Is  m\'e an múinteoir.\\
+{\COP} I \textsc{def} teacher\\
+\glt`I am the teacher.'
+\ex
+\gll Is \'e  Seán an múinteoir.\\
+{\COP} \AGR.3\SG.{\M} Seán \textsc{def} teacher\\
+\glt`Seán is the teacher.'
+\z\z
+In classificatory sentences such as those in (\ref{ex:Celtic:40}), the subjects \emph{m\'e} `I' and \emph{Cáit} are said to belong to the class of scholar/teacher. The identificatory sentences in (\ref{ex:Celtic:41}) express identity between the subjects, \emph{m\'e} `I' and \emph{Seán}, and `the teacher'.
+
+In this section I first discuss the syntax of the Irish copula. There are two main types of analysis proposed in the LFG literature for copula constructions, a single-tier analysis where the \PRED of the sentence is the non-verbal predicate, and a double-tier analysis with two varieties depending on the choice of argument function for the non-verbal predicate. It is shown that while LFG works on the Irish copula tend towards a double-tier, \PREDLINK analysis, there is philological work on older stages of the language that suggest a single-tier analysis as more appropriate to the Irish data. I go on to show how the Irish copula behaves in terms of the distinction between stage level and individual level.
+
+\subsection{Syntax of the Irish copula}
+\label{sec:Celtic:5.2}
+
+In the LFG literature (\citealt{dalrympleetal04copular} and references therein), there are three types of analyses suggested for different types of copula constructions across languages, as shown in \figref{fig:Celtic:1}.
+
+\begin{figure}
+  \begin{forest}
+  [\textbf{copula constructions}
+    [single tier]
+    [double tier
+      [closed complement\\(\PREDLINK)]
+      [open complement\\(\XCOMP)]]]
+  \end{forest}
+  \caption{Types of copula constructions  (adapted from
+    \citealt[564]{Sulger09})}
+  \label{fig:Celtic:1}
+\end{figure}
+
+\citet{dalrympleetal04copular} suggest that different f-structure analyses are appropriate for different copula constructions not only between languages but also within in a single language. \citet{attia08} on the other hand argues in favour of a unified, general analysis of copula constructions on the f-structure level, and suggests that the variations in morphological agreement, presence or absence of the copula, etc., used as arguments in favour of different analyses by Dalrymple et al., do not warrant functional variation.
+
+\citet{Sulger09} mostly follows \citet{attia08} and argues that a \PREDLINK analysis is universally applicable to copula constructions, thus also for Irish. In the following I show how the Irish data have been situated in the context of this discussion. I will briefly sketch the three types of copula analyses as context for \citegen{Sulger09} analysis, before providing his main arguments in favour of a double-tier, \PREDLINK analysis for the Irish copula.
+
+A single-tier analysis is one where the copula verb is not required or not permitted, and the copula predicate is taken to select for a subject. This is illustrated in the f-structure in (\ref{ex:Celtic:42}) for the translation of a Japanese sentence meaning `the book is red', from \citet[191]{dalrympleetal04copular}. The copula verb, if present, may contribute tense, as seen in Japanese \citep{dalrympleetal04copular}.
+
+\ea\label{ex:Celtic:42} Single-tier analysis (Dalrymple et al. 2004: 191)\\[1ex]
+{\avm[style=fstr]{
+[pred & `red\arglist{subj}'\\
+subj & [pred & `book']]}}
+\z
+In a double-tier analysis, the copula provides the main predicate of the clause, and selects for either an open \XCOMP function, or the closed \PREDLINK function (``closed'' meaning here that \PREDLINK does not allow functional control).\footnote{A reviewer provided examples from Welsh where the copula occurs with an expletive subject said to be required by the complement. The examples appear to involve modal semantics. More work is needed on how this fact should be analysed in light of the above discussion on the different analyses of the syntax of the copula. Irish has periphrastic modal predicates with the copula, and for Irish my intuition would be that these would need to be treated separately from regular copula predication as discussed in this chapter. See \citet[86--94]{Graver2010} for an overview of Irish modal verbs with references for further reading.}
+
+\ea\label{ex:Celtic:43} Double-tier analyses (Dalrymple et al. 2004: 189)
+\ea Open complement\\[1ex]
+{\avm[style=fstr]{
+[ pred & `be\arglist{xcomp}subj'\\
+subj & \rnode{s}{[~~]}\smallskip\\
+xcomp & [pred & `...\arglist{subj}'\\
+         subj & \rnode{xcs}{\strut}]]
+}}\CURVE[3]{-2pt}{0}{s}{0pt}{0}{xcs}
+\ex Closed complement\\[1ex]
+{\avm[style=fstr]{
+[pred & `be\arglist{subj, predlink}'\\
+subj & [~~]\\
+predlink & [pred & `...']]}}
+\z\z
+\citegen{Sulger09} argument in favour of a double-tier, closed complement analysis of the Irish copula is twofold, and has to do with the presence or absence of the copula, and the presence or absence of agreement between the copula predicate and subject.
+
+\citet[570]{Sulger09} refers to the discussion between \citet{dalrympleetal04copular} and \citet{attia08} on what to take away from the presence or absence of the copula. \citet[244]{OSiadhail1989} formulates the general rule for the Irish copula as follows: ``(...) the copula may not normally be deleted when marked for mood, tense, negation, interrogation or when embedded in a sentence.'' This is illustrated in (\ref{ex:Celtic:44}):
+
+\ea\label{ex:Celtic:44} Irish \citep[244]{OSiadhail1989}
+\ea
+\gll Múinteoir  \'e  an fear sin.\\
+teacher  \AGR.{3\SG.\M} \textsc{def} man that\\
+\glt`That man is a teacher.'
+\ex
+\gll Ba  mhúinteoir \'e.\\
+\COP.{\PST} teacher he\\
+\glt`He was a teacher.'
+\ex
+\gll Deir siad gur  duine  deas \'e.\\
+say.{\PRS}  they that.{\COP} person nice he\\
+\glt`They say that he is a nice person.'
+\z\z
+On the basis of these facts, \citet[570]{Sulger09} argues that the absence of the copula, in the contexts where it may be dropped, is a matter of stylistic variation, and that the presence or absence of the copula does not lead to semantic differences.
+
+Sulger suggests that his argument runs counter to \citet{dalrympleetal04copular}. \citet[190--191]{dalrympleetal04copular} show how the Japanese copula may be dropped with adjectival predicates but is mandatory with nominal predicates. They argue on the basis of syntactic criteria that the category of the predicate may affect whether it can license a subject and propose a single-tier analysis for Japanese copula sentences with adjectival predicates whether or not the copula is present. For Japanese copula clauses with nominal predicates, they suggest a double-tier analysis of some kind. Sulger on the other hand argues on the basis of \citet{attia08} that the predication is the same independent of the presence or absence of the copula, and for this reason that a unified analysis is desirable.
+
+For a language like Russian, where the occurrence of copula is governed by tense, \citet[191--193]{dalrympleetal04copular} suggest that a unified analysis is desirable, independent of the presence or absence of the copula. The point in this case is that there should not be any evidence of syntactic or semantic differences between clauses with the copula and clauses without. This is likely the case in Irish. Such a unified analysis would take two forms, either a single-tier analysis like Japanese, with the copula contributing features of tense, or a double-tier analysis with the copula as the main \PRED of the clause selecting for either an \XCOMP or a \PREDLINK.
+
+Sulger goes on to note that agreement between the copula predicate and the subject has been given by \citet{dalrympleetal04copular} as an argument in favour of an \XCOMP analysis, because they view ``agreement as a strong indication for a control relation between the subject and the predicate'' \citep[566]{Sulger09}. There is no agreement between the copula predicate and the subject in Irish (see \citealt[115]{MacEoin2002} on the use of adjective predicates with the copula; for nouns compare (\ref{ex:Celtic:45}) with (\ref{ex:Celtic:44}) above).\footnote{The pronominal element glossed {\AGR} in some of these examples is inserted to agree with the subject, and cannot be taken to involve agreement between the subject and the predicate. See \citet[61]{Carnie1997} and \citet[224]{OSiadhail1989}.} Consequently, \citet[567]{Sulger09} argues, agreement is not an argument in favour of an \XCOMP analysis in Irish.
+
+\newpage
+\ea\label{ex:Celtic:45} Irish \citep[224]{OSiadhail1989}\\
+\gll Is  múinteoir í  Cáit\\
+{\COP} teacher \AGR.{3\SG.\F} Cáit\\
+\glt`Cáit is a teacher.'
+\z
+Not all the linguistic literature on the Celtic languages in other theories agrees with this analysis. For example,  \citet{CarnieHarley1994} provide a Principles and Parameters analysis of certain facts of the two Irish `be' verbs where they view the copula as a complementiser particle providing features of aspect and tense (see \citealt[9--10]{Doherty1996} for arguments in favour of such an analysis based on how the copula behaves in sentences with interrogation, negation and subordination particles, and \citet{Asudeh2002} for a general analysis of Irish pre-verbal particles). In LFG terms, this might imply a single-tier analysis.
+
+There are hints in the philological studies and grammars of Old Irish that a single-tier analysis might be appropriate for the older stages of Irish and Scottish-Gaelic, and perhaps also for earlier stages of Welsh. For example, \citet[271]{Ahlqvist1971-72} calls the copula a ``verb-making particle'', and \citet[24--25]{Thurneysen1998} and \citet[211]{McCone1996} discuss the similarities between the Old Irish copula and proclitic elements like pre-verbs and articles. Fife, in his introduction to the edited volume \emph{The Celtic Languages}, writes as follows \citep[20]{Fife2002}: ``[f]ormerly, in both Irish and Welsh, the copula and its predicate formed a constituent, with the subject moved rightward to the end of the clause.'' Another point to note is the fact that Old Irish showed agreement between the subject and an adjective predicate in copula clauses. There is in other words much more Irish material to study when it comes to copula clauses.
+
+\subsection{Stage level and individual level predication}
+\label{sec:Celtic:5.3}
+
+\citet{Sulger2011} provides an analysis of copula constructions that express possession in Irish and Hindi/Urdu. For Irish he shows how the copula and the substantive verb behave in terms of the distinction between stage level and individual level predication. He argues that this contrast is expressed through lexical information. Specifically, he suggests that the substantive verb may supply a situation argument (based on \citealt{Kratzer1995}) when it expresses stage level predication. The situation argument serves to embed the property expressed by the predication in some situation.
+
+\citet[19--20]{Sulger2011} again assumes a syntactic analysis using the \PREDLINK function of the Irish copula, as mentioned in the previous section. For reasons of space he does not provide any examples of f-structures or lexical entries for his Irish data.
+
+In the following I will use \citegen{Sulger2011} data as a starting point for illustrating how the copula and the substantive verb behave in terms of the stage and individual level distinction.
+
+\citet[12]{Sulger2011} notes that the linguistic literature on Irish generally assumes that the copula expresses individual level predication and the substantive verb stage level predication (see e.g. \citealt[40]{Doherty1996}). ``Stage level'' in this sense refers to properties that hold of an individual at some stage of their lives, whereas ``individual level'' refers to properties that holds of an individual at all stages. The contrast between the copula and individual level predication, and the substantive verb and stage level predication, is nicely illustrated by Mac~Eoin:
+
+\ea\label{ex:Celtic:46} Irish \citep[136]{MacEoin2002}
+\ea
+\gll Is dochtúir mise\\
+{\COP} doctor  I.\textsc{emph}\\
+\glt`I am a doctor.'
+\ex
+\gll Tá mise  i mo dhocthúir\\
+{be.\PRS} I.\textsc{emph} in my doctor\\
+\glt`I am a doctor.'
+\z\z
+(\ref{ex:Celtic:46})a is a sentence with the copula verb is. (\ref{ex:Celtic:46})b on the other hand contains the substantive verb \emph{tá}, with a subject `I' and a prepositional phrase with the preposition `in' together with a possessive particle `my'. \citet[136]{MacEoin2002} describes the differences between these examples as follows: ``[...] \emph{Is dochtúir mise} [with the copula] is an absolute statement of what I am, whereas \emph{Tá mise i mo dhochtúir} [with the substantive verb] merely states the role in which I appear.''
+
+He goes on to contrast the above examples with the following:
+
+\ea\label{ex:Celtic:47} Irish \citep[137]{MacEoin2002}
+\ea
+\gll Is gunna \'e~seo\\
+{\COP} gun this\\
+\glt`This is a gun.'
+\ex
+\gll *Tá s\'e~seo ina ghunna\\
+  {be.\PRS} this in.its gun\\
+\glt Intended: `This is a gun.'
+\z\z
+In the latter example above, the construction with the substantive verb + `in' + possessive particle cannot be used with `gun' as the subject, since `being a gun' is an absolute property of the thing referred to.
+
+\citet{Sulger2011} tests the claim that the Irish copula expresses individual level predication on a certain type of copula sentence in comparison with his Hindi data. Sulger terms the construction in question the possessive copula construction, where the copula is followed by a prepositional phrase with the preposition \emph{le} `with' expressing the possessor and a noun expressing the possessee. Sulger then applies some of the well-known tests for stage or individual level predication (\citealt[7]{Sulger2011} and references therein). For example, stage level predicates are assumed to allow temporal adverbs while individual level predicates do not. This is illustrated in (\ref{ex:Celtic:48})a, where, according to Sulger, the copula sentence is judged as questionable by native speakers with the addition of the adverb \emph{inniu} `today'.
+
+Another test described by Sulger is to change the tense of a sentence, which is thought to result in a change in the perceived lifetime of the individual(s) involved in an individual level predication, but not in a stage level predication. This is illustrated for Irish in (\ref{ex:Celtic:48})b, which now implies that either Pádraig or the car does not exist anymore.
+
+\ea\label{ex:Celtic:48} Irish \citep[12, 14]{Sulger2011}
+\ea
+\gll Is le Pádraig an carr nua (?inniu).\\
+{\COP.\PRS} with Pádraig \textsc{def} car new  today\\
+\glt`Pádraig has the new car today.'
+\ex
+\gll Ba  le Pádraig an carr nua.\\
+{\COP.\PST} with Pádraig \textsc{def} car new\\
+\glt`Pádraig had the new car.'
+\z\z
+For the substantive verb on the other hand, Sulger (2011: 15) points out, referencing \citet{Doherty1996}, that while a change in tense in examples similar to those in (\ref{ex:Celtic:48}) results in the subject being perceived as dead when the copula is used, with the substantive verb the subject might have changed profession.
+
+\citet[12--14]{Sulger2011} goes on to show that while the copula is restricted to individual level predication, the substantive verb may in fact express both stage and individual level predication. For example, in the following example with the substantive verb, the reading is ambiguous between ownership (individual level) and temporary possession (stage level):
+
+\ea\label{ex:Celtic:49} Irish \citep[12]{Sulger2011}\\
+\gll Tá an carr nua ag Pádraig\\
+{be.\PRS} \textsc{def} car new at Pádraig\\
+\glt`Patrick has the new car' (he may or may not own it)
+\z
+
+\section{Conclusion}
+\label{sec:Celtic:6}
+
+I hope to have shown that the work in LFG on the Celtic languages, while not very substantial, has contributed in various ways to both the theory of LFG and to our understanding of the languages themselves. For example, the question of whether there is a VP in a VSO language like Welsh has been drawn into the discussion of endocentricity and extended heads in LFG (\sectref{sec:Celtic:2.2}), and the autonomous verb form in Irish has been analysed in the context of general, cross-linguistically applicable categories describing relationships between thematic roles and syntactic functions (\sectref{sec:Celtic:3.2}).
+
+At the same time, there is a lot of material in the Celtic languages remaining to be studied for the interested researcher. Does it take some extra dedication from the non-native speaker researcher especially, given the challenges of working on minority languages, the low number of native speakers and comparative lack of teaching materials? Yes. But I would still argue that it is very much worth it.
+
+\section*{Acknowledgments}
+
+I wish to thank the three anonymous reviewers for detailed and interesting comments that greatly improved this chapter, Helge L{\o}drup for reading early drafts and Mary Dalrymple for her patience, sympathy and encouragement. Any remaining errors are my own.
+
+
+\section*{Abbreviations}
+
+Besides the abbreviations from the Leipzig Glossing Conventions, this
+chapter uses the following abbreviations.\medskip
+
+\noindent\begin{tabularx}{.45\textwidth}{lQ}
+\gloss{aut} & autonomous verb form\\
+\gloss{contr} & contrastive\\
+\gloss{emph} & emphatic\\
+\end{tabularx}\begin{tabularx}{.45\textwidth}{lQ}
+\gloss{impers} & impersonal\\
+\gloss{pred} & predicative particle\\~
+\end{tabularx}
+
+\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document}

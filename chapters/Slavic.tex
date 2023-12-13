@@ -1,0 +1,836 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10186030}
+\title{LFG and Slavic languages}
+\author{Bozhil Hristov\affiliation{University of Sofia}} 
+\abstract{This chapter provides a survey of LFG work on Slavic languages. It briefly introduces some of the Slavic family's most salient grammatical properties, before outlining how they have been handled in the framework of LFG. The topics include lexical categories and their grammatical features, the morphology-syntax interface, agreement and government, clause structure and information packaging, passivisation, subjectless and impersonal constructions, copular clauses, clitics, negation, distance distributivity, anaphoric control, and coordination. LFG analyses are placed in a wider context, highlighting how they have enhanced our understanding of Slavic, as well as how Slavic has contributed to modifying the formalism of LFG.}
+\epigram{To the memory of my grandfather, Metodi Alexandrov,
+  named after one of the first teachers of the Slavs}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \boolfalse{bookcompile}
+   \input{../localhyphenation}
+   \togglepaper[39]%%chapternumber
+}{}
+
+\begin{document}
+\maketitle
+\label{chap:Slavic}
+\section{Introduction and background}
+\label{sec:Slavic:1}
+
+\subsection{The Slavic languages}
+\label{sec:Slavic:1.1}
+
+Today, the Slavic (or Slavonic) languages are spoken in their heartland of central and eastern Europe, as well as in vast swathes of Asia and various immigrant communities around the world. They all evolved from a common ancestor, Proto-Slav(on)ic/Common Slav(on)ic, itself a variety descended from Proto-Indo-European which can be reconstructed based on the evidence from the attested daughter languages, as well as data obtained from wider comparison across Indo-European (see \citealt{ComrieCorbett1993}, \citealt{Schenker1993,Schenker1995}, \citealt{SussexCubberley2006}, \citealt{BergerGutschmidtKempgenKosta2009}). The Slavic languages are conventionally divided into three main branches according to the splits that occurred after the breakup of the original Slavic speech community in the first millennium AD: 
+
+\begin{description}
+\item[East:] Russian, B(y)elorussian (Belarusian), Ukrainian; 
+\item[West:] Czech, Slovak(ian), Polish, Kashubian (Cassubian), †Polabian, Upper and Lower Sorbian;
+\item[South:] †Old Church Slavonic (Old Bulgarian), attested between the 9th and 11th centuries AD and in many respects close to the common Slavic progenitor, Bulgarian, Macedonian, Bosnian/Croatian/Serbian, formerly also known as Serbo-Croat(ian), Slovene (Slovenian).
+\end{description}
+
+In their authoritative description of the family, \citet[5]{ComrieCorbett1993} note that ``in many ways the Slavonic languages form a homogeneous group within Indo-European. They are therefore an ideal area for comparative and typological work.'' Most LFG work has been done on Russian, Polish, Bulgarian and Bosnian/Croatian/Serbian. Below, I first survey some of the salient grammatical properties of the members of the Slavic family, before exploring how they can be captured and elucidated in the framework of Lexical Functional Grammar.
+
+\subsection{Salient grammatical properties
+  \textbf{of} \textbf{Slavic} \textbf{languages}}
+\label{sec:Slavic:1.2}
+
+
+Some of the major issues which are still at the forefront of contemporary Slavic linguistics, including LFG research, received a pioneering treatment in the foundational volumes on Slavic studies, most notably \citet{Miklosich} and \citet{Vondrak1906}. Such topics include case, number and gender inflections and their usage, constituent order and information packaging, pro-drop, as well as clitic placement. 
+
+\subsubsection{Case, number and gender inflections}
+\label{sec:Slavic:1.2.1}
+
+Slavic languages have a very rich morphology, boasting an elaborate inflectional system, which makes them a conservative group within the larger Indo-Europe\-an family. The morphosyntactic categories found in Slavic are those typically found in Indo-European. They are primarily encoded by fusional affixes, i.e. with one morpheme marking several grammatical categories, e.g. case, number and gender (see \citealt[6, 14--17]{ComrieCorbett1993}, \citealt[Chapters 5 and 6]{SussexCubberley2006}, \citealt{BergerGutschmidtKempgenKosta2009}). As is typical of Indo-European, verbs and nouns are grouped into conjugational and declensional classes.
+
+The Common Slavonic case values inherited from Proto-Indo-European include: nominative (for subjects and predicative subject complements/\textsc{predlink}), accusative (characteristically for direct objects, but also for objects of prepositions, temporal adjuncts, etc.), genitive (for possession and various other relations, also taking over the functions of the IE ablative), dative (typically for indirect objects), instrumental (for means or accompaniment, including with prepositions), locative (for location in space or time, now required by diverse prepositions), and vocative (for direct address). The majority of cases have been preserved more or less intact in the modern Slavic varieties, with the exception of Bulgarian and Macedonian, where case has been almost completely abandoned.\footnote{\citet{PrzepiorkowskiPatejuk2011,przepiorkowski-patejuk2012,prz:pat:12b,przepiorkowski2015two}, \citet{Patejuk2015} and \citet{PatejukPrzepiorkowski2014b,PatejukPrzepiorkowski2014a,PatejukPrzepiorkowski2018} offer explicitly formalised outlines of case in Polish, addressing various specificities, including the so-called instrumental of predication (cf.\ \citealt[192]{dalrympleetal04copular} for instrumental predicative complements in Russian). For an LFG take on case in contemporary Russian, consult \citet{Neidle1988}, \citet[Chapter 8]{King95}, and \citet[422--425]{BresnanEtAl2016}. In addition to their main uses, individual cases can possess more idiosyncratic meanings/functions -- for instance, direct objects in negated clauses can appear in the genitive rather than the accusative. The fact that essentially the same phenomenon may exist in more than one Slavic language does not guarantee that it operates in the same way across the board: the ``genitive of negation'' facts in Modern Russian, for example, differ considerably from those in Polish and even from those in earlier Russian, while this characteristic quirk of Slavic grammar is by now virtually extinct in Czech.}
+
+The original three-number contrast between singular, dual, and plural has usually been reduced to a binary opposition between singular and plural, with vestiges of the dual found in all the Slavic languages, though only Slovene and Sorbian retain the dual as a distinct category. The standard Late Indo-European genders of masculine, feminine and neuter find continuation in Slavic, which additionally saw the development and spread of a (masculine) personal subgender, sometimes later extended as animate vs. inanimate (see \citealt[319, 363--364]{Browne1993}, \citealt[696--698]{Rothstein1993}, \citealt[108]{Schenker1993}, \citealt[836ff]{Timberlake1993}, \citealt[Section~2]{Kibort2006}, \citealt{BergerGutschmidtKempgenKosta2009}). Since gender is a grammatical category, there can be disparities between the grammatical gender of a noun and its semantics -- for instance, words denoting humans (e.g. `child', `boy' or `girl') can be grammatically neuter, while face cards can be treated as animate.
+
+The morphosyntactic categories listed above participate in extensive agreement, including subject-verb agreement (normally in person and number, except for some tenses consisting solely of historically participial forms which agree in gender and number, as in \REF{ex:Slavic:8} below; cf.\ \REF{ex:Slavic:24}, with person, number and gender agreement in Polish; see further \citealt[279--280]{SussexCubberley2006}). There is agreement in number, gender, and case (in the languages that have it) between dependents inside the NP and the head noun. In an LFG setting, \citet[146--148]{dalrymple01} and \citet[223--225]{DLM:LFG} discuss agreement in gender and number between Russian relative pronouns and their antecedents, while \citet{Neidle1982,Neidle1988} and \citet[402]{BresnanEtAl2016} examine the behaviour of so-called second predicates in Russian, alongside other agreement phenomena. The interaction of inflectional patterns and morphosyntactic features with syntax and semantics sometimes leads to feature clashes and complex resolution rules which have attracted a great deal of descriptive/typological and theoretical interest, including from scholars working within constraint-based frameworks such as LFG and HPSG (see \sectref{sec:Slavic:2.2}--\sectref{sec:Slavic:2.3}, as well as \citealt{Corbett1983}, \citealt[134--136]{Huntley1993}, \citealt[732--734]{Rothstein1993}, \citealt[865--866]{Timberlake1993}).
+
+\largerpage
+\subsubsection{Constituent order and information packaging}
+\label{sec:Slavic:1.2.2}
+
+In Modern English, word order encodes syntactic functions like subject (which comes before the verb) or object (characteristically after the verb). Changing the order of constituents either changes the meaning (\textit{Mary kissed John} ${\neq}$ \textit{John kissed Mary}, both SVO), or results in ungrammaticality (*\textit{Mary John kissed}, SOV). By contrast, all the permutations of S, V and O are permissible in Slavic, even in a language which has lost noun case marking, like Bulgarian:\footnote{See \citet[Chapter 2]{Rudin1985}. ``Freer'' word order is typical of early Indo-European languages and can be attributed to PIE, which might have had SOV as its basic pattern, at the same time allowing various alternative arrangements. \citet[Chapter~7]{SussexCubberley2006} and some of the chapters in \citet{BergerGutschmidtKempgenKosta2009} provide an overview of Slavic sentence structure, including specific phenomena like passives. While Bulgarian word order is free, major constituents such as NPs have a stricter internal structure and cannot be broken up.}
+
+\ea Bulgarian (personal knowledge)%1
+    \label{ex:Slavic:1}
+    \ea\label{ex:Slavic:1a}
+    {\gll Marija   celuna     Ivan \\
+        Marija     kissed.\textsc{3sg}    Ivan\\}\jambox{[SVO]}
+    \glt`Marija kissed Ivan.' (neutral)
+    \ex\label{ex:Slavic:1b}
+    {\gll Ivan   (go)   celuna     Marija\\
+        Ivan   (him)   kissed.\textsc{3sg}    Marija \\}\jambox{[OVS]}
+    \glt `(As for Ivan,) Ivan was kissed by Marija.'/`It was Marija that kissed Ivan.'/`It was Ivan that Marija kissed.' (with the exact interpretation depending on context, stress/intonation and the presence/absence of the optional clitic pronoun \textit{go} `him')
+     \ex\label{ex:Slavic:1c}
+    {\gll Marija   Ivan   celuna\\
+        Marija     Ivan   kissed.\textsc{3sg}\\}\jambox{[SOV]}
+    \glt `It was Ivan that Marija kissed (not somebody else).' (one possible interpretation)
+     \ex\label{ex:Slavic:1d}
+    {\gll Ivan   Marija   (go)   celuna\\
+        Ivan   Marija     (him)   kissed.\textsc{3sg}\\}\jambox{[OSV] }
+    \glt `It was Marija that kissed Ivan.' (one possible interpretation)
+     \ex\label{ex:Slavic:1e}
+    {\gll Celuna   (go)   Marija   Ivan\\
+        kissed.\textsc{3sg}    (him)   Marija     Ivan\\}\jambox{[VSO]}
+    \glt`Marija did kiss Ivan.'
+     \ex\label{ex:Slavic:1f}
+    {\gll Celuna   (go)   Ivan   Marija\\
+        kissed.\textsc{3sg}   (him)   Ivan   Marija\\}\jambox{[VOS]}
+    \glt `Marija did kiss Ivan.' 
+    \z\z
+
+Note that most of these will be ambiguous out of context without a reduplicated/resumptive object clitic pronoun and/or appropriate intonation. In the absence of evidence to the contrary, preference might be given to SVO interpretations as the most neutral. Case will serve to disambiguate the meaning in the languages that retain case inflections on nouns, such as Russian, Czech, Polish or Bosnian/Croatian/Serbian, barring syncretism in some declensions. While Bulgarian and Macedonian have lost the original Slavic case declensions for nouns, they preserve vestigial case distinctions on pronouns, not unlike English or Romance. Sometimes the ambiguity can be resolved by subject-verb agreement, for instance where the subject and object are not identical in number and/or person (or gender for some participial forms).
+
+Crucially, the sentences in \REF{ex:Slavic:1a}--\REF{ex:Slavic:1f} do not differ in terms of the subject and agent (\textit{Marija} in all of them) and the syntactic object/semantic patient (\textit{Ivan}). Thus, unlike in English, word order in Slavic does not encode grammatical relations. Instead, word order serves information-packaging purposes, namely the arrangement of given and new information or the topic and the focus of the message (\citealt[7, 12--14]{ComrieCorbett1993}, \citealt{King95}).\footnote{Compare \citet[343--344]{Browne1993} for Bosnian/Croatian/Serbian, \citet[164--165]{Huntley1993} for Old Church Slavonic, \citet[723, 726--727]{Rothstein1993} for Polish, \citet[222, 234--235]{Scatton1993}, \citet[858--860]{Timberlake1993}, \citet[199--207, with references]{BresnanEtAl2016} for Russian, Bulgarian and Macedonian.} These insights became prominent due to work done by linguists from the Prague School on information packaging in Czech, variously labelled functional sentence perspective, communicative dynamism or topic-comment/theme-rheme structure (see \citealt{Mathesius1939,Mathesius1947}, \citealt{HajicovaParteeSgall1998}, as well as other representatives of the Prague School listed in \citealt[369--370]{DLM:LFG}). Given information, which is shared by the speaker and the addressee, tends to be placed towards the beginning of the sentence, while important new information, i.e. the focus, tends to be placed towards the end of the sentence; this is especially notable in \REF{ex:Slavic:1b} in the presence of the object clitic, which assumes that \textit{Ivan} is old and familiar information on which the rest of the message can be ``pegged'' (something like `As for Ivan, he was kissed by Marija'). Therefore, \citet[13]{ComrieCorbett1993} conclude that ``in a sense the basic word order in most Slavonic languages can be said to be Topic-X-Focus, where X represents material other than the topic and focus (non-focus comment material).'' The sentence-initial slot can alternatively be associated with a focused constituent, as in some of the examples/interpretations above, including \REF{ex:Slavic:1b} in the sense `It was Ivan that Marija kissed', this time without the object clitic and with stress on \textit{Ivan} (see \sectref{sec:Slavic:2.4} for a more precise formalisation). It can thus be generalised that Topic-X-Focus order is the default for statements in written Slavonic, but in spoken varieties clause-initial stress may function as a marker of focus.
+
+This means that it is hard to fit individual Slavic languages into types such as SVO, SOV, etc. SVO is the most frequent and therefore arguably the most basic default (surface) word order across the family, though \citet{King95} proposes that Russian, and perhaps the rest of Slavic, is underlyingly VSO.\footnote{Suggestions that Bulgarian may have a flat/exocentric S structure, discussed in \sectref{sec:Slavic:2.4.2} and \sectref{sec:Slavic:3.3}, or be a VSO language, can be found in \citet[120 fn. 21, 127]{King95}; cf.\ \citet{Rudin1985}.} The frequency of subject-initial clauses might have to do with the frequency of subjects acting as typical topics (cf.\ \citealt[210]{JaegerGerassimova2002}).
+
+\subsubsection{Passives and passive-like constructions}
+\label{sec:Slavic:1.2.3}
+
+Related to organising the informational content of a message are passive constructions, which Slavic builds with a passive participle combined with the auxiliary `be' (alongside alternative auxiliaries in some varieties). There also exist reflexive constructions with a reflexive marker (clitic or affix) derived from Proto-Slavic *\textit{sę} ($<$\/IE *\textit{s(w)e}{}-), which sometimes indicate ``middle'' or passive meanings, as in \REF{ex:Slavic:2} (see \sectref{sec:Slavic:2.5} below; cf.\ \citealt[333]{Browne1993} for Bosnian/Croatian/Serbian, \citealt[712--714]{Rothstein1993}  and \citealt[Section~3]{Kibort2006}, for Polish).
+
+\ea Bulgarian (personal knowledge)%2
+\label{ex:Slavic:2}
+\ea\label{ex:Slavic:2a}
+    \gll Ivan   otvori     vratata\\
+        Ivan  opened    the.door\\
+    \glt `Ivan opened the door.' 
+\ex\label{ex:Slavic:2b}
+    \gll Vratata   se   otvori\\
+        the.door   \textsc{refl}   opened\\
+    \glt `The door opened.'/`The door was/got opened.'
+    \z\z
+
+\citet[369]{SussexCubberley2006} note that passives are less common in Slavic than in English: while one of the major roles of the passive in a syntactically more rigid language like English is to enable the rearrangement of old/new information in the clause, a natural way to achieve that in Slavic is to use OV(S) word order instead (cf.\ \REF{ex:Slavic:1b} and its passive English translation).
+
+\subsubsection{Pro-drop and impersonal clauses}
+\label{sec:Slavic:1.2.4}
+
+Since finite verbs express the number and person of their subjects, unstressed and unemphatic subject pronouns are often omitted, although the individual languages vary in terms of the extent to which they favour so-called pro-drop or zero anaphora (\citealt[7]{ComrieCorbett1993}).\footnote{Cf.\ \citet[365--366]{Browne1993}, \citet[175]{Huntley1993}, \citet[742]{Rothstein1993}, \citet[234]{Scatton1993}, \citet[871--872]{Timberlake1993}, \citet[17, 21--22, 69]{King95}, \citet[402]{SussexCubberley2006}.} Subject pronouns may be inserted for special stress and emphasis.
+
+Slavic additionally has genuinely subjectless/impersonal clauses which neutralise the categories of verbal person and number (as well as gender), utilising the default third person singular (neuter) in the absence of a subject (even an implied one), as in \REF{ex:Slavic:3}--\REF{ex:Slavic:4}, with accusative or dative experiencers (see \citealt[222, 227]{Scatton1993}, \citealt[107--108]{Schenker1993}, \citealt[134--135]{King95}). 
+
+\ea  Russian (from \citealt[18]{King95})\\%3
+    \label{ex:Slavic:3}
+    \gll Ann-u     tošni-l-o.\\
+        Anna-\textsc{acc}   be.sick-\textsc{pst}-\textsc{n.sg}\\
+    \glt `Anna was [feeling] sick.'
+    \z
+
+\ea Russian (ibid.)\\ %4
+    \label{ex:Slavic:4}
+    \gll Mne     budet     xolodn-o.\\
+        me.\textsc{dat}   be.\textsc{fut}.\textsc{3sg}   cold-\textsc{n.sg}\\
+    \glt `I will be cold.'
+    \z
+
+In an LFG context, \citet[19]{dalrymple01} adduces syntactic evidence that Russian, unlike English, has bona fide subjectless sentences. Further discussion, also highlighting disputed matters and controversies, can be found in \sectref{sec:Slavic:2.6}. 
+
+\subsubsection{Clitics}
+\label{sec:Slavic:1.2.5}
+
+Three classes of clitics, inherently stressless words which are unable to stand on their own, can be distinguished in Slavic: proclitics, enclitics and variable clitics, which can be either pro- or enclitics depending on the environment. Proclitics are placed in front of their host (the word/phrase they need to ``lean on''), while enclitics follow their host. The position of clitics with respect to other words is fixed and sometimes regulated by complex rules, which (unsurprisingly) differ across the individual members of the family, even when it comes to the distributional restrictions imposed on otherwise cognate items (see further \sectref{sec:Slavic:2.8}). 
+
+Examples of clitics from the material above include the so-called ``short'' personal pronoun \textit{go} `him' (\textsc{3sg.m.acc}) in \REF{ex:Slavic:1b} (as opposed to the longer/full non-clitic \textit{nego} `him'), or the reflexive \textit{se} in \REF{ex:Slavic:2b}. Bulgarian \textit{go}, for instance, belongs in the group of variable clitics: it acts as an enclitic on a stressed verb form when the verb form is sentence-initial, \REF{ex:Slavic:1e}; otherwise, \textit{go} is a proclitic which precedes its verbal host, \REF{ex:Slavic:1d}. By contrast, clitics in the closely related Bosnian/Croatian/Serbian are consistently enclitic, forming an accentual unit with the word that precedes them (see \citealt[345--346]{Browne1993}, \citealt{DimitrovaVulchanova1999}, \citealt[427--429]{BresnanEtAl2016}, \citealt{DiesingZec2016}, \citealt{ZecFilipova2016}, for more detail and refinement). 
+
+\subsubsection{Other phenomena}
+\label{sec:Slavic:1.2.6}
+
+Apart from the most salient grammatical phenomena of Slavic languages outlined above, the discussion below will feature some additional phenomena that have generated debate in the LFG literature. One such phenomenon is something approximating negative concord/agreement, as in \REF{ex:Slavic:5}, where the negative particle \textit{ne} on the verb appears with other negative forms (see \sectref{sec:Slavic:2.9}):
+
+\ea Bosnian/Croatian/Serbian (from \citealt[362]{Browne1993})\\%5
+    \label{ex:Slavic:5}
+    \gll Ni(t)ko   nigd(j)e   ne   vidi   nikoga.\\
+        nobody   nowhere   \textsc{neg}   sees   nobody\\
+    \glt `Nobody sees anybody anywhere.' 
+    \z
+
+Another peculiarity, typical of Russian, is the regular omission of the copula `be' in the present tense, which will receive more attention in \sectref{sec:Slavic:2.7} (see also \citealt[861--864, 869, 874]{Timberlake1993}). Finally, very little work has been done in LFG on Slavic aspect, a conspicuous feature of verbs across the family. Slavic aspect for the most part has to do with semantics (e.g. completion/incompletion), morphology and syntax, all of which are self-contained modules in LFG, so existing analyses can be imported ``wholesale'', as noted by an anonymous reviewer, though spelling out the Glue details or the morphology-syntax interface would still be an intriguing and non-trivial task. This work would be unlike transformational work, where aspectual derivation is commonly done in the syntax.
+
+\bigskip
+
+Revisiting the main points from this introduction, \sectref{sec:Slavic:2} examines LFG treatments of the major grammatical phenomena in Slavic, beginning with the unit of the word, more specifically lexical categories/parts of speech (\sectref{sec:Slavic:2.1}) and the morphosyntactic features associated with them (\sectref{sec:Slavic:2.2}). \sectref{sec:Slavic:2.3} then zooms in on agreement and government processes, whereas \sectref{sec:Slavic:2.4} outlines how LFG models the structure of the clause. This is followed by brief accounts of specific constructions like passive (\sectref{sec:Slavic:2.5}), subjectless, impersonal (\sectref{sec:Slavic:2.6}), and copular (\sectref{sec:Slavic:2.7}) clauses, clitics and clitic placement (\sectref{sec:Slavic:2.8}), as well as negation and negative concord (\sectref{sec:Slavic:2.9}). The final sub-sections are dedicated to distance distributivity (\sectref{sec:Slavic:2.10}), coordination (\sectref{sec:Slavic:2.11}), and anaphora (\sectref{sec:Slavic:2.12}). \sectref{sec:Slavic:3} places the relevant LFG research in the context of other frameworks, while \sectref{sec:Slavic:4} sums up how LFG has contributed to our understanding and adequate description of the grammar of Slavic languages.
+
+\section{LFG analyses of major grammatical phenomena}
+\label{sec:Slavic:2}
+
+\subsection{Lexical categories and the morphology-syntax interface}
+\label{sec:Slavic:2.1}
+
+This section gives a taste of the rich Slavic inflectional system outlined in the opening of the chapter, highlighting how relevant morphological information can be captured in LFG terms and interfaced with the syntax, especially in cases of discrepancy between them. Having assembled at least partial morphological entries of word forms in this and the following two sections, I then illustrate how they are plugged into the syntax, a topic discussed at greater length in \sectref{sec:Slavic:2.4}.
+
+Building on typological work by \citet{BaermanBrownCorbett2015} and \citet[122--123]{spencer13}, \citet[451--453]{DLM:LFG} provide an LFG-based account of mixed lexical categories like Russian \textit{stolovaja} `dining room, canteen', a lexeme which shares properties of adjectives and nouns. Historically, it derives from an adjective but synchronically it behaves like a noun with a set of adjectival inflections, as illustrated in \tabref{tab:Slavic:1}, where the paradigm of the deadjectival noun \textit{stolovaja} `dining room' is laid out side by side with those of the regular adjective \textit{bol'š-oj} `big' (with a feminine in -\textit{aja}), and the regular feminine noun \textit{lampa} `lamp'.
+
+
+\begin{table}
+  \begin{tabularx}{\textwidth}{lXXl}\lsptoprule
+ & Noun & Adjective & Noun\\
+& `dining room' & `big' & `lamp'\\\midrule
+\textsc{nom} & stolov-aja & bol'š-aja & lamp-a\\
+\textsc{acc} & stolov-uju & bol'š-uju & lamp-u\\
+\textsc{gen} & stolov-oj & bol'š-oj & lamp-y\\
+\textsc{dat} & stolov-oj & bol'š-oj & lamp-e\\
+\textsc{ins} & stolov-oj & bol'š-oj & lamp-oj\\
+\mbox{\textsc{prepositional/loc}} & stolov-oj & bol'š-oj & lamp-e\\
+\lspbottomrule
+\end{tabularx}
+\caption{Nominal and adjectival declensions in Modern Russian \citep[123]{spencer13}.}
+\label{tab:Slavic:1}
+\end{table}
+
+In the notation of LFG, a regular adjectival form like \textit{bol'šaja} will be assigned to the \textsc{m-cat:adj}, \textsc{m-class:regular}, with an \textsc{m-case} value \textsc{nom}. These are some of its important morphological properties. The feminine noun \textit{lampa} will accordingly be of the \textsc{m-cat:noun,} \textsc{m-class:regular}, with \textsc{m-case:nom}. Crucially, the mixed lexical category \textit{stolovaja} will have an entry to acknowledge its intermediate status between an adjective and a noun: \textsc{m-cat:adj} (i.e. a word which patterns morphologically as an adjective), \textsc{m-class:mixed-a-n} (i.e. a mixed category with the syntactic behaviour of a noun), \textsc{m-case:nom}. These so-called m(orphological)-entries are then fed into a mapping rule, which will assign the mixed-category word \textit{stolovaja} with the m-feature \textsc{m-class:mixed-a-n} to the c(onstituent)-structure category of N(oun) -- this is the word-class membership relevant to the syntax. The mapping rule will essentially map the \textsc{m-cat:adj} to the c-structure category N in the presence of the m-feature \textsc{m-class:mixed-a-n,} or to the c-structure category of A(djective) if the m-feature is specified as \textsc{m-class:regular}. Depending on the mapping, the word forms thus interfaced can in turn be plugged into c-structure trees as N or A terminal nodes, as discussed in more detail in \sectref{sec:Slavic:2.4}. There have been similar discussions in the specialist literature whether to treat participles as verbal forms or as adjectives, or whether deverbal nouns are actually nouns or verbal forms.
+
+\subsection{Concord and index features and mismatched nouns}
+\label{sec:Slavic:2.2}
+
+As noted in \sectref{sec:Slavic:1.2.1}, Slavic preserves a great deal of its Indo-European morphological heritage, including elaborate declensional patterns. This has prompted a lot of important typological work to do with case, number and gender agreement, most notably by \citet{Corbett1983,Corbett1986,corbett06}, among others. Material from Slavic has additionally revolutionised the way agreement is thought of in non-transformational theories like HPSG and LFG. Starting with analyses of Bosnian/Croatian/Serbian cast in the HPSG framework, \citet{WechslerZlatic2000,WechslerZlatic:Agreement2003} propose that there exist two bundles of syntactic agreement features, labelled concord and index, in addition to purely semantic features. Earlier HPSG work likewise recognises \textsc{agr/index} features, participating in morphosyntactic vs. index agreement (see \citealt{kcz:prz:95}, with references, dealing with agreement and case assignment in Polish; consult also \citetv{chapters/Agreement}). 
+
+In Wechsler \& Zlati\'{c}'s model, concord and index both belong to syntax, the former more closely related to morphological declension and the latter more closely reflecting semantics, while semantic properties form a separate category. All the values reside in the lexical entries of individual nouns and generally match, but not always. The motivation behind postulating three separate sets of attributes comes from Bosnian/Croatian/Serbian nouns like \textit{deca} `children' and \textit{bra\'{c}a} `brothers', which are said to control feminine singular attributive targets (concord agreement), neuter plural verbs/participles and pronouns (index agreement) and, potentially, masculine plural pronouns (semantic/pragmatic agreement), as in \REF{ex:Slavic:6}, where I illustrate concord agreement within the subject NP and index agreement in the predicate.\footnote{Being closer to declension, the concord bundle is comprised of case, number and gender, whereas the index bundle, being closer to semantics, includes person, number and gender -- note that subject-verb agreement in person and number, visible on finite \textit{su} `are', must therefore operate with the index bundle (cf.\ \citealt[69--71]{DLM:LFG}). Here, I focus on gender and number. The analysis of the participle ending in -\textit{a} as neuter plural rather than feminine singular is justified in \citet{WechslerZlatic:Agreement2003,Wechsler:Wrong}, \citet{DH:Agr}, \citet{Hristov2012,Hristov:LFG13}. Although this is not shown in \REF{ex:Slavic:6}, anaphora between clauses can involve masculine plural pronouns, e.g. \textit{deca...oni} `they'/\textit{koji} `who', though \textit{deca} can control feminine singular agreement in the relative pronoun, especially when it appears in cases other than the nominative.}
+
+\ea Bosnian/Croatian/Serbian (from \citet[51]{WechslerZlatic:Agreement2003})%6
+    \label{ex:Slavic:6}\\
+    \gll Ta             dobr-a        deca       su             doš-l-a.\\
+        that.\textsc{f.sg}  good-\textsc{f.sg}  children  \textsc{aux.3pl}    come-\textsc{ptcp-n.pl}\\
+    \glt `Those good children came.'    
+    \z
+
+          
+
+\figref{fig:Slavic:1} provides an LFG representation of the features involved in \REF{ex:Slavic:6}, complete with lexical entries which supply the feature values and/or the requirements of individual word forms, alongside a f(unctional)-structure matrix, expressing the functional syntactic relations between the various elements.
+
+\begin{figure}\begin{tabular}{ll}
+  \textit{ta} `that':     & ($s$ \textsc{concord} \textsc{gend)} \textsc{=} \textsc{f}\\
+      & ($s$ \textsc{concord} \textsc{num)} \textsc{=} \textsc{sg}\\
+\textit{dobra} `good':    & ($s$ \textsc{concord} \textsc{gend)} \textsc{=} \textsc{f}\\
+      & ($s$ \textsc{concord} \textsc{num)} \textsc{=} \textsc{sg}\\
+\textit{deca} `children':  & ($s$ \textsc{concord} \textsc{gend)} \textsc{=} \textsc{f}\\
+& ($s$ \textsc{concord} \textsc{num)} \textsc{=} \textsc{sg}\\
+      & ($s$ \textsc{index} \textsc{gend)} \textsc{=} \textsc{n}\\
+      & ($s$ \textsc{index} \textsc{num)} \textsc{=} \textsc{pl}\\
+\textit{došla} `come':    & ($f$ \textsc{subj} \textsc{index} \textsc{gend)} \textsc{=} \textsc{n}\\
+      & ($f$ \textsc{subj} \textsc{index} \textsc{num)} \textsc{=} \textsc{pl}\\
+  \end{tabular}\\[1ex]
+  {\avm[style=fstr]{{$f$}[pred & `come\arglist{subj}'\\
+  subj & {$s$}[pred & `children'\\
+    spec & `that'\\
+    adj & \{[pred & `good']\}\\
+    concord & [ gend & f\\
+                num & sg ]\\
+    index & [ gend & n\\
+                num & pl ]\\]]}}
+\caption{Lexical entries and f-structure for a clause with a
+  mismatched BCS noun (adapted from \citealt[189]{DH:Agr})}
+\label{fig:Slavic:1}
+\end{figure}
+
+\citet{Hristov2012,Hristov:LFG13} advocates the usefulness of these distinctions in the description of the closely related Bulgarian, which has lost its declensions but nevertheless still exhibits analogous gender mismatches in certain nouns. This feature geometry has been further developed in LFG/HPSG and applied to additional Slavic material by \citet{DalrympleKaplan2000}, \citet{PrzepiorkowskiKupscMarciniakMykowiecka2002}, \citet{kingdalrymple04}, \citet{DH:Agr}, \citet{Hristov2012,Hristov:LFG13}, and \citet{belyaev-etal2015}. Those publications sketch out a formalised typology of agreement configurations in conjoined and non-conjoined environments, as well as factors which might influence the choice of one pattern over another. Such agreement mismatches have been instrumental in formulating hypotheses about the (non-)distributivity of features in conjoined contexts (i.e. does a requirement hold of every single conjunct), feature resolution (i.e. computing the value(s) of a conjoined phrase based on the values of its constituents), or what acts as the default value.
+
+In sum, this tripartite split into concord, index and semantics has been widely adopted by researchers in the LFG and HPSG community and has generally proved fruitful, though it is still a matter of debate, with some disagreement over whether the bifurcation into two syntactic features, concord and index, is really justified (see \citealt{AlsinaArsenijevic2012a,Alsina:Two,Alsina:Third}, \citealt{Wechsler:Wrong}, \citealt{Hristov:LFG13}). It remains an outstanding issue for more conclusive future research to determine which features tend to be distributive, resolving or both, as well as their domain(s) of operation. \citet{Wechsler:Mixed}, for instance, proposes that predicative adjectives in Bosnian/Croatian/Serbian can exhibit concord, rather than just index, agreement (cf.\ \REF{ex:Slavic:6}). The predicative adjective in \REF{ex:Slavic:7} shows plural (concord) agreement even when the second person plural subject pronoun is used formally for a single addressee.
+
+\ea Bosnian/Croatian/Serbian (\citealt{Wechsler:Mixed}, quoted in \citealt[79]{DLM:LFG})%7
+    \label{ex:Slavic:7}\\
+    \gll Vi   ste     duhovit-i\\
+        you.\textsc{pl} be.\textsc{prs.2pl}   funny-\textsc{m.pl}\\
+    \glt`You (one formal addressee/multiple addressees) are funny.' 
+    \z
+
+In Bulgarian, on the other hand, some predicative participles may oscillate between singular and plural, while predicative adjectives will normally be singular with single-addressee \textit{Vie} `you.\textsc{pl}' (cf.\ \citealt[567]{SussexCubberley2006} for variation across Slavic).
+
+\subsection{Agreement and case assignment in a constraint-based setting}
+\label{sec:Slavic:2.3}
+
+As became apparent in the previous section, agreement is modelled in
+LFG by relying on the lexical entries of individual word forms, which
+project information that is then propagated to the
+f(unctional)-structure -- the locus of agreement phenomena in LFG
+(see \figref{fig:Slavic:1}, as well as \citetv{chapters/Agreement}).
+Unlike transformational approaches, where agreement is handled by
+copying feature values from one node in the syntactic tree to another
+or by moving items in order for features to be checked,
+non-derivational constraint-based frameworks like LFG and HPSG tend to
+assume that two elements which participate in an agreement relation
+supply partial information about a single linguistic object -- a view
+which amounts to seeing agreement as multiple specifications of
+compatible feature values by a controller and its target(s) (see
+\citealt[237]{PollardSag1988}, \citealt[Chapter
+  2]{pollard1994head-driven}, \citealt[Chapter 8]{bresnan2001lexical},
+\citealt[Chapter 5]{dalrymple01}, \citealt[115]{corbett06},
+\citealt{WechslerZlatic:Agreement2003}, \citealt[186]{DH:Agr},
+\citealt[24ff]{Hristov2012}, and \citetv{chapters/Agreement}). 
+
+This works very well for Slavic data, especially when it comes to mismatched or underspecified targets and controllers. It is likewise eminently suitable for pro-drop in null-subject languages like Slavic, where the subject controller is often not present, so it would be mysterious where the agreement information on the verbal target was ``copied'' from (unless one posits ``disembodied'' features or invisible/underlying elements which are then deleted). These considerations have led LFG and HPSG scholars to reject formalisations of agreement as directional feature copying, favouring instead a view of feature co-specification (with transformational feature checking more in this spirit; see the entry in \REF{ex:Slavic:16}, \sectref{sec:Slavic:2.4.2}, as well as \sectref{sec:Slavic:2.6}).
+
+Similarly, case assignment is modelled in LFG via the interaction of the inflectional entries of lexemes, c(onstituent)-structure configurations and the flow of compatible features between c- and f-structure, as in \figref{fig:Slavic:2} below (cf.\ \citetv{chapters/Case}).  In the spirit of constraint-based grammatical architectures, case specification can be further governed by language-specific constraints, illustrated for Russian in \sectref{sec:Slavic:2.4.3}. Analysis and LFG notational conventions for case assignment in Polish can be found in \citet{Patejuk2015}, \citet{PatejukPrzepiorkowski2014a}, and \citet[337--339]{PatejukPrzepiorkowski2017}, where the authors rely on, inter alia, disjunctive rules to account for the variation between accusative and genitive objects depending on the presence/absence of negation. \citet{prze:99,prze:00aa}, \citet{PrzepiorkowskiPatejuk2011,przepiorkowski-patejuk2012,prz:pat:12b}, \citet{Patejuk2015} and \citet{PatejukPrzepiorkowski2014a,PatejukPrzepiorkowski2017,PatejukPrzepiorkowski2018} deal with agreement, structural case assignment and control phenomena in Polish, especially in conjoined and gapped contexts. Case in Slavic is an important and interesting topic, and LFG provides many novel ideas and accounts in this area, for which the reader is referred to the relevant works cited above, as well as early work by \citet{Neidle1982,Neidle1988}, or \citet{DKS:Indeterminacy} on indeterminacy (to be revisited in \REF{ex:Slavic:32} below).
+
+\subsection{Constituent structure, the encoding of grammatical functions and information structure}
+\label{sec:Slavic:2.4}
+
+\subsubsection{Russian}
+\label{sec:Slavic:2.4.1}
+
+A contrast was drawn in \sectref{sec:Slavic:1.2.2} between languages like English, where word order encodes syntactic functions, and Slavic, where word order serves information-packaging purposes. These divergent typological preferences find a natural reflection in LFG's parallel architecture, which relies on separate modules to represent constituency and word order (c-structure), syntactic functions (f-structure), and discourse functions (i(nformation)-structure). Although separate, all of these modules are appropriately interfaced to constrain each other, so that accurate description of typologically diverse linguistic systems can be achieved (see \citetv{chapters/Intro,chapters/CoreConcepts}). 
+
+\begin{figure}[t]
+\hspace*{\fill}{\avm[style=fstr]{[pred & `write\arglist{subj,obj}'\\
+  topic & \{\rnode{t}{[pred & `e.onegin'\\concord & [case & acc]]}\}\\
+  subj & [pred & `Pushkin' \\ concord & [case & nom]]\\
+  obj & \rnode{o}{\strut}]}}\\
+{\begin{forest}
+    [IP [{\rnode{npeo}{NP}\\\DOWN$\in$(\UP\TOPIC)\\(\UP\GF)=\DOWN}
+        [{Evgenija Onegina\\Eugene Onegin.\ACC\\(\UP\PRED)=\textsc{`e.onegin'}\\(\UP\CONCORD\CASE)=\ACC}, roof]]
+        [{I$'$\\\UP=\DOWN} [{I\\\UP=\DOWN} [{napisal\\\PFV.write.\PST.\M.\SG\\(\UP\PRED)=\textsc{`write\arglist{\SUBJ,\OBJ}'}\\(\UP\SUBJ\CONCORD\CASE)=\NOM\\(\UP\OBJ\CONCORD\CASE)=\ACC}]]
+              [{VP\\\UP=\DOWN} [{NP\\(\UP\GF)=\DOWN} [{N\\\UP=\DOWN} [{Puškin\\Pushkin.\NOM\\(\UP\PRED)=\textsc{`Pushkin'}\\(\UP\CONCORD\CASE)=\NOM}]]]]]]
+\end{forest}}
+\CONNECT{0pt}{20}{npeo}{-2pt}{190}{t}
+\CURVE[.8]{-2pt}{0}{t}{-2pt}{0}{o}
+\caption{C- and f-structure for a Russian sentence with a topicalised object}
+  \label{fig:Slavic:2}
+\end{figure}
+
+English is traditionally assumed to associate the specifier of IP at c-structure with the \textsc{subj} function at f-structure, in line with the generalisation that word order in English encodes syntactic functions. By contrast, \citet{King95} demonstrates that the specifier of IP in Russian is associated with the discourse functions of topic or focus, in line with the generalisation that word order in Slavic encodes discourse functions, rather than syntactic ones. Formalised in \figref{fig:Slavic:2}, \REF{ex:Slavic:8} is an example from \citet[206]{King95} (also cited in \citealt[72]{dalrymple01} and \citealt[203]{BresnanEtAl2016}, where the VP is replaced with S, discussed further below).
+
+\ea  Russian %8
+    \label{ex:Slavic:8}\\
+    \gll `Evgenija   Onegina'   napisal   Puškin.\\
+        Eugene   Onegin   wrote     Pushkin\\
+    \glt `Pushkin wrote `Eugene Onegin'.' [in answer to the question
+      `Who wrote `Eugene Onegin'?']
+    \z
+
+
+
+In \figref{fig:Slavic:2}, the topic value is modelled as a set (indicated with curly brackets), since there can be more than one topic, and the topic is further associated with a grammatical function within the clause, since the topic is simultaneously a constituent which bears a certain syntactic function. In addition, the topic is housed within the f-structure, whereas other authors might prefer to accord it a separate interfaced level (i-structure; cf.\ \citealt[216--218, 250--251]{King95}, \citealt{King1997}, \citealt[182--183]{dalrymple01}, \citealt[22]{Patejuk2015}, \citealt[98--99, 106]{BresnanEtAl2016}, \citealt[121ff., 366--367, 374--394]{DLM:LFG}, \citetv{chapters/InformationStructure}).\footnote{Based on Russian data, \citet{King1997} provides detailed argumentation why a separation between f- and i-structure is necessary. In \REF{ex:Slavic:8}, the focused constituent \textit{Puškin} appears clause-finally -- in more emotive and intonationally and/or pragmatically marked contexts, it can be clause-initial, preceding the topic (see further \citealt[91--92, 153, 207ff.]{King95}). On the relationship between prosody and constituent structure in Russian and more generally, see \citet[128ff.]{King95}, \citet[50]{dalrymple01}, \citet[94--95, 400ff.]{DLM:LFG}; for Serbian/Croatian, cf.\ \citet{Connor2006}, as well as \citetv{chapters/Prosody}.} 
+
+Furthermore, note that in Russian and many other languages, all finite verbs appear in I, while in English this phrase-structure position is reserved for tensed auxiliaries, excluding tensed lexical verbs. Only non-finite verbs appear within the VP in Russian, hence finite verbs are of category I and non-finite verbs of category V (\citealt{King1994,King95}, \citealt[53--54, 61--62]{dalrymple01}, \citealt[102, 104, 109, 147--150, 199--209]{BresnanEtAl2016}, \citealt[99--100, 108ff., 119]{DLM:LFG}).\footnote{\label{fn:Slavic:8}\citet{King1994}, \citet[esp.\ Chapter 3]{King95}, \citet[62--63]{dalrymple01}, \citet[201--203]{BresnanEtAl2016} and \citet[110]{DLM:LFG} provide empirical evidence for distinct IP and VP constituents in Russian, including coordination and negation, where the negative proclitic \textit{ne} attaches to finite verbs in I, and not to infinitives in V:
+\ea\gll
+Ja   [ne   bud-u     [pisa-t'     pisem]\textsubscript{VP} i   [čita-t'     knig]\textsubscript{VP}]\textsubscript{I'}\\
+I \textsc{neg} will-\textsc{1sg} write-\textsc{inf} letters.\textsc{gen} and   read-\textsc{inf} books.\textsc{gen}\\
+\glt`I will not write letters and read books.'   [negation scopes over both conjoined VPs and unproblematically licenses the ``genitive of negation'' on both objects]
+\z
+
+\ea\gll
+*Ja    [ne   pisa-l-a     pisem]\textsubscript{I'} i   [čita-l-a   knig]\textsubscript{I'}\\
+I \textsc{neg} write-\textsc{pst-f.sg} letters.\textsc{gen} and read-\textsc{pst-f.sg} books.\textsc{gen}\\
+\glt`I did not write letters and read books.'   [negation cannot scope over both I's; each I' needs to be negated separately; from \citet[42--43, 184ff.]{King95}]
+\z
+It is worth stressing that erstwhile \textit{l}-participles like \textit{(na)pisal(a)} `wrote' have been reanalysed as finite tensed forms after the loss of the copular auxiliary in what used to be a periphrastic/analytic present perfect construction -- now a synthetic preterite in Modern Russian. Analogous IP/VP contrasts exist in Bosnian/Croatian/Serbian and elsewhere in the family (see \citealt[41, fn.\ 31]{King95}).}
+
+The topic in \REF{ex:Slavic:8} happens to be a noun phrase, but it could have been a different type of constituent. To indicate that pretty much any type of phrase can appear in the specifier of CP or IP in Russian, \citet[171, 197--198]{King95} uses the metacategory XP in the following phrase-structure rules (cf.\ \citealt[94, 96--97]{dalrymple01}, \citealt[141--142, 144--145]{DLM:LFG}, including formal statements to the effect that specifiers appear before heads and complements after heads):
+
+\ea Phrase-structure rules for Russian:\\%9
+\phraserule{CP}{XP,~ C$'$}\\
+\phraserule{C$'$}{C,~ IP}\\
+\phraserule{IP}{XP,~ I$'$}\\
+\z
+
+XP is in turn spelled out as follows:
+  
+\ea%10
+    \label{ex:Slavic:10}
+XP ${\equiv}$ \{NP {\textbar} PP {\textbar} VP {\textbar} AP {\textbar} AdvP\}
+    \z
+
+          
+
+In \figref{fig:Slavic:2}, the topic happens to be the object, but topics in general can be identified with any grammatical function. The functional uncertainty of the grammatical function assigned to the topic constituent can be represented by defining an abbreviatory symbol \textsc{gf} as a disjunction of all grammatical functions (\citealt[139--140]{dalrymple01}, \citealt[205--206]{DLM:LFG}):
+
+\ea
+\textsc{gf ${\equiv}$ \{subj {\textbar} obj {\textbar} \OBJTHETA {\textbar} comp {\textbar} xcomp {\textbar} obl {\textbar} adj {\textbar} xadj\}}
+\z
+
+Thus, \citet[204]{King95} proposes the following annotated phrase-structure rule for an IP in Russian, which can be seen as an instruction on how to build a c-structure tree and assign functions to the constituents:\footnote{Note that the rule has GF (rather than GF+ or GF*), which means that the TOPIC has to bear some grammatical function in the same clause, and not an embedded clause (see \citealt[126]{DLM:LFG}); cf.\ \citetv{chapters/LDDs}, since many constructions with functional uncertainty allow for long-distance uncertainty (GF*),~and not just local uncertainty (GF); see also the discussion of embedding in Bulgarian below, as well as \citet[223--225]{DLM:LFG} for embedding in Russian relative clauses.}
+
+\ea%12
+    \label{ex:Slavic:12}
+\phraserule{IP}{\optrulenode{XP\\\DOWN$\in$(\UP\TOPIC)\\(\UP\GF)=\DOWN}\optrulenode{I$'$\\\UP=\DOWN}}
+    \z
+
+\citet{King1994,King95}, \citet[70--71, 204--210]{BresnanEtAl2016} and \citet[113--114]{DLM:LFG} discuss how further topics can be adjoined in Russian (and Bulgarian), as well as the complexities of scrambling, extraction and the domain of the operation of the principles of function assignment. Having thus presented the basics of Russian phrase structure, in the next section I outline the phrase structure of Bulgarian, which has a great deal in common with Russian, but there are some important typological differences too.
+
+\subsubsection{Bulgarian}
+\label{sec:Slavic:2.4.2}
+
+Similarly to \figref{fig:Slavic:2} above, since they are focused and hence discourse-prom\-i\-nent elements, \textit{wh}{}-phrases in Bulgarian will also appear in the specifier of IP (\citealt{Rudin1985}, \citealt{Izvorski1993}, \citealt[73]{dalrymple01}).\footnote{On the availability of multiple specifiers with multiple \textit{wh}-constituents in Bulgarian and Russian, consult \citet[94ff.]{Rudin1985}, \citet[57]{dalrymple01}, \citet[209--210]{JaegerGerassimova2002}, \citet[98, 677--678, 694--696]{DLM:LFG}, which also feature discussion of long-distance dependencies.} In this respect, Russian and Bulgarian (unlike English) are both discourse-configurational and have in common the fact that the specifier of IP is reserved for arguments with certain (grammaticised) discourse functions (topic and/or focus), irrespective of the syntactic roles those arguments may perform (subject, object, etc.). \REF{ex:Slavic:13} illustrates a \textit{wh}{}-question with a sentence-initial topic, formalised in \figref{fig:Slavic:3}.
+
+\ea Bulgarian (from \citealt[73]{dalrymple01}, \citealt[124]{DLM:LFG})\\%13
+    \label{ex:Slavic:13}
+    \gll Ivan   kakvo   pravi?\\
+        Ivan   what   does\\
+    \glt `What is Ivan doing?'
+    \z
+
+           
+
+\begin{figure}
+\begin{tabular}[t]{@{}cc}
+{\begin{forest}
+    [CP [\rnode{npi}{NP} [N [ {Ivan\\Ivan}]]]
+      [C$'$ [IP [\rnode{npk}{NP} [N [{kakvo\\what}]]]
+          [I$'$ [I [{pravi\\does}]]]]]]
+\end{forest}} & 
+{\avm[style=fstr]{[pred & `do\arglist{subj,obj}'\\
+  topic & \rnode{t}{[pred & `Ivan']}\\
+  subj & \rnode{s}{\strut}\\
+  focus & \rnode{f}{[pred & `what']}\\
+  obj & \rnode{o}{\strut}]}}
+\end{tabular}
+\CONNECT{0pt}{20}{npi}{-2pt}{185}{t}
+\CONNECT{0pt}{20}{npk}{-0pt}{188}{f}
+\CURVE[.5]{0pt}{0}{t}{0pt}{0}{s}
+\CURVE[.3]{0pt}{0}{f}{0pt}{0}{o}
+\caption{C- and f-structure for a Bulgarian sentence with topic and focus}
+\label{fig:Slavic:3}
+\end{figure}
+
+\hspace*{-1.6pt}Unlike Russian, which seems to require strict locality of topic extraction according to the rule in \REF{ex:Slavic:12}, the discourse functions in Bulgarian can be related to arguments in an embedded subordinate clause, as shown in \REF{ex:Slavic:14} and the accompanying \figref{fig:Slavic:4}:
+
+\ea Bulgarian (from \citealt[125]{DLM:LFG})\\%14
+    \label{ex:Slavic:14}
+    \gll Ivan   kakvo     kaza,              če       pravi?\\
+        Ivan   what       say.\textsc{pst}.\textsc{2sg}  \textsc{comp}  does\\
+    \glt `What did you say that Ivan is doing?' 
+    \z
+
+\begin{figure}[p]
+{\begin{forest}
+    [CP [\rnode{npi}{NP} [N [ {Ivan\\Ivan}]]]
+      [C$'$ [IP [\rnode{npk}{NP} [N [{kakvo\\what}]]]
+          [I$'$ [I [{kaza\\say.\textsc{pst}.\textsc{2sg}}]]
+                 [VP\footnote{The VP and V' might host the non-finite form in a periphrastic construction like the viable Bulgarian perfect \textit{si kazal} `have said' (see footnote~\ref{fn:Slavic:8} for finiteness and \textit{l}-participles). The VP and V' nodes have been copied along with their labels from the original source, but the reader should additionally consult the phrase-structure rules and the discussion of (reasonably innocuous) inconsistency below.} [V$'$ [CP [C$'$ [C [{\v{c}e\\\COMP}]]
+                                                  [IP [{pravi\\does},roof]]]]]]]]]] 
+\end{forest}} 
+{\avm[style=fstr]{[pred & `say\arglist{subj,comp}'\\
+  topic & \rnode{t}{[pred & `Ivan']}\smallskip\\
+  focus & \rnode{f}{[pred & `what']}\smallskip\\
+  subj & [pred & `pro'\\index & [pers & 2\\num & sg]]\\
+  comp & [pred & `do\arglist{subj,obj}'\\
+          subj & \rnode{s}{\strut}\\
+          obj & \rnode{o}{\strut}]]}}
+\CONNECT{0pt}{20}{npi}{-2pt}{185}{t}
+\CONNECT{0pt}{20}{npk}{-2pt}{185}{f}
+\CURVE[1.8]{0pt}{0}{t}{0pt}{0}{s}
+\CURVE[1.8]{0pt}{0}{f}{0pt}{0}{o}
+  \caption{C- and f-structure for a Bulgarian sentence with embedding}
+  \label{fig:Slavic:4}
+  \end{figure}
+
+\largerpage
+Despite the immediately apparent family resemblance between Bulgarian and Russian, reflected in the structure of their clauses, there are some subtle differences which are worth noting. \figref{fig:Slavic:3} and \figref{fig:Slavic:4} demonstrate that the specifier position of CP is associated with the topic function in Bulgarian and focused \textit{wh}{}-words appear in the Spec of IP, while in both English and Russian \textit{wh}{}-phrases are found in the specifier of CP (with Spec of IP reserved for the Russian topic in \figref{fig:Slavic:2}).\footnote{See \citet[esp.\ 18ff.]{Rudin1985}, \citet[esp.\ Chapters 3, 5 and 10]{King95}, \citet[64, 73]{dalrymple01},  \citet[205ff.]{JaegerGerassimova2002}, \citet[124--125]{DLM:LFG}, for evidence and argumentation; cf.\ \REF{ex:Slavic:1c}--\REF{ex:Slavic:1d} above, which fit this template of Topic-Focus-Verb very well too. According to other sources, however, either C or Spec of CP does serve as the ``landing site'' for (certain) question words in Bulgarian (see \citealt[83ff.]{Rudin1985} and \citealt[esp.\ 56--60, 120ff., 247--248]{King95} for a panoply of proposals, also featuring some discussion of other Slavic varieties). It likewise remains an open question how one should best represent sentences in colloquial Russian which contain non-initial \textit{wh}-words, e.g.\ \textit{Ivan čto skazal?} `What did Ivan say?', which matches the surface order of the Bulgarian interrogative in \REF{ex:Slavic:13} (cf.\ the comments about additional topic adjunction in the previous section).} Thus, although word order in Russian and Bulgarian is reasonably free, scholars have arrived at different conclusions as to the way the constituent structure in each of those two related languages is organised and interfaced with the other levels of representation, most notably the structure of discourse. It remains for future work to subject these conclusions to further empirical and theoretical scrutiny and to extend them to the rest of the family.\footnote{See \citet{Patejuk2015} and \citet[329--330, 340--341]{PatejukPrzepiorkowski2017} for similar proposals regarding the clause structure of Polish, notably with a suggested flat IP.}
+
+Another important point specific to LFG is the optionality of c-structure constituents, including heads. For example, the VP in \figref{fig:Slavic:2} does not dominate a head V node, since the finite verb in Russian appears in I, and \figref{fig:Slavic:3} is missing the head of CP, since the sentence contains no complementiser. Specifiers are also optional in LFG, so if there are no appropriate topicalised or focused constituents, those slots too will remain unoccupied (see \citealt[171--172]{King95}, \citealt[60, 63]{dalrymple01}, \citealt[107--108]{DLM:LFG}).
+
+As pointed out in \sectref{sec:Slavic:1.2.2}, Bulgarian is cross-linguistically unusual in that it allows free word order even though it has lost its nominal case inflections, with only vestigial case forms of pronouns. In this way, Bulgarian and Macedonian stand out typologically among the members of the Slavic family and beyond. Quite frequently, the syntactic functions of subject and object can be identified by relying on subject-verb agreement and/or clitic doubling. There are situations, however, where there are no morphosyntactic clues as to the functions the arguments in a clause will perform -- then a phrase may be assigned any of the grammatical functions selected by the predicate, depending on context and/or world knowledge (\citealt{Rudin1985}, \citealt[133--135]{dalrymple01}, \citealt[184--189]{DLM:LFG}). 
+
+I will now proceed to first outline some general phrase-structure rules for Bulgarian, followed by a sample entry of a verb, which forms the core of the clause and assigns roles to its arguments. I will then illustrate three possibilities for clauses with or without morphosyntactic clues as to the assignment of syntactic roles. Finally, I will compare the Bulgarian system to those of members of the family which retain case declensions.
+
+In line with the assumption that the specifier of IP is associated with the discourse function of focus in Bulgarian, \citet[134]{dalrymple01} proposes the following phrase-structure rules. The NP daughter of IP is assigned the focus discourse function and in addition will bear a grammatical function at f-structure too (\textsc{gf}). As in Russian, there is no requirement as to what this grammatical function will be (cf.\ the discussion of \textsc{gf} vs. \textsc{gf*}, which might be needed in the context of embedding; see further \citealt[esp.\ Chapter 7]{Rudin1985}, as well as the slightly updated notation in \citealt[185]{DLM:LFG}).
+
+\ea\label{ex:Slavic:15} Annotated phrase-structure rules for Bulgarian\\[1ex]
+\phraserule{IP}{\optrulenode{NP\\(\UP\FOCUS)=\DOWN\\(\UP\GF)=\DOWN} \optrulenode{I$'$\\\UP=\DOWN}}\\[.5ex]
+\phraserule{I$'$}{\optrulenode{I\\\UP=\DOWN} \optrulenode{S\\\UP=\DOWN}}\\[.5ex]
+\phraserule{I}{\optrulenode{Cl\\(\UP\OBJ)=\DOWN} \optrulenode{I\\\UP=\DOWN}}\\[.5ex]
+\phraserule{S}{\rulecatdisj{\rulenode{NP\\(\UP\GF)=\DOWN}}{\rulenode{V\\\UP=\DOWN}}}*\\
+    \z
+
+         
+    In essence, these annotated rules are similar to those operative in other languages which allow relatively free word order, such as Warlpiri or Latin (cf.\ \citetv{chapters/Australian}). Naturally, these phrase-structure rules are only a fragment of a fuller grammar and will need to be elaborated and fine-tuned in order to attain more comprehensive coverage of Bulgarian syntax. The diagrams and the phrase-structure annotations in this section demonstrate that there is still some inconsistency within and between the various LFG publications, so more uniformity would be desirable in future work (cf.\ the VP in \figref{fig:Slavic:4} to the S here, among other small details, e.g. finite verbs labelled as V rather than I in some of the sources). Nevertheless, this is a good starting point illustrating what the skeleton of a Bulgarian clause looks like. According to the rules in \REF{ex:Slavic:15}, the desired freedom with which the constituents are arranged is achieved with the help of the exocentric S node, which here supersedes the VP from the earlier diagrams and can contain NPs with any grammatical function preceding or following the verb (cf.\ \citealt[64--67, 77--78]{dalrymple01}, \citealt[112--114]{DLM:LFG}).\footnote{The S rule licenses any number of NPs or Vs in any order, but having more than one lexical/main/full verb will lead to a clash at f-structure (two different semantic \textsc{pred}s in the same clause contributed by each of the two verbs; cf.\ \sectref{sec:Slavic:3.1}). So the phrase-structure rule will give too many possibilities (in particular, it will allow any number of verbs), but these will be filtered out by f-structure constraints (assuming that all lexical verbs contribute a semantic \PRED -- this rule will allow two verbs, as long as one of them is auxiliary-like and contributes only grammatical features, while the other contributes the semantic \PRED) (M. Dalrymple, p.c.). Similarly, the NPs will have to be subcategorised for by the verb, which prevents the proliferation of NPs at will. As noted above, other LFG work offers alternative treatments. \citet[201--202]{JaegerGerassimova2002}, for instance, postulate the following flat unordered VP phrase-structure rule for Bulgarian (see further \sectref{sec:Slavic:3.3}):\\
+    \ea\phraserule{VP}{\optrulenode{XP\\(\UP\GF)=\DOWN}, \optrulenode{PP\\(\UP\OBJ2)=\DOWN}, \rulenode{V$'$\\\UP=\DOWN}}\z}
+
+Moving on to the syntactic core of the clause, the following is the lexical entry for the finite verb form \textit{celuna} `(he/she) kissed', appearing as an I terminal node in tree diagrams: 
+
+\ea\label{ex:Slavic:16} Lexical entry for a Bulgarian verb\\[1ex]
+\catlexentry{celuna}{I}{(\UP\PRED) = \textsc{`kiss<subj,obj>'}\\
+        ((\UP\SUBJ\PRED) = \textsc{`pro')}\\
+        (\UP\SUBJ\NINDEX\PERS) = {3}\\
+        (\UP\SUBJ\NINDEX\NUM) = \SG\\
+        (\UP\SUBJ\CONCORD\CASE) = \NOM\\
+        (\UP\OBJ\CONCORD\CASE) = \ACC}
+\z
+
+In addition to stating the subject's person, number and case properties, this entry contains an \textit{optional} equation which specifies a pronominal value (`\textsc{pro'}) for the semantic \textsc{pred} of the verb's subject. This is LFG's way of capturing pro-drop -- this equation kicks in only if there is no overt subject and the information about it comes solely from the features marked on the verb (cf.\ \sectref{sec:Slavic:2.6}; \citealt[59, 358, 440]{BresnanEtAl2016}; \citetv{chapters/Incorporation}). However, for a transitive verb like \textit{celuna} `(he/she) kissed', either an overt object phrase or an object clitic pronoun must obligatorily appear, because no \textsc{pred} value is specified for the object of the verb. 
+
+This lexical entry and the phrase-structure rules can now be combined to generate a clause. In \REF{ex:Slavic:17}, the personal names \textit{Ivan} and \textit{Marija} are not marked for case, so both of them are compatible with either nominative or accusative specifications. As before, the metavariable \textsc{gf} in \figref{fig:Slavic:5} represents any grammatical function -- this metavariable is arbitrarily instantiated to \textsc{subj} for \textit{Marija} and \textsc{obj} for \textit{Ivan} based on the context or extra-linguistic knowledge (see \citealt[esp.\ 15--16]{Rudin1985}, \citealt[134, 136]{dalrymple01}). For a sentence like this, language users cannot appeal to phrase-structure position, case marking or agreement to disambiguate the syntactic roles of the two arguments, though SVO might be strongly preferred out of context (cf.\ \REF{ex:Slavic:22} and \sectref{sec:Slavic:1.2.2}).
+
+\ea Bulgarian\\%17
+    \label{ex:Slavic:17}
+    \gll Ivan   celuna     Marija\\
+      Ivan   kiss.\textsc{pst.3sg}   Marija \\
+    \glt`It was Ivan that Marija kissed.'
+    \z
+
+\begin{figure}
+\hspace*{\fill}{\avm[style=fstr]{\rnode{k}{[pred & `kiss\arglist{subj,obj}'\\
+  subj & [pred & `Marija'\\index & [gend & f\\num & sg]]\\
+  focus & \rnode{f}{[pred & `Ivan'\\index & [gend & m\\num & sg]]}\\
+  obj & \rnode{o}{\strut}]}}}\\
+{\begin{forest}
+    [\rnode{ip}{IP} [{{NP}\\(\UP\FOCUS)=\DOWN\\(\UP\GF)=\DOWN} [{N\\\UP=\DOWN} [ {Ivan\\Ivan.\M.\SG\\(\UP\PRED)=\textsc{`Ivan'}\\(\UP\NINDEX\GEND)=\M\\(\UP\NINDEX\NUM)=\SG}]]]
+      [{\rnode{i'}{I$'$}\\\UP=\DOWN} [{\rnode{i}{I}\\\UP=\DOWN} [{celuna\\kiss.\PST.3\SG\\(\UP\PRED)=\textsc{`kiss\arglist{subj,obj}'}\\((\UP\SUBJ\PRED)=\textsc{`pro'})\\(\UP\SUBJ\NINDEX\PERS)=3\\(\UP\SUBJ\NINDEX\NUM)=\SG\\(\UP\SUBJ\CONCORD\CASE)=\NOM\\(\UP\OBJ\CONCORD\CASE)=\ACC}]]
+        [{\rnode{s}{S}\\\UP=\DOWN}[{NP\\(\UP\GF)=\DOWN}[{N\\\UP=\DOWN}[{Marija\\Marija.\F.\SG\\(\UP\PRED)=\textsc{`Marija'}\\(\UP\NINDEX\GEND)=\F\\(\UP\NINDEX\NUM)=\SG}]]]]]]
+\end{forest}} 
+\CURVE[.4]{-2pt}{0}{f}{0pt}{0}{o}
+\CONNECT{2pt}{90}{ip}{0pt}{180}{k}
+\CONNECT{2pt}{120}{i'}{0pt}{180}{k}
+\CONNECT{2pt}{120}{i}{0pt}{180}{k}
+\CONNECT{2pt}{180}{s}{0pt}{180}{k}
+\caption{C- and f-structure for an ambiguous sentence in Bulgarian}
+\label{fig:Slavic:5}
+\end{figure}
+
+Things are different in \REF{ex:Slavic:18}, which furnishes morphosyntactic clues to the assignment of grammatical functions. Here, the clause-initial \textsc{focus} NP is plural, so the subject must be \textit{Marija} because the verb shows unambiguous third person singular agreement with its subject (consult \citealt[15]{Rudin1985}, \citealt[137]{dalrymple01}).
+
+\ea Bulgarian\\%18
+    \label{ex:Slavic:18}
+    \gll Deca-ta     celuna     Marija\\
+        children.\textsc{pl}{}-\textsc{def}   kiss.\textsc{pst.3sg}   Marija  \\
+    \glt`It was the children that Marija kissed.'
+    \z
+
+Apart from subject-verb agreement, disambiguation can
+%alternatively
+also be achieved by doubled/reduplicated object clitics, as in \REF{ex:Slavic:20}, which relies on the following lexical entry for the clitic pronoun \textit{go} `him':\footnote{See \citet[17]{Rudin1985}, as well as \citet{JaegerGerassimova2002}, on the interaction between word order, information structure and (topic-marking) object clitics.}
+
+\ea Lexical entry for a Bulgarian object clitic pronoun \label{ex:Slavic:19}\\[1ex]
+\lexentry{go}{((\UP\PRED) = \textsc{`pro'})\\
+        (\UP\NINDEX\PERS) = {3}\\
+        (\UP\NINDEX\GEND) = \M\\
+        (\UP\NINDEX\NUM) = \SG\\
+        (\UP\CONCORD\CASE) = \ACC}
+\z
+
+If no full object NP is available, the semantic \textsc{pred} value for the object function will be contributed by the object clitic. Since the \textsc{pred} of this clitic is optional (enclosed in parentheses), \textit{go} can unproblematically appear even when the object function is filled by a masculine NP like \textit{Ivan}, but not a feminine NP like \textit{Marija}, which would be incompatible in terms of gender (see \citealt[135, 138]{dalrymple01}; cf.\ \sectref{sec:Slavic:2.8} and \citetv{chapters/Romance}). 
+
+\ea\label{ex:Slavic:20} Bulgarian\\%20
+    \gll Marija   go       celuna     Ivan\\
+      Marija     him.\textsc{obj.clitic}   kiss.\textsc{pst.3sg}   Ivan\\
+    \glt `Marija kissed Ivan.'/`It was Marija that kissed Ivan.' (with the exact emphasis depending on context and prosody, so Marija could be a focused element or play another role at information-structure)
+    \z
+
+\begin{sidewaysfigure}
+\footnotesize
+\hspace*{\fill}{\avm[style=fstr]{\rnode{k}{[pred & `kiss\arglist{subj,obj}'\\
+  focus & \rnode{m}{[pred & `Marija'\\index & [gend & f\\num & sg]]}\\
+  subj & \rnode{subj}{\strut}\\
+  obj &  [pred & `Ivan'\\index & [gend & m\\num &
+        sg]\\concord [case & acc]]]}}}
+{\begin{forest}
+    [\rnode{ip}{IP} [{{NP}\\(\UP\FOCUS)=\DOWN\\(\UP\GF)=\DOWN} [{N\\\UP=\DOWN} [{Marija\\Marija.\F.\SG\\(\UP\PRED)=\textsc{`Marija'}\\(\UP\NINDEX\GEND)=\F\\(\UP\NINDEX\NUM)=\SG}]]]
+      [{\rnode{i'}{I$'$}\\\UP=\DOWN} [{\rnode{i}{I}\\\UP=\DOWN}
+          [{Cl{\footnote{Alternatively, the object clitic could be represented as
+  a non-projecting noun -- see \citet[188]{DLM:LFG} and \sectref{sec:Slavic:2.8}.}}\\(\UP\OBJ)=\DOWN} [{go\\him.\OBJ.\textsc{clitic}\\((\UP\PRED)=\textsc{`pro'})\\(\UP\NINDEX\PERS)=3\\(\UP\NINDEX\GEND)=\M\\(\UP\NINDEX\NUM)=\SG\\(\UP\CONCORD\CASE)=\ACC}]]
+          [{I\\\UP=\DOWN}[{celuna\\kiss.\PST.3\SG\\(\UP\PRED)=\textsc{`kiss\arglist{subj,obj}'}\\((\UP\SUBJ\PRED)=\textsc{`pro'})\\(\UP\SUBJ\NINDEX\PERS)=3\\(\UP\SUBJ\NINDEX\NUM)=\SG\\(\UP\SUBJ\CONCORD\CASE)=\NOM\\(\UP\OBJ\CONCORD\CASE)=\ACC}]]]
+        [{\rnode{s}{S}\\\UP=\DOWN}[{NP\\(\UP\GF)=\DOWN}[{N\\\UP=\DOWN}[ {Ivan\\Ivan.\M.\SG\\(\UP\PRED)=\textsc{`Ivan'}\\(\UP\NINDEX\GEND)=\M\\(\UP\NINDEX\NUM)=\SG}]]]]]]]
+\end{forest}}
+\CURVE[.4]{-2pt}{0}{m}{0pt}{0}{subj}
+\CONNECT{2pt}{140}{ip}{0pt}{0}{k}
+\CONNECT{2pt}{120}{i'}{0pt}{0}{k}
+\CONNECT{2pt}{120}{i}{0pt}{0}{k}
+\CONNECT{2pt}{120}{s}{0pt}{0}{k}
+\caption{Disambiguation with clitics in Bulgarian}
+\label{fig:Slavic:6}
+\end{sidewaysfigure}
+
+Note that the overtly marked case of \textit{go} `him' appears in the f-structure for the non-case-marked \textit{Ivan} because the two c-structure nodes (the clitic \textit{go} and the N \textit{Ivan}) correspond to the same f-structure, with the information from each node in the tree diagram fed into the f-structure that they share (cf.\ \citealt[74--75]{dalrymple01}, \citealt[48]{BresnanEtAl2016}). Without providing a separate semantic \textsc{pred} value (which would go against LFG's Consistency Principle), the clitic in \figref{fig:Slavic:6} effectively supplies a case value for the caseless noun it agrees with.
+
+\subsubsection{Slavic in general}
+\label{sec:Slavic:2.4.3}
+
+The situation in the Slavic languages with healthy case-marking on nouns, such as Russian, Ukrainian, Czech, Polish or Bosnian/Croatian/Serbian, will be very similar to that in Bulgarian. What Bulgarian and Macedonian achieve with clitics is achieved with case inflections in the rest of the family.\footnote{An important difference is that clitics are arguably head-marking on the verb, while case is dependent-marking on the nominal arguments of the verb -- see \citet{JaegerGerassimova2002}, \citet[113--115, 205--207]{BresnanEtAl2016}.} The unambiguous case values normally contributed by each nominal argument serve to uniquely identify that argument's syntactic function, much like a clitic in Bulgarian/Macedonian (cf.\ \figref{fig:Slavic:2} and \figref{fig:Slavic:6}). The case principles of function specification in Russian can be formulated as follows: 
+
+\ea\label{ex:Slavic:21} Case principles of function specification in Russian (from \citealt[70--71, 203--205]{BresnanEtAl2016})\\%21
+ (\DOWN\CASE)=\NOM $\Rightarrow$ (\UP\SUBJ)=\DOWN\\
+ (\DOWN\CASE)=\ACC $\Rightarrow$ (\UP\OBJ)=\DOWN\\
+\z
+
+These annotations state that if the case of a node is nominative, it will serve as the subject of the construction that contains it. Conversely, if the case of a node is accusative, it will serve as the object of the matrix construction. Naturally, similar statements will be needed for the additional functions/meanings of cases. These are morphological means of function specification which are independent of c-structure position (the latter would be needed for function specification in a configurational language like English).\footnote{Consult \citet{Neidle1988}, \citet[esp. Chapter~8]{King95}, and \citet{Bloom1999}, for the syntactic distribution of Russian cases from a general LFG perspective, including different methods of case assignment (configurational, grammatical/functional, lexical, and semantic). \citet{PrzepiorkowskiPatejuk2011,przepiorkowski-patejuk2012,prz:pat:12b} and \citet{Patejuk2015} offer discussion of Polish.  For English, see \citet{Hristov2012,Hristov:Case}.}
+
+In circumstances of syncretism, where case distinctions collapse, the assignment of syntactic functions will of necessity proceed randomly or depending on the wider context, world knowledge and/or subject-verb agreement, much as in Bulgarian/Macedonian. In \REF{ex:Slavic:22}, neither noun distinguishes nominative from accusative. 
+
+\ea Russian (from \citealt[14]{ComrieCorbett1993})\\%22
+    \label{ex:Slavic:22}
+    \gll Mat'       ljubit     doč'\\
+        mother.\textsc{nom/acc}   loves     daughter.\textsc{nom/acc}\\
+    \glt`The mother loves the daughter.'   
+    \z
+
+Although \REF{ex:Slavic:22} is syntactically ambiguous in the same way as \REF{ex:Slavic:17}, an SVO interpretation might be preferred as the most neutral out of context (see \citealt{Jakobson1936}, \citealt[14]{ComrieCorbett1993}, \citealt[2 fn.~2]{King95}, \citealt[319, 406--407]{SussexCubberley2006}). In spoken language, intonation will normally dispel the ambiguity, as noted in seminal monographs by \citet{Yanko2001,Yanko2008}. LFG's parallel architecture is perfectly suited for handling such phenomena where the interplay between syntax, morphology and prosody is not a trivial one-to-one correspondence.
+
+\subsection{Passives and related constructions}
+\label{sec:Slavic:2.5}
+
+Instead of being considered a syntactic transformation, the passive is seen in LFG as a lexical operation/alternation in the argument structure of a verb. Argument structure itself is a separate module in the LFG architecture which maps onto the morphology and the syntax -- there is an association between thematic/semantic roles, argument slots and syntactic functions, as in \REF{ex:Slavic:23} (cf.\ \sectref{sec:Slavic:2.1}; \citealt{Kibort2007}; \citealt[Chapter 3, 76--79]{BresnanEtAl2016}; \citealt[340--345]{DLM:LFG}; \citetv{chapters/Mapping}). 
+
+\ea%23
+    \label{ex:Slavic:23}Argument structure of a Polish transitive verb\\[1ex]        
+    \begin{tabular}{c@{}ccc@{}c}
+      & \SUBJ && \OBJ\\
+      & \textbar && \textbar\\
+  \textit{wylał} `spilled <& \_\_ &  , & \_\_ & >' \\  
+      & \textbar && \textbar\\
+      & \textsc{agent} && \textsc{theme}\\
+    \end{tabular}
+    \z
+
+
+
+In the passive and some related constructions, the thematically highest argument, which is otherwise aligned with the syntactic function of subject, is suppressed or demoted in the argument structure, and hence unavailable for linking to the subject function in the syntax. Therefore, the next highest argument compatible with such a function is mapped/promoted to \textsc{subj}, which ties in well with the general descriptive intuition about what passivisation accomplishes.
+
+Apart from passives proper, \citet{Kibort2001,Kibort2004,Kibort2006,Kibort2007,Kibort2012} discusses similar alternations which exhibit divergent mappings between the argument structure and the syntactic component, as in the following pair of sentences (cf.\ \sectref{sec:Slavic:1.2.3}):
+
+\ea%24
+\label{ex:Slavic:24}Polish (from \citealt[ex.~14]{Kibort2012}, also cited in \citealt[343]{DLM:LFG})
+\ea\label{ex:Slavic:24a}
+  \gll Tomek       wylał      zup-ę\\
+        Tomek\textsc{(m)[nom.sg]}   spilled\textsc{[3sg.m}] soup\textsc{(f)-acc.sg}\\
+        \glt`Tomek spilled the soup.'
+ \ex\label{ex:Slavic:24b}
+  \gll Zup-a       wylał-a   się\\
+       soup\textsc{(f)-nom.sg}  spilled\textsc{{}-3sg.f}   \textsc{refl}\\
+    \glt`The soup spilled.'
+    \z\z
+
+\largerpage[-1]
+\citet{Kibort2001,Kibort2007,Kibort2012} asserts that the transitive and reflexive versions of `spill' have two distinct lexical entries, based on different argument structures, though of course both thematically entail a spiller agent and a spillee patient/theme. The transitive one has an agent (Tomek) assigned to the subject role and a patient/theme (the soup) which is realised as the object, as in \REF{ex:Slavic:23} above. The reflexive `spill', by contrast, has no core argument position with which the agent can be associated (since it expresses the event affecting the patient/theme without specifying the cause), so the sole patient/theme argument is mapped to the subject role:
+
+\ea%25
+    \label{ex:Slavic:25}Anticausative in Polish (based on \citealt[ex.~43]{Kibort2001}: \citealt[ex.~16]{Kibort2012})\\[1ex]
+    \begin{tabular}{c@{}ccc@{}c}
+      & && \SUBJ\\
+      & && \textbar\\
+  `spilled <&  &  , & \_\_ & >' \\  
+      &  && \textbar\\
+      & \textsc{agent} && \textsc{theme}\\
+    \end{tabular}
+    \z
+
+\largerpage[2]
+If the agent is mentioned, it will appear as a secondary/oblique object (a non-volitional human participant or perhaps a maleficiary) or as an optional adjunct -- the former scenario entails demotion, while the latter entails suppression of the agent argument. Although they come up with a somewhat dissimilar formal proposal, \citet{PatejukPrzepiorkowski2015} likewise note that reflexive \textit{się}, rather than being a legitimate reflexive pronoun, here just indicates that the verb has been detransitivised (cf.\ \citealt{Schenker1985}; a similar point is made in pioneering generative papers on Bulgarian, \citealt{Walter1963a,Walter1963}, for which see \citealt{Venkova2017}, as well as in traditional/transformational descriptions, e.g. \citet[604]{BojadievKucarovPencev1999}. \citet{Kibort2012} labels such ``anticausative'' operations as lexical detransitivisers which, according to her, delete the first core argument from the valency frame (though they do not obliterate the corresponding semantic participant).    
+
+\citet{Kibort2007,Kibort2012} claims that the passive proper is different from such reflexive anticausative constructions in that it does not suppress/erase the agent argument (thereby relegating it merely to a potential adjunct role in the syntax), but only changes the agent's argument-structure specifications, so that it is linked to a non-subject syntactic function, such as an oblique argument (though it then ought to be stipulated that such arguments are optional). 
+
+
+Unlike in English, even intransitive verbs can be passivised in Polish and elsewhere in Slavic, resulting in an impersonal construction (see \citealt{Kibort2001,Kibort2012}). Essentially the same account is available for such intransitive impersonals, where\-by the agent subject in the active is altered in terms of its argument specifications so that it is forced to map onto an oblique in the passive (if it appears at all). As a result, the sole (optional) argument of a passivised intransitive verb like \textit{pali\'{c}} in \REF{ex:Slavic:26} is not realised as \textsc{subj} and the clause is truly subjectless -- which takes us to the topic of the next section.\footnote{Alternatively, the agent might be said to potentially surface as an adjunct rather than an oblique argument, if one adopts a suppression as opposed to a demotion account of passivisation. The exact status of these agents remains unsettled, as does the subtle distinction between suppression and demotion. For more detail, including the overarching principles of LFG's Lexical Mapping Theory and the notational technicalities, consult \citet{Kibort2001,Kibort2007} and \citetv{chapters/Mapping}.  Passivisation is discussed in relation to raising by \citet{Kibort2012} and \citet{PatejukPrzepiorkowski2014b}, who see the auxiliary as a raising main predicate taking the passive/resultative participle of the lexical verb as its complement.}
+
+\ea%26
+    \label{ex:Slavic:26}Polish (from \citealt[ex.~55]{Kibort2006}; also cited in \citealt[344]{DLM:LFG})\\
+    \gll Wchodzi-sz   i   czuje-sz,   że   był-o           palon-e.\\
+        come.in-\textsc{2sg}   and   smell-\textsc{2sg}   that   was\textsc{{}-3sg.n}  smoke.\textsc{ptcp}-\textsc{n.sg}\\
+    \glt `You come in and you can smell that there has been smoking (here).' 
+    \z
+
+Kibort's demarcation of fine distinctions between various possible interfaces amounts to suggesting that meaning-preserving/morphosyntactic operations like the passive interfere only with the argument-to-function mapping, whereas other, morpholexical and morphosemantic, meaning-altering processes (e.g. the anticausative) additionally affect the lexical and/or semantic tiers of representation of the predicate. These intriguing predictions arising from LFG's modularity have a bearing on describing in greater depth the nature of Slavic argument alternations, more of which are discussed in Kibort's work.
+
+\subsection{Pro-drop, subjectless and impersonal constructions}
+\label{sec:Slavic:2.6}
+\largerpage
+
+Many linguistic theories include a stipulation that all predicates must have subjects. This is dubbed the Subject Condition in LFG, the Final 1 Law in Relational Grammar and the Extended Projection Principle in \citegen{chomsky1981lectures} generative framework (see \citealt[311]{bresnan2001lexical}, \citealt{Kibort2001}, \citealt[21]{DLM:LFG}). In clauses with pro-drop, the subject has simply been omitted but it can be recovered based on the agreement morphology of the verb. Pro-drop is a widespread phenomenon in Slavic, as noted in \sectref{sec:Slavic:1.2.4}. In theories where syntactic functions are defined positionally and equated with phrase-structure configurations, pro-drop is usually regarded as a phrase-structure operation -- either the transformational deletion of a pronoun or the licensing of a phonologically null constituent which represents the pronominal argument in the tree diagram. By contrast, in the grammatical design of LFG pro-drop involves the \textit{functional} specification of a pronominal argument by a head -- in our case, the verbal head of the clause specifies a pronominal value for its subject argument, as in \REF{ex:Slavic:16}, which entails the (potential) absence of an overt subject pronoun from the phrasal structure (see \citealt{Kibort2006}, \citealt[154 fn.~4]{BresnanEtAl2016}, \citetv{chapters/Incorporation}).  Still, sentences with pro-drop have a (covert) subject, which is represented in LFG's more abstract f-structure, as in \figref{fig:Slavic:4}. Therefore pro-drop does not violate the Subject Condition.\footnote{\citet{King1997} also shows how lexical entries for verbs specifying a PRO value for their subjects can be further annotated with the TOPIC discourse status typical of such elided elements.}
+
+While the Subject Condition holds in English and numerous other languages, it has been argued that certain languages do admit genuinely subjectless sentences. \citet{Kibort2006,Kibort2012} discusses Polish constructions she claims to be truly subjectless. They comprise a small class of inherently impersonal predicates, as in \REF{ex:Slavic:27} below, or intransitive predicates which have undergone passivisation, as in \REF{ex:Slavic:26} above (cf.\ \citealt[22]{DLM:LFG}). 
+
+\ea%27
+    \label{ex:Slavic:27}Polish (from \citealt{Kibort2006}; also cited in \citealt[22]{DLM:LFG})\\
+    \gll Słycha\'{c}    ją / jakieś                 mruczenie\\
+        hear         her.\textsc{acc} {}   some.\textsc{n.acc}      murmuring.\textsc{n.acc}\\
+    \glt `One can hear her/some murmuring.' 
+    \z
+
+Formally, the verb in \REF{ex:Slavic:27} is identical with the infinitive, so there is no agreement morphology on this non-finite form which could be said to introduce subject features (as in pro-drop). It has long been recognised in traditional descriptive grammars of Slavic that no subject can be reconstructed for such clauses. As noted by \citet[{\textsection}4.1]{Kibort2006}, those defective verbs do not have even a ``covert'' subject which could participate in syntactic control or reflexive binding. The impersonal clauses from \sectref{sec:Slavic:1.2.4}, with default third person singular (neuter) agreement on the predicate, are also traditionally regarded as truly subjectless, i.e. clauses which cannot have an overt subject, so the Subject Condition might not be universal in the face of this Slavic data.\footnote{However, \citet{Kibort2006} treats Polish weather constructions and impersonals involving adversity or physical/psychological states as special instances of subject ellipsis/pro-drop, contrary to the traditional view whereby they lack a subject. The reader can find a more elaborate classification of types of subjectlessness in \citet{Kibort2006}. In another strand of research, verbs with non-nominative arguments like Russian \textit{menja tošnit} `I feel sick' have sometimes been analysed as having ``non-canonical subjects'', though this too remains a matter of debate. The same goes for the status of ``genitive subjects'' in negative constructions (see \citealt[868ff., with references]{Timberlake1993}).}
+
+\subsection{Copular constructions}
+\label{sec:Slavic:2.7}
+
+English and many other languages, including members of the Slavic family, require the presence of a copular/link verb in copular clauses. Russian, on the other hand, famously has copular constructions with no overt copula, as pointed out in \sectref{sec:Slavic:1.2.6} and illustrated in \REF{ex:Slavic:28}. The c-structure of a Russian verbless clause can be represented as in \figref{fig:Slavic:7}, with a headless IP (\citealt[191]{DLM:LFG}; cf.\ \sectref{sec:Slavic:2.4.2} and \sectref{sec:Slavic:3.1} for headlessness in LFG).
+
+\ea%28
+    \label{ex:Slavic:28}Russian (from \citealt[192]{dalrympleetal04copular})\\
+\gll On   student\\
+He   student\\
+\glt`He is a student.'
+\z
+
+
+In a construction like this, it is not immediately obvious what contributes the main semantic \textsc{pred} of the clause, which is required for the f-structure to be complete and coherent (see \sectref{sec:Slavic:3.1} below; cf.\ a similar issue arising from pro-drop). According to one analysis, the main clausal \textsc{pred} is contributed by the predicative nominal; according to another, the main clausal \textsc{pred} is contributed by a special phrase-structure rule or the phrase-structure configuration. Such competing analyses have been put forward for both verbless clauses and constructions with an overt link verb (\citealt{dalrympleetal04copular}, \citealt[141--142]{NordlingerSadler2007}, \citealt[189ff.]{DLM:LFG}).\footnote{In the case of overt copulas, the debate surrounding the construction revolves around whether the copula supplies a semantic \textsc{pred} value or just the tense, aspect, mood, number and person features. \citet{PatejukPrzepiorkowski2014b} highlight similar issues in the analysis of \textit{be} in Polish passive constructions.}
+
+Especially in the absence of a verb, it could be argued that the main clausal \textsc{pred} value is contributed by the predicative nominal element, which will then select arguments in the same way an ordinary verb would. On this so-called single-tier view, the predicative nominal is the syntactic head of the clause; its f-structure will therefore be identified with the f-structure of the clause and it will contribute the clausal \textsc{pred} value, as in \figref{fig:Slavic:8}. Consequently, there must exist a lexical entry for the noun \textit{student} which contributes the main clausal \textsc{pred} value and selects a subject, i.e. (↑\textsc{pred)} \textsc{=} \textsc{`student<subj}>', alongside a ``normal'' lexical entry for the same nominal form which does not require a subject (for clauses such as `He met a student', where the subject requirements are imposed by the verb). 
+
+\begin{figure}[t]
+  {\begin{forest}
+      [IP [NP [{On\\he}, roof]] [I' [NP [{student\\student}, roof]]]]
+   \end{forest}}
+  \caption{A verbless copular clause in Russian}
+  \label{fig:Slavic:7}
+\end{figure}
+
+\begin{figure}
+  {\avm[style=fstr]{[pred & `student\arglist{subj}'\\
+  subj & [pred & `pro'\\
+    index & [ pers & 3\\
+              gend & m\\
+                num & sg ]]]}}
+  \caption{Single-tier analysis of \emph{On student} (based on \citealt[192]{dalrympleetal04copular}, \citealt[141--142]{NordlingerSadler2007}, and \citealt[194]{DLM:LFG})}
+  \label{fig:Slavic:8}
+\end{figure}
+
+\largerpage
+Under the so-called double-tier approach, by contrast, both non-verbal elements are arguments (a subject and a predicative complement/\textsc{predlink}). The main \textsc{pred} selecting these arguments can be supplied by an overt copula or by the phrase structure (in the case of verbless clauses). This type of analysis might rely on empty{}-node rules or the constructional properties of the configuration to license the requisite \textsc{pred} value. Importantly, LFG's rule annotations can introduce a \textsc{pred} value in the f-structure, but they will not customarily produce any empty nodes in the constituent structure (as might be done in other theories). One possible f-structure resulting from this approach is presented in \figref{fig:Slavic:9}.
+
+\begin{figure}
+    {\avm[style=fstr]{[pred & `be\arglist{subj,predlink}'\\
+  subj & [pred & `pro'\\
+    index & [ pers & 3\\
+              gend & m\\
+              num & sg ]]\\
+    predlink & [pred & `student']]}}
+  \caption{Double-tier analysis of \emph{On student} (based on \citealt[193]{dalrympleetal04copular}, \citealt[141--142]{NordlingerSadler2007}, and \citealt[194--195]{DLM:LFG})}
+  \label{fig:Slavic:9}
+\end{figure}
+
+\largerpage
+In the spirit of LFG, there have been claims that the presence or absence of a copula is just a matter of superficial c-structure variation, and the ``underlying'' f-structure for both types of construction should be identical, especially in the light of the fact that both constructions can coexist in the same language, with the appearance or omission of the copula correlating with tense, among other factors.\footnote{In Russian, the copula is null in the present tense but it has to be overt in the past and the future (\citealt[191--192]{dalrympleetal04copular}). Traditionally, this is used as an argument in favour of a zero copula in the present, but an argument can be made that there is a structural difference between copular and copula-less sentences. Ukrainian admits either null or overt copulas in the present tense. See \sectref{sec:Slavic:1.2.6}, as well as \citet{PatejukPrzepiorkowski2014b,PatejukPrzepiorkowski2018}, who discuss certain copular constructions in Polish, another Slavic language with optional copulas; cf.\ \citet[195--197]{DLM:LFG}.} The double-tier approach appears to have gained wider currency in the LFG literature, though the debate as to whether a unified solution should be sought, and if so, which one, is ongoing.
+
+\largerpage
+\subsection{Clitics and clitic placement}
+\label{sec:Slavic:2.8}
+
+In the more recent LFG literature, clitics are seen as non-projecting words which do not project their own phrases according to the X-bar schema (see \citealt{JaegerGerassimova2002}, \citealt[116--117]{BresnanEtAl2016}; cf.\ \figref{fig:Slavic:6}). This treatment recognises their intermediate status between independent words and bound affixes and primarily concerns the behaviour of clitics at c-structure, which is additionally regulated by language-specific phrase-structure rules of the type we saw for Bulgarian in \REF{ex:Slavic:15}. Other phenomena are modelled via the interface of lexical entries and f-structure.
+
+One important process involving clitics is clitic doubling/reduplication. Some Slavic languages allow it, while others do not. Bosnian/Croatian/Serbian, for one, does not -- a clitic pronoun and a full pronoun cannot be used in the same sentence in this South Slavic variety. In the constraint-based lexicalist framework of LFG, the ungrammaticality of clitic doubling is accounted for by giving both types of pronoun, clitic and full, a semantic form of the following shape (as part of the lexical entry):
+
+\ea\label{ex:Slavic:29} (\UP\PRED)=\textsc{`pro'}
+    \z
+
+If both a full pronoun and a coreferential clitic were to appear in the same clause, there would be a clash because of the multiple specifications of semantic forms for the same f-structure object, resulting in an ill-formed, inconsistent f-structure (cf.\ \sectref{sec:Slavic:3.1}). 
+
+By contrast, it became apparent in the earlier sections that clitic doubling is found in other Slavic languages spoken in the Balkans, including Bulgarian and Macedonian, both central members of the Balkan Sprachbund/Linguistic Area (see \citealt{JaegerGerassimova2002}; cf.\ \citetv{chapters/Romance} for Spanish).  LFG models this typological parameter by making the \textsc{pred} value of the clitic optional in a language which admits clitic doubling. A clitic will then contribute a semantic value only if it is the sole object; if it reduplicates a full NP, including a non-clitic pronoun, the clitic will not contribute its own semantic value due to its optionality and no clash will ensue (see entry in \REF{ex:Slavic:19} and \figref{fig:Slavic:6} above, as well as \citealt{FranksKing2000}, \citealt[105--106]{dalrymple01}, \citealt[357--358, 440]{BresnanEtAl2016}, \citealt[130--131, 152--153]{DLM:LFG}).\footnote{In varieties with clitic doubling, the clitic pronouns appear to be undergoing reanalysis as agreement markers which match the morphosyntactic features of the constituent they reduplicate. See \citet[Chapter 8]{BresnanEtAl2016} and \citetv{chapters/Incorporation} for further discussion, including the diachronic developments from one stage to the next, e.g. bleaching from obligatory semantic \textsc{pred} $>$ optional semantic \textsc{pred} $>$ no semantic \textsc{pred} (as for an agreement affix), as well as links to pro-drop, pronoun incorporation and the grammaticalisation of agreement affixes.}
+
+When more than one clitic occurs in a clause, they group in what is known as a clitic cluster. The rules regulating the internal order inside this clitic cluster, as well as where the clitic cluster can go in the clause, can also be very strict and complex (see \citealt[234ff]{FranksKing2000}, \citealt[201]{JaegerGerassimova2002}, \citealt{boegel-etal2010}; cf.\ \sectref{sec:Slavic:1.2.5}).
+
+\largerpage
+\subsection{Negation and negative concord}
+\label{sec:Slavic:2.9}
+
+The Russian negator \textit{ne} was described as a proclitic in \sectref{sec:Slavic:2.4.1}, though this status has been contested for some of its cognates elsewhere in Slavic, as well as for Russian itself. There have been arguments in the LFG literature that, as in Czech, the Polish equivalent negator is actually a prefix, rather than a clitic, though the negator is written as a separate word in Polish, while Czech orthography has long recognised its bound status (see \citealt{PatejukPrzepiorkowski2014b}, \citealt{przepiorkowski2015two}; cf.\ \citealt{King95} for similar ideas regarding Russian). Irrespective of its status as clitic or prefix, the negative item in Slavic can license morphosyntactic phenomena like the genitive of negation as well as negative concord, both of them already encountered in the preceding exposition (\sectref{sec:Slavic:1.2.1}, \sectref{sec:Slavic:1.2.6}, \sectref{sec:Slavic:2.3}, \sectref{sec:Slavic:2.4.1}).\footnote{The affixal status of the negative marker in Czech and Sorbian is acknowledged in the World Atlas of Language Structures  \citep{Dryer13b},  but a similar status is denied there to Polish \emph{nie} (cf.\ \citealt[329, fn. 10]{przepiorkowski2015two}).  Importantly, the claim that the Polish marker is also an affix is made regarding verbal negation only. When the same form \textit{nie} negates a distinguished clausal constituent, it is not a bound morpheme, as it may be separated from the constituent it negates and it may scope over coordination, among other characteristic features. Furthermore, Polish constituent negation does not trigger the genitive of negation, nor does it license other negative words in negative concord.}
+
+As dictated by negative concord, negative words with negative meaning need to appear in the presence of verbal negation. Indeed, there are words in Slavic which are allowed to occur only where negation is available in the relevant domain. Such words are referred to as \textit{n}{}-words or negative polarity items and include Polish \textit{nikt} `nobody' in \REF{ex:Slavic:30}, as well as those from Bosnian/Croatian/Serbian in \REF{ex:Slavic:5}, among many others (see \citealt[{\textsection}4.3.1]{PatejukPrzepiorkowski2014b}). This sets Slavic apart from Standard Modern English, where such multiple negation is prescriptively outlawed (though it is still common in dialects).
+
+\ea%30
+    \label{ex:Slavic:30}Polish (from \citealt[ex.~22]{PatejukPrzepiorkowski2014b})\\
+    \gll Nikt         *(nie)   odszedł   głodny.\\
+        nobody.\textsc{nom}    \textsc{neg}   left     hungry\\
+    \glt `Nobody left hungry.'    
+    \z
+
+Although \textit{n}-words are grammatically negative in themselves and certainly carry negative meaning (e.g. the word for `nobody' can give a negative answer to a question even when uttered on its own), they do not contribute additional negation when they fall within the scope of sentential negation. This is basically the nature of what is referred to as negative concord, a phenomenon akin to agreement where features need to match for purely syntactic reasons.\footnote{Note that this is a different use of the term \textit{concord}, distinct from the concord bundle of features discussed in \sectref{sec:Slavic:2.2}, though both these concepts have to do with the more general idea of agreement.}
+
+Both the genitive of negation and negative concord can operate in contexts of clause embedding too (e.g. with so-called open/infinitival complement clauses missing a separate subject), though embedded items are sometimes not obligatorily affected and certain types of embedding can prevent negation-sensitive phenomena (e.g. finite full/closed/sentential complements with their own subject which are insensitive to negation in the matrix clause). This is where LFG's distinction between \textsc{xcomp} for the former (infinitival) complements and \textsc{comp} for the latter (finite) clausal complements comes in very useful in differentiating between those natural classes (see \citealt{prze:00aa} and \citealt{PatejukPrzepiorkowski2014a}). As is usual for LFG and related theories, the interaction between polarity and polarity-sensitive phenomena such as the genitive of negation and negative concord is modelled via constraints (see \citetv{chapters/Negation}). The restrictions also find natural expression in the setting of f-structure. Further issues concerning negation in Polish are discussed by \citet{przepiorkowski2015two}, who propose different f-structure representations for the two major types of negation: constituent negation and eventuality negation (a.k.a. predicate/sentential negation). In the attribute-value matrices, negation can be introduced as an adjunct feature or as a binary \textsc{neg} or polarity feature. Adjunction makes it easy to represent multiple negation via multiple negative elements in the adjunct set.
+
+\subsection{Distance distributivity}
+\label{sec:Slavic:2.10}
+
+Distance distributivity is observed in English sentences like \textit{I gave the boys two apples each} -- \textit{each} attaches to the NP denoting the distributed quantity (the apples) and looks elsewhere in the sentence, here for a set of boys, to distribute over. In Slavic, distance distributivity is discussed with regard to Polish by \citet{Przepiorkowski2013,Przepiorkowski2014,Przepiorkowski2015}, as well as \citet{PrzepiorkowskiPatejuk2013}. \citet{PrzepiorkowskiPatejuk2013} contend that Polish has a number of function words expressing distance distributivity which share their form and semantic contribution but differ in their syntactic behaviour, namely different lexical items instantiated as \textit{po} `each'. While \textit{po} may at first glance appear to be a single item, it can in fact be classified as a preposition (governing the strictly prepositional locative case), or as an adnumeral operator compatible with a variety of cases and hence transparent to case requirements. In order to account for this discordant behaviour, Przepi{\'o}rkowski \& Patejuk harness the LFG mechanisms of templates (a complex template of sub-entries within one main entry) and restriction, as well as the notion of weak head borrowed from HPSG.\footnote{Weak heads inherit morphosyntactic properties from their complements, for instance whenever \textit{po} appears to be transparent to case requirements and the case value of the phrase it heads is determined by the complement.} The issue is further explored in Przepi{\'o}rkowski's (\citeyear{Przepiorkowski2013,Przepiorkowski2014,Przepiorkowski2015}) work, where he additionally deploys Glue semantics (see \citetv{chapters/Glue}).\footnote{See \citet[{\textsection}5.2.1]{Franks1995} for a comparison of distributive \textit{po} across Slavic couched in generative linguistics; cf.\ \citet[Chapter~32]{BergerGutschmidtKempgenKosta2009}, as well as \citet[467--468]{SussexCubberley2006}, who suggest that \textit{po} might even be a prefix.} 
+
+\subsection{Coordination}
+\label{sec:Slavic:2.11}
+
+The interaction of coordination with concord and index features was already discussed in \sectref{sec:Slavic:2.2}, so the current section will be dedicated to other problematic areas in the analysis of conjoined structures (cf.\ \citetv{chapters/Coordination} for a fuller account).  \citet{przepiorkowski-patejuk2012}, \citet[338--339]{PatejukPrzepiorkowski2012,PatejukPrzepiorkowski2014a,PatejukPrzepiorkowski2017} and \citet{Patejuk2015} discuss the coordination of unlike categories in Polish, here an NP and a clause, both serving as arguments (one an \textsc{obj}, the other a \textsc{comp}) of the same predicate, with the same semantic interpretation:
+
+\ea%31
+    \label{ex:Slavic:31}Polish (from \citealt[338]{PatejukPrzepiorkowski2017})\\
+    \gll Lisa  chciała   książkę    i      żeby     ktoś       ją              przytulił.\\
+       Lisa.\textsc{nom} wanted    book.\textsc{acc}  and    that     somebody.\textsc{nom}   she.\textsc{acc}  hug \\
+    \glt `Lisa wanted a book and someone to hug her.' 
+    \z
+
+Other unlike coordination strategies might involve a governing predicate (or even different heads) taking conjoined nominal arguments in different cases and/or with different grammatical functions. The possibility of all of these is ensured by specifying, say, the verb for `want' in \REF{ex:Slavic:31} as requiring either a case-bearing accusative NP object or a \textit{that}{}-clause. Probably the biggest challenges in such cases are to ensure that the different alternatives can be realised simultaneously in the same sentence (rather than only on different occasions), as well as to decide how to label the function of the conjoined phrase as a whole.\footnote{See further \citet{PatejukPrzepiorkowski2012}, \citet{przepiorkowski-patejuk2012}, \citet[225--230, 617ff., 650--651]{DLM:LFG}, where mention is made of the existence of similar constructions in Russian and Croatian. \citet[54--55, 68ff.]{Patejuk2015} discusses both the issues of simultaneous realisation and labelling, in addition to the issue of embedding.}
+
+The inverse scenario entails having two coordinated heads which impose different restrictions on a shared dependent. Those requirements can be met by a single constituent in cases of syncretism, as in \REF{ex:Slavic:32}.
+
+\ea%32
+    \label{ex:Slavic:32}Polish (from \citealt[ex.~2]{Dyla1984})\\
+    \gll Kogo     Janek  lubi   a   Jerzy   nienawidzi?\\
+        who.\textsc{acc/gen}   Janek   likes   and   Jerzy   hates \\
+    \glt `Who does Janek like and Jerzy hate?'   
+    \z
+
+
+The verb form \textit{lubi} requires its object to bear accusative case, while \textit{nienawidzi} takes an object marked for the genitive -- \textit{kogo} is syncretic/indeterminate between the two and can simultaneously satisfy both requirements. \citet{DalrympleKaplan2000} therefore propose a set-valued case attribute for this syncretic form, as in \REF{ex:Slavic:33}, while \citet{PatejukPrzepiorkowski2014a} and \citet[41ff.]{Patejuk2015} refine the original proposal.
+
+\ea%33
+    \label{ex:Slavic:33} Partial lexical entry for Polish \textit{kogo}\\[1ex]
+\catlexentry{kogo}{Pron}{(\UP\PRED)=\textsc{`who'}\\
+      (\UP\CASE) =  \textsc{\{acc,gen\}}}
+    \z
+
+           
+
+
+
+\subsection{Anaphoric control}
+\label{sec:Slavic:2.12}
+
+In obligatory anaphoric control constructions, there should be coreference between an argument of a main/matrix clause and a so-called controlled argument in a subordinate complement clause (see \citealt[561ff.]{DLM:LFG}). The coreference of the two arguments is represented in LFG by coindexing them at f-structure (see \citetv{chapters/Anaphora}, \citetv{chapters/LDDs}, \citetv{chapters/Control}). Early work on obligatory anaphoric control in Serbian/Croatian was carried out by \citet{Zec1987}, while \citet{Neidle1982} covers control in Russian (cf.\ \citealt[607--610]{BojadievKucarovPencev1999} for Bulgarian, relying on different types of empty ``pro''). Control in Polish is discussed by \citet{PatejukPrzepiorkowski2018}. In \REF{ex:Slavic:34}, the dative experiencer acts as the controller of the unexpressed subject of the bracketed infinitival clause: the author is taken to be both the person experiencing difficulty and the person receiving the details.\footnote{Cf.\ the discussion of raising in the context of the Polish passive in \sectref{sec:Slavic:2.5}, with raising seen as ``functional'' (as opposed to anaphoric) control in LFG. As noted by an anonymous reviewer, there are no uncontroversial examples of functional control/raising in Slavic, with the exception of the analysis of the passive mentioned above, and also possibly verbs like `begin', although this has not been discussed in LFG.}
+
+\ea%34
+    \label{ex:Slavic:34}Polish (from \citealt[316]{PatejukPrzepiorkowski2018})\\
+    \gll Oczywiście   autorowi     najtrudniej                 był-o           [uzyska\'{c}   szczegóły].\\
+     obviously     author.\textsc{dat}  difficult.\textsc{adv.superl} was-\textsc{3sg.n}  get.\textsc{inf}      details.\textsc{acc}   \\
+    \glt `Obviously, to get the details was the most difficult [thing] for the author.' 
+    \z
+
+          
+\section{LFG analyses in the context of other frameworks}
+\label{sec:Slavic:3}
+
+The preceding sections have provided a survey through the lens of LFG of a wide range of grammatical phenomena illustrated from several Slavic languages, which are not always typologically identical. \citet[xi]{BresnanEtAl2016} describe LFG as ``a theory of grammar which has a powerful, flexible, and mathematically well-defined grammar formalism designed for typologically diverse languages''. In the LFG view of grammar, the surface form and organisation of clauses differs from language to language. This is reflected in c-structure, which entails no claims to universality. The categories and the types of constituents, as well as their surface arrangement, all have to be justified on a language-by-language basis (cf.\ the argumentation in \sectref{sec:Slavic:2.4.1}). However, the underlying functional makeup of clauses is regarded as cross-linguistically more uniform, as expressed in LFG's more abstract f-structure (cf.\ the closing remarks in \sectref{sec:Slavic:2.7}). Even close relatives like Bulgarian and Russian were shown to have typologically divergent clause structures, despite both organising their clauses according to the packaging of information in discourse (\sectref{sec:Slavic:2.4}).
+
+In addition, LFG operates with a constraint{}-based, parallel correspondence architecture. Unlike transformational theories, no use is made of serial derivations, and the framework postulates no ``deep'' structures as inputs to syntactic operations. LFG shares these principles with theories like HPSG (see \citetv{chapters/HPSG};  cf.\ the relevant chapters in \citealt{BergerGutschmidtKempgenKosta2009}). Indeed, there has been a great deal of common ground and cross-pollination, with numerous ideas borrowed from HPSG, most notably Wechsler \& Zlati\'{c}'s HPSG-based proposal about agreement features in Bosnian/Croatian/Serbian (\sectref{sec:Slavic:2.2}), or Przepi{\'o}rkowski's and Patejuk's generalisations about Polish originally inspired by HPSG or cast in HPSG terms and cited on numerous occasions above. It is likewise worth singling out \citegen{BorsleyPrzepiorkowski1999} edited volume on Slavic in HPSG, which promoted some seminal ideas, or HPSG work on individual languages, e.g. \citegen{Osenova2001}, \citegen{Venkova2006} and \citegen{OsenovaSimov2007} analyses of Bulgarian, among many others. While HPSG and LFG analyses are highly compatible and often easily convertible from one formalism to the other, LFG has some design features which make it stand out from other theories, especially dominant transformational ones. These are briefly outlined below in the light of the Slavic data presented in this chapter.
+
+
+\largerpage
+\subsection{Optionality of c-structure heads and no movement or other transformations}
+\label{sec:Slavic:3.1}
+
+The optionality of c-structure heads is a distinctive property of LFG (see \citealt{lovestrand-lowe2017}, \citealt{low:lov:20}), along with the absence of movement operations, which LFG shares with other non-transformational approaches to grammar. It emerged in the discussion of the phrase structure of Slavic languages (\sectref{sec:Slavic:2.4}) that finite/tensed verbs in Russian and in other members of the family appear in the I slot, and the VP may contain no V head. In the theory of LFG, such examples need no special treatment and the verb is not believed to have ``moved'' to the c-structure position in which it appears (cf.\ \citetv{chapters/Minimalism}).   Due to its finite morphology, a tensed verb is simply assumed to be of category I in LFG, whereas in transformational frameworks it needs to travel from V to I in order to receive or check these morphological features. 
+
+The possibility and well-formedness of this non-transformational configuration is predicted by the overarching principles of LFG. Firstly, Russian finite verbs are assigned to the phrase-structure category of I, so they appear in I rather than within the VP. Having two main/full/lexical verbs, one in I and the other in the VP, is ruled out because each verb would contribute a \textsc{pred} value to the f-structure, and LFG's Consistency Principle does not allow f-structures having a \textsc{pred} feature with two different semantic forms as its value (cf.\ the analysis of clitic doubling in \sectref{sec:Slavic:2.8}). Secondly, the theory rules out sentences with no verbs whatsoever, because then the main f-structure would be without a \textsc{pred}, violating the Coherence Principle (though compare the discussion of verbless clauses). Therefore, exactly one verb must appear and it must be housed in the c-structure position appropriate for its constituent structure category.\footnote{See \citet[Chapter~10]{King95}, who additionally provides an account of Russian questions without resorting to movement, as well as \citet[79, 104--106]{dalrymple01}, \citet[129--130]{DLM:LFG}; consult \citet{Rudin1985} for a transformational treatment of word order, complementation and \textit{wh}-constructions in Bulgarian.}
+
+\hspace*{-2.4pt}Compared to prevalent transformational approaches, the non-transformational LFG view is empirically more attractive and intuitive in handling typological diversity. A non-transformational theory avoids the biased assumption that languages with a word order and phrase structure very much unlike that of English, including the Slavic family, actually start out with a deep/underlying structure suspiciously reminiscent of that of English, but then undergo various transformations to achieve the desired ``scrambling'' effects (see \citealt[6ff.]{BresnanEtAl2016}{;} cf.\ \citealt{Rudin1985}, who assumes a  ``non-configurational base'' in her transformational treatment of Bulgarian word order).
+
+\largerpage
+Modern transformational accounts by now operate with highly abstract underlying structures which, although historically derived from English patterns, even in English itself require a lot of derivation to produce the surface form of the sentence. However, what remains English-influenced is the general idea that (a) constituent structure is the main level of syntactic representation where most grammatical phenomena can be modelled; (b) constituent structure positions are strictly associated with specific grammatical functions. LFG, by contrast, works much better for Slavic because its modularity gives more prominence to relational syntax (f-structure), case morphology, etc.\footnote{This was brought to my attention by an anonymous referee, who adds that it is not an accident that the notion of constituent structure did not really exist in the Slavic local linguistic traditions (e.g. in Russia, or in Prague School structuralism) before Chomsky: a kind of informal dependency grammar was traditionally used, and in the structuralist era, various dependency-based frameworks (Tesnière's approach or Mel'čuk's Meaning-Text Theory).} LFG can still capture constituent structure phenomena equally neatly, including ``binding'' phenomena, as exemplified by Russian \textit{svoj} `one's own', or VP-internal asymmetries in Russian (cf.\ \citealt[140--151]{Bailyn2011}).
+
+\subsection{Modularity (parallel architecture)}
+\label{sec:Slavic:3.2}
+
+It emerged in \sectref{sec:Slavic:2} that LFG's modular parallel architecture was well placed to deal with various grammatical phenomena in Slavic, not least the interdependence between flexible word order and the flow of information in discourse. Appealing to the interaction between c-, f- and i-structure, as well as semantics, proved more satisfactory than relying exclusively on the syntax, which would be inadequate on its own to capture all the relevant generalisations. The independence of grammatical and discourse functions from constituent structure, coupled with the constrained interface between the different modules, is designed to provide a good fit for languages which do not encode grammatical functions positionally, like the Slavic family.
+
+In the light of these insights, the assignment of nominative and accusative case in Polish and Russian discussed in \sectref{sec:Slavic:2} was tied to grammatical function, independently of the phrase-structure position of the argument bearing this function. However, in a theory like GB or Minimalism, functions are defined positionally, so ``structural'' case can only be dispensed in certain c-structure configurations, with the relevant constituents then rearranged to obtain the desired ``surface'' word order. Such theory-motivated complications do not arise in LFG. Another area where LFG's interfaced modularity made rather interesting empirical predictions was argument alternations, some of which might affect the correspondence between argument structure and syntactic functions, while others might additionally interfere with the semantic representation of events (\sectref{sec:Slavic:2.5}). 
+
+Moreover, as mentioned by an anonymous reviewer, LFG is different not only from transformational grammar but also from structuralist approaches which view language as a hierarchy of multiple levels (this view is also implicit in a lot of general/descriptive linguistic work). In LFG, the levels are parallel, which allows for a much more natural view of the interaction between them.
+
+\subsection{Exocentric S}
+\label{sec:Slavic:3.3}
+
+Finally, using the exocentric S node (or equivalents), essentially a string which does not comply with X-bar schemata, also proved expedient in capturing the flexibility of Slavic syntax, similarly to the way it has ensured improved description of other non-configurational languages (see the rest of this volume, as well as \citealt[112--116]{BresnanEtAl2016}). It was mentioned in \sectref{sec:Slavic:2.4} that there were actually several competing but underlyingly similar proposals -- either S, a flat VP or a flat IP have been proposed for Slavic languages, including Russian, Bulgarian and Polish. LFG admits all of those as it does not constrain the rules of syntactic structure by demanding strict binary branching or X-bar theoretic templates at any cost (though see \citealt[Chapter~6]{BresnanEtAl2016}, \citealt{lovestrand-lowe2017}). Whichever of those solutions a researcher adopts will bring the desirable consequence of more accurate modelling -- allowing the requisite surface freedom of constituent arrangement, without scrambling transformations from deep structures which may be empirically hard to justify.
+
+\section{Conclusion}
+\label{sec:Slavic:4}
+
+It has been my aim throughout this chapter to highlight the contribution of LFG to understanding and describing Slavic languages in a theoretically illuminating way, at the same time pointing out how Slavic material has in turn contributed to adjusting and updating the formal apparatus of LFG, for instance augmenting the sets of agreement attributes. The chapter has demonstrated that the typological pliability of LFG is well suited to Slavic data and enhances our understanding of it, especially the interplay between ``free'' word order and information structure, agreement, case assignment and negation phenomena, alternations in the argument structure of verbs or pro-drop and verbless clauses, among other processes. On the other hand, Slavic data has posed some challenges to the design and principles of LFG, notably the existence of genuinely subjectless sentences, which might call for revising or abandoning the Subject Condition. Many of the debates continue and are likely to shed more light on the actual linguistic material as well as the best theoretical tools to explore it with. Needless to say, a great deal more remains to be done in order to attain fuller coverage of Slavic grammar.
+
+\section*{Acknowledgements}
+
+For words of encouragement, help and feedback on this chapter, I would like to thank Mary Dalrymple, Jan Fellerer, Steven Kaye, Mira Kovatcheva, Catherine Mary MacRobert, Adam Przepi{\'o}rkowski, Andrew Spencer, Christo Stamenov, Tzvetomira Venkova, as well as three anonymous reviewers.
+
+\sloppy\printbibliography[heading=subbibliography,notkeyword=this]
+\end{document} 

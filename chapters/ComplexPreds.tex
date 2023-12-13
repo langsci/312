@@ -1,0 +1,1528 @@
+\documentclass[output=paper,hidelinks]{langscibook}
+\ChapterDOI{10.5281/zenodo.10185946}
+\title{Complex predicates}
+\author{Avery D. Andrews\affiliation{The Australian National University}}
+\abstract{This chapter surveys LFG work on a somewhat diverse   collection of constructions often called complex predicate   constructions, which can be broadly characterized by saying that the   number of superficially apparent predicates is arguably different   from that of actual predicates, either because two apparent   predicates can be argued to have combined into one, or one   apparent predicate with an affix is actually two predicates. Some of   these constructions are also called Reanalysis, Restructuring,   Clause Union or Light Verb Constructions, others are often called   Serial Verb Constructions. Here we discuss the main analyses of   these that have appeared in LFG, giving an overview of the sorts of   criteria and analyses that have appeared in the LFG literature.}
+
+\IfFileExists{../localcommands.tex}{
+   \addbibresource{../localbibliography.bib}
+   \addbibresource{thisvolume.bib}
+   \input{../localpackages}
+   \input{../localcommands}
+   \input{../localhyphenation}
+   \togglepaper[8]%%chapternumber
+}{}
+\begin{document}
+\maketitle
+\label{chap:ComplexPreds}
+
+\section{Introduction}
+The term \textsc{complex predicate} has been widely and rather loosely applied to a
+variety of constructions where for some reason it appears that two predicates that might
+be regarded as independent are behaving as one.  This happens in multiple ways,
+with the result that the term has been applied to constructions which are perhaps
+not very closely related.
+The major cases appear to be:
+\ea\label{form}
+\begin{xlist}
+\ex\label{ex:ComplexPreds:1a} Two apparent predicates which appear to be syntactically and morphologically
+autonomous, but are nonetheless closely integrated semantically.  Such constructions were called
+`composite predicates' in the non-LFG analysis of \citet{Cattell1984}, but `complex predicates'
+in the LFG analyses of \citet{Ishikawa1985}
+and \citet{Matsumoto1996}. One component, the syntactically higher one, is a verb, often called
+a `Light Verb'.  The other can be of various categories; Cattell studied verb-noun complex predicates in
+English, Ishikawa investigated a few verb-verb complex predicates in Japanese, and Matsumoto investigated both types of complex predicates in Japanese. 
+\ex Two or more apparent predicates that are integrated semantically, and syntactically
+to a greater degree than in (\ref{ex:ComplexPreds:1a}) or (\ref{ex:ComplexPreds:1c}), but still morphologically distinct, in particular,
+the light verb is still a distinct stem rather than an affix.  Examples include Noun+Verb
+combinations in Hindi \citep{MohananT1994}, and combinations of noun and other hard-to-categorize
+items with verbs in Jaminjung \citep{Schulze-Berndt2000}.
+\ex\label{ex:ComplexPreds:1c}
+Items that appear to be distinct morphological and syntactic words, but show deeper
+signs of integration, such as sharing a single
+argument structure.  This is often called Restructuring, Reanalysis, or Clause Union,
+and is exemplified by a
+variety of constructions including especially causatives in Romance (\citealt{alsina1996the-role,Alsina1997,AndrewsManning1999,Andrews2018shs,Manning1992,Manning1996rcp}), and also Urdu (\citealt{Butt1995,Butt1997,Lowe2015}).
+\ex Two or more items that are integrated morphologically (for example, one is
+a stem, the other like an affix), but have a considerable degree of semantic
+and syntactic autonomy (for example, causatives in Japanese \citep{Ishikawa1985} and
+Bantu \citep{Alsina1997}).
+\ex Serial Verb Constructions (SVCs), where two or more Vs or VPs occur together with some
+kind of sharing or combination of argument structure (for example, Tariana as described by
+\citealt{Aikhenvald2003} and analysed in LFG
+by \citealt{AndrewsManning1999}, Dagaare and Akan as described and analysed by \citealt{Bodomo1996,Bodomo1997}, and Barayin as described and analysed by \citealt{Lovestrand2018}).
+\end{xlist}
+\z
+
+These divisions cross-classify extensively with the semantic/conceptual categories
+expressed by the constructions:
+\ea\label{meaning}
+\begin{xlist}
+\ex Desiderative, modal, potential and other concepts, shading in an
+unclear manner into auxiliaries expressing tense, aspect and mood (in the LFG literature, discussed in connection with\
+Restructuring and SVCs).
+\ex Causative, applicative and other valence change (restructuring, SVCs and morphology).
+\ex Associated motion (restructuring, SVCs, and morphology).\footnote
+ {A category that might be unfamiliar to some readers, designating patterns of
+  motion associated with an activity, first identified and named by \citet{Koch1984}.}
+\ex Alternatives to a mono-lexical predicate (SVCs and light verb constructions).
+\end{xlist}
+\z
+
+In the following sections, I will consider in turn the construction types
+of (\ref{form}), with some discussion of the semantic categories they express, and 
+especially the criteria that have been applied to distinguish
+the supposed complex predicate constructions from similar ones, such as control
+constructions.
+
+\section{Composite predicates}
+This term was used in the non-LFG analysis of \citet{Cattell1984} to refer to combinations such
+as \emph{take a walk} or \emph{have a look}, which appear to involve both a main verb and an
+apparent full NP object, these semantically interpreted together as at least roughly equivalent
+to a single lexical verb, in many cases.  I am not aware of any attempt to reanalyse Catell's
+English data in LFG, but similar expressions in Japanese were treated at length
+\citep{Matsumoto1996}, who however called them `complex predicates'.  He also looked at a variety
+of verb+verb constructions, such as benefactive \emph{morau}, which had been early called `complex
+predicates' by \citet{Ishikawa1985}.
+
+Ishikawa and Matsumoto developed similar analyses, the latter considerably more
+extensive and detailed.  In both cases, the constructions were treated as {\XCOMP} constructions, with
+functional control of a {\SUBJ}, motivated by the possiblities for reflexivization
+for \emph{zibun}, along with a mechanism for allowing arguments to be expressed either
+in the higher or the lower structure.  \citet[99--100]{Ishikawa1985} proposed a principle
+of `Object Function Sharing' whereby the equation \mbox{(\UP\OBJ)=(\UP\XCOMP~\OBJ)} can
+be added to lexical entries under various circumstances.  Matsumoto observed that the
+apparent possibility of expressing arguments at either level applied to adjuncts
+as well as arguments, and was also found with a wide range of {\XCOMP} structures,
+indeed, all of those in Japanese, and so proposed that the nonconfigurational c-structure rule
+for S could introduce GF's preceded by any number of {\XCOMP}s,
+constituting a use of functional uncertainty \citep[87]{Matsumoto1996}:
+\ea\label{japansentps}
+\phraserule{S}{\rulenode{NP$^*$\\(\UP\XCOMP*~\GF)=\DOWN}
+  \rulenode{\{V,A\}\\\UP=\DOWN}}
+\z
+The predicates of these {\XCOMP}s could be verbs, adjectives or verbal nouns, but are all
+analysed as having verb-like {\PRED}-features taking sentential grammatical relations.
+But Matsumoto used the resources of LFG to assure that when an argument was expressed
+in an NP, it was marked with the nominal dependent marker \emph{no} rather than
+the sentential object marker \emph{o}.
+
+For example, a sample structure is:
+
+\ea Japanese  \citep[88]{Matsumoto1996}\\
+\ea
+{\begin{forest}
+  [S,baseline,
+    [{NP\\(\UP\SUBJ)=\DOWN} [{karera wa\\they}, roof]]
+    [{PP\\(\UP\XCOMP*~\OBLROLE{goal})=\DOWN} [{Tookyoo e\\to Tokyo}, roof]]
+    [{NP\\(\UP\XCOMP)=\DOWN} [{NP\\(\UP\OBJ)=\DOWN} [{busshi no\\goods}, roof]]
+                              [{NP\\\UP=\DOWN} [{yusuu o\\transportation}]]]
+    [{\UP=\DOWN\\V} [{hajimeta\\began}]]]
+\end{forest}}
+\ex
+\gll karera wa Tookyoo e busshi no yusuu o hajimeta\\
+they {\TOP} Tokyo to goods {\GEN} transportation {\ACC} begin.\PST\\
+\glt `They began the transportation of goods to Tokyo.'\\
+\z
+\z
+The subject is shared between the main clause and the {\XCOMP} by means
+of functional control, while the directional argument is attributed to the
+complement clause by means of the functional uncertainty expression, and the
+object is expressed in the complement clause (with different case-marking conventions
+in both places, as formalized in LFG by Matsumoto).  So the resulting
+f-structure is:
+
+\eabox{
+\avm[style=fstr]{
+[ pred & `begin\arglist{xcomp}subj'\\
+   subj & \rnode{a}{[pred & `they']}\\ 
+   xcomp & [ pred & `transportation\arglist{subj,obj,\OBLROLE{goal}}'\\
+              subj & \rnode{b}{\strut}\\
+              obj & [ pred & `goods']\\
+              obl$_{go}$ & [ pred & `to\arglist{obj}'\\
+                              case & goal\\
+                              obj & [ pred & `Tokyo']
+                           ]
+           ]
+]
+}
+\CURVE[5.5]{-2pt}{0}{a}{0pt}{0}{b}
+}
+Variants of this work for a wide range of structures, including the constructions with
+NP+\emph{suru} (in which the nominal is marked with the accusative marker \emph{o}; there
+are also incorporational structures without \emph{o}, to be discussed later), in which the
+{\XCOMP}-value presumably supplies the meaning, with \emph{suru}
+being semantically empty, merely transmitting it up to the top sentence level:
+\ea Japanese \citep[74]{Matsumoto1996}\\
+\gll karera wa soko e sono busshi no yusoo o suru\\
+they {\TOP} there \gloss{GOAL} the goods {\GEN} transport {\ACC} do\\
+\glt `They will transport the goods there.'
+\z
+
+On this analysis, these structures do not involve any special combination of predicates,
+so I think it is reasonable to call them `composite predicates' on the basis of the
+resemblance that some of them have to the structures investigated by Cattell.  But they
+do have one feature that relates them to the clearer cases of complex predicates,
+which is the sharing of nonsubject arguments.  The word-order characteristics of
+Japanese (verb final, variable ordering of arguments and adjuncts) allow a reasonably
+clean treatment of this with the phrase-structure stipulation of (\ref{japansentps}),
+which is also very similar to LFG proposals for the intricacies of West Germanic infinitival
+complements (\cite{zaenen-kaplan1995}, \cite{KaplanZaenen2003}), which are often treated
+as a kind of complex predicate in the Minimalist literature (for example, \cite{Wurmbrand2017},
+where complex/restructuring predicates are analysed in terms of certain verbal projections
+being absent), but not in LFG, where sharing of grammatical attributes is normally
+required for the term `complex predicate' to be used.
+
+\section{Light verb + coverb structures}
+The next structures we consider resemble composite predicates in a number
+of ways, but the apparent complement of the light verb shows signs of syntactic
+or morphological reduction.  Most of the work in LFG has been on Hindi, starting with
+\citet{MohananT1994}, followed by \citet{MohananT1997}.  Occasional later discussions, such
+as \citet[34--37]{AndrewsManning1999}, consider Wagiman rather than Hindi.
+
+Mohanan considered examples such as:
+\ea Hindi\\
+\gll Mohan ko kahaanii yaad aayii\\
+Mohan {\DAT} story.{\NOM} memory.{\NOM} come.\PRF\\
+\glt `Mohan remembered the story.'\\
+\z
+Here the combination \emph{yaad aayii} functions equivalently to the English inflected
+verb `remembered'.  She established a number of facts about these constructions which
+distinguish them from the composite predicates:
+\ea
+\ea \label{ex:ComplexPreds:8a}The nominal component (here \emph{yaad}) is not head of an NP (cannot be modified by
+adjectives or coordinated), but an N  component
+of a structure along the lines of [N \BAR{V}]\textsubscript{\BAR{V}} (the structures
+are recursive, and contain various other things beyond the V and the N).
+\ex The V component has some mobility (topicalization but not scrambling); the N does not.
+\ex The nominal and the verb are jointly responsible for licensing the arguments.
+\ex Nevertheless, in the most prevalent subtype, the verb can agree with the nominal,
+so it would appear
+to bear a grammatical function in f-structure, under traditional assumptions (proposals for
+a morphological structure might change this).
+\ex The verbs which participate in this construction also have independent verbal functions.
+\z\z
+Concomitant with (\ref{ex:ComplexPreds:8a}), there is no reason to believe that there is any expression of arguments
+by any nominal strategy: the arguments are all expressed as if they were arguments of a simple
+lexical verb.
+
+Mohanan reconciles these somewhat contradictory phenomena by making use of the fact that LFG
+deploys multiple levels of representation, including originally c-structure and f-structure,
+but later extended to include some kind of argument structure (ARG~STR) and semantic structure
+(SEM~STR) (the details of what is proposed for these and other additional levels are subject to considerable
+variation in the literature). In her analysis, ARG~STR intervenes between f-structure and SEM~STR,
+and permits a semantically complex combination to function in certain respects as
+a single-level, monoclausal structure.
+
+The SEM~STR of the light verb and the noun fit together in a standard predicate-argument combination, where,
+for example, in the following example meaning `remember', the upper predicate is a motion verb
+interpreted metaphorically, while the lower means `memory', the Destination of the upper predicate
+being identified with the Experiencer of the lower one, which also has an `Experienced'
+argument:
+
+\eabox{
+\avm[style=fstr]{
+[rel & \textit{come}\\
+  dest  & \rnode{a}{\footnotesize{[~]}}\smallskip\\
+  come-er & [rel & \textit{memory}\\
+              exp-er & \rnode{b}{\strut}\\
+              exp-ed & \footnotesize{[~]}
+             ]] }
+\CURVE[2]{-2pt}{0}{b}{0pt}{0}{a}
+}
+Mohanan argues from reflexivization phenomena that these form a `monoclausal' pool (Mohanan
+\citeyear[281]{MohananT1994}, \citeyear[443--444]{MohananT1997}),
+but there is a problem with this.
+
+She shows that the complex predicates divide in two types.  In the majority type, the light
+verb agrees in gender with the nominal if the subject is ergative, exactly as would happen
+if the nominal was an ordinary direct object.  Furthermore, a sole argument of this nominal
+must be in an oblique case, never nominative (lacking any overt case marking) or accusative.  In the other type, the
+verb cannot agree with the nominal, and any sole argument of the nominal is nominative/accusative
+like an ordinary direct object \citep[457--469]{MohananT1997}.  This indicates that in the first
+type, there are two levels of f-structure, and the lower level has an effect on the marking
+of the arguments and perhaps even their grammatical function.  It is not clear to me how
+to integrate the agreement phenomena with the theme of monoclausality (but it is not incompatible with various forms
+of argument-sharing).
+
+In summary, the first type is similar to the composite predicates as analysed by Matsumoto, but
+with an apparent difference in reflexivization behavior, while the second seems more like
+the ones investigated not so much by LFG workers, but more by typologically oriented ones such as
+\citet{Schulze-Berndt2000} and many others, where there does not appear to be evidence that
+the non-verbal component (often called a coverb) bears any grammatical function.  Neither
+of these types appear to have attracted much attention in the LFG literature subsequent to the
+1990s, a situation that should perhaps be remedied.
+
+\section{``Restructuring'' complex predicates}
+These are the constructions that seem to have attracted the most discussion since the 1990s,
+but without the emergence of a full consensus on how they should be treated.  From an
+LFG perspective, they have the general appearance of control structures, with
+a subordinate structure that has more apparent syntactic autonomy than the previous type,
+but the main and subordinate structures also show evidence of being compacted into a single f-structure
+(monoclausality), with some evidence against an {\XCOMP} analysis.
+Studies of these structures appear to have begun
+in the late eighties and early nineties, early full publications being
+\citet{Butt1993,Butt1995} investigating Urdu, and \citet{alsina1996the-role}
+investigating Catalan.\footnote
+ {This was a reworking of the Romance language portion of \citet{Alsina:PhD}.}
+These closely related approaches were then presented in shorter form in \citet{Butt1997}
+and \citet{Alsina1997}.
+Also, \citet{Manning1992} developed arguments
+about the constituent structures of Spanish, while
+\citet{AndrewsManning1993,AndrewsManning1999} made
+proposals about how to handle these constructions in a substantially modified version of LFG.
+Somewhat later, people began working on similar constructions in Mainland Scandinavian
+languages; a recent summary is provided by \citet{Lodrup2014}, citing especially earlier LFG
+work by \citet{Nino1997} and \citet{Sells2004}.  This work raises a considerable number
+of interesting questions at the descriptive level, which however do not seem to have
+attracted a large amount of theoretical attention.
+
+The work on these constructions is distinguished from the earlier work of Ishikawa and Matsumoto
+on Japanese by the existence of evidence for monoclausality, indicating that in spite of having
+the superficial appearance of {\XCOMP} structures, they have a single level of f-structure,
+constituting the LFG version of the `Clause Union'
+of \citet{AiPe83} or the `Restructuring' of \citet{Rizzi1978}.  This however
+creates a tension with the evidence for hierarchical semantic
+interpretations matching the c-structure, for which various solutions have been proposed.
+The Urdu-Hindi\footnote
+ {Urdu put first in this combination, since the actual work is largely directed
+ at Urdu, but with high applicability and close relationship to work on Hindi.}
+and Romance streams
+contribute somewhat different elements to the picture; we begin with Urdu-Hindi, then look at
+Romance, and finally make some briefer observations about Mainland Scandinavian. We conclude
+the section with some theoretical discussion.
+
+\subsection{Urdu-Hindi}
+\citet{Butt1993,Butt1995,Butt1997} considered
+two kinds of complex predicate structures, the `permissive', which contrasts in
+interesting ways with an `instructive' construction that appears to be an ordinary
+{\XCOMP} structure, and `aspectual' complex predicates.  The former have assumed
+a prominent position in subsequent discussion, whereas the latter so far appear to
+have been of more limited interest.
+
+\subsubsection{Permissives}
+\largerpage
+Butt's treatment of permissive constructions has made fundamental contributions to the
+subsequent discussion in at least two ways.  First, she showed that there was a distinction
+between `complex predicates' (the permissive) and `complement structures' (the
+instructive), each appearing with the same two different constituent structures, one where the subordinate
+verb is head of its own VP, another where it forms a complex verb with a light verb.
+Since both kinds of structures have been argued for in Romance, it is very significant
+that they can both be found in a single language.  Second, she applied a number
+of tests originally developed by \citet{MohananT1994} to show that the permissives
+were monoclausal.  These tests involved phenomena of agreement (with objects),
+control, and anaphora.
+
+\largerpage
+The tests involving anaphora are especially important because they refute
+the possibility of analysing the permissive as an {\XCOMP} in the manner
+of Ishikawa or Matsumoto.  There are two relevant phenomena, bound anaphora
+with \emph{apnaa}, and obviation with \emph{uskaa}, as illustrated by this selection
+of examples from \citet{AndrewsManning1999}:
+
+\ea\label{urduanaph}Urdu
+\ea\label{urduanapha}
+\gll Anjum$_i$ ne       Saddaf$_j$ ko apnaa$_{i/*j}$  xat likʰ-ne di-yaa\\
+  Anjum$_i$ {\ERG} Saddaf$_j$ {\DAT} self's$_{i/*j}$ letter.{\M.\NOM} write-{\INF}  give-\PRF.\M.\SG\\
+\glt{`Anjum$_i$ let Saddaf$_j$ write her$_{i/*j}$ letter.'}
+\ex\label{urduanaphb}
+\gll Anjum$_i$ ne        Saddaf$_j$ ko us-kaa$_{*i/j}$ xat              likʰ-ne di-yaa\\
+  Anjum$_i$ {\ERG} Saddaf$_j$ {\DAT} her$_{*i/j}$ letter.{\M.\NOM} write-{\INF} give--\PRF.\M.\SG\\
+\glt{`Anjum$_i$ let Saddaf$_j$ write her$_{*i/j}$ letter.'}
+\ex\label{urduanaphc}
+\gll Anjum$_i$ ne        Saddaf$_j$ ko   apnaa$_{i/j}$ xat              likʰ-ne  ko     kah-aa\\
+ Anjum$_i$ {\ERG} Saddaf$_j$ {\DAT} self's$_{i/j}$  letter.{\M.\NOM} write-{\INF} {\ACC} say--\PRF.\M.\SG\\
+\glt{`Anjum$_i$ told Saddaf$_j$ to write her$_{i/j}$ letter.'}
+\ex\label{urduanaphd}
+\gll Anjum$_i$ ne      Saddaf$_j$ ko     us-kaa$_{i/*j}$ xat                 likʰ-ne ko     kah-aa\\
+Anjum$_i$ {\ERG} Saddaf$_j$ {\DAT} her$_{i/*j}$ letter.{\M.\NOM} write-{\INF}   {\ACC} say-\PRF.\M.\SG\\
+\glt{`Anjum$_i$ told Saddaf$_j$ to write her$_{i/*j}$ letter.'}
+\z
+\z
+(\ref{urduanapha}) and (\ref{urduanaphb}) are permissives, and we see in (\ref{urduanapha}) that the bound pronominal \emph{apnaa} can be anteceded by the
+overt syntactic subject \emph{Anjum} but not the overt object functioning as the
+so-called `causee agent'\footnote
+ {The causee agent is the agent of the embedded verb in a causative/permissive construction.}
+\emph{Saddaf}.  But the facts are reversed in (\ref{urduanaphb}) with the free pronominal \emph{uskaa}. Here,
+coreference with the causee agent is good, with the overt subject bad.  In both cases,
+the facts are as they would be in a simple clause.
+See \citet{Butt2014} for an updated version of this and other arguments for monoclausality, which
+includes a discussion of the observation by \citet{Davison2013} that the coindexing in (\ref{urduanapha}) is an oversimplification
+of the facts: some speakers do accept coreference with either the overt subject or the causee agent.
+Butt explains this as a consequence of the fact that cross-linguistically, it is often possible
+for bound pronouns to accept a `logical subject' (highest-ranked argument of a predicate) as their
+antecedent, regardless of whether or not this is a syntactic subject.  Intra-speaker variation
+with respect to examples like (\ref{urduanapha}) is therefore not a critical problem.
+
+Another important property of the permissive is that it seems to have the same
+c-structure configurations as the instructive.  Either the embedded verb and
+its complements can appear as a VP, which can scramble as a unit to the front of the
+sentence, but not be interrupted, or, both verbs can appear as a complex verb
+with the nominal complements able to be scrambled, in which case the two verbs only move
+as a unit (Butt \citeyear[43--47]{Butt1995}, \citeyear[113--115]{Butt1997}). A selection
+of examples illustrating VP scrambling and non-interruptibility is  (\ref{ex:ComplexPreds:11}--\ref{ex:ComplexPreds:12}) below, from 
+\citet[23]{AndrewsManning1999}:
+
+\ea\label{ex:ComplexPreds:11}
+Urdu Instructive (Biclausal)
+\begin{xlist}
+\ex
+\gll Anjum ne \textbf{[ciṭṭʰii}  \textbf{likʰ-ne]} ko Saddaf ko kah-aa\\
+Anjum {\ERG}  letter({\NOM}) write-{\INF} {\ACC} Saddaf {\DAT} say-{\PRF.\M.\SG}\\
+\glt{`Anjum told Saddaf to write a letter.'}
+\ex
+\gll Anjum ne kah-aa Saddaf ko \textbf{[ciṭṭʰii} \textbf{likʰ-ne]} ko\\
+  Anjum {\ERG} say-{\PRF.\M.\SG} Saddaf {\DAT} letter.{\NOM} write-{\INF} {\ACC}\\
+\glt{`Anjum told Saddaf to write a letter.'}
+\ex
+*Anjum ne kah-aa \textbf{ciṭṭʰ ii} Saddaf ko \textbf{likʰ-ne} ko 
+\end{xlist}
+\z
+\ea \label{ex:ComplexPreds:12}
+Urdu Permissive (Monoclausal)
+\begin{xlist}
+\ex
+\gll Anjum ne \textbf{[ciṭṭʰii}  \textbf{likʰ-ne]} Saddaf ko d-ii\\
+  Anjum {\ERG} letter({\NOM}) write-{\INF} Saddaf {\DAT} give-{\PRF.F.SG}\\
+\glt{`Anjum let Saddaf write a letter.'}
+\ex
+\gll Anjum ne d-ii Saddaf ko \textbf{[ciṭṭʰii} \textbf{likʰ-ne]}\\
+  Anjum {\ERG} give-{\PRF.\F.\SG} Saddaf {\DAT} letter({\NOM}) write-{\INF}\\
+\glt{`Anjum let Saddaf write a letter.'}
+\ex *Anjum ne d-ii \textbf{ciṭṭʰii} Saddaf ko \textbf{likʰ-ne}
+\end{xlist}
+\z\clearpage
+The (b) examples are somewhat degraded for pragmatic reasons,\footnote
+ {P.c. from Miriam Butt to Christopher Manning, 1997.}
+while (c) are ungrammatical.
+
+But there are apparent exceptions to non-interruptibility, which arise exactly
+when the two Vs are adjacent, motivating a surface complex verb construction,
+similar to the N+V structures investigated by Mohanan:
+\ea\label{instrscramb}Urdu
+\begin{xlist}
+\ex Anjum ne Saddaf ko \textbf{likʰ-ne ko kah-aa} {ciṭṭʰ ii}.
+\ex Anjum ne \textbf{likʰ-ne ko kah-aa} Saddaf ko {ciṭṭʰ ii}.
+\end{xlist}
+\z
+\ea Urdu\\
+\begin{xlist}
+\ex Anjum ne Saddaf ko \textbf{likʰ-ne d-ii} {ciṭṭʰii}.
+\ex Anjum ne \textbf{likʰ-ne d-ii} Saddaf ko {ciṭṭʰii}.
+\end{xlist}
+\z
+This is significant for at least two reasons.  First, as emphasized by Butt, it corroborates
+the thesis of LFG that there are (at least) two distinct levels, c-structure and f-structure,
+with a substantial degree of independence, since each of the two c-structures can occur
+with both of the f-structures.  Second, both of these c-structures have been proposed
+for the complex predicates of Romance, with, for example. \citet{Manning1992} arguing
+for a VP complement of complex predicates in Spanish, similarly to
+\citet{alsina1996the-role} for Chiche\^wa, while \citet{Kayne1975} and subsequent work
+arguing for a complex verb treatment of causatives in French.
+Note that the examples in (\ref{instrscramb}) require that it be possible to annotate
+an NP in the matrix with {\XCOMP~\OBJ} \citep[117, ex (19a)]{Butt1997},
+as also required for the analyses of Japanese by Ishikawa and Matsumoto.
+
+\subsubsection{Aspectuals}
+The permissive complex predicates appear to have the same semantic structure as
+many complement structures, for example \emph{let} or \emph{allow} in English, with
+different c- and f-structural packaging, but the semantics of the aspectual complex
+predicates is harder to explain.  They focus on properties of an action such
+as completion, initiation and volitionality, without giving an impression of taking
+the main verb as an argument (as is usually the case with the Romance complex predicates
+considered below).  Rather, Butt uses the general framework of
+\citet{jackendoff1990semantic} to endow them with a kind of enriched argument structure
+that combines with that of the main verb.
+
+Some examples are:
+\ea Urdu\\
+\ea\label{ex:ComplexPreds:completely}
+\gll Anjum ne ciṭṭi likʰ l-ii\\
+Anjum {\ERG} note.{\F.NOM} write take-{\PRF.\F.\SG}\\
+\glt{`Anjum wrote a note (completely).'}
+\citep[93]{Butt1995}
+\ex
+\gll vo ro paṛ-aa\\
+he.{\NOM} cry fall-{\PRF.\M.\SG}\\
+\glt{`He fell to weeping (involuntarily).'}
+\citep[109]{Butt1995}
+\ex
+\gll us ne ro ḍaal-aa\\
+he {\ERG} cry put-{\PRF.\M.\SG}\\
+\glt{`He wept heavily (on purpose).'}
+\citep[109]{Butt1995}
+\z\z 
+Butt shows that these pass the tests for monoclausality, but the only one that
+is really significant is the obligatory agreement with the object as illustrated
+in (\ref{ex:ComplexPreds:completely}),\footnote
+ {Although the agent is semantically feminine, it is also ergative, so the verb
+ cannot be agreeing with it.}
+since, if they were {\XCOMP}s, the complement and matrix subjects would
+be the same, so the anaphora and control tests would give the same outcomes.  She
+also shows that the c-structures are somewhat different: since the VP structure is
+unavailable, only the one with a complex verb is possible. 
+
+These constructions seem rather different from the intransitive complex predicates
+in Romance, which from a semantic point of view appear to be syntactic alternatives
+to ordinary {\XCOMP}s.  Perhaps for this reason, there seems to have been relatively
+little further work on them, but see \citet{Butt2010}.
+
+\subsection{Romance}
+LFG treatments of complex predicates in Romance languages were
+developed at about the same time and in close communication with the
+work on Hindi and Urdu, largely by Alex Alsina and Christopher
+Manning, as presented in
+\citet{Alsina:PhD,alsina1996the-role,Alsina1997}, 
+\citet{Manning1992,Manning1996rcp}, and \citet{AndrewsManning1993,AndrewsManning1999},
+building on earlier work mostly in the frameworks of Relational
+Grammar and Government-Binding Theory.
+
+Although there are many similarities between the Urdu-Hindi permissive complex predicates
+and the complex predicates of Romance languages, there are significant differences in some of the more empirically
+striking phenomena.  In the Urdu-Hindi permissives, there is clear evidence for
+two different constituent structures, one a complex verb, the other a VP complement,
+both also used by the instructive, which is clearly a control structure, bearing the {\XCOMP}
+GF in f-structure.  In Romance, however, although there are also {\XCOMP}s
+that are morphologically similar to the complex predicates, they have different word-order
+properties, suggesting a different c-structure.  Many verbs can furthermore appear in
+either construction, with different verbs having different preferences.
+
+The word-order correlations of {\XCOMP} vs complex predicate constructions in Romance
+do not seem to have been much discussed in the LFG literature, but are considered
+in \citet[982]{Sheehan2016}, who illustrates both constructions being possible for perception
+verbs in French, where the {\XCOMP} structure, Exceptional Case Marking (ECM) in the Minimalist Framework, is
+preferred:
+\ea French
+\begin{xlist}
+\ex
+\gll Jean voir Marie manger le g\^ateau.\\
+Jean sees Marie eat.{\INF} the cake\\
+\glt{`Jean sees Marie eating the cake.' (\citet[982, ex. 8b]{Sheehan2016}, ECM/{\XCOMP})}
+\ex
+\gll Jean voit manger le g\^ateau \`a Marie.\\
+Jean sees eat the cake to Mary\\
+\glt{`John sees Mary eating the cake.' (ex 15a, p983; \citet[983, ex. 15a]{Sheehan2016}, Restructuring/complex predicate)}
+\end{xlist}
+\z
+The literature agrees that none of the evidence for being a complex predicate construction
+can appear with the ECM/control structure word order.
+
+Superficially, for the complex predicates, a complex verb structure 
+similar to that of Hindi seems plausible, but, as we will
+discuss, the LFG literature provides a number of arguments against this. Another
+difference is that Romance languages have extensive evidence for different orderings
+of the light verbs producing different interpretations, as well as a considerably richer
+system of morphological marking of the semantically subordinate verbs by the light verbs.
+These phenomena create difficulties for a proposal where the f-structure is flat.
+
+The constructions furthermore have a more diverse semantic range that those in
+Urdu-Hindi, comprising
+\ea
+\begin{xlist}
+\ex Causative, including extensions including permission, ordering and persuasion
+\ex `Modal' (ability, possibility, desire) 
+\ex Aspectual (starting and finishing, as well as Perfect and Progressive)
+\ex Associated Motion
+\end{xlist}
+\z
+Another difference is that while in Urdu-Hindi the list of light verbs appears to be
+limited and closed, in some of the Romance languages it seems to be larger and hazier;
+for example \citet[226--228]{Sola2002} lists 31 predicates in Catalan
+excluding the traditional
+aspectual auxiliaries, which have clitic climbing for arguments, and he indicates that
+there are more.\footnote
+ {Note also the relevant observation of \citet[185]{Garcia2009}, working in a strongly
+  functionalist approach, that constructions that normally reject indications of
+  being a complex predicate, such as clitic climbing (see below) may accept it under certain pragmatic
+  conditions.}
+
+The most widely used argument for clause union is
+the phenomenon of
+`clitic climbing', whereby a preverbal clitic appears in front of the light verb rather
+than next to the verb it is an argument of:
+
+\ea Spanish\\
+\gll Lo quiero ver.\\
+it want.{1.\SG} see.{\INF}\\
+\glt{`I want to see it.'}
+\z
+In principle, this argument can be circumvented by allowing the clitics to carry annotations
+such as `(\UP\XCOMP*~\OBJ)=\DOWN', but there are some issues with this, such as the
+fact noted originally by \citet[120]{Rizzi1978} that in Italian, the capacity for clitics to climb
+disappears when the putative {\XCOMP} is preposed by \emph{wh}-movement (and in various other
+situations):
+\ea Italian
+\begin{xlist}
+\ex
+\gll questi argomenti, dei quali ti verr\`o a parlare {al pi\`u presto}, $\dots$\\
+these arguments of.the which you.{\DAT} come.{\FUT.1\SG} to talk.{\INF} {as soon as possible}\\
+\glt{`these arguments, about which I will begin to talk as soon as possible, $\ldots$'} 
+\ex
+\gll *questi argomenti, a parlare dei quali ti verr\`o {a pi\`u presto} $\ldots$'\\
+these arguments, to talk.{\INF} of.the which you.{\DAT} come.{\FUT.1\SG} {as soon as possible}\\
+\glt{`these arguments, about which I will begin to talk as soon as possible, $\ldots$'}
+\end{xlist}
+\z
+In LFG, this would minimally indicate that there were two possible annotations for these
+apparent VPs, one allowing (pied-piped) \emph{wh}-movement, the other not. An important
+characteristic of clitic climbing, discussed by \citet{Sheehan2016} and also by
+\citet{AndrewsManning1993} is that it is not in general obligatory, but optional, subject
+to complex preferences and conditions, discussed extensively from a functional perspective
+by \citet{Garcia2009}.
+
+Various further arguments from the literature are reviewed from an LFG perspective in
+\citet[47--59]{AndrewsManning1999} of which we will specifically mention one for
+Catalan from \citet[217]{alsina1996the-role}, which shows that the apparent complement in a restructuring
+construction does not have a subject, unlike an {\XCOMP}.  The argument is that causee agents can't
+host bare floated quantifiers, although non-overt equi-infinitive subjects can:
+\ea Catalan  (Alsina, p.c.)
+\begin{xlist}
+\ex
+\gll Els metges$_i$ ens$_j$ deixen beure una cervesa cadascun$_{i/*j}$.\\
+the doctors us let drink a beer each\\
+\glt{`Each of the doctors let us drink a beer.'\\
+*`The doctors let each of us drink a beer.'}
+\ex
+\gll Els metges$_i$ ens$_j$ han conven\c cut beure una cervesa cadascun$_{i/*j}$.\\
+the doctors us have convinced drink a beer each \\
+\glt{`Each of the doctors has convinced us to drink a beer.'\\
+*`The doctors have convinced each of us to drink a beer.'}
+\end{xlist}
+\z
+This is the same kind of argument for clause union as the ones from anaphora for
+Hindi and Urdu by Mohanan and Butt.
+
+The arguments for clause-union in Romance are similar to those from Urdu-Hindi, but
+the situation with c-structure is somewhat less clear, in that there
+is nothing comparable to Butt's argument that both a VP and a complex
+V structure are available.  Rather, both have been argued for, complex
+Vs mostly in HPSG \citep{AbeilleGodard1994,AbeilleGodard1996} and VP
+complements in LFG.  \citet{Manning1992,Manning1996rcp} presenting
+arguments drawing heavily on previous work by Kayne and others on
+French, observes that clitics can climb out of coordinated VPs each
+with their own causee agent in Spanish as well as French:
+\ea
+\begin{xlist}
+\ex French\\
+\gll Marie le ferait lire \`a Jean et dechirer \`a Paul.\\
+Marie it will.make read.{\INF} to Jean and {tear up}.{\INF} to Paul\\
+\glt{`Marie will make Jean read it and Paul tear it up.'}
+\ex Spanish\\
+\gll Carlos me estaba tratando de topar y de empujar contra Mar\'\i a.\\
+Carlos me was trying of bump.{\INF} and of push.{\INF} against Maria\\
+\glt{`Carlos was trying to bump into me and push me against Maria.'}
+\end{xlist}
+\z
+He counters proposals to use coordination reduction to explain this away.
+
+\citet[226]{Alsina1997} gives an argument from coordination and provides additional
+ones from nominalization and from the fact that various elements, such as sentence
+adverbials set off by comma-pauses, can be inserted between the main and light
+verbs:
+\ea Catalan
+\begin{xlist}
+\ex
+\gll La Maria ha fet {de deb\'o} riure el nen.\\
+the Mary has made truly laugh.{\INF} the boy\\
+\glt{`Mary has truly made the boy laugh.'}
+\ex
+\gll La Maria ha fet, em penso,  riure el nen.\\
+the Mary has made I think laugh.{\INF} the boy\\
+\glt{`Mary has made the boy laugh, I think.'}
+\end{xlist}
+\z
+Although it is often possible for certain kinds of particles to be inserted into complex
+verb structures,\footnote{As discussed for Tariana by \citet{Aikhenvald2003} and Jaminjung
+ by \citet{Schulze-Berndt2000}.}
+this seems to be more than is generally allowed, vindicating the argument.
+
+Although the LFG literature does not have much to say about the c-structure
+of the complex predicates, I suggest that it is reasonable to propose that they are
+expansions of an `inner VP', or \BAR{V}, to V and VP, as in (\ref{ex:ComplexPreds:23a}), whereas the {\XCOMP}/control/ECM
+constructions are expansions of VP, as in (\ref{ex:ComplexPreds:23b}):
+\ea
+\ea\label{ex:ComplexPreds:23a} \begin{forest}
+    [VP,baseline, [\BAR{V} [V] [(Adv)] [VP]]]
+  \end{forest}
+\ex\label{ex:ComplexPreds:23b}\begin{forest}
+    [VP,baseline, [\BAR{V} [V]] [NP] [VP]]
+  \end{forest}
+\z\z
+The nature of the c-structure difference remains to be fully elucidated.
+
+Although the nature of the constituent structure of Romance complex predicates is not
+entirely clear, something that is clear is the effect of the c-structure on semantic interpretation.
+\citet[238]{Alsina1997} provides examples that show the same light verbs appearing
+in different arrangements in Catalan clause union constructions, and \citet[239]{Sola2002}
+provides a few more:
+\ea\label{layered} Catalan
+\begin{xlist}
+\ex
+\gll Li acabo de fer llegir la carta.\\
+him.{\DAT} finish.{1\SG} of make.{\INF} read.{\INF} the letter\\
+\glt{`I finish making him read the letter.' \citep[238]{Alsina1997}} 
+\ex
+\gll Li faig acabar de llegir la carta.\\
+him.{\DAT} make.{1\SG} finish.{\INF} of read.{\INF} the letter\\
+\glt{`I make him finish reading the letter.' \citep[238]{Alsina1997}} 
+\ex
+\gll Les pot aver vistes.\\
+them.{\F.\PL} can.{\SG} have.{\INF} seen.{\PST.\PTCP.\F.\PL}\\
+\glt{`He/She can have seen them.' \citep[239]{Sola2002}} 
+\ex
+\gll Les ha pogudes veure.\\
+them.{\F.\PL} have.{3\SG} {been able}.{\PST.\PTCP.\F.\PL} see.{\INF}\\
+\glt{`He/she has been able to see them.' \citep[239]{Sola2002}}
+\end{xlist}
+\z
+In Urdu, on the other hand, multiple light verbs occur in an order consistent with
+semantic interpretation, assuming head-final ordering, but no cases of multiple
+possible orderings have been produced.  The issue of how to control the semantic
+interpretation in Romance languages is therefore more acute, and there is disagreement
+about how to do it, as we discuss below.
+
+A final characteristic of Romance is a substantially greater variety of  subordinate verb
+forms.  There are three inflectional categories, infinitive, active (present) participle,
+and passive (past) participle, the latter occurring in both agreeing  and non-agreeing forms,
+with the further problem of specifying the verb-markers as such \emph{a} `to/at', \emph{de} `of'
+and others, mostly historically prepositions. This means that the question of how the marking
+of the subordinate verb is to be accomplished is more acute.  However, the theoretical
+treatment is not as troublesome as the semantics, as we shall see.
+
+\subsection{Mainland Scandinavian}
+The most striking feature of the Scandinavian constructions is that their most obvious
+evidence for monoclausality is apparent verbal feature agreement between the light
+verb and its semantic complement, as illustrated in these examples from Norwegian:
+\ea\label{tense} Norwegian \citep[4]{Lodrup2014}
+\ea\label{tensea}
+\gll Forsøk å les!\\
+try.{\IMP} to read.\IMP\\
+\glt{`Try to read!'}
+\ex\label{tenseb}
+\gll Det har jeg glemt å fortalt.\\
+that have.{\PRS} I forget.{\PTCP} to tell.{\PTCP}\\
+\glt{`I forgot to say that.'}
+\ex\label{tensec}
+\gll Jeg prøvde å leste det lure smilet hennes.\\
+I try.{\PST} to read.{\PST} the sly grin.{\DEF} her\\
+\glt{`I tried to read her sly grin.'}
+\z\z
+The inflectional agreement in the above examples is optional, most common with imperative forms
+(\ref{tensea}), less common with participles (\ref{tenseb}), and possible for only some speakers with the finite
+past (\ref{tensec}).
+
+The most-discussed evidence for reanalysis is `long passives', which are arguably
+produced by morphological features associated with passive voice
+being shared across the two levels, as analysed by \citet{Lodrup2014lp}.  An example is:
+\ea\label{lp}Norwegian \citep[388]{Lodrup2014lp}\\
+\gll at vaskemaskin-en må huskes å slås på\\
+that {washing machine}-the must remember.{\INF.\PASS} `to' turn.{\INF.\PASS} on\\
+\glt{`that you must remember to turn on the washing machine'}
+\z
+While the tense-mood features of (\ref{tense}) appear to percolate down from the
+upper to the lower verb, the voice feature of (\ref{lp}) percolates in the opposite
+direction, in a manner somewhat reminiscent
+of the analysis of auxiliary selection in Italian in \citet[56--60]{AndrewsManning1999}.\footnote
+ {Due to Manning, according to my recollections.} 
+This suggests that this is a complex predicate structure where both verbs are
+associated with the same f-structure.  L\o drup discusses further verbal constructions
+similar to these that do not appear to be complex predicate constructions; space precludes
+discussing them here.  Similar phenomena appear to be found in
+Swedish and Danish, but have not been reported for Icelandic.
+
+\subsection{Theoretical approaches}
+A central conclusion from the data of these languages is that the
+apparent multiple levels of c-structure correspond to one level of f-structure.
+For example, according to both Butt's and Alsina's analyses, the f-structure of
+(\ref{layered}a) would be:
+\eabox{
+\avm[style=fstr]{
+[ subj & [ pred & `pro'\\ pers & 1\\ num & sg]\\
+   pred & `finish-make-read'\\
+   obj & [spec & def\\ gend & fem \\ num & sg\\
+           pred & `letter']\\
+   \OBJTHETA & [ case & dat\\ num & sg\\ pers & 3]
+]
+}
+}
+There are three problems that arise:
+\ea
+\ea\label{ex:ComplexPreds:28a} The morphological marking
+\ex\label{ex:ComplexPreds:28b} The combination of multiple {\PRED}-values into one
+\ex\label{ex:ComplexPreds:28c} The effect of arrangement on semantic interpretation
+\z\z
+(\ref{ex:ComplexPreds:28a}) is the easiest to deal with, because, as discussed in \citet{ButtEtAl1999}
+it can be managed by proposing a morphological projection (m-structure), that comes
+directly off c-structure, where the relevant featural information can be stored.
+The m-structure attributes normally proposed are \textsc{vmark} with values \textsc{de},
+\textsc{a}, etc, for the apparently prepositional marking, and {\VFORM} for the
+inflectional categories, with values {\FIN}, {\INF}, {\PRS.\PTCP} and {\PST.\PTCP}.
+The relevant parts of the lexical entries for the light verbs in (\ref{layered}) will then be:
+
+\ea
+\ea \emph{acabo\/}: (\UPPROJ{m} {\DEP \textsc{vmark}})= \textsc{de}, (\UPPROJ{m} {\DEP \VFORM})={\INF},
+(\UPPROJ{m} {\VFORM})={\FIN}
+\ex \emph{fer\/}: $\neg$(\UPPROJ{m} {\DEP \textsc{vmark}}), (\UPPROJ{m} {\DEP \VFORM})={\INF},
+(\UPPROJ{m} {\VFORM})={\INF} 
+\z
+\z
+The c-structure will annotate all of the VPs with {\UP=\DOWN} for f-structure, but will
+assign to them a {\DEP}-value in m-structure:
+\ea
+\begin{forest}
+  [{VP\\\UP=\DOWN},baseline,
+    [{V$'$\\\UP=\DOWN\\(\UPPROJ{m}=\DOWN)} [li] [acabo]]
+    [{\BAR{VP}\\\UP=\DOWN\\(\UPPROJ{m}\DEP)=\DOWN}
+      [{de\\\UP=\DOWN}]
+      [{VP\\\UP=\DOWN}
+        [{V\\\UP=\DOWN} [fer]]
+        [{VP\\\UP=\DOWN\\(\UPPROJ{m}=\DOWN)} [{V\\\UP=\DOWN} [llegir]]]
+        [{PP\\(\UP\OBJTHETA)=\DOWN} [P [al]] [NP [nen]]]]]]
+\end{forest}
+\z
+The forms can then be managed, and this solution will clearly also work for Hindi.
+
+There is however a potential problem, which is that it was later argued by
+\citet{FrankZaenen2004} that m-structure ought to come off f-structure rather
+than c-structure directly.  With this change, form-determination becomes more
+complicated. Their solution, which involves rather complex stipulation,
+works for French auxiliaries, but as
+discussed by \citet{Andrews2018shs}, it does not seem very plausible for the richer
+system of light verbs found in some of the other Romance languages such as Catalan.
+But we will not pursue this further here, and consider instead the next problem.
+
+This is that if both the main verbs and the light verbs are construed as having
+{\PRED}-features, the f-structure annotations will produce a {\PRED}-value
+clash.  Within mainstream LFG there have been three proposed solutions.  The first
+was proposed in an earlier form by \citet[189]{alsina1996the-role}, and then in a later,
+more formal form by \citet[235--237]{Alsina1997}.  Although it was criticized
+extensively by \citet[28--34]{AndrewsManning1999}, I think it can be further revised
+to reduce the force of some of their criticisms.
+
+The core of Alsina's proposal is the idea that light verbs have an empty
+argument position into which the {\PRED}-value of their semantic complement
+is substituted.  A schematic illustration is:
+\ea
+`\textsc{cause\arglist{[P-A] \rnode{a}{[P-P]} P$^*$\arglist{\ldots \rnode{b}{\footnotesize{[~]}}\ldots}}}'
+\ncbar[nodesep=2pt,arm=.8ex,angle=-90]{a}{b}\smallskip
+\z
+`[P-A]' and `[P-P]' represent the proto-agent and proto-patient roles of \citet{Dowty1991},
+`P$^*$' the unspecified predicate that is to be plugged in, and the underbar the fact
+that in the `direct causative' construction, the patient of the causative verb is to
+be identified with some argument of the caused verb.  Given (\ref{plugging}a) as
+the subordinate verb to be plugged in, a possible result is (\ref{plugging}b):
+\ea\label{plugging}
+\ea
+`\textsc{read\arglist{[P-A] [P-P]}}'
+\ex\label{pluggingb}
+`\textsc{cause\arglist{[P-A] \rnode{a}{[P-P]} ~ read\arglist{\rnode{b}{[P-A]} [P-P]}}}'
+\ncbar[nodesep=2pt,arm=.8ex,angle=-90]{a}{b}\smallskip
+\z
+\z
+Alsina does not present this in an attribute-value notation where the usual methods
+for unification in LFG apply, but this is clearly a triviality.  In what follows,
+it will be useful to assume that the empty predicate slot in the light verb is the value
+of an attribute such as \textsc{parg}, in order to formalize the construction of a complex
+predicate such as (\ref{pluggingb}) in a more conventional notation. 
+
+The next component is the idea that the `{\UP=\DOWN}' annotation on the VP complement
+of a light verb is either interpreted in a special way \citep{alsina1996the-role} or
+replaced by something a bit different \citep{Alsina1997}.  We take the second
+approach.  Here, these VPs are annotated with the novel annotation \UP$_H$=\DOWN,
+which is interpreted as follows.  The two most important provisions are that
+the {\PRED}-values are not shared between the levels, which can be accomplished
+with the LFG device of `restriction', and second, the {\PRED}-value of the VP
+is plugged into to \textsc{parg}-value of the light verb's {\PRED}.  This can be
+formalized as follows:
+\ea
+\begin{tabular}[t]{lll}
+$\uparrow_H$=\DOWN & = & \UP\restrict{\PRED} = \DOWN\restrict{\PRED}\\
+              &   & (\UP\PRED \textsc{parg}) = (\DOWN\PRED)
+\end{tabular}
+\z
+This treatment is close to that proposed later for Urdu by
+\citet{ButtKing2006}, the difference being that they also propose a different
+approach to argument structure and linking.
+ 
+Alsina’s treatment as exposited is a bit less clear than it could have been, because he attaches $\uparrow_H$ to both the light V and its semantic complement VP, which isn't necessary, as
+noticed implicitly by \citet[241]{ButtKing2006}.  Manipulating
+argument-structure in c-structure rules might seem somewhat odd, but these constructions
+are difficult and seem to resist fully conventional treatments.
+
+The final ingredient is a linking theory.  Alsina's and Butt's analyses both
+require a linking theory that will apply to assembled syntactic structures rather
+than individual lexical entries.  This is a substantial change from the original
+conception of Lexical Mapping Theory, which was supposed to apply to items listed
+in the lexicon.  Alsina's and Butt's approaches differ in
+detail, but the basic idea is that the argument structure positions are assigned
+grammatical relations in accordance with prominence hierarchies, so that the
+most prominent will be expressed as {\SUBJ} unless the verb is passive, in which
+case it is expressed as an oblique.
+The linking theories for complex predicates, including that of
+\citet{AndrewsManning1999} furthermore remained somewhat informal until recently,
+with the proposals of \citet{Lowe2015} to use glue semantics, and
+\citet{Andrews2018shs} to use the `Kibort-Findlay Mapping Theory' as developed in
+\citet{asudeh2014meaning} and \citet{findlay2017mapping}.  We will however
+not pursue linking theory here, but rather review some follow-up proposals to
+the original analyses.
+
+\citet{AndrewsManning1999} proposed to reanalyze the material in a way that was
+in some respects not so different from the original analyses, but set within a
+rather substantial reorganization of LFG.  Rather than there being the two central
+levels of c-structure and f-structure, it was proposed that all attributes are
+in the first instance assigned to c-structure, nodes, and then differentially shared
+by annotations stated in terms of classes of attributes
+that share in different ways, some more aggressively
+than others.  The bar-features of \BAR{N} theory, for example, would be shared between mother and daughter in only
+certain coordinate structure and modificational configurations. category features more widely
+(between N (=N$^0$) and NP (=N$^2$), for example). Clause union complex predicates would then
+have sharing of the grammatical functions {\SUBJ}, {\OBJ} and {\OBJTHETA} and others
+(which were called the $\rho$-projection) between the upper and lower VPs, while {\XCOMP}s
+would not.  The morphological features would however not be shared, effectively including in
+the analysis a kind of morphological projection, of the original kind, coming off of c-structure,
+rather than f-structure.
+
+This approach reflects a difference in philosophy from Alsina's: he proposes that light verbs and
+the predicates of their semantic complements combine in a fundamentally different way
+from ordinary complementation, producing a genuine `complex predicate',
+from which follow the peculiarities of linking and the evidence for clause union.
+Andrews and Manning did not share this intuition.  In their account,
+the light verb constructions appear in very similar configurations to those of the complement
+structures, the main difference being that the former share grammatical relations while the
+latter do not,\footnote
+ {The VP complements of the light verbs are introduced as values of an attribute {\ARG},
+ which might in principle be the same as {\XCOMP}, as long as the latter is not in the
+ $\rho$ projection.  This issue is not discussed in the text.  In the earlier version of
+ this approach presented in \citet{AndrewsManning1993}, {\ARG} had to be a different
+ attribute than {\XCOMP}.}
+but have their semantic complements introduced by a different
+attribute, {\ARG}, that is on a different projection than the f-structural
+attribute {\XCOMP}, but the mode of semantic composition is fundamentally the same.
+
+This could be defended on the basis that there do not appear to be major semantic
+differences between the structures where {\ARG} is motivated versus the ones without
+clitic climbing that call for {\XCOMP}.  By contrast, many of the complex predicates
+investigated by Butt and Mohanan really do seem to involve closer combination between
+the light verb and the heavy verb, as indicated by Butt's introduction of aspects
+of Jackendoff's conceptual structures.  This leads to a further issue, the treatment
+of auxiliaries.  \citet{Butt2010} argues strongly that  auxiliaries are not light
+verbs, on the basis of having different general behavior and historical trajectories.
+But in Romance languages, they tend to show the typical behavior of the light verbs,
+including clitic climbing, and the capacity to condition the form of their apparent
+complements, and the non-auxiliary light verbs seem to have the semantics of ordinary
+complement structures in other languages.  Catalan \emph{voler}, for example, with restructuring,
+seems to have essentially the same meaning as English \emph{want}, which does not show clear
+evidence of restructuring from the perspective of LFG.\footnote
+ {However \citet{Grano2015} argues within Minimalism that English \emph{want} does have
+ restructuring (and similarly for even more superficially biclausal constructions
+ in Modern Greek).  But his arguments are based mainly on the inability of various
+ modifiers to appear, as can be explained by the absence of certain functional
+ projections (or perhaps semantic operators), rather than shared f-structures, which is the basis for clause-union
+ in LFG.}
+By contrast, the Urdu light verb contrast between \emph{pa\d r} `fall' and \emph{\d daal}
+`put' signifies contrast between accidental and volitional action, respectively
+\citep[108--109]{Butt1995}, in a way that is not well captured by the usual kind of
+semantic composition proposed for complements.
+
+There are three further analyses to consider, Butt and King's \citeyear{ButtKing2006}
+analysis of Urdu, Lowe's (\citeyear{Lowe2015}) rather different analysis
+of the same language, and Andrews' (\citeyear{Andrews2018shs}) analysis of Romance.
+Butt and King's treatment is very similar to the modified version of Alsina's analysis
+proposed here, but differs in one important respect: it does not use linking theory, but rather
+uses restriction to prevent the {\SUBJ} and \OBJROLE{goal} (grammatical function
+of the causee agent) from being shared between the two levels, but uses an equation
+to identify their value \citep[241, ex.~8]{ButtKing2006}.  This might generalize to Romance, 
+but faces a problem in both Romance and Hindi (also, presumably, Urdu),
+which is that it does not explain the evidence (from anaphora in Urdu,
+and subject-oriented adverbs in Catalan) that the causee agent is not a subject.
+In a sentence such as (\ref{urduanaph}a), for example, the subject-bound anaphor
+\emph{apnaa} is sitting in a clause nucleus whose {\SUBJ}-value is \emph{Saddaf ko},
+so it is not clear why it cannot be bound by it, even though the f-structure in which
+this happens is not actually part of the f-structure of the matrix S, due to the
+operation of restriction.
+
+The 1999 analysis of Andrews and Manning and the 2006 analysis
+of Butt and King lack a feature that is relatively typical for LFG, which is that the f-structure
+of a c-structure constituent contains the f-structures of all of that constituent's subconstituents.
+We might call this property `monotonicity of f-structure (with respect to c-structure)'.
+When this property is discarded, analyses involving functional uncertainty can fail in ways that
+are difficult to predict, which might provide a reason for preferring other kinds of
+analyses if they are available.  A further, related point is that `forgetting' much
+of the abstract structure of subconstituents is an essential characteristic of HPSG with
+its head-feature constraint.  It is plausibly a good idea to develop LFG in ways that
+are clearly distinct from HPSG. The next two analyses retain f-structure monotonicity.
+
+The second one is that of \citet{Lowe2015} of Urdu, which neither uses
+restriction nor proposes any changes to the LFG framework, but makes use
+of two different ideas.  The first is to treat the light verbs as not having {\PRED}-features,
+but introducing grammatical features such as \textsc{[permissive +]}.  This is
+workable for Urdu-Hindi, because the inventory of light verbs is clearly closed,
+and they are semantically bleached, but less plausible for Romance, because the inventory
+is larger, and, as we have previously discussed, not so sharply delimited, and many of
+the verbs have considerable lexical content, as discussed in the previously mentioned
+\citet{Sola2002}.  On the other hand, given glue semantics, it is not
+clear exactly what the {\PRED}-features are accomplishing, so this might not
+really be a problem. Given that there is no problem of conflicting
+{\PRED}-features, a rather clever glue semantics trick is used
+to get the right interpretation, which cannot be explained properly
+in the limited space available here.  Given the use of a morphological
+projection or similar device, the analysis solves all problems except for the
+dependence on the c-structure for scopal interpretation in Romance.
+In particular, since the causee agent NP is in no way at any level a value
+of {\SUBJ}, there is no problem with either the phenomena of anaphora in
+Urdu-Hindi or the floating quantifiers in Catalan.  \citet{Lowe2015} also provides
+an extremely thorough discussion and critique of all previous analyses of complex
+predicates in LFG.
+
+The final analysis, that of \citet{Andrews2018shs}, solves the problem of hierarchical
+interpretation without using a distinct morphological projection, but also
+obeys f-structure monotonicity.  It has significant
+similarities to the analyses of both \citet{AndrewsManning1999} and \citet{ButtKing2006}.
+It require some modification to the LFG framework, although
+a considerably less extensive one than Andrews and Manning's approach.  The basic idea is to
+apply the concept of `distributive attribute' and `hybrid object' from
+\citet{DalrympleKaplan2000} to sets with a single member, so that a complex predicate
+structure is taken to be a hybrid object with the semantic complement as
+a set-member:
+\ea
+\avm[style=fstr]{
+[ pred & `let'\\
+   $\ldots$\\
+   \{ [ pred & `write'\\
+                 $\ldots$]$\,$\}
+]
+}
+\z
+This provides appropriate places to locate the morphologically required
+features, without requiring a new projection, and also a structure to
+determine the semantic interpretation, at the cost of requiring a certain
+amount of stipulation to distinguish the features that need to be shared
+versus those that cannot be.  The Kibort-Findlay Mapping Theory is used
+to get appropriate interpretation of the arguments of the verb without
+having to treat the causee agent as a {\SUBJ}-value.
+
+\section{Morphologically integrated complex predicates}
+These are constructions which might be analysed as derivational morphology, but
+for various reasons have invited analysis as morphologically compacted versions
+of the previous constructions.  The two main examples are \citet{Ishikawa1985}
+for Japanese, and \citet{Alsina1997} for Chiche\^wa, extending their analyses
+for the previously discussed complex predicate constructions (in the authors'
+terminology) to the current ones.
+
+\subsection{Ishikawa and Matsumoto on Japanese}
+To analyse Japanese \emph{-(s)ase-} causatives,\footnote
+ {The initial  \emph{s} appears after stems ending in a vowel, but is absent after
+ a consonant.}
+Ishikawa uses the technique
+from earlier LFG work such as \citet{Simpson1983} of allowing word-level
+phrase-structure rules to introduce stems or affixes with a grammatical
+function.  For example, the verb stem \emph{aruk-ase} in example (\ref{ex:ComplexPreds:35a}) below
+is given the tree structure (\ref{ex:ComplexPreds:35b}):
+\ea Japanese \citep[98]{Ishikawa1985}\\
+\ea\label{ex:ComplexPreds:35a}
+\gll John ga Mari ni/o aruk-ase-ta\\
+John {\NOM} Mary {\DAT/\ACC} walk-cause-\PST\\
+\glt{`John caused Mary to walk.'} 
+\ex\label{ex:ComplexPreds:35b}
+\begin{forest}
+  [V,baseline,
+    [{(\UP\XCOMP)=\DOWN\\V}
+      [{aruk\\(\UP\PRED)=`aruk\arglist{subj}'}]]
+    [{\UP=\DOWN\\V}
+      [{-(s)ase\\(\UP\PRED)=`(s)ase\arglist{subj,obj2,xcomp}'\\(\UP\XCOMP~\SUBJ)=(\UP\OBJ2)}]]]
+\end{forest}
+\z
+\z
+The difference between dative and accusative on the causee agent is semantically
+significant, treated as whether the grammatical function is \textsc{iobj2} (currently
+designated as {\OBJTHETA}) for the dative or {\OBJ} for the accusative.
+
+Ishikawa extends this analysis to the `indirect' or `adversative' passive, in which
+the subject is characterized as suffering the effect of the action \citep[303]{Kuno1973}:
+\ea Japanese \citep[106]{Ishikawa1985}\\
+\gll John ga ame ni hur-are-ta\\
+John {\NOM} rain {\DAT} fall-{\PASS}-{\DAT}\\
+\glt{`John suffered from rain falling.'} 
+\z
+The annotated c-structure for this is:
+\ea
+\begin{forest}
+  [V,baseline,
+    [{(\UP\XCOMP)=\DOWN\\V}
+      [{hur\\(\UP\PRED)=`hur\arglist{subj}'}]]
+    [{\UP=\DOWN\\V}
+      [{-(r)are\\(\UP\PRED)=`(r)are\arglist{subj,obj2,xcomp}'\\(\UP\XCOMP~\SUBJ)=(\UP\OBJ2)}]]]
+\end{forest}
+\z
+There has been a dispute as to whether the adversative passive must always add a new
+argument, or can be similar in appearance to the regular passive, but expressing
+adversity to the overt (promoted) subject.  Kuno says no,
+while \citet[114--124]{Ishikawa1985} says yes, although the arguments are complex,
+and depend on too many details of Japanese for further discussion here.
+
+\citet{Matsumoto1996}  provides a similar analysis, but implemented somewhat differently, for
+causatives, and also certain desideratives.  For the latter, he argues that
+desideratives which take the desired event object as an accusative have a biclausal
+structure, while the ones where this object is nominative are monoclausal:
+
+\ea Japanese \citep[103]{Matsumoto1996}\\
+\begin{xlist}
+\ex
+\gll boku wa  hon o yomi-tai\\
+I {\TOP} book {\ACC} read-want\\
+\glt{`I want to read the book.'}
+\ex
+\gll boku wa  hon ga yomi-tai\\
+I {\TOP} book {\NOM} read-want\\
+\glt{`I want to read the book.'}
+\end{xlist}
+\z
+The argument that Matsumoto makes is complex, and depends on the possibilities
+for passivization.  One point is that the desiderative forms an adjective
+rather than a verb, and adjectives as such cannot be passivized.  However there
+is a way out: adjectives of subjective state can be verbalized by adding the
+suffix \emph{-gar}, meaning `to show signs of being in the state'.  These derived
+verbs are natural with non-first person subjects, which the original adjectives
+are not.  Although these derived verbs take accusative objects, there is a
+difference in passivization: the ones whose base forms reject \emph{ga}-marked
+objects are also the ones that are acceptable in the passive.
+These are the ones where the subject in some sense wants to `have' the object:
+
+\ea Japanese \citep[107]{Matsumoto1996}\\
+\begin{xlist}
+\ex
+\gll boku wa sono hon o/ga yomi-tai\\
+I {\TOP} the book {\ACC/\NOM} read-want\\
+\glt{`I want to read the book.'}
+\ex
+\gll boku wa kare o/*ga machi-tai\\
+I {\TOP} him {\ACC/\NOM} wait-want\\
+\glt{`I want to wait for him.'}
+\end{xlist}
+\z
+It is the verbal forms derived from the desideratives that accept \emph{ga}
+on their patients that can be passivized:
+\ea Japanese\\
+\begin{xlist}
+\ex
+\gll sono hon wa minna ni yomi-ta-gar-arete-iru\\
+the book {\TOP} all {\DAT} read-want-\VBLZ-\PASS-\ASP\\
+\glt{`The book is in such a state that everybody wants to read it.'}
+\ex
+\gll *kare wa minna ni machi-ta-gar-arete-iru\\
+He {\TOP} all {\DAT} wait-want-\VBLZ-\PASS-\ASP\\
+\glt{`He is in such a state that everybody wants to wait for him.'}
+\end{xlist}
+\z
+`Long passives' are possible in some but not all of the languages with the
+complex predicate constructions discussed in the previous section (present in
+Italian and Catalan, but not in Spanish), but the contrast between these
+examples does indicate that there are two different constructions.  Matsumoto
+also discusses differences in adjunct interpretation and verbal anaphora to justify
+the proposed distinction between biclausal and monoclausal.
+
+Unfortunately, there does not appear to have been much follow-up to compare
+Ishikawa's and Matsumoto's analyses with the later ones of Bantu and Hindi-Urdu, 
+to which we turn next.
+
+\subsection{Alsina on Bantu, and similar constructions}
+\citet{Alsina1997} presents an analysis of causatives in Chiche\^wa, based on the
+same account of argument structure and predicate-composition as presented in \citet{alsina1996the-role}.
+The difference from the treatment of Catalan is in the c-structure: in both cases,
+the c-structures are monoclausal, but in Chiche\^wa, the causative element is treated
+as an affix to the Caused verb stem, rather than an independent morphological
+stem, as in Catalan.  Alsina provides convincing evidence for this difference.
+
+The c-structures are identical to those proposed by Ishikawa and Matsumoto for
+Japanese, but the annotations are different: they are the same as they would be
+for Catalan (assuming my claim that we only need the special annotation for the
+semantic complement, not the head, and adjusting the lexical entries to fit
+Alsina's linking theory):
+\ea
+\begin{forest}
+  [V,baseline,
+    [{$\uparrow_H$=\DOWN\\V}
+      [{s\=ek\\(\UP\PRED)=`s\=ek\arglist{[P-A]}'}]]
+    [{\UP=\DOWN\\Aff}
+      [{ets\\(\UP\PRED)=`ets\arglist{[P-A] \rnode{a}{[P-P]}
+            P$^*$\arglist{\ldots \rnode{b}{\footnotesize{[~]}}\ldots}}'}]]]
+\end{forest}
+\ncbar[nodesep=2pt,arm=.8ex,angle=-90]{a}{b}
+\z
+The analysis actually works a bit better for this construction than the Romance one, because
+we do not have to worry about conditioning the subordinate verb form, and the problem
+of different orderings having different semantic interpretations does
+not arise.
+
+This form of analysis has been extended more widely to other `valence change' constructions, including
+reciprocals in Chiche\^wa \citep{Alsina1997}, passives and antipassives in a variety of languages
+\citep{Manning1994,Manning1996}, and causatives and applicatives
+in Australian languages \citep{Austin2005}.  Complex-predicate-based analyses of morphologically
+based valence change do not however appear to have been much pursued in recent years.
+The most recent LFG analysis of passives is, for example, within the Kibort-Findlay Mapping
+Theory \citep{findlay2017mapping}, and does not use a complex predicate analysis.
+
+\sloppy
+Typology seems to provide some warrant for questioning these analyses. Pas\-sive constructions
+(or, more precisely, constructions in various languages that are often called `passive') do often
+involve auxiliary verbs in what might plausibly  be complex predicate constructions, but those normally
+called antipassives are to the best of my knowledge always morphological, and apparent complement structures
+that are actually complex predicates seem likewise to be nonexistent for reflexives and reciprocals.
+Another intriguing
+asymmetry arises with causatives and applicatives.  As discussed by \citet{Austin2005},
+it is not unusual for morphological causatives and applicatives to use the same formative.
+
+\fussy
+Austin analyses these in various Australian languages as having the applicative/causative
+morpheme introduce
+a light verb \textsc{affect}, with the difference between causative and applicative senses
+being based on different patterns of argument identification.  Sample causative and applicative
+combinations are \citep[32--33]{Austin2005}:
+\ea
+\begin{xlist}
+\ex Causative:\\
+\begin{tabular}[t]{cccccccccccccccc}
+\textsc{affect} &$<$ Ext Arg & Int Arg & \PRED &$<$ Arg $>>$\\
+       &    $+$vol  &  \rnode{a}{$-$vol} &      &    \rnode{b}{$-$vol}\\
+\end{tabular}
+\ncbar[nodesep=2pt,nodesep=2pt,arm=.8ex,angle=-90]{a}{b}\\[1.5ex]
+e.g. `The man turned the child.'
+\ex Applicative:\\
+\begin{tabular}[t]{cccccccccccccccc}
+\textsc{affect} &$<$ Ext Arg & Int Arg & \PRED $<$ Ext Arg & Goal/Loc  $>>$\\
+       &    \rnode{c}{$+$vol}  &  \rnode{a}{$-$vol} &       \rnode{b}{$+$vol} & \rnode{d}{$-$vol}\\
+\end{tabular}
+\ncbar[nodesep=2pt,arm=.8ex,angle=-90]{c}{b}
+\ncbar[nodesep=2pt,arm=1.6ex,angle=-90]{a}{d}\\[2ex]
+e.g. `The man laughed at the child.'
+\end{xlist}
+\z
+In the causative, the agentive argument of the \textsc{affect} predicate is identified
+with the unaccusative argument of the embedded predicate, while in the applicative,
+the agentive arguments of the two predicates are identified, and also the second
+argument of \textsc{affect} and a locative/directional argument of the embedded verb.  This
+captures the idea that applicatives of such verbs often express a meaning to the
+effect that the locative/directional is affected by the action.
+
+There is however perhaps a typological issue with the analysis: the causative
+is often expressed by constructions that look like and often seem to actually
+be complement constructions, but this is not the case for applicatives, whose sense
+is however sometimes expressed by serial verb constructions, as we consider in the
+next section.  This typological difference suggests a fundamental structural
+one, but there is also evidence for a relationship, in that the same formative is
+sometimes used for both.  What I suggest is that the \textsc{affect} concept is common to
+both, with argument sharing as proposed by Austin, but that the structural relations
+are different.  We can partially express them using the `Natural Semantic Metalanguage'
+(NSM) approach of Anna Wierzbicka and her colleagues \citep{Wierzbicka:English,Goddard:NSM}, which can be regarded as being
+a technique for expressing meanings in simple terms that are found to be highly
+translatable.\footnote
+ {\citet{Andrews2016} is an attempt to express the basic ideas of NSM in a form
+ that might make some sense to people trained in formal semantics.}
+In the case of causatives, the sense is:\footnote{NSM accounts (called `explications') of the causative tend to include `after this'
+ after `because of this', but I suggest that this is better treated as an inference
+ licensed by a law that effects come after their causes (at least in the local timeline
+ of an individual, ignoring scenarios from science fiction).}
+\ea
+X does something to Y\\
+Because of this, $<$Caused Event$>$
+\z
+In the case of applicatives, there does not seem to be any caused event distinct from
+what X does to Y, rather what X does \emph{constitutes} X doing something to Y.  For
+this I suggest the following:
+\ea\label{applic}
+<Applied event, performed by X involving Y$>$\\
+This is X doing something to Y.
+\z
+This is not of course anywhere near a full explanation of the differences between
+the constructions, but it is perhaps a start.  In particular, it seems plausible
+that the identity relationship expressed in (\ref{applic}) is not something that is
+normally expressed by complement structures.
+
+Neither these contemporary analyses of morphological causatives
+and valence change operations, nor the earlier ones by Ishikawa and Matsumoto, in which
+they are morphologically expressed {\XCOMP} structures, have received much discussion
+in recent years.
+
+\section{Serial Verb Constructions}
+Our last type is \textsc{serial verb constructions} (SVCs).  Perhaps the first issue that arises
+with these is the rather controversial one of defining them.  I will here
+roughly follow \citet{Aikhenvald2006} in defining them as structures where:
+\ea\label{SVCcriteria}
+\ea\label{SVCcriteriaa} There is some evidence of at least partial clause union.
+\ex\label{SVCcriteriab} There is no explicit marking of subordination or coordination.
+\z\z
+(\ref{SVCcriteriaa}) is an indication that SVCs are complex predicates or at least control structures,
+while (\ref{SVCcriteriab}) has no clear status in a formal syntactic analysis of these constructions,
+but is plausibly very important for their functional characteristics and tendencies
+in diachronic development, since they do not provide much in the way of overt cues
+as to what their syntactic structure is.
+
+SVCs have not received much attention in the LFG literature, the main exceptions
+being the treatment of Tariana in \citet{AndrewsManning1999},\footnote
+ {With an update to the framework of \citet{Andrews2018shs} in \citet{Andrews2018mapps}.}
+the treatment of Dagaare and Akan (with observations about other languages)
+in \citet{Bodomo1997}, and the recent analysis of Barayin in \citet{Lovestrand2018}.
+In this section, I will consider these three languages, and then take a brief look
+at Misumalpan causatives, treated as complex predicates by \citet{AndrewsManning1999},
+but argued to be something different in \citet{Andrews2018mapps}.
+
+\subsection{Tariana}
+Tariana SVCs\footnote
+ {For a descriptive account see \citet{Aikhenvald2003,Aikhenvald2006tar}.}
+consist of a sequence of verbs inflected identically for person, with some further grammatical markers
+appearing once, in a number of positions.  A fundamental division in these constructions
+is between the `symmetric' SVCs, which look and act like coordinated verbs (but without
+any overt coordinator), and the `asymmetric' ones, which are diverse, but many of them
+are semantically similar to Romance complex predicate structures, and have some
+capacity to occur embedded in each other. \citet{AndrewsManning1999} took this as a basis for
+analysing the two with similar
+feature-structures, but differing in the c-structures.  A particularly striking piece
+of evidence for the monoclausality of these constructions is the phenomenon of
+`concordant dependent inflection', whereby the caused verb shows subject agreement
+with the causer, presumably on the basis that this is the subject of the entire construction,
+rather than the causee agent, its own agent.  This is illustrated
+in the following example:
+\ea Tariana (elicited, Aikhenvald p.c.)\\
+\gll  nu-na=tha       nu-ra           nu-sata  dineiru\\
+        1\SG-want=\gloss{frustr} 1\SG-order 1\SG-ask money\\
+\glt{`I want to order (him) to ask for money.'}\\
+(Modal on causative)
+\z
+In the Andrews and Manning analysis, the light verb shares both the f-projection and the
+a-projection (roughly equivalent to f-structure and argument structure) with the c-structure mother,
+while its semantic complement shares only the f-structure, and is introduced into the
+a-structure as the value of an attribute {\ARG}.  In the later version of
+\citet{Andrews2018mapps}, the light verb has {\UP=\DOWN}, while the main verb
+is introduced as a set member.  
+
+The various other kinds of analyses we considered would work for Tariana as well as
+they do for their original subject material, and  there would be
+no need to involve a morphological projection to
+control the government of the forms of the semantic complement verbs by the light verbs.
+
+\subsection{Dagaare and Akan}
+Most Tariana SVCs can be treated as either syntactically coordinate
+structures (symmetric SVCs) or as an expression of Romance-type
+restructuring predicates (asymmetric SVCs), with a different technique
+of morphological expression.  But Dagaare and Akan, two major
+languages of Ghana discussed by \citet{Bodomo1996,Bodomo1997}, have
+additional SVC constructions that do not submit to such analyses, and
+require something different.  These are also considerably more similar
+than Tariana SVCs to the constructions commonly called SVCs in many
+other languages.
+
+\citet[80--84]{Bodomo1997} discusses a number of types.  One of their characteristics is
+that in some of the cases, such as action-causation, no plausible suspect for being the `light verb' can be identified:\footnote
+ {\emph{la} is the `Factive' particle in Dagaare, marking positive affirmations
+ \citep[65--69]{Bodomo1997}.} 
+\ea\label{svcclasses} Dagaare
+\ea Benefactive:\\
+\gll o da tong la toma ko ma\\
+{3\SG} {\PST} work(\textsc{v}) \gloss{fact} work(\textsc{m}) give me\\
+\glt{`S/he worked for me.'}
+\ex Action-Causation (`Causative'):\\
+\gll o da daa ma la lɔɔ\\
+{3\SG} {\PST} push me \gloss{fact} cause-fall\\
+\glt{`S/he pushed me down.'}
+\ex Inceptive \emph{take} serialization:\\
+\gll o de la gan ko ma\\
+{3\SG} take \gloss{fact} book give me\\
+\glt{`S/he gave me a book.'}
+\ex\label{svcclassesd} Instrumental \emph{take} serialization:\\
+\gll o da de la soɔ ngmaa a nεb  ɔɔ\\
+{3\SG} {\PST} take  \gloss{fact} knife cut {\DEF} meat chew\\
+\glt{`S/he cut the meat with a knife and ate it.'}
+\ex Deictic (Directional/Associated Motion)\\
+\gll o da zo wa-ε la\\
+{3\SG} {\PST} run come.{\PRF} \gloss{fact}\\
+\glt{`S/he ran here/S/he came by running.'}
+\z\z
+At the level of c-structure, Bodomo proposes flat binary VP structures
+without specifying what would happen in examples such as (\ref{svcclassesd}) above that might involve
+nesting, as I suggest below:
+\ea
+\begin{forest}
+  [S,baseline, [NP [{o\\he}]]
+    [I$'$ [I [{da\\\PST}]]
+      [VP
+        [VP
+          [V [V [{de\\take}]]
+            [{la\\\gloss{fact}}]]
+          [NP [{so\textopeno\\knife}]]]
+        [VP
+          [VP
+            [V [{ngmaa\\cut}]]
+            [NP [Det [{a\\the}]]
+                 [N [{n{\textepsilon}b\\meat}]]]]
+          [VP [V [{{\textopeno\textopeno}\\chew}]]]]]]]
+\end{forest}
+\z
+My proposed account is that the upper pair of VP's constitute instrumental serialization,
+while the pair embedded under the rightmost member of the upper are a collocation (a
+type not listed in (\ref{svcclasses}) meaning `eat').  Bodomo is however not clear about
+this, and a flat structure of three VPs sitting under one would be consistent with the text.
+
+For the f-structure analysis, he follows Alsina, with the modification that since it
+is frequently impossible to regard one of the verbs as light and another as heavy,
+the two {\PRED}-values are integrated into a `\textsc{predchain}' value in a manner
+that can be formalized in various ways (no specific one is chosen).
+
+The semantics is treated with a `cell theory' that is part of the `Sign Model' of
+\citet{HellanVulchanova1996}, which does not appear to have ever been published, but seems
+broadly compatible with many recent ideas about the aspectual constitution of verb meanings.
+Events have a variety of properties, including an obligatory Core component,
+and optional Initiation and Termination components.  Although there is no published
+account of the entire theory, the approach seems broadly consistent with that taken
+by Butt, and could plausibly be implemented by unification, or in the Davidsonian
+Event semantics used in the Kibort-Findlay Mapping theory \citep{asudeh2014meaning,findlay2017mapping}.
+
+In the causation-action construction, for example, the first verb specifies
+a `action' component (what is done), the second a `causation' component (what happens
+because of what is done).  If we take the general approach to complex predicates proposed
+in \citet{Andrews2018shs}, we could have a VP expanding to two VPs, each producing an element
+of a set, with a `syncategoremantic' meaning constructor (one introduced by the c-structure rules)
+setting these up as the action and causation subevents of the main event:
+\ea
+\phraserule{VP}{
+  \rulenode{VP\\\DOWN{$\in$}\UP\\\DOWN=$\%F$}
+  \rulenode{VP\\\DOWN{$\in$}\UP\\\DOWN=$\%G$}}\\[1ex]
+$\lambda e. \exists e_1(\IT{Action}(e,e_1)) \wedge\exists e_2(\IT{Result}(e,e_2))$ :\\
+$((\%F_\sigma\ \gloss{ev})\multimap\%F_\sigma)\multimap
+  ((\%G_\sigma\ \gloss{ev})\multimap\%G_\sigma)\multimap
+  ({\UPS}\ \gloss{ev})\multimap\UPS$\z
+This takes two predicates over events, and creates a single
+predicate that is true of an event if it contains action and result
+subevents.  This is only an initial suggestion of how a worked out
+analysis might proceed, but I think it demonstrates that Bodomo's work
+provides an excellent basis to start out from.
+
+\subsection{Barayin}
+Barayin SVCs are analysed in considerable detail by \citet{Lovestrand2018}, using
+a combination of a very carefully worked out major revision of the LFG version of X-bar theory
+from \citet{BresnanEtAl2016}, and a development of the `connected s-structure'
+(semantic structures) pioneered in \citet{asudeh2014meaning} and \citet{findlay2017mapping}.
+The latter allows serial verbs to make various contributions to meaning, sufficient for the
+range of these structures in Barayin, without needing to build apparent complement structures
+as appears to happen in Romance, and, to a lesser extent, Tariana.
+
+The apparent syntactic form of the constructions is argued to be a `nonprojecting word'
+\citep{Toivonen2001} left-adjoined to the V, a typical example being:
+\ea Barayin\\
+\begin{xlist}
+  \ex
+  \begin{forest}
+    [S,baseline, [{NP\\(\UP\SUBJ)=\DOWN} [{duwa\\lion}]]
+      [{VP\\\UP=\DOWN}
+        [{V\\\UP=\DOWN}
+          [{\NONPROJ{V}\\\UP=\DOWN} [{kol-eyi\\go-\IPFV}]]
+          [{V\\\UP=\DOWN} [{d-eg-aga\\kill-\IPFV-\DAT.3\PL}]]]
+        [{NP\\(\UP\OBJ)=\DOWN} [{suu\\animal}]]]]        
+  \end{forest}
+\ex
+\gll duwa kol-eyi d-eg-aga suu\\
+lion go-{\IPFV} kill-{\IPFV-\DAT.3\PL} animal\\
+\glt `The lion went and killed an animal for them.'\\
+\end{xlist}
+\z
+The f- and s-structures of this example would be (not explicitly provided by Lovestrand,
+but evident from other examples and the annotations for SV \emph{kol-o} \citep[221]{Lovestrand2018}: 
+
+\eabox{
+\avm[style=fstr]{
+[ subj & [ pred & `lion']\\
+   pred & `kill'\\
+   obj & [ pred & `animal']\\
+   \OBJROLE{rec} & [pred & `pro'\\
+                   pers  & 3\\
+                   num & pl] ]
+}
+\hspace{2em}
+\avm[style=fstr]{
+[ rel & kill\\
+   arg1 & \rnode{a}{[rel & lion]}\smallskip\\
+   arg2 & [rel & animal]\\
+   benef & [rel & they]\\
+   path & [rel & toward\\
+            arg1 & \rnode{b}{\strut}\\
+            arg2 & there
+          ]
+]
+}
+\CURVE[1.5]{-2pt}{0}{a}{0pt}{0}{b}
+}
+In the semantics of the SV  (first member of the SVC construction), there is
+also a not-fully-formalized provision that the motion along the path can either be
+simultaneous with or previous to the action of the main verb.
+
+The potential problem of {\PRED}-clash is averted by the proposal that the SVs have
+no {\PRED}-feature, which is workable because there are only a limited number of SVs,
+producing the following kinds of constructions, each discussed by Lovestrand:
+\ea
+\begin{xlist}
+\ex Deictic (Associated Motion with deictic motion verbs such as \emph{kol-o} `go' as in
+the examples above).
+\ex Manner (\emph{gor-o} `run' or another manner of motion verb).
+\ex Stand (\emph{juk-o} `stand', incohative or indicating change in the narrative).
+\ex Take (\emph{pid-o} `take', indicating the agent grasping the patient).
+\end{xlist}
+\z
+Even if the inventory of possible SVs turned out to be at least somewhat open,
+that fact that there does not appear to be any recursion in the construction
+means that the extra {\PRED} could be managed somehow, perhaps by a variant
+of the `EP' proposal of \citet{Lovestrand2020}.  A further unique and interesting
+feature of this analysis is that it has been fully implemented in the XLE system.
+The use of the connected s-structures has significant resemblances to both Butt's
+use of Jackendoff's Lexical-Conceptual Structures, and Bodomo's use of the
+unfinished Cell Theory.  This is clearly a promising area for future work.
+
+
+\subsection{Misumalpan}
+The last case I will consider is some so-called serial verb constructions in the Misumalpan
+languages Miskitu and Sumu, presented as a kind of complex predicate in \citet{AndrewsManning1999}.
+The constructions at issue have the form of consecutive clauses, expressing a chain of events,
+but they are interpreted in a range of ways similar to more standard SVC structures
+with no marking of the verbs \citep{Salamanca1988}. This range of interpretations can be
+said to justify considering them as SVC constructions regardless of whether we consider
+their marking pattern to be in accord with (\ref{SVCcriteria}) or not.
+
+A fairly typical example is:
+\ea Misumalpan (\citealt[26]{Hale1991}, \citealt[93]{AndrewsManning1999})\\
+\gll witin ai pruk-an kahw-ras\\
+he me hit-{\gloss{obv.actual}.3} fall-{\NEG}\\
+\glt{`He hit me and I did not fall down.' (Consecutive Reading)\\
+`He didn't knock me down.' (Causative SVC reading)}\\
+\z
+The suffix \emph{-an} above is the `obviative actual', obviative indicating that the subject of the clause whose
+verb has the marking is different from that of the next, `actual' being a tense.
+In the consecutive reading, the clauses indicate different events that apply in
+sequence, and the negative affix applies to the second event.  In the causative SVC reading,
+the first clause is the event that causes the second to happen, and the negative affix applies
+to the entire, complex event.
+
+\citet{AndrewsManning1999} analyse these constructions as involving a rather unusual pattern of attribute
+sharing, while \citet{Andrews2018mapps} argues that no unusual syntactic structures
+are required, and that the interpretations can be obtained by the use of glue semantics.
+
+\section{Conclusion}
+LFG analyses of complex predicates have been concerned primarily with the symmetrical sharing of
+attributes between different levels, and with the issues of combining the argument structures
+of multiple verbs into a single one that is associated with one set of grammatical relations.
+A remaining challenge is a theme that is more dominant in
+Minimalist analyses, which is the involvement of `reduced projections', where some of the
+verbs do not appear to have all of the functional projections that an independent main verb
+would have (\citealt{Grano2015}, \citealt{Wurmbrand2017}).  Negation, for example, is frequently impossible for the
+lower component of a complex predicate (as in Romance), but this is not the case in Urdu
+\citep[49]{Butt1995}.  There is clearly more to be done in this area, perhaps
+by an elaboration of functional projections in c-structure, of types in glue semantics,
+or a combination of both.
+
+\section*{Acknowledgements}
+I would like to acknowledge the three reviewers for many very helpful comments and suggested
+references.
+
+\sloppy
+\printbibliography[heading=subbibliography,notkeyword=this]
+
+
+\end{document}
+
